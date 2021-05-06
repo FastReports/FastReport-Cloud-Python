@@ -1,0 +1,34 @@
+from __future__ import absolute_import
+
+# flake8: noqa
+
+# import apis into api package
+from fastreport_cloud_sdk.api.admin_api_keys_api import AdminApiKeysApi
+from fastreport_cloud_sdk.api.admin_data_source_api import AdminDataSourceApi
+from fastreport_cloud_sdk.api.admin_exports_api import AdminExportsApi
+from fastreport_cloud_sdk.api.admin_groups_api import AdminGroupsApi
+from fastreport_cloud_sdk.api.admin_health_check_api import AdminHealthCheckApi
+from fastreport_cloud_sdk.api.admin_reports_api import AdminReportsApi
+from fastreport_cloud_sdk.api.admin_subscription_analytics_api import AdminSubscriptionAnalyticsApi
+from fastreport_cloud_sdk.api.admin_subscription_invites_api import AdminSubscriptionInvitesApi
+from fastreport_cloud_sdk.api.admin_subscription_period_api import AdminSubscriptionPeriodApi
+from fastreport_cloud_sdk.api.admin_subscription_plans_api import AdminSubscriptionPlansApi
+from fastreport_cloud_sdk.api.admin_subscription_problem_solving_api import AdminSubscriptionProblemSolvingApi
+from fastreport_cloud_sdk.api.admin_subscriptions_api import AdminSubscriptionsApi
+from fastreport_cloud_sdk.api.admin_templates_api import AdminTemplatesApi
+from fastreport_cloud_sdk.api.admin_users_api import AdminUsersApi
+from fastreport_cloud_sdk.api.api_keys_api import ApiKeysApi
+from fastreport_cloud_sdk.api.data_sources_api import DataSourcesApi
+from fastreport_cloud_sdk.api.download_api import DownloadApi
+from fastreport_cloud_sdk.api.exports_api import ExportsApi
+from fastreport_cloud_sdk.api.group_users_api import GroupUsersApi
+from fastreport_cloud_sdk.api.groups_api import GroupsApi
+from fastreport_cloud_sdk.api.health_check_api import HealthCheckApi
+from fastreport_cloud_sdk.api.reports_api import ReportsApi
+from fastreport_cloud_sdk.api.subscription_groups_api import SubscriptionGroupsApi
+from fastreport_cloud_sdk.api.subscription_invites_api import SubscriptionInvitesApi
+from fastreport_cloud_sdk.api.subscription_plans_api import SubscriptionPlansApi
+from fastreport_cloud_sdk.api.subscription_users_api import SubscriptionUsersApi
+from fastreport_cloud_sdk.api.subscriptions_api import SubscriptionsApi
+from fastreport_cloud_sdk.api.templates_api import TemplatesApi
+from fastreport_cloud_sdk.api.user_profile_api import UserProfileApi
