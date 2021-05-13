@@ -13,7 +13,7 @@
 from setuptools import setup, find_packages  # noqa: H301
 
 NAME = "fastreport-cloud-sdk"
-VERSION = "2021.1.32"
+VERSION = "2021.1.35"
 # To install the library, run the following
 #
 # python setup.py install

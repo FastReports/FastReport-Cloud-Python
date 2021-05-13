@@ -4,13 +4,13 @@ All URIs are relative to *http://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**subscription_groups_get_group_list**](SubscriptionGroupsApi.md#subscription_groups_get_group_list) | **GET** /api/manage/v1/Subscriptions/{id}/groups | returns list of groups in the subscription
+[**subscription_groups_get_groups_list**](SubscriptionGroupsApi.md#subscription_groups_get_groups_list) | **GET** /api/manage/v1/Subscriptions/{subscriptionId}/groups | returns groups of the subscription or subscription user
 
 
-# **subscription_groups_get_group_list**
-> GroupsVM subscription_groups_get_group_list(id)
+# **subscription_groups_get_groups_list**
+> GroupsVM subscription_groups_get_groups_list(subscription_id, user_id=user_id)
 
-returns list of groups in the subscription
+returns groups of the subscription or subscription user
 
 ### Example
 
@@ -48,14 +48,15 @@ configuration.api_key['JWT'] = 'YOUR_API_KEY'
 with fastreport_cloud_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = fastreport_cloud_sdk.SubscriptionGroupsApi(api_client)
-    id = 'id_example' # str | subscripiton id
+    subscription_id = 'subscription_id_example' # str | subscripiton id
+user_id = 'user_id_example' # str | user Id (optional) (optional)
 
     try:
-        # returns list of groups in the subscription
-        api_response = api_instance.subscription_groups_get_group_list(id)
+        # returns groups of the subscription or subscription user
+        api_response = api_instance.subscription_groups_get_groups_list(subscription_id, user_id=user_id)
         pprint(api_response)
     except ApiException as e:
-        print("Exception when calling SubscriptionGroupsApi->subscription_groups_get_group_list: %s\n" % e)
+        print("Exception when calling SubscriptionGroupsApi->subscription_groups_get_groups_list: %s\n" % e)
 ```
 
 * Api Key Authentication (JWT):
@@ -92,21 +93,23 @@ configuration.api_key['JWT'] = 'YOUR_API_KEY'
 with fastreport_cloud_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = fastreport_cloud_sdk.SubscriptionGroupsApi(api_client)
-    id = 'id_example' # str | subscripiton id
+    subscription_id = 'subscription_id_example' # str | subscripiton id
+user_id = 'user_id_example' # str | user Id (optional) (optional)
 
     try:
-        # returns list of groups in the subscription
-        api_response = api_instance.subscription_groups_get_group_list(id)
+        # returns groups of the subscription or subscription user
+        api_response = api_instance.subscription_groups_get_groups_list(subscription_id, user_id=user_id)
         pprint(api_response)
     except ApiException as e:
-        print("Exception when calling SubscriptionGroupsApi->subscription_groups_get_group_list: %s\n" % e)
+        print("Exception when calling SubscriptionGroupsApi->subscription_groups_get_groups_list: %s\n" % e)
 ```
 
 ### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **str**| subscripiton id | 
+ **subscription_id** | **str**| subscripiton id | 
+ **user_id** | **str**| user Id (optional) | [optional] 
 
 ### Return type
 

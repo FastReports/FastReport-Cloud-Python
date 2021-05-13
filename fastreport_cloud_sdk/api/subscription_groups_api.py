@@ -36,17 +36,19 @@ class SubscriptionGroupsApi(object):
             api_client = ApiClient()
         self.api_client = api_client
 
-    def subscription_groups_get_group_list(self, id, **kwargs):  # noqa: E501
-        """returns list of groups in the subscription  # noqa: E501
+    def subscription_groups_get_groups_list(self, subscription_id, **kwargs):  # noqa: E501
+        """returns groups of the subscription or subscription user  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.subscription_groups_get_group_list(id, async_req=True)
+        >>> thread = api.subscription_groups_get_groups_list(subscription_id, async_req=True)
         >>> result = thread.get()
 
-        :param id: subscripiton id (required)
-        :type id: str
+        :param subscription_id: subscripiton id (required)
+        :type subscription_id: str
+        :param user_id: user Id (optional)
+        :type user_id: str
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
@@ -63,19 +65,21 @@ class SubscriptionGroupsApi(object):
         :rtype: GroupsVM
         """
         kwargs['_return_http_data_only'] = True
-        return self.subscription_groups_get_group_list_with_http_info(id, **kwargs)  # noqa: E501
+        return self.subscription_groups_get_groups_list_with_http_info(subscription_id, **kwargs)  # noqa: E501
 
-    def subscription_groups_get_group_list_with_http_info(self, id, **kwargs):  # noqa: E501
-        """returns list of groups in the subscription  # noqa: E501
+    def subscription_groups_get_groups_list_with_http_info(self, subscription_id, **kwargs):  # noqa: E501
+        """returns groups of the subscription or subscription user  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.subscription_groups_get_group_list_with_http_info(id, async_req=True)
+        >>> thread = api.subscription_groups_get_groups_list_with_http_info(subscription_id, async_req=True)
         >>> result = thread.get()
 
-        :param id: subscripiton id (required)
-        :type id: str
+        :param subscription_id: subscripiton id (required)
+        :type subscription_id: str
+        :param user_id: user Id (optional)
+        :type user_id: str
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
         :param _return_http_data_only: response data without head status code
@@ -102,7 +106,8 @@ class SubscriptionGroupsApi(object):
         local_var_params = locals()
 
         all_params = [
-            'id'
+            'subscription_id',
+            'user_id'
         ]
         all_params.extend(
             [
@@ -118,24 +123,26 @@ class SubscriptionGroupsApi(object):
             if key not in all_params:
                 raise ApiTypeError(
                     "Got an unexpected keyword argument '%s'"
-                    " to method subscription_groups_get_group_list" % key
+                    " to method subscription_groups_get_groups_list" % key
                 )
             local_var_params[key] = val
         del local_var_params['kwargs']
-        # verify the required parameter 'id' is set
-        if self.api_client.client_side_validation and ('id' not in local_var_params or  # noqa: E501
-                                                        local_var_params['id'] is None):  # noqa: E501
-            raise ApiValueError("Missing the required parameter `id` when calling `subscription_groups_get_group_list`")  # noqa: E501
+        # verify the required parameter 'subscription_id' is set
+        if self.api_client.client_side_validation and ('subscription_id' not in local_var_params or  # noqa: E501
+                                                        local_var_params['subscription_id'] is None):  # noqa: E501
+            raise ApiValueError("Missing the required parameter `subscription_id` when calling `subscription_groups_get_groups_list`")  # noqa: E501
 
-        if self.api_client.client_side_validation and 'id' in local_var_params and not re.search(r'^[A-Fa-f0-9]{24}$', local_var_params['id']):  # noqa: E501
-            raise ApiValueError("Invalid value for parameter `id` when calling `subscription_groups_get_group_list`, must conform to the pattern `/^[A-Fa-f0-9]{24}$/`")  # noqa: E501
+        if self.api_client.client_side_validation and 'subscription_id' in local_var_params and not re.search(r'^[A-Fa-f0-9]{24}$', local_var_params['subscription_id']):  # noqa: E501
+            raise ApiValueError("Invalid value for parameter `subscription_id` when calling `subscription_groups_get_groups_list`, must conform to the pattern `/^[A-Fa-f0-9]{24}$/`")  # noqa: E501
         collection_formats = {}
 
         path_params = {}
-        if 'id' in local_var_params:
-            path_params['id'] = local_var_params['id']  # noqa: E501
+        if 'subscription_id' in local_var_params:
+            path_params['subscriptionId'] = local_var_params['subscription_id']  # noqa: E501
 
         query_params = []
+        if 'user_id' in local_var_params and local_var_params['user_id'] is not None:  # noqa: E501
+            query_params.append(('userId', local_var_params['user_id']))  # noqa: E501
 
         header_params = {}
 
@@ -158,7 +165,7 @@ class SubscriptionGroupsApi(object):
         }
 
         return self.api_client.call_api(
-            '/api/manage/v1/Subscriptions/{id}/groups', 'GET',
+            '/api/manage/v1/Subscriptions/{subscriptionId}/groups', 'GET',
             path_params,
             query_params,
             header_params,

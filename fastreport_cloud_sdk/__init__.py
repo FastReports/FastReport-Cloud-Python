@@ -14,7 +14,7 @@
 
 from __future__ import absolute_import
 
-__version__ = "2021.1.32"
+__version__ = "2021.1.35"
 
 # import apis into sdk package
 from fastreport_cloud_sdk.api.admin_api_keys_api import AdminApiKeysApi

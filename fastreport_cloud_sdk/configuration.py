@@ -433,7 +433,7 @@ conf = fastreport_cloud_sdk.Configuration(
                "OS: {env}\n"\
                "Python Version: {pyversion}\n"\
                "Version of the API: v1\n"\
-               "SDK Package Version: 2021.1.32".\
+               "SDK Package Version: 2021.1.35".\
                format(env=sys.platform, pyversion=sys.version)
 
     def get_host_settings(self):

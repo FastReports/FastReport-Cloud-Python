@@ -35,13 +35,6 @@ class TestSubscriptionUsersApi(unittest.TestCase):
         """
         pass
 
-    def test_subscription_users_get_user_groups(self):
-        """Test case for subscription_users_get_user_groups
-
-        Returns all users of subscription  # noqa: E501
-        """
-        pass
-
     def test_subscription_users_get_users(self):
         """Test case for subscription_users_get_users
 

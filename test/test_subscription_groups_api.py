@@ -28,10 +28,10 @@ class TestSubscriptionGroupsApi(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def test_subscription_groups_get_group_list(self):
-        """Test case for subscription_groups_get_group_list
+    def test_subscription_groups_get_groups_list(self):
+        """Test case for subscription_groups_get_groups_list
 
-        returns list of groups in the subscription  # noqa: E501
+        returns groups of the subscription or subscription user  # noqa: E501
         """
         pass
 
