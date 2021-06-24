@@ -139,7 +139,7 @@ class GroupsApi(object):
             body_params = local_var_params['view_model']
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
-            ['text/plain', 'application/json', 'text/json'])  # noqa: E501
+            ['application/json', 'text/json', 'text/plain'])  # noqa: E501
 
         # HTTP header `Content-Type`
         header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
@@ -282,7 +282,7 @@ class GroupsApi(object):
         body_params = None
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
-            ['text/plain', 'application/json', 'text/json'])  # noqa: E501
+            ['application/json', 'text/json', 'text/plain'])  # noqa: E501
 
         # Authentication setting
         auth_settings = ['ApiKey', 'JWT']  # noqa: E501
@@ -415,7 +415,7 @@ class GroupsApi(object):
         body_params = None
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
-            ['text/plain', 'application/json', 'text/json'])  # noqa: E501
+            ['application/json', 'text/json', 'text/plain'])  # noqa: E501
 
         # Authentication setting
         auth_settings = ['ApiKey', 'JWT']  # noqa: E501
@@ -537,6 +537,14 @@ class GroupsApi(object):
             local_var_params[key] = val
         del local_var_params['kwargs']
 
+        if self.api_client.client_side_validation and 'skip' in local_var_params and local_var_params['skip'] > 2147483647:  # noqa: E501
+            raise ApiValueError("Invalid value for parameter `skip` when calling `groups_get_group_list`, must be a value less than or equal to `2147483647`")  # noqa: E501
+        if self.api_client.client_side_validation and 'skip' in local_var_params and local_var_params['skip'] < 0:  # noqa: E501
+            raise ApiValueError("Invalid value for parameter `skip` when calling `groups_get_group_list`, must be a value greater than or equal to `0`")  # noqa: E501
+        if self.api_client.client_side_validation and 'take' in local_var_params and local_var_params['take'] > 120:  # noqa: E501
+            raise ApiValueError("Invalid value for parameter `take` when calling `groups_get_group_list`, must be a value less than or equal to `120`")  # noqa: E501
+        if self.api_client.client_side_validation and 'take' in local_var_params and local_var_params['take'] < 1:  # noqa: E501
+            raise ApiValueError("Invalid value for parameter `take` when calling `groups_get_group_list`, must be a value greater than or equal to `1`")  # noqa: E501
         collection_formats = {}
 
         path_params = {}
@@ -555,7 +563,7 @@ class GroupsApi(object):
         body_params = None
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
-            ['text/plain', 'application/json', 'text/json'])  # noqa: E501
+            ['application/json', 'text/json', 'text/plain'])  # noqa: E501
 
         # Authentication setting
         auth_settings = ['ApiKey', 'JWT']  # noqa: E501
@@ -693,7 +701,7 @@ class GroupsApi(object):
         body_params = None
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
-            ['text/plain', 'application/json', 'text/json'])  # noqa: E501
+            ['application/json', 'text/json', 'text/plain'])  # noqa: E501
 
         # Authentication setting
         auth_settings = ['ApiKey', 'JWT']  # noqa: E501
@@ -842,7 +850,7 @@ class GroupsApi(object):
             body_params = local_var_params['view_model']
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
-            ['text/plain', 'application/json', 'text/json'])  # noqa: E501
+            ['application/json', 'text/json', 'text/plain'])  # noqa: E501
 
         # HTTP header `Content-Type`
         header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
@@ -993,7 +1001,7 @@ class GroupsApi(object):
             body_params = local_var_params['permissions_vm']
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
-            ['text/plain', 'application/json', 'text/json'])  # noqa: E501
+            ['application/json', 'text/json', 'text/plain'])  # noqa: E501
 
         # HTTP header `Content-Type`
         header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501

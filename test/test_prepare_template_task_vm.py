@@ -36,10 +36,10 @@ class TestPrepareTemplateTaskVM(unittest.TestCase):
         # model = fastreport_cloud_sdk.models.prepare_template_task_vm.PrepareTemplateTaskVM()  # noqa: E501
         if include_optional :
             return PrepareTemplateTaskVM(
-                name = '', 
-                locale = '', 
-                parent_folder_id = '', 
-                pages_count = 56, 
+                name = '0', 
+                locale = 'EiOT-wW', 
+                parent_folder_id = '2ECB020842930cc01FFCCfeE', 
+                pages_count = 0, 
                 report_parameters = {
                     'key' : ''
                     }

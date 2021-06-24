@@ -73,6 +73,12 @@ class FileRenameVM(object):
         :param name: The name of this FileRenameVM.  # noqa: E501
         :type name: str
         """
+        if (self.local_vars_configuration.client_side_validation and
+                name is not None and len(name) > 50):
+            raise ValueError("Invalid value for `name`, length must be less than or equal to `50`")  # noqa: E501
+        if (self.local_vars_configuration.client_side_validation and
+                name is not None and len(name) < 1):
+            raise ValueError("Invalid value for `name`, length must be greater than or equal to `1`")  # noqa: E501
 
         self._name = name
 

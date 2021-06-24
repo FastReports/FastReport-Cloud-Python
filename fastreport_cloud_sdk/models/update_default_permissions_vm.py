@@ -36,9 +36,9 @@ class UpdateDefaultPermissionsVM(object):
                             and the value is json key in definition.
     """
     openapi_types = {
-        'file_permissions': 'FilePermissions',
-        'group_permissions': 'GroupPermissions',
-        'data_source_permissions': 'DataSourcePermissions'
+        'file_permissions': 'UpdateFilePermissionsVM',
+        'group_permissions': 'UpdateGroupPermissionsVM',
+        'data_source_permissions': 'UpdateDataSourcePermissionsVM'
     }
 
     attribute_map = {
@@ -71,7 +71,7 @@ class UpdateDefaultPermissionsVM(object):
 
 
         :return: The file_permissions of this UpdateDefaultPermissionsVM.  # noqa: E501
-        :rtype: FilePermissions
+        :rtype: UpdateFilePermissionsVM
         """
         return self._file_permissions
 
@@ -81,7 +81,7 @@ class UpdateDefaultPermissionsVM(object):
 
 
         :param file_permissions: The file_permissions of this UpdateDefaultPermissionsVM.  # noqa: E501
-        :type file_permissions: FilePermissions
+        :type file_permissions: UpdateFilePermissionsVM
         """
 
         self._file_permissions = file_permissions
@@ -92,7 +92,7 @@ class UpdateDefaultPermissionsVM(object):
 
 
         :return: The group_permissions of this UpdateDefaultPermissionsVM.  # noqa: E501
-        :rtype: GroupPermissions
+        :rtype: UpdateGroupPermissionsVM
         """
         return self._group_permissions
 
@@ -102,7 +102,7 @@ class UpdateDefaultPermissionsVM(object):
 
 
         :param group_permissions: The group_permissions of this UpdateDefaultPermissionsVM.  # noqa: E501
-        :type group_permissions: GroupPermissions
+        :type group_permissions: UpdateGroupPermissionsVM
         """
 
         self._group_permissions = group_permissions
@@ -113,7 +113,7 @@ class UpdateDefaultPermissionsVM(object):
 
 
         :return: The data_source_permissions of this UpdateDefaultPermissionsVM.  # noqa: E501
-        :rtype: DataSourcePermissions
+        :rtype: UpdateDataSourcePermissionsVM
         """
         return self._data_source_permissions
 
@@ -123,7 +123,7 @@ class UpdateDefaultPermissionsVM(object):
 
 
         :param data_source_permissions: The data_source_permissions of this UpdateDefaultPermissionsVM.  # noqa: E501
-        :type data_source_permissions: DataSourcePermissions
+        :type data_source_permissions: UpdateDataSourcePermissionsVM
         """
 
         self._data_source_permissions = data_source_permissions

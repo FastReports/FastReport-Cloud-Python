@@ -35,27 +35,6 @@ class TestHealthCheckApi(unittest.TestCase):
         """
         pass
 
-    def test_health_check_management_get(self):
-        """Test case for health_check_management_get
-
-        healthcheck  # noqa: E501
-        """
-        pass
-
-    def test_health_check_report_processor_get(self):
-        """Test case for health_check_report_processor_get
-
-        healthcheck  # noqa: E501
-        """
-        pass
-
-    def test_health_check_results_provider_get(self):
-        """Test case for health_check_results_provider_get
-
-        Returns Ok  # noqa: E501
-        """
-        pass
-
 
 if __name__ == '__main__':
     unittest.main()

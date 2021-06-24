@@ -73,6 +73,9 @@ class FileIconVM(object):
         :param icon: The icon of this FileIconVM.  # noqa: E501
         :type icon: str
         """
+        if (self.local_vars_configuration.client_side_validation and
+                icon is not None and not re.search(r'^(?:[A-Za-z0-9+\/]{4})*(?:[A-Za-z0-9+\/]{2}==|[A-Za-z0-9+\/]{3}=)?$', icon)):  # noqa: E501
+            raise ValueError(r"Invalid value for `icon`, must be a follow pattern or equal to `/^(?:[A-Za-z0-9+\/]{4})*(?:[A-Za-z0-9+\/]{2}==|[A-Za-z0-9+\/]{3}=)?$/`")  # noqa: E501
 
         self._icon = icon
 

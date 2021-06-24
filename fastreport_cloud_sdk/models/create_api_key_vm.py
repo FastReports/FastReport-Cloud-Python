@@ -77,6 +77,12 @@ class CreateApiKeyVM(object):
         :param description: The description of this CreateApiKeyVM.  # noqa: E501
         :type description: str
         """
+        if (self.local_vars_configuration.client_side_validation and
+                description is not None and len(description) > 300):
+            raise ValueError("Invalid value for `description`, length must be less than or equal to `300`")  # noqa: E501
+        if (self.local_vars_configuration.client_side_validation and
+                description is not None and len(description) < 0):
+            raise ValueError("Invalid value for `description`, length must be greater than or equal to `0`")  # noqa: E501
 
         self._description = description
 

@@ -52,8 +52,7 @@ class UpdateDataSourceSubscriptionVM(object):
         self._subscription_id = None
         self.discriminator = None
 
-        if subscription_id is not None:
-            self.subscription_id = subscription_id
+        self.subscription_id = subscription_id
 
     @property
     def subscription_id(self):
@@ -73,6 +72,11 @@ class UpdateDataSourceSubscriptionVM(object):
         :param subscription_id: The subscription_id of this UpdateDataSourceSubscriptionVM.  # noqa: E501
         :type subscription_id: str
         """
+        if self.local_vars_configuration.client_side_validation and subscription_id is None:  # noqa: E501
+            raise ValueError("Invalid value for `subscription_id`, must not be `None`")  # noqa: E501
+        if (self.local_vars_configuration.client_side_validation and
+                subscription_id is not None and not re.search(r'^[A-Fa-f0-9]{24}$', subscription_id)):  # noqa: E501
+            raise ValueError(r"Invalid value for `subscription_id`, must be a follow pattern or equal to `/^[A-Fa-f0-9]{24}$/`")  # noqa: E501
 
         self._subscription_id = subscription_id
 

@@ -93,6 +93,12 @@ class PrepareTemplateTaskVM(object):
         :param name: The name of this PrepareTemplateTaskVM.  # noqa: E501
         :type name: str
         """
+        if (self.local_vars_configuration.client_side_validation and
+                name is not None and len(name) > 250):
+            raise ValueError("Invalid value for `name`, length must be less than or equal to `250`")  # noqa: E501
+        if (self.local_vars_configuration.client_side_validation and
+                name is not None and len(name) < 1):
+            raise ValueError("Invalid value for `name`, length must be greater than or equal to `1`")  # noqa: E501
 
         self._name = name
 
@@ -114,6 +120,9 @@ class PrepareTemplateTaskVM(object):
         :param locale: The locale of this PrepareTemplateTaskVM.  # noqa: E501
         :type locale: str
         """
+        if (self.local_vars_configuration.client_side_validation and
+                locale is not None and not re.search(r'^[a-zA-Z]{2,4}(-[a-zA-Z]{2,4}){0,2}$', locale)):  # noqa: E501
+            raise ValueError(r"Invalid value for `locale`, must be a follow pattern or equal to `/^[a-zA-Z]{2,4}(-[a-zA-Z]{2,4}){0,2}$/`")  # noqa: E501
 
         self._locale = locale
 
@@ -135,6 +144,9 @@ class PrepareTemplateTaskVM(object):
         :param parent_folder_id: The parent_folder_id of this PrepareTemplateTaskVM.  # noqa: E501
         :type parent_folder_id: str
         """
+        if (self.local_vars_configuration.client_side_validation and
+                parent_folder_id is not None and not re.search(r'(^$)|(^[A-Fa-f0-9]{24}$)', parent_folder_id)):  # noqa: E501
+            raise ValueError(r"Invalid value for `parent_folder_id`, must be a follow pattern or equal to `/(^$)|(^[A-Fa-f0-9]{24}$)/`")  # noqa: E501
 
         self._parent_folder_id = parent_folder_id
 
@@ -156,6 +168,12 @@ class PrepareTemplateTaskVM(object):
         :param pages_count: The pages_count of this PrepareTemplateTaskVM.  # noqa: E501
         :type pages_count: int
         """
+        if (self.local_vars_configuration.client_side_validation and
+                pages_count is not None and pages_count > 2147483647):  # noqa: E501
+            raise ValueError("Invalid value for `pages_count`, must be a value less than or equal to `2147483647`")  # noqa: E501
+        if (self.local_vars_configuration.client_side_validation and
+                pages_count is not None and pages_count < 0):  # noqa: E501
+            raise ValueError("Invalid value for `pages_count`, must be a value greater than or equal to `0`")  # noqa: E501
 
         self._pages_count = pages_count
 

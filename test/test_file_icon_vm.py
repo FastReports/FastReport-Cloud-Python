@@ -36,7 +36,7 @@ class TestFileIconVM(unittest.TestCase):
         # model = fastreport_cloud_sdk.models.file_icon_vm.FileIconVM()  # noqa: E501
         if include_optional :
             return FileIconVM(
-                icon = ''
+                icon = 'YQ=='
             )
         else :
             return FileIconVM(

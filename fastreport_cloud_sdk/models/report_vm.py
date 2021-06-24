@@ -373,7 +373,7 @@ class ReportVM(object):
         :param status_reason: The status_reason of this ReportVM.  # noqa: E501
         :type status_reason: str
         """
-        allowed_values = ["None", "AllRight", "Hang", "Error", "NotFound", "NotEnoughSpace", "ExportStarted", "PreparationStarted"]  # noqa: E501
+        allowed_values = ["None", "AllRight", "Hang", "Error", "NotFound", "NotEnoughSpace", "ExportStarted", "PreparationStarted", "CrashLoop"]  # noqa: E501
         if self.local_vars_configuration.client_side_validation and status_reason not in allowed_values:  # noqa: E501
             raise ValueError(
                 "Invalid value for `status_reason` ({0}), must be one of {1}"  # noqa: E501

@@ -132,7 +132,7 @@ class UserProfileApi(object):
         body_params = None
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
-            ['text/plain', 'application/json', 'text/json'])  # noqa: E501
+            ['application/json', 'text/json', 'text/plain'])  # noqa: E501
 
         # Authentication setting
         auth_settings = ['ApiKey', 'JWT']  # noqa: E501
@@ -250,6 +250,8 @@ class UserProfileApi(object):
                                                         local_var_params['user_id'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `user_id` when calling `user_profile_get_user_profile`")  # noqa: E501
 
+        if self.api_client.client_side_validation and 'user_id' in local_var_params and not re.search(r'(^000000000000000000000000$|^[0-9a-f]{24}$|^([0-9a-f]{8}([-][0-9a-f]{4}){3}[-][0-9a-f]{12})$)', local_var_params['user_id']):  # noqa: E501
+            raise ApiValueError("Invalid value for parameter `user_id` when calling `user_profile_get_user_profile`, must conform to the pattern `/(^000000000000000000000000$|^[0-9a-f]{24}$|^([0-9a-f]{8}([-][0-9a-f]{4}){3}[-][0-9a-f]{12})$)/`")  # noqa: E501
         collection_formats = {}
 
         path_params = {}
@@ -266,7 +268,7 @@ class UserProfileApi(object):
         body_params = None
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
-            ['text/plain', 'application/json', 'text/json'])  # noqa: E501
+            ['application/json', 'text/json', 'text/plain'])  # noqa: E501
 
         # Authentication setting
         auth_settings = ['ApiKey', 'JWT']  # noqa: E501
@@ -304,7 +306,7 @@ class UserProfileApi(object):
         >>> result = thread.get()
 
         :param model:
-        :type model: UserProfileUpdateVM
+        :type model: UpdateUserProfileVM
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
@@ -334,7 +336,7 @@ class UserProfileApi(object):
         >>> result = thread.get()
 
         :param model:
-        :type model: UserProfileUpdateVM
+        :type model: UpdateUserProfileVM
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
         :param _return_http_data_only: response data without head status code
@@ -398,7 +400,7 @@ class UserProfileApi(object):
             body_params = local_var_params['model']
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
-            ['text/plain', 'application/json', 'text/json'])  # noqa: E501
+            ['application/json', 'text/json', 'text/plain'])  # noqa: E501
 
         # HTTP header `Content-Type`
         header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501

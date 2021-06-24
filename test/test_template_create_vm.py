@@ -40,8 +40,8 @@ class TestTemplateCreateVM(unittest.TestCase):
                 tags = [
                     ''
                     ], 
-                icon = '', 
-                content = ''
+                icon = 'YQ==', 
+                content = 'YQ=='
             )
         else :
             return TemplateCreateVM(

@@ -88,6 +88,12 @@ class TemplateCreateVM(object):
         :param name: The name of this TemplateCreateVM.  # noqa: E501
         :type name: str
         """
+        if (self.local_vars_configuration.client_side_validation and
+                name is not None and len(name) > 250):
+            raise ValueError("Invalid value for `name`, length must be less than or equal to `250`")  # noqa: E501
+        if (self.local_vars_configuration.client_side_validation and
+                name is not None and len(name) < 0):
+            raise ValueError("Invalid value for `name`, length must be greater than or equal to `0`")  # noqa: E501
 
         self._name = name
 
@@ -130,6 +136,12 @@ class TemplateCreateVM(object):
         :param icon: The icon of this TemplateCreateVM.  # noqa: E501
         :type icon: str
         """
+        if (self.local_vars_configuration.client_side_validation and
+                icon is not None and len(icon) > 65536):
+            raise ValueError("Invalid value for `icon`, length must be less than or equal to `65536`")  # noqa: E501
+        if (self.local_vars_configuration.client_side_validation and
+                icon is not None and not re.search(r'^(?:[A-Za-z0-9+\/]{4})*(?:[A-Za-z0-9+\/]{2}==|[A-Za-z0-9+\/]{3}=)?$', icon)):  # noqa: E501
+            raise ValueError(r"Invalid value for `icon`, must be a follow pattern or equal to `/^(?:[A-Za-z0-9+\/]{4})*(?:[A-Za-z0-9+\/]{2}==|[A-Za-z0-9+\/]{3}=)?$/`")  # noqa: E501
 
         self._icon = icon
 
@@ -151,6 +163,12 @@ class TemplateCreateVM(object):
         :param content: The content of this TemplateCreateVM.  # noqa: E501
         :type content: str
         """
+        if (self.local_vars_configuration.client_side_validation and
+                content is not None and len(content) > 1073741824):
+            raise ValueError("Invalid value for `content`, length must be less than or equal to `1073741824`")  # noqa: E501
+        if (self.local_vars_configuration.client_side_validation and
+                content is not None and not re.search(r'^(?:[A-Za-z0-9+\/]{4})*(?:[A-Za-z0-9+\/]{2}==|[A-Za-z0-9+\/]{3}=)?$', content)):  # noqa: E501
+            raise ValueError(r"Invalid value for `content`, must be a follow pattern or equal to `/^(?:[A-Za-z0-9+\/]{4})*(?:[A-Za-z0-9+\/]{2}==|[A-Za-z0-9+\/]{3}=)?$/`")  # noqa: E501
 
         self._content = content
 

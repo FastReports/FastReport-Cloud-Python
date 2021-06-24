@@ -93,6 +93,9 @@ class GroupPermissions(object):
         :param owner_id: The owner_id of this GroupPermissions.  # noqa: E501
         :type owner_id: str
         """
+        if (self.local_vars_configuration.client_side_validation and
+                owner_id is not None and not re.search(r'(^[0-9a-f]{24}$|^([0-9a-f]{8}([-][0-9a-f]{4}){3}[-][0-9a-f]{12})$)', owner_id)):  # noqa: E501
+            raise ValueError(r"Invalid value for `owner_id`, must be a follow pattern or equal to `/(^[0-9a-f]{24}$|^([0-9a-f]{8}([-][0-9a-f]{4}){3}[-][0-9a-f]{12})$)/`")  # noqa: E501
 
         self._owner_id = owner_id
 

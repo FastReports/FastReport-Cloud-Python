@@ -147,7 +147,7 @@ class TemplatesApi(object):
         body_params = None
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
-            ['text/plain', 'application/json', 'text/json'])  # noqa: E501
+            ['application/json', 'text/json', 'text/plain'])  # noqa: E501
 
         # Authentication setting
         auth_settings = ['ApiKey', 'JWT']  # noqa: E501
@@ -281,6 +281,14 @@ class TemplatesApi(object):
 
         if self.api_client.client_side_validation and 'id' in local_var_params and not re.search(r'^[A-Fa-f0-9]{24}$', local_var_params['id']):  # noqa: E501
             raise ApiValueError("Invalid value for parameter `id` when calling `template_folder_and_file_get_folders_and_files`, must conform to the pattern `/^[A-Fa-f0-9]{24}$/`")  # noqa: E501
+        if self.api_client.client_side_validation and 'skip' in local_var_params and local_var_params['skip'] > 2147483647:  # noqa: E501
+            raise ApiValueError("Invalid value for parameter `skip` when calling `template_folder_and_file_get_folders_and_files`, must be a value less than or equal to `2147483647`")  # noqa: E501
+        if self.api_client.client_side_validation and 'skip' in local_var_params and local_var_params['skip'] < 0:  # noqa: E501
+            raise ApiValueError("Invalid value for parameter `skip` when calling `template_folder_and_file_get_folders_and_files`, must be a value greater than or equal to `0`")  # noqa: E501
+        if self.api_client.client_side_validation and 'take' in local_var_params and local_var_params['take'] > 120:  # noqa: E501
+            raise ApiValueError("Invalid value for parameter `take` when calling `template_folder_and_file_get_folders_and_files`, must be a value less than or equal to `120`")  # noqa: E501
+        if self.api_client.client_side_validation and 'take' in local_var_params and local_var_params['take'] < 1:  # noqa: E501
+            raise ApiValueError("Invalid value for parameter `take` when calling `template_folder_and_file_get_folders_and_files`, must be a value greater than or equal to `1`")  # noqa: E501
         collection_formats = {}
 
         path_params = {}
@@ -301,7 +309,7 @@ class TemplatesApi(object):
         body_params = None
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
-            ['text/plain', 'application/json', 'text/json'])  # noqa: E501
+            ['application/json', 'text/json', 'text/plain'])  # noqa: E501
 
         # Authentication setting
         auth_settings = ['ApiKey', 'JWT']  # noqa: E501
@@ -434,6 +442,8 @@ class TemplatesApi(object):
 
         if self.api_client.client_side_validation and 'id' in local_var_params and not re.search(r'^[A-Fa-f0-9]{24}$', local_var_params['id']):  # noqa: E501
             raise ApiValueError("Invalid value for parameter `id` when calling `template_folders_copy_folder`, must conform to the pattern `/^[A-Fa-f0-9]{24}$/`")  # noqa: E501
+        if self.api_client.client_side_validation and 'folder_id' in local_var_params and not re.search(r'^[A-Fa-f0-9]{24}$', local_var_params['folder_id']):  # noqa: E501
+            raise ApiValueError("Invalid value for parameter `folder_id` when calling `template_folders_copy_folder`, must conform to the pattern `/^[A-Fa-f0-9]{24}$/`")  # noqa: E501
         collection_formats = {}
 
         path_params = {}
@@ -452,7 +462,7 @@ class TemplatesApi(object):
         body_params = None
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
-            ['text/plain', 'application/json', 'text/json'])  # noqa: E501
+            ['application/json', 'text/json', 'text/plain'])  # noqa: E501
 
         # Authentication setting
         auth_settings = ['ApiKey', 'JWT']  # noqa: E501
@@ -580,6 +590,8 @@ class TemplatesApi(object):
                                                         local_var_params['id'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `id` when calling `template_folders_delete_folder`")  # noqa: E501
 
+        if self.api_client.client_side_validation and 'id' in local_var_params and not re.search(r'^[A-Fa-f0-9]{24}$', local_var_params['id']):  # noqa: E501
+            raise ApiValueError("Invalid value for parameter `id` when calling `template_folders_delete_folder`, must conform to the pattern `/^[A-Fa-f0-9]{24}$/`")  # noqa: E501
         collection_formats = {}
 
         path_params = {}
@@ -598,7 +610,7 @@ class TemplatesApi(object):
         body_params = None
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
-            ['text/plain', 'application/json', 'text/json'])  # noqa: E501
+            ['application/json', 'text/json', 'text/plain'])  # noqa: E501
 
         # Authentication setting
         auth_settings = ['ApiKey', 'JWT']  # noqa: E501
@@ -733,7 +745,7 @@ class TemplatesApi(object):
         body_params = None
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
-            ['text/plain', 'application/json', 'text/json'])  # noqa: E501
+            ['application/json', 'text/json', 'text/plain'])  # noqa: E501
 
         # Authentication setting
         auth_settings = ['ApiKey', 'JWT']  # noqa: E501
@@ -873,7 +885,7 @@ class TemplatesApi(object):
         body_params = None
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
-            ['text/plain', 'application/json', 'text/json'])  # noqa: E501
+            ['application/json', 'text/json', 'text/plain'])  # noqa: E501
 
         # Authentication setting
         auth_settings = ['ApiKey', 'JWT']  # noqa: E501
@@ -1007,6 +1019,14 @@ class TemplatesApi(object):
 
         if self.api_client.client_side_validation and 'id' in local_var_params and not re.search(r'^[A-Fa-f0-9]{24}$', local_var_params['id']):  # noqa: E501
             raise ApiValueError("Invalid value for parameter `id` when calling `template_folders_get_folders`, must conform to the pattern `/^[A-Fa-f0-9]{24}$/`")  # noqa: E501
+        if self.api_client.client_side_validation and 'skip' in local_var_params and local_var_params['skip'] > 2147483647:  # noqa: E501
+            raise ApiValueError("Invalid value for parameter `skip` when calling `template_folders_get_folders`, must be a value less than or equal to `2147483647`")  # noqa: E501
+        if self.api_client.client_side_validation and 'skip' in local_var_params and local_var_params['skip'] < 0:  # noqa: E501
+            raise ApiValueError("Invalid value for parameter `skip` when calling `template_folders_get_folders`, must be a value greater than or equal to `0`")  # noqa: E501
+        if self.api_client.client_side_validation and 'take' in local_var_params and local_var_params['take'] > 120:  # noqa: E501
+            raise ApiValueError("Invalid value for parameter `take` when calling `template_folders_get_folders`, must be a value less than or equal to `120`")  # noqa: E501
+        if self.api_client.client_side_validation and 'take' in local_var_params and local_var_params['take'] < 1:  # noqa: E501
+            raise ApiValueError("Invalid value for parameter `take` when calling `template_folders_get_folders`, must be a value greater than or equal to `1`")  # noqa: E501
         collection_formats = {}
 
         path_params = {}
@@ -1027,7 +1047,7 @@ class TemplatesApi(object):
         body_params = None
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
-            ['text/plain', 'application/json', 'text/json'])  # noqa: E501
+            ['application/json', 'text/json', 'text/plain'])  # noqa: E501
 
         # Authentication setting
         auth_settings = ['ApiKey', 'JWT']  # noqa: E501
@@ -1167,7 +1187,7 @@ class TemplatesApi(object):
         body_params = None
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
-            ['text/plain', 'application/json', 'text/json'])  # noqa: E501
+            ['application/json', 'text/json', 'text/plain'])  # noqa: E501
 
         # Authentication setting
         auth_settings = ['ApiKey', 'JWT']  # noqa: E501
@@ -1305,7 +1325,7 @@ class TemplatesApi(object):
         body_params = None
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
-            ['text/plain', 'application/json', 'text/json'])  # noqa: E501
+            ['application/json', 'text/json', 'text/plain'])  # noqa: E501
 
         # Authentication setting
         auth_settings = ['ApiKey', 'JWT']  # noqa: E501
@@ -1439,7 +1459,7 @@ class TemplatesApi(object):
         body_params = None
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
-            ['text/plain', 'application/json', 'text/json'])  # noqa: E501
+            ['application/json', 'text/json', 'text/plain'])  # noqa: E501
 
         # Authentication setting
         auth_settings = ['ApiKey', 'JWT']  # noqa: E501
@@ -1572,6 +1592,8 @@ class TemplatesApi(object):
 
         if self.api_client.client_side_validation and 'id' in local_var_params and not re.search(r'^[A-Fa-f0-9]{24}$', local_var_params['id']):  # noqa: E501
             raise ApiValueError("Invalid value for parameter `id` when calling `template_folders_move_folder`, must conform to the pattern `/^[A-Fa-f0-9]{24}$/`")  # noqa: E501
+        if self.api_client.client_side_validation and 'folder_id' in local_var_params and not re.search(r'^[A-Fa-f0-9]{24}$', local_var_params['folder_id']):  # noqa: E501
+            raise ApiValueError("Invalid value for parameter `folder_id` when calling `template_folders_move_folder`, must conform to the pattern `/^[A-Fa-f0-9]{24}$/`")  # noqa: E501
         collection_formats = {}
 
         path_params = {}
@@ -1590,7 +1612,7 @@ class TemplatesApi(object):
         body_params = None
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
-            ['text/plain', 'application/json', 'text/json'])  # noqa: E501
+            ['application/json', 'text/json', 'text/plain'])  # noqa: E501
 
         # Authentication setting
         auth_settings = ['ApiKey', 'JWT']  # noqa: E501
@@ -1738,7 +1760,7 @@ class TemplatesApi(object):
             body_params = local_var_params['folder_vm']
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
-            ['text/plain', 'application/json', 'text/json'])  # noqa: E501
+            ['application/json', 'text/json', 'text/plain'])  # noqa: E501
 
         # HTTP header `Content-Type`
         header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
@@ -1890,7 +1912,7 @@ class TemplatesApi(object):
             body_params = local_var_params['name_model']
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
-            ['text/plain', 'application/json', 'text/json'])  # noqa: E501
+            ['application/json', 'text/json', 'text/plain'])  # noqa: E501
 
         # HTTP header `Content-Type`
         header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
@@ -2042,7 +2064,7 @@ class TemplatesApi(object):
             body_params = local_var_params['icon_model']
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
-            ['text/plain', 'application/json', 'text/json'])  # noqa: E501
+            ['application/json', 'text/json', 'text/plain'])  # noqa: E501
 
         # HTTP header `Content-Type`
         header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
@@ -2192,7 +2214,7 @@ class TemplatesApi(object):
             body_params = local_var_params['permissions_vm']
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
-            ['text/plain', 'application/json', 'text/json'])  # noqa: E501
+            ['application/json', 'text/json', 'text/plain'])  # noqa: E501
 
         # HTTP header `Content-Type`
         header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
@@ -2338,7 +2360,7 @@ class TemplatesApi(object):
             body_params = local_var_params['tags_model']
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
-            ['text/plain', 'application/json', 'text/json'])  # noqa: E501
+            ['application/json', 'text/json', 'text/plain'])  # noqa: E501
 
         # HTTP header `Content-Type`
         header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
@@ -2494,7 +2516,7 @@ class TemplatesApi(object):
         body_params = None
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
-            ['text/plain', 'application/json', 'text/json'])  # noqa: E501
+            ['application/json', 'text/json', 'text/plain'])  # noqa: E501
 
         # Authentication setting
         auth_settings = ['ApiKey', 'JWT']  # noqa: E501
@@ -2636,7 +2658,7 @@ class TemplatesApi(object):
         body_params = None
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
-            ['text/plain', 'application/json', 'text/json'])  # noqa: E501
+            ['application/json', 'text/json', 'text/plain'])  # noqa: E501
 
         # Authentication setting
         auth_settings = ['ApiKey', 'JWT']  # noqa: E501
@@ -2778,7 +2800,7 @@ class TemplatesApi(object):
             body_params = local_var_params['export_task']
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
-            ['text/plain', 'application/json', 'text/json'])  # noqa: E501
+            ['application/json', 'text/json', 'text/plain'])  # noqa: E501
 
         # HTTP header `Content-Type`
         header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
@@ -2923,7 +2945,7 @@ class TemplatesApi(object):
         body_params = None
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
-            ['text/plain', 'application/json', 'text/json'])  # noqa: E501
+            ['application/json', 'text/json', 'text/plain'])  # noqa: E501
 
         # Authentication setting
         auth_settings = ['ApiKey', 'JWT']  # noqa: E501
@@ -3064,7 +3086,7 @@ class TemplatesApi(object):
         body_params = None
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
-            ['text/plain', 'application/json', 'text/json'])  # noqa: E501
+            ['application/json', 'text/json', 'text/plain'])  # noqa: E501
 
         # Authentication setting
         auth_settings = ['ApiKey', 'JWT']  # noqa: E501
@@ -3199,6 +3221,14 @@ class TemplatesApi(object):
 
         if self.api_client.client_side_validation and 'id' in local_var_params and not re.search(r'^[A-Fa-f0-9]{24}$', local_var_params['id']):  # noqa: E501
             raise ApiValueError("Invalid value for parameter `id` when calling `templates_get_files_list`, must conform to the pattern `/^[A-Fa-f0-9]{24}$/`")  # noqa: E501
+        if self.api_client.client_side_validation and 'skip' in local_var_params and local_var_params['skip'] > 2147483647:  # noqa: E501
+            raise ApiValueError("Invalid value for parameter `skip` when calling `templates_get_files_list`, must be a value less than or equal to `2147483647`")  # noqa: E501
+        if self.api_client.client_side_validation and 'skip' in local_var_params and local_var_params['skip'] < 0:  # noqa: E501
+            raise ApiValueError("Invalid value for parameter `skip` when calling `templates_get_files_list`, must be a value greater than or equal to `0`")  # noqa: E501
+        if self.api_client.client_side_validation and 'take' in local_var_params and local_var_params['take'] > 120:  # noqa: E501
+            raise ApiValueError("Invalid value for parameter `take` when calling `templates_get_files_list`, must be a value less than or equal to `120`")  # noqa: E501
+        if self.api_client.client_side_validation and 'take' in local_var_params and local_var_params['take'] < 1:  # noqa: E501
+            raise ApiValueError("Invalid value for parameter `take` when calling `templates_get_files_list`, must be a value greater than or equal to `1`")  # noqa: E501
         collection_formats = {}
 
         path_params = {}
@@ -3219,7 +3249,7 @@ class TemplatesApi(object):
         body_params = None
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
-            ['text/plain', 'application/json', 'text/json'])  # noqa: E501
+            ['application/json', 'text/json', 'text/plain'])  # noqa: E501
 
         # Authentication setting
         auth_settings = ['ApiKey', 'JWT']  # noqa: E501
@@ -3358,7 +3388,7 @@ class TemplatesApi(object):
         body_params = None
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
-            ['text/plain', 'application/json', 'text/json'])  # noqa: E501
+            ['application/json', 'text/json', 'text/plain'])  # noqa: E501
 
         # Authentication setting
         auth_settings = ['ApiKey', 'JWT']  # noqa: E501
@@ -3511,7 +3541,7 @@ class TemplatesApi(object):
         body_params = None
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
-            ['text/plain', 'application/json', 'text/json'])  # noqa: E501
+            ['application/json', 'text/json', 'text/plain'])  # noqa: E501
 
         # Authentication setting
         auth_settings = ['ApiKey', 'JWT']  # noqa: E501
@@ -3660,7 +3690,7 @@ class TemplatesApi(object):
             body_params = local_var_params['prepare_task']
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
-            ['text/plain', 'application/json', 'text/json'])  # noqa: E501
+            ['application/json', 'text/json', 'text/plain'])  # noqa: E501
 
         # HTTP header `Content-Type`
         header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
@@ -3812,7 +3842,7 @@ class TemplatesApi(object):
             body_params = local_var_params['name_model']
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
-            ['text/plain', 'application/json', 'text/json'])  # noqa: E501
+            ['application/json', 'text/json', 'text/plain'])  # noqa: E501
 
         # HTTP header `Content-Type`
         header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
@@ -3965,7 +3995,7 @@ class TemplatesApi(object):
             body_params = local_var_params['icon_model']
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
-            ['text/plain', 'application/json', 'text/json'])  # noqa: E501
+            ['application/json', 'text/json', 'text/plain'])  # noqa: E501
 
         # HTTP header `Content-Type`
         header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
@@ -4116,7 +4146,7 @@ class TemplatesApi(object):
             body_params = local_var_params['permissions_vm']
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
-            ['text/plain', 'application/json', 'text/json'])  # noqa: E501
+            ['application/json', 'text/json', 'text/plain'])  # noqa: E501
 
         # HTTP header `Content-Type`
         header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
@@ -4262,7 +4292,7 @@ class TemplatesApi(object):
             body_params = local_var_params['tags_model']
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
-            ['text/plain', 'application/json', 'text/json'])  # noqa: E501
+            ['application/json', 'text/json', 'text/plain'])  # noqa: E501
 
         # HTTP header `Content-Type`
         header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
@@ -4415,7 +4445,7 @@ class TemplatesApi(object):
             body_params = local_var_params['file_vm']
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
-            ['text/plain', 'application/json', 'text/json'])  # noqa: E501
+            ['application/json', 'text/json', 'text/plain'])  # noqa: E501
 
         # HTTP header `Content-Type`
         header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501

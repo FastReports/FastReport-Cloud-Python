@@ -83,6 +83,12 @@ class TemplateFolderCreateVM(object):
         :param name: The name of this TemplateFolderCreateVM.  # noqa: E501
         :type name: str
         """
+        if (self.local_vars_configuration.client_side_validation and
+                name is not None and len(name) > 250):
+            raise ValueError("Invalid value for `name`, length must be less than or equal to `250`")  # noqa: E501
+        if (self.local_vars_configuration.client_side_validation and
+                name is not None and len(name) < 1):
+            raise ValueError("Invalid value for `name`, length must be greater than or equal to `1`")  # noqa: E501
 
         self._name = name
 
@@ -125,6 +131,12 @@ class TemplateFolderCreateVM(object):
         :param icon: The icon of this TemplateFolderCreateVM.  # noqa: E501
         :type icon: str
         """
+        if (self.local_vars_configuration.client_side_validation and
+                icon is not None and len(icon) > 65536):
+            raise ValueError("Invalid value for `icon`, length must be less than or equal to `65536`")  # noqa: E501
+        if (self.local_vars_configuration.client_side_validation and
+                icon is not None and not re.search(r'^(?:[A-Za-z0-9+\/]{4})*(?:[A-Za-z0-9+\/]{2}==|[A-Za-z0-9+\/]{3}=)?$', icon)):  # noqa: E501
+            raise ValueError(r"Invalid value for `icon`, must be a follow pattern or equal to `/^(?:[A-Za-z0-9+\/]{4})*(?:[A-Za-z0-9+\/]{2}==|[A-Za-z0-9+\/]{3}=)?$/`")  # noqa: E501
 
         self._icon = icon
 

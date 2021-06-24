@@ -37,7 +37,7 @@ class TestDefaultPermissionsVM(unittest.TestCase):
         if include_optional :
             return DefaultPermissionsVM(
                 file_permissions = fastreport_cloud_sdk.models.file_permissions.FilePermissions(
-                    owner_id = '', 
+                    owner_id = 'f325375e-30fc-ba00-1731-c574773100bf', 
                     owner = fastreport_cloud_sdk.models.file_permission.FilePermission(
                         create = 0, 
                         delete = 0, 
@@ -69,7 +69,7 @@ class TestDefaultPermissionsVM(unittest.TestCase):
                         update = 0, 
                         administrate = 0, ), ), 
                 data_source_permissions = fastreport_cloud_sdk.models.data_source_permissions.DataSourcePermissions(
-                    owner_id = '', 
+                    owner_id = 'f325375e-30fc-ba00-1731-c574773100bf', 
                     owner = fastreport_cloud_sdk.models.data_source_permission.DataSourcePermission(
                         create = 0, 
                         delete = 0, 
@@ -101,7 +101,7 @@ class TestDefaultPermissionsVM(unittest.TestCase):
                         update = 0, 
                         administrate = 0, ), ), 
                 group_permissions = fastreport_cloud_sdk.models.group_permissions.GroupPermissions(
-                    owner_id = '', 
+                    owner_id = 'f325375e-30fc-ba00-1731-c574773100bf', 
                     owner = fastreport_cloud_sdk.models.group_permission.GroupPermission(
                         create = 0, 
                         delete = 0, 

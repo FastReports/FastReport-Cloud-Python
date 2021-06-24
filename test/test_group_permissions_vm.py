@@ -37,7 +37,7 @@ class TestGroupPermissionsVM(unittest.TestCase):
         if include_optional :
             return GroupPermissionsVM(
                 permissions = fastreport_cloud_sdk.models.group_permissions.GroupPermissions(
-                    owner_id = '', 
+                    owner_id = 'f325375e-30fc-ba00-1731-c574773100bf', 
                     owner = fastreport_cloud_sdk.models.group_permission.GroupPermission(
                         create = 0, 
                         delete = 0, 

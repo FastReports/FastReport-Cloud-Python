@@ -83,6 +83,12 @@ class CreateSubscriptionInviteVM(object):
         :param usages: The usages of this CreateSubscriptionInviteVM.  # noqa: E501
         :type usages: int
         """
+        if (self.local_vars_configuration.client_side_validation and
+                usages is not None and usages > 2147483647):  # noqa: E501
+            raise ValueError("Invalid value for `usages`, must be a value less than or equal to `2147483647`")  # noqa: E501
+        if (self.local_vars_configuration.client_side_validation and
+                usages is not None and usages < 0):  # noqa: E501
+            raise ValueError("Invalid value for `usages`, must be a value greater than or equal to `0`")  # noqa: E501
 
         self._usages = usages
 

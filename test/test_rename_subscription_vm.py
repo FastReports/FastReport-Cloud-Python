@@ -36,10 +36,11 @@ class TestRenameSubscriptionVM(unittest.TestCase):
         # model = fastreport_cloud_sdk.models.rename_subscription_vm.RenameSubscriptionVM()  # noqa: E501
         if include_optional :
             return RenameSubscriptionVM(
-                name = ''
+                name = '0'
             )
         else :
             return RenameSubscriptionVM(
+                name = '0',
         )
 
     def testRenameSubscriptionVM(self):

@@ -156,7 +156,7 @@ class SubscriptionUsersApi(object):
         body_params = None
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
-            ['text/plain', 'application/json', 'text/json'])  # noqa: E501
+            ['application/json', 'text/json', 'text/plain'])  # noqa: E501
 
         # Authentication setting
         auth_settings = ['ApiKey', 'JWT']  # noqa: E501
@@ -283,6 +283,14 @@ class SubscriptionUsersApi(object):
 
         if self.api_client.client_side_validation and 'subscription_id' in local_var_params and not re.search(r'^[A-Fa-f0-9]{24}$', local_var_params['subscription_id']):  # noqa: E501
             raise ApiValueError("Invalid value for parameter `subscription_id` when calling `subscription_users_get_users`, must conform to the pattern `/^[A-Fa-f0-9]{24}$/`")  # noqa: E501
+        if self.api_client.client_side_validation and 'skip' in local_var_params and local_var_params['skip'] > 2147483647:  # noqa: E501
+            raise ApiValueError("Invalid value for parameter `skip` when calling `subscription_users_get_users`, must be a value less than or equal to `2147483647`")  # noqa: E501
+        if self.api_client.client_side_validation and 'skip' in local_var_params and local_var_params['skip'] < 0:  # noqa: E501
+            raise ApiValueError("Invalid value for parameter `skip` when calling `subscription_users_get_users`, must be a value greater than or equal to `0`")  # noqa: E501
+        if self.api_client.client_side_validation and 'take' in local_var_params and local_var_params['take'] > 120:  # noqa: E501
+            raise ApiValueError("Invalid value for parameter `take` when calling `subscription_users_get_users`, must be a value less than or equal to `120`")  # noqa: E501
+        if self.api_client.client_side_validation and 'take' in local_var_params and local_var_params['take'] < 1:  # noqa: E501
+            raise ApiValueError("Invalid value for parameter `take` when calling `subscription_users_get_users`, must be a value greater than or equal to `1`")  # noqa: E501
         collection_formats = {}
 
         path_params = {}
@@ -303,7 +311,7 @@ class SubscriptionUsersApi(object):
         body_params = None
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
-            ['text/plain', 'application/json', 'text/json'])  # noqa: E501
+            ['application/json', 'text/json', 'text/plain'])  # noqa: E501
 
         # Authentication setting
         auth_settings = ['ApiKey', 'JWT']  # noqa: E501
@@ -442,7 +450,7 @@ class SubscriptionUsersApi(object):
         body_params = None
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
-            ['text/plain', 'application/json', 'text/json'])  # noqa: E501
+            ['application/json', 'text/json', 'text/plain'])  # noqa: E501
 
         # Authentication setting
         auth_settings = ['ApiKey', 'JWT']  # noqa: E501
@@ -586,7 +594,7 @@ class SubscriptionUsersApi(object):
         body_params = None
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
-            ['text/plain', 'application/json', 'text/json'])  # noqa: E501
+            ['application/json', 'text/json', 'text/plain'])  # noqa: E501
 
         # Authentication setting
         auth_settings = ['ApiKey', 'JWT']  # noqa: E501

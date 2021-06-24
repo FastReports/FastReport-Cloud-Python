@@ -36,7 +36,7 @@ class TestFileRenameVM(unittest.TestCase):
         # model = fastreport_cloud_sdk.models.file_rename_vm.FileRenameVM()  # noqa: E501
         if include_optional :
             return FileRenameVM(
-                name = ''
+                name = '0'
             )
         else :
             return FileRenameVM(

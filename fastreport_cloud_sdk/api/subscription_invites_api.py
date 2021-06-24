@@ -156,7 +156,7 @@ class SubscriptionInvitesApi(object):
         body_params = None
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
-            ['text/plain', 'application/json', 'text/json'])  # noqa: E501
+            ['application/json', 'text/json', 'text/plain'])  # noqa: E501
 
         # Authentication setting
         auth_settings = ['ApiKey', 'JWT']  # noqa: E501
@@ -206,7 +206,7 @@ class SubscriptionInvitesApi(object):
         :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
-        :rtype: SubscriptionVM
+        :rtype: SubscriptionInviteVM
         """
         kwargs['_return_http_data_only'] = True
         return self.subscription_invites_create_invite_with_http_info(subscription_id, **kwargs)  # noqa: E501
@@ -244,7 +244,7 @@ class SubscriptionInvitesApi(object):
         :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
-        :rtype: tuple(SubscriptionVM, status_code(int), headers(HTTPHeaderDict))
+        :rtype: tuple(SubscriptionInviteVM, status_code(int), headers(HTTPHeaderDict))
         """
 
         local_var_params = locals()
@@ -296,7 +296,7 @@ class SubscriptionInvitesApi(object):
             body_params = local_var_params['create_invite_vm']
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
-            ['text/plain', 'application/json', 'text/json'])  # noqa: E501
+            ['application/json', 'text/json', 'text/plain'])  # noqa: E501
 
         # HTTP header `Content-Type`
         header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
@@ -306,7 +306,7 @@ class SubscriptionInvitesApi(object):
         auth_settings = ['ApiKey', 'JWT']  # noqa: E501
         
         response_types_map = {
-            200: "SubscriptionVM",
+            200: "SubscriptionInviteVM",
             400: "ProblemDetails",
             402: "ProblemDetails",
             403: "ProblemDetails",
@@ -451,7 +451,7 @@ class SubscriptionInvitesApi(object):
         body_params = None
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
-            ['text/plain', 'application/json', 'text/json'])  # noqa: E501
+            ['application/json', 'text/json', 'text/plain'])  # noqa: E501
 
         # Authentication setting
         auth_settings = ['ApiKey', 'JWT']  # noqa: E501
@@ -584,7 +584,7 @@ class SubscriptionInvitesApi(object):
         body_params = None
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
-            ['text/plain', 'application/json', 'text/json'])  # noqa: E501
+            ['application/json', 'text/json', 'text/plain'])  # noqa: E501
 
         # Authentication setting
         auth_settings = ['ApiKey', 'JWT']  # noqa: E501

@@ -36,12 +36,12 @@ class TestCreateGroupVM(unittest.TestCase):
         # model = fastreport_cloud_sdk.models.create_group_vm.CreateGroupVM()  # noqa: E501
         if include_optional :
             return CreateGroupVM(
-                name = '', 
+                name = '0', 
                 subscription_id = '62ECB020842930cc01FFCCfe'
             )
         else :
             return CreateGroupVM(
-                name = '',
+                name = '0',
         )
 
     def testCreateGroupVM(self):

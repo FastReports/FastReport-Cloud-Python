@@ -121,13 +121,14 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: application/json-patch+json, application/json, text/json, application/*+json
- - **Accept**: text/plain, application/json, text/json
+ - **Accept**: application/json, text/json, text/plain
 
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Succesfully created |  -  |
 **400** | wrong model provided or exception thrown (user&#39;s attempts to create sixth key for example throwns an exception) |  -  |
+**401** | User is not authorized |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -241,13 +242,14 @@ void (empty response body)
 ### HTTP request headers
 
  - **Content-Type**: application/json-patch+json, application/json, text/json, application/*+json
- - **Accept**: text/plain, application/json, text/json
+ - **Accept**: application/json, text/json, text/plain
 
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **204** | Succesfully deleted |  -  |
 **400** | The request is wrong |  -  |
+**401** | User is not authorized |  -  |
 **404** | No such apikey found |  -  |
 **500** | exception thrown |  -  |
 
@@ -258,7 +260,7 @@ void (empty response body)
 
 Returns list with all api keys of current user
 
-Always work, it should make only 200 response.
+Always work, it should make only 200 response (except if user is not authorized).
 
 ### Example
 
@@ -362,12 +364,13 @@ This endpoint does not need any parameter.
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: text/plain, application/json, text/json
+ - **Accept**: application/json, text/json, text/plain
 
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Succesfully retured |  -  |
+**401** | User is not authorized |  -  |
 **500** | Exception somehow thrown (barely possible) |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

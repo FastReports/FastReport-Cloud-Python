@@ -36,13 +36,26 @@ class TestReportCreateVM(unittest.TestCase):
         # model = fastreport_cloud_sdk.models.report_create_vm.ReportCreateVM()  # noqa: E501
         if include_optional :
             return ReportCreateVM(
-                template_id = '', 
+                template_id = '2ECB020842930cc01FFCCfeE', 
+                report_info = fastreport_cloud_sdk.models.report_info.ReportInfo(
+                    author = '', 
+                    created = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
+                    creator_version = '', 
+                    description = '', 
+                    modified = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
+                    name = '', 
+                    picture = 'YQ==', 
+                    preview_picture_ratio = 1.337, 
+                    save_mode = 'All', 
+                    save_preview_picture = True, 
+                    tag = '', 
+                    version = '', ), 
                 name = '', 
                 tags = [
                     ''
                     ], 
-                icon = '', 
-                content = ''
+                icon = 'YQ==', 
+                content = 'YQ=='
             )
         else :
             return ReportCreateVM(

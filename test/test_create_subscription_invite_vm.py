@@ -36,7 +36,7 @@ class TestCreateSubscriptionInviteVM(unittest.TestCase):
         # model = fastreport_cloud_sdk.models.create_subscription_invite_vm.CreateSubscriptionInviteVM()  # noqa: E501
         if include_optional :
             return CreateSubscriptionInviteVM(
-                usages = 56, 
+                usages = 0, 
                 durable = True, 
                 expired_date = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f')
             )

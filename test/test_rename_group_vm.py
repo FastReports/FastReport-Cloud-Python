@@ -36,11 +36,11 @@ class TestRenameGroupVM(unittest.TestCase):
         # model = fastreport_cloud_sdk.models.rename_group_vm.RenameGroupVM()  # noqa: E501
         if include_optional :
             return RenameGroupVM(
-                name = ''
+                name = '0'
             )
         else :
             return RenameGroupVM(
-                name = '',
+                name = '0',
         )
 
     def testRenameGroupVM(self):

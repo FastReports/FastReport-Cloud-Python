@@ -36,10 +36,11 @@ class TestFolderRenameVM(unittest.TestCase):
         # model = fastreport_cloud_sdk.models.folder_rename_vm.FolderRenameVM()  # noqa: E501
         if include_optional :
             return FolderRenameVM(
-                name = ''
+                name = '0'
             )
         else :
             return FolderRenameVM(
+                name = '0',
         )
 
     def testFolderRenameVM(self):

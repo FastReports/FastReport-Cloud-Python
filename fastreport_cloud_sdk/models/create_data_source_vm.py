@@ -63,10 +63,8 @@ class CreateDataSourceVM(object):
 
         if name is not None:
             self.name = name
-        if connection_string is not None:
-            self.connection_string = connection_string
-        if subscription_id is not None:
-            self.subscription_id = subscription_id
+        self.connection_string = connection_string
+        self.subscription_id = subscription_id
         if connection_type is not None:
             self.connection_type = connection_type
 
@@ -88,6 +86,12 @@ class CreateDataSourceVM(object):
         :param name: The name of this CreateDataSourceVM.  # noqa: E501
         :type name: str
         """
+        if (self.local_vars_configuration.client_side_validation and
+                name is not None and len(name) > 50):
+            raise ValueError("Invalid value for `name`, length must be less than or equal to `50`")  # noqa: E501
+        if (self.local_vars_configuration.client_side_validation and
+                name is not None and len(name) < 0):
+            raise ValueError("Invalid value for `name`, length must be greater than or equal to `0`")  # noqa: E501
 
         self._name = name
 
@@ -109,6 +113,14 @@ class CreateDataSourceVM(object):
         :param connection_string: The connection_string of this CreateDataSourceVM.  # noqa: E501
         :type connection_string: str
         """
+        if self.local_vars_configuration.client_side_validation and connection_string is None:  # noqa: E501
+            raise ValueError("Invalid value for `connection_string`, must not be `None`")  # noqa: E501
+        if (self.local_vars_configuration.client_side_validation and
+                connection_string is not None and len(connection_string) > 5000):
+            raise ValueError("Invalid value for `connection_string`, length must be less than or equal to `5000`")  # noqa: E501
+        if (self.local_vars_configuration.client_side_validation and
+                connection_string is not None and len(connection_string) < 0):
+            raise ValueError("Invalid value for `connection_string`, length must be greater than or equal to `0`")  # noqa: E501
 
         self._connection_string = connection_string
 
@@ -130,6 +142,11 @@ class CreateDataSourceVM(object):
         :param subscription_id: The subscription_id of this CreateDataSourceVM.  # noqa: E501
         :type subscription_id: str
         """
+        if self.local_vars_configuration.client_side_validation and subscription_id is None:  # noqa: E501
+            raise ValueError("Invalid value for `subscription_id`, must not be `None`")  # noqa: E501
+        if (self.local_vars_configuration.client_side_validation and
+                subscription_id is not None and not re.search(r'^[A-Fa-f0-9]{24}$', subscription_id)):  # noqa: E501
+            raise ValueError(r"Invalid value for `subscription_id`, must be a follow pattern or equal to `/^[A-Fa-f0-9]{24}$/`")  # noqa: E501
 
         self._subscription_id = subscription_id
 

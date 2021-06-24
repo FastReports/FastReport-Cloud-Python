@@ -37,15 +37,15 @@ class TestExportTemplateTaskVM(unittest.TestCase):
         if include_optional :
             return ExportTemplateTaskVM(
                 file_name = '', 
-                folder_id = '', 
-                locale = '', 
-                pages_count = 56, 
+                folder_id = '2ECB020842930cc01FFCCfeE', 
+                locale = 'EiOT-wW', 
+                pages_count = 0, 
                 format = 'Pdf', 
                 export_parameters = {
-                    'key' : None
+                    'key' : ''
                     }, 
                 report_parameters = {
-                    'key' : None
+                    'key' : ''
                     }
             )
         else :

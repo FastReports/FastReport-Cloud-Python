@@ -14,23 +14,9 @@
 
 from __future__ import absolute_import
 
-__version__ = "2021.1.35"
+__version__ = "2021.2.13"
 
 # import apis into sdk package
-from fastreport_cloud_sdk.api.admin_api_keys_api import AdminApiKeysApi
-from fastreport_cloud_sdk.api.admin_data_source_api import AdminDataSourceApi
-from fastreport_cloud_sdk.api.admin_exports_api import AdminExportsApi
-from fastreport_cloud_sdk.api.admin_groups_api import AdminGroupsApi
-from fastreport_cloud_sdk.api.admin_health_check_api import AdminHealthCheckApi
-from fastreport_cloud_sdk.api.admin_reports_api import AdminReportsApi
-from fastreport_cloud_sdk.api.admin_subscription_analytics_api import AdminSubscriptionAnalyticsApi
-from fastreport_cloud_sdk.api.admin_subscription_invites_api import AdminSubscriptionInvitesApi
-from fastreport_cloud_sdk.api.admin_subscription_period_api import AdminSubscriptionPeriodApi
-from fastreport_cloud_sdk.api.admin_subscription_plans_api import AdminSubscriptionPlansApi
-from fastreport_cloud_sdk.api.admin_subscription_problem_solving_api import AdminSubscriptionProblemSolvingApi
-from fastreport_cloud_sdk.api.admin_subscriptions_api import AdminSubscriptionsApi
-from fastreport_cloud_sdk.api.admin_templates_api import AdminTemplatesApi
-from fastreport_cloud_sdk.api.admin_users_api import AdminUsersApi
 from fastreport_cloud_sdk.api.api_keys_api import ApiKeysApi
 from fastreport_cloud_sdk.api.data_sources_api import DataSourcesApi
 from fastreport_cloud_sdk.api.download_api import DownloadApi
@@ -46,6 +32,7 @@ from fastreport_cloud_sdk.api.subscription_users_api import SubscriptionUsersApi
 from fastreport_cloud_sdk.api.subscriptions_api import SubscriptionsApi
 from fastreport_cloud_sdk.api.templates_api import TemplatesApi
 from fastreport_cloud_sdk.api.user_profile_api import UserProfileApi
+from fastreport_cloud_sdk.api.user_settings_api import UserSettingsApi
 
 # import ApiClient
 from fastreport_cloud_sdk.api_client import ApiClient
@@ -57,28 +44,15 @@ from fastreport_cloud_sdk.exceptions import ApiKeyError
 from fastreport_cloud_sdk.exceptions import ApiAttributeError
 from fastreport_cloud_sdk.exceptions import ApiException
 # import models into sdk package
-from fastreport_cloud_sdk.models.admin_export_folder_create_vm import AdminExportFolderCreateVM
-from fastreport_cloud_sdk.models.admin_permission import AdminPermission
-from fastreport_cloud_sdk.models.admin_report_folder_create_vm import AdminReportFolderCreateVM
-from fastreport_cloud_sdk.models.admin_subscription_vm import AdminSubscriptionVM
-from fastreport_cloud_sdk.models.admin_subscriptions_vm import AdminSubscriptionsVM
-from fastreport_cloud_sdk.models.admin_template_folder_create_vm import AdminTemplateFolderCreateVM
-from fastreport_cloud_sdk.models.analysis_result_vm import AnalysisResultVM
-from fastreport_cloud_sdk.models.analysis_results_vm import AnalysisResultsVM
 from fastreport_cloud_sdk.models.api_key_vm import ApiKeyVM
 from fastreport_cloud_sdk.models.api_keys_vm import ApiKeysVM
 from fastreport_cloud_sdk.models.breadcrumbs_model import BreadcrumbsModel
 from fastreport_cloud_sdk.models.breadcrumbs_vm import BreadcrumbsVM
 from fastreport_cloud_sdk.models.count_vm import CountVM
 from fastreport_cloud_sdk.models.create_api_key_vm import CreateApiKeyVM
-from fastreport_cloud_sdk.models.create_data_source_admin_vm import CreateDataSourceAdminVM
 from fastreport_cloud_sdk.models.create_data_source_vm import CreateDataSourceVM
-from fastreport_cloud_sdk.models.create_group_admin_vm import CreateGroupAdminVM
 from fastreport_cloud_sdk.models.create_group_vm import CreateGroupVM
 from fastreport_cloud_sdk.models.create_subscription_invite_vm import CreateSubscriptionInviteVM
-from fastreport_cloud_sdk.models.create_subscription_period_vm import CreateSubscriptionPeriodVM
-from fastreport_cloud_sdk.models.create_subscription_plan_vm import CreateSubscriptionPlanVM
-from fastreport_cloud_sdk.models.create_subscription_vm import CreateSubscriptionVM
 from fastreport_cloud_sdk.models.data_source_permission import DataSourcePermission
 from fastreport_cloud_sdk.models.data_source_permissions import DataSourcePermissions
 from fastreport_cloud_sdk.models.data_source_permissions_vm import DataSourcePermissionsVM
@@ -87,7 +61,6 @@ from fastreport_cloud_sdk.models.data_sources_vm import DataSourcesVM
 from fastreport_cloud_sdk.models.default_permissions import DefaultPermissions
 from fastreport_cloud_sdk.models.default_permissions_vm import DefaultPermissionsVM
 from fastreport_cloud_sdk.models.delete_api_key_vm import DeleteApiKeyVM
-from fastreport_cloud_sdk.models.export_create_admin_vm import ExportCreateAdminVM
 from fastreport_cloud_sdk.models.export_folder_create_vm import ExportFolderCreateVM
 from fastreport_cloud_sdk.models.export_report_task_vm import ExportReportTaskVM
 from fastreport_cloud_sdk.models.export_template_task_vm import ExportTemplateTaskVM
@@ -99,7 +72,6 @@ from fastreport_cloud_sdk.models.file_permissions import FilePermissions
 from fastreport_cloud_sdk.models.file_permissions_vm import FilePermissionsVM
 from fastreport_cloud_sdk.models.file_rename_vm import FileRenameVM
 from fastreport_cloud_sdk.models.file_tags_update_vm import FileTagsUpdateVM
-from fastreport_cloud_sdk.models.file_update_vm import FileUpdateVM
 from fastreport_cloud_sdk.models.file_vm import FileVM
 from fastreport_cloud_sdk.models.files_vm import FilesVM
 from fastreport_cloud_sdk.models.folder_icon_vm import FolderIconVM
@@ -115,11 +87,9 @@ from fastreport_cloud_sdk.models.groups_vm import GroupsVM
 from fastreport_cloud_sdk.models.invited_user import InvitedUser
 from fastreport_cloud_sdk.models.prepare_template_task_vm import PrepareTemplateTaskVM
 from fastreport_cloud_sdk.models.problem_details import ProblemDetails
-from fastreport_cloud_sdk.models.register_user_vm import RegisterUserVM
 from fastreport_cloud_sdk.models.rename_data_source_vm import RenameDataSourceVM
 from fastreport_cloud_sdk.models.rename_group_vm import RenameGroupVM
 from fastreport_cloud_sdk.models.rename_subscription_vm import RenameSubscriptionVM
-from fastreport_cloud_sdk.models.report_create_admin_vm import ReportCreateAdminVM
 from fastreport_cloud_sdk.models.report_create_vm import ReportCreateVM
 from fastreport_cloud_sdk.models.report_folder_create_vm import ReportFolderCreateVM
 from fastreport_cloud_sdk.models.report_info import ReportInfo
@@ -138,7 +108,6 @@ from fastreport_cloud_sdk.models.subscription_user_vm import SubscriptionUserVM
 from fastreport_cloud_sdk.models.subscription_users_vm import SubscriptionUsersVM
 from fastreport_cloud_sdk.models.subscription_vm import SubscriptionVM
 from fastreport_cloud_sdk.models.subscriptions_vm import SubscriptionsVM
-from fastreport_cloud_sdk.models.template_create_admin_vm import TemplateCreateAdminVM
 from fastreport_cloud_sdk.models.template_create_vm import TemplateCreateVM
 from fastreport_cloud_sdk.models.template_folder_create_vm import TemplateFolderCreateVM
 from fastreport_cloud_sdk.models.template_vm import TemplateVM
@@ -146,18 +115,13 @@ from fastreport_cloud_sdk.models.templates_vm import TemplatesVM
 from fastreport_cloud_sdk.models.update_data_source_connection_string_vm import UpdateDataSourceConnectionStringVM
 from fastreport_cloud_sdk.models.update_data_source_permissions_vm import UpdateDataSourcePermissionsVM
 from fastreport_cloud_sdk.models.update_data_source_subscription_vm import UpdateDataSourceSubscriptionVM
-from fastreport_cloud_sdk.models.update_data_source_vm import UpdateDataSourceVM
 from fastreport_cloud_sdk.models.update_default_permissions_vm import UpdateDefaultPermissionsVM
 from fastreport_cloud_sdk.models.update_file_permissions_vm import UpdateFilePermissionsVM
 from fastreport_cloud_sdk.models.update_group_permissions_vm import UpdateGroupPermissionsVM
-from fastreport_cloud_sdk.models.update_group_vm import UpdateGroupVM
 from fastreport_cloud_sdk.models.update_subscription_locale_vm import UpdateSubscriptionLocaleVM
 from fastreport_cloud_sdk.models.update_subscription_permissions_vm import UpdateSubscriptionPermissionsVM
-from fastreport_cloud_sdk.models.update_subscription_plan_vm import UpdateSubscriptionPlanVM
-from fastreport_cloud_sdk.models.update_subscription_vm import UpdateSubscriptionVM
-from fastreport_cloud_sdk.models.update_user_vm import UpdateUserVM
-from fastreport_cloud_sdk.models.user_profile_update_vm import UserProfileUpdateVM
+from fastreport_cloud_sdk.models.update_user_profile_vm import UpdateUserProfileVM
+from fastreport_cloud_sdk.models.update_user_settings_vm import UpdateUserSettingsVM
 from fastreport_cloud_sdk.models.user_profile_vm import UserProfileVM
-from fastreport_cloud_sdk.models.user_vm import UserVM
-from fastreport_cloud_sdk.models.users_vm import UsersVM
+from fastreport_cloud_sdk.models.user_settings_vm import UserSettingsVM
 

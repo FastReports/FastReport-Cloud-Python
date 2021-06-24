@@ -37,7 +37,7 @@ class TestSubscriptionPermissionsVM(unittest.TestCase):
         if include_optional :
             return SubscriptionPermissionsVM(
                 permissions = fastreport_cloud_sdk.models.subscription_permissions.SubscriptionPermissions(
-                    owner_id = '', 
+                    owner_id = 'f325375e-30fc-ba00-1731-c574773100bf', 
                     owner = fastreport_cloud_sdk.models.subscription_permission.SubscriptionPermission(
                         create = 0, 
                         delete = 0, 

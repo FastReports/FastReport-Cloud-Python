@@ -37,7 +37,7 @@ class TestUpdateFilePermissionsVM(unittest.TestCase):
         if include_optional :
             return UpdateFilePermissionsVM(
                 new_permissions = fastreport_cloud_sdk.models.file_permissions.FilePermissions(
-                    owner_id = '', 
+                    owner_id = 'f325375e-30fc-ba00-1731-c574773100bf', 
                     owner = fastreport_cloud_sdk.models.file_permission.FilePermission(
                         create = 0, 
                         delete = 0, 
@@ -73,7 +73,7 @@ class TestUpdateFilePermissionsVM(unittest.TestCase):
         else :
             return UpdateFilePermissionsVM(
                 new_permissions = fastreport_cloud_sdk.models.file_permissions.FilePermissions(
-                    owner_id = '', 
+                    owner_id = 'f325375e-30fc-ba00-1731-c574773100bf', 
                     owner = fastreport_cloud_sdk.models.file_permission.FilePermission(
                         create = 0, 
                         delete = 0, 

@@ -36,7 +36,7 @@ class TestGroupPermissions(unittest.TestCase):
         # model = fastreport_cloud_sdk.models.group_permissions.GroupPermissions()  # noqa: E501
         if include_optional :
             return GroupPermissions(
-                owner_id = '', 
+                owner_id = 'f325375e-30fc-ba00-1731-c574773100bf', 
                 owner = fastreport_cloud_sdk.models.group_permission.GroupPermission(
                     create = 0, 
                     delete = 0, 

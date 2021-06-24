@@ -36,10 +36,11 @@ class TestUpdateDataSourceSubscriptionVM(unittest.TestCase):
         # model = fastreport_cloud_sdk.models.update_data_source_subscription_vm.UpdateDataSourceSubscriptionVM()  # noqa: E501
         if include_optional :
             return UpdateDataSourceSubscriptionVM(
-                subscription_id = ''
+                subscription_id = '62ECB020842930cc01FFCCfe'
             )
         else :
             return UpdateDataSourceSubscriptionVM(
+                subscription_id = '62ECB020842930cc01FFCCfe',
         )
 
     def testUpdateDataSourceSubscriptionVM(self):

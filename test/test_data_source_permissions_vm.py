@@ -37,7 +37,7 @@ class TestDataSourcePermissionsVM(unittest.TestCase):
         if include_optional :
             return DataSourcePermissionsVM(
                 permissions = fastreport_cloud_sdk.models.data_source_permissions.DataSourcePermissions(
-                    owner_id = '', 
+                    owner_id = 'f325375e-30fc-ba00-1731-c574773100bf', 
                     owner = fastreport_cloud_sdk.models.data_source_permission.DataSourcePermission(
                         create = 0, 
                         delete = 0, 

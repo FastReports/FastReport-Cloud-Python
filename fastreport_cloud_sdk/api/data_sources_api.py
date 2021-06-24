@@ -139,7 +139,7 @@ class DataSourcesApi(object):
             body_params = local_var_params['view_model']
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
-            ['text/plain', 'application/json', 'text/json'])  # noqa: E501
+            ['application/json', 'text/json', 'text/plain'])  # noqa: E501
 
         # HTTP header `Content-Type`
         header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
@@ -265,6 +265,8 @@ class DataSourcesApi(object):
                                                         local_var_params['id'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `id` when calling `data_sources_delete_data_source`")  # noqa: E501
 
+        if self.api_client.client_side_validation and 'id' in local_var_params and not re.search(r'^[A-Fa-f0-9]{24}$', local_var_params['id']):  # noqa: E501
+            raise ApiValueError("Invalid value for parameter `id` when calling `data_sources_delete_data_source`, must conform to the pattern `/^[A-Fa-f0-9]{24}$/`")  # noqa: E501
         collection_formats = {}
 
         path_params = {}
@@ -281,7 +283,7 @@ class DataSourcesApi(object):
         body_params = None
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
-            ['text/plain', 'application/json', 'text/json'])  # noqa: E501
+            ['application/json', 'text/json', 'text/plain'])  # noqa: E501
 
         # Authentication setting
         auth_settings = ['ApiKey', 'JWT']  # noqa: E501
@@ -396,6 +398,8 @@ class DataSourcesApi(object):
                                                         local_var_params['id'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `id` when calling `data_sources_fetch_data`")  # noqa: E501
 
+        if self.api_client.client_side_validation and 'id' in local_var_params and not re.search(r'^[A-Fa-f0-9]{24}$', local_var_params['id']):  # noqa: E501
+            raise ApiValueError("Invalid value for parameter `id` when calling `data_sources_fetch_data`, must conform to the pattern `/^[A-Fa-f0-9]{24}$/`")  # noqa: E501
         collection_formats = {}
 
         path_params = {}
@@ -412,7 +416,7 @@ class DataSourcesApi(object):
         body_params = None
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
-            ['text/plain', 'application/json', 'text/json'])  # noqa: E501
+            ['application/json', 'text/json', 'text/plain'])  # noqa: E501
 
         # Authentication setting
         auth_settings = ['ApiKey', 'JWT']  # noqa: E501
@@ -533,6 +537,16 @@ class DataSourcesApi(object):
             local_var_params[key] = val
         del local_var_params['kwargs']
 
+        if self.api_client.client_side_validation and 'subscription_id' in local_var_params and not re.search(r'(^$)|(^[A-Fa-f0-9]{24}$)', local_var_params['subscription_id']):  # noqa: E501
+            raise ApiValueError("Invalid value for parameter `subscription_id` when calling `data_sources_get_available_data_sources`, must conform to the pattern `/(^$)|(^[A-Fa-f0-9]{24}$)/`")  # noqa: E501
+        if self.api_client.client_side_validation and 'skip' in local_var_params and local_var_params['skip'] > 2147483647:  # noqa: E501
+            raise ApiValueError("Invalid value for parameter `skip` when calling `data_sources_get_available_data_sources`, must be a value less than or equal to `2147483647`")  # noqa: E501
+        if self.api_client.client_side_validation and 'skip' in local_var_params and local_var_params['skip'] < 0:  # noqa: E501
+            raise ApiValueError("Invalid value for parameter `skip` when calling `data_sources_get_available_data_sources`, must be a value greater than or equal to `0`")  # noqa: E501
+        if self.api_client.client_side_validation and 'take' in local_var_params and local_var_params['take'] > 120:  # noqa: E501
+            raise ApiValueError("Invalid value for parameter `take` when calling `data_sources_get_available_data_sources`, must be a value less than or equal to `120`")  # noqa: E501
+        if self.api_client.client_side_validation and 'take' in local_var_params and local_var_params['take'] < 1:  # noqa: E501
+            raise ApiValueError("Invalid value for parameter `take` when calling `data_sources_get_available_data_sources`, must be a value greater than or equal to `1`")  # noqa: E501
         collection_formats = {}
 
         path_params = {}
@@ -553,7 +567,7 @@ class DataSourcesApi(object):
         body_params = None
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
-            ['text/plain', 'application/json', 'text/json'])  # noqa: E501
+            ['application/json', 'text/json', 'text/plain'])  # noqa: E501
 
         # Authentication setting
         auth_settings = ['ApiKey', 'JWT']  # noqa: E501
@@ -674,6 +688,8 @@ class DataSourcesApi(object):
                                                         local_var_params['id'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `id` when calling `data_sources_get_data_source`")  # noqa: E501
 
+        if self.api_client.client_side_validation and 'id' in local_var_params and not re.search(r'^[A-Fa-f0-9]{24}$', local_var_params['id']):  # noqa: E501
+            raise ApiValueError("Invalid value for parameter `id` when calling `data_sources_get_data_source`, must conform to the pattern `/^[A-Fa-f0-9]{24}$/`")  # noqa: E501
         collection_formats = {}
 
         path_params = {}
@@ -690,7 +706,7 @@ class DataSourcesApi(object):
         body_params = None
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
-            ['text/plain', 'application/json', 'text/json'])  # noqa: E501
+            ['application/json', 'text/json', 'text/plain'])  # noqa: E501
 
         # Authentication setting
         auth_settings = ['ApiKey', 'JWT']  # noqa: E501
@@ -812,6 +828,8 @@ class DataSourcesApi(object):
                                                         local_var_params['id'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `id` when calling `data_sources_get_permissions`")  # noqa: E501
 
+        if self.api_client.client_side_validation and 'id' in local_var_params and not re.search(r'^[A-Fa-f0-9]{24}$', local_var_params['id']):  # noqa: E501
+            raise ApiValueError("Invalid value for parameter `id` when calling `data_sources_get_permissions`, must conform to the pattern `/^[A-Fa-f0-9]{24}$/`")  # noqa: E501
         collection_formats = {}
 
         path_params = {}
@@ -828,7 +846,7 @@ class DataSourcesApi(object):
         body_params = None
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
-            ['text/plain', 'application/json', 'text/json'])  # noqa: E501
+            ['application/json', 'text/json', 'text/plain'])  # noqa: E501
 
         # Authentication setting
         auth_settings = ['ApiKey', 'JWT']  # noqa: E501
@@ -955,6 +973,8 @@ class DataSourcesApi(object):
                                                         local_var_params['id'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `id` when calling `data_sources_rename_data_source`")  # noqa: E501
 
+        if self.api_client.client_side_validation and 'id' in local_var_params and not re.search(r'^[A-Fa-f0-9]{24}$', local_var_params['id']):  # noqa: E501
+            raise ApiValueError("Invalid value for parameter `id` when calling `data_sources_rename_data_source`, must conform to the pattern `/^[A-Fa-f0-9]{24}$/`")  # noqa: E501
         collection_formats = {}
 
         path_params = {}
@@ -973,7 +993,7 @@ class DataSourcesApi(object):
             body_params = local_var_params['rename_model']
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
-            ['text/plain', 'application/json', 'text/json'])  # noqa: E501
+            ['application/json', 'text/json', 'text/plain'])  # noqa: E501
 
         # HTTP header `Content-Type`
         header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
@@ -1104,6 +1124,8 @@ class DataSourcesApi(object):
                                                         local_var_params['id'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `id` when calling `data_sources_update_connection_string`")  # noqa: E501
 
+        if self.api_client.client_side_validation and 'id' in local_var_params and not re.search(r'^[A-Fa-f0-9]{24}$', local_var_params['id']):  # noqa: E501
+            raise ApiValueError("Invalid value for parameter `id` when calling `data_sources_update_connection_string`, must conform to the pattern `/^[A-Fa-f0-9]{24}$/`")  # noqa: E501
         collection_formats = {}
 
         path_params = {}
@@ -1122,7 +1144,7 @@ class DataSourcesApi(object):
             body_params = local_var_params['update_model']
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
-            ['text/plain', 'application/json', 'text/json'])  # noqa: E501
+            ['application/json', 'text/json', 'text/plain'])  # noqa: E501
 
         # HTTP header `Content-Type`
         header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
@@ -1273,7 +1295,7 @@ class DataSourcesApi(object):
             body_params = local_var_params['permissions_vm']
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
-            ['text/plain', 'application/json', 'text/json'])  # noqa: E501
+            ['application/json', 'text/json', 'text/plain'])  # noqa: E501
 
         # HTTP header `Content-Type`
         header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
@@ -1397,6 +1419,8 @@ class DataSourcesApi(object):
                                                         local_var_params['id'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `id` when calling `data_sources_update_subscription_data_source`")  # noqa: E501
 
+        if self.api_client.client_side_validation and 'id' in local_var_params and not re.search(r'^[A-Fa-f0-9]{24}$', local_var_params['id']):  # noqa: E501
+            raise ApiValueError("Invalid value for parameter `id` when calling `data_sources_update_subscription_data_source`, must conform to the pattern `/^[A-Fa-f0-9]{24}$/`")  # noqa: E501
         collection_formats = {}
 
         path_params = {}
@@ -1415,7 +1439,7 @@ class DataSourcesApi(object):
             body_params = local_var_params['updatesubscription_model']
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
-            ['text/plain', 'application/json', 'text/json'])  # noqa: E501
+            ['application/json', 'text/json', 'text/plain'])  # noqa: E501
 
         # HTTP header `Content-Type`
         header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501

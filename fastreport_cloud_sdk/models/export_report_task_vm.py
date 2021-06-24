@@ -41,7 +41,7 @@ class ExportReportTaskVM(object):
         'locale': 'str',
         'pages_count': 'int',
         'format': 'str',
-        'export_parameters': 'dict(str, object)'
+        'export_parameters': 'dict(str, str)'
     }
 
     attribute_map = {
@@ -98,6 +98,12 @@ class ExportReportTaskVM(object):
         :param file_name: The file_name of this ExportReportTaskVM.  # noqa: E501
         :type file_name: str
         """
+        if (self.local_vars_configuration.client_side_validation and
+                file_name is not None and len(file_name) > 250):
+            raise ValueError("Invalid value for `file_name`, length must be less than or equal to `250`")  # noqa: E501
+        if (self.local_vars_configuration.client_side_validation and
+                file_name is not None and len(file_name) < 0):
+            raise ValueError("Invalid value for `file_name`, length must be greater than or equal to `0`")  # noqa: E501
 
         self._file_name = file_name
 
@@ -119,6 +125,9 @@ class ExportReportTaskVM(object):
         :param folder_id: The folder_id of this ExportReportTaskVM.  # noqa: E501
         :type folder_id: str
         """
+        if (self.local_vars_configuration.client_side_validation and
+                folder_id is not None and not re.search(r'(^$)|(^[A-Fa-f0-9]{24}$)', folder_id)):  # noqa: E501
+            raise ValueError(r"Invalid value for `folder_id`, must be a follow pattern or equal to `/(^$)|(^[A-Fa-f0-9]{24}$)/`")  # noqa: E501
 
         self._folder_id = folder_id
 
@@ -140,6 +149,9 @@ class ExportReportTaskVM(object):
         :param locale: The locale of this ExportReportTaskVM.  # noqa: E501
         :type locale: str
         """
+        if (self.local_vars_configuration.client_side_validation and
+                locale is not None and not re.search(r'^[a-zA-Z]{2,4}(-[a-zA-Z]{2,4}){0,2}$', locale)):  # noqa: E501
+            raise ValueError(r"Invalid value for `locale`, must be a follow pattern or equal to `/^[a-zA-Z]{2,4}(-[a-zA-Z]{2,4}){0,2}$/`")  # noqa: E501
 
         self._locale = locale
 
@@ -161,6 +173,12 @@ class ExportReportTaskVM(object):
         :param pages_count: The pages_count of this ExportReportTaskVM.  # noqa: E501
         :type pages_count: int
         """
+        if (self.local_vars_configuration.client_side_validation and
+                pages_count is not None and pages_count > 2147483647):  # noqa: E501
+            raise ValueError("Invalid value for `pages_count`, must be a value less than or equal to `2147483647`")  # noqa: E501
+        if (self.local_vars_configuration.client_side_validation and
+                pages_count is not None and pages_count < 0):  # noqa: E501
+            raise ValueError("Invalid value for `pages_count`, must be a value greater than or equal to `0`")  # noqa: E501
 
         self._pages_count = pages_count
 
@@ -197,7 +215,7 @@ class ExportReportTaskVM(object):
 
 
         :return: The export_parameters of this ExportReportTaskVM.  # noqa: E501
-        :rtype: dict(str, object)
+        :rtype: dict(str, str)
         """
         return self._export_parameters
 
@@ -207,7 +225,7 @@ class ExportReportTaskVM(object):
 
 
         :param export_parameters: The export_parameters of this ExportReportTaskVM.  # noqa: E501
-        :type export_parameters: dict(str, object)
+        :type export_parameters: dict(str, str)
         """
 
         self._export_parameters = export_parameters

@@ -52,8 +52,7 @@ class FolderIconVM(object):
         self._icon = None
         self.discriminator = None
 
-        if icon is not None:
-            self.icon = icon
+        self.icon = icon
 
     @property
     def icon(self):
@@ -73,6 +72,14 @@ class FolderIconVM(object):
         :param icon: The icon of this FolderIconVM.  # noqa: E501
         :type icon: str
         """
+        if self.local_vars_configuration.client_side_validation and icon is None:  # noqa: E501
+            raise ValueError("Invalid value for `icon`, must not be `None`")  # noqa: E501
+        if (self.local_vars_configuration.client_side_validation and
+                icon is not None and len(icon) > 65536):
+            raise ValueError("Invalid value for `icon`, length must be less than or equal to `65536`")  # noqa: E501
+        if (self.local_vars_configuration.client_side_validation and
+                icon is not None and not re.search(r'^(?:[A-Za-z0-9+\/]{4})*(?:[A-Za-z0-9+\/]{2}==|[A-Za-z0-9+\/]{3}=)?$', icon)):  # noqa: E501
+            raise ValueError(r"Invalid value for `icon`, must be a follow pattern or equal to `/^(?:[A-Za-z0-9+\/]{4})*(?:[A-Za-z0-9+\/]{2}==|[A-Za-z0-9+\/]{3}=)?$/`")  # noqa: E501
 
         self._icon = icon
 

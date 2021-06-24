@@ -40,6 +40,7 @@ class TestUpdateDataSourceConnectionStringVM(unittest.TestCase):
             )
         else :
             return UpdateDataSourceConnectionStringVM(
+                connection_string = '',
         )
 
     def testUpdateDataSourceConnectionStringVM(self):

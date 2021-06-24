@@ -116,7 +116,7 @@ This endpoint does not need any parameter.
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: text/plain, application/json, text/json
+ - **Accept**: application/json, text/json, text/plain
 
 ### HTTP response details
 | Status code | Description | Response headers |
@@ -238,7 +238,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: text/plain, application/json, text/json
+ - **Accept**: application/json, text/json, text/plain
 
 ### HTTP response details
 | Status code | Description | Response headers |
@@ -291,7 +291,7 @@ configuration.api_key['JWT'] = 'YOUR_API_KEY'
 with fastreport_cloud_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = fastreport_cloud_sdk.UserProfileApi(api_client)
-    model = fastreport_cloud_sdk.UserProfileUpdateVM() # UserProfileUpdateVM |  (optional)
+    model = fastreport_cloud_sdk.UpdateUserProfileVM() # UpdateUserProfileVM |  (optional)
 
     try:
         # Update profile of the current user
@@ -334,7 +334,7 @@ configuration.api_key['JWT'] = 'YOUR_API_KEY'
 with fastreport_cloud_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = fastreport_cloud_sdk.UserProfileApi(api_client)
-    model = fastreport_cloud_sdk.UserProfileUpdateVM() # UserProfileUpdateVM |  (optional)
+    model = fastreport_cloud_sdk.UpdateUserProfileVM() # UpdateUserProfileVM |  (optional)
 
     try:
         # Update profile of the current user
@@ -347,7 +347,7 @@ with fastreport_cloud_sdk.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **model** | [**UserProfileUpdateVM**](UserProfileUpdateVM.md)|  | [optional] 
+ **model** | [**UpdateUserProfileVM**](UpdateUserProfileVM.md)|  | [optional] 
 
 ### Return type
 
@@ -360,7 +360,7 @@ void (empty response body)
 ### HTTP request headers
 
  - **Content-Type**: application/json-patch+json, application/json, text/json, application/*+json
- - **Accept**: text/plain, application/json, text/json
+ - **Accept**: application/json, text/json, text/plain
 
 ### HTTP response details
 | Status code | Description | Response headers |

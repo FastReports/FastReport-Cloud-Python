@@ -36,11 +36,11 @@ class TestExportFolderCreateVM(unittest.TestCase):
         # model = fastreport_cloud_sdk.models.export_folder_create_vm.ExportFolderCreateVM()  # noqa: E501
         if include_optional :
             return ExportFolderCreateVM(
-                name = '', 
+                name = '0', 
                 tags = [
                     ''
                     ], 
-                icon = ''
+                icon = 'YQ=='
             )
         else :
             return ExportFolderCreateVM(

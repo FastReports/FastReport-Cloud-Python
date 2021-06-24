@@ -36,10 +36,11 @@ class TestFolderIconVM(unittest.TestCase):
         # model = fastreport_cloud_sdk.models.folder_icon_vm.FolderIconVM()  # noqa: E501
         if include_optional :
             return FolderIconVM(
-                icon = ''
+                icon = 'YQ=='
             )
         else :
             return FolderIconVM(
+                icon = 'YQ==',
         )
 
     def testFolderIconVM(self):

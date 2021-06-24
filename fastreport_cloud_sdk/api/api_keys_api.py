@@ -143,7 +143,7 @@ class ApiKeysApi(object):
             body_params = local_var_params['model']
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
-            ['text/plain', 'application/json', 'text/json'])  # noqa: E501
+            ['application/json', 'text/json', 'text/plain'])  # noqa: E501
 
         # HTTP header `Content-Type`
         header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
@@ -155,6 +155,7 @@ class ApiKeysApi(object):
         response_types_map = {
             200: "ApiKeyVM",
             400: "ProblemDetails",
+            401: "ProblemDetails",
         }
 
         return self.api_client.call_api(
@@ -281,7 +282,7 @@ class ApiKeysApi(object):
             body_params = local_var_params['model']
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
-            ['text/plain', 'application/json', 'text/json'])  # noqa: E501
+            ['application/json', 'text/json', 'text/plain'])  # noqa: E501
 
         # HTTP header `Content-Type`
         header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
@@ -312,7 +313,7 @@ class ApiKeysApi(object):
     def api_keys_get_api_keys(self, **kwargs):  # noqa: E501
         """Returns list with all api keys of current user  # noqa: E501
 
-        Always work, it should make only 200 response.  # noqa: E501
+        Always work, it should make only 200 response (except if user is not authorized).  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
@@ -340,7 +341,7 @@ class ApiKeysApi(object):
     def api_keys_get_api_keys_with_http_info(self, **kwargs):  # noqa: E501
         """Returns list with all api keys of current user  # noqa: E501
 
-        Always work, it should make only 200 response.  # noqa: E501
+        Always work, it should make only 200 response (except if user is not authorized).  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
@@ -407,13 +408,14 @@ class ApiKeysApi(object):
         body_params = None
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
-            ['text/plain', 'application/json', 'text/json'])  # noqa: E501
+            ['application/json', 'text/json', 'text/plain'])  # noqa: E501
 
         # Authentication setting
         auth_settings = ['ApiKey', 'JWT']  # noqa: E501
         
         response_types_map = {
             200: "ApiKeysVM",
+            401: "ProblemDetails",
             500: None,
         }
 

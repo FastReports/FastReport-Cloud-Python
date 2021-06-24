@@ -36,11 +36,11 @@ class TestReportFolderCreateVM(unittest.TestCase):
         # model = fastreport_cloud_sdk.models.report_folder_create_vm.ReportFolderCreateVM()  # noqa: E501
         if include_optional :
             return ReportFolderCreateVM(
-                name = '', 
+                name = '0', 
                 tags = [
                     ''
                     ], 
-                icon = ''
+                icon = 'YQ=='
             )
         else :
             return ReportFolderCreateVM(

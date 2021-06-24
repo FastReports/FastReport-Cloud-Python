@@ -36,10 +36,11 @@ class TestRenameDataSourceVM(unittest.TestCase):
         # model = fastreport_cloud_sdk.models.rename_data_source_vm.RenameDataSourceVM()  # noqa: E501
         if include_optional :
             return RenameDataSourceVM(
-                name = ''
+                name = '0'
             )
         else :
             return RenameDataSourceVM(
+                name = '0',
         )
 
     def testRenameDataSourceVM(self):
