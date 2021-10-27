@@ -55,8 +55,7 @@ class InvitedUser(object):
         self._invited_at = None
         self.discriminator = None
 
-        if user_id is not None:
-            self.user_id = user_id
+        self.user_id = user_id
         if invited_at is not None:
             self.invited_at = invited_at
 

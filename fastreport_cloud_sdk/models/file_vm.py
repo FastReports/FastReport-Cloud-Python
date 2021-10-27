@@ -40,11 +40,11 @@ class FileVM(object):
         'parent_id': 'str',
         'tags': 'list[str]',
         'icon': 'str',
-        'type': 'str',
+        'type': 'FileType',
         'size': 'int',
         'subscription_id': 'str',
-        'status': 'str',
-        'status_reason': 'str',
+        'status': 'FileStatus',
+        'status_reason': 'FileStatusReason',
         'id': 'str',
         'created_time': 'datetime',
         'creator_user_id': 'str',
@@ -91,34 +91,26 @@ class FileVM(object):
         self._editor_user_id = None
         self.discriminator = None
 
-        if name is not None:
-            self.name = name
-        if parent_id is not None:
-            self.parent_id = parent_id
-        if tags is not None:
-            self.tags = tags
-        if icon is not None:
-            self.icon = icon
+        self.name = name
+        self.parent_id = parent_id
+        self.tags = tags
+        self.icon = icon
         if type is not None:
             self.type = type
         if size is not None:
             self.size = size
-        if subscription_id is not None:
-            self.subscription_id = subscription_id
+        self.subscription_id = subscription_id
         if status is not None:
             self.status = status
         if status_reason is not None:
             self.status_reason = status_reason
-        if id is not None:
-            self.id = id
+        self.id = id
         if created_time is not None:
             self.created_time = created_time
-        if creator_user_id is not None:
-            self.creator_user_id = creator_user_id
+        self.creator_user_id = creator_user_id
         if edited_time is not None:
             self.edited_time = edited_time
-        if editor_user_id is not None:
-            self.editor_user_id = editor_user_id
+        self.editor_user_id = editor_user_id
 
     @property
     def name(self):
@@ -201,9 +193,6 @@ class FileVM(object):
         :param icon: The icon of this FileVM.  # noqa: E501
         :type icon: str
         """
-        if (self.local_vars_configuration.client_side_validation and
-                icon is not None and not re.search(r'^(?:[A-Za-z0-9+\/]{4})*(?:[A-Za-z0-9+\/]{2}==|[A-Za-z0-9+\/]{3}=)?$', icon)):  # noqa: E501
-            raise ValueError(r"Invalid value for `icon`, must be a follow pattern or equal to `/^(?:[A-Za-z0-9+\/]{4})*(?:[A-Za-z0-9+\/]{2}==|[A-Za-z0-9+\/]{3}=)?$/`")  # noqa: E501
 
         self._icon = icon
 
@@ -213,7 +202,7 @@ class FileVM(object):
 
 
         :return: The type of this FileVM.  # noqa: E501
-        :rtype: str
+        :rtype: FileType
         """
         return self._type
 
@@ -223,14 +212,8 @@ class FileVM(object):
 
 
         :param type: The type of this FileVM.  # noqa: E501
-        :type type: str
+        :type type: FileType
         """
-        allowed_values = ["File", "Folder"]  # noqa: E501
-        if self.local_vars_configuration.client_side_validation and type not in allowed_values:  # noqa: E501
-            raise ValueError(
-                "Invalid value for `type` ({0}), must be one of {1}"  # noqa: E501
-                .format(type, allowed_values)
-            )
 
         self._type = type
 
@@ -282,7 +265,7 @@ class FileVM(object):
 
 
         :return: The status of this FileVM.  # noqa: E501
-        :rtype: str
+        :rtype: FileStatus
         """
         return self._status
 
@@ -292,14 +275,8 @@ class FileVM(object):
 
 
         :param status: The status of this FileVM.  # noqa: E501
-        :type status: str
+        :type status: FileStatus
         """
-        allowed_values = ["None", "InQueue", "InProcess", "Success", "Failed"]  # noqa: E501
-        if self.local_vars_configuration.client_side_validation and status not in allowed_values:  # noqa: E501
-            raise ValueError(
-                "Invalid value for `status` ({0}), must be one of {1}"  # noqa: E501
-                .format(status, allowed_values)
-            )
 
         self._status = status
 
@@ -309,7 +286,7 @@ class FileVM(object):
 
 
         :return: The status_reason of this FileVM.  # noqa: E501
-        :rtype: str
+        :rtype: FileStatusReason
         """
         return self._status_reason
 
@@ -319,14 +296,8 @@ class FileVM(object):
 
 
         :param status_reason: The status_reason of this FileVM.  # noqa: E501
-        :type status_reason: str
+        :type status_reason: FileStatusReason
         """
-        allowed_values = ["None", "AllRight", "Hang", "Error", "NotFound", "NotEnoughSpace", "ExportStarted", "PreparationStarted", "CrashLoop"]  # noqa: E501
-        if self.local_vars_configuration.client_side_validation and status_reason not in allowed_values:  # noqa: E501
-            raise ValueError(
-                "Invalid value for `status_reason` ({0}), must be one of {1}"  # noqa: E501
-                .format(status_reason, allowed_values)
-            )
 
         self._status_reason = status_reason
 

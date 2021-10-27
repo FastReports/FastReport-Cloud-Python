@@ -156,7 +156,7 @@ class SubscriptionInvitesApi(object):
         body_params = None
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json', 'text/json', 'text/plain'])  # noqa: E501
+            ['application/json'])  # noqa: E501
 
         # Authentication setting
         auth_settings = ['ApiKey', 'JWT']  # noqa: E501
@@ -191,8 +191,8 @@ class SubscriptionInvitesApi(object):
 
         :param subscription_id: id (required)
         :type subscription_id: str
-        :param create_invite_vm: create VM
-        :type create_invite_vm: CreateSubscriptionInviteVM
+        :param create_subscription_invite_vm: create VM
+        :type create_subscription_invite_vm: CreateSubscriptionInviteVM
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
@@ -222,8 +222,8 @@ class SubscriptionInvitesApi(object):
 
         :param subscription_id: id (required)
         :type subscription_id: str
-        :param create_invite_vm: create VM
-        :type create_invite_vm: CreateSubscriptionInviteVM
+        :param create_subscription_invite_vm: create VM
+        :type create_subscription_invite_vm: CreateSubscriptionInviteVM
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
         :param _return_http_data_only: response data without head status code
@@ -251,7 +251,7 @@ class SubscriptionInvitesApi(object):
 
         all_params = [
             'subscription_id',
-            'create_invite_vm'
+            'create_subscription_invite_vm'
         ]
         all_params.extend(
             [
@@ -292,15 +292,15 @@ class SubscriptionInvitesApi(object):
         local_var_files = {}
 
         body_params = None
-        if 'create_invite_vm' in local_var_params:
-            body_params = local_var_params['create_invite_vm']
+        if 'create_subscription_invite_vm' in local_var_params:
+            body_params = local_var_params['create_subscription_invite_vm']
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json', 'text/json', 'text/plain'])  # noqa: E501
+            ['application/json'])  # noqa: E501
 
         # HTTP header `Content-Type`
         header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
-            ['application/json-patch+json', 'application/json', 'text/json', 'application/*+json'])  # noqa: E501
+            ['application/json', 'text/json', 'application/*+json'])  # noqa: E501
 
         # Authentication setting
         auth_settings = ['ApiKey', 'JWT']  # noqa: E501
@@ -451,7 +451,7 @@ class SubscriptionInvitesApi(object):
         body_params = None
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json', 'text/json', 'text/plain'])  # noqa: E501
+            ['application/json'])  # noqa: E501
 
         # Authentication setting
         auth_settings = ['ApiKey', 'JWT']  # noqa: E501
@@ -584,7 +584,7 @@ class SubscriptionInvitesApi(object):
         body_params = None
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json', 'text/json', 'text/plain'])  # noqa: E501
+            ['application/json'])  # noqa: E501
 
         # Authentication setting
         auth_settings = ['ApiKey', 'JWT']  # noqa: E501

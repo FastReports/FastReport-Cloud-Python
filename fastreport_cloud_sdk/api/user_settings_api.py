@@ -132,7 +132,7 @@ class UserSettingsApi(object):
         body_params = None
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json', 'text/json', 'text/plain'])  # noqa: E501
+            ['application/json'])  # noqa: E501
 
         # Authentication setting
         auth_settings = ['ApiKey', 'JWT']  # noqa: E501
@@ -168,8 +168,8 @@ class UserSettingsApi(object):
         >>> thread = api.user_settings_update_my_settings(async_req=True)
         >>> result = thread.get()
 
-        :param model:
-        :type model: UpdateUserSettingsVM
+        :param update_user_settings_vm:
+        :type update_user_settings_vm: UpdateUserSettingsVM
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
@@ -197,8 +197,8 @@ class UserSettingsApi(object):
         >>> thread = api.user_settings_update_my_settings_with_http_info(async_req=True)
         >>> result = thread.get()
 
-        :param model:
-        :type model: UpdateUserSettingsVM
+        :param update_user_settings_vm:
+        :type update_user_settings_vm: UpdateUserSettingsVM
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
         :param _return_http_data_only: response data without head status code
@@ -225,7 +225,7 @@ class UserSettingsApi(object):
         local_var_params = locals()
 
         all_params = [
-            'model'
+            'update_user_settings_vm'
         ]
         all_params.extend(
             [
@@ -258,15 +258,15 @@ class UserSettingsApi(object):
         local_var_files = {}
 
         body_params = None
-        if 'model' in local_var_params:
-            body_params = local_var_params['model']
+        if 'update_user_settings_vm' in local_var_params:
+            body_params = local_var_params['update_user_settings_vm']
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json', 'text/json', 'text/plain'])  # noqa: E501
+            ['application/json'])  # noqa: E501
 
         # HTTP header `Content-Type`
         header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
-            ['application/json-patch+json', 'application/json', 'text/json', 'application/*+json'])  # noqa: E501
+            ['application/json', 'text/json', 'application/*+json'])  # noqa: E501
 
         # Authentication setting
         auth_settings = ['ApiKey', 'JWT']  # noqa: E501

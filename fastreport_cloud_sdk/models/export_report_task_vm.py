@@ -36,124 +36,87 @@ class ExportReportTaskVM(object):
                             and the value is json key in definition.
     """
     openapi_types = {
-        'file_name': 'str',
-        'folder_id': 'str',
-        'locale': 'str',
+        'export_parameters': 'dict(str, str)',
+        'format': 'ExportFormat',
         'pages_count': 'int',
-        'format': 'str',
-        'export_parameters': 'dict(str, str)'
+        'name': 'str',
+        'subscription_id': 'str',
+        'type': 'TaskType'
     }
 
     attribute_map = {
-        'file_name': 'fileName',
-        'folder_id': 'folderId',
-        'locale': 'locale',
-        'pages_count': 'pagesCount',
+        'export_parameters': 'exportParameters',
         'format': 'format',
-        'export_parameters': 'exportParameters'
+        'pages_count': 'pagesCount',
+        'name': 'name',
+        'subscription_id': 'subscriptionId',
+        'type': 'type'
     }
 
-    def __init__(self, file_name=None, folder_id=None, locale=None, pages_count=None, format=None, export_parameters=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, export_parameters=None, format=None, pages_count=None, name=None, subscription_id=None, type=None, local_vars_configuration=None):  # noqa: E501
         """ExportReportTaskVM - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration.get_default_copy()
         self.local_vars_configuration = local_vars_configuration
 
-        self._file_name = None
-        self._folder_id = None
-        self._locale = None
-        self._pages_count = None
-        self._format = None
         self._export_parameters = None
+        self._format = None
+        self._pages_count = None
+        self._name = None
+        self._subscription_id = None
+        self._type = None
         self.discriminator = None
 
-        if file_name is not None:
-            self.file_name = file_name
-        if folder_id is not None:
-            self.folder_id = folder_id
-        if locale is not None:
-            self.locale = locale
-        if pages_count is not None:
-            self.pages_count = pages_count
+        self.export_parameters = export_parameters
         if format is not None:
             self.format = format
-        if export_parameters is not None:
-            self.export_parameters = export_parameters
+        self.pages_count = pages_count
+        self.name = name
+        self.subscription_id = subscription_id
+        if type is not None:
+            self.type = type
 
     @property
-    def file_name(self):
-        """Gets the file_name of this ExportReportTaskVM.  # noqa: E501
+    def export_parameters(self):
+        """Gets the export_parameters of this ExportReportTaskVM.  # noqa: E501
 
 
-        :return: The file_name of this ExportReportTaskVM.  # noqa: E501
-        :rtype: str
+        :return: The export_parameters of this ExportReportTaskVM.  # noqa: E501
+        :rtype: dict(str, str)
         """
-        return self._file_name
+        return self._export_parameters
 
-    @file_name.setter
-    def file_name(self, file_name):
-        """Sets the file_name of this ExportReportTaskVM.
+    @export_parameters.setter
+    def export_parameters(self, export_parameters):
+        """Sets the export_parameters of this ExportReportTaskVM.
 
 
-        :param file_name: The file_name of this ExportReportTaskVM.  # noqa: E501
-        :type file_name: str
+        :param export_parameters: The export_parameters of this ExportReportTaskVM.  # noqa: E501
+        :type export_parameters: dict(str, str)
         """
-        if (self.local_vars_configuration.client_side_validation and
-                file_name is not None and len(file_name) > 250):
-            raise ValueError("Invalid value for `file_name`, length must be less than or equal to `250`")  # noqa: E501
-        if (self.local_vars_configuration.client_side_validation and
-                file_name is not None and len(file_name) < 0):
-            raise ValueError("Invalid value for `file_name`, length must be greater than or equal to `0`")  # noqa: E501
 
-        self._file_name = file_name
+        self._export_parameters = export_parameters
 
     @property
-    def folder_id(self):
-        """Gets the folder_id of this ExportReportTaskVM.  # noqa: E501
+    def format(self):
+        """Gets the format of this ExportReportTaskVM.  # noqa: E501
 
 
-        :return: The folder_id of this ExportReportTaskVM.  # noqa: E501
-        :rtype: str
+        :return: The format of this ExportReportTaskVM.  # noqa: E501
+        :rtype: ExportFormat
         """
-        return self._folder_id
+        return self._format
 
-    @folder_id.setter
-    def folder_id(self, folder_id):
-        """Sets the folder_id of this ExportReportTaskVM.
+    @format.setter
+    def format(self, format):
+        """Sets the format of this ExportReportTaskVM.
 
 
-        :param folder_id: The folder_id of this ExportReportTaskVM.  # noqa: E501
-        :type folder_id: str
+        :param format: The format of this ExportReportTaskVM.  # noqa: E501
+        :type format: ExportFormat
         """
-        if (self.local_vars_configuration.client_side_validation and
-                folder_id is not None and not re.search(r'(^$)|(^[A-Fa-f0-9]{24}$)', folder_id)):  # noqa: E501
-            raise ValueError(r"Invalid value for `folder_id`, must be a follow pattern or equal to `/(^$)|(^[A-Fa-f0-9]{24}$)/`")  # noqa: E501
 
-        self._folder_id = folder_id
-
-    @property
-    def locale(self):
-        """Gets the locale of this ExportReportTaskVM.  # noqa: E501
-
-
-        :return: The locale of this ExportReportTaskVM.  # noqa: E501
-        :rtype: str
-        """
-        return self._locale
-
-    @locale.setter
-    def locale(self, locale):
-        """Sets the locale of this ExportReportTaskVM.
-
-
-        :param locale: The locale of this ExportReportTaskVM.  # noqa: E501
-        :type locale: str
-        """
-        if (self.local_vars_configuration.client_side_validation and
-                locale is not None and not re.search(r'^[a-zA-Z]{2,4}(-[a-zA-Z]{2,4}){0,2}$', locale)):  # noqa: E501
-            raise ValueError(r"Invalid value for `locale`, must be a follow pattern or equal to `/^[a-zA-Z]{2,4}(-[a-zA-Z]{2,4}){0,2}$/`")  # noqa: E501
-
-        self._locale = locale
+        self._format = format
 
     @property
     def pages_count(self):
@@ -183,52 +146,76 @@ class ExportReportTaskVM(object):
         self._pages_count = pages_count
 
     @property
-    def format(self):
-        """Gets the format of this ExportReportTaskVM.  # noqa: E501
+    def name(self):
+        """Gets the name of this ExportReportTaskVM.  # noqa: E501
 
 
-        :return: The format of this ExportReportTaskVM.  # noqa: E501
+        :return: The name of this ExportReportTaskVM.  # noqa: E501
         :rtype: str
         """
-        return self._format
+        return self._name
 
-    @format.setter
-    def format(self, format):
-        """Sets the format of this ExportReportTaskVM.
+    @name.setter
+    def name(self, name):
+        """Sets the name of this ExportReportTaskVM.
 
 
-        :param format: The format of this ExportReportTaskVM.  # noqa: E501
-        :type format: str
+        :param name: The name of this ExportReportTaskVM.  # noqa: E501
+        :type name: str
         """
-        allowed_values = ["Pdf", "Html", "Mht", "Image", "Biff8", "Csv", "Dbf", "Json", "LaTeX", "Odt", "Ods", "Docx", "Pptx", "Xlsx", "Xps", "Ppml", "PS", "Richtext", "Svg", "Text", "Xaml", "Xml", "Zpl"]  # noqa: E501
-        if self.local_vars_configuration.client_side_validation and format not in allowed_values:  # noqa: E501
-            raise ValueError(
-                "Invalid value for `format` ({0}), must be one of {1}"  # noqa: E501
-                .format(format, allowed_values)
-            )
+        if (self.local_vars_configuration.client_side_validation and
+                name is not None and len(name) > 50):
+            raise ValueError("Invalid value for `name`, length must be less than or equal to `50`")  # noqa: E501
+        if (self.local_vars_configuration.client_side_validation and
+                name is not None and len(name) < 1):
+            raise ValueError("Invalid value for `name`, length must be greater than or equal to `1`")  # noqa: E501
 
-        self._format = format
+        self._name = name
 
     @property
-    def export_parameters(self):
-        """Gets the export_parameters of this ExportReportTaskVM.  # noqa: E501
+    def subscription_id(self):
+        """Gets the subscription_id of this ExportReportTaskVM.  # noqa: E501
 
 
-        :return: The export_parameters of this ExportReportTaskVM.  # noqa: E501
-        :rtype: dict(str, str)
+        :return: The subscription_id of this ExportReportTaskVM.  # noqa: E501
+        :rtype: str
         """
-        return self._export_parameters
+        return self._subscription_id
 
-    @export_parameters.setter
-    def export_parameters(self, export_parameters):
-        """Sets the export_parameters of this ExportReportTaskVM.
+    @subscription_id.setter
+    def subscription_id(self, subscription_id):
+        """Sets the subscription_id of this ExportReportTaskVM.
 
 
-        :param export_parameters: The export_parameters of this ExportReportTaskVM.  # noqa: E501
-        :type export_parameters: dict(str, str)
+        :param subscription_id: The subscription_id of this ExportReportTaskVM.  # noqa: E501
+        :type subscription_id: str
+        """
+        if (self.local_vars_configuration.client_side_validation and
+                subscription_id is not None and not re.search(r'(^$)|(^[A-Fa-f0-9]{24}$)', subscription_id)):  # noqa: E501
+            raise ValueError(r"Invalid value for `subscription_id`, must be a follow pattern or equal to `/(^$)|(^[A-Fa-f0-9]{24}$)/`")  # noqa: E501
+
+        self._subscription_id = subscription_id
+
+    @property
+    def type(self):
+        """Gets the type of this ExportReportTaskVM.  # noqa: E501
+
+
+        :return: The type of this ExportReportTaskVM.  # noqa: E501
+        :rtype: TaskType
+        """
+        return self._type
+
+    @type.setter
+    def type(self, type):
+        """Sets the type of this ExportReportTaskVM.
+
+
+        :param type: The type of this ExportReportTaskVM.  # noqa: E501
+        :type type: TaskType
         """
 
-        self._export_parameters = export_parameters
+        self._type = type
 
     def to_dict(self, serialize=False):
         """Returns the model properties as a dict"""

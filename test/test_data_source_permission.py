@@ -28,29 +28,10 @@ class TestDataSourcePermission(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(self, include_optional):
-        """Test DataSourcePermission
-            include_option is a boolean, when False only required
-            params are included, when True both required and
-            optional params are included """
-        # model = fastreport_cloud_sdk.models.data_source_permission.DataSourcePermission()  # noqa: E501
-        if include_optional :
-            return DataSourcePermission(
-                create = 0, 
-                delete = 0, 
-                execute = 0, 
-                get = 0, 
-                update = 0, 
-                administrate = 0
-            )
-        else :
-            return DataSourcePermission(
-        )
-
     def testDataSourcePermission(self):
         """Test DataSourcePermission"""
-        inst_req_only = self.make_instance(include_optional=False)
-        inst_req_and_optional = self.make_instance(include_optional=True)
+        # inst_req_only = self.make_instance(include_optional=False)
+        # inst_req_and_optional = self.make_instance(include_optional=True)
 
 if __name__ == '__main__':
     unittest.main()

@@ -28,41 +28,10 @@ class TestExportVM(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(self, include_optional):
-        """Test ExportVM
-            include_option is a boolean, when False only required
-            params are included, when True both required and
-            optional params are included """
-        # model = fastreport_cloud_sdk.models.export_vm.ExportVM()  # noqa: E501
-        if include_optional :
-            return ExportVM(
-                format = 'Pdf', 
-                report_id = '', 
-                name = '', 
-                parent_id = '', 
-                tags = [
-                    ''
-                    ], 
-                icon = 'YQ==', 
-                type = 'File', 
-                size = 56, 
-                subscription_id = '', 
-                status = 'None', 
-                status_reason = 'None', 
-                id = '', 
-                created_time = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
-                creator_user_id = '', 
-                edited_time = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
-                editor_user_id = ''
-            )
-        else :
-            return ExportVM(
-        )
-
     def testExportVM(self):
         """Test ExportVM"""
-        inst_req_only = self.make_instance(include_optional=False)
-        inst_req_and_optional = self.make_instance(include_optional=True)
+        # inst_req_only = self.make_instance(include_optional=False)
+        # inst_req_and_optional = self.make_instance(include_optional=True)
 
 if __name__ == '__main__':
     unittest.main()

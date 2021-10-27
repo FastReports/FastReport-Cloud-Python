@@ -38,15 +38,6 @@ class ReportVM(object):
     openapi_types = {
         'template_id': 'str',
         'report_info': 'ReportInfo',
-        'name': 'str',
-        'parent_id': 'str',
-        'tags': 'list[str]',
-        'icon': 'str',
-        'type': 'str',
-        'size': 'int',
-        'subscription_id': 'str',
-        'status': 'str',
-        'status_reason': 'str',
         'id': 'str',
         'created_time': 'datetime',
         'creator_user_id': 'str',
@@ -57,15 +48,6 @@ class ReportVM(object):
     attribute_map = {
         'template_id': 'templateId',
         'report_info': 'reportInfo',
-        'name': 'name',
-        'parent_id': 'parentId',
-        'tags': 'tags',
-        'icon': 'icon',
-        'type': 'type',
-        'size': 'size',
-        'subscription_id': 'subscriptionId',
-        'status': 'status',
-        'status_reason': 'statusReason',
         'id': 'id',
         'created_time': 'createdTime',
         'creator_user_id': 'creatorUserId',
@@ -73,7 +55,7 @@ class ReportVM(object):
         'editor_user_id': 'editorUserId'
     }
 
-    def __init__(self, template_id=None, report_info=None, name=None, parent_id=None, tags=None, icon=None, type=None, size=None, subscription_id=None, status=None, status_reason=None, id=None, created_time=None, creator_user_id=None, edited_time=None, editor_user_id=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, template_id=None, report_info=None, id=None, created_time=None, creator_user_id=None, edited_time=None, editor_user_id=None, local_vars_configuration=None):  # noqa: E501
         """ReportVM - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration.get_default_copy()
@@ -81,15 +63,6 @@ class ReportVM(object):
 
         self._template_id = None
         self._report_info = None
-        self._name = None
-        self._parent_id = None
-        self._tags = None
-        self._icon = None
-        self._type = None
-        self._size = None
-        self._subscription_id = None
-        self._status = None
-        self._status_reason = None
         self._id = None
         self._created_time = None
         self._creator_user_id = None
@@ -97,38 +70,16 @@ class ReportVM(object):
         self._editor_user_id = None
         self.discriminator = None
 
-        if template_id is not None:
-            self.template_id = template_id
+        self.template_id = template_id
         if report_info is not None:
             self.report_info = report_info
-        if name is not None:
-            self.name = name
-        if parent_id is not None:
-            self.parent_id = parent_id
-        if tags is not None:
-            self.tags = tags
-        if icon is not None:
-            self.icon = icon
-        if type is not None:
-            self.type = type
-        if size is not None:
-            self.size = size
-        if subscription_id is not None:
-            self.subscription_id = subscription_id
-        if status is not None:
-            self.status = status
-        if status_reason is not None:
-            self.status_reason = status_reason
-        if id is not None:
-            self.id = id
+        self.id = id
         if created_time is not None:
             self.created_time = created_time
-        if creator_user_id is not None:
-            self.creator_user_id = creator_user_id
+        self.creator_user_id = creator_user_id
         if edited_time is not None:
             self.edited_time = edited_time
-        if editor_user_id is not None:
-            self.editor_user_id = editor_user_id
+        self.editor_user_id = editor_user_id
 
     @property
     def template_id(self):
@@ -171,216 +122,6 @@ class ReportVM(object):
         """
 
         self._report_info = report_info
-
-    @property
-    def name(self):
-        """Gets the name of this ReportVM.  # noqa: E501
-
-
-        :return: The name of this ReportVM.  # noqa: E501
-        :rtype: str
-        """
-        return self._name
-
-    @name.setter
-    def name(self, name):
-        """Sets the name of this ReportVM.
-
-
-        :param name: The name of this ReportVM.  # noqa: E501
-        :type name: str
-        """
-
-        self._name = name
-
-    @property
-    def parent_id(self):
-        """Gets the parent_id of this ReportVM.  # noqa: E501
-
-
-        :return: The parent_id of this ReportVM.  # noqa: E501
-        :rtype: str
-        """
-        return self._parent_id
-
-    @parent_id.setter
-    def parent_id(self, parent_id):
-        """Sets the parent_id of this ReportVM.
-
-
-        :param parent_id: The parent_id of this ReportVM.  # noqa: E501
-        :type parent_id: str
-        """
-
-        self._parent_id = parent_id
-
-    @property
-    def tags(self):
-        """Gets the tags of this ReportVM.  # noqa: E501
-
-
-        :return: The tags of this ReportVM.  # noqa: E501
-        :rtype: list[str]
-        """
-        return self._tags
-
-    @tags.setter
-    def tags(self, tags):
-        """Sets the tags of this ReportVM.
-
-
-        :param tags: The tags of this ReportVM.  # noqa: E501
-        :type tags: list[str]
-        """
-
-        self._tags = tags
-
-    @property
-    def icon(self):
-        """Gets the icon of this ReportVM.  # noqa: E501
-
-
-        :return: The icon of this ReportVM.  # noqa: E501
-        :rtype: str
-        """
-        return self._icon
-
-    @icon.setter
-    def icon(self, icon):
-        """Sets the icon of this ReportVM.
-
-
-        :param icon: The icon of this ReportVM.  # noqa: E501
-        :type icon: str
-        """
-        if (self.local_vars_configuration.client_side_validation and
-                icon is not None and not re.search(r'^(?:[A-Za-z0-9+\/]{4})*(?:[A-Za-z0-9+\/]{2}==|[A-Za-z0-9+\/]{3}=)?$', icon)):  # noqa: E501
-            raise ValueError(r"Invalid value for `icon`, must be a follow pattern or equal to `/^(?:[A-Za-z0-9+\/]{4})*(?:[A-Za-z0-9+\/]{2}==|[A-Za-z0-9+\/]{3}=)?$/`")  # noqa: E501
-
-        self._icon = icon
-
-    @property
-    def type(self):
-        """Gets the type of this ReportVM.  # noqa: E501
-
-
-        :return: The type of this ReportVM.  # noqa: E501
-        :rtype: str
-        """
-        return self._type
-
-    @type.setter
-    def type(self, type):
-        """Sets the type of this ReportVM.
-
-
-        :param type: The type of this ReportVM.  # noqa: E501
-        :type type: str
-        """
-        allowed_values = ["File", "Folder"]  # noqa: E501
-        if self.local_vars_configuration.client_side_validation and type not in allowed_values:  # noqa: E501
-            raise ValueError(
-                "Invalid value for `type` ({0}), must be one of {1}"  # noqa: E501
-                .format(type, allowed_values)
-            )
-
-        self._type = type
-
-    @property
-    def size(self):
-        """Gets the size of this ReportVM.  # noqa: E501
-
-
-        :return: The size of this ReportVM.  # noqa: E501
-        :rtype: int
-        """
-        return self._size
-
-    @size.setter
-    def size(self, size):
-        """Sets the size of this ReportVM.
-
-
-        :param size: The size of this ReportVM.  # noqa: E501
-        :type size: int
-        """
-
-        self._size = size
-
-    @property
-    def subscription_id(self):
-        """Gets the subscription_id of this ReportVM.  # noqa: E501
-
-
-        :return: The subscription_id of this ReportVM.  # noqa: E501
-        :rtype: str
-        """
-        return self._subscription_id
-
-    @subscription_id.setter
-    def subscription_id(self, subscription_id):
-        """Sets the subscription_id of this ReportVM.
-
-
-        :param subscription_id: The subscription_id of this ReportVM.  # noqa: E501
-        :type subscription_id: str
-        """
-
-        self._subscription_id = subscription_id
-
-    @property
-    def status(self):
-        """Gets the status of this ReportVM.  # noqa: E501
-
-
-        :return: The status of this ReportVM.  # noqa: E501
-        :rtype: str
-        """
-        return self._status
-
-    @status.setter
-    def status(self, status):
-        """Sets the status of this ReportVM.
-
-
-        :param status: The status of this ReportVM.  # noqa: E501
-        :type status: str
-        """
-        allowed_values = ["None", "InQueue", "InProcess", "Success", "Failed"]  # noqa: E501
-        if self.local_vars_configuration.client_side_validation and status not in allowed_values:  # noqa: E501
-            raise ValueError(
-                "Invalid value for `status` ({0}), must be one of {1}"  # noqa: E501
-                .format(status, allowed_values)
-            )
-
-        self._status = status
-
-    @property
-    def status_reason(self):
-        """Gets the status_reason of this ReportVM.  # noqa: E501
-
-
-        :return: The status_reason of this ReportVM.  # noqa: E501
-        :rtype: str
-        """
-        return self._status_reason
-
-    @status_reason.setter
-    def status_reason(self, status_reason):
-        """Sets the status_reason of this ReportVM.
-
-
-        :param status_reason: The status_reason of this ReportVM.  # noqa: E501
-        :type status_reason: str
-        """
-        allowed_values = ["None", "AllRight", "Hang", "Error", "NotFound", "NotEnoughSpace", "ExportStarted", "PreparationStarted", "CrashLoop"]  # noqa: E501
-        if self.local_vars_configuration.client_side_validation and status_reason not in allowed_values:  # noqa: E501
-            raise ValueError(
-                "Invalid value for `status_reason` ({0}), must be one of {1}"  # noqa: E501
-                .format(status_reason, allowed_values)
-            )
-
-        self._status_reason = status_reason
 
     @property
     def id(self):

@@ -28,29 +28,10 @@ class TestSubscriptionPermission(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(self, include_optional):
-        """Test SubscriptionPermission
-            include_option is a boolean, when False only required
-            params are included, when True both required and
-            optional params are included """
-        # model = fastreport_cloud_sdk.models.subscription_permission.SubscriptionPermission()  # noqa: E501
-        if include_optional :
-            return SubscriptionPermission(
-                create = 0, 
-                delete = 0, 
-                execute = 0, 
-                get = 0, 
-                update = 0, 
-                administrate = 0
-            )
-        else :
-            return SubscriptionPermission(
-        )
-
     def testSubscriptionPermission(self):
         """Test SubscriptionPermission"""
-        inst_req_only = self.make_instance(include_optional=False)
-        inst_req_and_optional = self.make_instance(include_optional=True)
+        # inst_req_only = self.make_instance(include_optional=False)
+        # inst_req_and_optional = self.make_instance(include_optional=True)
 
 if __name__ == '__main__':
     unittest.main()

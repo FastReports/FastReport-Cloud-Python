@@ -39,9 +39,9 @@ class SubscriptionPlanVM(object):
         'id': 'str',
         'is_active': 'bool',
         'display_name': 'str',
-        'time_period_type': 'str',
+        'time_period_type': 'TimePeriodType',
         'time_period': 'int',
-        'readonly_time_limit_type': 'str',
+        'readonly_time_limit_type': 'TimePeriodType',
         'readonly_time_limit': 'int',
         'templates_space_limit': 'int',
         'reports_space_limit': 'int',
@@ -55,7 +55,8 @@ class SubscriptionPlanVM(object):
         'is_demo': 'bool',
         'url_to_buy': 'str',
         'unlimited_page': 'bool',
-        'page_limit': 'int'
+        'page_limit': 'int',
+        'tasks': 'TaskSettingsVM'
     }
 
     attribute_map = {
@@ -78,10 +79,11 @@ class SubscriptionPlanVM(object):
         'is_demo': 'isDemo',
         'url_to_buy': 'urlToBuy',
         'unlimited_page': 'unlimitedPage',
-        'page_limit': 'pageLimit'
+        'page_limit': 'pageLimit',
+        'tasks': 'tasks'
     }
 
-    def __init__(self, id=None, is_active=None, display_name=None, time_period_type=None, time_period=None, readonly_time_limit_type=None, readonly_time_limit=None, templates_space_limit=None, reports_space_limit=None, exports_space_limit=None, file_upload_size_limit=None, data_source_limit=None, max_users_count=None, has_space_overdraft=None, group_limit=None, online_designer=None, is_demo=None, url_to_buy=None, unlimited_page=None, page_limit=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, id=None, is_active=None, display_name=None, time_period_type=None, time_period=None, readonly_time_limit_type=None, readonly_time_limit=None, templates_space_limit=None, reports_space_limit=None, exports_space_limit=None, file_upload_size_limit=None, data_source_limit=None, max_users_count=None, has_space_overdraft=None, group_limit=None, online_designer=None, is_demo=None, url_to_buy=None, unlimited_page=None, page_limit=None, tasks=None, local_vars_configuration=None):  # noqa: E501
         """SubscriptionPlanVM - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration.get_default_copy()
@@ -107,48 +109,36 @@ class SubscriptionPlanVM(object):
         self._url_to_buy = None
         self._unlimited_page = None
         self._page_limit = None
+        self._tasks = None
         self.discriminator = None
 
-        if id is not None:
-            self.id = id
-        if is_active is not None:
-            self.is_active = is_active
-        if display_name is not None:
-            self.display_name = display_name
+        self.id = id
+        self.is_active = is_active
+        self.display_name = display_name
         if time_period_type is not None:
             self.time_period_type = time_period_type
-        if time_period is not None:
-            self.time_period = time_period
+        self.time_period = time_period
         if readonly_time_limit_type is not None:
             self.readonly_time_limit_type = readonly_time_limit_type
         if readonly_time_limit is not None:
             self.readonly_time_limit = readonly_time_limit
-        if templates_space_limit is not None:
-            self.templates_space_limit = templates_space_limit
-        if reports_space_limit is not None:
-            self.reports_space_limit = reports_space_limit
-        if exports_space_limit is not None:
-            self.exports_space_limit = exports_space_limit
-        if file_upload_size_limit is not None:
-            self.file_upload_size_limit = file_upload_size_limit
-        if data_source_limit is not None:
-            self.data_source_limit = data_source_limit
-        if max_users_count is not None:
-            self.max_users_count = max_users_count
-        if has_space_overdraft is not None:
-            self.has_space_overdraft = has_space_overdraft
-        if group_limit is not None:
-            self.group_limit = group_limit
-        if online_designer is not None:
-            self.online_designer = online_designer
-        if is_demo is not None:
-            self.is_demo = is_demo
-        if url_to_buy is not None:
-            self.url_to_buy = url_to_buy
+        self.templates_space_limit = templates_space_limit
+        self.reports_space_limit = reports_space_limit
+        self.exports_space_limit = exports_space_limit
+        self.file_upload_size_limit = file_upload_size_limit
+        self.data_source_limit = data_source_limit
+        self.max_users_count = max_users_count
+        self.has_space_overdraft = has_space_overdraft
+        self.group_limit = group_limit
+        self.online_designer = online_designer
+        self.is_demo = is_demo
+        self.url_to_buy = url_to_buy
         if unlimited_page is not None:
             self.unlimited_page = unlimited_page
         if page_limit is not None:
             self.page_limit = page_limit
+        if tasks is not None:
+            self.tasks = tasks
 
     @property
     def id(self):
@@ -219,7 +209,7 @@ class SubscriptionPlanVM(object):
 
 
         :return: The time_period_type of this SubscriptionPlanVM.  # noqa: E501
-        :rtype: str
+        :rtype: TimePeriodType
         """
         return self._time_period_type
 
@@ -229,14 +219,8 @@ class SubscriptionPlanVM(object):
 
 
         :param time_period_type: The time_period_type of this SubscriptionPlanVM.  # noqa: E501
-        :type time_period_type: str
+        :type time_period_type: TimePeriodType
         """
-        allowed_values = ["Second", "Minute", "Hour", "Day", "Week", "Month", "Year"]  # noqa: E501
-        if self.local_vars_configuration.client_side_validation and time_period_type not in allowed_values:  # noqa: E501
-            raise ValueError(
-                "Invalid value for `time_period_type` ({0}), must be one of {1}"  # noqa: E501
-                .format(time_period_type, allowed_values)
-            )
 
         self._time_period_type = time_period_type
 
@@ -267,7 +251,7 @@ class SubscriptionPlanVM(object):
 
 
         :return: The readonly_time_limit_type of this SubscriptionPlanVM.  # noqa: E501
-        :rtype: str
+        :rtype: TimePeriodType
         """
         return self._readonly_time_limit_type
 
@@ -277,14 +261,8 @@ class SubscriptionPlanVM(object):
 
 
         :param readonly_time_limit_type: The readonly_time_limit_type of this SubscriptionPlanVM.  # noqa: E501
-        :type readonly_time_limit_type: str
+        :type readonly_time_limit_type: TimePeriodType
         """
-        allowed_values = ["Second", "Minute", "Hour", "Day", "Week", "Month", "Year"]  # noqa: E501
-        if self.local_vars_configuration.client_side_validation and readonly_time_limit_type not in allowed_values:  # noqa: E501
-            raise ValueError(
-                "Invalid value for `readonly_time_limit_type` ({0}), must be one of {1}"  # noqa: E501
-                .format(readonly_time_limit_type, allowed_values)
-            )
 
         self._readonly_time_limit_type = readonly_time_limit_type
 
@@ -581,6 +559,27 @@ class SubscriptionPlanVM(object):
         """
 
         self._page_limit = page_limit
+
+    @property
+    def tasks(self):
+        """Gets the tasks of this SubscriptionPlanVM.  # noqa: E501
+
+
+        :return: The tasks of this SubscriptionPlanVM.  # noqa: E501
+        :rtype: TaskSettingsVM
+        """
+        return self._tasks
+
+    @tasks.setter
+    def tasks(self, tasks):
+        """Sets the tasks of this SubscriptionPlanVM.
+
+
+        :param tasks: The tasks of this SubscriptionPlanVM.  # noqa: E501
+        :type tasks: TaskSettingsVM
+        """
+
+        self._tasks = tasks
 
     def to_dict(self, serialize=False):
         """Returns the model properties as a dict"""

@@ -45,8 +45,8 @@ class DataSourcesApi(object):
         >>> thread = api.data_sources_create_data_source(async_req=True)
         >>> result = thread.get()
 
-        :param view_model: create viewmodel
-        :type view_model: CreateDataSourceVM
+        :param create_data_source_vm: create viewmodel
+        :type create_data_source_vm: CreateDataSourceVM
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
@@ -74,8 +74,8 @@ class DataSourcesApi(object):
         >>> thread = api.data_sources_create_data_source_with_http_info(async_req=True)
         >>> result = thread.get()
 
-        :param view_model: create viewmodel
-        :type view_model: CreateDataSourceVM
+        :param create_data_source_vm: create viewmodel
+        :type create_data_source_vm: CreateDataSourceVM
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
         :param _return_http_data_only: response data without head status code
@@ -102,7 +102,7 @@ class DataSourcesApi(object):
         local_var_params = locals()
 
         all_params = [
-            'view_model'
+            'create_data_source_vm'
         ]
         all_params.extend(
             [
@@ -135,15 +135,15 @@ class DataSourcesApi(object):
         local_var_files = {}
 
         body_params = None
-        if 'view_model' in local_var_params:
-            body_params = local_var_params['view_model']
+        if 'create_data_source_vm' in local_var_params:
+            body_params = local_var_params['create_data_source_vm']
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json', 'text/json', 'text/plain'])  # noqa: E501
+            ['application/json'])  # noqa: E501
 
         # HTTP header `Content-Type`
         header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
-            ['application/json-patch+json', 'application/json', 'text/json', 'application/*+json'])  # noqa: E501
+            ['application/json', 'text/json', 'application/*+json'])  # noqa: E501
 
         # Authentication setting
         auth_settings = ['ApiKey', 'JWT']  # noqa: E501
@@ -283,7 +283,7 @@ class DataSourcesApi(object):
         body_params = None
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json', 'text/json', 'text/plain'])  # noqa: E501
+            ['application/json'])  # noqa: E501
 
         # Authentication setting
         auth_settings = ['ApiKey', 'JWT']  # noqa: E501
@@ -416,7 +416,7 @@ class DataSourcesApi(object):
         body_params = None
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json', 'text/json', 'text/plain'])  # noqa: E501
+            ['application/json'])  # noqa: E501
 
         # Authentication setting
         auth_settings = ['ApiKey', 'JWT']  # noqa: E501
@@ -441,7 +441,7 @@ class DataSourcesApi(object):
             _request_auth=local_var_params.get('_request_auth'))
 
     def data_sources_get_available_data_sources(self, **kwargs):  # noqa: E501
-        """Returns all of the data sources, that current user have permission for in a subscription  if subscription id is null, returns all data sources, that current user have permission for  # noqa: E501
+        """Returns all of the data sources, that current user have permission for in a subscription <br />  The method will return minimal infomration about the datasources: <br />  id, name, editedTime, status.  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
@@ -455,6 +455,10 @@ class DataSourcesApi(object):
         :type skip: int
         :param take: how many data sources will be taken
         :type take: int
+        :param order_by: field to order by
+        :type order_by: DataSourceSorting
+        :param desc: descending sort
+        :type desc: bool
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
@@ -474,7 +478,7 @@ class DataSourcesApi(object):
         return self.data_sources_get_available_data_sources_with_http_info(**kwargs)  # noqa: E501
 
     def data_sources_get_available_data_sources_with_http_info(self, **kwargs):  # noqa: E501
-        """Returns all of the data sources, that current user have permission for in a subscription  if subscription id is null, returns all data sources, that current user have permission for  # noqa: E501
+        """Returns all of the data sources, that current user have permission for in a subscription <br />  The method will return minimal infomration about the datasources: <br />  id, name, editedTime, status.  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
@@ -488,6 +492,10 @@ class DataSourcesApi(object):
         :type skip: int
         :param take: how many data sources will be taken
         :type take: int
+        :param order_by: field to order by
+        :type order_by: DataSourceSorting
+        :param desc: descending sort
+        :type desc: bool
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
         :param _return_http_data_only: response data without head status code
@@ -516,7 +524,9 @@ class DataSourcesApi(object):
         all_params = [
             'subscription_id',
             'skip',
-            'take'
+            'take',
+            'order_by',
+            'desc'
         ]
         all_params.extend(
             [
@@ -558,6 +568,10 @@ class DataSourcesApi(object):
             query_params.append(('skip', local_var_params['skip']))  # noqa: E501
         if 'take' in local_var_params and local_var_params['take'] is not None:  # noqa: E501
             query_params.append(('take', local_var_params['take']))  # noqa: E501
+        if 'order_by' in local_var_params and local_var_params['order_by'] is not None:  # noqa: E501
+            query_params.append(('orderBy', local_var_params['order_by']))  # noqa: E501
+        if 'desc' in local_var_params and local_var_params['desc'] is not None:  # noqa: E501
+            query_params.append(('desc', local_var_params['desc']))  # noqa: E501
 
         header_params = {}
 
@@ -567,7 +581,7 @@ class DataSourcesApi(object):
         body_params = None
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json', 'text/json', 'text/plain'])  # noqa: E501
+            ['application/json'])  # noqa: E501
 
         # Authentication setting
         auth_settings = ['ApiKey', 'JWT']  # noqa: E501
@@ -706,7 +720,7 @@ class DataSourcesApi(object):
         body_params = None
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json', 'text/json', 'text/plain'])  # noqa: E501
+            ['application/json'])  # noqa: E501
 
         # Authentication setting
         auth_settings = ['ApiKey', 'JWT']  # noqa: E501
@@ -846,7 +860,7 @@ class DataSourcesApi(object):
         body_params = None
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json', 'text/json', 'text/plain'])  # noqa: E501
+            ['application/json'])  # noqa: E501
 
         # Authentication setting
         auth_settings = ['ApiKey', 'JWT']  # noqa: E501
@@ -888,8 +902,8 @@ class DataSourcesApi(object):
 
         :param id: data source id (required)
         :type id: str
-        :param rename_model: rename viewmodel
-        :type rename_model: RenameDataSourceVM
+        :param rename_data_source_vm: rename viewmodel
+        :type rename_data_source_vm: RenameDataSourceVM
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
@@ -919,8 +933,8 @@ class DataSourcesApi(object):
 
         :param id: data source id (required)
         :type id: str
-        :param rename_model: rename viewmodel
-        :type rename_model: RenameDataSourceVM
+        :param rename_data_source_vm: rename viewmodel
+        :type rename_data_source_vm: RenameDataSourceVM
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
         :param _return_http_data_only: response data without head status code
@@ -948,7 +962,7 @@ class DataSourcesApi(object):
 
         all_params = [
             'id',
-            'rename_model'
+            'rename_data_source_vm'
         ]
         all_params.extend(
             [
@@ -989,15 +1003,15 @@ class DataSourcesApi(object):
         local_var_files = {}
 
         body_params = None
-        if 'rename_model' in local_var_params:
-            body_params = local_var_params['rename_model']
+        if 'rename_data_source_vm' in local_var_params:
+            body_params = local_var_params['rename_data_source_vm']
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json', 'text/json', 'text/plain'])  # noqa: E501
+            ['application/json'])  # noqa: E501
 
         # HTTP header `Content-Type`
         header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
-            ['application/json-patch+json', 'application/json', 'text/json', 'application/*+json'])  # noqa: E501
+            ['application/json', 'text/json', 'application/*+json'])  # noqa: E501
 
         # Authentication setting
         auth_settings = ['ApiKey', 'JWT']  # noqa: E501
@@ -1039,8 +1053,8 @@ class DataSourcesApi(object):
 
         :param id: data source id (required)
         :type id: str
-        :param update_model: update viewmodel
-        :type update_model: UpdateDataSourceConnectionStringVM
+        :param update_data_source_connection_string_vm: update viewmodel
+        :type update_data_source_connection_string_vm: UpdateDataSourceConnectionStringVM
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
@@ -1070,8 +1084,8 @@ class DataSourcesApi(object):
 
         :param id: data source id (required)
         :type id: str
-        :param update_model: update viewmodel
-        :type update_model: UpdateDataSourceConnectionStringVM
+        :param update_data_source_connection_string_vm: update viewmodel
+        :type update_data_source_connection_string_vm: UpdateDataSourceConnectionStringVM
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
         :param _return_http_data_only: response data without head status code
@@ -1099,7 +1113,7 @@ class DataSourcesApi(object):
 
         all_params = [
             'id',
-            'update_model'
+            'update_data_source_connection_string_vm'
         ]
         all_params.extend(
             [
@@ -1140,15 +1154,15 @@ class DataSourcesApi(object):
         local_var_files = {}
 
         body_params = None
-        if 'update_model' in local_var_params:
-            body_params = local_var_params['update_model']
+        if 'update_data_source_connection_string_vm' in local_var_params:
+            body_params = local_var_params['update_data_source_connection_string_vm']
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json', 'text/json', 'text/plain'])  # noqa: E501
+            ['application/json'])  # noqa: E501
 
         # HTTP header `Content-Type`
         header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
-            ['application/json-patch+json', 'application/json', 'text/json', 'application/*+json'])  # noqa: E501
+            ['application/json', 'text/json', 'application/*+json'])  # noqa: E501
 
         # Authentication setting
         auth_settings = ['ApiKey', 'JWT']  # noqa: E501
@@ -1190,8 +1204,8 @@ class DataSourcesApi(object):
 
         :param id: (required)
         :type id: str
-        :param permissions_vm:
-        :type permissions_vm: UpdateDataSourcePermissionsVM
+        :param update_data_source_permissions_vm:
+        :type update_data_source_permissions_vm: UpdateDataSourcePermissionsVM
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
@@ -1221,8 +1235,8 @@ class DataSourcesApi(object):
 
         :param id: (required)
         :type id: str
-        :param permissions_vm:
-        :type permissions_vm: UpdateDataSourcePermissionsVM
+        :param update_data_source_permissions_vm:
+        :type update_data_source_permissions_vm: UpdateDataSourcePermissionsVM
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
         :param _return_http_data_only: response data without head status code
@@ -1250,7 +1264,7 @@ class DataSourcesApi(object):
 
         all_params = [
             'id',
-            'permissions_vm'
+            'update_data_source_permissions_vm'
         ]
         all_params.extend(
             [
@@ -1291,15 +1305,15 @@ class DataSourcesApi(object):
         local_var_files = {}
 
         body_params = None
-        if 'permissions_vm' in local_var_params:
-            body_params = local_var_params['permissions_vm']
+        if 'update_data_source_permissions_vm' in local_var_params:
+            body_params = local_var_params['update_data_source_permissions_vm']
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json', 'text/json', 'text/plain'])  # noqa: E501
+            ['application/json'])  # noqa: E501
 
         # HTTP header `Content-Type`
         header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
-            ['application/json-patch+json', 'application/json', 'text/json', 'application/*+json'])  # noqa: E501
+            ['application/json', 'text/json', 'application/*+json'])  # noqa: E501
 
         # Authentication setting
         auth_settings = ['ApiKey', 'JWT']  # noqa: E501
@@ -1334,8 +1348,8 @@ class DataSourcesApi(object):
 
         :param id: data source id (required)
         :type id: str
-        :param updatesubscription_model: update subscription viewmodel
-        :type updatesubscription_model: UpdateDataSourceSubscriptionVM
+        :param update_data_source_subscription_vm: update subscription viewmodel
+        :type update_data_source_subscription_vm: UpdateDataSourceSubscriptionVM
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
@@ -1365,8 +1379,8 @@ class DataSourcesApi(object):
 
         :param id: data source id (required)
         :type id: str
-        :param updatesubscription_model: update subscription viewmodel
-        :type updatesubscription_model: UpdateDataSourceSubscriptionVM
+        :param update_data_source_subscription_vm: update subscription viewmodel
+        :type update_data_source_subscription_vm: UpdateDataSourceSubscriptionVM
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
         :param _return_http_data_only: response data without head status code
@@ -1394,7 +1408,7 @@ class DataSourcesApi(object):
 
         all_params = [
             'id',
-            'updatesubscription_model'
+            'update_data_source_subscription_vm'
         ]
         all_params.extend(
             [
@@ -1435,15 +1449,15 @@ class DataSourcesApi(object):
         local_var_files = {}
 
         body_params = None
-        if 'updatesubscription_model' in local_var_params:
-            body_params = local_var_params['updatesubscription_model']
+        if 'update_data_source_subscription_vm' in local_var_params:
+            body_params = local_var_params['update_data_source_subscription_vm']
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json', 'text/json', 'text/plain'])  # noqa: E501
+            ['application/json'])  # noqa: E501
 
         # HTTP header `Content-Type`
         header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
-            ['application/json-patch+json', 'application/json', 'text/json', 'application/*+json'])  # noqa: E501
+            ['application/json', 'text/json', 'application/*+json'])  # noqa: E501
 
         # Authentication setting
         auth_settings = ['ApiKey', 'JWT']  # noqa: E501

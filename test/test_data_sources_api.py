@@ -52,7 +52,7 @@ class TestDataSourcesApi(unittest.TestCase):
     def test_data_sources_get_available_data_sources(self):
         """Test case for data_sources_get_available_data_sources
 
-        Returns all of the data sources, that current user have permission for in a subscription  if subscription id is null, returns all data sources, that current user have permission for  # noqa: E501
+        Returns all of the data sources, that current user have permission for in a subscription <br />  The method will return minimal infomration about the datasources: <br />  id, name, editedTime, status.  # noqa: E501
         """
         pass
 

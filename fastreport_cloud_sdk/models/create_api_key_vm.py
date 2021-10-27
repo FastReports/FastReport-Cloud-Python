@@ -55,8 +55,7 @@ class CreateApiKeyVM(object):
         self._expired = None
         self.discriminator = None
 
-        if description is not None:
-            self.description = description
+        self.description = description
         self.expired = expired
 
     @property

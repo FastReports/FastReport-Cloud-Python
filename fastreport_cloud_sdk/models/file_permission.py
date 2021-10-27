@@ -36,12 +36,12 @@ class FilePermission(object):
                             and the value is json key in definition.
     """
     openapi_types = {
-        'create': 'int',
-        'delete': 'int',
-        'execute': 'int',
-        'get': 'int',
-        'update': 'int',
-        'administrate': 'int'
+        'create': 'FileCreate',
+        'delete': 'FileDelete',
+        'execute': 'FileExecute',
+        'get': 'FileGet',
+        'update': 'FileUpdate',
+        'administrate': 'FileAdministrate'
     }
 
     attribute_map = {
@@ -86,7 +86,7 @@ class FilePermission(object):
 
 
         :return: The create of this FilePermission.  # noqa: E501
-        :rtype: int
+        :rtype: FileCreate
         """
         return self._create
 
@@ -96,14 +96,8 @@ class FilePermission(object):
 
 
         :param create: The create of this FilePermission.  # noqa: E501
-        :type create: int
+        :type create: FileCreate
         """
-        allowed_values = [0, 1, -1]  # noqa: E501
-        if self.local_vars_configuration.client_side_validation and create not in allowed_values:  # noqa: E501
-            raise ValueError(
-                "Invalid value for `create` ({0}), must be one of {1}"  # noqa: E501
-                .format(create, allowed_values)
-            )
 
         self._create = create
 
@@ -113,7 +107,7 @@ class FilePermission(object):
 
 
         :return: The delete of this FilePermission.  # noqa: E501
-        :rtype: int
+        :rtype: FileDelete
         """
         return self._delete
 
@@ -123,14 +117,8 @@ class FilePermission(object):
 
 
         :param delete: The delete of this FilePermission.  # noqa: E501
-        :type delete: int
+        :type delete: FileDelete
         """
-        allowed_values = [0, 1, -1]  # noqa: E501
-        if self.local_vars_configuration.client_side_validation and delete not in allowed_values:  # noqa: E501
-            raise ValueError(
-                "Invalid value for `delete` ({0}), must be one of {1}"  # noqa: E501
-                .format(delete, allowed_values)
-            )
 
         self._delete = delete
 
@@ -140,7 +128,7 @@ class FilePermission(object):
 
 
         :return: The execute of this FilePermission.  # noqa: E501
-        :rtype: int
+        :rtype: FileExecute
         """
         return self._execute
 
@@ -150,14 +138,8 @@ class FilePermission(object):
 
 
         :param execute: The execute of this FilePermission.  # noqa: E501
-        :type execute: int
+        :type execute: FileExecute
         """
-        allowed_values = [0, 1, 2, 4, -1]  # noqa: E501
-        if self.local_vars_configuration.client_side_validation and execute not in allowed_values:  # noqa: E501
-            raise ValueError(
-                "Invalid value for `execute` ({0}), must be one of {1}"  # noqa: E501
-                .format(execute, allowed_values)
-            )
 
         self._execute = execute
 
@@ -167,7 +149,7 @@ class FilePermission(object):
 
 
         :return: The get of this FilePermission.  # noqa: E501
-        :rtype: int
+        :rtype: FileGet
         """
         return self._get
 
@@ -177,14 +159,8 @@ class FilePermission(object):
 
 
         :param get: The get of this FilePermission.  # noqa: E501
-        :type get: int
+        :type get: FileGet
         """
-        allowed_values = [0, 1, 2, 4, 8, 16, -1]  # noqa: E501
-        if self.local_vars_configuration.client_side_validation and get not in allowed_values:  # noqa: E501
-            raise ValueError(
-                "Invalid value for `get` ({0}), must be one of {1}"  # noqa: E501
-                .format(get, allowed_values)
-            )
 
         self._get = get
 
@@ -194,7 +170,7 @@ class FilePermission(object):
 
 
         :return: The update of this FilePermission.  # noqa: E501
-        :rtype: int
+        :rtype: FileUpdate
         """
         return self._update
 
@@ -204,14 +180,8 @@ class FilePermission(object):
 
 
         :param update: The update of this FilePermission.  # noqa: E501
-        :type update: int
+        :type update: FileUpdate
         """
-        allowed_values = [0, 1, 2, 4, 8, -1]  # noqa: E501
-        if self.local_vars_configuration.client_side_validation and update not in allowed_values:  # noqa: E501
-            raise ValueError(
-                "Invalid value for `update` ({0}), must be one of {1}"  # noqa: E501
-                .format(update, allowed_values)
-            )
 
         self._update = update
 
@@ -221,7 +191,7 @@ class FilePermission(object):
 
 
         :return: The administrate of this FilePermission.  # noqa: E501
-        :rtype: int
+        :rtype: FileAdministrate
         """
         return self._administrate
 
@@ -231,14 +201,8 @@ class FilePermission(object):
 
 
         :param administrate: The administrate of this FilePermission.  # noqa: E501
-        :type administrate: int
+        :type administrate: FileAdministrate
         """
-        allowed_values = [0, 1, 2, 4, 8, -1]  # noqa: E501
-        if self.local_vars_configuration.client_side_validation and administrate not in allowed_values:  # noqa: E501
-            raise ValueError(
-                "Invalid value for `administrate` ({0}), must be one of {1}"  # noqa: E501
-                .format(administrate, allowed_values)
-            )
 
         self._administrate = administrate
 

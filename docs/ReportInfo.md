@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 **name** | **str** |  | [optional] 
 **picture** | **str** |  | [optional] 
 **preview_picture_ratio** | **float** |  | [optional] 
-**save_mode** | **str** |  | [optional] 
+**save_mode** | [**SaveMode**](SaveMode.md) |  | [optional] 
 **save_preview_picture** | **bool** |  | [optional] 
 **tag** | **str** |  | [optional] 
 **version** | **str** |  | [optional] 

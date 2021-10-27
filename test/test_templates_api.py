@@ -178,7 +178,7 @@ class TestTemplatesApi(unittest.TestCase):
     def test_templates_get_files_list(self):
         """Test case for templates_get_files_list
 
-        Get all files from specified folder  # noqa: E501
+        Get all files from specified folder. <br />  User with Get Entity permission can access this method. <br />  The method will returns minimal infomration about the file: <br />  id, name, size, editedTime, createdTime, tags, status, statusReason.  # noqa: E501
         """
         pass
 

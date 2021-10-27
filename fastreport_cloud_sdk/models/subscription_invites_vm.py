@@ -55,8 +55,7 @@ class SubscriptionInvitesVM(object):
         self._count = None
         self.discriminator = None
 
-        if invites is not None:
-            self.invites = invites
+        self.invites = invites
         if count is not None:
             self.count = count
 

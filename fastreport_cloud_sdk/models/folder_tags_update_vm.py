@@ -52,8 +52,7 @@ class FolderTagsUpdateVM(object):
         self._tags = None
         self.discriminator = None
 
-        if tags is not None:
-            self.tags = tags
+        self.tags = tags
 
     @property
     def tags(self):
@@ -73,6 +72,9 @@ class FolderTagsUpdateVM(object):
         :param tags: The tags of this FolderTagsUpdateVM.  # noqa: E501
         :type tags: list[str]
         """
+        if (self.local_vars_configuration.client_side_validation and
+                tags is not None and len(tags) > 3):
+            raise ValueError("Invalid value for `tags`, number of items must be less than or equal to `3`")  # noqa: E501
 
         self._tags = tags
 

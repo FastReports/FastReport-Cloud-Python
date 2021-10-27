@@ -36,12 +36,12 @@ class GroupPermission(object):
                             and the value is json key in definition.
     """
     openapi_types = {
-        'create': 'int',
-        'delete': 'int',
-        'execute': 'int',
-        'get': 'int',
-        'update': 'int',
-        'administrate': 'int'
+        'create': 'GroupCreate',
+        'delete': 'GroupDelete',
+        'execute': 'GroupExecute',
+        'get': 'GroupGet',
+        'update': 'GroupUpdate',
+        'administrate': 'GroupAdministrate'
     }
 
     attribute_map = {
@@ -86,7 +86,7 @@ class GroupPermission(object):
 
 
         :return: The create of this GroupPermission.  # noqa: E501
-        :rtype: int
+        :rtype: GroupCreate
         """
         return self._create
 
@@ -96,14 +96,8 @@ class GroupPermission(object):
 
 
         :param create: The create of this GroupPermission.  # noqa: E501
-        :type create: int
+        :type create: GroupCreate
         """
-        allowed_values = [0, 1, -1]  # noqa: E501
-        if self.local_vars_configuration.client_side_validation and create not in allowed_values:  # noqa: E501
-            raise ValueError(
-                "Invalid value for `create` ({0}), must be one of {1}"  # noqa: E501
-                .format(create, allowed_values)
-            )
 
         self._create = create
 
@@ -113,7 +107,7 @@ class GroupPermission(object):
 
 
         :return: The delete of this GroupPermission.  # noqa: E501
-        :rtype: int
+        :rtype: GroupDelete
         """
         return self._delete
 
@@ -123,14 +117,8 @@ class GroupPermission(object):
 
 
         :param delete: The delete of this GroupPermission.  # noqa: E501
-        :type delete: int
+        :type delete: GroupDelete
         """
-        allowed_values = [0, 1, 2, -1]  # noqa: E501
-        if self.local_vars_configuration.client_side_validation and delete not in allowed_values:  # noqa: E501
-            raise ValueError(
-                "Invalid value for `delete` ({0}), must be one of {1}"  # noqa: E501
-                .format(delete, allowed_values)
-            )
 
         self._delete = delete
 
@@ -140,7 +128,7 @@ class GroupPermission(object):
 
 
         :return: The execute of this GroupPermission.  # noqa: E501
-        :rtype: int
+        :rtype: GroupExecute
         """
         return self._execute
 
@@ -150,14 +138,8 @@ class GroupPermission(object):
 
 
         :param execute: The execute of this GroupPermission.  # noqa: E501
-        :type execute: int
+        :type execute: GroupExecute
         """
-        allowed_values = [0, -1]  # noqa: E501
-        if self.local_vars_configuration.client_side_validation and execute not in allowed_values:  # noqa: E501
-            raise ValueError(
-                "Invalid value for `execute` ({0}), must be one of {1}"  # noqa: E501
-                .format(execute, allowed_values)
-            )
 
         self._execute = execute
 
@@ -167,7 +149,7 @@ class GroupPermission(object):
 
 
         :return: The get of this GroupPermission.  # noqa: E501
-        :rtype: int
+        :rtype: GroupGet
         """
         return self._get
 
@@ -177,14 +159,8 @@ class GroupPermission(object):
 
 
         :param get: The get of this GroupPermission.  # noqa: E501
-        :type get: int
+        :type get: GroupGet
         """
-        allowed_values = [0, 1, 2, 4, -1]  # noqa: E501
-        if self.local_vars_configuration.client_side_validation and get not in allowed_values:  # noqa: E501
-            raise ValueError(
-                "Invalid value for `get` ({0}), must be one of {1}"  # noqa: E501
-                .format(get, allowed_values)
-            )
 
         self._get = get
 
@@ -194,7 +170,7 @@ class GroupPermission(object):
 
 
         :return: The update of this GroupPermission.  # noqa: E501
-        :rtype: int
+        :rtype: GroupUpdate
         """
         return self._update
 
@@ -204,14 +180,8 @@ class GroupPermission(object):
 
 
         :param update: The update of this GroupPermission.  # noqa: E501
-        :type update: int
+        :type update: GroupUpdate
         """
-        allowed_values = [0, 1, -1]  # noqa: E501
-        if self.local_vars_configuration.client_side_validation and update not in allowed_values:  # noqa: E501
-            raise ValueError(
-                "Invalid value for `update` ({0}), must be one of {1}"  # noqa: E501
-                .format(update, allowed_values)
-            )
 
         self._update = update
 
@@ -221,7 +191,7 @@ class GroupPermission(object):
 
 
         :return: The administrate of this GroupPermission.  # noqa: E501
-        :rtype: int
+        :rtype: GroupAdministrate
         """
         return self._administrate
 
@@ -231,14 +201,8 @@ class GroupPermission(object):
 
 
         :param administrate: The administrate of this GroupPermission.  # noqa: E501
-        :type administrate: int
+        :type administrate: GroupAdministrate
         """
-        allowed_values = [0, 1, 2, 4, 8, -1]  # noqa: E501
-        if self.local_vars_configuration.client_side_validation and administrate not in allowed_values:  # noqa: E501
-            raise ValueError(
-                "Invalid value for `administrate` ({0}), must be one of {1}"  # noqa: E501
-                .format(administrate, allowed_values)
-            )
 
         self._administrate = administrate
 

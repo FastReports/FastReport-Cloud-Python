@@ -41,11 +41,10 @@ configuration = fastreport_cloud_sdk.Configuration(
     password = 'YOUR_PASSWORD'
 )
 
-# Configure API key authorization: JWT
-configuration.api_key['JWT'] = 'YOUR_API_KEY'
-
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['JWT'] = 'Bearer'
+# Configure Bearer authorization (JWT): JWT
+configuration = fastreport_cloud_sdk.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
+)
 
 # Enter a context with an instance of the API client
 with fastreport_cloud_sdk.ApiClient(configuration) as api_client:
@@ -61,7 +60,7 @@ access_token = 'access_token_example' # str | access token of the subscription
         print("Exception when calling SubscriptionInvitesApi->subscription_invites_accept_invite: %s\n" % e)
 ```
 
-* Api Key Authentication (JWT):
+* Bearer (JWT) Authentication (JWT):
 ```python
 from __future__ import print_function
 import time
@@ -85,11 +84,10 @@ configuration = fastreport_cloud_sdk.Configuration(
     password = 'YOUR_PASSWORD'
 )
 
-# Configure API key authorization: JWT
-configuration.api_key['JWT'] = 'YOUR_API_KEY'
-
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['JWT'] = 'Bearer'
+# Configure Bearer authorization (JWT): JWT
+configuration = fastreport_cloud_sdk.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
+)
 
 # Enter a context with an instance of the API client
 with fastreport_cloud_sdk.ApiClient(configuration) as api_client:
@@ -123,7 +121,7 @@ void (empty response body)
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/json, text/json, text/plain
+ - **Accept**: application/json
 
 ### HTTP response details
 | Status code | Description | Response headers |
@@ -137,7 +135,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **subscription_invites_create_invite**
-> SubscriptionInviteVM subscription_invites_create_invite(subscription_id, create_invite_vm=create_invite_vm)
+> SubscriptionInviteVM subscription_invites_create_invite(subscription_id, create_subscription_invite_vm=create_subscription_invite_vm)
 
 Create invite to subscription
 
@@ -167,28 +165,27 @@ configuration = fastreport_cloud_sdk.Configuration(
     password = 'YOUR_PASSWORD'
 )
 
-# Configure API key authorization: JWT
-configuration.api_key['JWT'] = 'YOUR_API_KEY'
-
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['JWT'] = 'Bearer'
+# Configure Bearer authorization (JWT): JWT
+configuration = fastreport_cloud_sdk.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
+)
 
 # Enter a context with an instance of the API client
 with fastreport_cloud_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = fastreport_cloud_sdk.SubscriptionInvitesApi(api_client)
     subscription_id = 'subscription_id_example' # str | id
-create_invite_vm = fastreport_cloud_sdk.CreateSubscriptionInviteVM() # CreateSubscriptionInviteVM | create VM (optional)
+create_subscription_invite_vm = fastreport_cloud_sdk.CreateSubscriptionInviteVM() # CreateSubscriptionInviteVM | create VM (optional)
 
     try:
         # Create invite to subscription
-        api_response = api_instance.subscription_invites_create_invite(subscription_id, create_invite_vm=create_invite_vm)
+        api_response = api_instance.subscription_invites_create_invite(subscription_id, create_subscription_invite_vm=create_subscription_invite_vm)
         pprint(api_response)
     except ApiException as e:
         print("Exception when calling SubscriptionInvitesApi->subscription_invites_create_invite: %s\n" % e)
 ```
 
-* Api Key Authentication (JWT):
+* Bearer (JWT) Authentication (JWT):
 ```python
 from __future__ import print_function
 import time
@@ -212,22 +209,21 @@ configuration = fastreport_cloud_sdk.Configuration(
     password = 'YOUR_PASSWORD'
 )
 
-# Configure API key authorization: JWT
-configuration.api_key['JWT'] = 'YOUR_API_KEY'
-
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['JWT'] = 'Bearer'
+# Configure Bearer authorization (JWT): JWT
+configuration = fastreport_cloud_sdk.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
+)
 
 # Enter a context with an instance of the API client
 with fastreport_cloud_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = fastreport_cloud_sdk.SubscriptionInvitesApi(api_client)
     subscription_id = 'subscription_id_example' # str | id
-create_invite_vm = fastreport_cloud_sdk.CreateSubscriptionInviteVM() # CreateSubscriptionInviteVM | create VM (optional)
+create_subscription_invite_vm = fastreport_cloud_sdk.CreateSubscriptionInviteVM() # CreateSubscriptionInviteVM | create VM (optional)
 
     try:
         # Create invite to subscription
-        api_response = api_instance.subscription_invites_create_invite(subscription_id, create_invite_vm=create_invite_vm)
+        api_response = api_instance.subscription_invites_create_invite(subscription_id, create_subscription_invite_vm=create_subscription_invite_vm)
         pprint(api_response)
     except ApiException as e:
         print("Exception when calling SubscriptionInvitesApi->subscription_invites_create_invite: %s\n" % e)
@@ -238,7 +234,7 @@ create_invite_vm = fastreport_cloud_sdk.CreateSubscriptionInviteVM() # CreateSub
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **subscription_id** | **str**| id | 
- **create_invite_vm** | [**CreateSubscriptionInviteVM**](CreateSubscriptionInviteVM.md)| create VM | [optional] 
+ **create_subscription_invite_vm** | [**CreateSubscriptionInviteVM**](CreateSubscriptionInviteVM.md)| create VM | [optional] 
 
 ### Return type
 
@@ -250,8 +246,8 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json-patch+json, application/json, text/json, application/*+json
- - **Accept**: application/json, text/json, text/plain
+ - **Content-Type**: application/json, text/json, application/*+json
+ - **Accept**: application/json
 
 ### HTTP response details
 | Status code | Description | Response headers |
@@ -296,11 +292,10 @@ configuration = fastreport_cloud_sdk.Configuration(
     password = 'YOUR_PASSWORD'
 )
 
-# Configure API key authorization: JWT
-configuration.api_key['JWT'] = 'YOUR_API_KEY'
-
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['JWT'] = 'Bearer'
+# Configure Bearer authorization (JWT): JWT
+configuration = fastreport_cloud_sdk.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
+)
 
 # Enter a context with an instance of the API client
 with fastreport_cloud_sdk.ApiClient(configuration) as api_client:
@@ -316,7 +311,7 @@ accesstoken = 'accesstoken_example' # str | invite's token
         print("Exception when calling SubscriptionInvitesApi->subscription_invites_delete_invite: %s\n" % e)
 ```
 
-* Api Key Authentication (JWT):
+* Bearer (JWT) Authentication (JWT):
 ```python
 from __future__ import print_function
 import time
@@ -340,11 +335,10 @@ configuration = fastreport_cloud_sdk.Configuration(
     password = 'YOUR_PASSWORD'
 )
 
-# Configure API key authorization: JWT
-configuration.api_key['JWT'] = 'YOUR_API_KEY'
-
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['JWT'] = 'Bearer'
+# Configure Bearer authorization (JWT): JWT
+configuration = fastreport_cloud_sdk.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
+)
 
 # Enter a context with an instance of the API client
 with fastreport_cloud_sdk.ApiClient(configuration) as api_client:
@@ -378,7 +372,7 @@ void (empty response body)
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/json, text/json, text/plain
+ - **Accept**: application/json
 
 ### HTTP response details
 | Status code | Description | Response headers |
@@ -423,11 +417,10 @@ configuration = fastreport_cloud_sdk.Configuration(
     password = 'YOUR_PASSWORD'
 )
 
-# Configure API key authorization: JWT
-configuration.api_key['JWT'] = 'YOUR_API_KEY'
-
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['JWT'] = 'Bearer'
+# Configure Bearer authorization (JWT): JWT
+configuration = fastreport_cloud_sdk.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
+)
 
 # Enter a context with an instance of the API client
 with fastreport_cloud_sdk.ApiClient(configuration) as api_client:
@@ -443,7 +436,7 @@ with fastreport_cloud_sdk.ApiClient(configuration) as api_client:
         print("Exception when calling SubscriptionInvitesApi->subscription_invites_get_invites: %s\n" % e)
 ```
 
-* Api Key Authentication (JWT):
+* Bearer (JWT) Authentication (JWT):
 ```python
 from __future__ import print_function
 import time
@@ -467,11 +460,10 @@ configuration = fastreport_cloud_sdk.Configuration(
     password = 'YOUR_PASSWORD'
 )
 
-# Configure API key authorization: JWT
-configuration.api_key['JWT'] = 'YOUR_API_KEY'
-
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['JWT'] = 'Bearer'
+# Configure Bearer authorization (JWT): JWT
+configuration = fastreport_cloud_sdk.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
+)
 
 # Enter a context with an instance of the API client
 with fastreport_cloud_sdk.ApiClient(configuration) as api_client:
@@ -504,7 +496,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/json, text/json, text/plain
+ - **Accept**: application/json
 
 ### HTTP response details
 | Status code | Description | Response headers |

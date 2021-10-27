@@ -145,7 +145,7 @@ class SubscriptionsApi(object):
         body_params = None
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json', 'text/json', 'text/plain'])  # noqa: E501
+            ['application/json'])  # noqa: E501
 
         # Authentication setting
         auth_settings = ['ApiKey', 'JWT']  # noqa: E501
@@ -160,6 +160,141 @@ class SubscriptionsApi(object):
 
         return self.api_client.call_api(
             '/api/manage/v1/Subscriptions/{subscriptionId}/defaultPermissions', 'GET',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_types_map=response_types_map,
+            auth_settings=auth_settings,
+            async_req=local_var_params.get('async_req'),
+            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
+            _preload_content=local_var_params.get('_preload_content', True),
+            _request_timeout=local_var_params.get('_request_timeout'),
+            collection_formats=collection_formats,
+            _request_auth=local_var_params.get('_request_auth'))
+
+    def subscriptions_get_my_permissions(self, sub_id, **kwargs):  # noqa: E501
+        """Get user's permissions for a subscription by id  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.subscriptions_get_my_permissions(sub_id, async_req=True)
+        >>> result = thread.get()
+
+        :param sub_id: subscription id (required)
+        :type sub_id: str
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
+        :param _preload_content: if False, the urllib3.HTTPResponse object will
+                                 be returned without reading/decoding response
+                                 data. Default is True.
+        :type _preload_content: bool, optional
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :return: Returns the result object.
+                 If the method is called asynchronously,
+                 returns the request thread.
+        :rtype: MyPermissionsVM
+        """
+        kwargs['_return_http_data_only'] = True
+        return self.subscriptions_get_my_permissions_with_http_info(sub_id, **kwargs)  # noqa: E501
+
+    def subscriptions_get_my_permissions_with_http_info(self, sub_id, **kwargs):  # noqa: E501
+        """Get user's permissions for a subscription by id  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.subscriptions_get_my_permissions_with_http_info(sub_id, async_req=True)
+        >>> result = thread.get()
+
+        :param sub_id: subscription id (required)
+        :type sub_id: str
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
+        :param _return_http_data_only: response data without head status code
+                                       and headers
+        :type _return_http_data_only: bool, optional
+        :param _preload_content: if False, the urllib3.HTTPResponse object will
+                                 be returned without reading/decoding response
+                                 data. Default is True.
+        :type _preload_content: bool, optional
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the authentication
+                              in the spec for a single request.
+        :type _request_auth: dict, optional
+        :return: Returns the result object.
+                 If the method is called asynchronously,
+                 returns the request thread.
+        :rtype: tuple(MyPermissionsVM, status_code(int), headers(HTTPHeaderDict))
+        """
+
+        local_var_params = locals()
+
+        all_params = [
+            'sub_id'
+        ]
+        all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout',
+                '_request_auth'
+            ]
+        )
+
+        for key, val in six.iteritems(local_var_params['kwargs']):
+            if key not in all_params:
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method subscriptions_get_my_permissions" % key
+                )
+            local_var_params[key] = val
+        del local_var_params['kwargs']
+        # verify the required parameter 'sub_id' is set
+        if self.api_client.client_side_validation and ('sub_id' not in local_var_params or  # noqa: E501
+                                                        local_var_params['sub_id'] is None):  # noqa: E501
+            raise ApiValueError("Missing the required parameter `sub_id` when calling `subscriptions_get_my_permissions`")  # noqa: E501
+
+        if self.api_client.client_side_validation and 'sub_id' in local_var_params and not re.search(r'^[A-Fa-f0-9]{24}$', local_var_params['sub_id']):  # noqa: E501
+            raise ApiValueError("Invalid value for parameter `sub_id` when calling `subscriptions_get_my_permissions`, must conform to the pattern `/^[A-Fa-f0-9]{24}$/`")  # noqa: E501
+        collection_formats = {}
+
+        path_params = {}
+        if 'sub_id' in local_var_params:
+            path_params['subId'] = local_var_params['sub_id']  # noqa: E501
+
+        query_params = []
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = ['ApiKey', 'JWT']  # noqa: E501
+        
+        response_types_map = {
+            200: "MyPermissionsVM",
+        }
+
+        return self.api_client.call_api(
+            '/api/manage/v1/Subscriptions/{subId}/mypermissions', 'GET',
             path_params,
             query_params,
             header_params,
@@ -284,7 +419,7 @@ class SubscriptionsApi(object):
         body_params = None
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json', 'text/json', 'text/plain'])  # noqa: E501
+            ['application/json'])  # noqa: E501
 
         # Authentication setting
         auth_settings = ['ApiKey', 'JWT']  # noqa: E501
@@ -420,7 +555,7 @@ class SubscriptionsApi(object):
         body_params = None
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json', 'text/json', 'text/plain'])  # noqa: E501
+            ['application/json'])  # noqa: E501
 
         # Authentication setting
         auth_settings = ['ApiKey', 'JWT']  # noqa: E501
@@ -567,7 +702,7 @@ class SubscriptionsApi(object):
         body_params = None
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json', 'text/json', 'text/plain'])  # noqa: E501
+            ['application/json'])  # noqa: E501
 
         # Authentication setting
         auth_settings = ['ApiKey', 'JWT']  # noqa: E501
@@ -714,11 +849,11 @@ class SubscriptionsApi(object):
             body_params = local_var_params['rename_subscription_vm']
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json', 'text/json', 'text/plain'])  # noqa: E501
+            ['application/json'])  # noqa: E501
 
         # HTTP header `Content-Type`
         header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
-            ['application/json-patch+json', 'application/json', 'text/json', 'application/*+json'])  # noqa: E501
+            ['application/json', 'text/json', 'application/*+json'])  # noqa: E501
 
         # Authentication setting
         auth_settings = ['ApiKey', 'JWT']  # noqa: E501
@@ -748,19 +883,19 @@ class SubscriptionsApi(object):
             collection_formats=collection_formats,
             _request_auth=local_var_params.get('_request_auth'))
 
-    def subscriptions_update_default_permissions(self, subscription_id, permissions_vm, **kwargs):  # noqa: E501
+    def subscriptions_update_default_permissions(self, subscription_id, update_default_permissions_vm, **kwargs):  # noqa: E501
         """Change subscription's default permissions for new entities  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.subscriptions_update_default_permissions(subscription_id, permissions_vm, async_req=True)
+        >>> thread = api.subscriptions_update_default_permissions(subscription_id, update_default_permissions_vm, async_req=True)
         >>> result = thread.get()
 
         :param subscription_id: id (required)
         :type subscription_id: str
-        :param permissions_vm: update default permissions VM (required)
-        :type permissions_vm: UpdateDefaultPermissionsVM
+        :param update_default_permissions_vm: update default permissions VM (required)
+        :type update_default_permissions_vm: UpdateDefaultPermissionsVM
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
@@ -777,21 +912,21 @@ class SubscriptionsApi(object):
         :rtype: DefaultPermissionsVM
         """
         kwargs['_return_http_data_only'] = True
-        return self.subscriptions_update_default_permissions_with_http_info(subscription_id, permissions_vm, **kwargs)  # noqa: E501
+        return self.subscriptions_update_default_permissions_with_http_info(subscription_id, update_default_permissions_vm, **kwargs)  # noqa: E501
 
-    def subscriptions_update_default_permissions_with_http_info(self, subscription_id, permissions_vm, **kwargs):  # noqa: E501
+    def subscriptions_update_default_permissions_with_http_info(self, subscription_id, update_default_permissions_vm, **kwargs):  # noqa: E501
         """Change subscription's default permissions for new entities  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.subscriptions_update_default_permissions_with_http_info(subscription_id, permissions_vm, async_req=True)
+        >>> thread = api.subscriptions_update_default_permissions_with_http_info(subscription_id, update_default_permissions_vm, async_req=True)
         >>> result = thread.get()
 
         :param subscription_id: id (required)
         :type subscription_id: str
-        :param permissions_vm: update default permissions VM (required)
-        :type permissions_vm: UpdateDefaultPermissionsVM
+        :param update_default_permissions_vm: update default permissions VM (required)
+        :type update_default_permissions_vm: UpdateDefaultPermissionsVM
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
         :param _return_http_data_only: response data without head status code
@@ -819,7 +954,7 @@ class SubscriptionsApi(object):
 
         all_params = [
             'subscription_id',
-            'permissions_vm'
+            'update_default_permissions_vm'
         ]
         all_params.extend(
             [
@@ -843,10 +978,10 @@ class SubscriptionsApi(object):
         if self.api_client.client_side_validation and ('subscription_id' not in local_var_params or  # noqa: E501
                                                         local_var_params['subscription_id'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `subscription_id` when calling `subscriptions_update_default_permissions`")  # noqa: E501
-        # verify the required parameter 'permissions_vm' is set
-        if self.api_client.client_side_validation and ('permissions_vm' not in local_var_params or  # noqa: E501
-                                                        local_var_params['permissions_vm'] is None):  # noqa: E501
-            raise ApiValueError("Missing the required parameter `permissions_vm` when calling `subscriptions_update_default_permissions`")  # noqa: E501
+        # verify the required parameter 'update_default_permissions_vm' is set
+        if self.api_client.client_side_validation and ('update_default_permissions_vm' not in local_var_params or  # noqa: E501
+                                                        local_var_params['update_default_permissions_vm'] is None):  # noqa: E501
+            raise ApiValueError("Missing the required parameter `update_default_permissions_vm` when calling `subscriptions_update_default_permissions`")  # noqa: E501
 
         if self.api_client.client_side_validation and 'subscription_id' in local_var_params and not re.search(r'^[A-Fa-f0-9]{24}$', local_var_params['subscription_id']):  # noqa: E501
             raise ApiValueError("Invalid value for parameter `subscription_id` when calling `subscriptions_update_default_permissions`, must conform to the pattern `/^[A-Fa-f0-9]{24}$/`")  # noqa: E501
@@ -864,15 +999,15 @@ class SubscriptionsApi(object):
         local_var_files = {}
 
         body_params = None
-        if 'permissions_vm' in local_var_params:
-            body_params = local_var_params['permissions_vm']
+        if 'update_default_permissions_vm' in local_var_params:
+            body_params = local_var_params['update_default_permissions_vm']
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json', 'text/json', 'text/plain'])  # noqa: E501
+            ['application/json'])  # noqa: E501
 
         # HTTP header `Content-Type`
         header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
-            ['application/json-patch+json', 'application/json', 'text/json', 'application/*+json'])  # noqa: E501
+            ['application/json', 'text/json', 'application/*+json'])  # noqa: E501
 
         # Authentication setting
         auth_settings = ['ApiKey', 'JWT']  # noqa: E501
@@ -902,19 +1037,19 @@ class SubscriptionsApi(object):
             collection_formats=collection_formats,
             _request_auth=local_var_params.get('_request_auth'))
 
-    def subscriptions_update_locale(self, subscription_id, update_model, **kwargs):  # noqa: E501
+    def subscriptions_update_locale(self, subscription_id, update_subscription_locale_vm, **kwargs):  # noqa: E501
         """Update subscription's default locale  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.subscriptions_update_locale(subscription_id, update_model, async_req=True)
+        >>> thread = api.subscriptions_update_locale(subscription_id, update_subscription_locale_vm, async_req=True)
         >>> result = thread.get()
 
         :param subscription_id: id (required)
         :type subscription_id: str
-        :param update_model: update VM (required)
-        :type update_model: UpdateSubscriptionLocaleVM
+        :param update_subscription_locale_vm: update VM (required)
+        :type update_subscription_locale_vm: UpdateSubscriptionLocaleVM
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
@@ -931,21 +1066,21 @@ class SubscriptionsApi(object):
         :rtype: SubscriptionVM
         """
         kwargs['_return_http_data_only'] = True
-        return self.subscriptions_update_locale_with_http_info(subscription_id, update_model, **kwargs)  # noqa: E501
+        return self.subscriptions_update_locale_with_http_info(subscription_id, update_subscription_locale_vm, **kwargs)  # noqa: E501
 
-    def subscriptions_update_locale_with_http_info(self, subscription_id, update_model, **kwargs):  # noqa: E501
+    def subscriptions_update_locale_with_http_info(self, subscription_id, update_subscription_locale_vm, **kwargs):  # noqa: E501
         """Update subscription's default locale  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.subscriptions_update_locale_with_http_info(subscription_id, update_model, async_req=True)
+        >>> thread = api.subscriptions_update_locale_with_http_info(subscription_id, update_subscription_locale_vm, async_req=True)
         >>> result = thread.get()
 
         :param subscription_id: id (required)
         :type subscription_id: str
-        :param update_model: update VM (required)
-        :type update_model: UpdateSubscriptionLocaleVM
+        :param update_subscription_locale_vm: update VM (required)
+        :type update_subscription_locale_vm: UpdateSubscriptionLocaleVM
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
         :param _return_http_data_only: response data without head status code
@@ -973,7 +1108,7 @@ class SubscriptionsApi(object):
 
         all_params = [
             'subscription_id',
-            'update_model'
+            'update_subscription_locale_vm'
         ]
         all_params.extend(
             [
@@ -997,10 +1132,10 @@ class SubscriptionsApi(object):
         if self.api_client.client_side_validation and ('subscription_id' not in local_var_params or  # noqa: E501
                                                         local_var_params['subscription_id'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `subscription_id` when calling `subscriptions_update_locale`")  # noqa: E501
-        # verify the required parameter 'update_model' is set
-        if self.api_client.client_side_validation and ('update_model' not in local_var_params or  # noqa: E501
-                                                        local_var_params['update_model'] is None):  # noqa: E501
-            raise ApiValueError("Missing the required parameter `update_model` when calling `subscriptions_update_locale`")  # noqa: E501
+        # verify the required parameter 'update_subscription_locale_vm' is set
+        if self.api_client.client_side_validation and ('update_subscription_locale_vm' not in local_var_params or  # noqa: E501
+                                                        local_var_params['update_subscription_locale_vm'] is None):  # noqa: E501
+            raise ApiValueError("Missing the required parameter `update_subscription_locale_vm` when calling `subscriptions_update_locale`")  # noqa: E501
 
         if self.api_client.client_side_validation and 'subscription_id' in local_var_params and not re.search(r'^[A-Fa-f0-9]{24}$', local_var_params['subscription_id']):  # noqa: E501
             raise ApiValueError("Invalid value for parameter `subscription_id` when calling `subscriptions_update_locale`, must conform to the pattern `/^[A-Fa-f0-9]{24}$/`")  # noqa: E501
@@ -1018,15 +1153,15 @@ class SubscriptionsApi(object):
         local_var_files = {}
 
         body_params = None
-        if 'update_model' in local_var_params:
-            body_params = local_var_params['update_model']
+        if 'update_subscription_locale_vm' in local_var_params:
+            body_params = local_var_params['update_subscription_locale_vm']
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json', 'text/json', 'text/plain'])  # noqa: E501
+            ['application/json'])  # noqa: E501
 
         # HTTP header `Content-Type`
         header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
-            ['application/json-patch+json', 'application/json', 'text/json', 'application/*+json'])  # noqa: E501
+            ['application/json', 'text/json', 'application/*+json'])  # noqa: E501
 
         # Authentication setting
         auth_settings = ['ApiKey', 'JWT']  # noqa: E501
@@ -1067,8 +1202,8 @@ class SubscriptionsApi(object):
 
         :param id: (required)
         :type id: str
-        :param permissions_vm:
-        :type permissions_vm: UpdateSubscriptionPermissionsVM
+        :param update_subscription_permissions_vm:
+        :type update_subscription_permissions_vm: UpdateSubscriptionPermissionsVM
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
@@ -1098,8 +1233,8 @@ class SubscriptionsApi(object):
 
         :param id: (required)
         :type id: str
-        :param permissions_vm:
-        :type permissions_vm: UpdateSubscriptionPermissionsVM
+        :param update_subscription_permissions_vm:
+        :type update_subscription_permissions_vm: UpdateSubscriptionPermissionsVM
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
         :param _return_http_data_only: response data without head status code
@@ -1127,7 +1262,7 @@ class SubscriptionsApi(object):
 
         all_params = [
             'id',
-            'permissions_vm'
+            'update_subscription_permissions_vm'
         ]
         all_params.extend(
             [
@@ -1168,15 +1303,15 @@ class SubscriptionsApi(object):
         local_var_files = {}
 
         body_params = None
-        if 'permissions_vm' in local_var_params:
-            body_params = local_var_params['permissions_vm']
+        if 'update_subscription_permissions_vm' in local_var_params:
+            body_params = local_var_params['update_subscription_permissions_vm']
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json', 'text/json', 'text/plain'])  # noqa: E501
+            ['application/json'])  # noqa: E501
 
         # HTTP header `Content-Type`
         header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
-            ['application/json-patch+json', 'application/json', 'text/json', 'application/*+json'])  # noqa: E501
+            ['application/json', 'text/json', 'application/*+json'])  # noqa: E501
 
         # Authentication setting
         auth_settings = ['ApiKey', 'JWT']  # noqa: E501

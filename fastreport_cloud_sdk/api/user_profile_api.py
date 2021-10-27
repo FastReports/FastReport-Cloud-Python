@@ -132,7 +132,7 @@ class UserProfileApi(object):
         body_params = None
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json', 'text/json', 'text/plain'])  # noqa: E501
+            ['application/json'])  # noqa: E501
 
         # Authentication setting
         auth_settings = ['ApiKey', 'JWT']  # noqa: E501
@@ -268,7 +268,7 @@ class UserProfileApi(object):
         body_params = None
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json', 'text/json', 'text/plain'])  # noqa: E501
+            ['application/json'])  # noqa: E501
 
         # Authentication setting
         auth_settings = ['ApiKey', 'JWT']  # noqa: E501
@@ -305,8 +305,8 @@ class UserProfileApi(object):
         >>> thread = api.user_profile_update_my_profile(async_req=True)
         >>> result = thread.get()
 
-        :param model:
-        :type model: UpdateUserProfileVM
+        :param update_user_profile_vm:
+        :type update_user_profile_vm: UpdateUserProfileVM
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
@@ -335,8 +335,8 @@ class UserProfileApi(object):
         >>> thread = api.user_profile_update_my_profile_with_http_info(async_req=True)
         >>> result = thread.get()
 
-        :param model:
-        :type model: UpdateUserProfileVM
+        :param update_user_profile_vm:
+        :type update_user_profile_vm: UpdateUserProfileVM
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
         :param _return_http_data_only: response data without head status code
@@ -363,7 +363,7 @@ class UserProfileApi(object):
         local_var_params = locals()
 
         all_params = [
-            'model'
+            'update_user_profile_vm'
         ]
         all_params.extend(
             [
@@ -396,15 +396,15 @@ class UserProfileApi(object):
         local_var_files = {}
 
         body_params = None
-        if 'model' in local_var_params:
-            body_params = local_var_params['model']
+        if 'update_user_profile_vm' in local_var_params:
+            body_params = local_var_params['update_user_profile_vm']
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json', 'text/json', 'text/plain'])  # noqa: E501
+            ['application/json'])  # noqa: E501
 
         # HTTP header `Content-Type`
         header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
-            ['application/json-patch+json', 'application/json', 'text/json', 'application/*+json'])  # noqa: E501
+            ['application/json', 'text/json', 'application/*+json'])  # noqa: E501
 
         # Authentication setting
         auth_settings = ['ApiKey', 'JWT']  # noqa: E501

@@ -61,8 +61,7 @@ class SubscriptionUsersVM(object):
         self._skip = None
         self.discriminator = None
 
-        if users is not None:
-            self.users = users
+        self.users = users
         if count is not None:
             self.count = count
         if take is not None:

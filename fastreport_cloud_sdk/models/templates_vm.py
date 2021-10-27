@@ -61,8 +61,7 @@ class TemplatesVM(object):
         self._take = None
         self.discriminator = None
 
-        if files is not None:
-            self.files = files
+        self.files = files
         if count is not None:
             self.count = count
         if skip is not None:

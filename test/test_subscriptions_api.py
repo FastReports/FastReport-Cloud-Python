@@ -35,6 +35,13 @@ class TestSubscriptionsApi(unittest.TestCase):
         """
         pass
 
+    def test_subscriptions_get_my_permissions(self):
+        """Test case for subscriptions_get_my_permissions
+
+        Get user's permissions for a subscription by id  # noqa: E501
+        """
+        pass
+
     def test_subscriptions_get_permissions(self):
         """Test case for subscriptions_get_permissions
 

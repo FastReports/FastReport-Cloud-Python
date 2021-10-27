@@ -64,14 +64,10 @@ class UserProfileVM(object):
         self._is_read_only = None
         self.discriminator = None
 
-        if id is not None:
-            self.id = id
-        if name is not None:
-            self.name = name
-        if username is not None:
-            self.username = username
-        if email is not None:
-            self.email = email
+        self.id = id
+        self.name = name
+        self.username = username
+        self.email = email
         if is_read_only is not None:
             self.is_read_only = is_read_only
 

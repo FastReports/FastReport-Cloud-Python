@@ -64,7 +64,14 @@ class TestSubscriptionsVM(unittest.TestCase):
                                 is_demo = True, 
                                 url_to_buy = '', 
                                 unlimited_page = True, 
-                                page_limit = 56, ), ), 
+                                page_limit = 56, 
+                                tasks = fastreport_cloud_sdk.models.task_settings_vm.TaskSettingsVM(
+                                    prepare = True, 
+                                    export_template = True, 
+                                    export_report = True, 
+                                    send_via_email = True, 
+                                    send_via_webhook = True, 
+                                    fetch_data = True, ), ), ), 
                         old = [
                             fastreport_cloud_sdk.models.subscription_period_vm.SubscriptionPeriodVM(
                                 start_time = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 

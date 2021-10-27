@@ -14,7 +14,7 @@ Method | HTTP request | Description
 
 
 # **groups_create_group**
-> GroupVM groups_create_group(view_model=view_model)
+> GroupVM groups_create_group(create_group_vm=create_group_vm)
 
 Create a new user group
 
@@ -44,27 +44,26 @@ configuration = fastreport_cloud_sdk.Configuration(
     password = 'YOUR_PASSWORD'
 )
 
-# Configure API key authorization: JWT
-configuration.api_key['JWT'] = 'YOUR_API_KEY'
-
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['JWT'] = 'Bearer'
+# Configure Bearer authorization (JWT): JWT
+configuration = fastreport_cloud_sdk.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
+)
 
 # Enter a context with an instance of the API client
 with fastreport_cloud_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = fastreport_cloud_sdk.GroupsApi(api_client)
-    view_model = fastreport_cloud_sdk.CreateGroupVM() # CreateGroupVM | Model for creating (optional)
+    create_group_vm = fastreport_cloud_sdk.CreateGroupVM() # CreateGroupVM | Model for creating (optional)
 
     try:
         # Create a new user group
-        api_response = api_instance.groups_create_group(view_model=view_model)
+        api_response = api_instance.groups_create_group(create_group_vm=create_group_vm)
         pprint(api_response)
     except ApiException as e:
         print("Exception when calling GroupsApi->groups_create_group: %s\n" % e)
 ```
 
-* Api Key Authentication (JWT):
+* Bearer (JWT) Authentication (JWT):
 ```python
 from __future__ import print_function
 import time
@@ -88,21 +87,20 @@ configuration = fastreport_cloud_sdk.Configuration(
     password = 'YOUR_PASSWORD'
 )
 
-# Configure API key authorization: JWT
-configuration.api_key['JWT'] = 'YOUR_API_KEY'
-
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['JWT'] = 'Bearer'
+# Configure Bearer authorization (JWT): JWT
+configuration = fastreport_cloud_sdk.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
+)
 
 # Enter a context with an instance of the API client
 with fastreport_cloud_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = fastreport_cloud_sdk.GroupsApi(api_client)
-    view_model = fastreport_cloud_sdk.CreateGroupVM() # CreateGroupVM | Model for creating (optional)
+    create_group_vm = fastreport_cloud_sdk.CreateGroupVM() # CreateGroupVM | Model for creating (optional)
 
     try:
         # Create a new user group
-        api_response = api_instance.groups_create_group(view_model=view_model)
+        api_response = api_instance.groups_create_group(create_group_vm=create_group_vm)
         pprint(api_response)
     except ApiException as e:
         print("Exception when calling GroupsApi->groups_create_group: %s\n" % e)
@@ -112,7 +110,7 @@ with fastreport_cloud_sdk.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **view_model** | [**CreateGroupVM**](CreateGroupVM.md)| Model for creating | [optional] 
+ **create_group_vm** | [**CreateGroupVM**](CreateGroupVM.md)| Model for creating | [optional] 
 
 ### Return type
 
@@ -124,16 +122,16 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json-patch+json, application/json, text/json, application/*+json
- - **Accept**: application/json, text/json, text/plain
+ - **Content-Type**: application/json, text/json, application/*+json
+ - **Accept**: application/json
 
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Succesfully created |  -  |
 **400** | The reqeust is wrong |  -  |
-**402** | subscription is outdated |  -  |
 **403** | You don&#39;t have rights for the operation |  -  |
+**402** | subscription is outdated |  -  |
 **404** | Information from view model is not found |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -169,11 +167,10 @@ configuration = fastreport_cloud_sdk.Configuration(
     password = 'YOUR_PASSWORD'
 )
 
-# Configure API key authorization: JWT
-configuration.api_key['JWT'] = 'YOUR_API_KEY'
-
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['JWT'] = 'Bearer'
+# Configure Bearer authorization (JWT): JWT
+configuration = fastreport_cloud_sdk.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
+)
 
 # Enter a context with an instance of the API client
 with fastreport_cloud_sdk.ApiClient(configuration) as api_client:
@@ -188,7 +185,7 @@ with fastreport_cloud_sdk.ApiClient(configuration) as api_client:
         print("Exception when calling GroupsApi->groups_delete_group: %s\n" % e)
 ```
 
-* Api Key Authentication (JWT):
+* Bearer (JWT) Authentication (JWT):
 ```python
 from __future__ import print_function
 import time
@@ -212,11 +209,10 @@ configuration = fastreport_cloud_sdk.Configuration(
     password = 'YOUR_PASSWORD'
 )
 
-# Configure API key authorization: JWT
-configuration.api_key['JWT'] = 'YOUR_API_KEY'
-
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['JWT'] = 'Bearer'
+# Configure Bearer authorization (JWT): JWT
+configuration = fastreport_cloud_sdk.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
+)
 
 # Enter a context with an instance of the API client
 with fastreport_cloud_sdk.ApiClient(configuration) as api_client:
@@ -248,15 +244,15 @@ void (empty response body)
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/json, text/json, text/plain
+ - **Accept**: application/json
 
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **204** | Succesfully delete |  -  |
 **400** | The reqeust is wrong |  -  |
-**402** | subscripiton is outdated |  -  |
 **403** | You don&#39;t have rights for the operation |  -  |
+**402** | subscripiton is outdated |  -  |
 **404** | Group with this identifier is not found |  -  |
 **500** | Exception thrown |  -  |
 
@@ -293,11 +289,10 @@ configuration = fastreport_cloud_sdk.Configuration(
     password = 'YOUR_PASSWORD'
 )
 
-# Configure API key authorization: JWT
-configuration.api_key['JWT'] = 'YOUR_API_KEY'
-
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['JWT'] = 'Bearer'
+# Configure Bearer authorization (JWT): JWT
+configuration = fastreport_cloud_sdk.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
+)
 
 # Enter a context with an instance of the API client
 with fastreport_cloud_sdk.ApiClient(configuration) as api_client:
@@ -313,7 +308,7 @@ with fastreport_cloud_sdk.ApiClient(configuration) as api_client:
         print("Exception when calling GroupsApi->groups_get_group: %s\n" % e)
 ```
 
-* Api Key Authentication (JWT):
+* Bearer (JWT) Authentication (JWT):
 ```python
 from __future__ import print_function
 import time
@@ -337,11 +332,10 @@ configuration = fastreport_cloud_sdk.Configuration(
     password = 'YOUR_PASSWORD'
 )
 
-# Configure API key authorization: JWT
-configuration.api_key['JWT'] = 'YOUR_API_KEY'
-
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['JWT'] = 'Bearer'
+# Configure Bearer authorization (JWT): JWT
+configuration = fastreport_cloud_sdk.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
+)
 
 # Enter a context with an instance of the API client
 with fastreport_cloud_sdk.ApiClient(configuration) as api_client:
@@ -374,7 +368,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/json, text/json, text/plain
+ - **Accept**: application/json
 
 ### HTTP response details
 | Status code | Description | Response headers |
@@ -418,11 +412,10 @@ configuration = fastreport_cloud_sdk.Configuration(
     password = 'YOUR_PASSWORD'
 )
 
-# Configure API key authorization: JWT
-configuration.api_key['JWT'] = 'YOUR_API_KEY'
-
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['JWT'] = 'Bearer'
+# Configure Bearer authorization (JWT): JWT
+configuration = fastreport_cloud_sdk.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
+)
 
 # Enter a context with an instance of the API client
 with fastreport_cloud_sdk.ApiClient(configuration) as api_client:
@@ -439,7 +432,7 @@ take = 10 # int | How many groups need to take (optional) (default to 10)
         print("Exception when calling GroupsApi->groups_get_group_list: %s\n" % e)
 ```
 
-* Api Key Authentication (JWT):
+* Bearer (JWT) Authentication (JWT):
 ```python
 from __future__ import print_function
 import time
@@ -463,11 +456,10 @@ configuration = fastreport_cloud_sdk.Configuration(
     password = 'YOUR_PASSWORD'
 )
 
-# Configure API key authorization: JWT
-configuration.api_key['JWT'] = 'YOUR_API_KEY'
-
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['JWT'] = 'Bearer'
+# Configure Bearer authorization (JWT): JWT
+configuration = fastreport_cloud_sdk.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
+)
 
 # Enter a context with an instance of the API client
 with fastreport_cloud_sdk.ApiClient(configuration) as api_client:
@@ -502,7 +494,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/json, text/json, text/plain
+ - **Accept**: application/json
 
 ### HTTP response details
 | Status code | Description | Response headers |
@@ -545,11 +537,10 @@ configuration = fastreport_cloud_sdk.Configuration(
     password = 'YOUR_PASSWORD'
 )
 
-# Configure API key authorization: JWT
-configuration.api_key['JWT'] = 'YOUR_API_KEY'
-
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['JWT'] = 'Bearer'
+# Configure Bearer authorization (JWT): JWT
+configuration = fastreport_cloud_sdk.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
+)
 
 # Enter a context with an instance of the API client
 with fastreport_cloud_sdk.ApiClient(configuration) as api_client:
@@ -565,7 +556,7 @@ with fastreport_cloud_sdk.ApiClient(configuration) as api_client:
         print("Exception when calling GroupsApi->groups_get_permissions: %s\n" % e)
 ```
 
-* Api Key Authentication (JWT):
+* Bearer (JWT) Authentication (JWT):
 ```python
 from __future__ import print_function
 import time
@@ -589,11 +580,10 @@ configuration = fastreport_cloud_sdk.Configuration(
     password = 'YOUR_PASSWORD'
 )
 
-# Configure API key authorization: JWT
-configuration.api_key['JWT'] = 'YOUR_API_KEY'
-
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['JWT'] = 'Bearer'
+# Configure Bearer authorization (JWT): JWT
+configuration = fastreport_cloud_sdk.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
+)
 
 # Enter a context with an instance of the API client
 with fastreport_cloud_sdk.ApiClient(configuration) as api_client:
@@ -626,7 +616,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/json, text/json, text/plain
+ - **Accept**: application/json
 
 ### HTTP response details
 | Status code | Description | Response headers |
@@ -639,7 +629,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **groups_rename_group**
-> GroupVM groups_rename_group(id, view_model)
+> GroupVM groups_rename_group(id, rename_group_vm)
 
 Rename group by identifier
 
@@ -669,28 +659,27 @@ configuration = fastreport_cloud_sdk.Configuration(
     password = 'YOUR_PASSWORD'
 )
 
-# Configure API key authorization: JWT
-configuration.api_key['JWT'] = 'YOUR_API_KEY'
-
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['JWT'] = 'Bearer'
+# Configure Bearer authorization (JWT): JWT
+configuration = fastreport_cloud_sdk.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
+)
 
 # Enter a context with an instance of the API client
 with fastreport_cloud_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = fastreport_cloud_sdk.GroupsApi(api_client)
     id = 'id_example' # str | Identifier of group
-view_model = fastreport_cloud_sdk.RenameGroupVM() # RenameGroupVM | Model for renaming
+rename_group_vm = fastreport_cloud_sdk.RenameGroupVM() # RenameGroupVM | Model for renaming
 
     try:
         # Rename group by identifier
-        api_response = api_instance.groups_rename_group(id, view_model)
+        api_response = api_instance.groups_rename_group(id, rename_group_vm)
         pprint(api_response)
     except ApiException as e:
         print("Exception when calling GroupsApi->groups_rename_group: %s\n" % e)
 ```
 
-* Api Key Authentication (JWT):
+* Bearer (JWT) Authentication (JWT):
 ```python
 from __future__ import print_function
 import time
@@ -714,22 +703,21 @@ configuration = fastreport_cloud_sdk.Configuration(
     password = 'YOUR_PASSWORD'
 )
 
-# Configure API key authorization: JWT
-configuration.api_key['JWT'] = 'YOUR_API_KEY'
-
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['JWT'] = 'Bearer'
+# Configure Bearer authorization (JWT): JWT
+configuration = fastreport_cloud_sdk.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
+)
 
 # Enter a context with an instance of the API client
 with fastreport_cloud_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = fastreport_cloud_sdk.GroupsApi(api_client)
     id = 'id_example' # str | Identifier of group
-view_model = fastreport_cloud_sdk.RenameGroupVM() # RenameGroupVM | Model for renaming
+rename_group_vm = fastreport_cloud_sdk.RenameGroupVM() # RenameGroupVM | Model for renaming
 
     try:
         # Rename group by identifier
-        api_response = api_instance.groups_rename_group(id, view_model)
+        api_response = api_instance.groups_rename_group(id, rename_group_vm)
         pprint(api_response)
     except ApiException as e:
         print("Exception when calling GroupsApi->groups_rename_group: %s\n" % e)
@@ -740,7 +728,7 @@ view_model = fastreport_cloud_sdk.RenameGroupVM() # RenameGroupVM | Model for re
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **str**| Identifier of group | 
- **view_model** | [**RenameGroupVM**](RenameGroupVM.md)| Model for renaming | 
+ **rename_group_vm** | [**RenameGroupVM**](RenameGroupVM.md)| Model for renaming | 
 
 ### Return type
 
@@ -752,23 +740,23 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json-patch+json, application/json, text/json, application/*+json
- - **Accept**: application/json, text/json, text/plain
+ - **Content-Type**: application/json, text/json, application/*+json
+ - **Accept**: application/json
 
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Succesfully renamed |  -  |
 **400** | The reqeust is wrong |  -  |
-**402** | subscription is outdated |  -  |
 **403** | You don&#39;t have rights for the operation |  -  |
+**402** | subscription is outdated |  -  |
 **404** | Group with this identifier is not found |  -  |
 **500** | Exception thrown |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **groups_update_permissions**
-> groups_update_permissions(id, permissions_vm=permissions_vm)
+> groups_update_permissions(id, update_group_permissions_vm=update_group_permissions_vm)
 
 Update permissions
 
@@ -798,27 +786,26 @@ configuration = fastreport_cloud_sdk.Configuration(
     password = 'YOUR_PASSWORD'
 )
 
-# Configure API key authorization: JWT
-configuration.api_key['JWT'] = 'YOUR_API_KEY'
-
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['JWT'] = 'Bearer'
+# Configure Bearer authorization (JWT): JWT
+configuration = fastreport_cloud_sdk.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
+)
 
 # Enter a context with an instance of the API client
 with fastreport_cloud_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = fastreport_cloud_sdk.GroupsApi(api_client)
     id = 'id_example' # str | 
-permissions_vm = fastreport_cloud_sdk.UpdateGroupPermissionsVM() # UpdateGroupPermissionsVM |  (optional)
+update_group_permissions_vm = fastreport_cloud_sdk.UpdateGroupPermissionsVM() # UpdateGroupPermissionsVM |  (optional)
 
     try:
         # Update permissions
-        api_instance.groups_update_permissions(id, permissions_vm=permissions_vm)
+        api_instance.groups_update_permissions(id, update_group_permissions_vm=update_group_permissions_vm)
     except ApiException as e:
         print("Exception when calling GroupsApi->groups_update_permissions: %s\n" % e)
 ```
 
-* Api Key Authentication (JWT):
+* Bearer (JWT) Authentication (JWT):
 ```python
 from __future__ import print_function
 import time
@@ -842,22 +829,21 @@ configuration = fastreport_cloud_sdk.Configuration(
     password = 'YOUR_PASSWORD'
 )
 
-# Configure API key authorization: JWT
-configuration.api_key['JWT'] = 'YOUR_API_KEY'
-
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['JWT'] = 'Bearer'
+# Configure Bearer authorization (JWT): JWT
+configuration = fastreport_cloud_sdk.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
+)
 
 # Enter a context with an instance of the API client
 with fastreport_cloud_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = fastreport_cloud_sdk.GroupsApi(api_client)
     id = 'id_example' # str | 
-permissions_vm = fastreport_cloud_sdk.UpdateGroupPermissionsVM() # UpdateGroupPermissionsVM |  (optional)
+update_group_permissions_vm = fastreport_cloud_sdk.UpdateGroupPermissionsVM() # UpdateGroupPermissionsVM |  (optional)
 
     try:
         # Update permissions
-        api_instance.groups_update_permissions(id, permissions_vm=permissions_vm)
+        api_instance.groups_update_permissions(id, update_group_permissions_vm=update_group_permissions_vm)
     except ApiException as e:
         print("Exception when calling GroupsApi->groups_update_permissions: %s\n" % e)
 ```
@@ -867,7 +853,7 @@ permissions_vm = fastreport_cloud_sdk.UpdateGroupPermissionsVM() # UpdateGroupPe
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **str**|  | 
- **permissions_vm** | [**UpdateGroupPermissionsVM**](UpdateGroupPermissionsVM.md)|  | [optional] 
+ **update_group_permissions_vm** | [**UpdateGroupPermissionsVM**](UpdateGroupPermissionsVM.md)|  | [optional] 
 
 ### Return type
 
@@ -879,8 +865,8 @@ void (empty response body)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json-patch+json, application/json, text/json, application/*+json
- - **Accept**: application/json, text/json, text/plain
+ - **Content-Type**: application/json, text/json, application/*+json
+ - **Accept**: application/json
 
 ### HTTP response details
 | Status code | Description | Response headers |

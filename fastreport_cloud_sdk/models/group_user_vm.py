@@ -52,8 +52,7 @@ class GroupUserVM(object):
         self._user_id = None
         self.discriminator = None
 
-        if user_id is not None:
-            self.user_id = user_id
+        self.user_id = user_id
 
     @property
     def user_id(self):

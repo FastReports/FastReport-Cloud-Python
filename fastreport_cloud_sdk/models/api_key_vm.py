@@ -58,10 +58,8 @@ class ApiKeyVM(object):
         self._expired = None
         self.discriminator = None
 
-        if value is not None:
-            self.value = value
-        if description is not None:
-            self.description = description
+        self.value = value
+        self.description = description
         if expired is not None:
             self.expired = expired
 

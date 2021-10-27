@@ -36,74 +36,12 @@ class TestUpdateSubscriptionPermissionsVM(unittest.TestCase):
         # model = fastreport_cloud_sdk.models.update_subscription_permissions_vm.UpdateSubscriptionPermissionsVM()  # noqa: E501
         if include_optional :
             return UpdateSubscriptionPermissionsVM(
-                new_permissions = fastreport_cloud_sdk.models.subscription_permissions.SubscriptionPermissions(
-                    owner_id = 'f325375e-30fc-ba00-1731-c574773100bf', 
-                    owner = fastreport_cloud_sdk.models.subscription_permission.SubscriptionPermission(
-                        create = 0, 
-                        delete = 0, 
-                        execute = 0, 
-                        get = 0, 
-                        update = 0, 
-                        administrate = 0, ), 
-                    groups = {
-                        'key' : fastreport_cloud_sdk.models.subscription_permission.SubscriptionPermission(
-                            create = 0, 
-                            delete = 0, 
-                            execute = 0, 
-                            get = 0, 
-                            update = 0, 
-                            administrate = 0, )
-                        }, 
-                    other = fastreport_cloud_sdk.models.subscription_permission.SubscriptionPermission(
-                        create = 0, 
-                        delete = 0, 
-                        execute = 0, 
-                        get = 0, 
-                        update = 0, 
-                        administrate = 0, ), 
-                    anon = fastreport_cloud_sdk.models.subscription_permission.SubscriptionPermission(
-                        create = 0, 
-                        delete = 0, 
-                        execute = 0, 
-                        get = 0, 
-                        update = 0, 
-                        administrate = 0, ), ), 
+                new_permissions = fastreport_cloud_sdk.models.subscription_permissions.SubscriptionPermissions(), 
                 administrate = 0
             )
         else :
             return UpdateSubscriptionPermissionsVM(
-                new_permissions = fastreport_cloud_sdk.models.subscription_permissions.SubscriptionPermissions(
-                    owner_id = 'f325375e-30fc-ba00-1731-c574773100bf', 
-                    owner = fastreport_cloud_sdk.models.subscription_permission.SubscriptionPermission(
-                        create = 0, 
-                        delete = 0, 
-                        execute = 0, 
-                        get = 0, 
-                        update = 0, 
-                        administrate = 0, ), 
-                    groups = {
-                        'key' : fastreport_cloud_sdk.models.subscription_permission.SubscriptionPermission(
-                            create = 0, 
-                            delete = 0, 
-                            execute = 0, 
-                            get = 0, 
-                            update = 0, 
-                            administrate = 0, )
-                        }, 
-                    other = fastreport_cloud_sdk.models.subscription_permission.SubscriptionPermission(
-                        create = 0, 
-                        delete = 0, 
-                        execute = 0, 
-                        get = 0, 
-                        update = 0, 
-                        administrate = 0, ), 
-                    anon = fastreport_cloud_sdk.models.subscription_permission.SubscriptionPermission(
-                        create = 0, 
-                        delete = 0, 
-                        execute = 0, 
-                        get = 0, 
-                        update = 0, 
-                        administrate = 0, ), ),
+                new_permissions = fastreport_cloud_sdk.models.subscription_permissions.SubscriptionPermissions(),
                 administrate = 0,
         )
 

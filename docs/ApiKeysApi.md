@@ -10,7 +10,7 @@ Method | HTTP request | Description
 
 
 # **api_keys_create_api_key**
-> ApiKeyVM api_keys_create_api_key(model)
+> ApiKeyVM api_keys_create_api_key(create_api_key_vm)
 
 Create a new apikey, 5 apikeys for user. Hardcoded for ddos.
 
@@ -40,27 +40,26 @@ configuration = fastreport_cloud_sdk.Configuration(
     password = 'YOUR_PASSWORD'
 )
 
-# Configure API key authorization: JWT
-configuration.api_key['JWT'] = 'YOUR_API_KEY'
-
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['JWT'] = 'Bearer'
+# Configure Bearer authorization (JWT): JWT
+configuration = fastreport_cloud_sdk.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
+)
 
 # Enter a context with an instance of the API client
 with fastreport_cloud_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = fastreport_cloud_sdk.ApiKeysApi(api_client)
-    model = fastreport_cloud_sdk.CreateApiKeyVM() # CreateApiKeyVM | 
+    create_api_key_vm = fastreport_cloud_sdk.CreateApiKeyVM() # CreateApiKeyVM | 
 
     try:
         # Create a new apikey, 5 apikeys for user. Hardcoded for ddos.
-        api_response = api_instance.api_keys_create_api_key(model)
+        api_response = api_instance.api_keys_create_api_key(create_api_key_vm)
         pprint(api_response)
     except ApiException as e:
         print("Exception when calling ApiKeysApi->api_keys_create_api_key: %s\n" % e)
 ```
 
-* Api Key Authentication (JWT):
+* Bearer (JWT) Authentication (JWT):
 ```python
 from __future__ import print_function
 import time
@@ -84,21 +83,20 @@ configuration = fastreport_cloud_sdk.Configuration(
     password = 'YOUR_PASSWORD'
 )
 
-# Configure API key authorization: JWT
-configuration.api_key['JWT'] = 'YOUR_API_KEY'
-
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['JWT'] = 'Bearer'
+# Configure Bearer authorization (JWT): JWT
+configuration = fastreport_cloud_sdk.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
+)
 
 # Enter a context with an instance of the API client
 with fastreport_cloud_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = fastreport_cloud_sdk.ApiKeysApi(api_client)
-    model = fastreport_cloud_sdk.CreateApiKeyVM() # CreateApiKeyVM | 
+    create_api_key_vm = fastreport_cloud_sdk.CreateApiKeyVM() # CreateApiKeyVM | 
 
     try:
         # Create a new apikey, 5 apikeys for user. Hardcoded for ddos.
-        api_response = api_instance.api_keys_create_api_key(model)
+        api_response = api_instance.api_keys_create_api_key(create_api_key_vm)
         pprint(api_response)
     except ApiException as e:
         print("Exception when calling ApiKeysApi->api_keys_create_api_key: %s\n" % e)
@@ -108,7 +106,7 @@ with fastreport_cloud_sdk.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **model** | [**CreateApiKeyVM**](CreateApiKeyVM.md)|  | 
+ **create_api_key_vm** | [**CreateApiKeyVM**](CreateApiKeyVM.md)|  | 
 
 ### Return type
 
@@ -120,8 +118,8 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json-patch+json, application/json, text/json, application/*+json
- - **Accept**: application/json, text/json, text/plain
+ - **Content-Type**: application/json, text/json, application/*+json
+ - **Accept**: application/json
 
 ### HTTP response details
 | Status code | Description | Response headers |
@@ -133,7 +131,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **api_keys_delete_api_key**
-> api_keys_delete_api_key(model)
+> api_keys_delete_api_key(delete_api_key_vm)
 
 Delete an apikey
 
@@ -163,26 +161,25 @@ configuration = fastreport_cloud_sdk.Configuration(
     password = 'YOUR_PASSWORD'
 )
 
-# Configure API key authorization: JWT
-configuration.api_key['JWT'] = 'YOUR_API_KEY'
-
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['JWT'] = 'Bearer'
+# Configure Bearer authorization (JWT): JWT
+configuration = fastreport_cloud_sdk.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
+)
 
 # Enter a context with an instance of the API client
 with fastreport_cloud_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = fastreport_cloud_sdk.ApiKeysApi(api_client)
-    model = fastreport_cloud_sdk.DeleteApiKeyVM() # DeleteApiKeyVM | 
+    delete_api_key_vm = fastreport_cloud_sdk.DeleteApiKeyVM() # DeleteApiKeyVM | 
 
     try:
         # Delete an apikey
-        api_instance.api_keys_delete_api_key(model)
+        api_instance.api_keys_delete_api_key(delete_api_key_vm)
     except ApiException as e:
         print("Exception when calling ApiKeysApi->api_keys_delete_api_key: %s\n" % e)
 ```
 
-* Api Key Authentication (JWT):
+* Bearer (JWT) Authentication (JWT):
 ```python
 from __future__ import print_function
 import time
@@ -206,21 +203,20 @@ configuration = fastreport_cloud_sdk.Configuration(
     password = 'YOUR_PASSWORD'
 )
 
-# Configure API key authorization: JWT
-configuration.api_key['JWT'] = 'YOUR_API_KEY'
-
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['JWT'] = 'Bearer'
+# Configure Bearer authorization (JWT): JWT
+configuration = fastreport_cloud_sdk.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
+)
 
 # Enter a context with an instance of the API client
 with fastreport_cloud_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = fastreport_cloud_sdk.ApiKeysApi(api_client)
-    model = fastreport_cloud_sdk.DeleteApiKeyVM() # DeleteApiKeyVM | 
+    delete_api_key_vm = fastreport_cloud_sdk.DeleteApiKeyVM() # DeleteApiKeyVM | 
 
     try:
         # Delete an apikey
-        api_instance.api_keys_delete_api_key(model)
+        api_instance.api_keys_delete_api_key(delete_api_key_vm)
     except ApiException as e:
         print("Exception when calling ApiKeysApi->api_keys_delete_api_key: %s\n" % e)
 ```
@@ -229,7 +225,7 @@ with fastreport_cloud_sdk.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **model** | [**DeleteApiKeyVM**](DeleteApiKeyVM.md)|  | 
+ **delete_api_key_vm** | [**DeleteApiKeyVM**](DeleteApiKeyVM.md)|  | 
 
 ### Return type
 
@@ -241,8 +237,8 @@ void (empty response body)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json-patch+json, application/json, text/json, application/*+json
- - **Accept**: application/json, text/json, text/plain
+ - **Content-Type**: application/json, text/json, application/*+json
+ - **Accept**: application/json
 
 ### HTTP response details
 | Status code | Description | Response headers |
@@ -288,11 +284,10 @@ configuration = fastreport_cloud_sdk.Configuration(
     password = 'YOUR_PASSWORD'
 )
 
-# Configure API key authorization: JWT
-configuration.api_key['JWT'] = 'YOUR_API_KEY'
-
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['JWT'] = 'Bearer'
+# Configure Bearer authorization (JWT): JWT
+configuration = fastreport_cloud_sdk.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
+)
 
 # Enter a context with an instance of the API client
 with fastreport_cloud_sdk.ApiClient(configuration) as api_client:
@@ -307,7 +302,7 @@ with fastreport_cloud_sdk.ApiClient(configuration) as api_client:
         print("Exception when calling ApiKeysApi->api_keys_get_api_keys: %s\n" % e)
 ```
 
-* Api Key Authentication (JWT):
+* Bearer (JWT) Authentication (JWT):
 ```python
 from __future__ import print_function
 import time
@@ -331,11 +326,10 @@ configuration = fastreport_cloud_sdk.Configuration(
     password = 'YOUR_PASSWORD'
 )
 
-# Configure API key authorization: JWT
-configuration.api_key['JWT'] = 'YOUR_API_KEY'
-
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['JWT'] = 'Bearer'
+# Configure Bearer authorization (JWT): JWT
+configuration = fastreport_cloud_sdk.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
+)
 
 # Enter a context with an instance of the API client
 with fastreport_cloud_sdk.ApiClient(configuration) as api_client:
@@ -364,7 +358,7 @@ This endpoint does not need any parameter.
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/json, text/json, text/plain
+ - **Accept**: application/json
 
 ### HTTP response details
 | Status code | Description | Response headers |

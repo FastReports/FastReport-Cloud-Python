@@ -36,12 +36,12 @@ class DataSourcePermission(object):
                             and the value is json key in definition.
     """
     openapi_types = {
-        'create': 'int',
-        'delete': 'int',
-        'execute': 'int',
-        'get': 'int',
-        'update': 'int',
-        'administrate': 'int'
+        'create': 'DataSourceCreate',
+        'delete': 'DataSourceDelete',
+        'execute': 'DataSourceExecute',
+        'get': 'DataSourceGet',
+        'update': 'DataSourceUpdate',
+        'administrate': 'DataSourceAdministrate'
     }
 
     attribute_map = {
@@ -86,7 +86,7 @@ class DataSourcePermission(object):
 
 
         :return: The create of this DataSourcePermission.  # noqa: E501
-        :rtype: int
+        :rtype: DataSourceCreate
         """
         return self._create
 
@@ -96,14 +96,8 @@ class DataSourcePermission(object):
 
 
         :param create: The create of this DataSourcePermission.  # noqa: E501
-        :type create: int
+        :type create: DataSourceCreate
         """
-        allowed_values = [0, -1]  # noqa: E501
-        if self.local_vars_configuration.client_side_validation and create not in allowed_values:  # noqa: E501
-            raise ValueError(
-                "Invalid value for `create` ({0}), must be one of {1}"  # noqa: E501
-                .format(create, allowed_values)
-            )
 
         self._create = create
 
@@ -113,7 +107,7 @@ class DataSourcePermission(object):
 
 
         :return: The delete of this DataSourcePermission.  # noqa: E501
-        :rtype: int
+        :rtype: DataSourceDelete
         """
         return self._delete
 
@@ -123,14 +117,8 @@ class DataSourcePermission(object):
 
 
         :param delete: The delete of this DataSourcePermission.  # noqa: E501
-        :type delete: int
+        :type delete: DataSourceDelete
         """
-        allowed_values = [0, 1, -1]  # noqa: E501
-        if self.local_vars_configuration.client_side_validation and delete not in allowed_values:  # noqa: E501
-            raise ValueError(
-                "Invalid value for `delete` ({0}), must be one of {1}"  # noqa: E501
-                .format(delete, allowed_values)
-            )
 
         self._delete = delete
 
@@ -140,7 +128,7 @@ class DataSourcePermission(object):
 
 
         :return: The execute of this DataSourcePermission.  # noqa: E501
-        :rtype: int
+        :rtype: DataSourceExecute
         """
         return self._execute
 
@@ -150,14 +138,8 @@ class DataSourcePermission(object):
 
 
         :param execute: The execute of this DataSourcePermission.  # noqa: E501
-        :type execute: int
+        :type execute: DataSourceExecute
         """
-        allowed_values = [0, -1]  # noqa: E501
-        if self.local_vars_configuration.client_side_validation and execute not in allowed_values:  # noqa: E501
-            raise ValueError(
-                "Invalid value for `execute` ({0}), must be one of {1}"  # noqa: E501
-                .format(execute, allowed_values)
-            )
 
         self._execute = execute
 
@@ -167,7 +149,7 @@ class DataSourcePermission(object):
 
 
         :return: The get of this DataSourcePermission.  # noqa: E501
-        :rtype: int
+        :rtype: DataSourceGet
         """
         return self._get
 
@@ -177,14 +159,8 @@ class DataSourcePermission(object):
 
 
         :param get: The get of this DataSourcePermission.  # noqa: E501
-        :type get: int
+        :type get: DataSourceGet
         """
-        allowed_values = [0, 1, 2, -1]  # noqa: E501
-        if self.local_vars_configuration.client_side_validation and get not in allowed_values:  # noqa: E501
-            raise ValueError(
-                "Invalid value for `get` ({0}), must be one of {1}"  # noqa: E501
-                .format(get, allowed_values)
-            )
 
         self._get = get
 
@@ -194,7 +170,7 @@ class DataSourcePermission(object):
 
 
         :return: The update of this DataSourcePermission.  # noqa: E501
-        :rtype: int
+        :rtype: DataSourceUpdate
         """
         return self._update
 
@@ -204,14 +180,8 @@ class DataSourcePermission(object):
 
 
         :param update: The update of this DataSourcePermission.  # noqa: E501
-        :type update: int
+        :type update: DataSourceUpdate
         """
-        allowed_values = [0, 1, 2, 4, 8, -1]  # noqa: E501
-        if self.local_vars_configuration.client_side_validation and update not in allowed_values:  # noqa: E501
-            raise ValueError(
-                "Invalid value for `update` ({0}), must be one of {1}"  # noqa: E501
-                .format(update, allowed_values)
-            )
 
         self._update = update
 
@@ -221,7 +191,7 @@ class DataSourcePermission(object):
 
 
         :return: The administrate of this DataSourcePermission.  # noqa: E501
-        :rtype: int
+        :rtype: DataSourceAdministrate
         """
         return self._administrate
 
@@ -231,14 +201,8 @@ class DataSourcePermission(object):
 
 
         :param administrate: The administrate of this DataSourcePermission.  # noqa: E501
-        :type administrate: int
+        :type administrate: DataSourceAdministrate
         """
-        allowed_values = [0, 1, 2, 4, 8, -1]  # noqa: E501
-        if self.local_vars_configuration.client_side_validation and administrate not in allowed_values:  # noqa: E501
-            raise ValueError(
-                "Invalid value for `administrate` ({0}), must be one of {1}"  # noqa: E501
-                .format(administrate, allowed_values)
-            )
 
         self._administrate = administrate
 

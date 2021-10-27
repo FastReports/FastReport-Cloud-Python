@@ -55,10 +55,8 @@ class SubscriptionUserVM(object):
         self._groups = None
         self.discriminator = None
 
-        if user_id is not None:
-            self.user_id = user_id
-        if groups is not None:
-            self.groups = groups
+        self.user_id = user_id
+        self.groups = groups
 
     @property
     def user_id(self):

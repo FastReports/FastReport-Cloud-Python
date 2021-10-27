@@ -73,16 +73,12 @@ class SubscriptionVM(object):
         self._exports_folder = None
         self.discriminator = None
 
-        if id is not None:
-            self.id = id
-        if name is not None:
-            self.name = name
-        if locale is not None:
-            self.locale = locale
+        self.id = id
+        self.name = name
+        self.locale = locale
         if current is not None:
             self.current = current
-        if old is not None:
-            self.old = old
+        self.old = old
         if templates_folder is not None:
             self.templates_folder = templates_folder
         if reports_folder is not None:

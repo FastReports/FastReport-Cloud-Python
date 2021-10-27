@@ -5,7 +5,6 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **template_id** | **str** |  | [optional] 
-**report_info** | [**ReportInfo**](ReportInfo.md) |  | [optional] 
 **name** | **str** |  | [optional] 
 **tags** | **list[str]** |  | [optional] 
 **icon** | **str** |  | [optional] 

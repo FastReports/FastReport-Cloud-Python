@@ -37,7 +37,7 @@ class UpdateGroupPermissionsVM(object):
     """
     openapi_types = {
         'new_permissions': 'GroupPermissions',
-        'administrate': 'int'
+        'administrate': 'GroupAdministrate'
     }
 
     attribute_map = {
@@ -87,7 +87,7 @@ class UpdateGroupPermissionsVM(object):
 
 
         :return: The administrate of this UpdateGroupPermissionsVM.  # noqa: E501
-        :rtype: int
+        :rtype: GroupAdministrate
         """
         return self._administrate
 
@@ -97,16 +97,10 @@ class UpdateGroupPermissionsVM(object):
 
 
         :param administrate: The administrate of this UpdateGroupPermissionsVM.  # noqa: E501
-        :type administrate: int
+        :type administrate: GroupAdministrate
         """
         if self.local_vars_configuration.client_side_validation and administrate is None:  # noqa: E501
             raise ValueError("Invalid value for `administrate`, must not be `None`")  # noqa: E501
-        allowed_values = [0, 1, 2, 4, 8, -1]  # noqa: E501
-        if self.local_vars_configuration.client_side_validation and administrate not in allowed_values:  # noqa: E501
-            raise ValueError(
-                "Invalid value for `administrate` ({0}), must be one of {1}"  # noqa: E501
-                .format(administrate, allowed_values)
-            )
 
         self._administrate = administrate
 

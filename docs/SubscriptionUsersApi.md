@@ -41,11 +41,10 @@ configuration = fastreport_cloud_sdk.Configuration(
     password = 'YOUR_PASSWORD'
 )
 
-# Configure API key authorization: JWT
-configuration.api_key['JWT'] = 'YOUR_API_KEY'
-
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['JWT'] = 'Bearer'
+# Configure Bearer authorization (JWT): JWT
+configuration = fastreport_cloud_sdk.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
+)
 
 # Enter a context with an instance of the API client
 with fastreport_cloud_sdk.ApiClient(configuration) as api_client:
@@ -61,7 +60,7 @@ user_id = 'user_id_example' # str | Idenitifier of user
         print("Exception when calling SubscriptionUsersApi->subscription_users_add_user: %s\n" % e)
 ```
 
-* Api Key Authentication (JWT):
+* Bearer (JWT) Authentication (JWT):
 ```python
 from __future__ import print_function
 import time
@@ -85,11 +84,10 @@ configuration = fastreport_cloud_sdk.Configuration(
     password = 'YOUR_PASSWORD'
 )
 
-# Configure API key authorization: JWT
-configuration.api_key['JWT'] = 'YOUR_API_KEY'
-
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['JWT'] = 'Bearer'
+# Configure Bearer authorization (JWT): JWT
+configuration = fastreport_cloud_sdk.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
+)
 
 # Enter a context with an instance of the API client
 with fastreport_cloud_sdk.ApiClient(configuration) as api_client:
@@ -123,15 +121,15 @@ void (empty response body)
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/json, text/json, text/plain
+ - **Accept**: application/json
 
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Succesfully added |  -  |
 **400** | The reqeust is wrong |  -  |
-**402** | subscription is outdated |  -  |
 **403** | You don&#39;t have rights for the operation |  -  |
+**402** | subscription is outdated |  -  |
 **404** | Subscription or user is not found |  -  |
 **500** | Exception thrown |  -  |
 
@@ -168,11 +166,10 @@ configuration = fastreport_cloud_sdk.Configuration(
     password = 'YOUR_PASSWORD'
 )
 
-# Configure API key authorization: JWT
-configuration.api_key['JWT'] = 'YOUR_API_KEY'
-
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['JWT'] = 'Bearer'
+# Configure Bearer authorization (JWT): JWT
+configuration = fastreport_cloud_sdk.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
+)
 
 # Enter a context with an instance of the API client
 with fastreport_cloud_sdk.ApiClient(configuration) as api_client:
@@ -190,7 +187,7 @@ take = 10 # int | How many entities take (optional) (default to 10)
         print("Exception when calling SubscriptionUsersApi->subscription_users_get_users: %s\n" % e)
 ```
 
-* Api Key Authentication (JWT):
+* Bearer (JWT) Authentication (JWT):
 ```python
 from __future__ import print_function
 import time
@@ -214,11 +211,10 @@ configuration = fastreport_cloud_sdk.Configuration(
     password = 'YOUR_PASSWORD'
 )
 
-# Configure API key authorization: JWT
-configuration.api_key['JWT'] = 'YOUR_API_KEY'
-
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['JWT'] = 'Bearer'
+# Configure Bearer authorization (JWT): JWT
+configuration = fastreport_cloud_sdk.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
+)
 
 # Enter a context with an instance of the API client
 with fastreport_cloud_sdk.ApiClient(configuration) as api_client:
@@ -255,7 +251,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/json, text/json, text/plain
+ - **Accept**: application/json
 
 ### HTTP response details
 | Status code | Description | Response headers |
@@ -299,11 +295,10 @@ configuration = fastreport_cloud_sdk.Configuration(
     password = 'YOUR_PASSWORD'
 )
 
-# Configure API key authorization: JWT
-configuration.api_key['JWT'] = 'YOUR_API_KEY'
-
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['JWT'] = 'Bearer'
+# Configure Bearer authorization (JWT): JWT
+configuration = fastreport_cloud_sdk.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
+)
 
 # Enter a context with an instance of the API client
 with fastreport_cloud_sdk.ApiClient(configuration) as api_client:
@@ -318,7 +313,7 @@ with fastreport_cloud_sdk.ApiClient(configuration) as api_client:
         print("Exception when calling SubscriptionUsersApi->subscription_users_leave_subscripiton: %s\n" % e)
 ```
 
-* Api Key Authentication (JWT):
+* Bearer (JWT) Authentication (JWT):
 ```python
 from __future__ import print_function
 import time
@@ -342,11 +337,10 @@ configuration = fastreport_cloud_sdk.Configuration(
     password = 'YOUR_PASSWORD'
 )
 
-# Configure API key authorization: JWT
-configuration.api_key['JWT'] = 'YOUR_API_KEY'
-
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['JWT'] = 'Bearer'
+# Configure Bearer authorization (JWT): JWT
+configuration = fastreport_cloud_sdk.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
+)
 
 # Enter a context with an instance of the API client
 with fastreport_cloud_sdk.ApiClient(configuration) as api_client:
@@ -378,7 +372,7 @@ void (empty response body)
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/json, text/json, text/plain
+ - **Accept**: application/json
 
 ### HTTP response details
 | Status code | Description | Response headers |
@@ -422,11 +416,10 @@ configuration = fastreport_cloud_sdk.Configuration(
     password = 'YOUR_PASSWORD'
 )
 
-# Configure API key authorization: JWT
-configuration.api_key['JWT'] = 'YOUR_API_KEY'
-
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['JWT'] = 'Bearer'
+# Configure Bearer authorization (JWT): JWT
+configuration = fastreport_cloud_sdk.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
+)
 
 # Enter a context with an instance of the API client
 with fastreport_cloud_sdk.ApiClient(configuration) as api_client:
@@ -442,7 +435,7 @@ user_id = 'user_id_example' # str | Idenitifier of user
         print("Exception when calling SubscriptionUsersApi->subscription_users_remove_user: %s\n" % e)
 ```
 
-* Api Key Authentication (JWT):
+* Bearer (JWT) Authentication (JWT):
 ```python
 from __future__ import print_function
 import time
@@ -466,11 +459,10 @@ configuration = fastreport_cloud_sdk.Configuration(
     password = 'YOUR_PASSWORD'
 )
 
-# Configure API key authorization: JWT
-configuration.api_key['JWT'] = 'YOUR_API_KEY'
-
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['JWT'] = 'Bearer'
+# Configure Bearer authorization (JWT): JWT
+configuration = fastreport_cloud_sdk.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
+)
 
 # Enter a context with an instance of the API client
 with fastreport_cloud_sdk.ApiClient(configuration) as api_client:
@@ -504,15 +496,15 @@ void (empty response body)
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/json, text/json, text/plain
+ - **Accept**: application/json
 
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **204** | Succesfully deleted |  -  |
 **400** | The reqeust is wrong |  -  |
-**402** | subscription id outdated |  -  |
 **403** | You don&#39;t have rights for the operation |  -  |
+**402** | subscription id outdated |  -  |
 **404** | Subscription or user is not found |  -  |
 **500** | Exception thrown |  -  |
 

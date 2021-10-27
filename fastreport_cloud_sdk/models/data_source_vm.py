@@ -38,7 +38,7 @@ class DataSourceVM(object):
     openapi_types = {
         'id': 'str',
         'name': 'str',
-        'connection_type': 'str',
+        'connection_type': 'DataSourceConnectionType',
         'connection_string': 'str',
         'data_structure': 'str',
         'subscription_id': 'str',
@@ -46,7 +46,7 @@ class DataSourceVM(object):
         'editor_user_id': 'str',
         'created_time': 'datetime',
         'creator_user_id': 'str',
-        'is_connected': 'bool'
+        'status': 'DataSourceStatus'
     }
 
     attribute_map = {
@@ -60,10 +60,10 @@ class DataSourceVM(object):
         'editor_user_id': 'editorUserId',
         'created_time': 'createdTime',
         'creator_user_id': 'creatorUserId',
-        'is_connected': 'isConnected'
+        'status': 'status'
     }
 
-    def __init__(self, id=None, name=None, connection_type=None, connection_string=None, data_structure=None, subscription_id=None, edited_time=None, editor_user_id=None, created_time=None, creator_user_id=None, is_connected=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, id=None, name=None, connection_type=None, connection_string=None, data_structure=None, subscription_id=None, edited_time=None, editor_user_id=None, created_time=None, creator_user_id=None, status=None, local_vars_configuration=None):  # noqa: E501
         """DataSourceVM - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration.get_default_copy()
@@ -79,31 +79,24 @@ class DataSourceVM(object):
         self._editor_user_id = None
         self._created_time = None
         self._creator_user_id = None
-        self._is_connected = None
+        self._status = None
         self.discriminator = None
 
-        if id is not None:
-            self.id = id
-        if name is not None:
-            self.name = name
+        self.id = id
+        self.name = name
         if connection_type is not None:
             self.connection_type = connection_type
-        if connection_string is not None:
-            self.connection_string = connection_string
-        if data_structure is not None:
-            self.data_structure = data_structure
-        if subscription_id is not None:
-            self.subscription_id = subscription_id
+        self.connection_string = connection_string
+        self.data_structure = data_structure
+        self.subscription_id = subscription_id
         if edited_time is not None:
             self.edited_time = edited_time
-        if editor_user_id is not None:
-            self.editor_user_id = editor_user_id
+        self.editor_user_id = editor_user_id
         if created_time is not None:
             self.created_time = created_time
-        if creator_user_id is not None:
-            self.creator_user_id = creator_user_id
-        if is_connected is not None:
-            self.is_connected = is_connected
+        self.creator_user_id = creator_user_id
+        if status is not None:
+            self.status = status
 
     @property
     def id(self):
@@ -153,7 +146,7 @@ class DataSourceVM(object):
 
 
         :return: The connection_type of this DataSourceVM.  # noqa: E501
-        :rtype: str
+        :rtype: DataSourceConnectionType
         """
         return self._connection_type
 
@@ -163,14 +156,8 @@ class DataSourceVM(object):
 
 
         :param connection_type: The connection_type of this DataSourceVM.  # noqa: E501
-        :type connection_type: str
+        :type connection_type: DataSourceConnectionType
         """
-        allowed_values = ["JSON", "MSSQL", "CSV", "XML", "MySQL", "Postgres"]  # noqa: E501
-        if self.local_vars_configuration.client_side_validation and connection_type not in allowed_values:  # noqa: E501
-            raise ValueError(
-                "Invalid value for `connection_type` ({0}), must be one of {1}"  # noqa: E501
-                .format(connection_type, allowed_values)
-            )
 
         self._connection_type = connection_type
 
@@ -322,25 +309,25 @@ class DataSourceVM(object):
         self._creator_user_id = creator_user_id
 
     @property
-    def is_connected(self):
-        """Gets the is_connected of this DataSourceVM.  # noqa: E501
+    def status(self):
+        """Gets the status of this DataSourceVM.  # noqa: E501
 
 
-        :return: The is_connected of this DataSourceVM.  # noqa: E501
-        :rtype: bool
+        :return: The status of this DataSourceVM.  # noqa: E501
+        :rtype: DataSourceStatus
         """
-        return self._is_connected
+        return self._status
 
-    @is_connected.setter
-    def is_connected(self, is_connected):
-        """Sets the is_connected of this DataSourceVM.
+    @status.setter
+    def status(self, status):
+        """Sets the status of this DataSourceVM.
 
 
-        :param is_connected: The is_connected of this DataSourceVM.  # noqa: E501
-        :type is_connected: bool
+        :param status: The status of this DataSourceVM.  # noqa: E501
+        :type status: DataSourceStatus
         """
 
-        self._is_connected = is_connected
+        self._status = status
 
     def to_dict(self, serialize=False):
         """Returns the model properties as a dict"""

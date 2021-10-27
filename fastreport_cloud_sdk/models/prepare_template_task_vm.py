@@ -36,119 +36,65 @@ class PrepareTemplateTaskVM(object):
                             and the value is json key in definition.
     """
     openapi_types = {
-        'name': 'str',
-        'locale': 'str',
-        'parent_folder_id': 'str',
+        'exports': 'list[ExportReportTaskVM]',
         'pages_count': 'int',
-        'report_parameters': 'dict(str, str)'
+        'report_parameters': 'dict(str, str)',
+        'name': 'str',
+        'subscription_id': 'str',
+        'type': 'TaskType'
     }
 
     attribute_map = {
-        'name': 'name',
-        'locale': 'locale',
-        'parent_folder_id': 'parentFolderId',
+        'exports': 'exports',
         'pages_count': 'pagesCount',
-        'report_parameters': 'reportParameters'
+        'report_parameters': 'reportParameters',
+        'name': 'name',
+        'subscription_id': 'subscriptionId',
+        'type': 'type'
     }
 
-    def __init__(self, name=None, locale=None, parent_folder_id=None, pages_count=None, report_parameters=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, exports=None, pages_count=None, report_parameters=None, name=None, subscription_id=None, type=None, local_vars_configuration=None):  # noqa: E501
         """PrepareTemplateTaskVM - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration.get_default_copy()
         self.local_vars_configuration = local_vars_configuration
 
-        self._name = None
-        self._locale = None
-        self._parent_folder_id = None
+        self._exports = None
         self._pages_count = None
         self._report_parameters = None
+        self._name = None
+        self._subscription_id = None
+        self._type = None
         self.discriminator = None
 
-        if name is not None:
-            self.name = name
-        if locale is not None:
-            self.locale = locale
-        if parent_folder_id is not None:
-            self.parent_folder_id = parent_folder_id
-        if pages_count is not None:
-            self.pages_count = pages_count
-        if report_parameters is not None:
-            self.report_parameters = report_parameters
+        self.exports = exports
+        self.pages_count = pages_count
+        self.report_parameters = report_parameters
+        self.name = name
+        self.subscription_id = subscription_id
+        if type is not None:
+            self.type = type
 
     @property
-    def name(self):
-        """Gets the name of this PrepareTemplateTaskVM.  # noqa: E501
+    def exports(self):
+        """Gets the exports of this PrepareTemplateTaskVM.  # noqa: E501
 
 
-        :return: The name of this PrepareTemplateTaskVM.  # noqa: E501
-        :rtype: str
+        :return: The exports of this PrepareTemplateTaskVM.  # noqa: E501
+        :rtype: list[ExportReportTaskVM]
         """
-        return self._name
+        return self._exports
 
-    @name.setter
-    def name(self, name):
-        """Sets the name of this PrepareTemplateTaskVM.
+    @exports.setter
+    def exports(self, exports):
+        """Sets the exports of this PrepareTemplateTaskVM.
 
 
-        :param name: The name of this PrepareTemplateTaskVM.  # noqa: E501
-        :type name: str
+        :param exports: The exports of this PrepareTemplateTaskVM.  # noqa: E501
+        :type exports: list[ExportReportTaskVM]
         """
-        if (self.local_vars_configuration.client_side_validation and
-                name is not None and len(name) > 250):
-            raise ValueError("Invalid value for `name`, length must be less than or equal to `250`")  # noqa: E501
-        if (self.local_vars_configuration.client_side_validation and
-                name is not None and len(name) < 1):
-            raise ValueError("Invalid value for `name`, length must be greater than or equal to `1`")  # noqa: E501
 
-        self._name = name
-
-    @property
-    def locale(self):
-        """Gets the locale of this PrepareTemplateTaskVM.  # noqa: E501
-
-
-        :return: The locale of this PrepareTemplateTaskVM.  # noqa: E501
-        :rtype: str
-        """
-        return self._locale
-
-    @locale.setter
-    def locale(self, locale):
-        """Sets the locale of this PrepareTemplateTaskVM.
-
-
-        :param locale: The locale of this PrepareTemplateTaskVM.  # noqa: E501
-        :type locale: str
-        """
-        if (self.local_vars_configuration.client_side_validation and
-                locale is not None and not re.search(r'^[a-zA-Z]{2,4}(-[a-zA-Z]{2,4}){0,2}$', locale)):  # noqa: E501
-            raise ValueError(r"Invalid value for `locale`, must be a follow pattern or equal to `/^[a-zA-Z]{2,4}(-[a-zA-Z]{2,4}){0,2}$/`")  # noqa: E501
-
-        self._locale = locale
-
-    @property
-    def parent_folder_id(self):
-        """Gets the parent_folder_id of this PrepareTemplateTaskVM.  # noqa: E501
-
-
-        :return: The parent_folder_id of this PrepareTemplateTaskVM.  # noqa: E501
-        :rtype: str
-        """
-        return self._parent_folder_id
-
-    @parent_folder_id.setter
-    def parent_folder_id(self, parent_folder_id):
-        """Sets the parent_folder_id of this PrepareTemplateTaskVM.
-
-
-        :param parent_folder_id: The parent_folder_id of this PrepareTemplateTaskVM.  # noqa: E501
-        :type parent_folder_id: str
-        """
-        if (self.local_vars_configuration.client_side_validation and
-                parent_folder_id is not None and not re.search(r'(^$)|(^[A-Fa-f0-9]{24}$)', parent_folder_id)):  # noqa: E501
-            raise ValueError(r"Invalid value for `parent_folder_id`, must be a follow pattern or equal to `/(^$)|(^[A-Fa-f0-9]{24}$)/`")  # noqa: E501
-
-        self._parent_folder_id = parent_folder_id
+        self._exports = exports
 
     @property
     def pages_count(self):
@@ -197,6 +143,78 @@ class PrepareTemplateTaskVM(object):
         """
 
         self._report_parameters = report_parameters
+
+    @property
+    def name(self):
+        """Gets the name of this PrepareTemplateTaskVM.  # noqa: E501
+
+
+        :return: The name of this PrepareTemplateTaskVM.  # noqa: E501
+        :rtype: str
+        """
+        return self._name
+
+    @name.setter
+    def name(self, name):
+        """Sets the name of this PrepareTemplateTaskVM.
+
+
+        :param name: The name of this PrepareTemplateTaskVM.  # noqa: E501
+        :type name: str
+        """
+        if (self.local_vars_configuration.client_side_validation and
+                name is not None and len(name) > 50):
+            raise ValueError("Invalid value for `name`, length must be less than or equal to `50`")  # noqa: E501
+        if (self.local_vars_configuration.client_side_validation and
+                name is not None and len(name) < 1):
+            raise ValueError("Invalid value for `name`, length must be greater than or equal to `1`")  # noqa: E501
+
+        self._name = name
+
+    @property
+    def subscription_id(self):
+        """Gets the subscription_id of this PrepareTemplateTaskVM.  # noqa: E501
+
+
+        :return: The subscription_id of this PrepareTemplateTaskVM.  # noqa: E501
+        :rtype: str
+        """
+        return self._subscription_id
+
+    @subscription_id.setter
+    def subscription_id(self, subscription_id):
+        """Sets the subscription_id of this PrepareTemplateTaskVM.
+
+
+        :param subscription_id: The subscription_id of this PrepareTemplateTaskVM.  # noqa: E501
+        :type subscription_id: str
+        """
+        if (self.local_vars_configuration.client_side_validation and
+                subscription_id is not None and not re.search(r'(^$)|(^[A-Fa-f0-9]{24}$)', subscription_id)):  # noqa: E501
+            raise ValueError(r"Invalid value for `subscription_id`, must be a follow pattern or equal to `/(^$)|(^[A-Fa-f0-9]{24}$)/`")  # noqa: E501
+
+        self._subscription_id = subscription_id
+
+    @property
+    def type(self):
+        """Gets the type of this PrepareTemplateTaskVM.  # noqa: E501
+
+
+        :return: The type of this PrepareTemplateTaskVM.  # noqa: E501
+        :rtype: TaskType
+        """
+        return self._type
+
+    @type.setter
+    def type(self, type):
+        """Sets the type of this PrepareTemplateTaskVM.
+
+
+        :param type: The type of this PrepareTemplateTaskVM.  # noqa: E501
+        :type type: TaskType
+        """
+
+        self._type = type
 
     def to_dict(self, serialize=False):
         """Returns the model properties as a dict"""

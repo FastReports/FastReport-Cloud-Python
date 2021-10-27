@@ -57,7 +57,14 @@ class TestSubscriptionPlansVM(unittest.TestCase):
                         is_demo = True, 
                         url_to_buy = '', 
                         unlimited_page = True, 
-                        page_limit = 56, )
+                        page_limit = 56, 
+                        tasks = fastreport_cloud_sdk.models.task_settings_vm.TaskSettingsVM(
+                            prepare = True, 
+                            export_template = True, 
+                            export_report = True, 
+                            send_via_email = True, 
+                            send_via_webhook = True, 
+                            fetch_data = True, ), )
                     ], 
                 count = 56, 
                 skip = 56, 

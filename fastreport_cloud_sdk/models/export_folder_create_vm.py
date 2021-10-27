@@ -58,12 +58,9 @@ class ExportFolderCreateVM(object):
         self._icon = None
         self.discriminator = None
 
-        if name is not None:
-            self.name = name
-        if tags is not None:
-            self.tags = tags
-        if icon is not None:
-            self.icon = icon
+        self.name = name
+        self.tags = tags
+        self.icon = icon
 
     @property
     def name(self):
@@ -110,6 +107,9 @@ class ExportFolderCreateVM(object):
         :param tags: The tags of this ExportFolderCreateVM.  # noqa: E501
         :type tags: list[str]
         """
+        if (self.local_vars_configuration.client_side_validation and
+                tags is not None and len(tags) > 3):
+            raise ValueError("Invalid value for `tags`, number of items must be less than or equal to `3`")  # noqa: E501
 
         self._tags = tags
 
@@ -134,9 +134,6 @@ class ExportFolderCreateVM(object):
         if (self.local_vars_configuration.client_side_validation and
                 icon is not None and len(icon) > 65536):
             raise ValueError("Invalid value for `icon`, length must be less than or equal to `65536`")  # noqa: E501
-        if (self.local_vars_configuration.client_side_validation and
-                icon is not None and not re.search(r'^(?:[A-Za-z0-9+\/]{4})*(?:[A-Za-z0-9+\/]{2}==|[A-Za-z0-9+\/]{3}=)?$', icon)):  # noqa: E501
-            raise ValueError(r"Invalid value for `icon`, must be a follow pattern or equal to `/^(?:[A-Za-z0-9+\/]{4})*(?:[A-Za-z0-9+\/]{2}==|[A-Za-z0-9+\/]{3}=)?$/`")  # noqa: E501
 
         self._icon = icon
 

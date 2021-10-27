@@ -64,16 +64,11 @@ class UpdateUserProfileVM(object):
         self._password_new2 = None
         self.discriminator = None
 
-        if name is not None:
-            self.name = name
-        if username is not None:
-            self.username = username
-        if email is not None:
-            self.email = email
-        if password_new is not None:
-            self.password_new = password_new
-        if password_new2 is not None:
-            self.password_new2 = password_new2
+        self.name = name
+        self.username = username
+        self.email = email
+        self.password_new = password_new
+        self.password_new2 = password_new2
 
     @property
     def name(self):

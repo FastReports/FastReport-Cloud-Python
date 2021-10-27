@@ -4,7 +4,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**profile_visibility** | **int** |  | [optional] 
+**profile_visibility** | [**ProfileVisibility**](ProfileVisibility.md) |  | [optional] 
 **default_subscription** | **str** |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

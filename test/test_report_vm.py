@@ -28,53 +28,10 @@ class TestReportVM(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(self, include_optional):
-        """Test ReportVM
-            include_option is a boolean, when False only required
-            params are included, when True both required and
-            optional params are included """
-        # model = fastreport_cloud_sdk.models.report_vm.ReportVM()  # noqa: E501
-        if include_optional :
-            return ReportVM(
-                template_id = '', 
-                report_info = fastreport_cloud_sdk.models.report_info.ReportInfo(
-                    author = '', 
-                    created = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
-                    creator_version = '', 
-                    description = '', 
-                    modified = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
-                    name = '', 
-                    picture = 'YQ==', 
-                    preview_picture_ratio = 1.337, 
-                    save_mode = 'All', 
-                    save_preview_picture = True, 
-                    tag = '', 
-                    version = '', ), 
-                name = '', 
-                parent_id = '', 
-                tags = [
-                    ''
-                    ], 
-                icon = 'YQ==', 
-                type = 'File', 
-                size = 56, 
-                subscription_id = '', 
-                status = 'None', 
-                status_reason = 'None', 
-                id = '', 
-                created_time = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
-                creator_user_id = '', 
-                edited_time = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
-                editor_user_id = ''
-            )
-        else :
-            return ReportVM(
-        )
-
     def testReportVM(self):
         """Test ReportVM"""
-        inst_req_only = self.make_instance(include_optional=False)
-        inst_req_and_optional = self.make_instance(include_optional=True)
+        # inst_req_only = self.make_instance(include_optional=False)
+        # inst_req_and_optional = self.make_instance(include_optional=True)
 
 if __name__ == '__main__':
     unittest.main()

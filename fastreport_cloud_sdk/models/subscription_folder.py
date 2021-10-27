@@ -55,8 +55,7 @@ class SubscriptionFolder(object):
         self._bytes_used = None
         self.discriminator = None
 
-        if folder_id is not None:
-            self.folder_id = folder_id
+        self.folder_id = folder_id
         if bytes_used is not None:
             self.bytes_used = bytes_used
 

@@ -37,106 +37,13 @@ class TestUpdateDefaultPermissionsVM(unittest.TestCase):
         if include_optional :
             return UpdateDefaultPermissionsVM(
                 file_permissions = fastreport_cloud_sdk.models.update_file_permissions_vm.UpdateFilePermissionsVM(
-                    new_permissions = fastreport_cloud_sdk.models.file_permissions.FilePermissions(
-                        owner_id = 'f325375e-30fc-ba00-1731-c574773100bf', 
-                        owner = fastreport_cloud_sdk.models.file_permission.FilePermission(
-                            create = 0, 
-                            delete = 0, 
-                            execute = 0, 
-                            get = 0, 
-                            update = 0, 
-                            administrate = 0, ), 
-                        groups = {
-                            'key' : fastreport_cloud_sdk.models.file_permission.FilePermission(
-                                create = 0, 
-                                delete = 0, 
-                                execute = 0, 
-                                get = 0, 
-                                update = 0, 
-                                administrate = 0, )
-                            }, 
-                        other = fastreport_cloud_sdk.models.file_permission.FilePermission(
-                            create = 0, 
-                            delete = 0, 
-                            execute = 0, 
-                            get = 0, 
-                            update = 0, 
-                            administrate = 0, ), 
-                        anon = fastreport_cloud_sdk.models.file_permission.FilePermission(
-                            create = 0, 
-                            delete = 0, 
-                            execute = 0, 
-                            get = 0, 
-                            update = 0, 
-                            administrate = 0, ), ), 
+                    new_permissions = fastreport_cloud_sdk.models.file_permissions.FilePermissions(), 
                     administrate = 0, ), 
                 group_permissions = fastreport_cloud_sdk.models.update_group_permissions_vm.UpdateGroupPermissionsVM(
-                    new_permissions = fastreport_cloud_sdk.models.group_permissions.GroupPermissions(
-                        owner_id = 'f325375e-30fc-ba00-1731-c574773100bf', 
-                        owner = fastreport_cloud_sdk.models.group_permission.GroupPermission(
-                            create = 0, 
-                            delete = 0, 
-                            execute = 0, 
-                            get = 0, 
-                            update = 0, 
-                            administrate = 0, ), 
-                        groups = {
-                            'key' : fastreport_cloud_sdk.models.group_permission.GroupPermission(
-                                create = 0, 
-                                delete = 0, 
-                                execute = 0, 
-                                get = 0, 
-                                update = 0, 
-                                administrate = 0, )
-                            }, 
-                        other = fastreport_cloud_sdk.models.group_permission.GroupPermission(
-                            create = 0, 
-                            delete = 0, 
-                            execute = 0, 
-                            get = 0, 
-                            update = 0, 
-                            administrate = 0, ), 
-                        anon = fastreport_cloud_sdk.models.group_permission.GroupPermission(
-                            create = 0, 
-                            delete = 0, 
-                            execute = 0, 
-                            get = 0, 
-                            update = 0, 
-                            administrate = 0, ), ), 
+                    new_permissions = fastreport_cloud_sdk.models.group_permissions.GroupPermissions(), 
                     administrate = 0, ), 
                 data_source_permissions = fastreport_cloud_sdk.models.update_data_source_permissions_vm.UpdateDataSourcePermissionsVM(
-                    new_permissions = fastreport_cloud_sdk.models.data_source_permissions.DataSourcePermissions(
-                        owner_id = 'f325375e-30fc-ba00-1731-c574773100bf', 
-                        owner = fastreport_cloud_sdk.models.data_source_permission.DataSourcePermission(
-                            create = 0, 
-                            delete = 0, 
-                            execute = 0, 
-                            get = 0, 
-                            update = 0, 
-                            administrate = 0, ), 
-                        groups = {
-                            'key' : fastreport_cloud_sdk.models.data_source_permission.DataSourcePermission(
-                                create = 0, 
-                                delete = 0, 
-                                execute = 0, 
-                                get = 0, 
-                                update = 0, 
-                                administrate = 0, )
-                            }, 
-                        other = fastreport_cloud_sdk.models.data_source_permission.DataSourcePermission(
-                            create = 0, 
-                            delete = 0, 
-                            execute = 0, 
-                            get = 0, 
-                            update = 0, 
-                            administrate = 0, ), 
-                        anon = fastreport_cloud_sdk.models.data_source_permission.DataSourcePermission(
-                            create = 0, 
-                            delete = 0, 
-                            execute = 0, 
-                            get = 0, 
-                            update = 0, 
-                            administrate = 0, ), ), 
+                    new_permissions = fastreport_cloud_sdk.models.data_source_permissions.DataSourcePermissions(), 
                     administrate = 0, )
             )
         else :

@@ -147,7 +147,7 @@ class ReportsApi(object):
         body_params = None
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json', 'text/json', 'text/plain'])  # noqa: E501
+            ['application/json'])  # noqa: E501
 
         # Authentication setting
         auth_settings = ['ApiKey', 'JWT']  # noqa: E501
@@ -192,6 +192,12 @@ class ReportsApi(object):
         :type skip: int
         :param take: number of folder and files, that have to be returned
         :type take: int
+        :param order_by: indicates a field to sort by
+        :type order_by: FileSorting
+        :param desc: indicates if sorting is descending
+        :type desc: bool
+        :param search_pattern:
+        :type search_pattern: str
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
@@ -226,6 +232,12 @@ class ReportsApi(object):
         :type skip: int
         :param take: number of folder and files, that have to be returned
         :type take: int
+        :param order_by: indicates a field to sort by
+        :type order_by: FileSorting
+        :param desc: indicates if sorting is descending
+        :type desc: bool
+        :param search_pattern:
+        :type search_pattern: str
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
         :param _return_http_data_only: response data without head status code
@@ -254,7 +266,10 @@ class ReportsApi(object):
         all_params = [
             'id',
             'skip',
-            'take'
+            'take',
+            'order_by',
+            'desc',
+            'search_pattern'
         ]
         all_params.extend(
             [
@@ -289,6 +304,12 @@ class ReportsApi(object):
             raise ApiValueError("Invalid value for parameter `take` when calling `report_folder_and_file_get_folders_and_files`, must be a value less than or equal to `120`")  # noqa: E501
         if self.api_client.client_side_validation and 'take' in local_var_params and local_var_params['take'] < 1:  # noqa: E501
             raise ApiValueError("Invalid value for parameter `take` when calling `report_folder_and_file_get_folders_and_files`, must be a value greater than or equal to `1`")  # noqa: E501
+        if self.api_client.client_side_validation and ('search_pattern' in local_var_params and  # noqa: E501
+                                                        len(local_var_params['search_pattern']) > 100):  # noqa: E501
+            raise ApiValueError("Invalid value for parameter `search_pattern` when calling `report_folder_and_file_get_folders_and_files`, length must be less than or equal to `100`")  # noqa: E501
+        if self.api_client.client_side_validation and ('search_pattern' in local_var_params and  # noqa: E501
+                                                        len(local_var_params['search_pattern']) < 0):  # noqa: E501
+            raise ApiValueError("Invalid value for parameter `search_pattern` when calling `report_folder_and_file_get_folders_and_files`, length must be greater than or equal to `0`")  # noqa: E501
         collection_formats = {}
 
         path_params = {}
@@ -300,6 +321,12 @@ class ReportsApi(object):
             query_params.append(('skip', local_var_params['skip']))  # noqa: E501
         if 'take' in local_var_params and local_var_params['take'] is not None:  # noqa: E501
             query_params.append(('take', local_var_params['take']))  # noqa: E501
+        if 'order_by' in local_var_params and local_var_params['order_by'] is not None:  # noqa: E501
+            query_params.append(('orderBy', local_var_params['order_by']))  # noqa: E501
+        if 'desc' in local_var_params and local_var_params['desc'] is not None:  # noqa: E501
+            query_params.append(('desc', local_var_params['desc']))  # noqa: E501
+        if 'search_pattern' in local_var_params and local_var_params['search_pattern'] is not None:  # noqa: E501
+            query_params.append(('searchPattern', local_var_params['search_pattern']))  # noqa: E501
 
         header_params = {}
 
@@ -309,7 +336,7 @@ class ReportsApi(object):
         body_params = None
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json', 'text/json', 'text/plain'])  # noqa: E501
+            ['application/json'])  # noqa: E501
 
         # Authentication setting
         auth_settings = ['ApiKey', 'JWT']  # noqa: E501
@@ -462,7 +489,7 @@ class ReportsApi(object):
         body_params = None
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json', 'text/json', 'text/plain'])  # noqa: E501
+            ['application/json'])  # noqa: E501
 
         # Authentication setting
         auth_settings = ['ApiKey', 'JWT']  # noqa: E501
@@ -470,8 +497,8 @@ class ReportsApi(object):
         response_types_map = {
             200: "FileVM",
             400: "ProblemDetails",
-            402: "ProblemDetails",
             403: "ProblemDetails",
+            402: "ProblemDetails",
             404: "ProblemDetails",
         }
 
@@ -610,7 +637,7 @@ class ReportsApi(object):
         body_params = None
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json', 'text/json', 'text/plain'])  # noqa: E501
+            ['application/json'])  # noqa: E501
 
         # Authentication setting
         auth_settings = ['ApiKey', 'JWT']  # noqa: E501
@@ -745,7 +772,7 @@ class ReportsApi(object):
         body_params = None
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json', 'text/json', 'text/plain'])  # noqa: E501
+            ['application/json'])  # noqa: E501
 
         # Authentication setting
         auth_settings = ['ApiKey', 'JWT']  # noqa: E501
@@ -885,7 +912,7 @@ class ReportsApi(object):
         body_params = None
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json', 'text/json', 'text/plain'])  # noqa: E501
+            ['application/json'])  # noqa: E501
 
         # Authentication setting
         auth_settings = ['ApiKey', 'JWT']  # noqa: E501
@@ -1047,7 +1074,7 @@ class ReportsApi(object):
         body_params = None
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json', 'text/json', 'text/plain'])  # noqa: E501
+            ['application/json'])  # noqa: E501
 
         # Authentication setting
         auth_settings = ['ApiKey', 'JWT']  # noqa: E501
@@ -1187,7 +1214,7 @@ class ReportsApi(object):
         body_params = None
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json', 'text/json', 'text/plain'])  # noqa: E501
+            ['application/json'])  # noqa: E501
 
         # Authentication setting
         auth_settings = ['ApiKey', 'JWT']  # noqa: E501
@@ -1325,7 +1352,7 @@ class ReportsApi(object):
         body_params = None
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json', 'text/json', 'text/plain'])  # noqa: E501
+            ['application/json'])  # noqa: E501
 
         # Authentication setting
         auth_settings = ['ApiKey', 'JWT']  # noqa: E501
@@ -1357,7 +1384,7 @@ class ReportsApi(object):
     def report_folders_get_root_folder(self, **kwargs):  # noqa: E501
         """Get user's root folder (without parents)  # noqa: E501
 
-        &gt; Breakchange. Now user model doesn't contain a root folders.  This method can return error 400 and 404 when subscription is not found.  # noqa: E501
+        > Breakchange. Now user model doesn't contain a root folders.  This method can return error 400 and 404 when subscription is not found.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
@@ -1387,7 +1414,7 @@ class ReportsApi(object):
     def report_folders_get_root_folder_with_http_info(self, **kwargs):  # noqa: E501
         """Get user's root folder (without parents)  # noqa: E501
 
-        &gt; Breakchange. Now user model doesn't contain a root folders.  This method can return error 400 and 404 when subscription is not found.  # noqa: E501
+        > Breakchange. Now user model doesn't contain a root folders.  This method can return error 400 and 404 when subscription is not found.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
@@ -1459,7 +1486,7 @@ class ReportsApi(object):
         body_params = None
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json', 'text/json', 'text/plain'])  # noqa: E501
+            ['application/json'])  # noqa: E501
 
         # Authentication setting
         auth_settings = ['ApiKey', 'JWT']  # noqa: E501
@@ -1467,8 +1494,8 @@ class ReportsApi(object):
         response_types_map = {
             200: "FileVM",
             400: None,
-            403: None,
             404: None,
+            403: None,
         }
 
         return self.api_client.call_api(
@@ -1612,7 +1639,7 @@ class ReportsApi(object):
         body_params = None
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json', 'text/json', 'text/plain'])  # noqa: E501
+            ['application/json'])  # noqa: E501
 
         # Authentication setting
         auth_settings = ['ApiKey', 'JWT']  # noqa: E501
@@ -1620,8 +1647,8 @@ class ReportsApi(object):
         response_types_map = {
             200: "FileVM",
             400: "ProblemDetails",
-            402: "ProblemDetails",
             403: "ProblemDetails",
+            402: "ProblemDetails",
             404: "ProblemDetails",
         }
 
@@ -1654,8 +1681,8 @@ class ReportsApi(object):
 
         :param id: Identifier of parent folder id (required)
         :type id: str
-        :param folder_vm: create VM
-        :type folder_vm: ReportFolderCreateVM
+        :param report_folder_create_vm: create VM
+        :type report_folder_create_vm: ReportFolderCreateVM
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
@@ -1686,8 +1713,8 @@ class ReportsApi(object):
 
         :param id: Identifier of parent folder id (required)
         :type id: str
-        :param folder_vm: create VM
-        :type folder_vm: ReportFolderCreateVM
+        :param report_folder_create_vm: create VM
+        :type report_folder_create_vm: ReportFolderCreateVM
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
         :param _return_http_data_only: response data without head status code
@@ -1715,7 +1742,7 @@ class ReportsApi(object):
 
         all_params = [
             'id',
-            'folder_vm'
+            'report_folder_create_vm'
         ]
         all_params.extend(
             [
@@ -1756,15 +1783,15 @@ class ReportsApi(object):
         local_var_files = {}
 
         body_params = None
-        if 'folder_vm' in local_var_params:
-            body_params = local_var_params['folder_vm']
+        if 'report_folder_create_vm' in local_var_params:
+            body_params = local_var_params['report_folder_create_vm']
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json', 'text/json', 'text/plain'])  # noqa: E501
+            ['application/json'])  # noqa: E501
 
         # HTTP header `Content-Type`
         header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
-            ['application/json-patch+json', 'application/json', 'text/json', 'application/*+json'])  # noqa: E501
+            ['application/json', 'text/json', 'application/*+json'])  # noqa: E501
 
         # Authentication setting
         auth_settings = ['ApiKey', 'JWT']  # noqa: E501
@@ -1772,8 +1799,8 @@ class ReportsApi(object):
         response_types_map = {
             200: "FileVM",
             400: "ProblemDetails",
-            402: "ProblemDetails",
             403: "ProblemDetails",
+            402: "ProblemDetails",
             404: "ProblemDetails",
         }
 
@@ -1806,8 +1833,8 @@ class ReportsApi(object):
 
         :param id: (required)
         :type id: str
-        :param name_model:
-        :type name_model: FolderRenameVM
+        :param folder_rename_vm:
+        :type folder_rename_vm: FolderRenameVM
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
@@ -1838,8 +1865,8 @@ class ReportsApi(object):
 
         :param id: (required)
         :type id: str
-        :param name_model:
-        :type name_model: FolderRenameVM
+        :param folder_rename_vm:
+        :type folder_rename_vm: FolderRenameVM
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
         :param _return_http_data_only: response data without head status code
@@ -1867,7 +1894,7 @@ class ReportsApi(object):
 
         all_params = [
             'id',
-            'name_model'
+            'folder_rename_vm'
         ]
         all_params.extend(
             [
@@ -1908,15 +1935,15 @@ class ReportsApi(object):
         local_var_files = {}
 
         body_params = None
-        if 'name_model' in local_var_params:
-            body_params = local_var_params['name_model']
+        if 'folder_rename_vm' in local_var_params:
+            body_params = local_var_params['folder_rename_vm']
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json', 'text/json', 'text/plain'])  # noqa: E501
+            ['application/json'])  # noqa: E501
 
         # HTTP header `Content-Type`
         header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
-            ['application/json-patch+json', 'application/json', 'text/json', 'application/*+json'])  # noqa: E501
+            ['application/json', 'text/json', 'application/*+json'])  # noqa: E501
 
         # Authentication setting
         auth_settings = ['ApiKey', 'JWT']  # noqa: E501
@@ -1924,8 +1951,8 @@ class ReportsApi(object):
         response_types_map = {
             200: "FileVM",
             400: "ProblemDetails",
-            402: "ProblemDetails",
             403: "ProblemDetails",
+            402: "ProblemDetails",
             404: "ProblemDetails",
         }
 
@@ -1958,8 +1985,8 @@ class ReportsApi(object):
 
         :param id: Identifier of folder (required)
         :type id: str
-        :param icon_model: Update icon model
-        :type icon_model: FolderIconVM
+        :param folder_icon_vm: Update icon model
+        :type folder_icon_vm: FolderIconVM
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
@@ -1990,8 +2017,8 @@ class ReportsApi(object):
 
         :param id: Identifier of folder (required)
         :type id: str
-        :param icon_model: Update icon model
-        :type icon_model: FolderIconVM
+        :param folder_icon_vm: Update icon model
+        :type folder_icon_vm: FolderIconVM
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
         :param _return_http_data_only: response data without head status code
@@ -2019,7 +2046,7 @@ class ReportsApi(object):
 
         all_params = [
             'id',
-            'icon_model'
+            'folder_icon_vm'
         ]
         all_params.extend(
             [
@@ -2060,15 +2087,15 @@ class ReportsApi(object):
         local_var_files = {}
 
         body_params = None
-        if 'icon_model' in local_var_params:
-            body_params = local_var_params['icon_model']
+        if 'folder_icon_vm' in local_var_params:
+            body_params = local_var_params['folder_icon_vm']
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json', 'text/json', 'text/plain'])  # noqa: E501
+            ['application/json'])  # noqa: E501
 
         # HTTP header `Content-Type`
         header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
-            ['application/json-patch+json', 'application/json', 'text/json', 'application/*+json'])  # noqa: E501
+            ['application/json', 'text/json', 'application/*+json'])  # noqa: E501
 
         # Authentication setting
         auth_settings = ['ApiKey', 'JWT']  # noqa: E501
@@ -2076,8 +2103,8 @@ class ReportsApi(object):
         response_types_map = {
             200: "FileVM",
             400: "ProblemDetails",
-            402: "ProblemDetails",
             403: "ProblemDetails",
+            402: "ProblemDetails",
             404: "ProblemDetails",
         }
 
@@ -2109,8 +2136,8 @@ class ReportsApi(object):
 
         :param id: (required)
         :type id: str
-        :param permissions_vm:
-        :type permissions_vm: UpdateFilePermissionsVM
+        :param update_file_permissions_vm:
+        :type update_file_permissions_vm: UpdateFilePermissionsVM
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
@@ -2140,8 +2167,8 @@ class ReportsApi(object):
 
         :param id: (required)
         :type id: str
-        :param permissions_vm:
-        :type permissions_vm: UpdateFilePermissionsVM
+        :param update_file_permissions_vm:
+        :type update_file_permissions_vm: UpdateFilePermissionsVM
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
         :param _return_http_data_only: response data without head status code
@@ -2169,7 +2196,7 @@ class ReportsApi(object):
 
         all_params = [
             'id',
-            'permissions_vm'
+            'update_file_permissions_vm'
         ]
         all_params.extend(
             [
@@ -2210,15 +2237,15 @@ class ReportsApi(object):
         local_var_files = {}
 
         body_params = None
-        if 'permissions_vm' in local_var_params:
-            body_params = local_var_params['permissions_vm']
+        if 'update_file_permissions_vm' in local_var_params:
+            body_params = local_var_params['update_file_permissions_vm']
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json', 'text/json', 'text/plain'])  # noqa: E501
+            ['application/json'])  # noqa: E501
 
         # HTTP header `Content-Type`
         header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
-            ['application/json-patch+json', 'application/json', 'text/json', 'application/*+json'])  # noqa: E501
+            ['application/json', 'text/json', 'application/*+json'])  # noqa: E501
 
         # Authentication setting
         auth_settings = ['ApiKey', 'JWT']  # noqa: E501
@@ -2254,8 +2281,8 @@ class ReportsApi(object):
 
         :param id: (required)
         :type id: str
-        :param tags_model:
-        :type tags_model: FolderTagsUpdateVM
+        :param folder_tags_update_vm:
+        :type folder_tags_update_vm: FolderTagsUpdateVM
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
@@ -2286,8 +2313,8 @@ class ReportsApi(object):
 
         :param id: (required)
         :type id: str
-        :param tags_model:
-        :type tags_model: FolderTagsUpdateVM
+        :param folder_tags_update_vm:
+        :type folder_tags_update_vm: FolderTagsUpdateVM
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
         :param _return_http_data_only: response data without head status code
@@ -2315,7 +2342,7 @@ class ReportsApi(object):
 
         all_params = [
             'id',
-            'tags_model'
+            'folder_tags_update_vm'
         ]
         all_params.extend(
             [
@@ -2356,15 +2383,15 @@ class ReportsApi(object):
         local_var_files = {}
 
         body_params = None
-        if 'tags_model' in local_var_params:
-            body_params = local_var_params['tags_model']
+        if 'folder_tags_update_vm' in local_var_params:
+            body_params = local_var_params['folder_tags_update_vm']
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json', 'text/json', 'text/plain'])  # noqa: E501
+            ['application/json'])  # noqa: E501
 
         # HTTP header `Content-Type`
         header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
-            ['application/json-patch+json', 'application/json', 'text/json', 'application/*+json'])  # noqa: E501
+            ['application/json', 'text/json', 'application/*+json'])  # noqa: E501
 
         # Authentication setting
         auth_settings = ['ApiKey', 'JWT']  # noqa: E501
@@ -2372,8 +2399,8 @@ class ReportsApi(object):
         response_types_map = {
             200: "FileVM",
             400: "ProblemDetails",
-            402: "ProblemDetails",
             403: "ProblemDetails",
+            402: "ProblemDetails",
             404: "ProblemDetails",
         }
 
@@ -2516,7 +2543,7 @@ class ReportsApi(object):
         body_params = None
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json', 'text/json', 'text/plain'])  # noqa: E501
+            ['application/json'])  # noqa: E501
 
         # Authentication setting
         auth_settings = ['ApiKey', 'JWT']  # noqa: E501
@@ -2524,8 +2551,8 @@ class ReportsApi(object):
         response_types_map = {
             200: "ReportVM",
             400: "ProblemDetails",
-            402: "ProblemDetails",
             403: "ProblemDetails",
+            402: "ProblemDetails",
             404: "ProblemDetails",
             500: None,
         }
@@ -2658,7 +2685,7 @@ class ReportsApi(object):
         body_params = None
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json', 'text/json', 'text/plain'])  # noqa: E501
+            ['application/json'])  # noqa: E501
 
         # Authentication setting
         auth_settings = ['ApiKey', 'JWT']  # noqa: E501
@@ -2694,8 +2721,8 @@ class ReportsApi(object):
 
         :param id: report id (required)
         :type id: str
-        :param export_task: export parameters
-        :type export_task: ExportReportTaskVM
+        :param export_report_vm: export parameters
+        :type export_report_vm: ExportReportVM
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
@@ -2726,8 +2753,8 @@ class ReportsApi(object):
 
         :param id: report id (required)
         :type id: str
-        :param export_task: export parameters
-        :type export_task: ExportReportTaskVM
+        :param export_report_vm: export parameters
+        :type export_report_vm: ExportReportVM
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
         :param _return_http_data_only: response data without head status code
@@ -2755,7 +2782,7 @@ class ReportsApi(object):
 
         all_params = [
             'id',
-            'export_task'
+            'export_report_vm'
         ]
         all_params.extend(
             [
@@ -2796,15 +2823,15 @@ class ReportsApi(object):
         local_var_files = {}
 
         body_params = None
-        if 'export_task' in local_var_params:
-            body_params = local_var_params['export_task']
+        if 'export_report_vm' in local_var_params:
+            body_params = local_var_params['export_report_vm']
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json', 'text/json', 'text/plain'])  # noqa: E501
+            ['application/json'])  # noqa: E501
 
         # HTTP header `Content-Type`
         header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
-            ['application/json-patch+json', 'application/json', 'text/json', 'application/*+json'])  # noqa: E501
+            ['application/json', 'text/json', 'application/*+json'])  # noqa: E501
 
         # Authentication setting
         auth_settings = ['ApiKey', 'JWT']  # noqa: E501
@@ -2812,8 +2839,8 @@ class ReportsApi(object):
         response_types_map = {
             200: "ExportVM",
             400: "ProblemDetails",
-            402: "ProblemDetails",
             403: "ProblemDetails",
+            402: "ProblemDetails",
             404: "ProblemDetails",
         }
 
@@ -2945,7 +2972,7 @@ class ReportsApi(object):
         body_params = None
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json', 'text/json', 'text/plain'])  # noqa: E501
+            ['application/json'])  # noqa: E501
 
         # Authentication setting
         auth_settings = ['ApiKey', 'JWT']  # noqa: E501
@@ -3086,7 +3113,7 @@ class ReportsApi(object):
         body_params = None
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json', 'text/json', 'text/plain'])  # noqa: E501
+            ['application/json'])  # noqa: E501
 
         # Authentication setting
         auth_settings = ['ApiKey', 'JWT']  # noqa: E501
@@ -3117,9 +3144,8 @@ class ReportsApi(object):
             _request_auth=local_var_params.get('_request_auth'))
 
     def reports_get_files_list(self, id, **kwargs):  # noqa: E501
-        """Get all files from specified folder  # noqa: E501
+        """Get all files from specified folder. <br />  User with Get Entity permission can access this method. <br />  The method will returns minimal infomration about the file: <br />  id, name, size, editedTime, createdTime, tags, status, statusReason.  # noqa: E501
 
-        User with Get Entity permission can access this method.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
@@ -3151,9 +3177,8 @@ class ReportsApi(object):
         return self.reports_get_files_list_with_http_info(id, **kwargs)  # noqa: E501
 
     def reports_get_files_list_with_http_info(self, id, **kwargs):  # noqa: E501
-        """Get all files from specified folder  # noqa: E501
+        """Get all files from specified folder. <br />  User with Get Entity permission can access this method. <br />  The method will returns minimal infomration about the file: <br />  id, name, size, editedTime, createdTime, tags, status, statusReason.  # noqa: E501
 
-        User with Get Entity permission can access this method.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
@@ -3249,7 +3274,7 @@ class ReportsApi(object):
         body_params = None
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json', 'text/json', 'text/plain'])  # noqa: E501
+            ['application/json'])  # noqa: E501
 
         # Authentication setting
         auth_settings = ['ApiKey', 'JWT']  # noqa: E501
@@ -3388,7 +3413,7 @@ class ReportsApi(object):
         body_params = None
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json', 'text/json', 'text/plain'])  # noqa: E501
+            ['application/json'])  # noqa: E501
 
         # Authentication setting
         auth_settings = ['ApiKey', 'JWT']  # noqa: E501
@@ -3541,7 +3566,7 @@ class ReportsApi(object):
         body_params = None
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json', 'text/json', 'text/plain'])  # noqa: E501
+            ['application/json'])  # noqa: E501
 
         # Authentication setting
         auth_settings = ['ApiKey', 'JWT']  # noqa: E501
@@ -3549,8 +3574,8 @@ class ReportsApi(object):
         response_types_map = {
             200: "ReportVM",
             400: "ProblemDetails",
-            402: "ProblemDetails",
             403: "ProblemDetails",
+            402: "ProblemDetails",
             404: "ProblemDetails",
             500: None,
         }
@@ -3584,8 +3609,8 @@ class ReportsApi(object):
 
         :param id: (required)
         :type id: str
-        :param name_model:
-        :type name_model: FileRenameVM
+        :param file_rename_vm:
+        :type file_rename_vm: FileRenameVM
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
@@ -3616,8 +3641,8 @@ class ReportsApi(object):
 
         :param id: (required)
         :type id: str
-        :param name_model:
-        :type name_model: FileRenameVM
+        :param file_rename_vm:
+        :type file_rename_vm: FileRenameVM
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
         :param _return_http_data_only: response data without head status code
@@ -3645,7 +3670,7 @@ class ReportsApi(object):
 
         all_params = [
             'id',
-            'name_model'
+            'file_rename_vm'
         ]
         all_params.extend(
             [
@@ -3686,15 +3711,15 @@ class ReportsApi(object):
         local_var_files = {}
 
         body_params = None
-        if 'name_model' in local_var_params:
-            body_params = local_var_params['name_model']
+        if 'file_rename_vm' in local_var_params:
+            body_params = local_var_params['file_rename_vm']
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json', 'text/json', 'text/plain'])  # noqa: E501
+            ['application/json'])  # noqa: E501
 
         # HTTP header `Content-Type`
         header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
-            ['application/json-patch+json', 'application/json', 'text/json', 'application/*+json'])  # noqa: E501
+            ['application/json', 'text/json', 'application/*+json'])  # noqa: E501
 
         # Authentication setting
         auth_settings = ['ApiKey', 'JWT']  # noqa: E501
@@ -3702,8 +3727,8 @@ class ReportsApi(object):
         response_types_map = {
             200: "ReportVM",
             400: "ProblemDetails",
-            402: "ProblemDetails",
             403: "ProblemDetails",
+            402: "ProblemDetails",
             404: "ProblemDetails",
             500: None,
         }
@@ -3737,8 +3762,8 @@ class ReportsApi(object):
 
         :param id: (required)
         :type id: str
-        :param icon_model:
-        :type icon_model: FileIconVM
+        :param file_icon_vm:
+        :type file_icon_vm: FileIconVM
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
@@ -3769,8 +3794,8 @@ class ReportsApi(object):
 
         :param id: (required)
         :type id: str
-        :param icon_model:
-        :type icon_model: FileIconVM
+        :param file_icon_vm:
+        :type file_icon_vm: FileIconVM
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
         :param _return_http_data_only: response data without head status code
@@ -3798,7 +3823,7 @@ class ReportsApi(object):
 
         all_params = [
             'id',
-            'icon_model'
+            'file_icon_vm'
         ]
         all_params.extend(
             [
@@ -3839,15 +3864,15 @@ class ReportsApi(object):
         local_var_files = {}
 
         body_params = None
-        if 'icon_model' in local_var_params:
-            body_params = local_var_params['icon_model']
+        if 'file_icon_vm' in local_var_params:
+            body_params = local_var_params['file_icon_vm']
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json', 'text/json', 'text/plain'])  # noqa: E501
+            ['application/json'])  # noqa: E501
 
         # HTTP header `Content-Type`
         header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
-            ['application/json-patch+json', 'application/json', 'text/json', 'application/*+json'])  # noqa: E501
+            ['application/json', 'text/json', 'application/*+json'])  # noqa: E501
 
         # Authentication setting
         auth_settings = ['ApiKey', 'JWT']  # noqa: E501
@@ -3855,8 +3880,8 @@ class ReportsApi(object):
         response_types_map = {
             200: "ReportVM",
             400: "ProblemDetails",
-            402: "ProblemDetails",
             403: "ProblemDetails",
+            402: "ProblemDetails",
             404: "ProblemDetails",
             500: None,
         }
@@ -3889,8 +3914,8 @@ class ReportsApi(object):
 
         :param id: (required)
         :type id: str
-        :param permissions_vm:
-        :type permissions_vm: UpdateFilePermissionsVM
+        :param update_file_permissions_vm:
+        :type update_file_permissions_vm: UpdateFilePermissionsVM
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
@@ -3920,8 +3945,8 @@ class ReportsApi(object):
 
         :param id: (required)
         :type id: str
-        :param permissions_vm:
-        :type permissions_vm: UpdateFilePermissionsVM
+        :param update_file_permissions_vm:
+        :type update_file_permissions_vm: UpdateFilePermissionsVM
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
         :param _return_http_data_only: response data without head status code
@@ -3949,7 +3974,7 @@ class ReportsApi(object):
 
         all_params = [
             'id',
-            'permissions_vm'
+            'update_file_permissions_vm'
         ]
         all_params.extend(
             [
@@ -3990,15 +4015,15 @@ class ReportsApi(object):
         local_var_files = {}
 
         body_params = None
-        if 'permissions_vm' in local_var_params:
-            body_params = local_var_params['permissions_vm']
+        if 'update_file_permissions_vm' in local_var_params:
+            body_params = local_var_params['update_file_permissions_vm']
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json', 'text/json', 'text/plain'])  # noqa: E501
+            ['application/json'])  # noqa: E501
 
         # HTTP header `Content-Type`
         header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
-            ['application/json-patch+json', 'application/json', 'text/json', 'application/*+json'])  # noqa: E501
+            ['application/json', 'text/json', 'application/*+json'])  # noqa: E501
 
         # Authentication setting
         auth_settings = ['ApiKey', 'JWT']  # noqa: E501
@@ -4034,8 +4059,8 @@ class ReportsApi(object):
 
         :param id: (required)
         :type id: str
-        :param tags_model:
-        :type tags_model: FileTagsUpdateVM
+        :param file_tags_update_vm:
+        :type file_tags_update_vm: FileTagsUpdateVM
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
@@ -4066,8 +4091,8 @@ class ReportsApi(object):
 
         :param id: (required)
         :type id: str
-        :param tags_model:
-        :type tags_model: FileTagsUpdateVM
+        :param file_tags_update_vm:
+        :type file_tags_update_vm: FileTagsUpdateVM
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
         :param _return_http_data_only: response data without head status code
@@ -4095,7 +4120,7 @@ class ReportsApi(object):
 
         all_params = [
             'id',
-            'tags_model'
+            'file_tags_update_vm'
         ]
         all_params.extend(
             [
@@ -4136,15 +4161,15 @@ class ReportsApi(object):
         local_var_files = {}
 
         body_params = None
-        if 'tags_model' in local_var_params:
-            body_params = local_var_params['tags_model']
+        if 'file_tags_update_vm' in local_var_params:
+            body_params = local_var_params['file_tags_update_vm']
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json', 'text/json', 'text/plain'])  # noqa: E501
+            ['application/json'])  # noqa: E501
 
         # HTTP header `Content-Type`
         header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
-            ['application/json-patch+json', 'application/json', 'text/json', 'application/*+json'])  # noqa: E501
+            ['application/json', 'text/json', 'application/*+json'])  # noqa: E501
 
         # Authentication setting
         auth_settings = ['ApiKey', 'JWT']  # noqa: E501
@@ -4152,8 +4177,8 @@ class ReportsApi(object):
         response_types_map = {
             200: "ReportVM",
             400: "ProblemDetails",
-            402: "ProblemDetails",
             403: "ProblemDetails",
+            402: "ProblemDetails",
             404: "ProblemDetails",
             500: None,
         }
@@ -4176,18 +4201,19 @@ class ReportsApi(object):
             _request_auth=local_var_params.get('_request_auth'))
 
     def reports_upload_file(self, id, **kwargs):  # noqa: E501
-        """Allows to upload reports into specified folder  # noqa: E501
+        """Upload a file to the specified folder  !  # noqa: E501
 
+        User with Create Entity permission can access this method.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
         >>> thread = api.reports_upload_file(id, async_req=True)
         >>> result = thread.get()
 
-        :param id: folder id (required)
+        :param id: Identifier of folder (required)
         :type id: str
-        :param file_vm: create VM
-        :type file_vm: ReportCreateVM
+        :param report_create_vm: file's view model
+        :type report_create_vm: ReportCreateVM
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
@@ -4207,18 +4233,19 @@ class ReportsApi(object):
         return self.reports_upload_file_with_http_info(id, **kwargs)  # noqa: E501
 
     def reports_upload_file_with_http_info(self, id, **kwargs):  # noqa: E501
-        """Allows to upload reports into specified folder  # noqa: E501
+        """Upload a file to the specified folder  !  # noqa: E501
 
+        User with Create Entity permission can access this method.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
         >>> thread = api.reports_upload_file_with_http_info(id, async_req=True)
         >>> result = thread.get()
 
-        :param id: folder id (required)
+        :param id: Identifier of folder (required)
         :type id: str
-        :param file_vm: create VM
-        :type file_vm: ReportCreateVM
+        :param report_create_vm: file's view model
+        :type report_create_vm: ReportCreateVM
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
         :param _return_http_data_only: response data without head status code
@@ -4246,7 +4273,7 @@ class ReportsApi(object):
 
         all_params = [
             'id',
-            'file_vm'
+            'report_create_vm'
         ]
         all_params.extend(
             [
@@ -4287,15 +4314,15 @@ class ReportsApi(object):
         local_var_files = {}
 
         body_params = None
-        if 'file_vm' in local_var_params:
-            body_params = local_var_params['file_vm']
+        if 'report_create_vm' in local_var_params:
+            body_params = local_var_params['report_create_vm']
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json', 'text/json', 'text/plain'])  # noqa: E501
+            ['application/json'])  # noqa: E501
 
         # HTTP header `Content-Type`
         header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
-            ['application/json-patch+json', 'application/json', 'text/json', 'application/*+json'])  # noqa: E501
+            ['application/json', 'text/json', 'application/*+json'])  # noqa: E501
 
         # Authentication setting
         auth_settings = ['ApiKey', 'JWT']  # noqa: E501
@@ -4303,8 +4330,8 @@ class ReportsApi(object):
         response_types_map = {
             200: "ReportVM",
             400: "ProblemDetails",
-            402: "ProblemDetails",
             403: "ProblemDetails",
+            402: "ProblemDetails",
             404: "ProblemDetails",
         }
 

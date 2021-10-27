@@ -36,17 +36,17 @@ class ApiKeysApi(object):
             api_client = ApiClient()
         self.api_client = api_client
 
-    def api_keys_create_api_key(self, model, **kwargs):  # noqa: E501
+    def api_keys_create_api_key(self, create_api_key_vm, **kwargs):  # noqa: E501
         """Create a new apikey, 5 apikeys for user. Hardcoded for ddos.  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.api_keys_create_api_key(model, async_req=True)
+        >>> thread = api.api_keys_create_api_key(create_api_key_vm, async_req=True)
         >>> result = thread.get()
 
-        :param model: (required)
-        :type model: CreateApiKeyVM
+        :param create_api_key_vm: (required)
+        :type create_api_key_vm: CreateApiKeyVM
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
@@ -63,19 +63,19 @@ class ApiKeysApi(object):
         :rtype: ApiKeyVM
         """
         kwargs['_return_http_data_only'] = True
-        return self.api_keys_create_api_key_with_http_info(model, **kwargs)  # noqa: E501
+        return self.api_keys_create_api_key_with_http_info(create_api_key_vm, **kwargs)  # noqa: E501
 
-    def api_keys_create_api_key_with_http_info(self, model, **kwargs):  # noqa: E501
+    def api_keys_create_api_key_with_http_info(self, create_api_key_vm, **kwargs):  # noqa: E501
         """Create a new apikey, 5 apikeys for user. Hardcoded for ddos.  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.api_keys_create_api_key_with_http_info(model, async_req=True)
+        >>> thread = api.api_keys_create_api_key_with_http_info(create_api_key_vm, async_req=True)
         >>> result = thread.get()
 
-        :param model: (required)
-        :type model: CreateApiKeyVM
+        :param create_api_key_vm: (required)
+        :type create_api_key_vm: CreateApiKeyVM
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
         :param _return_http_data_only: response data without head status code
@@ -102,7 +102,7 @@ class ApiKeysApi(object):
         local_var_params = locals()
 
         all_params = [
-            'model'
+            'create_api_key_vm'
         ]
         all_params.extend(
             [
@@ -122,10 +122,10 @@ class ApiKeysApi(object):
                 )
             local_var_params[key] = val
         del local_var_params['kwargs']
-        # verify the required parameter 'model' is set
-        if self.api_client.client_side_validation and ('model' not in local_var_params or  # noqa: E501
-                                                        local_var_params['model'] is None):  # noqa: E501
-            raise ApiValueError("Missing the required parameter `model` when calling `api_keys_create_api_key`")  # noqa: E501
+        # verify the required parameter 'create_api_key_vm' is set
+        if self.api_client.client_side_validation and ('create_api_key_vm' not in local_var_params or  # noqa: E501
+                                                        local_var_params['create_api_key_vm'] is None):  # noqa: E501
+            raise ApiValueError("Missing the required parameter `create_api_key_vm` when calling `api_keys_create_api_key`")  # noqa: E501
 
         collection_formats = {}
 
@@ -139,15 +139,15 @@ class ApiKeysApi(object):
         local_var_files = {}
 
         body_params = None
-        if 'model' in local_var_params:
-            body_params = local_var_params['model']
+        if 'create_api_key_vm' in local_var_params:
+            body_params = local_var_params['create_api_key_vm']
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json', 'text/json', 'text/plain'])  # noqa: E501
+            ['application/json'])  # noqa: E501
 
         # HTTP header `Content-Type`
         header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
-            ['application/json-patch+json', 'application/json', 'text/json', 'application/*+json'])  # noqa: E501
+            ['application/json', 'text/json', 'application/*+json'])  # noqa: E501
 
         # Authentication setting
         auth_settings = ['ApiKey', 'JWT']  # noqa: E501
@@ -175,17 +175,17 @@ class ApiKeysApi(object):
             collection_formats=collection_formats,
             _request_auth=local_var_params.get('_request_auth'))
 
-    def api_keys_delete_api_key(self, model, **kwargs):  # noqa: E501
+    def api_keys_delete_api_key(self, delete_api_key_vm, **kwargs):  # noqa: E501
         """Delete an apikey  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.api_keys_delete_api_key(model, async_req=True)
+        >>> thread = api.api_keys_delete_api_key(delete_api_key_vm, async_req=True)
         >>> result = thread.get()
 
-        :param model: (required)
-        :type model: DeleteApiKeyVM
+        :param delete_api_key_vm: (required)
+        :type delete_api_key_vm: DeleteApiKeyVM
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
@@ -202,19 +202,19 @@ class ApiKeysApi(object):
         :rtype: None
         """
         kwargs['_return_http_data_only'] = True
-        return self.api_keys_delete_api_key_with_http_info(model, **kwargs)  # noqa: E501
+        return self.api_keys_delete_api_key_with_http_info(delete_api_key_vm, **kwargs)  # noqa: E501
 
-    def api_keys_delete_api_key_with_http_info(self, model, **kwargs):  # noqa: E501
+    def api_keys_delete_api_key_with_http_info(self, delete_api_key_vm, **kwargs):  # noqa: E501
         """Delete an apikey  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.api_keys_delete_api_key_with_http_info(model, async_req=True)
+        >>> thread = api.api_keys_delete_api_key_with_http_info(delete_api_key_vm, async_req=True)
         >>> result = thread.get()
 
-        :param model: (required)
-        :type model: DeleteApiKeyVM
+        :param delete_api_key_vm: (required)
+        :type delete_api_key_vm: DeleteApiKeyVM
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
         :param _return_http_data_only: response data without head status code
@@ -241,7 +241,7 @@ class ApiKeysApi(object):
         local_var_params = locals()
 
         all_params = [
-            'model'
+            'delete_api_key_vm'
         ]
         all_params.extend(
             [
@@ -261,10 +261,10 @@ class ApiKeysApi(object):
                 )
             local_var_params[key] = val
         del local_var_params['kwargs']
-        # verify the required parameter 'model' is set
-        if self.api_client.client_side_validation and ('model' not in local_var_params or  # noqa: E501
-                                                        local_var_params['model'] is None):  # noqa: E501
-            raise ApiValueError("Missing the required parameter `model` when calling `api_keys_delete_api_key`")  # noqa: E501
+        # verify the required parameter 'delete_api_key_vm' is set
+        if self.api_client.client_side_validation and ('delete_api_key_vm' not in local_var_params or  # noqa: E501
+                                                        local_var_params['delete_api_key_vm'] is None):  # noqa: E501
+            raise ApiValueError("Missing the required parameter `delete_api_key_vm` when calling `api_keys_delete_api_key`")  # noqa: E501
 
         collection_formats = {}
 
@@ -278,15 +278,15 @@ class ApiKeysApi(object):
         local_var_files = {}
 
         body_params = None
-        if 'model' in local_var_params:
-            body_params = local_var_params['model']
+        if 'delete_api_key_vm' in local_var_params:
+            body_params = local_var_params['delete_api_key_vm']
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json', 'text/json', 'text/plain'])  # noqa: E501
+            ['application/json'])  # noqa: E501
 
         # HTTP header `Content-Type`
         header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
-            ['application/json-patch+json', 'application/json', 'text/json', 'application/*+json'])  # noqa: E501
+            ['application/json', 'text/json', 'application/*+json'])  # noqa: E501
 
         # Authentication setting
         auth_settings = ['ApiKey', 'JWT']  # noqa: E501
@@ -408,7 +408,7 @@ class ApiKeysApi(object):
         body_params = None
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json', 'text/json', 'text/plain'])  # noqa: E501
+            ['application/json'])  # noqa: E501
 
         # Authentication setting
         auth_settings = ['ApiKey', 'JWT']  # noqa: E501

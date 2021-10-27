@@ -61,8 +61,7 @@ class DataSourcesVM(object):
         self._take = None
         self.discriminator = None
 
-        if data_sources is not None:
-            self.data_sources = data_sources
+        self.data_sources = data_sources
         if count is not None:
             self.count = count
         if skip is not None:

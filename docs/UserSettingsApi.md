@@ -39,11 +39,10 @@ configuration = fastreport_cloud_sdk.Configuration(
     password = 'YOUR_PASSWORD'
 )
 
-# Configure API key authorization: JWT
-configuration.api_key['JWT'] = 'YOUR_API_KEY'
-
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['JWT'] = 'Bearer'
+# Configure Bearer authorization (JWT): JWT
+configuration = fastreport_cloud_sdk.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
+)
 
 # Enter a context with an instance of the API client
 with fastreport_cloud_sdk.ApiClient(configuration) as api_client:
@@ -58,7 +57,7 @@ with fastreport_cloud_sdk.ApiClient(configuration) as api_client:
         print("Exception when calling UserSettingsApi->user_settings_get_current_user_settings: %s\n" % e)
 ```
 
-* Api Key Authentication (JWT):
+* Bearer (JWT) Authentication (JWT):
 ```python
 from __future__ import print_function
 import time
@@ -82,11 +81,10 @@ configuration = fastreport_cloud_sdk.Configuration(
     password = 'YOUR_PASSWORD'
 )
 
-# Configure API key authorization: JWT
-configuration.api_key['JWT'] = 'YOUR_API_KEY'
-
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['JWT'] = 'Bearer'
+# Configure Bearer authorization (JWT): JWT
+configuration = fastreport_cloud_sdk.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
+)
 
 # Enter a context with an instance of the API client
 with fastreport_cloud_sdk.ApiClient(configuration) as api_client:
@@ -115,7 +113,7 @@ This endpoint does not need any parameter.
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/json, text/json, text/plain
+ - **Accept**: application/json
 
 ### HTTP response details
 | Status code | Description | Response headers |
@@ -126,7 +124,7 @@ This endpoint does not need any parameter.
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **user_settings_update_my_settings**
-> UserSettingsVM user_settings_update_my_settings(model=model)
+> UserSettingsVM user_settings_update_my_settings(update_user_settings_vm=update_user_settings_vm)
 
 Update settings of the current user
 
@@ -156,27 +154,26 @@ configuration = fastreport_cloud_sdk.Configuration(
     password = 'YOUR_PASSWORD'
 )
 
-# Configure API key authorization: JWT
-configuration.api_key['JWT'] = 'YOUR_API_KEY'
-
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['JWT'] = 'Bearer'
+# Configure Bearer authorization (JWT): JWT
+configuration = fastreport_cloud_sdk.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
+)
 
 # Enter a context with an instance of the API client
 with fastreport_cloud_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = fastreport_cloud_sdk.UserSettingsApi(api_client)
-    model = fastreport_cloud_sdk.UpdateUserSettingsVM() # UpdateUserSettingsVM |  (optional)
+    update_user_settings_vm = fastreport_cloud_sdk.UpdateUserSettingsVM() # UpdateUserSettingsVM |  (optional)
 
     try:
         # Update settings of the current user
-        api_response = api_instance.user_settings_update_my_settings(model=model)
+        api_response = api_instance.user_settings_update_my_settings(update_user_settings_vm=update_user_settings_vm)
         pprint(api_response)
     except ApiException as e:
         print("Exception when calling UserSettingsApi->user_settings_update_my_settings: %s\n" % e)
 ```
 
-* Api Key Authentication (JWT):
+* Bearer (JWT) Authentication (JWT):
 ```python
 from __future__ import print_function
 import time
@@ -200,21 +197,20 @@ configuration = fastreport_cloud_sdk.Configuration(
     password = 'YOUR_PASSWORD'
 )
 
-# Configure API key authorization: JWT
-configuration.api_key['JWT'] = 'YOUR_API_KEY'
-
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['JWT'] = 'Bearer'
+# Configure Bearer authorization (JWT): JWT
+configuration = fastreport_cloud_sdk.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
+)
 
 # Enter a context with an instance of the API client
 with fastreport_cloud_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = fastreport_cloud_sdk.UserSettingsApi(api_client)
-    model = fastreport_cloud_sdk.UpdateUserSettingsVM() # UpdateUserSettingsVM |  (optional)
+    update_user_settings_vm = fastreport_cloud_sdk.UpdateUserSettingsVM() # UpdateUserSettingsVM |  (optional)
 
     try:
         # Update settings of the current user
-        api_response = api_instance.user_settings_update_my_settings(model=model)
+        api_response = api_instance.user_settings_update_my_settings(update_user_settings_vm=update_user_settings_vm)
         pprint(api_response)
     except ApiException as e:
         print("Exception when calling UserSettingsApi->user_settings_update_my_settings: %s\n" % e)
@@ -224,7 +220,7 @@ with fastreport_cloud_sdk.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **model** | [**UpdateUserSettingsVM**](UpdateUserSettingsVM.md)|  | [optional] 
+ **update_user_settings_vm** | [**UpdateUserSettingsVM**](UpdateUserSettingsVM.md)|  | [optional] 
 
 ### Return type
 
@@ -236,8 +232,8 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json-patch+json, application/json, text/json, application/*+json
- - **Accept**: application/json, text/json, text/plain
+ - **Content-Type**: application/json, text/json, application/*+json
+ - **Accept**: application/json
 
 ### HTTP response details
 | Status code | Description | Response headers |

@@ -71,14 +71,11 @@ class SubscriptionInviteVM(object):
             self.usages = usages
         if durable is not None:
             self.durable = durable
-        if access_token is not None:
-            self.access_token = access_token
+        self.access_token = access_token
         if expired_date is not None:
             self.expired_date = expired_date
-        if added_users is not None:
-            self.added_users = added_users
-        if creator_user_id is not None:
-            self.creator_user_id = creator_user_id
+        self.added_users = added_users
+        self.creator_user_id = creator_user_id
 
     @property
     def usages(self):

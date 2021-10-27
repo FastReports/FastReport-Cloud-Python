@@ -37,7 +37,7 @@ class UpdateDataSourcePermissionsVM(object):
     """
     openapi_types = {
         'new_permissions': 'DataSourcePermissions',
-        'administrate': 'int'
+        'administrate': 'DataSourceAdministrate'
     }
 
     attribute_map = {
@@ -87,7 +87,7 @@ class UpdateDataSourcePermissionsVM(object):
 
 
         :return: The administrate of this UpdateDataSourcePermissionsVM.  # noqa: E501
-        :rtype: int
+        :rtype: DataSourceAdministrate
         """
         return self._administrate
 
@@ -97,16 +97,10 @@ class UpdateDataSourcePermissionsVM(object):
 
 
         :param administrate: The administrate of this UpdateDataSourcePermissionsVM.  # noqa: E501
-        :type administrate: int
+        :type administrate: DataSourceAdministrate
         """
         if self.local_vars_configuration.client_side_validation and administrate is None:  # noqa: E501
             raise ValueError("Invalid value for `administrate`, must not be `None`")  # noqa: E501
-        allowed_values = [0, 1, 2, 4, 8, -1]  # noqa: E501
-        if self.local_vars_configuration.client_side_validation and administrate not in allowed_values:  # noqa: E501
-            raise ValueError(
-                "Invalid value for `administrate` ({0}), must be one of {1}"  # noqa: E501
-                .format(administrate, allowed_values)
-            )
 
         self._administrate = administrate
 

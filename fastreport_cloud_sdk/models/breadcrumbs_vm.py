@@ -52,8 +52,7 @@ class BreadcrumbsVM(object):
         self._breadcrumbs = None
         self.discriminator = None
 
-        if breadcrumbs is not None:
-            self.breadcrumbs = breadcrumbs
+        self.breadcrumbs = breadcrumbs
 
     @property
     def breadcrumbs(self):

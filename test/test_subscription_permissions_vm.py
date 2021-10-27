@@ -36,38 +36,7 @@ class TestSubscriptionPermissionsVM(unittest.TestCase):
         # model = fastreport_cloud_sdk.models.subscription_permissions_vm.SubscriptionPermissionsVM()  # noqa: E501
         if include_optional :
             return SubscriptionPermissionsVM(
-                permissions = fastreport_cloud_sdk.models.subscription_permissions.SubscriptionPermissions(
-                    owner_id = 'f325375e-30fc-ba00-1731-c574773100bf', 
-                    owner = fastreport_cloud_sdk.models.subscription_permission.SubscriptionPermission(
-                        create = 0, 
-                        delete = 0, 
-                        execute = 0, 
-                        get = 0, 
-                        update = 0, 
-                        administrate = 0, ), 
-                    groups = {
-                        'key' : fastreport_cloud_sdk.models.subscription_permission.SubscriptionPermission(
-                            create = 0, 
-                            delete = 0, 
-                            execute = 0, 
-                            get = 0, 
-                            update = 0, 
-                            administrate = 0, )
-                        }, 
-                    other = fastreport_cloud_sdk.models.subscription_permission.SubscriptionPermission(
-                        create = 0, 
-                        delete = 0, 
-                        execute = 0, 
-                        get = 0, 
-                        update = 0, 
-                        administrate = 0, ), 
-                    anon = fastreport_cloud_sdk.models.subscription_permission.SubscriptionPermission(
-                        create = 0, 
-                        delete = 0, 
-                        execute = 0, 
-                        get = 0, 
-                        update = 0, 
-                        administrate = 0, ), )
+                permissions = fastreport_cloud_sdk.models.subscription_permissions.SubscriptionPermissions()
             )
         else :
             return SubscriptionPermissionsVM(

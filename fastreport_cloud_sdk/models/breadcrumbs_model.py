@@ -55,10 +55,8 @@ class BreadcrumbsModel(object):
         self._name = None
         self.discriminator = None
 
-        if id is not None:
-            self.id = id
-        if name is not None:
-            self.name = name
+        self.id = id
+        self.name = name
 
     @property
     def id(self):

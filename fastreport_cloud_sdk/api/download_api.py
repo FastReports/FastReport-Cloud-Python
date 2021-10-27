@@ -145,17 +145,17 @@ class DownloadApi(object):
         body_params = None
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/octet-stream'])  # noqa: E501
+            ['application/octet-stream', 'application/json'])  # noqa: E501
 
         # Authentication setting
         auth_settings = ['ApiKey', 'JWT']  # noqa: E501
         
         response_types_map = {
             200: "file",
+            404: "ProblemDetails",
             400: "ProblemDetails",
             402: "ProblemDetails",
             403: "ProblemDetails",
-            404: "ProblemDetails",
         }
 
         return self.api_client.call_api(
@@ -284,17 +284,17 @@ class DownloadApi(object):
         body_params = None
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/octet-stream'])  # noqa: E501
+            ['image/jpeg', 'application/json'])  # noqa: E501
 
         # Authentication setting
         auth_settings = ['ApiKey', 'JWT']  # noqa: E501
         
         response_types_map = {
             200: "file",
+            404: "ProblemDetails",
             400: "ProblemDetails",
             402: "ProblemDetails",
             403: "ProblemDetails",
-            404: "ProblemDetails",
         }
 
         return self.api_client.call_api(
@@ -428,7 +428,7 @@ class DownloadApi(object):
         body_params = None
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/octet-stream'])  # noqa: E501
+            ['application/zip', 'application/json'])  # noqa: E501
 
         # Authentication setting
         auth_settings = ['ApiKey', 'JWT']  # noqa: E501
@@ -567,17 +567,17 @@ class DownloadApi(object):
         body_params = None
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/octet-stream'])  # noqa: E501
+            ['application/octet-stream', 'application/json'])  # noqa: E501
 
         # Authentication setting
         auth_settings = ['ApiKey', 'JWT']  # noqa: E501
         
         response_types_map = {
             200: "file",
+            404: "ProblemDetails",
             400: "ProblemDetails",
             402: "ProblemDetails",
             403: "ProblemDetails",
-            404: "ProblemDetails",
         }
 
         return self.api_client.call_api(
@@ -706,17 +706,17 @@ class DownloadApi(object):
         body_params = None
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/octet-stream'])  # noqa: E501
+            ['image/jpeg', 'application/json'])  # noqa: E501
 
         # Authentication setting
         auth_settings = ['ApiKey', 'JWT']  # noqa: E501
         
         response_types_map = {
             200: "file",
+            404: "ProblemDetails",
             400: "ProblemDetails",
             402: "ProblemDetails",
             403: "ProblemDetails",
-            404: "ProblemDetails",
         }
 
         return self.api_client.call_api(
@@ -850,17 +850,17 @@ class DownloadApi(object):
         body_params = None
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/octet-stream'])  # noqa: E501
+            ['application/zip', 'application/json'])  # noqa: E501
 
         # Authentication setting
         auth_settings = ['ApiKey', 'JWT']  # noqa: E501
         
         response_types_map = {
             200: "file",
+            404: "ProblemDetails",
             400: "ProblemDetails",
             402: "ProblemDetails",
             403: "ProblemDetails",
-            404: "ProblemDetails",
         }
 
         return self.api_client.call_api(
@@ -989,17 +989,17 @@ class DownloadApi(object):
         body_params = None
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/octet-stream'])  # noqa: E501
+            ['application/octet-stream', 'application/json'])  # noqa: E501
 
         # Authentication setting
         auth_settings = ['ApiKey', 'JWT']  # noqa: E501
         
         response_types_map = {
             200: "file",
+            404: "ProblemDetails",
             400: "ProblemDetails",
             402: "ProblemDetails",
             403: "ProblemDetails",
-            404: "ProblemDetails",
         }
 
         return self.api_client.call_api(
@@ -1133,7 +1133,7 @@ class DownloadApi(object):
         body_params = None
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/octet-stream'])  # noqa: E501
+            ['application/zip', 'application/json'])  # noqa: E501
 
         # Authentication setting
         auth_settings = ['ApiKey', 'JWT']  # noqa: E501

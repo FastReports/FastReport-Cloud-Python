@@ -37,7 +37,6 @@ class ReportCreateVM(object):
     """
     openapi_types = {
         'template_id': 'str',
-        'report_info': 'ReportInfo',
         'name': 'str',
         'tags': 'list[str]',
         'icon': 'str',
@@ -46,39 +45,30 @@ class ReportCreateVM(object):
 
     attribute_map = {
         'template_id': 'templateId',
-        'report_info': 'reportInfo',
         'name': 'name',
         'tags': 'tags',
         'icon': 'icon',
         'content': 'content'
     }
 
-    def __init__(self, template_id=None, report_info=None, name=None, tags=None, icon=None, content=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, template_id=None, name=None, tags=None, icon=None, content=None, local_vars_configuration=None):  # noqa: E501
         """ReportCreateVM - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration.get_default_copy()
         self.local_vars_configuration = local_vars_configuration
 
         self._template_id = None
-        self._report_info = None
         self._name = None
         self._tags = None
         self._icon = None
         self._content = None
         self.discriminator = None
 
-        if template_id is not None:
-            self.template_id = template_id
-        if report_info is not None:
-            self.report_info = report_info
-        if name is not None:
-            self.name = name
-        if tags is not None:
-            self.tags = tags
-        if icon is not None:
-            self.icon = icon
-        if content is not None:
-            self.content = content
+        self.template_id = template_id
+        self.name = name
+        self.tags = tags
+        self.icon = icon
+        self.content = content
 
     @property
     def template_id(self):
@@ -103,27 +93,6 @@ class ReportCreateVM(object):
             raise ValueError(r"Invalid value for `template_id`, must be a follow pattern or equal to `/(^$)|(^[A-Fa-f0-9]{24}$)/`")  # noqa: E501
 
         self._template_id = template_id
-
-    @property
-    def report_info(self):
-        """Gets the report_info of this ReportCreateVM.  # noqa: E501
-
-
-        :return: The report_info of this ReportCreateVM.  # noqa: E501
-        :rtype: ReportInfo
-        """
-        return self._report_info
-
-    @report_info.setter
-    def report_info(self, report_info):
-        """Sets the report_info of this ReportCreateVM.
-
-
-        :param report_info: The report_info of this ReportCreateVM.  # noqa: E501
-        :type report_info: ReportInfo
-        """
-
-        self._report_info = report_info
 
     @property
     def name(self):
@@ -170,6 +139,9 @@ class ReportCreateVM(object):
         :param tags: The tags of this ReportCreateVM.  # noqa: E501
         :type tags: list[str]
         """
+        if (self.local_vars_configuration.client_side_validation and
+                tags is not None and len(tags) > 3):
+            raise ValueError("Invalid value for `tags`, number of items must be less than or equal to `3`")  # noqa: E501
 
         self._tags = tags
 
@@ -194,9 +166,6 @@ class ReportCreateVM(object):
         if (self.local_vars_configuration.client_side_validation and
                 icon is not None and len(icon) > 65536):
             raise ValueError("Invalid value for `icon`, length must be less than or equal to `65536`")  # noqa: E501
-        if (self.local_vars_configuration.client_side_validation and
-                icon is not None and not re.search(r'^(?:[A-Za-z0-9+\/]{4})*(?:[A-Za-z0-9+\/]{2}==|[A-Za-z0-9+\/]{3}=)?$', icon)):  # noqa: E501
-            raise ValueError(r"Invalid value for `icon`, must be a follow pattern or equal to `/^(?:[A-Za-z0-9+\/]{4})*(?:[A-Za-z0-9+\/]{2}==|[A-Za-z0-9+\/]{3}=)?$/`")  # noqa: E501
 
         self._icon = icon
 
@@ -221,9 +190,6 @@ class ReportCreateVM(object):
         if (self.local_vars_configuration.client_side_validation and
                 content is not None and len(content) > 1073741824):
             raise ValueError("Invalid value for `content`, length must be less than or equal to `1073741824`")  # noqa: E501
-        if (self.local_vars_configuration.client_side_validation and
-                content is not None and not re.search(r'^(?:[A-Za-z0-9+\/]{4})*(?:[A-Za-z0-9+\/]{2}==|[A-Za-z0-9+\/]{3}=)?$', content)):  # noqa: E501
-            raise ValueError(r"Invalid value for `content`, must be a follow pattern or equal to `/^(?:[A-Za-z0-9+\/]{4})*(?:[A-Za-z0-9+\/]{2}==|[A-Za-z0-9+\/]{3}=)?$/`")  # noqa: E501
 
         self._content = content
 

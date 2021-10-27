@@ -178,7 +178,7 @@ class TestReportsApi(unittest.TestCase):
     def test_reports_get_files_list(self):
         """Test case for reports_get_files_list
 
-        Get all files from specified folder  # noqa: E501
+        Get all files from specified folder. <br />  User with Get Entity permission can access this method. <br />  The method will returns minimal infomration about the file: <br />  id, name, size, editedTime, createdTime, tags, status, statusReason.  # noqa: E501
         """
         pass
 
@@ -227,7 +227,7 @@ class TestReportsApi(unittest.TestCase):
     def test_reports_upload_file(self):
         """Test case for reports_upload_file
 
-        Allows to upload reports into specified folder  # noqa: E501
+        Upload a file to the specified folder  !  # noqa: E501
         """
         pass
 

@@ -4,12 +4,12 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**create** | **int** |  | [optional] 
-**delete** | **int** |  | [optional] 
-**execute** | **int** |  | [optional] 
-**get** | **int** |  | [optional] 
-**update** | **int** |  | [optional] 
-**administrate** | **int** |  | [optional] 
+**create** | [**FileCreate**](FileCreate.md) |  | [optional] 
+**delete** | [**FileDelete**](FileDelete.md) |  | [optional] 
+**execute** | [**FileExecute**](FileExecute.md) |  | [optional] 
+**get** | [**FileGet**](FileGet.md) |  | [optional] 
+**update** | [**FileUpdate**](FileUpdate.md) |  | [optional] 
+**administrate** | [**FileAdministrate**](FileAdministrate.md) |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

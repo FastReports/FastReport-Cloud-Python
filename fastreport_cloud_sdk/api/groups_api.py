@@ -45,8 +45,8 @@ class GroupsApi(object):
         >>> thread = api.groups_create_group(async_req=True)
         >>> result = thread.get()
 
-        :param view_model: Model for creating
-        :type view_model: CreateGroupVM
+        :param create_group_vm: Model for creating
+        :type create_group_vm: CreateGroupVM
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
@@ -74,8 +74,8 @@ class GroupsApi(object):
         >>> thread = api.groups_create_group_with_http_info(async_req=True)
         >>> result = thread.get()
 
-        :param view_model: Model for creating
-        :type view_model: CreateGroupVM
+        :param create_group_vm: Model for creating
+        :type create_group_vm: CreateGroupVM
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
         :param _return_http_data_only: response data without head status code
@@ -102,7 +102,7 @@ class GroupsApi(object):
         local_var_params = locals()
 
         all_params = [
-            'view_model'
+            'create_group_vm'
         ]
         all_params.extend(
             [
@@ -135,15 +135,15 @@ class GroupsApi(object):
         local_var_files = {}
 
         body_params = None
-        if 'view_model' in local_var_params:
-            body_params = local_var_params['view_model']
+        if 'create_group_vm' in local_var_params:
+            body_params = local_var_params['create_group_vm']
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json', 'text/json', 'text/plain'])  # noqa: E501
+            ['application/json'])  # noqa: E501
 
         # HTTP header `Content-Type`
         header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
-            ['application/json-patch+json', 'application/json', 'text/json', 'application/*+json'])  # noqa: E501
+            ['application/json', 'text/json', 'application/*+json'])  # noqa: E501
 
         # Authentication setting
         auth_settings = ['ApiKey', 'JWT']  # noqa: E501
@@ -151,8 +151,8 @@ class GroupsApi(object):
         response_types_map = {
             200: "GroupVM",
             400: "ProblemDetails",
-            402: "ProblemDetails",
             403: "ProblemDetails",
+            402: "ProblemDetails",
             404: "ProblemDetails",
         }
 
@@ -282,7 +282,7 @@ class GroupsApi(object):
         body_params = None
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json', 'text/json', 'text/plain'])  # noqa: E501
+            ['application/json'])  # noqa: E501
 
         # Authentication setting
         auth_settings = ['ApiKey', 'JWT']  # noqa: E501
@@ -415,7 +415,7 @@ class GroupsApi(object):
         body_params = None
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json', 'text/json', 'text/plain'])  # noqa: E501
+            ['application/json'])  # noqa: E501
 
         # Authentication setting
         auth_settings = ['ApiKey', 'JWT']  # noqa: E501
@@ -563,7 +563,7 @@ class GroupsApi(object):
         body_params = None
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json', 'text/json', 'text/plain'])  # noqa: E501
+            ['application/json'])  # noqa: E501
 
         # Authentication setting
         auth_settings = ['ApiKey', 'JWT']  # noqa: E501
@@ -701,7 +701,7 @@ class GroupsApi(object):
         body_params = None
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json', 'text/json', 'text/plain'])  # noqa: E501
+            ['application/json'])  # noqa: E501
 
         # Authentication setting
         auth_settings = ['ApiKey', 'JWT']  # noqa: E501
@@ -730,19 +730,19 @@ class GroupsApi(object):
             collection_formats=collection_formats,
             _request_auth=local_var_params.get('_request_auth'))
 
-    def groups_rename_group(self, id, view_model, **kwargs):  # noqa: E501
+    def groups_rename_group(self, id, rename_group_vm, **kwargs):  # noqa: E501
         """Rename group by identifier  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.groups_rename_group(id, view_model, async_req=True)
+        >>> thread = api.groups_rename_group(id, rename_group_vm, async_req=True)
         >>> result = thread.get()
 
         :param id: Identifier of group (required)
         :type id: str
-        :param view_model: Model for renaming (required)
-        :type view_model: RenameGroupVM
+        :param rename_group_vm: Model for renaming (required)
+        :type rename_group_vm: RenameGroupVM
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
@@ -759,21 +759,21 @@ class GroupsApi(object):
         :rtype: GroupVM
         """
         kwargs['_return_http_data_only'] = True
-        return self.groups_rename_group_with_http_info(id, view_model, **kwargs)  # noqa: E501
+        return self.groups_rename_group_with_http_info(id, rename_group_vm, **kwargs)  # noqa: E501
 
-    def groups_rename_group_with_http_info(self, id, view_model, **kwargs):  # noqa: E501
+    def groups_rename_group_with_http_info(self, id, rename_group_vm, **kwargs):  # noqa: E501
         """Rename group by identifier  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.groups_rename_group_with_http_info(id, view_model, async_req=True)
+        >>> thread = api.groups_rename_group_with_http_info(id, rename_group_vm, async_req=True)
         >>> result = thread.get()
 
         :param id: Identifier of group (required)
         :type id: str
-        :param view_model: Model for renaming (required)
-        :type view_model: RenameGroupVM
+        :param rename_group_vm: Model for renaming (required)
+        :type rename_group_vm: RenameGroupVM
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
         :param _return_http_data_only: response data without head status code
@@ -801,7 +801,7 @@ class GroupsApi(object):
 
         all_params = [
             'id',
-            'view_model'
+            'rename_group_vm'
         ]
         all_params.extend(
             [
@@ -825,10 +825,10 @@ class GroupsApi(object):
         if self.api_client.client_side_validation and ('id' not in local_var_params or  # noqa: E501
                                                         local_var_params['id'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `id` when calling `groups_rename_group`")  # noqa: E501
-        # verify the required parameter 'view_model' is set
-        if self.api_client.client_side_validation and ('view_model' not in local_var_params or  # noqa: E501
-                                                        local_var_params['view_model'] is None):  # noqa: E501
-            raise ApiValueError("Missing the required parameter `view_model` when calling `groups_rename_group`")  # noqa: E501
+        # verify the required parameter 'rename_group_vm' is set
+        if self.api_client.client_side_validation and ('rename_group_vm' not in local_var_params or  # noqa: E501
+                                                        local_var_params['rename_group_vm'] is None):  # noqa: E501
+            raise ApiValueError("Missing the required parameter `rename_group_vm` when calling `groups_rename_group`")  # noqa: E501
 
         if self.api_client.client_side_validation and 'id' in local_var_params and not re.search(r'^[A-Fa-f0-9]{24}$', local_var_params['id']):  # noqa: E501
             raise ApiValueError("Invalid value for parameter `id` when calling `groups_rename_group`, must conform to the pattern `/^[A-Fa-f0-9]{24}$/`")  # noqa: E501
@@ -846,15 +846,15 @@ class GroupsApi(object):
         local_var_files = {}
 
         body_params = None
-        if 'view_model' in local_var_params:
-            body_params = local_var_params['view_model']
+        if 'rename_group_vm' in local_var_params:
+            body_params = local_var_params['rename_group_vm']
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json', 'text/json', 'text/plain'])  # noqa: E501
+            ['application/json'])  # noqa: E501
 
         # HTTP header `Content-Type`
         header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
-            ['application/json-patch+json', 'application/json', 'text/json', 'application/*+json'])  # noqa: E501
+            ['application/json', 'text/json', 'application/*+json'])  # noqa: E501
 
         # Authentication setting
         auth_settings = ['ApiKey', 'JWT']  # noqa: E501
@@ -862,8 +862,8 @@ class GroupsApi(object):
         response_types_map = {
             200: "GroupVM",
             400: "ProblemDetails",
-            402: "ProblemDetails",
             403: "ProblemDetails",
+            402: "ProblemDetails",
             404: "ProblemDetails",
             500: None,
         }
@@ -896,8 +896,8 @@ class GroupsApi(object):
 
         :param id: (required)
         :type id: str
-        :param permissions_vm:
-        :type permissions_vm: UpdateGroupPermissionsVM
+        :param update_group_permissions_vm:
+        :type update_group_permissions_vm: UpdateGroupPermissionsVM
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
@@ -927,8 +927,8 @@ class GroupsApi(object):
 
         :param id: (required)
         :type id: str
-        :param permissions_vm:
-        :type permissions_vm: UpdateGroupPermissionsVM
+        :param update_group_permissions_vm:
+        :type update_group_permissions_vm: UpdateGroupPermissionsVM
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
         :param _return_http_data_only: response data without head status code
@@ -956,7 +956,7 @@ class GroupsApi(object):
 
         all_params = [
             'id',
-            'permissions_vm'
+            'update_group_permissions_vm'
         ]
         all_params.extend(
             [
@@ -997,15 +997,15 @@ class GroupsApi(object):
         local_var_files = {}
 
         body_params = None
-        if 'permissions_vm' in local_var_params:
-            body_params = local_var_params['permissions_vm']
+        if 'update_group_permissions_vm' in local_var_params:
+            body_params = local_var_params['update_group_permissions_vm']
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json', 'text/json', 'text/plain'])  # noqa: E501
+            ['application/json'])  # noqa: E501
 
         # HTTP header `Content-Type`
         header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
-            ['application/json-patch+json', 'application/json', 'text/json', 'application/*+json'])  # noqa: E501
+            ['application/json', 'text/json', 'application/*+json'])  # noqa: E501
 
         # Authentication setting
         auth_settings = ['ApiKey', 'JWT']  # noqa: E501

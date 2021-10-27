@@ -36,7 +36,7 @@ class UpdateUserSettingsVM(object):
                             and the value is json key in definition.
     """
     openapi_types = {
-        'profile_visibility': 'int',
+        'profile_visibility': 'ProfileVisibility',
         'default_subscription': 'str'
     }
 
@@ -57,8 +57,7 @@ class UpdateUserSettingsVM(object):
 
         if profile_visibility is not None:
             self.profile_visibility = profile_visibility
-        if default_subscription is not None:
-            self.default_subscription = default_subscription
+        self.default_subscription = default_subscription
 
     @property
     def profile_visibility(self):
@@ -66,7 +65,7 @@ class UpdateUserSettingsVM(object):
 
 
         :return: The profile_visibility of this UpdateUserSettingsVM.  # noqa: E501
-        :rtype: int
+        :rtype: ProfileVisibility
         """
         return self._profile_visibility
 
@@ -76,14 +75,8 @@ class UpdateUserSettingsVM(object):
 
 
         :param profile_visibility: The profile_visibility of this UpdateUserSettingsVM.  # noqa: E501
-        :type profile_visibility: int
+        :type profile_visibility: ProfileVisibility
         """
-        allowed_values = [0, 1, 2, 4]  # noqa: E501
-        if self.local_vars_configuration.client_side_validation and profile_visibility not in allowed_values:  # noqa: E501
-            raise ValueError(
-                "Invalid value for `profile_visibility` ({0}), must be one of {1}"  # noqa: E501
-                .format(profile_visibility, allowed_values)
-            )
 
         self._profile_visibility = profile_visibility
 

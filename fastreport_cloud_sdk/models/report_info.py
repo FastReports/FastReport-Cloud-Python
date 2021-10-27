@@ -44,7 +44,7 @@ class ReportInfo(object):
         'name': 'str',
         'picture': 'str',
         'preview_picture_ratio': 'float',
-        'save_mode': 'str',
+        'save_mode': 'SaveMode',
         'save_preview_picture': 'bool',
         'tag': 'str',
         'version': 'str'
@@ -85,30 +85,23 @@ class ReportInfo(object):
         self._version = None
         self.discriminator = None
 
-        if author is not None:
-            self.author = author
+        self.author = author
         if created is not None:
             self.created = created
-        if creator_version is not None:
-            self.creator_version = creator_version
-        if description is not None:
-            self.description = description
+        self.creator_version = creator_version
+        self.description = description
         if modified is not None:
             self.modified = modified
-        if name is not None:
-            self.name = name
-        if picture is not None:
-            self.picture = picture
+        self.name = name
+        self.picture = picture
         if preview_picture_ratio is not None:
             self.preview_picture_ratio = preview_picture_ratio
         if save_mode is not None:
             self.save_mode = save_mode
         if save_preview_picture is not None:
             self.save_preview_picture = save_preview_picture
-        if tag is not None:
-            self.tag = tag
-        if version is not None:
-            self.version = version
+        self.tag = tag
+        self.version = version
 
     @property
     def author(self):
@@ -254,9 +247,6 @@ class ReportInfo(object):
         :param picture: The picture of this ReportInfo.  # noqa: E501
         :type picture: str
         """
-        if (self.local_vars_configuration.client_side_validation and
-                picture is not None and not re.search(r'^(?:[A-Za-z0-9+\/]{4})*(?:[A-Za-z0-9+\/]{2}==|[A-Za-z0-9+\/]{3}=)?$', picture)):  # noqa: E501
-            raise ValueError(r"Invalid value for `picture`, must be a follow pattern or equal to `/^(?:[A-Za-z0-9+\/]{4})*(?:[A-Za-z0-9+\/]{2}==|[A-Za-z0-9+\/]{3}=)?$/`")  # noqa: E501
 
         self._picture = picture
 
@@ -287,7 +277,7 @@ class ReportInfo(object):
 
 
         :return: The save_mode of this ReportInfo.  # noqa: E501
-        :rtype: str
+        :rtype: SaveMode
         """
         return self._save_mode
 
@@ -297,14 +287,8 @@ class ReportInfo(object):
 
 
         :param save_mode: The save_mode of this ReportInfo.  # noqa: E501
-        :type save_mode: str
+        :type save_mode: SaveMode
         """
-        allowed_values = ["All", "Original", "User", "Role", "Security", "Deny", "Custom"]  # noqa: E501
-        if self.local_vars_configuration.client_side_validation and save_mode not in allowed_values:  # noqa: E501
-            raise ValueError(
-                "Invalid value for `save_mode` ({0}), must be one of {1}"  # noqa: E501
-                .format(save_mode, allowed_values)
-            )
 
         self._save_mode = save_mode
 

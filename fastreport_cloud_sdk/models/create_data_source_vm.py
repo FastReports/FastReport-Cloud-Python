@@ -39,7 +39,7 @@ class CreateDataSourceVM(object):
         'name': 'str',
         'connection_string': 'str',
         'subscription_id': 'str',
-        'connection_type': 'str'
+        'connection_type': 'DataSourceConnectionType'
     }
 
     attribute_map = {
@@ -61,8 +61,7 @@ class CreateDataSourceVM(object):
         self._connection_type = None
         self.discriminator = None
 
-        if name is not None:
-            self.name = name
+        self.name = name
         self.connection_string = connection_string
         self.subscription_id = subscription_id
         if connection_type is not None:
@@ -156,7 +155,7 @@ class CreateDataSourceVM(object):
 
 
         :return: The connection_type of this CreateDataSourceVM.  # noqa: E501
-        :rtype: str
+        :rtype: DataSourceConnectionType
         """
         return self._connection_type
 
@@ -166,14 +165,8 @@ class CreateDataSourceVM(object):
 
 
         :param connection_type: The connection_type of this CreateDataSourceVM.  # noqa: E501
-        :type connection_type: str
+        :type connection_type: DataSourceConnectionType
         """
-        allowed_values = ["JSON", "MSSQL", "CSV", "XML", "MySQL", "Postgres"]  # noqa: E501
-        if self.local_vars_configuration.client_side_validation and connection_type not in allowed_values:  # noqa: E501
-            raise ValueError(
-                "Invalid value for `connection_type` ({0}), must be one of {1}"  # noqa: E501
-                .format(connection_type, allowed_values)
-            )
 
         self._connection_type = connection_type
 

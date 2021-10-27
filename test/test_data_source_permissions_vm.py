@@ -36,38 +36,7 @@ class TestDataSourcePermissionsVM(unittest.TestCase):
         # model = fastreport_cloud_sdk.models.data_source_permissions_vm.DataSourcePermissionsVM()  # noqa: E501
         if include_optional :
             return DataSourcePermissionsVM(
-                permissions = fastreport_cloud_sdk.models.data_source_permissions.DataSourcePermissions(
-                    owner_id = 'f325375e-30fc-ba00-1731-c574773100bf', 
-                    owner = fastreport_cloud_sdk.models.data_source_permission.DataSourcePermission(
-                        create = 0, 
-                        delete = 0, 
-                        execute = 0, 
-                        get = 0, 
-                        update = 0, 
-                        administrate = 0, ), 
-                    groups = {
-                        'key' : fastreport_cloud_sdk.models.data_source_permission.DataSourcePermission(
-                            create = 0, 
-                            delete = 0, 
-                            execute = 0, 
-                            get = 0, 
-                            update = 0, 
-                            administrate = 0, )
-                        }, 
-                    other = fastreport_cloud_sdk.models.data_source_permission.DataSourcePermission(
-                        create = 0, 
-                        delete = 0, 
-                        execute = 0, 
-                        get = 0, 
-                        update = 0, 
-                        administrate = 0, ), 
-                    anon = fastreport_cloud_sdk.models.data_source_permission.DataSourcePermission(
-                        create = 0, 
-                        delete = 0, 
-                        execute = 0, 
-                        get = 0, 
-                        update = 0, 
-                        administrate = 0, ), )
+                permissions = fastreport_cloud_sdk.models.data_source_permissions.DataSourcePermissions()
             )
         else :
             return DataSourcePermissionsVM(

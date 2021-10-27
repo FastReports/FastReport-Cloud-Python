@@ -61,8 +61,7 @@ class GroupsVM(object):
         self._take = None
         self.discriminator = None
 
-        if groups is not None:
-            self.groups = groups
+        self.groups = groups
         if count is not None:
             self.count = count
         if skip is not None:

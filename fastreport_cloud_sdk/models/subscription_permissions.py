@@ -64,12 +64,10 @@ class SubscriptionPermissions(object):
         self._anon = None
         self.discriminator = None
 
-        if owner_id is not None:
-            self.owner_id = owner_id
+        self.owner_id = owner_id
         if owner is not None:
             self.owner = owner
-        if groups is not None:
-            self.groups = groups
+        self.groups = groups
         if other is not None:
             self.other = other
         if anon is not None:

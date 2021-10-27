@@ -83,25 +83,6 @@ class Configuration(object):
 
     :Example:
 
-    API Key Authentication Example.
-    Given the following security scheme in the OpenAPI specification:
-      components:
-        securitySchemes:
-          cookieAuth:         # name for the security scheme
-            type: apiKey
-            in: cookie
-            name: JSESSIONID  # cookie name
-
-    You can programmatically set the cookie:
-
-conf = fastreport_cloud_sdk.Configuration(
-    api_key={'cookieAuth': 'abc123'}
-    api_key_prefix={'cookieAuth': 'JSESSIONID'}
-)
-
-    The following cookie will be added to the HTTP request:
-       Cookie: JSESSIONID abc123
-
     HTTP Basic Authentication Example.
     Given the following security scheme in the OpenAPI specification:
       components:
@@ -413,14 +394,13 @@ conf = fastreport_cloud_sdk.Configuration(
                 'key': 'Authorization',
                 'value': self.get_basic_auth_token()
             }
-        if 'JWT' in self.api_key:
+        if self.access_token is not None:
             auth['JWT'] = {
-                'type': 'api_key',
+                'type': 'bearer',
                 'in': 'header',
+                'format': 'JWT',
                 'key': 'Authorization',
-                'value': self.get_api_key_with_prefix(
-                    'JWT',
-                ),
+                'value': 'Bearer ' + self.access_token
             }
         return auth
 
@@ -433,7 +413,7 @@ conf = fastreport_cloud_sdk.Configuration(
                "OS: {env}\n"\
                "Python Version: {pyversion}\n"\
                "Version of the API: v1\n"\
-               "SDK Package Version: 2021.2.13".\
+               "SDK Package Version: 2021.3.0".\
                format(env=sys.platform, pyversion=sys.version)
 
     def get_host_settings(self):

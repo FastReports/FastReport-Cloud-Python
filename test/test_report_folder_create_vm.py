@@ -28,28 +28,10 @@ class TestReportFolderCreateVM(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(self, include_optional):
-        """Test ReportFolderCreateVM
-            include_option is a boolean, when False only required
-            params are included, when True both required and
-            optional params are included """
-        # model = fastreport_cloud_sdk.models.report_folder_create_vm.ReportFolderCreateVM()  # noqa: E501
-        if include_optional :
-            return ReportFolderCreateVM(
-                name = '0', 
-                tags = [
-                    ''
-                    ], 
-                icon = 'YQ=='
-            )
-        else :
-            return ReportFolderCreateVM(
-        )
-
     def testReportFolderCreateVM(self):
         """Test ReportFolderCreateVM"""
-        inst_req_only = self.make_instance(include_optional=False)
-        inst_req_and_optional = self.make_instance(include_optional=True)
+        # inst_req_only = self.make_instance(include_optional=False)
+        # inst_req_and_optional = self.make_instance(include_optional=True)
 
 if __name__ == '__main__':
     unittest.main()

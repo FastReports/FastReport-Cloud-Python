@@ -61,8 +61,7 @@ class SubscriptionsVM(object):
         self._take = None
         self.discriminator = None
 
-        if subscriptions is not None:
-            self.subscriptions = subscriptions
+        self.subscriptions = subscriptions
         if count is not None:
             self.count = count
         if skip is not None:

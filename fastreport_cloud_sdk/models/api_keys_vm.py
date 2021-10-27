@@ -55,8 +55,7 @@ class ApiKeysVM(object):
         self._count = None
         self.discriminator = None
 
-        if api_keys is not None:
-            self.api_keys = api_keys
+        self.api_keys = api_keys
         if count is not None:
             self.count = count
 

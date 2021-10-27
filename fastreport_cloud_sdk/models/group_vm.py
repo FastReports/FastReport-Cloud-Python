@@ -58,12 +58,9 @@ class GroupVM(object):
         self._subscription_id = None
         self.discriminator = None
 
-        if id is not None:
-            self.id = id
-        if name is not None:
-            self.name = name
-        if subscription_id is not None:
-            self.subscription_id = subscription_id
+        self.id = id
+        self.name = name
+        self.subscription_id = subscription_id
 
     @property
     def id(self):

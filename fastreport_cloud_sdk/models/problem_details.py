@@ -64,16 +64,11 @@ class ProblemDetails(object):
         self._instance = None
         self.discriminator = None
 
-        if type is not None:
-            self.type = type
-        if title is not None:
-            self.title = title
-        if status is not None:
-            self.status = status
-        if detail is not None:
-            self.detail = detail
-        if instance is not None:
-            self.instance = instance
+        self.type = type
+        self.title = title
+        self.status = status
+        self.detail = detail
+        self.instance = instance
 
     @property
     def type(self):

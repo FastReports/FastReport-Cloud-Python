@@ -56,8 +56,7 @@ class CreateGroupVM(object):
         self.discriminator = None
 
         self.name = name
-        if subscription_id is not None:
-            self.subscription_id = subscription_id
+        self.subscription_id = subscription_id
 
     @property
     def name(self):

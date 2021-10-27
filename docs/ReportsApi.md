@@ -25,14 +25,14 @@ Method | HTTP request | Description
 [**reports_export**](ReportsApi.md#reports_export) | **POST** /api/rp/v1/Reports/File/{id}/Export | Export specified report to a specified format
 [**reports_get_file**](ReportsApi.md#reports_get_file) | **GET** /api/rp/v1/Reports/File/{id} | Get specified file
 [**reports_get_files_count**](ReportsApi.md#reports_get_files_count) | **GET** /api/rp/v1/Reports/Folder/{id}/CountFiles | Get count of files what contains in a specified folder
-[**reports_get_files_list**](ReportsApi.md#reports_get_files_list) | **GET** /api/rp/v1/Reports/Folder/{id}/ListFiles | Get all files from specified folder
+[**reports_get_files_list**](ReportsApi.md#reports_get_files_list) | **GET** /api/rp/v1/Reports/Folder/{id}/ListFiles | Get all files from specified folder. &lt;br /&gt;  User with Get Entity permission can access this method. &lt;br /&gt;  The method will returns minimal infomration about the file: &lt;br /&gt;  id, name, size, editedTime, createdTime, tags, status, statusReason.
 [**reports_get_permissions**](ReportsApi.md#reports_get_permissions) | **GET** /api/rp/v1/Reports/File/{id}/permissions | Get all file permissions
 [**reports_move_file**](ReportsApi.md#reports_move_file) | **POST** /api/rp/v1/Reports/File/{id}/Move/{folderId} | Move file to a specified folder
 [**reports_rename_file**](ReportsApi.md#reports_rename_file) | **PUT** /api/rp/v1/Reports/File/{id}/Rename | Rename a file
 [**reports_update_icon**](ReportsApi.md#reports_update_icon) | **PUT** /api/rp/v1/Reports/File/{id}/Icon | Update a files&#39;s icon
 [**reports_update_permissions**](ReportsApi.md#reports_update_permissions) | **POST** /api/rp/v1/Reports/File/{id}/permissions | Update permissions
 [**reports_update_tags**](ReportsApi.md#reports_update_tags) | **PUT** /api/rp/v1/Reports/File/{id}/UpdateTags | Update tags
-[**reports_upload_file**](ReportsApi.md#reports_upload_file) | **POST** /api/rp/v1/Reports/Folder/{id}/File | Allows to upload reports into specified folder
+[**reports_upload_file**](ReportsApi.md#reports_upload_file) | **POST** /api/rp/v1/Reports/Folder/{id}/File | Upload a file to the specified folder  !
 
 
 # **report_folder_and_file_get_count**
@@ -68,11 +68,10 @@ configuration = fastreport_cloud_sdk.Configuration(
     password = 'YOUR_PASSWORD'
 )
 
-# Configure API key authorization: JWT
-configuration.api_key['JWT'] = 'YOUR_API_KEY'
-
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['JWT'] = 'Bearer'
+# Configure Bearer authorization (JWT): JWT
+configuration = fastreport_cloud_sdk.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
+)
 
 # Enter a context with an instance of the API client
 with fastreport_cloud_sdk.ApiClient(configuration) as api_client:
@@ -88,7 +87,7 @@ with fastreport_cloud_sdk.ApiClient(configuration) as api_client:
         print("Exception when calling ReportsApi->report_folder_and_file_get_count: %s\n" % e)
 ```
 
-* Api Key Authentication (JWT):
+* Bearer (JWT) Authentication (JWT):
 ```python
 from __future__ import print_function
 import time
@@ -112,11 +111,10 @@ configuration = fastreport_cloud_sdk.Configuration(
     password = 'YOUR_PASSWORD'
 )
 
-# Configure API key authorization: JWT
-configuration.api_key['JWT'] = 'YOUR_API_KEY'
-
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['JWT'] = 'Bearer'
+# Configure Bearer authorization (JWT): JWT
+configuration = fastreport_cloud_sdk.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
+)
 
 # Enter a context with an instance of the API client
 with fastreport_cloud_sdk.ApiClient(configuration) as api_client:
@@ -149,7 +147,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/json, text/json, text/plain
+ - **Accept**: application/json
 
 ### HTTP response details
 | Status code | Description | Response headers |
@@ -162,7 +160,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **report_folder_and_file_get_folders_and_files**
-> FilesVM report_folder_and_file_get_folders_and_files(id, skip=skip, take=take)
+> FilesVM report_folder_and_file_get_folders_and_files(id, skip=skip, take=take, order_by=order_by, desc=desc, search_pattern=search_pattern)
 
 Get all folders and files from specified folder
 
@@ -194,11 +192,10 @@ configuration = fastreport_cloud_sdk.Configuration(
     password = 'YOUR_PASSWORD'
 )
 
-# Configure API key authorization: JWT
-configuration.api_key['JWT'] = 'YOUR_API_KEY'
-
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['JWT'] = 'Bearer'
+# Configure Bearer authorization (JWT): JWT
+configuration = fastreport_cloud_sdk.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
+)
 
 # Enter a context with an instance of the API client
 with fastreport_cloud_sdk.ApiClient(configuration) as api_client:
@@ -207,16 +204,19 @@ with fastreport_cloud_sdk.ApiClient(configuration) as api_client:
     id = 'id_example' # str | folder id
 skip = 0 # int | number of folder and files, that have to be skipped (optional) (default to 0)
 take = 10 # int | number of folder and files, that have to be returned (optional) (default to 10)
+order_by = fastreport_cloud_sdk.FileSorting() # FileSorting | indicates a field to sort by (optional)
+desc = False # bool | indicates if sorting is descending (optional) (default to False)
+search_pattern = '' # str |  (optional) (default to '')
 
     try:
         # Get all folders and files from specified folder
-        api_response = api_instance.report_folder_and_file_get_folders_and_files(id, skip=skip, take=take)
+        api_response = api_instance.report_folder_and_file_get_folders_and_files(id, skip=skip, take=take, order_by=order_by, desc=desc, search_pattern=search_pattern)
         pprint(api_response)
     except ApiException as e:
         print("Exception when calling ReportsApi->report_folder_and_file_get_folders_and_files: %s\n" % e)
 ```
 
-* Api Key Authentication (JWT):
+* Bearer (JWT) Authentication (JWT):
 ```python
 from __future__ import print_function
 import time
@@ -240,11 +240,10 @@ configuration = fastreport_cloud_sdk.Configuration(
     password = 'YOUR_PASSWORD'
 )
 
-# Configure API key authorization: JWT
-configuration.api_key['JWT'] = 'YOUR_API_KEY'
-
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['JWT'] = 'Bearer'
+# Configure Bearer authorization (JWT): JWT
+configuration = fastreport_cloud_sdk.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
+)
 
 # Enter a context with an instance of the API client
 with fastreport_cloud_sdk.ApiClient(configuration) as api_client:
@@ -253,10 +252,13 @@ with fastreport_cloud_sdk.ApiClient(configuration) as api_client:
     id = 'id_example' # str | folder id
 skip = 0 # int | number of folder and files, that have to be skipped (optional) (default to 0)
 take = 10 # int | number of folder and files, that have to be returned (optional) (default to 10)
+order_by = fastreport_cloud_sdk.FileSorting() # FileSorting | indicates a field to sort by (optional)
+desc = False # bool | indicates if sorting is descending (optional) (default to False)
+search_pattern = '' # str |  (optional) (default to '')
 
     try:
         # Get all folders and files from specified folder
-        api_response = api_instance.report_folder_and_file_get_folders_and_files(id, skip=skip, take=take)
+        api_response = api_instance.report_folder_and_file_get_folders_and_files(id, skip=skip, take=take, order_by=order_by, desc=desc, search_pattern=search_pattern)
         pprint(api_response)
     except ApiException as e:
         print("Exception when calling ReportsApi->report_folder_and_file_get_folders_and_files: %s\n" % e)
@@ -269,6 +271,9 @@ Name | Type | Description  | Notes
  **id** | **str**| folder id | 
  **skip** | **int**| number of folder and files, that have to be skipped | [optional] [default to 0]
  **take** | **int**| number of folder and files, that have to be returned | [optional] [default to 10]
+ **order_by** | [**FileSorting**](.md)| indicates a field to sort by | [optional] 
+ **desc** | **bool**| indicates if sorting is descending | [optional] [default to False]
+ **search_pattern** | **str**|  | [optional] [default to &#39;&#39;]
 
 ### Return type
 
@@ -281,7 +286,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/json, text/json, text/plain
+ - **Accept**: application/json
 
 ### HTTP response details
 | Status code | Description | Response headers |
@@ -326,11 +331,10 @@ configuration = fastreport_cloud_sdk.Configuration(
     password = 'YOUR_PASSWORD'
 )
 
-# Configure API key authorization: JWT
-configuration.api_key['JWT'] = 'YOUR_API_KEY'
-
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['JWT'] = 'Bearer'
+# Configure Bearer authorization (JWT): JWT
+configuration = fastreport_cloud_sdk.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
+)
 
 # Enter a context with an instance of the API client
 with fastreport_cloud_sdk.ApiClient(configuration) as api_client:
@@ -347,7 +351,7 @@ folder_id = 'folder_id_example' # str | destination folder id
         print("Exception when calling ReportsApi->report_folders_copy_folder: %s\n" % e)
 ```
 
-* Api Key Authentication (JWT):
+* Bearer (JWT) Authentication (JWT):
 ```python
 from __future__ import print_function
 import time
@@ -371,11 +375,10 @@ configuration = fastreport_cloud_sdk.Configuration(
     password = 'YOUR_PASSWORD'
 )
 
-# Configure API key authorization: JWT
-configuration.api_key['JWT'] = 'YOUR_API_KEY'
-
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['JWT'] = 'Bearer'
+# Configure Bearer authorization (JWT): JWT
+configuration = fastreport_cloud_sdk.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
+)
 
 # Enter a context with an instance of the API client
 with fastreport_cloud_sdk.ApiClient(configuration) as api_client:
@@ -410,15 +413,15 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/json, text/json, text/plain
+ - **Accept**: application/json
 
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Folder has been moved to a specified folder |  -  |
 **400** | folderId or parentFolderId is null |  -  |
-**402** | Subscription is outdated |  -  |
 **403** | You don&#39;t have rights for the operation |  -  |
+**402** | Subscription is outdated |  -  |
 **404** | Folder not found |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -456,11 +459,10 @@ configuration = fastreport_cloud_sdk.Configuration(
     password = 'YOUR_PASSWORD'
 )
 
-# Configure API key authorization: JWT
-configuration.api_key['JWT'] = 'YOUR_API_KEY'
-
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['JWT'] = 'Bearer'
+# Configure Bearer authorization (JWT): JWT
+configuration = fastreport_cloud_sdk.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
+)
 
 # Enter a context with an instance of the API client
 with fastreport_cloud_sdk.ApiClient(configuration) as api_client:
@@ -476,7 +478,7 @@ recursive = True # bool | delete all childs (optional) (default to True)
         print("Exception when calling ReportsApi->report_folders_delete_folder: %s\n" % e)
 ```
 
-* Api Key Authentication (JWT):
+* Bearer (JWT) Authentication (JWT):
 ```python
 from __future__ import print_function
 import time
@@ -500,11 +502,10 @@ configuration = fastreport_cloud_sdk.Configuration(
     password = 'YOUR_PASSWORD'
 )
 
-# Configure API key authorization: JWT
-configuration.api_key['JWT'] = 'YOUR_API_KEY'
-
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['JWT'] = 'Bearer'
+# Configure Bearer authorization (JWT): JWT
+configuration = fastreport_cloud_sdk.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
+)
 
 # Enter a context with an instance of the API client
 with fastreport_cloud_sdk.ApiClient(configuration) as api_client:
@@ -538,15 +539,15 @@ void (empty response body)
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/json, text/json, text/plain
+ - **Accept**: application/json
 
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **204** | Folder succesfully deleted |  -  |
 **400** | Id is null |  -  |
-**402** | Subscription is outdated |  -  |
 **403** | You don&#39;t have rights for the operation |  -  |
+**402** | Subscription is outdated |  -  |
 **404** | Folder not found |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -584,11 +585,10 @@ configuration = fastreport_cloud_sdk.Configuration(
     password = 'YOUR_PASSWORD'
 )
 
-# Configure API key authorization: JWT
-configuration.api_key['JWT'] = 'YOUR_API_KEY'
-
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['JWT'] = 'Bearer'
+# Configure Bearer authorization (JWT): JWT
+configuration = fastreport_cloud_sdk.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
+)
 
 # Enter a context with an instance of the API client
 with fastreport_cloud_sdk.ApiClient(configuration) as api_client:
@@ -604,7 +604,7 @@ with fastreport_cloud_sdk.ApiClient(configuration) as api_client:
         print("Exception when calling ReportsApi->report_folders_get_breadcrumbs: %s\n" % e)
 ```
 
-* Api Key Authentication (JWT):
+* Bearer (JWT) Authentication (JWT):
 ```python
 from __future__ import print_function
 import time
@@ -628,11 +628,10 @@ configuration = fastreport_cloud_sdk.Configuration(
     password = 'YOUR_PASSWORD'
 )
 
-# Configure API key authorization: JWT
-configuration.api_key['JWT'] = 'YOUR_API_KEY'
-
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['JWT'] = 'Bearer'
+# Configure Bearer authorization (JWT): JWT
+configuration = fastreport_cloud_sdk.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
+)
 
 # Enter a context with an instance of the API client
 with fastreport_cloud_sdk.ApiClient(configuration) as api_client:
@@ -665,7 +664,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/json, text/json, text/plain
+ - **Accept**: application/json
 
 ### HTTP response details
 | Status code | Description | Response headers |
@@ -710,11 +709,10 @@ configuration = fastreport_cloud_sdk.Configuration(
     password = 'YOUR_PASSWORD'
 )
 
-# Configure API key authorization: JWT
-configuration.api_key['JWT'] = 'YOUR_API_KEY'
-
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['JWT'] = 'Bearer'
+# Configure Bearer authorization (JWT): JWT
+configuration = fastreport_cloud_sdk.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
+)
 
 # Enter a context with an instance of the API client
 with fastreport_cloud_sdk.ApiClient(configuration) as api_client:
@@ -730,7 +728,7 @@ with fastreport_cloud_sdk.ApiClient(configuration) as api_client:
         print("Exception when calling ReportsApi->report_folders_get_folder: %s\n" % e)
 ```
 
-* Api Key Authentication (JWT):
+* Bearer (JWT) Authentication (JWT):
 ```python
 from __future__ import print_function
 import time
@@ -754,11 +752,10 @@ configuration = fastreport_cloud_sdk.Configuration(
     password = 'YOUR_PASSWORD'
 )
 
-# Configure API key authorization: JWT
-configuration.api_key['JWT'] = 'YOUR_API_KEY'
-
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['JWT'] = 'Bearer'
+# Configure Bearer authorization (JWT): JWT
+configuration = fastreport_cloud_sdk.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
+)
 
 # Enter a context with an instance of the API client
 with fastreport_cloud_sdk.ApiClient(configuration) as api_client:
@@ -791,7 +788,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/json, text/json, text/plain
+ - **Accept**: application/json
 
 ### HTTP response details
 | Status code | Description | Response headers |
@@ -836,11 +833,10 @@ configuration = fastreport_cloud_sdk.Configuration(
     password = 'YOUR_PASSWORD'
 )
 
-# Configure API key authorization: JWT
-configuration.api_key['JWT'] = 'YOUR_API_KEY'
-
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['JWT'] = 'Bearer'
+# Configure Bearer authorization (JWT): JWT
+configuration = fastreport_cloud_sdk.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
+)
 
 # Enter a context with an instance of the API client
 with fastreport_cloud_sdk.ApiClient(configuration) as api_client:
@@ -858,7 +854,7 @@ take = 10 # int | number of files, that have to be returned (optional) (default 
         print("Exception when calling ReportsApi->report_folders_get_folders: %s\n" % e)
 ```
 
-* Api Key Authentication (JWT):
+* Bearer (JWT) Authentication (JWT):
 ```python
 from __future__ import print_function
 import time
@@ -882,11 +878,10 @@ configuration = fastreport_cloud_sdk.Configuration(
     password = 'YOUR_PASSWORD'
 )
 
-# Configure API key authorization: JWT
-configuration.api_key['JWT'] = 'YOUR_API_KEY'
-
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['JWT'] = 'Bearer'
+# Configure Bearer authorization (JWT): JWT
+configuration = fastreport_cloud_sdk.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
+)
 
 # Enter a context with an instance of the API client
 with fastreport_cloud_sdk.ApiClient(configuration) as api_client:
@@ -923,7 +918,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/json, text/json, text/plain
+ - **Accept**: application/json
 
 ### HTTP response details
 | Status code | Description | Response headers |
@@ -968,11 +963,10 @@ configuration = fastreport_cloud_sdk.Configuration(
     password = 'YOUR_PASSWORD'
 )
 
-# Configure API key authorization: JWT
-configuration.api_key['JWT'] = 'YOUR_API_KEY'
-
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['JWT'] = 'Bearer'
+# Configure Bearer authorization (JWT): JWT
+configuration = fastreport_cloud_sdk.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
+)
 
 # Enter a context with an instance of the API client
 with fastreport_cloud_sdk.ApiClient(configuration) as api_client:
@@ -988,7 +982,7 @@ with fastreport_cloud_sdk.ApiClient(configuration) as api_client:
         print("Exception when calling ReportsApi->report_folders_get_folders_count: %s\n" % e)
 ```
 
-* Api Key Authentication (JWT):
+* Bearer (JWT) Authentication (JWT):
 ```python
 from __future__ import print_function
 import time
@@ -1012,11 +1006,10 @@ configuration = fastreport_cloud_sdk.Configuration(
     password = 'YOUR_PASSWORD'
 )
 
-# Configure API key authorization: JWT
-configuration.api_key['JWT'] = 'YOUR_API_KEY'
-
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['JWT'] = 'Bearer'
+# Configure Bearer authorization (JWT): JWT
+configuration = fastreport_cloud_sdk.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
+)
 
 # Enter a context with an instance of the API client
 with fastreport_cloud_sdk.ApiClient(configuration) as api_client:
@@ -1049,7 +1042,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/json, text/json, text/plain
+ - **Accept**: application/json
 
 ### HTTP response details
 | Status code | Description | Response headers |
@@ -1092,11 +1085,10 @@ configuration = fastreport_cloud_sdk.Configuration(
     password = 'YOUR_PASSWORD'
 )
 
-# Configure API key authorization: JWT
-configuration.api_key['JWT'] = 'YOUR_API_KEY'
-
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['JWT'] = 'Bearer'
+# Configure Bearer authorization (JWT): JWT
+configuration = fastreport_cloud_sdk.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
+)
 
 # Enter a context with an instance of the API client
 with fastreport_cloud_sdk.ApiClient(configuration) as api_client:
@@ -1112,7 +1104,7 @@ with fastreport_cloud_sdk.ApiClient(configuration) as api_client:
         print("Exception when calling ReportsApi->report_folders_get_permissions: %s\n" % e)
 ```
 
-* Api Key Authentication (JWT):
+* Bearer (JWT) Authentication (JWT):
 ```python
 from __future__ import print_function
 import time
@@ -1136,11 +1128,10 @@ configuration = fastreport_cloud_sdk.Configuration(
     password = 'YOUR_PASSWORD'
 )
 
-# Configure API key authorization: JWT
-configuration.api_key['JWT'] = 'YOUR_API_KEY'
-
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['JWT'] = 'Bearer'
+# Configure Bearer authorization (JWT): JWT
+configuration = fastreport_cloud_sdk.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
+)
 
 # Enter a context with an instance of the API client
 with fastreport_cloud_sdk.ApiClient(configuration) as api_client:
@@ -1173,7 +1164,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/json, text/json, text/plain
+ - **Accept**: application/json
 
 ### HTTP response details
 | Status code | Description | Response headers |
@@ -1190,7 +1181,7 @@ Name | Type | Description  | Notes
 
 Get user's root folder (without parents)
 
-&gt; Breakchange. Now user model doesn't contain a root folders.  This method can return error 400 and 404 when subscription is not found.
+> Breakchange. Now user model doesn't contain a root folders.  This method can return error 400 and 404 when subscription is not found.
 
 ### Example
 
@@ -1218,11 +1209,10 @@ configuration = fastreport_cloud_sdk.Configuration(
     password = 'YOUR_PASSWORD'
 )
 
-# Configure API key authorization: JWT
-configuration.api_key['JWT'] = 'YOUR_API_KEY'
-
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['JWT'] = 'Bearer'
+# Configure Bearer authorization (JWT): JWT
+configuration = fastreport_cloud_sdk.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
+)
 
 # Enter a context with an instance of the API client
 with fastreport_cloud_sdk.ApiClient(configuration) as api_client:
@@ -1238,7 +1228,7 @@ with fastreport_cloud_sdk.ApiClient(configuration) as api_client:
         print("Exception when calling ReportsApi->report_folders_get_root_folder: %s\n" % e)
 ```
 
-* Api Key Authentication (JWT):
+* Bearer (JWT) Authentication (JWT):
 ```python
 from __future__ import print_function
 import time
@@ -1262,11 +1252,10 @@ configuration = fastreport_cloud_sdk.Configuration(
     password = 'YOUR_PASSWORD'
 )
 
-# Configure API key authorization: JWT
-configuration.api_key['JWT'] = 'YOUR_API_KEY'
-
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['JWT'] = 'Bearer'
+# Configure Bearer authorization (JWT): JWT
+configuration = fastreport_cloud_sdk.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
+)
 
 # Enter a context with an instance of the API client
 with fastreport_cloud_sdk.ApiClient(configuration) as api_client:
@@ -1299,15 +1288,15 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/json, text/json, text/plain
+ - **Accept**: application/json
 
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Gets user&#39;s root folder (without parents) |  -  |
 **400** | Error with the request. |  -  |
-**403** | No permissions to get root folder |  -  |
 **404** | Not found subscription |  -  |
+**403** | No permissions to get root folder |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -1344,11 +1333,10 @@ configuration = fastreport_cloud_sdk.Configuration(
     password = 'YOUR_PASSWORD'
 )
 
-# Configure API key authorization: JWT
-configuration.api_key['JWT'] = 'YOUR_API_KEY'
-
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['JWT'] = 'Bearer'
+# Configure Bearer authorization (JWT): JWT
+configuration = fastreport_cloud_sdk.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
+)
 
 # Enter a context with an instance of the API client
 with fastreport_cloud_sdk.ApiClient(configuration) as api_client:
@@ -1365,7 +1353,7 @@ folder_id = 'folder_id_example' # str | destination folder id
         print("Exception when calling ReportsApi->report_folders_move_folder: %s\n" % e)
 ```
 
-* Api Key Authentication (JWT):
+* Bearer (JWT) Authentication (JWT):
 ```python
 from __future__ import print_function
 import time
@@ -1389,11 +1377,10 @@ configuration = fastreport_cloud_sdk.Configuration(
     password = 'YOUR_PASSWORD'
 )
 
-# Configure API key authorization: JWT
-configuration.api_key['JWT'] = 'YOUR_API_KEY'
-
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['JWT'] = 'Bearer'
+# Configure Bearer authorization (JWT): JWT
+configuration = fastreport_cloud_sdk.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
+)
 
 # Enter a context with an instance of the API client
 with fastreport_cloud_sdk.ApiClient(configuration) as api_client:
@@ -1428,21 +1415,21 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/json, text/json, text/plain
+ - **Accept**: application/json
 
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Folder has been moved to a specified folder |  -  |
 **400** | folderId or parentFolderId is null |  -  |
-**402** | Subscription is outdated |  -  |
 **403** | You don&#39;t have rights for the operation |  -  |
+**402** | Subscription is outdated |  -  |
 **404** | Folder not found |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **report_folders_post_folder**
-> FileVM report_folders_post_folder(id, folder_vm=folder_vm)
+> FileVM report_folders_post_folder(id, report_folder_create_vm=report_folder_create_vm)
 
 Create folder
 
@@ -1474,28 +1461,27 @@ configuration = fastreport_cloud_sdk.Configuration(
     password = 'YOUR_PASSWORD'
 )
 
-# Configure API key authorization: JWT
-configuration.api_key['JWT'] = 'YOUR_API_KEY'
-
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['JWT'] = 'Bearer'
+# Configure Bearer authorization (JWT): JWT
+configuration = fastreport_cloud_sdk.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
+)
 
 # Enter a context with an instance of the API client
 with fastreport_cloud_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = fastreport_cloud_sdk.ReportsApi(api_client)
     id = 'id_example' # str | Identifier of parent folder id
-folder_vm = fastreport_cloud_sdk.ReportFolderCreateVM() # ReportFolderCreateVM | create VM (optional)
+report_folder_create_vm = fastreport_cloud_sdk.ReportFolderCreateVM() # ReportFolderCreateVM | create VM (optional)
 
     try:
         # Create folder
-        api_response = api_instance.report_folders_post_folder(id, folder_vm=folder_vm)
+        api_response = api_instance.report_folders_post_folder(id, report_folder_create_vm=report_folder_create_vm)
         pprint(api_response)
     except ApiException as e:
         print("Exception when calling ReportsApi->report_folders_post_folder: %s\n" % e)
 ```
 
-* Api Key Authentication (JWT):
+* Bearer (JWT) Authentication (JWT):
 ```python
 from __future__ import print_function
 import time
@@ -1519,22 +1505,21 @@ configuration = fastreport_cloud_sdk.Configuration(
     password = 'YOUR_PASSWORD'
 )
 
-# Configure API key authorization: JWT
-configuration.api_key['JWT'] = 'YOUR_API_KEY'
-
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['JWT'] = 'Bearer'
+# Configure Bearer authorization (JWT): JWT
+configuration = fastreport_cloud_sdk.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
+)
 
 # Enter a context with an instance of the API client
 with fastreport_cloud_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = fastreport_cloud_sdk.ReportsApi(api_client)
     id = 'id_example' # str | Identifier of parent folder id
-folder_vm = fastreport_cloud_sdk.ReportFolderCreateVM() # ReportFolderCreateVM | create VM (optional)
+report_folder_create_vm = fastreport_cloud_sdk.ReportFolderCreateVM() # ReportFolderCreateVM | create VM (optional)
 
     try:
         # Create folder
-        api_response = api_instance.report_folders_post_folder(id, folder_vm=folder_vm)
+        api_response = api_instance.report_folders_post_folder(id, report_folder_create_vm=report_folder_create_vm)
         pprint(api_response)
     except ApiException as e:
         print("Exception when calling ReportsApi->report_folders_post_folder: %s\n" % e)
@@ -1545,7 +1530,7 @@ folder_vm = fastreport_cloud_sdk.ReportFolderCreateVM() # ReportFolderCreateVM |
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **str**| Identifier of parent folder id | 
- **folder_vm** | [**ReportFolderCreateVM**](ReportFolderCreateVM.md)| create VM | [optional] 
+ **report_folder_create_vm** | [**ReportFolderCreateVM**](ReportFolderCreateVM.md)| create VM | [optional] 
 
 ### Return type
 
@@ -1557,22 +1542,22 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json-patch+json, application/json, text/json, application/*+json
- - **Accept**: application/json, text/json, text/plain
+ - **Content-Type**: application/json, text/json, application/*+json
+ - **Accept**: application/json
 
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | New folder has been created) |  -  |
 **400** | Parent folder id is null |  -  |
-**402** | subscription is outdated |  -  |
 **403** | You don&#39;t have rights for the operation |  -  |
+**402** | subscription is outdated |  -  |
 **404** | parent folder/subscription not found |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **report_folders_rename_folder**
-> FileVM report_folders_rename_folder(id, name_model=name_model)
+> FileVM report_folders_rename_folder(id, folder_rename_vm=folder_rename_vm)
 
 Rename a folder
 
@@ -1604,28 +1589,27 @@ configuration = fastreport_cloud_sdk.Configuration(
     password = 'YOUR_PASSWORD'
 )
 
-# Configure API key authorization: JWT
-configuration.api_key['JWT'] = 'YOUR_API_KEY'
-
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['JWT'] = 'Bearer'
+# Configure Bearer authorization (JWT): JWT
+configuration = fastreport_cloud_sdk.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
+)
 
 # Enter a context with an instance of the API client
 with fastreport_cloud_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = fastreport_cloud_sdk.ReportsApi(api_client)
     id = 'id_example' # str | 
-name_model = fastreport_cloud_sdk.FolderRenameVM() # FolderRenameVM |  (optional)
+folder_rename_vm = fastreport_cloud_sdk.FolderRenameVM() # FolderRenameVM |  (optional)
 
     try:
         # Rename a folder
-        api_response = api_instance.report_folders_rename_folder(id, name_model=name_model)
+        api_response = api_instance.report_folders_rename_folder(id, folder_rename_vm=folder_rename_vm)
         pprint(api_response)
     except ApiException as e:
         print("Exception when calling ReportsApi->report_folders_rename_folder: %s\n" % e)
 ```
 
-* Api Key Authentication (JWT):
+* Bearer (JWT) Authentication (JWT):
 ```python
 from __future__ import print_function
 import time
@@ -1649,22 +1633,21 @@ configuration = fastreport_cloud_sdk.Configuration(
     password = 'YOUR_PASSWORD'
 )
 
-# Configure API key authorization: JWT
-configuration.api_key['JWT'] = 'YOUR_API_KEY'
-
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['JWT'] = 'Bearer'
+# Configure Bearer authorization (JWT): JWT
+configuration = fastreport_cloud_sdk.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
+)
 
 # Enter a context with an instance of the API client
 with fastreport_cloud_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = fastreport_cloud_sdk.ReportsApi(api_client)
     id = 'id_example' # str | 
-name_model = fastreport_cloud_sdk.FolderRenameVM() # FolderRenameVM |  (optional)
+folder_rename_vm = fastreport_cloud_sdk.FolderRenameVM() # FolderRenameVM |  (optional)
 
     try:
         # Rename a folder
-        api_response = api_instance.report_folders_rename_folder(id, name_model=name_model)
+        api_response = api_instance.report_folders_rename_folder(id, folder_rename_vm=folder_rename_vm)
         pprint(api_response)
     except ApiException as e:
         print("Exception when calling ReportsApi->report_folders_rename_folder: %s\n" % e)
@@ -1675,7 +1658,7 @@ name_model = fastreport_cloud_sdk.FolderRenameVM() # FolderRenameVM |  (optional
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **str**|  | 
- **name_model** | [**FolderRenameVM**](FolderRenameVM.md)|  | [optional] 
+ **folder_rename_vm** | [**FolderRenameVM**](FolderRenameVM.md)|  | [optional] 
 
 ### Return type
 
@@ -1687,22 +1670,22 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json-patch+json, application/json, text/json, application/*+json
- - **Accept**: application/json, text/json, text/plain
+ - **Content-Type**: application/json, text/json, application/*+json
+ - **Accept**: application/json
 
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Folder name has been updated |  -  |
 **400** | folderId is null |  -  |
-**402** | subscription is outdated |  -  |
 **403** | You don&#39;t have rights for the operation |  -  |
+**402** | subscription is outdated |  -  |
 **404** | Folder not found |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **report_folders_update_icon**
-> FileVM report_folders_update_icon(id, icon_model=icon_model)
+> FileVM report_folders_update_icon(id, folder_icon_vm=folder_icon_vm)
 
 Update a folder's icon
 
@@ -1734,28 +1717,27 @@ configuration = fastreport_cloud_sdk.Configuration(
     password = 'YOUR_PASSWORD'
 )
 
-# Configure API key authorization: JWT
-configuration.api_key['JWT'] = 'YOUR_API_KEY'
-
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['JWT'] = 'Bearer'
+# Configure Bearer authorization (JWT): JWT
+configuration = fastreport_cloud_sdk.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
+)
 
 # Enter a context with an instance of the API client
 with fastreport_cloud_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = fastreport_cloud_sdk.ReportsApi(api_client)
     id = 'id_example' # str | Identifier of folder
-icon_model = fastreport_cloud_sdk.FolderIconVM() # FolderIconVM | Update icon model (optional)
+folder_icon_vm = fastreport_cloud_sdk.FolderIconVM() # FolderIconVM | Update icon model (optional)
 
     try:
         # Update a folder's icon
-        api_response = api_instance.report_folders_update_icon(id, icon_model=icon_model)
+        api_response = api_instance.report_folders_update_icon(id, folder_icon_vm=folder_icon_vm)
         pprint(api_response)
     except ApiException as e:
         print("Exception when calling ReportsApi->report_folders_update_icon: %s\n" % e)
 ```
 
-* Api Key Authentication (JWT):
+* Bearer (JWT) Authentication (JWT):
 ```python
 from __future__ import print_function
 import time
@@ -1779,22 +1761,21 @@ configuration = fastreport_cloud_sdk.Configuration(
     password = 'YOUR_PASSWORD'
 )
 
-# Configure API key authorization: JWT
-configuration.api_key['JWT'] = 'YOUR_API_KEY'
-
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['JWT'] = 'Bearer'
+# Configure Bearer authorization (JWT): JWT
+configuration = fastreport_cloud_sdk.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
+)
 
 # Enter a context with an instance of the API client
 with fastreport_cloud_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = fastreport_cloud_sdk.ReportsApi(api_client)
     id = 'id_example' # str | Identifier of folder
-icon_model = fastreport_cloud_sdk.FolderIconVM() # FolderIconVM | Update icon model (optional)
+folder_icon_vm = fastreport_cloud_sdk.FolderIconVM() # FolderIconVM | Update icon model (optional)
 
     try:
         # Update a folder's icon
-        api_response = api_instance.report_folders_update_icon(id, icon_model=icon_model)
+        api_response = api_instance.report_folders_update_icon(id, folder_icon_vm=folder_icon_vm)
         pprint(api_response)
     except ApiException as e:
         print("Exception when calling ReportsApi->report_folders_update_icon: %s\n" % e)
@@ -1805,7 +1786,7 @@ icon_model = fastreport_cloud_sdk.FolderIconVM() # FolderIconVM | Update icon mo
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **str**| Identifier of folder | 
- **icon_model** | [**FolderIconVM**](FolderIconVM.md)| Update icon model | [optional] 
+ **folder_icon_vm** | [**FolderIconVM**](FolderIconVM.md)| Update icon model | [optional] 
 
 ### Return type
 
@@ -1817,22 +1798,22 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json-patch+json, application/json, text/json, application/*+json
- - **Accept**: application/json, text/json, text/plain
+ - **Content-Type**: application/json, text/json, application/*+json
+ - **Accept**: application/json
 
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Folder&#39;s icon has been updated |  -  |
 **400** | folderId is null |  -  |
-**402** | subscription is outdated |  -  |
 **403** | You don&#39;t have rights for the operation |  -  |
+**402** | subscription is outdated |  -  |
 **404** | Folder not found |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **report_folders_update_permissions**
-> report_folders_update_permissions(id, permissions_vm=permissions_vm)
+> report_folders_update_permissions(id, update_file_permissions_vm=update_file_permissions_vm)
 
 Update permissions
 
@@ -1862,27 +1843,26 @@ configuration = fastreport_cloud_sdk.Configuration(
     password = 'YOUR_PASSWORD'
 )
 
-# Configure API key authorization: JWT
-configuration.api_key['JWT'] = 'YOUR_API_KEY'
-
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['JWT'] = 'Bearer'
+# Configure Bearer authorization (JWT): JWT
+configuration = fastreport_cloud_sdk.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
+)
 
 # Enter a context with an instance of the API client
 with fastreport_cloud_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = fastreport_cloud_sdk.ReportsApi(api_client)
     id = 'id_example' # str | 
-permissions_vm = fastreport_cloud_sdk.UpdateFilePermissionsVM() # UpdateFilePermissionsVM |  (optional)
+update_file_permissions_vm = fastreport_cloud_sdk.UpdateFilePermissionsVM() # UpdateFilePermissionsVM |  (optional)
 
     try:
         # Update permissions
-        api_instance.report_folders_update_permissions(id, permissions_vm=permissions_vm)
+        api_instance.report_folders_update_permissions(id, update_file_permissions_vm=update_file_permissions_vm)
     except ApiException as e:
         print("Exception when calling ReportsApi->report_folders_update_permissions: %s\n" % e)
 ```
 
-* Api Key Authentication (JWT):
+* Bearer (JWT) Authentication (JWT):
 ```python
 from __future__ import print_function
 import time
@@ -1906,22 +1886,21 @@ configuration = fastreport_cloud_sdk.Configuration(
     password = 'YOUR_PASSWORD'
 )
 
-# Configure API key authorization: JWT
-configuration.api_key['JWT'] = 'YOUR_API_KEY'
-
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['JWT'] = 'Bearer'
+# Configure Bearer authorization (JWT): JWT
+configuration = fastreport_cloud_sdk.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
+)
 
 # Enter a context with an instance of the API client
 with fastreport_cloud_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = fastreport_cloud_sdk.ReportsApi(api_client)
     id = 'id_example' # str | 
-permissions_vm = fastreport_cloud_sdk.UpdateFilePermissionsVM() # UpdateFilePermissionsVM |  (optional)
+update_file_permissions_vm = fastreport_cloud_sdk.UpdateFilePermissionsVM() # UpdateFilePermissionsVM |  (optional)
 
     try:
         # Update permissions
-        api_instance.report_folders_update_permissions(id, permissions_vm=permissions_vm)
+        api_instance.report_folders_update_permissions(id, update_file_permissions_vm=update_file_permissions_vm)
     except ApiException as e:
         print("Exception when calling ReportsApi->report_folders_update_permissions: %s\n" % e)
 ```
@@ -1931,7 +1910,7 @@ permissions_vm = fastreport_cloud_sdk.UpdateFilePermissionsVM() # UpdateFilePerm
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **str**|  | 
- **permissions_vm** | [**UpdateFilePermissionsVM**](UpdateFilePermissionsVM.md)|  | [optional] 
+ **update_file_permissions_vm** | [**UpdateFilePermissionsVM**](UpdateFilePermissionsVM.md)|  | [optional] 
 
 ### Return type
 
@@ -1943,8 +1922,8 @@ void (empty response body)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json-patch+json, application/json, text/json, application/*+json
- - **Accept**: application/json, text/json, text/plain
+ - **Content-Type**: application/json, text/json, application/*+json
+ - **Accept**: application/json
 
 ### HTTP response details
 | Status code | Description | Response headers |
@@ -1959,7 +1938,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **report_folders_update_tags**
-> FileVM report_folders_update_tags(id, tags_model=tags_model)
+> FileVM report_folders_update_tags(id, folder_tags_update_vm=folder_tags_update_vm)
 
 Update tags
 
@@ -1991,28 +1970,27 @@ configuration = fastreport_cloud_sdk.Configuration(
     password = 'YOUR_PASSWORD'
 )
 
-# Configure API key authorization: JWT
-configuration.api_key['JWT'] = 'YOUR_API_KEY'
-
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['JWT'] = 'Bearer'
+# Configure Bearer authorization (JWT): JWT
+configuration = fastreport_cloud_sdk.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
+)
 
 # Enter a context with an instance of the API client
 with fastreport_cloud_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = fastreport_cloud_sdk.ReportsApi(api_client)
     id = 'id_example' # str | 
-tags_model = fastreport_cloud_sdk.FolderTagsUpdateVM() # FolderTagsUpdateVM |  (optional)
+folder_tags_update_vm = fastreport_cloud_sdk.FolderTagsUpdateVM() # FolderTagsUpdateVM |  (optional)
 
     try:
         # Update tags
-        api_response = api_instance.report_folders_update_tags(id, tags_model=tags_model)
+        api_response = api_instance.report_folders_update_tags(id, folder_tags_update_vm=folder_tags_update_vm)
         pprint(api_response)
     except ApiException as e:
         print("Exception when calling ReportsApi->report_folders_update_tags: %s\n" % e)
 ```
 
-* Api Key Authentication (JWT):
+* Bearer (JWT) Authentication (JWT):
 ```python
 from __future__ import print_function
 import time
@@ -2036,22 +2014,21 @@ configuration = fastreport_cloud_sdk.Configuration(
     password = 'YOUR_PASSWORD'
 )
 
-# Configure API key authorization: JWT
-configuration.api_key['JWT'] = 'YOUR_API_KEY'
-
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['JWT'] = 'Bearer'
+# Configure Bearer authorization (JWT): JWT
+configuration = fastreport_cloud_sdk.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
+)
 
 # Enter a context with an instance of the API client
 with fastreport_cloud_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = fastreport_cloud_sdk.ReportsApi(api_client)
     id = 'id_example' # str | 
-tags_model = fastreport_cloud_sdk.FolderTagsUpdateVM() # FolderTagsUpdateVM |  (optional)
+folder_tags_update_vm = fastreport_cloud_sdk.FolderTagsUpdateVM() # FolderTagsUpdateVM |  (optional)
 
     try:
         # Update tags
-        api_response = api_instance.report_folders_update_tags(id, tags_model=tags_model)
+        api_response = api_instance.report_folders_update_tags(id, folder_tags_update_vm=folder_tags_update_vm)
         pprint(api_response)
     except ApiException as e:
         print("Exception when calling ReportsApi->report_folders_update_tags: %s\n" % e)
@@ -2062,7 +2039,7 @@ tags_model = fastreport_cloud_sdk.FolderTagsUpdateVM() # FolderTagsUpdateVM |  (
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **str**|  | 
- **tags_model** | [**FolderTagsUpdateVM**](FolderTagsUpdateVM.md)|  | [optional] 
+ **folder_tags_update_vm** | [**FolderTagsUpdateVM**](FolderTagsUpdateVM.md)|  | [optional] 
 
 ### Return type
 
@@ -2074,16 +2051,16 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json-patch+json, application/json, text/json, application/*+json
- - **Accept**: application/json, text/json, text/plain
+ - **Content-Type**: application/json, text/json, application/*+json
+ - **Accept**: application/json
 
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Tags has been updated |  -  |
 **400** | folderId or Tags is null |  -  |
-**402** | subscription is outdated |  -  |
 **403** | You don&#39;t have rights for the operation |  -  |
+**402** | subscription is outdated |  -  |
 **404** | Folder not found |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -2119,11 +2096,10 @@ configuration = fastreport_cloud_sdk.Configuration(
     password = 'YOUR_PASSWORD'
 )
 
-# Configure API key authorization: JWT
-configuration.api_key['JWT'] = 'YOUR_API_KEY'
-
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['JWT'] = 'Bearer'
+# Configure Bearer authorization (JWT): JWT
+configuration = fastreport_cloud_sdk.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
+)
 
 # Enter a context with an instance of the API client
 with fastreport_cloud_sdk.ApiClient(configuration) as api_client:
@@ -2140,7 +2116,7 @@ folder_id = 'folder_id_example' # str | folder id
         print("Exception when calling ReportsApi->reports_copy_file: %s\n" % e)
 ```
 
-* Api Key Authentication (JWT):
+* Bearer (JWT) Authentication (JWT):
 ```python
 from __future__ import print_function
 import time
@@ -2164,11 +2140,10 @@ configuration = fastreport_cloud_sdk.Configuration(
     password = 'YOUR_PASSWORD'
 )
 
-# Configure API key authorization: JWT
-configuration.api_key['JWT'] = 'YOUR_API_KEY'
-
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['JWT'] = 'Bearer'
+# Configure Bearer authorization (JWT): JWT
+configuration = fastreport_cloud_sdk.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
+)
 
 # Enter a context with an instance of the API client
 with fastreport_cloud_sdk.ApiClient(configuration) as api_client:
@@ -2203,15 +2178,15 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/json, text/json, text/plain
+ - **Accept**: application/json
 
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | File has been copied |  -  |
 **400** | fileId or folderId is null |  -  |
-**402** | Subscription is outdated |  -  |
 **403** | You don&#39;t have rights for the operation |  -  |
+**402** | Subscription is outdated |  -  |
 **404** | File or folder not found |  -  |
 **500** | Exception thrown |  -  |
 
@@ -2250,11 +2225,10 @@ configuration = fastreport_cloud_sdk.Configuration(
     password = 'YOUR_PASSWORD'
 )
 
-# Configure API key authorization: JWT
-configuration.api_key['JWT'] = 'YOUR_API_KEY'
-
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['JWT'] = 'Bearer'
+# Configure Bearer authorization (JWT): JWT
+configuration = fastreport_cloud_sdk.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
+)
 
 # Enter a context with an instance of the API client
 with fastreport_cloud_sdk.ApiClient(configuration) as api_client:
@@ -2269,7 +2243,7 @@ with fastreport_cloud_sdk.ApiClient(configuration) as api_client:
         print("Exception when calling ReportsApi->reports_delete_file: %s\n" % e)
 ```
 
-* Api Key Authentication (JWT):
+* Bearer (JWT) Authentication (JWT):
 ```python
 from __future__ import print_function
 import time
@@ -2293,11 +2267,10 @@ configuration = fastreport_cloud_sdk.Configuration(
     password = 'YOUR_PASSWORD'
 )
 
-# Configure API key authorization: JWT
-configuration.api_key['JWT'] = 'YOUR_API_KEY'
-
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['JWT'] = 'Bearer'
+# Configure Bearer authorization (JWT): JWT
+configuration = fastreport_cloud_sdk.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
+)
 
 # Enter a context with an instance of the API client
 with fastreport_cloud_sdk.ApiClient(configuration) as api_client:
@@ -2329,22 +2302,22 @@ void (empty response body)
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/json, text/json, text/plain
+ - **Accept**: application/json
 
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **204** | File succesfully deleted |  -  |
 **400** | Id is null |  -  |
-**402** | Subscription is outdated |  -  |
 **403** | You don&#39;t have rights for the operation |  -  |
+**402** | Subscription is outdated |  -  |
 **404** | File not found |  -  |
 **500** | Exception thrown |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **reports_export**
-> ExportVM reports_export(id, export_task=export_task)
+> ExportVM reports_export(id, export_report_vm=export_report_vm)
 
 Export specified report to a specified format
 
@@ -2376,28 +2349,27 @@ configuration = fastreport_cloud_sdk.Configuration(
     password = 'YOUR_PASSWORD'
 )
 
-# Configure API key authorization: JWT
-configuration.api_key['JWT'] = 'YOUR_API_KEY'
-
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['JWT'] = 'Bearer'
+# Configure Bearer authorization (JWT): JWT
+configuration = fastreport_cloud_sdk.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
+)
 
 # Enter a context with an instance of the API client
 with fastreport_cloud_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = fastreport_cloud_sdk.ReportsApi(api_client)
     id = 'id_example' # str | report id
-export_task = fastreport_cloud_sdk.ExportReportTaskVM() # ExportReportTaskVM | export parameters (optional)
+export_report_vm = fastreport_cloud_sdk.ExportReportVM() # ExportReportVM | export parameters (optional)
 
     try:
         # Export specified report to a specified format
-        api_response = api_instance.reports_export(id, export_task=export_task)
+        api_response = api_instance.reports_export(id, export_report_vm=export_report_vm)
         pprint(api_response)
     except ApiException as e:
         print("Exception when calling ReportsApi->reports_export: %s\n" % e)
 ```
 
-* Api Key Authentication (JWT):
+* Bearer (JWT) Authentication (JWT):
 ```python
 from __future__ import print_function
 import time
@@ -2421,22 +2393,21 @@ configuration = fastreport_cloud_sdk.Configuration(
     password = 'YOUR_PASSWORD'
 )
 
-# Configure API key authorization: JWT
-configuration.api_key['JWT'] = 'YOUR_API_KEY'
-
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['JWT'] = 'Bearer'
+# Configure Bearer authorization (JWT): JWT
+configuration = fastreport_cloud_sdk.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
+)
 
 # Enter a context with an instance of the API client
 with fastreport_cloud_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = fastreport_cloud_sdk.ReportsApi(api_client)
     id = 'id_example' # str | report id
-export_task = fastreport_cloud_sdk.ExportReportTaskVM() # ExportReportTaskVM | export parameters (optional)
+export_report_vm = fastreport_cloud_sdk.ExportReportVM() # ExportReportVM | export parameters (optional)
 
     try:
         # Export specified report to a specified format
-        api_response = api_instance.reports_export(id, export_task=export_task)
+        api_response = api_instance.reports_export(id, export_report_vm=export_report_vm)
         pprint(api_response)
     except ApiException as e:
         print("Exception when calling ReportsApi->reports_export: %s\n" % e)
@@ -2447,7 +2418,7 @@ export_task = fastreport_cloud_sdk.ExportReportTaskVM() # ExportReportTaskVM | e
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **str**| report id | 
- **export_task** | [**ExportReportTaskVM**](ExportReportTaskVM.md)| export parameters | [optional] 
+ **export_report_vm** | [**ExportReportVM**](ExportReportVM.md)| export parameters | [optional] 
 
 ### Return type
 
@@ -2459,16 +2430,16 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json-patch+json, application/json, text/json, application/*+json
- - **Accept**: application/json, text/json, text/plain
+ - **Content-Type**: application/json, text/json, application/*+json
+ - **Accept**: application/json
 
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Specified report has been exported |  -  |
 **400** | Report Id is null |  -  |
-**402** | Subscription is outdated |  -  |
 **403** | You don&#39;t have rights for the operation |  -  |
+**402** | Subscription is outdated |  -  |
 **404** | Exports folder not found |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -2506,11 +2477,10 @@ configuration = fastreport_cloud_sdk.Configuration(
     password = 'YOUR_PASSWORD'
 )
 
-# Configure API key authorization: JWT
-configuration.api_key['JWT'] = 'YOUR_API_KEY'
-
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['JWT'] = 'Bearer'
+# Configure Bearer authorization (JWT): JWT
+configuration = fastreport_cloud_sdk.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
+)
 
 # Enter a context with an instance of the API client
 with fastreport_cloud_sdk.ApiClient(configuration) as api_client:
@@ -2526,7 +2496,7 @@ with fastreport_cloud_sdk.ApiClient(configuration) as api_client:
         print("Exception when calling ReportsApi->reports_get_file: %s\n" % e)
 ```
 
-* Api Key Authentication (JWT):
+* Bearer (JWT) Authentication (JWT):
 ```python
 from __future__ import print_function
 import time
@@ -2550,11 +2520,10 @@ configuration = fastreport_cloud_sdk.Configuration(
     password = 'YOUR_PASSWORD'
 )
 
-# Configure API key authorization: JWT
-configuration.api_key['JWT'] = 'YOUR_API_KEY'
-
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['JWT'] = 'Bearer'
+# Configure Bearer authorization (JWT): JWT
+configuration = fastreport_cloud_sdk.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
+)
 
 # Enter a context with an instance of the API client
 with fastreport_cloud_sdk.ApiClient(configuration) as api_client:
@@ -2587,7 +2556,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/json, text/json, text/plain
+ - **Accept**: application/json
 
 ### HTTP response details
 | Status code | Description | Response headers |
@@ -2633,11 +2602,10 @@ configuration = fastreport_cloud_sdk.Configuration(
     password = 'YOUR_PASSWORD'
 )
 
-# Configure API key authorization: JWT
-configuration.api_key['JWT'] = 'YOUR_API_KEY'
-
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['JWT'] = 'Bearer'
+# Configure Bearer authorization (JWT): JWT
+configuration = fastreport_cloud_sdk.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
+)
 
 # Enter a context with an instance of the API client
 with fastreport_cloud_sdk.ApiClient(configuration) as api_client:
@@ -2653,7 +2621,7 @@ with fastreport_cloud_sdk.ApiClient(configuration) as api_client:
         print("Exception when calling ReportsApi->reports_get_files_count: %s\n" % e)
 ```
 
-* Api Key Authentication (JWT):
+* Bearer (JWT) Authentication (JWT):
 ```python
 from __future__ import print_function
 import time
@@ -2677,11 +2645,10 @@ configuration = fastreport_cloud_sdk.Configuration(
     password = 'YOUR_PASSWORD'
 )
 
-# Configure API key authorization: JWT
-configuration.api_key['JWT'] = 'YOUR_API_KEY'
-
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['JWT'] = 'Bearer'
+# Configure Bearer authorization (JWT): JWT
+configuration = fastreport_cloud_sdk.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
+)
 
 # Enter a context with an instance of the API client
 with fastreport_cloud_sdk.ApiClient(configuration) as api_client:
@@ -2714,7 +2681,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/json, text/json, text/plain
+ - **Accept**: application/json
 
 ### HTTP response details
 | Status code | Description | Response headers |
@@ -2730,9 +2697,7 @@ Name | Type | Description  | Notes
 # **reports_get_files_list**
 > ReportsVM reports_get_files_list(id, skip=skip, take=take)
 
-Get all files from specified folder
-
-User with Get Entity permission can access this method.
+Get all files from specified folder. <br />  User with Get Entity permission can access this method. <br />  The method will returns minimal infomration about the file: <br />  id, name, size, editedTime, createdTime, tags, status, statusReason.
 
 ### Example
 
@@ -2760,11 +2725,10 @@ configuration = fastreport_cloud_sdk.Configuration(
     password = 'YOUR_PASSWORD'
 )
 
-# Configure API key authorization: JWT
-configuration.api_key['JWT'] = 'YOUR_API_KEY'
-
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['JWT'] = 'Bearer'
+# Configure Bearer authorization (JWT): JWT
+configuration = fastreport_cloud_sdk.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
+)
 
 # Enter a context with an instance of the API client
 with fastreport_cloud_sdk.ApiClient(configuration) as api_client:
@@ -2775,14 +2739,14 @@ skip = 0 # int | number of files, that have to be skipped (optional) (default to
 take = 10 # int | number of files, that have to be returned (optional) (default to 10)
 
     try:
-        # Get all files from specified folder
+        # Get all files from specified folder. <br />  User with Get Entity permission can access this method. <br />  The method will returns minimal infomration about the file: <br />  id, name, size, editedTime, createdTime, tags, status, statusReason.
         api_response = api_instance.reports_get_files_list(id, skip=skip, take=take)
         pprint(api_response)
     except ApiException as e:
         print("Exception when calling ReportsApi->reports_get_files_list: %s\n" % e)
 ```
 
-* Api Key Authentication (JWT):
+* Bearer (JWT) Authentication (JWT):
 ```python
 from __future__ import print_function
 import time
@@ -2806,11 +2770,10 @@ configuration = fastreport_cloud_sdk.Configuration(
     password = 'YOUR_PASSWORD'
 )
 
-# Configure API key authorization: JWT
-configuration.api_key['JWT'] = 'YOUR_API_KEY'
-
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['JWT'] = 'Bearer'
+# Configure Bearer authorization (JWT): JWT
+configuration = fastreport_cloud_sdk.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
+)
 
 # Enter a context with an instance of the API client
 with fastreport_cloud_sdk.ApiClient(configuration) as api_client:
@@ -2821,7 +2784,7 @@ skip = 0 # int | number of files, that have to be skipped (optional) (default to
 take = 10 # int | number of files, that have to be returned (optional) (default to 10)
 
     try:
-        # Get all files from specified folder
+        # Get all files from specified folder. <br />  User with Get Entity permission can access this method. <br />  The method will returns minimal infomration about the file: <br />  id, name, size, editedTime, createdTime, tags, status, statusReason.
         api_response = api_instance.reports_get_files_list(id, skip=skip, take=take)
         pprint(api_response)
     except ApiException as e:
@@ -2847,7 +2810,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/json, text/json, text/plain
+ - **Accept**: application/json
 
 ### HTTP response details
 | Status code | Description | Response headers |
@@ -2891,11 +2854,10 @@ configuration = fastreport_cloud_sdk.Configuration(
     password = 'YOUR_PASSWORD'
 )
 
-# Configure API key authorization: JWT
-configuration.api_key['JWT'] = 'YOUR_API_KEY'
-
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['JWT'] = 'Bearer'
+# Configure Bearer authorization (JWT): JWT
+configuration = fastreport_cloud_sdk.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
+)
 
 # Enter a context with an instance of the API client
 with fastreport_cloud_sdk.ApiClient(configuration) as api_client:
@@ -2911,7 +2873,7 @@ with fastreport_cloud_sdk.ApiClient(configuration) as api_client:
         print("Exception when calling ReportsApi->reports_get_permissions: %s\n" % e)
 ```
 
-* Api Key Authentication (JWT):
+* Bearer (JWT) Authentication (JWT):
 ```python
 from __future__ import print_function
 import time
@@ -2935,11 +2897,10 @@ configuration = fastreport_cloud_sdk.Configuration(
     password = 'YOUR_PASSWORD'
 )
 
-# Configure API key authorization: JWT
-configuration.api_key['JWT'] = 'YOUR_API_KEY'
-
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['JWT'] = 'Bearer'
+# Configure Bearer authorization (JWT): JWT
+configuration = fastreport_cloud_sdk.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
+)
 
 # Enter a context with an instance of the API client
 with fastreport_cloud_sdk.ApiClient(configuration) as api_client:
@@ -2972,7 +2933,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/json, text/json, text/plain
+ - **Accept**: application/json
 
 ### HTTP response details
 | Status code | Description | Response headers |
@@ -3017,11 +2978,10 @@ configuration = fastreport_cloud_sdk.Configuration(
     password = 'YOUR_PASSWORD'
 )
 
-# Configure API key authorization: JWT
-configuration.api_key['JWT'] = 'YOUR_API_KEY'
-
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['JWT'] = 'Bearer'
+# Configure Bearer authorization (JWT): JWT
+configuration = fastreport_cloud_sdk.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
+)
 
 # Enter a context with an instance of the API client
 with fastreport_cloud_sdk.ApiClient(configuration) as api_client:
@@ -3038,7 +2998,7 @@ folder_id = 'folder_id_example' # str | folder id
         print("Exception when calling ReportsApi->reports_move_file: %s\n" % e)
 ```
 
-* Api Key Authentication (JWT):
+* Bearer (JWT) Authentication (JWT):
 ```python
 from __future__ import print_function
 import time
@@ -3062,11 +3022,10 @@ configuration = fastreport_cloud_sdk.Configuration(
     password = 'YOUR_PASSWORD'
 )
 
-# Configure API key authorization: JWT
-configuration.api_key['JWT'] = 'YOUR_API_KEY'
-
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['JWT'] = 'Bearer'
+# Configure Bearer authorization (JWT): JWT
+configuration = fastreport_cloud_sdk.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
+)
 
 # Enter a context with an instance of the API client
 with fastreport_cloud_sdk.ApiClient(configuration) as api_client:
@@ -3101,22 +3060,22 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/json, text/json, text/plain
+ - **Accept**: application/json
 
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | File has been moved |  -  |
 **400** | fileId or folderId is null |  -  |
-**402** | Subscription is outdated |  -  |
 **403** | You don&#39;t have rights for the operation |  -  |
+**402** | Subscription is outdated |  -  |
 **404** | File or folder not found |  -  |
 **500** | Exception thrown |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **reports_rename_file**
-> ReportVM reports_rename_file(id, name_model=name_model)
+> ReportVM reports_rename_file(id, file_rename_vm=file_rename_vm)
 
 Rename a file
 
@@ -3148,28 +3107,27 @@ configuration = fastreport_cloud_sdk.Configuration(
     password = 'YOUR_PASSWORD'
 )
 
-# Configure API key authorization: JWT
-configuration.api_key['JWT'] = 'YOUR_API_KEY'
-
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['JWT'] = 'Bearer'
+# Configure Bearer authorization (JWT): JWT
+configuration = fastreport_cloud_sdk.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
+)
 
 # Enter a context with an instance of the API client
 with fastreport_cloud_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = fastreport_cloud_sdk.ReportsApi(api_client)
     id = 'id_example' # str | 
-name_model = fastreport_cloud_sdk.FileRenameVM() # FileRenameVM |  (optional)
+file_rename_vm = fastreport_cloud_sdk.FileRenameVM() # FileRenameVM |  (optional)
 
     try:
         # Rename a file
-        api_response = api_instance.reports_rename_file(id, name_model=name_model)
+        api_response = api_instance.reports_rename_file(id, file_rename_vm=file_rename_vm)
         pprint(api_response)
     except ApiException as e:
         print("Exception when calling ReportsApi->reports_rename_file: %s\n" % e)
 ```
 
-* Api Key Authentication (JWT):
+* Bearer (JWT) Authentication (JWT):
 ```python
 from __future__ import print_function
 import time
@@ -3193,22 +3151,21 @@ configuration = fastreport_cloud_sdk.Configuration(
     password = 'YOUR_PASSWORD'
 )
 
-# Configure API key authorization: JWT
-configuration.api_key['JWT'] = 'YOUR_API_KEY'
-
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['JWT'] = 'Bearer'
+# Configure Bearer authorization (JWT): JWT
+configuration = fastreport_cloud_sdk.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
+)
 
 # Enter a context with an instance of the API client
 with fastreport_cloud_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = fastreport_cloud_sdk.ReportsApi(api_client)
     id = 'id_example' # str | 
-name_model = fastreport_cloud_sdk.FileRenameVM() # FileRenameVM |  (optional)
+file_rename_vm = fastreport_cloud_sdk.FileRenameVM() # FileRenameVM |  (optional)
 
     try:
         # Rename a file
-        api_response = api_instance.reports_rename_file(id, name_model=name_model)
+        api_response = api_instance.reports_rename_file(id, file_rename_vm=file_rename_vm)
         pprint(api_response)
     except ApiException as e:
         print("Exception when calling ReportsApi->reports_rename_file: %s\n" % e)
@@ -3219,7 +3176,7 @@ name_model = fastreport_cloud_sdk.FileRenameVM() # FileRenameVM |  (optional)
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **str**|  | 
- **name_model** | [**FileRenameVM**](FileRenameVM.md)|  | [optional] 
+ **file_rename_vm** | [**FileRenameVM**](FileRenameVM.md)|  | [optional] 
 
 ### Return type
 
@@ -3231,23 +3188,23 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json-patch+json, application/json, text/json, application/*+json
- - **Accept**: application/json, text/json, text/plain
+ - **Content-Type**: application/json, text/json, application/*+json
+ - **Accept**: application/json
 
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | File name has been updated |  -  |
 **400** | FileId is null |  -  |
-**402** | Subscription is outdated |  -  |
 **403** | You don&#39;t have rights for the operation |  -  |
+**402** | Subscription is outdated |  -  |
 **404** | File not found |  -  |
 **500** | Exception thrown |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **reports_update_icon**
-> ReportVM reports_update_icon(id, icon_model=icon_model)
+> ReportVM reports_update_icon(id, file_icon_vm=file_icon_vm)
 
 Update a files's icon
 
@@ -3279,28 +3236,27 @@ configuration = fastreport_cloud_sdk.Configuration(
     password = 'YOUR_PASSWORD'
 )
 
-# Configure API key authorization: JWT
-configuration.api_key['JWT'] = 'YOUR_API_KEY'
-
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['JWT'] = 'Bearer'
+# Configure Bearer authorization (JWT): JWT
+configuration = fastreport_cloud_sdk.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
+)
 
 # Enter a context with an instance of the API client
 with fastreport_cloud_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = fastreport_cloud_sdk.ReportsApi(api_client)
     id = 'id_example' # str | 
-icon_model = fastreport_cloud_sdk.FileIconVM() # FileIconVM |  (optional)
+file_icon_vm = fastreport_cloud_sdk.FileIconVM() # FileIconVM |  (optional)
 
     try:
         # Update a files's icon
-        api_response = api_instance.reports_update_icon(id, icon_model=icon_model)
+        api_response = api_instance.reports_update_icon(id, file_icon_vm=file_icon_vm)
         pprint(api_response)
     except ApiException as e:
         print("Exception when calling ReportsApi->reports_update_icon: %s\n" % e)
 ```
 
-* Api Key Authentication (JWT):
+* Bearer (JWT) Authentication (JWT):
 ```python
 from __future__ import print_function
 import time
@@ -3324,22 +3280,21 @@ configuration = fastreport_cloud_sdk.Configuration(
     password = 'YOUR_PASSWORD'
 )
 
-# Configure API key authorization: JWT
-configuration.api_key['JWT'] = 'YOUR_API_KEY'
-
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['JWT'] = 'Bearer'
+# Configure Bearer authorization (JWT): JWT
+configuration = fastreport_cloud_sdk.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
+)
 
 # Enter a context with an instance of the API client
 with fastreport_cloud_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = fastreport_cloud_sdk.ReportsApi(api_client)
     id = 'id_example' # str | 
-icon_model = fastreport_cloud_sdk.FileIconVM() # FileIconVM |  (optional)
+file_icon_vm = fastreport_cloud_sdk.FileIconVM() # FileIconVM |  (optional)
 
     try:
         # Update a files's icon
-        api_response = api_instance.reports_update_icon(id, icon_model=icon_model)
+        api_response = api_instance.reports_update_icon(id, file_icon_vm=file_icon_vm)
         pprint(api_response)
     except ApiException as e:
         print("Exception when calling ReportsApi->reports_update_icon: %s\n" % e)
@@ -3350,7 +3305,7 @@ icon_model = fastreport_cloud_sdk.FileIconVM() # FileIconVM |  (optional)
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **str**|  | 
- **icon_model** | [**FileIconVM**](FileIconVM.md)|  | [optional] 
+ **file_icon_vm** | [**FileIconVM**](FileIconVM.md)|  | [optional] 
 
 ### Return type
 
@@ -3362,23 +3317,23 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json-patch+json, application/json, text/json, application/*+json
- - **Accept**: application/json, text/json, text/plain
+ - **Content-Type**: application/json, text/json, application/*+json
+ - **Accept**: application/json
 
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | File&#39;s icon has been updated |  -  |
 **400** | FileId is null |  -  |
-**402** | Subscription is outdated |  -  |
 **403** | You don&#39;t have rights for the operation |  -  |
+**402** | Subscription is outdated |  -  |
 **404** | File not found |  -  |
 **500** | Exception thrown |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **reports_update_permissions**
-> reports_update_permissions(id, permissions_vm=permissions_vm)
+> reports_update_permissions(id, update_file_permissions_vm=update_file_permissions_vm)
 
 Update permissions
 
@@ -3408,27 +3363,26 @@ configuration = fastreport_cloud_sdk.Configuration(
     password = 'YOUR_PASSWORD'
 )
 
-# Configure API key authorization: JWT
-configuration.api_key['JWT'] = 'YOUR_API_KEY'
-
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['JWT'] = 'Bearer'
+# Configure Bearer authorization (JWT): JWT
+configuration = fastreport_cloud_sdk.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
+)
 
 # Enter a context with an instance of the API client
 with fastreport_cloud_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = fastreport_cloud_sdk.ReportsApi(api_client)
     id = 'id_example' # str | 
-permissions_vm = fastreport_cloud_sdk.UpdateFilePermissionsVM() # UpdateFilePermissionsVM |  (optional)
+update_file_permissions_vm = fastreport_cloud_sdk.UpdateFilePermissionsVM() # UpdateFilePermissionsVM |  (optional)
 
     try:
         # Update permissions
-        api_instance.reports_update_permissions(id, permissions_vm=permissions_vm)
+        api_instance.reports_update_permissions(id, update_file_permissions_vm=update_file_permissions_vm)
     except ApiException as e:
         print("Exception when calling ReportsApi->reports_update_permissions: %s\n" % e)
 ```
 
-* Api Key Authentication (JWT):
+* Bearer (JWT) Authentication (JWT):
 ```python
 from __future__ import print_function
 import time
@@ -3452,22 +3406,21 @@ configuration = fastreport_cloud_sdk.Configuration(
     password = 'YOUR_PASSWORD'
 )
 
-# Configure API key authorization: JWT
-configuration.api_key['JWT'] = 'YOUR_API_KEY'
-
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['JWT'] = 'Bearer'
+# Configure Bearer authorization (JWT): JWT
+configuration = fastreport_cloud_sdk.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
+)
 
 # Enter a context with an instance of the API client
 with fastreport_cloud_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = fastreport_cloud_sdk.ReportsApi(api_client)
     id = 'id_example' # str | 
-permissions_vm = fastreport_cloud_sdk.UpdateFilePermissionsVM() # UpdateFilePermissionsVM |  (optional)
+update_file_permissions_vm = fastreport_cloud_sdk.UpdateFilePermissionsVM() # UpdateFilePermissionsVM |  (optional)
 
     try:
         # Update permissions
-        api_instance.reports_update_permissions(id, permissions_vm=permissions_vm)
+        api_instance.reports_update_permissions(id, update_file_permissions_vm=update_file_permissions_vm)
     except ApiException as e:
         print("Exception when calling ReportsApi->reports_update_permissions: %s\n" % e)
 ```
@@ -3477,7 +3430,7 @@ permissions_vm = fastreport_cloud_sdk.UpdateFilePermissionsVM() # UpdateFilePerm
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **str**|  | 
- **permissions_vm** | [**UpdateFilePermissionsVM**](UpdateFilePermissionsVM.md)|  | [optional] 
+ **update_file_permissions_vm** | [**UpdateFilePermissionsVM**](UpdateFilePermissionsVM.md)|  | [optional] 
 
 ### Return type
 
@@ -3489,8 +3442,8 @@ void (empty response body)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json-patch+json, application/json, text/json, application/*+json
- - **Accept**: application/json, text/json, text/plain
+ - **Content-Type**: application/json, text/json, application/*+json
+ - **Accept**: application/json
 
 ### HTTP response details
 | Status code | Description | Response headers |
@@ -3505,7 +3458,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **reports_update_tags**
-> ReportVM reports_update_tags(id, tags_model=tags_model)
+> ReportVM reports_update_tags(id, file_tags_update_vm=file_tags_update_vm)
 
 Update tags
 
@@ -3537,28 +3490,27 @@ configuration = fastreport_cloud_sdk.Configuration(
     password = 'YOUR_PASSWORD'
 )
 
-# Configure API key authorization: JWT
-configuration.api_key['JWT'] = 'YOUR_API_KEY'
-
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['JWT'] = 'Bearer'
+# Configure Bearer authorization (JWT): JWT
+configuration = fastreport_cloud_sdk.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
+)
 
 # Enter a context with an instance of the API client
 with fastreport_cloud_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = fastreport_cloud_sdk.ReportsApi(api_client)
     id = 'id_example' # str | 
-tags_model = fastreport_cloud_sdk.FileTagsUpdateVM() # FileTagsUpdateVM |  (optional)
+file_tags_update_vm = fastreport_cloud_sdk.FileTagsUpdateVM() # FileTagsUpdateVM |  (optional)
 
     try:
         # Update tags
-        api_response = api_instance.reports_update_tags(id, tags_model=tags_model)
+        api_response = api_instance.reports_update_tags(id, file_tags_update_vm=file_tags_update_vm)
         pprint(api_response)
     except ApiException as e:
         print("Exception when calling ReportsApi->reports_update_tags: %s\n" % e)
 ```
 
-* Api Key Authentication (JWT):
+* Bearer (JWT) Authentication (JWT):
 ```python
 from __future__ import print_function
 import time
@@ -3582,22 +3534,21 @@ configuration = fastreport_cloud_sdk.Configuration(
     password = 'YOUR_PASSWORD'
 )
 
-# Configure API key authorization: JWT
-configuration.api_key['JWT'] = 'YOUR_API_KEY'
-
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['JWT'] = 'Bearer'
+# Configure Bearer authorization (JWT): JWT
+configuration = fastreport_cloud_sdk.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
+)
 
 # Enter a context with an instance of the API client
 with fastreport_cloud_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = fastreport_cloud_sdk.ReportsApi(api_client)
     id = 'id_example' # str | 
-tags_model = fastreport_cloud_sdk.FileTagsUpdateVM() # FileTagsUpdateVM |  (optional)
+file_tags_update_vm = fastreport_cloud_sdk.FileTagsUpdateVM() # FileTagsUpdateVM |  (optional)
 
     try:
         # Update tags
-        api_response = api_instance.reports_update_tags(id, tags_model=tags_model)
+        api_response = api_instance.reports_update_tags(id, file_tags_update_vm=file_tags_update_vm)
         pprint(api_response)
     except ApiException as e:
         print("Exception when calling ReportsApi->reports_update_tags: %s\n" % e)
@@ -3608,7 +3559,7 @@ tags_model = fastreport_cloud_sdk.FileTagsUpdateVM() # FileTagsUpdateVM |  (opti
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **str**|  | 
- **tags_model** | [**FileTagsUpdateVM**](FileTagsUpdateVM.md)|  | [optional] 
+ **file_tags_update_vm** | [**FileTagsUpdateVM**](FileTagsUpdateVM.md)|  | [optional] 
 
 ### Return type
 
@@ -3620,25 +3571,27 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json-patch+json, application/json, text/json, application/*+json
- - **Accept**: application/json, text/json, text/plain
+ - **Content-Type**: application/json, text/json, application/*+json
+ - **Accept**: application/json
 
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Tags has been updated |  -  |
 **400** | FileId is null |  -  |
-**402** | Subscription is outdated |  -  |
 **403** | You don&#39;t have rights for the operation |  -  |
+**402** | Subscription is outdated |  -  |
 **404** | File not found |  -  |
 **500** | Exception thrown |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **reports_upload_file**
-> ReportVM reports_upload_file(id, file_vm=file_vm)
+> ReportVM reports_upload_file(id, report_create_vm=report_create_vm)
 
-Allows to upload reports into specified folder
+Upload a file to the specified folder  !
+
+User with Create Entity permission can access this method.
 
 ### Example
 
@@ -3666,28 +3619,27 @@ configuration = fastreport_cloud_sdk.Configuration(
     password = 'YOUR_PASSWORD'
 )
 
-# Configure API key authorization: JWT
-configuration.api_key['JWT'] = 'YOUR_API_KEY'
-
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['JWT'] = 'Bearer'
+# Configure Bearer authorization (JWT): JWT
+configuration = fastreport_cloud_sdk.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
+)
 
 # Enter a context with an instance of the API client
 with fastreport_cloud_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = fastreport_cloud_sdk.ReportsApi(api_client)
-    id = 'id_example' # str | folder id
-file_vm = fastreport_cloud_sdk.ReportCreateVM() # ReportCreateVM | create VM (optional)
+    id = 'id_example' # str | Identifier of folder
+report_create_vm = fastreport_cloud_sdk.ReportCreateVM() # ReportCreateVM | file's view model (optional)
 
     try:
-        # Allows to upload reports into specified folder
-        api_response = api_instance.reports_upload_file(id, file_vm=file_vm)
+        # Upload a file to the specified folder  !
+        api_response = api_instance.reports_upload_file(id, report_create_vm=report_create_vm)
         pprint(api_response)
     except ApiException as e:
         print("Exception when calling ReportsApi->reports_upload_file: %s\n" % e)
 ```
 
-* Api Key Authentication (JWT):
+* Bearer (JWT) Authentication (JWT):
 ```python
 from __future__ import print_function
 import time
@@ -3711,22 +3663,21 @@ configuration = fastreport_cloud_sdk.Configuration(
     password = 'YOUR_PASSWORD'
 )
 
-# Configure API key authorization: JWT
-configuration.api_key['JWT'] = 'YOUR_API_KEY'
-
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['JWT'] = 'Bearer'
+# Configure Bearer authorization (JWT): JWT
+configuration = fastreport_cloud_sdk.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
+)
 
 # Enter a context with an instance of the API client
 with fastreport_cloud_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = fastreport_cloud_sdk.ReportsApi(api_client)
-    id = 'id_example' # str | folder id
-file_vm = fastreport_cloud_sdk.ReportCreateVM() # ReportCreateVM | create VM (optional)
+    id = 'id_example' # str | Identifier of folder
+report_create_vm = fastreport_cloud_sdk.ReportCreateVM() # ReportCreateVM | file's view model (optional)
 
     try:
-        # Allows to upload reports into specified folder
-        api_response = api_instance.reports_upload_file(id, file_vm=file_vm)
+        # Upload a file to the specified folder  !
+        api_response = api_instance.reports_upload_file(id, report_create_vm=report_create_vm)
         pprint(api_response)
     except ApiException as e:
         print("Exception when calling ReportsApi->reports_upload_file: %s\n" % e)
@@ -3736,8 +3687,8 @@ file_vm = fastreport_cloud_sdk.ReportCreateVM() # ReportCreateVM | create VM (op
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **str**| folder id | 
- **file_vm** | [**ReportCreateVM**](ReportCreateVM.md)| create VM | [optional] 
+ **id** | **str**| Identifier of folder | 
+ **report_create_vm** | [**ReportCreateVM**](ReportCreateVM.md)| file&#39;s view model | [optional] 
 
 ### Return type
 
@@ -3749,17 +3700,17 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json-patch+json, application/json, text/json, application/*+json
- - **Accept**: application/json, text/json, text/plain
+ - **Content-Type**: application/json, text/json, application/*+json
+ - **Accept**: application/json
 
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Success |  -  |
-**400** | Bad Request |  -  |
-**402** | Client Error |  -  |
-**403** | Forbidden |  -  |
-**404** | Not Found |  -  |
+**200** | File has been uploaded |  -  |
+**400** | fileVM view model is not valid |  -  |
+**403** | You don&#39;t have rights for the operation |  -  |
+**402** | subscription is outdated |  -  |
+**404** | folder/subscription is not found |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

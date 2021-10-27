@@ -4,17 +4,8 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**format** | **str** |  | [optional] 
+**format** | [**ExportFormat**](ExportFormat.md) |  | [optional] 
 **report_id** | **str** |  | [optional] 
-**name** | **str** |  | [optional] 
-**parent_id** | **str** |  | [optional] 
-**tags** | **list[str]** |  | [optional] 
-**icon** | **str** |  | [optional] 
-**type** | **str** |  | [optional] 
-**size** | **int** |  | [optional] 
-**subscription_id** | **str** |  | [optional] 
-**status** | **str** |  | [optional] 
-**status_reason** | **str** |  | [optional] 
 **id** | **str** |  | [optional] 
 **created_time** | **datetime** |  | [optional] 
 **creator_user_id** | **str** |  | [optional] 
