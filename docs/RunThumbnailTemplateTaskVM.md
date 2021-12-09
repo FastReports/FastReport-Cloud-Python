@@ -1,10 +1,9 @@
-# FetchTaskVM
+# RunThumbnailTemplateTaskVM
 
 
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**name** | **str** |  | [optional] 
 **subscription_id** | **str** |  | [optional] 
 **type** | [**TaskType**](TaskType.md) |  | [optional] 
 

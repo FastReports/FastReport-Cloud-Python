@@ -62,7 +62,9 @@ class TestSubscriptionPlanVM(unittest.TestCase):
                     export_report = True, 
                     send_via_email = True, 
                     send_via_webhook = True, 
-                    fetch_data = True, )
+                    fetch_data = True, 
+                    thumbnail_report = True, 
+                    thumbnail_template = True, )
             )
         else :
             return SubscriptionPlanVM(

@@ -52,7 +52,7 @@ class TestGroupsApi(unittest.TestCase):
     def test_groups_get_group_list(self):
         """Test case for groups_get_group_list
 
-        Gets list of user groups  # noqa: E501
+        Returns a list of current user's groups<br />  This method will return following data about groups : <br />  Id, Name, Created time (UTC), Edited time (UTC), creator id, <br />  editor id, subscription id  # noqa: E501
         """
         pass
 

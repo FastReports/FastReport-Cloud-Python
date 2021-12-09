@@ -14,7 +14,7 @@
 
 from __future__ import absolute_import
 
-__version__ = "2021.3.0"
+__version__ = "2022.1.3"
 
 # import apis into sdk package
 from fastreport_cloud_sdk.api.api_keys_api import ApiKeysApi
@@ -54,6 +54,7 @@ from fastreport_cloud_sdk.models.admin_template_folder_create_vm import AdminTem
 from fastreport_cloud_sdk.models.api_key_vm import ApiKeyVM
 from fastreport_cloud_sdk.models.api_keys_vm import ApiKeysVM
 from fastreport_cloud_sdk.models.app_mixins import AppMixins
+from fastreport_cloud_sdk.models.auth_config_vm import AuthConfigVM
 from fastreport_cloud_sdk.models.breadcrumbs_model import BreadcrumbsModel
 from fastreport_cloud_sdk.models.breadcrumbs_vm import BreadcrumbsVM
 from fastreport_cloud_sdk.models.count_vm import CountVM
@@ -70,6 +71,8 @@ from fastreport_cloud_sdk.models.create_group_vm import CreateGroupVM
 from fastreport_cloud_sdk.models.create_prepare_template_task_vm import CreatePrepareTemplateTaskVM
 from fastreport_cloud_sdk.models.create_subscription_invite_vm import CreateSubscriptionInviteVM
 from fastreport_cloud_sdk.models.create_task_base_vm import CreateTaskBaseVM
+from fastreport_cloud_sdk.models.create_thumbnail_report_task_vm import CreateThumbnailReportTaskVM
+from fastreport_cloud_sdk.models.create_thumbnail_template_task_vm import CreateThumbnailTemplateTaskVM
 from fastreport_cloud_sdk.models.create_transform_task_base_vm import CreateTransformTaskBaseVM
 from fastreport_cloud_sdk.models.create_transport_task_base_vm import CreateTransportTaskBaseVM
 from fastreport_cloud_sdk.models.create_webhook_task_vm import CreateWebhookTaskVM
@@ -175,6 +178,8 @@ from fastreport_cloud_sdk.models.run_fetch_task_vm import RunFetchTaskVM
 from fastreport_cloud_sdk.models.run_input_file_vm import RunInputFileVM
 from fastreport_cloud_sdk.models.run_prepare_template_task_vm import RunPrepareTemplateTaskVM
 from fastreport_cloud_sdk.models.run_task_base_vm import RunTaskBaseVM
+from fastreport_cloud_sdk.models.run_thumbnail_report_task_vm import RunThumbnailReportTaskVM
+from fastreport_cloud_sdk.models.run_thumbnail_template_task_vm import RunThumbnailTemplateTaskVM
 from fastreport_cloud_sdk.models.run_transform_task_base_vm import RunTransformTaskBaseVM
 from fastreport_cloud_sdk.models.run_transport_task_base_vm import RunTransportTaskBaseVM
 from fastreport_cloud_sdk.models.run_webhook_task_vm import RunWebhookTaskVM
@@ -211,6 +216,8 @@ from fastreport_cloud_sdk.models.template_folder_create_vm import TemplateFolder
 from fastreport_cloud_sdk.models.template_vm import TemplateVM
 from fastreport_cloud_sdk.models.template_vm_files_vm_base import TemplateVMFilesVMBase
 from fastreport_cloud_sdk.models.templates_vm import TemplatesVM
+from fastreport_cloud_sdk.models.thumbnail_report_task_vm import ThumbnailReportTaskVM
+from fastreport_cloud_sdk.models.thumbnail_template_task_vm import ThumbnailTemplateTaskVM
 from fastreport_cloud_sdk.models.time_period_type import TimePeriodType
 from fastreport_cloud_sdk.models.transform_task_base_vm import TransformTaskBaseVM
 from fastreport_cloud_sdk.models.transport_task_base_vm import TransportTaskBaseVM

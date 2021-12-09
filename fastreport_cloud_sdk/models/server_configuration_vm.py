@@ -38,16 +38,20 @@ class ServerConfigurationVM(object):
     openapi_types = {
         'title': 'str',
         'corporate_server_mode': 'bool',
-        'app_mixins': 'AppMixins'
+        'is_disabled': 'bool',
+        'app_mixins': 'AppMixins',
+        'auth': 'AuthConfigVM'
     }
 
     attribute_map = {
         'title': 'title',
         'corporate_server_mode': 'corporateServerMode',
-        'app_mixins': 'appMixins'
+        'is_disabled': 'isDisabled',
+        'app_mixins': 'appMixins',
+        'auth': 'auth'
     }
 
-    def __init__(self, title=None, corporate_server_mode=None, app_mixins=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, title=None, corporate_server_mode=None, is_disabled=None, app_mixins=None, auth=None, local_vars_configuration=None):  # noqa: E501
         """ServerConfigurationVM - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration.get_default_copy()
@@ -55,14 +59,20 @@ class ServerConfigurationVM(object):
 
         self._title = None
         self._corporate_server_mode = None
+        self._is_disabled = None
         self._app_mixins = None
+        self._auth = None
         self.discriminator = None
 
         self.title = title
         if corporate_server_mode is not None:
             self.corporate_server_mode = corporate_server_mode
+        if is_disabled is not None:
+            self.is_disabled = is_disabled
         if app_mixins is not None:
             self.app_mixins = app_mixins
+        if auth is not None:
+            self.auth = auth
 
     @property
     def title(self):
@@ -107,6 +117,27 @@ class ServerConfigurationVM(object):
         self._corporate_server_mode = corporate_server_mode
 
     @property
+    def is_disabled(self):
+        """Gets the is_disabled of this ServerConfigurationVM.  # noqa: E501
+
+
+        :return: The is_disabled of this ServerConfigurationVM.  # noqa: E501
+        :rtype: bool
+        """
+        return self._is_disabled
+
+    @is_disabled.setter
+    def is_disabled(self, is_disabled):
+        """Sets the is_disabled of this ServerConfigurationVM.
+
+
+        :param is_disabled: The is_disabled of this ServerConfigurationVM.  # noqa: E501
+        :type is_disabled: bool
+        """
+
+        self._is_disabled = is_disabled
+
+    @property
     def app_mixins(self):
         """Gets the app_mixins of this ServerConfigurationVM.  # noqa: E501
 
@@ -126,6 +157,27 @@ class ServerConfigurationVM(object):
         """
 
         self._app_mixins = app_mixins
+
+    @property
+    def auth(self):
+        """Gets the auth of this ServerConfigurationVM.  # noqa: E501
+
+
+        :return: The auth of this ServerConfigurationVM.  # noqa: E501
+        :rtype: AuthConfigVM
+        """
+        return self._auth
+
+    @auth.setter
+    def auth(self, auth):
+        """Sets the auth of this ServerConfigurationVM.
+
+
+        :param auth: The auth of this ServerConfigurationVM.  # noqa: E501
+        :type auth: AuthConfigVM
+        """
+
+        self._auth = auth
 
     def to_dict(self, serialize=False):
         """Returns the model properties as a dict"""

@@ -7,7 +7,7 @@ Method | HTTP request | Description
 [**groups_create_group**](GroupsApi.md#groups_create_group) | **POST** /api/manage/v1/Groups | Create a new user group
 [**groups_delete_group**](GroupsApi.md#groups_delete_group) | **DELETE** /api/manage/v1/Groups/{id} | Delete group by identifier
 [**groups_get_group**](GroupsApi.md#groups_get_group) | **GET** /api/manage/v1/Groups/{id} | Gets group by identifier
-[**groups_get_group_list**](GroupsApi.md#groups_get_group_list) | **GET** /api/manage/v1/Groups | Gets list of user groups
+[**groups_get_group_list**](GroupsApi.md#groups_get_group_list) | **GET** /api/manage/v1/Groups | Returns a list of current user&#39;s groups&lt;br /&gt;  This method will return following data about groups : &lt;br /&gt;  Id, Name, Created time (UTC), Edited time (UTC), creator id, &lt;br /&gt;  editor id, subscription id
 [**groups_get_permissions**](GroupsApi.md#groups_get_permissions) | **GET** /api/manage/v1/Groups/{id}/permissions | Gets group permissions by identifier
 [**groups_rename_group**](GroupsApi.md#groups_rename_group) | **PUT** /api/manage/v1/Groups/{id}/rename | Rename group by identifier
 [**groups_update_permissions**](GroupsApi.md#groups_update_permissions) | **POST** /api/manage/v1/Groups/{id}/permissions | Update permissions
@@ -384,7 +384,7 @@ Name | Type | Description  | Notes
 # **groups_get_group_list**
 > GroupsVM groups_get_group_list(skip=skip, take=take)
 
-Gets list of user groups
+Returns a list of current user's groups<br />  This method will return following data about groups : <br />  Id, Name, Created time (UTC), Edited time (UTC), creator id, <br />  editor id, subscription id
 
 ### Example
 
@@ -425,7 +425,7 @@ with fastreport_cloud_sdk.ApiClient(configuration) as api_client:
 take = 10 # int | How many groups need to take (optional) (default to 10)
 
     try:
-        # Gets list of user groups
+        # Returns a list of current user's groups<br />  This method will return following data about groups : <br />  Id, Name, Created time (UTC), Edited time (UTC), creator id, <br />  editor id, subscription id
         api_response = api_instance.groups_get_group_list(skip=skip, take=take)
         pprint(api_response)
     except ApiException as e:
@@ -469,7 +469,7 @@ with fastreport_cloud_sdk.ApiClient(configuration) as api_client:
 take = 10 # int | How many groups need to take (optional) (default to 10)
 
     try:
-        # Gets list of user groups
+        # Returns a list of current user's groups<br />  This method will return following data about groups : <br />  Id, Name, Created time (UTC), Edited time (UTC), creator id, <br />  editor id, subscription id
         api_response = api_instance.groups_get_group_list(skip=skip, take=take)
         pprint(api_response)
     except ApiException as e:

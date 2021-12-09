@@ -446,7 +446,7 @@ class GroupsApi(object):
             _request_auth=local_var_params.get('_request_auth'))
 
     def groups_get_group_list(self, **kwargs):  # noqa: E501
-        """Gets list of user groups  # noqa: E501
+        """Returns a list of current user's groups<br />  This method will return following data about groups : <br />  Id, Name, Created time (UTC), Edited time (UTC), creator id, <br />  editor id, subscription id  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
@@ -477,7 +477,7 @@ class GroupsApi(object):
         return self.groups_get_group_list_with_http_info(**kwargs)  # noqa: E501
 
     def groups_get_group_list_with_http_info(self, **kwargs):  # noqa: E501
-        """Gets list of user groups  # noqa: E501
+        """Returns a list of current user's groups<br />  This method will return following data about groups : <br />  Id, Name, Created time (UTC), Edited time (UTC), creator id, <br />  editor id, subscription id  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True

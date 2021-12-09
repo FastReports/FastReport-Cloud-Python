@@ -37,8 +37,10 @@ class TaskType(object):
     FETCH = "Fetch"
     EMAIL = "Email"
     WEBHOOK = "Webhook"
+    THUMBNAILTEMPLATE = "ThumbnailTemplate"
+    THUMBNAILREPORT = "ThumbnailReport"
 
-    allowable_values = [EXPORTTEMPLATE, EXPORTREPORT, PREPARE, FETCH, EMAIL, WEBHOOK]  # noqa: E501
+    allowable_values = [EXPORTTEMPLATE, EXPORTREPORT, PREPARE, FETCH, EMAIL, WEBHOOK, THUMBNAILTEMPLATE, THUMBNAILREPORT]  # noqa: E501
 
     """
     Attributes:

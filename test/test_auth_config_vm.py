@@ -16,11 +16,11 @@ import unittest
 import datetime
 
 import fastreport_cloud_sdk
-from fastreport_cloud_sdk.models.user_settings_vm import UserSettingsVM  # noqa: E501
+from fastreport_cloud_sdk.models.auth_config_vm import AuthConfigVM  # noqa: E501
 from fastreport_cloud_sdk.rest import ApiException
 
-class TestUserSettingsVM(unittest.TestCase):
-    """UserSettingsVM unit test stubs"""
+class TestAuthConfigVM(unittest.TestCase):
+    """AuthConfigVM unit test stubs"""
 
     def setUp(self):
         pass
@@ -29,23 +29,23 @@ class TestUserSettingsVM(unittest.TestCase):
         pass
 
     def make_instance(self, include_optional):
-        """Test UserSettingsVM
+        """Test AuthConfigVM
             include_option is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
-        # model = fastreport_cloud_sdk.models.user_settings_vm.UserSettingsVM()  # noqa: E501
+        # model = fastreport_cloud_sdk.models.auth_config_vm.AuthConfigVM()  # noqa: E501
         if include_optional :
-            return UserSettingsVM(
-                profile_visibility = 0, 
-                default_subscription = '62ECB020842930cc01FFCCfe', 
-                show_hidden_files_and_folders = True
+            return AuthConfigVM(
+                use_local = True, 
+                use_open_id = True, 
+                authority = ''
             )
         else :
-            return UserSettingsVM(
+            return AuthConfigVM(
         )
 
-    def testUserSettingsVM(self):
-        """Test UserSettingsVM"""
+    def testAuthConfigVM(self):
+        """Test AuthConfigVM"""
         inst_req_only = self.make_instance(include_optional=False)
         inst_req_and_optional = self.make_instance(include_optional=True)
 

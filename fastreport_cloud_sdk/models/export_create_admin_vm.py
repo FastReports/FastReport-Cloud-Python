@@ -38,7 +38,6 @@ class ExportCreateAdminVM(object):
     openapi_types = {
         'owner_id': 'str',
         'parent_id': 'str',
-        'template_id': 'str',
         'name': 'str',
         'tags': 'list[str]',
         'icon': 'str',
@@ -48,14 +47,13 @@ class ExportCreateAdminVM(object):
     attribute_map = {
         'owner_id': 'ownerId',
         'parent_id': 'parentId',
-        'template_id': 'templateId',
         'name': 'name',
         'tags': 'tags',
         'icon': 'icon',
         'content': 'content'
     }
 
-    def __init__(self, owner_id=None, parent_id=None, template_id=None, name=None, tags=None, icon=None, content=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, owner_id=None, parent_id=None, name=None, tags=None, icon=None, content=None, local_vars_configuration=None):  # noqa: E501
         """ExportCreateAdminVM - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration.get_default_copy()
@@ -63,7 +61,6 @@ class ExportCreateAdminVM(object):
 
         self._owner_id = None
         self._parent_id = None
-        self._template_id = None
         self._name = None
         self._tags = None
         self._icon = None
@@ -72,7 +69,6 @@ class ExportCreateAdminVM(object):
 
         self.owner_id = owner_id
         self.parent_id = parent_id
-        self.template_id = template_id
         self.name = name
         self.tags = tags
         self.icon = icon
@@ -129,30 +125,6 @@ class ExportCreateAdminVM(object):
             raise ValueError(r"Invalid value for `parent_id`, must be a follow pattern or equal to `/^[A-Fa-f0-9]{24}$/`")  # noqa: E501
 
         self._parent_id = parent_id
-
-    @property
-    def template_id(self):
-        """Gets the template_id of this ExportCreateAdminVM.  # noqa: E501
-
-
-        :return: The template_id of this ExportCreateAdminVM.  # noqa: E501
-        :rtype: str
-        """
-        return self._template_id
-
-    @template_id.setter
-    def template_id(self, template_id):
-        """Sets the template_id of this ExportCreateAdminVM.
-
-
-        :param template_id: The template_id of this ExportCreateAdminVM.  # noqa: E501
-        :type template_id: str
-        """
-        if (self.local_vars_configuration.client_side_validation and
-                template_id is not None and not re.search(r'(^$)|(^[A-Fa-f0-9]{24}$)', template_id)):  # noqa: E501
-            raise ValueError(r"Invalid value for `template_id`, must be a follow pattern or equal to `/(^$)|(^[A-Fa-f0-9]{24}$)/`")  # noqa: E501
-
-        self._template_id = template_id
 
     @property
     def name(self):

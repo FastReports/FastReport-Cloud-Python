@@ -48,6 +48,8 @@ class TemplatesApi(object):
 
         :param id: folder id (required)
         :type id: str
+        :param search_pattern: string, that must be incuded in file or folder name to be counted <br />              (leave undefined to count all files and folders)
+        :type search_pattern: str
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
@@ -78,6 +80,8 @@ class TemplatesApi(object):
 
         :param id: folder id (required)
         :type id: str
+        :param search_pattern: string, that must be incuded in file or folder name to be counted <br />              (leave undefined to count all files and folders)
+        :type search_pattern: str
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
         :param _return_http_data_only: response data without head status code
@@ -104,7 +108,8 @@ class TemplatesApi(object):
         local_var_params = locals()
 
         all_params = [
-            'id'
+            'id',
+            'search_pattern'
         ]
         all_params.extend(
             [
@@ -131,6 +136,12 @@ class TemplatesApi(object):
 
         if self.api_client.client_side_validation and 'id' in local_var_params and not re.search(r'^[A-Fa-f0-9]{24}$', local_var_params['id']):  # noqa: E501
             raise ApiValueError("Invalid value for parameter `id` when calling `template_folder_and_file_get_count`, must conform to the pattern `/^[A-Fa-f0-9]{24}$/`")  # noqa: E501
+        if self.api_client.client_side_validation and ('search_pattern' in local_var_params and  # noqa: E501
+                                                        len(local_var_params['search_pattern']) > 100):  # noqa: E501
+            raise ApiValueError("Invalid value for parameter `search_pattern` when calling `template_folder_and_file_get_count`, length must be less than or equal to `100`")  # noqa: E501
+        if self.api_client.client_side_validation and ('search_pattern' in local_var_params and  # noqa: E501
+                                                        len(local_var_params['search_pattern']) < 0):  # noqa: E501
+            raise ApiValueError("Invalid value for parameter `search_pattern` when calling `template_folder_and_file_get_count`, length must be greater than or equal to `0`")  # noqa: E501
         collection_formats = {}
 
         path_params = {}
@@ -138,6 +149,8 @@ class TemplatesApi(object):
             path_params['id'] = local_var_params['id']  # noqa: E501
 
         query_params = []
+        if 'search_pattern' in local_var_params and local_var_params['search_pattern'] is not None:  # noqa: E501
+            query_params.append(('searchPattern', local_var_params['search_pattern']))  # noqa: E501
 
         header_params = {}
 
@@ -3158,6 +3171,8 @@ class TemplatesApi(object):
         :type skip: int
         :param take: number of files, that have to be returned
         :type take: int
+        :param search_pattern:
+        :type search_pattern: str
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
@@ -3191,6 +3206,8 @@ class TemplatesApi(object):
         :type skip: int
         :param take: number of files, that have to be returned
         :type take: int
+        :param search_pattern:
+        :type search_pattern: str
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
         :param _return_http_data_only: response data without head status code
@@ -3219,7 +3236,8 @@ class TemplatesApi(object):
         all_params = [
             'id',
             'skip',
-            'take'
+            'take',
+            'search_pattern'
         ]
         all_params.extend(
             [
@@ -3254,6 +3272,12 @@ class TemplatesApi(object):
             raise ApiValueError("Invalid value for parameter `take` when calling `templates_get_files_list`, must be a value less than or equal to `120`")  # noqa: E501
         if self.api_client.client_side_validation and 'take' in local_var_params and local_var_params['take'] < 1:  # noqa: E501
             raise ApiValueError("Invalid value for parameter `take` when calling `templates_get_files_list`, must be a value greater than or equal to `1`")  # noqa: E501
+        if self.api_client.client_side_validation and ('search_pattern' in local_var_params and  # noqa: E501
+                                                        len(local_var_params['search_pattern']) > 100):  # noqa: E501
+            raise ApiValueError("Invalid value for parameter `search_pattern` when calling `templates_get_files_list`, length must be less than or equal to `100`")  # noqa: E501
+        if self.api_client.client_side_validation and ('search_pattern' in local_var_params and  # noqa: E501
+                                                        len(local_var_params['search_pattern']) < 0):  # noqa: E501
+            raise ApiValueError("Invalid value for parameter `search_pattern` when calling `templates_get_files_list`, length must be greater than or equal to `0`")  # noqa: E501
         collection_formats = {}
 
         path_params = {}
@@ -3265,6 +3289,8 @@ class TemplatesApi(object):
             query_params.append(('skip', local_var_params['skip']))  # noqa: E501
         if 'take' in local_var_params and local_var_params['take'] is not None:  # noqa: E501
             query_params.append(('take', local_var_params['take']))  # noqa: E501
+        if 'search_pattern' in local_var_params and local_var_params['search_pattern'] is not None:  # noqa: E501
+            query_params.append(('searchPattern', local_var_params['search_pattern']))  # noqa: E501
 
         header_params = {}
 

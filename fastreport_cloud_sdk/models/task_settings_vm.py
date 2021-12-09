@@ -41,7 +41,9 @@ class TaskSettingsVM(object):
         'export_report': 'bool',
         'send_via_email': 'bool',
         'send_via_webhook': 'bool',
-        'fetch_data': 'bool'
+        'fetch_data': 'bool',
+        'thumbnail_report': 'bool',
+        'thumbnail_template': 'bool'
     }
 
     attribute_map = {
@@ -50,10 +52,12 @@ class TaskSettingsVM(object):
         'export_report': 'exportReport',
         'send_via_email': 'sendViaEmail',
         'send_via_webhook': 'sendViaWebhook',
-        'fetch_data': 'fetchData'
+        'fetch_data': 'fetchData',
+        'thumbnail_report': 'thumbnailReport',
+        'thumbnail_template': 'thumbnailTemplate'
     }
 
-    def __init__(self, prepare=None, export_template=None, export_report=None, send_via_email=None, send_via_webhook=None, fetch_data=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, prepare=None, export_template=None, export_report=None, send_via_email=None, send_via_webhook=None, fetch_data=None, thumbnail_report=None, thumbnail_template=None, local_vars_configuration=None):  # noqa: E501
         """TaskSettingsVM - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration.get_default_copy()
@@ -65,6 +69,8 @@ class TaskSettingsVM(object):
         self._send_via_email = None
         self._send_via_webhook = None
         self._fetch_data = None
+        self._thumbnail_report = None
+        self._thumbnail_template = None
         self.discriminator = None
 
         self.prepare = prepare
@@ -73,6 +79,8 @@ class TaskSettingsVM(object):
         self.send_via_email = send_via_email
         self.send_via_webhook = send_via_webhook
         self.fetch_data = fetch_data
+        self.thumbnail_report = thumbnail_report
+        self.thumbnail_template = thumbnail_template
 
     @property
     def prepare(self):
@@ -199,6 +207,48 @@ class TaskSettingsVM(object):
         """
 
         self._fetch_data = fetch_data
+
+    @property
+    def thumbnail_report(self):
+        """Gets the thumbnail_report of this TaskSettingsVM.  # noqa: E501
+
+
+        :return: The thumbnail_report of this TaskSettingsVM.  # noqa: E501
+        :rtype: bool
+        """
+        return self._thumbnail_report
+
+    @thumbnail_report.setter
+    def thumbnail_report(self, thumbnail_report):
+        """Sets the thumbnail_report of this TaskSettingsVM.
+
+
+        :param thumbnail_report: The thumbnail_report of this TaskSettingsVM.  # noqa: E501
+        :type thumbnail_report: bool
+        """
+
+        self._thumbnail_report = thumbnail_report
+
+    @property
+    def thumbnail_template(self):
+        """Gets the thumbnail_template of this TaskSettingsVM.  # noqa: E501
+
+
+        :return: The thumbnail_template of this TaskSettingsVM.  # noqa: E501
+        :rtype: bool
+        """
+        return self._thumbnail_template
+
+    @thumbnail_template.setter
+    def thumbnail_template(self, thumbnail_template):
+        """Sets the thumbnail_template of this TaskSettingsVM.
+
+
+        :param thumbnail_template: The thumbnail_template of this TaskSettingsVM.  # noqa: E501
+        :type thumbnail_template: bool
+        """
+
+        self._thumbnail_template = thumbnail_template
 
     def to_dict(self, serialize=False):
         """Returns the model properties as a dict"""

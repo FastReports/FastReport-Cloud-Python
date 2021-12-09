@@ -36,7 +36,7 @@ Method | HTTP request | Description
 
 
 # **report_folder_and_file_get_count**
-> CountVM report_folder_and_file_get_count(id)
+> CountVM report_folder_and_file_get_count(id, search_pattern=search_pattern)
 
 Get count of files and folders what contains in a specified folder
 
@@ -78,10 +78,11 @@ with fastreport_cloud_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = fastreport_cloud_sdk.ReportsApi(api_client)
     id = 'id_example' # str | folder id
+search_pattern = 'search_pattern_example' # str | string, that must be incuded in file or folder name to be counted <br />              (leave undefined to count all files and folders) (optional)
 
     try:
         # Get count of files and folders what contains in a specified folder
-        api_response = api_instance.report_folder_and_file_get_count(id)
+        api_response = api_instance.report_folder_and_file_get_count(id, search_pattern=search_pattern)
         pprint(api_response)
     except ApiException as e:
         print("Exception when calling ReportsApi->report_folder_and_file_get_count: %s\n" % e)
@@ -121,10 +122,11 @@ with fastreport_cloud_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = fastreport_cloud_sdk.ReportsApi(api_client)
     id = 'id_example' # str | folder id
+search_pattern = 'search_pattern_example' # str | string, that must be incuded in file or folder name to be counted <br />              (leave undefined to count all files and folders) (optional)
 
     try:
         # Get count of files and folders what contains in a specified folder
-        api_response = api_instance.report_folder_and_file_get_count(id)
+        api_response = api_instance.report_folder_and_file_get_count(id, search_pattern=search_pattern)
         pprint(api_response)
     except ApiException as e:
         print("Exception when calling ReportsApi->report_folder_and_file_get_count: %s\n" % e)
@@ -135,6 +137,7 @@ with fastreport_cloud_sdk.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **str**| folder id | 
+ **search_pattern** | **str**| string, that must be incuded in file or folder name to be counted &lt;br /&gt;              (leave undefined to count all files and folders) | [optional] 
 
 ### Return type
 
@@ -2695,7 +2698,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **reports_get_files_list**
-> ReportsVM reports_get_files_list(id, skip=skip, take=take)
+> ReportsVM reports_get_files_list(id, skip=skip, take=take, search_pattern=search_pattern)
 
 Get all files from specified folder. <br />  User with Get Entity permission can access this method. <br />  The method will returns minimal infomration about the file: <br />  id, name, size, editedTime, createdTime, tags, status, statusReason.
 
@@ -2737,10 +2740,11 @@ with fastreport_cloud_sdk.ApiClient(configuration) as api_client:
     id = 'id_example' # str | folder id
 skip = 0 # int | number of files, that have to be skipped (optional) (default to 0)
 take = 10 # int | number of files, that have to be returned (optional) (default to 10)
+search_pattern = 'search_pattern_example' # str |  (optional)
 
     try:
         # Get all files from specified folder. <br />  User with Get Entity permission can access this method. <br />  The method will returns minimal infomration about the file: <br />  id, name, size, editedTime, createdTime, tags, status, statusReason.
-        api_response = api_instance.reports_get_files_list(id, skip=skip, take=take)
+        api_response = api_instance.reports_get_files_list(id, skip=skip, take=take, search_pattern=search_pattern)
         pprint(api_response)
     except ApiException as e:
         print("Exception when calling ReportsApi->reports_get_files_list: %s\n" % e)
@@ -2782,10 +2786,11 @@ with fastreport_cloud_sdk.ApiClient(configuration) as api_client:
     id = 'id_example' # str | folder id
 skip = 0 # int | number of files, that have to be skipped (optional) (default to 0)
 take = 10 # int | number of files, that have to be returned (optional) (default to 10)
+search_pattern = 'search_pattern_example' # str |  (optional)
 
     try:
         # Get all files from specified folder. <br />  User with Get Entity permission can access this method. <br />  The method will returns minimal infomration about the file: <br />  id, name, size, editedTime, createdTime, tags, status, statusReason.
-        api_response = api_instance.reports_get_files_list(id, skip=skip, take=take)
+        api_response = api_instance.reports_get_files_list(id, skip=skip, take=take, search_pattern=search_pattern)
         pprint(api_response)
     except ApiException as e:
         print("Exception when calling ReportsApi->reports_get_files_list: %s\n" % e)
@@ -2798,6 +2803,7 @@ Name | Type | Description  | Notes
  **id** | **str**| folder id | 
  **skip** | **int**| number of files, that have to be skipped | [optional] [default to 0]
  **take** | **int**| number of files, that have to be returned | [optional] [default to 10]
+ **search_pattern** | **str**|  | [optional] 
 
 ### Return type
 

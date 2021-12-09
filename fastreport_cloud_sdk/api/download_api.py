@@ -47,6 +47,8 @@ class DownloadApi(object):
 
         :param id: (required)
         :type id: str
+        :param preview:
+        :type preview: bool
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
@@ -76,6 +78,8 @@ class DownloadApi(object):
 
         :param id: (required)
         :type id: str
+        :param preview:
+        :type preview: bool
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
         :param _return_http_data_only: response data without head status code
@@ -102,7 +106,8 @@ class DownloadApi(object):
         local_var_params = locals()
 
         all_params = [
-            'id'
+            'id',
+            'preview'
         ]
         all_params.extend(
             [
@@ -136,6 +141,8 @@ class DownloadApi(object):
             path_params['id'] = local_var_params['id']  # noqa: E501
 
         query_params = []
+        if 'preview' in local_var_params and local_var_params['preview'] is not None:  # noqa: E501
+            query_params.append(('preview', local_var_params['preview']))  # noqa: E501
 
         header_params = {}
 
@@ -145,7 +152,7 @@ class DownloadApi(object):
         body_params = None
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/octet-stream', 'application/json'])  # noqa: E501
+            ['application/octet-stream', 'application/pdf', 'application/json'])  # noqa: E501
 
         # Authentication setting
         auth_settings = ['ApiKey', 'JWT']  # noqa: E501
@@ -284,7 +291,7 @@ class DownloadApi(object):
         body_params = None
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
-            ['image/jpeg', 'application/json'])  # noqa: E501
+            ['image/png', 'image/jpeg', 'application/json'])  # noqa: E501
 
         # Authentication setting
         auth_settings = ['ApiKey', 'JWT']  # noqa: E501
@@ -706,7 +713,7 @@ class DownloadApi(object):
         body_params = None
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
-            ['image/jpeg', 'application/json'])  # noqa: E501
+            ['image/png', 'image/jpeg', 'application/json'])  # noqa: E501
 
         # Authentication setting
         auth_settings = ['ApiKey', 'JWT']  # noqa: E501
@@ -881,7 +888,7 @@ class DownloadApi(object):
             _request_auth=local_var_params.get('_request_auth'))
 
     def download_get_template(self, id, **kwargs):  # noqa: E501
-        """Returns a report file with specified id  # noqa: E501
+        """Returns a Template file with specified id  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
@@ -910,7 +917,7 @@ class DownloadApi(object):
         return self.download_get_template_with_http_info(id, **kwargs)  # noqa: E501
 
     def download_get_template_with_http_info(self, id, **kwargs):  # noqa: E501
-        """Returns a report file with specified id  # noqa: E501
+        """Returns a Template file with specified id  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
@@ -1004,6 +1011,145 @@ class DownloadApi(object):
 
         return self.api_client.call_api(
             '/download/t/{id}', 'GET',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_types_map=response_types_map,
+            auth_settings=auth_settings,
+            async_req=local_var_params.get('async_req'),
+            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
+            _preload_content=local_var_params.get('_preload_content', True),
+            _request_timeout=local_var_params.get('_request_timeout'),
+            collection_formats=collection_formats,
+            _request_auth=local_var_params.get('_request_auth'))
+
+    def download_get_template_thumbnail(self, id, **kwargs):  # noqa: E501
+        """Returns template's thumbnail  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.download_get_template_thumbnail(id, async_req=True)
+        >>> result = thread.get()
+
+        :param id: (required)
+        :type id: str
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
+        :param _preload_content: if False, the urllib3.HTTPResponse object will
+                                 be returned without reading/decoding response
+                                 data. Default is True.
+        :type _preload_content: bool, optional
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :return: Returns the result object.
+                 If the method is called asynchronously,
+                 returns the request thread.
+        :rtype: file
+        """
+        kwargs['_return_http_data_only'] = True
+        return self.download_get_template_thumbnail_with_http_info(id, **kwargs)  # noqa: E501
+
+    def download_get_template_thumbnail_with_http_info(self, id, **kwargs):  # noqa: E501
+        """Returns template's thumbnail  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.download_get_template_thumbnail_with_http_info(id, async_req=True)
+        >>> result = thread.get()
+
+        :param id: (required)
+        :type id: str
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
+        :param _return_http_data_only: response data without head status code
+                                       and headers
+        :type _return_http_data_only: bool, optional
+        :param _preload_content: if False, the urllib3.HTTPResponse object will
+                                 be returned without reading/decoding response
+                                 data. Default is True.
+        :type _preload_content: bool, optional
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the authentication
+                              in the spec for a single request.
+        :type _request_auth: dict, optional
+        :return: Returns the result object.
+                 If the method is called asynchronously,
+                 returns the request thread.
+        :rtype: tuple(file, status_code(int), headers(HTTPHeaderDict))
+        """
+
+        local_var_params = locals()
+
+        all_params = [
+            'id'
+        ]
+        all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout',
+                '_request_auth'
+            ]
+        )
+
+        for key, val in six.iteritems(local_var_params['kwargs']):
+            if key not in all_params:
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method download_get_template_thumbnail" % key
+                )
+            local_var_params[key] = val
+        del local_var_params['kwargs']
+        # verify the required parameter 'id' is set
+        if self.api_client.client_side_validation and ('id' not in local_var_params or  # noqa: E501
+                                                        local_var_params['id'] is None):  # noqa: E501
+            raise ApiValueError("Missing the required parameter `id` when calling `download_get_template_thumbnail`")  # noqa: E501
+
+        if self.api_client.client_side_validation and 'id' in local_var_params and not re.search(r'^[A-Fa-f0-9]{24}$', local_var_params['id']):  # noqa: E501
+            raise ApiValueError("Invalid value for parameter `id` when calling `download_get_template_thumbnail`, must conform to the pattern `/^[A-Fa-f0-9]{24}$/`")  # noqa: E501
+        collection_formats = {}
+
+        path_params = {}
+        if 'id' in local_var_params:
+            path_params['id'] = local_var_params['id']  # noqa: E501
+
+        query_params = []
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['image/png', 'image/jpeg', 'application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = ['ApiKey', 'JWT']  # noqa: E501
+        
+        response_types_map = {
+            200: "file",
+            404: "ProblemDetails",
+            400: "ProblemDetails",
+            402: "ProblemDetails",
+            403: "ProblemDetails",
+        }
+
+        return self.api_client.call_api(
+            '/download/t/{id}/thumbnail', 'GET',
             path_params,
             query_params,
             header_params,

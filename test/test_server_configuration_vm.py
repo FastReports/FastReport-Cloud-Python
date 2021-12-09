@@ -38,9 +38,14 @@ class TestServerConfigurationVM(unittest.TestCase):
             return ServerConfigurationVM(
                 title = '', 
                 corporate_server_mode = True, 
+                is_disabled = True, 
                 app_mixins = fastreport_cloud_sdk.models.app_mixins.AppMixins(
                     head = '', 
-                    body = '', )
+                    body = '', ), 
+                auth = fastreport_cloud_sdk.models.auth_config_vm.AuthConfigVM(
+                    use_local = True, 
+                    use_open_id = True, 
+                    authority = '', )
             )
         else :
             return ServerConfigurationVM(

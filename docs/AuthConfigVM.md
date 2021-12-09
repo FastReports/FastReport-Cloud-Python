@@ -1,12 +1,12 @@
-# FetchTaskVM
+# AuthConfigVM
 
 
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**name** | **str** |  | [optional] 
-**subscription_id** | **str** |  | [optional] 
-**type** | [**TaskType**](TaskType.md) |  | [optional] 
+**use_local** | **bool** |  | [optional] 
+**use_open_id** | **bool** |  | [optional] 
+**authority** | **str** |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

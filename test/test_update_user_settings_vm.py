@@ -37,7 +37,8 @@ class TestUpdateUserSettingsVM(unittest.TestCase):
         if include_optional :
             return UpdateUserSettingsVM(
                 profile_visibility = 0, 
-                default_subscription = ''
+                default_subscription = '', 
+                show_hidden_files_and_folders = True
             )
         else :
             return UpdateUserSettingsVM(

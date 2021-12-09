@@ -37,15 +37,17 @@ class UpdateUserSettingsVM(object):
     """
     openapi_types = {
         'profile_visibility': 'ProfileVisibility',
-        'default_subscription': 'str'
+        'default_subscription': 'str',
+        'show_hidden_files_and_folders': 'bool'
     }
 
     attribute_map = {
         'profile_visibility': 'profileVisibility',
-        'default_subscription': 'defaultSubscription'
+        'default_subscription': 'defaultSubscription',
+        'show_hidden_files_and_folders': 'showHiddenFilesAndFolders'
     }
 
-    def __init__(self, profile_visibility=None, default_subscription=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, profile_visibility=None, default_subscription=None, show_hidden_files_and_folders=None, local_vars_configuration=None):  # noqa: E501
         """UpdateUserSettingsVM - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration.get_default_copy()
@@ -53,11 +55,13 @@ class UpdateUserSettingsVM(object):
 
         self._profile_visibility = None
         self._default_subscription = None
+        self._show_hidden_files_and_folders = None
         self.discriminator = None
 
         if profile_visibility is not None:
             self.profile_visibility = profile_visibility
         self.default_subscription = default_subscription
+        self.show_hidden_files_and_folders = show_hidden_files_and_folders
 
     @property
     def profile_visibility(self):
@@ -100,6 +104,27 @@ class UpdateUserSettingsVM(object):
         """
 
         self._default_subscription = default_subscription
+
+    @property
+    def show_hidden_files_and_folders(self):
+        """Gets the show_hidden_files_and_folders of this UpdateUserSettingsVM.  # noqa: E501
+
+
+        :return: The show_hidden_files_and_folders of this UpdateUserSettingsVM.  # noqa: E501
+        :rtype: bool
+        """
+        return self._show_hidden_files_and_folders
+
+    @show_hidden_files_and_folders.setter
+    def show_hidden_files_and_folders(self, show_hidden_files_and_folders):
+        """Sets the show_hidden_files_and_folders of this UpdateUserSettingsVM.
+
+
+        :param show_hidden_files_and_folders: The show_hidden_files_and_folders of this UpdateUserSettingsVM.  # noqa: E501
+        :type show_hidden_files_and_folders: bool
+        """
+
+        self._show_hidden_files_and_folders = show_hidden_files_and_folders
 
     def to_dict(self, serialize=False):
         """Returns the model properties as a dict"""

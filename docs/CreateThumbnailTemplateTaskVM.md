@@ -1,4 +1,4 @@
-# FetchTaskVM
+# CreateThumbnailTemplateTaskVM
 
 
 ## Properties

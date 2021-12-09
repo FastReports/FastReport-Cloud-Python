@@ -73,7 +73,14 @@ class TestDownloadApi(unittest.TestCase):
     def test_download_get_template(self):
         """Test case for download_get_template
 
-        Returns a report file with specified id  # noqa: E501
+        Returns a Template file with specified id  # noqa: E501
+        """
+        pass
+
+    def test_download_get_template_thumbnail(self):
+        """Test case for download_get_template_thumbnail
+
+        Returns template's thumbnail  # noqa: E501
         """
         pass
 

@@ -4,8 +4,6 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**connection_type** | [**DataSourceConnectionType**](DataSourceConnectionType.md) |  | [optional] 
-**connection_string** | **str** |  | 
 **name** | **str** |  | [optional] 
 **subscription_id** | **str** |  | [optional] 
 **type** | [**TaskType**](TaskType.md) |  | [optional] 

@@ -69,7 +69,9 @@ class TestSubscriptionVM(unittest.TestCase):
                             export_report = True, 
                             send_via_email = True, 
                             send_via_webhook = True, 
-                            fetch_data = True, ), ), ), 
+                            fetch_data = True, 
+                            thumbnail_report = True, 
+                            thumbnail_template = True, ), ), ), 
                 old = [
                     fastreport_cloud_sdk.models.subscription_period_vm.SubscriptionPeriodVM(
                         start_time = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
@@ -101,7 +103,9 @@ class TestSubscriptionVM(unittest.TestCase):
                                 export_report = True, 
                                 send_via_email = True, 
                                 send_via_webhook = True, 
-                                fetch_data = True, ), ), )
+                                fetch_data = True, 
+                                thumbnail_report = True, 
+                                thumbnail_template = True, ), ), )
                     ], 
                 templates_folder = fastreport_cloud_sdk.models.subscription_folder.SubscriptionFolder(
                     folder_id = '', 

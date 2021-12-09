@@ -14,6 +14,7 @@ docs/ApiKeyVM.md
 docs/ApiKeysApi.md
 docs/ApiKeysVM.md
 docs/AppMixins.md
+docs/AuthConfigVM.md
 docs/BreadcrumbsModel.md
 docs/BreadcrumbsVM.md
 docs/ConfigurationApi.md
@@ -31,6 +32,8 @@ docs/CreateGroupVM.md
 docs/CreatePrepareTemplateTaskVM.md
 docs/CreateSubscriptionInviteVM.md
 docs/CreateTaskBaseVM.md
+docs/CreateThumbnailReportTaskVM.md
+docs/CreateThumbnailTemplateTaskVM.md
 docs/CreateTransformTaskBaseVM.md
 docs/CreateTransportTaskBaseVM.md
 docs/CreateWebhookTaskVM.md
@@ -143,6 +146,8 @@ docs/RunFetchTaskVM.md
 docs/RunInputFileVM.md
 docs/RunPrepareTemplateTaskVM.md
 docs/RunTaskBaseVM.md
+docs/RunThumbnailReportTaskVM.md
+docs/RunThumbnailTemplateTaskVM.md
 docs/RunTransformTaskBaseVM.md
 docs/RunTransportTaskBaseVM.md
 docs/RunWebhookTaskVM.md
@@ -186,6 +191,8 @@ docs/TemplateVM.md
 docs/TemplateVMFilesVMBase.md
 docs/TemplatesApi.md
 docs/TemplatesVM.md
+docs/ThumbnailReportTaskVM.md
+docs/ThumbnailTemplateTaskVM.md
 docs/TimePeriodType.md
 docs/TransformTaskBaseVM.md
 docs/TransportTaskBaseVM.md
@@ -237,6 +244,7 @@ fastreport_cloud_sdk/models/admin_template_folder_create_vm.py
 fastreport_cloud_sdk/models/api_key_vm.py
 fastreport_cloud_sdk/models/api_keys_vm.py
 fastreport_cloud_sdk/models/app_mixins.py
+fastreport_cloud_sdk/models/auth_config_vm.py
 fastreport_cloud_sdk/models/breadcrumbs_model.py
 fastreport_cloud_sdk/models/breadcrumbs_vm.py
 fastreport_cloud_sdk/models/count_vm.py
@@ -253,6 +261,8 @@ fastreport_cloud_sdk/models/create_group_vm.py
 fastreport_cloud_sdk/models/create_prepare_template_task_vm.py
 fastreport_cloud_sdk/models/create_subscription_invite_vm.py
 fastreport_cloud_sdk/models/create_task_base_vm.py
+fastreport_cloud_sdk/models/create_thumbnail_report_task_vm.py
+fastreport_cloud_sdk/models/create_thumbnail_template_task_vm.py
 fastreport_cloud_sdk/models/create_transform_task_base_vm.py
 fastreport_cloud_sdk/models/create_transport_task_base_vm.py
 fastreport_cloud_sdk/models/create_webhook_task_vm.py
@@ -358,6 +368,8 @@ fastreport_cloud_sdk/models/run_fetch_task_vm.py
 fastreport_cloud_sdk/models/run_input_file_vm.py
 fastreport_cloud_sdk/models/run_prepare_template_task_vm.py
 fastreport_cloud_sdk/models/run_task_base_vm.py
+fastreport_cloud_sdk/models/run_thumbnail_report_task_vm.py
+fastreport_cloud_sdk/models/run_thumbnail_template_task_vm.py
 fastreport_cloud_sdk/models/run_transform_task_base_vm.py
 fastreport_cloud_sdk/models/run_transport_task_base_vm.py
 fastreport_cloud_sdk/models/run_webhook_task_vm.py
@@ -394,6 +406,8 @@ fastreport_cloud_sdk/models/template_folder_create_vm.py
 fastreport_cloud_sdk/models/template_vm.py
 fastreport_cloud_sdk/models/template_vm_files_vm_base.py
 fastreport_cloud_sdk/models/templates_vm.py
+fastreport_cloud_sdk/models/thumbnail_report_task_vm.py
+fastreport_cloud_sdk/models/thumbnail_template_task_vm.py
 fastreport_cloud_sdk/models/time_period_type.py
 fastreport_cloud_sdk/models/transform_task_base_vm.py
 fastreport_cloud_sdk/models/transport_task_base_vm.py
@@ -427,6 +441,7 @@ test/test_api_key_vm.py
 test/test_api_keys_api.py
 test/test_api_keys_vm.py
 test/test_app_mixins.py
+test/test_auth_config_vm.py
 test/test_breadcrumbs_model.py
 test/test_breadcrumbs_vm.py
 test/test_configuration_api.py
@@ -444,6 +459,8 @@ test/test_create_group_vm.py
 test/test_create_prepare_template_task_vm.py
 test/test_create_subscription_invite_vm.py
 test/test_create_task_base_vm.py
+test/test_create_thumbnail_report_task_vm.py
+test/test_create_thumbnail_template_task_vm.py
 test/test_create_transform_task_base_vm.py
 test/test_create_transport_task_base_vm.py
 test/test_create_webhook_task_vm.py
@@ -556,6 +573,8 @@ test/test_run_fetch_task_vm.py
 test/test_run_input_file_vm.py
 test/test_run_prepare_template_task_vm.py
 test/test_run_task_base_vm.py
+test/test_run_thumbnail_report_task_vm.py
+test/test_run_thumbnail_template_task_vm.py
 test/test_run_transform_task_base_vm.py
 test/test_run_transport_task_base_vm.py
 test/test_run_webhook_task_vm.py
@@ -599,6 +618,8 @@ test/test_template_vm.py
 test/test_template_vm_files_vm_base.py
 test/test_templates_api.py
 test/test_templates_vm.py
+test/test_thumbnail_report_task_vm.py
+test/test_thumbnail_template_task_vm.py
 test/test_time_period_type.py
 test/test_transform_task_base_vm.py
 test/test_transport_task_base_vm.py

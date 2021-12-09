@@ -1,4 +1,4 @@
-# FetchTaskVM
+# CreateThumbnailReportTaskVM
 
 
 ## Properties

@@ -36,91 +36,32 @@ class CreateFetchTaskVM(object):
                             and the value is json key in definition.
     """
     openapi_types = {
-        'connection_type': 'DataSourceConnectionType',
-        'connection_string': 'str',
         'name': 'str',
         'subscription_id': 'str',
         'type': 'TaskType'
     }
 
     attribute_map = {
-        'connection_type': 'connectionType',
-        'connection_string': 'connectionString',
         'name': 'name',
         'subscription_id': 'subscriptionId',
         'type': 'type'
     }
 
-    def __init__(self, connection_type=None, connection_string=None, name=None, subscription_id=None, type=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, name=None, subscription_id=None, type=None, local_vars_configuration=None):  # noqa: E501
         """CreateFetchTaskVM - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration.get_default_copy()
         self.local_vars_configuration = local_vars_configuration
 
-        self._connection_type = None
-        self._connection_string = None
         self._name = None
         self._subscription_id = None
         self._type = None
         self.discriminator = None
 
-        if connection_type is not None:
-            self.connection_type = connection_type
-        self.connection_string = connection_string
         self.name = name
         self.subscription_id = subscription_id
         if type is not None:
             self.type = type
-
-    @property
-    def connection_type(self):
-        """Gets the connection_type of this CreateFetchTaskVM.  # noqa: E501
-
-
-        :return: The connection_type of this CreateFetchTaskVM.  # noqa: E501
-        :rtype: DataSourceConnectionType
-        """
-        return self._connection_type
-
-    @connection_type.setter
-    def connection_type(self, connection_type):
-        """Sets the connection_type of this CreateFetchTaskVM.
-
-
-        :param connection_type: The connection_type of this CreateFetchTaskVM.  # noqa: E501
-        :type connection_type: DataSourceConnectionType
-        """
-
-        self._connection_type = connection_type
-
-    @property
-    def connection_string(self):
-        """Gets the connection_string of this CreateFetchTaskVM.  # noqa: E501
-
-
-        :return: The connection_string of this CreateFetchTaskVM.  # noqa: E501
-        :rtype: str
-        """
-        return self._connection_string
-
-    @connection_string.setter
-    def connection_string(self, connection_string):
-        """Sets the connection_string of this CreateFetchTaskVM.
-
-
-        :param connection_string: The connection_string of this CreateFetchTaskVM.  # noqa: E501
-        :type connection_string: str
-        """
-        if self.local_vars_configuration.client_side_validation and connection_string is None:  # noqa: E501
-            raise ValueError("Invalid value for `connection_string`, must not be `None`")  # noqa: E501
-        if (self.local_vars_configuration.client_side_validation and
-                connection_string is not None and len(connection_string) > 5000):
-            raise ValueError("Invalid value for `connection_string`, length must be less than or equal to `5000`")  # noqa: E501
-        if (self.local_vars_configuration.client_side_validation and
-                connection_string is not None and len(connection_string) < 0):
-            raise ValueError("Invalid value for `connection_string`, length must be greater than or equal to `0`")  # noqa: E501
-
-        self._connection_string = connection_string
 
     @property
     def name(self):
