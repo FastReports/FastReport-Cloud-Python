@@ -39,17 +39,19 @@ class MyPermissionsVM(object):
         'subscription': 'SubscriptionPermission',
         'files': 'FilePermission',
         'datasources': 'DataSourcePermission',
-        'groups': 'GroupPermission'
+        'groups': 'GroupPermission',
+        'tasks': 'TaskPermission'
     }
 
     attribute_map = {
         'subscription': 'subscription',
         'files': 'files',
         'datasources': 'datasources',
-        'groups': 'groups'
+        'groups': 'groups',
+        'tasks': 'tasks'
     }
 
-    def __init__(self, subscription=None, files=None, datasources=None, groups=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, subscription=None, files=None, datasources=None, groups=None, tasks=None, local_vars_configuration=None):  # noqa: E501
         """MyPermissionsVM - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration.get_default_copy()
@@ -59,6 +61,7 @@ class MyPermissionsVM(object):
         self._files = None
         self._datasources = None
         self._groups = None
+        self._tasks = None
         self.discriminator = None
 
         if subscription is not None:
@@ -69,6 +72,8 @@ class MyPermissionsVM(object):
             self.datasources = datasources
         if groups is not None:
             self.groups = groups
+        if tasks is not None:
+            self.tasks = tasks
 
     @property
     def subscription(self):
@@ -153,6 +158,27 @@ class MyPermissionsVM(object):
         """
 
         self._groups = groups
+
+    @property
+    def tasks(self):
+        """Gets the tasks of this MyPermissionsVM.  # noqa: E501
+
+
+        :return: The tasks of this MyPermissionsVM.  # noqa: E501
+        :rtype: TaskPermission
+        """
+        return self._tasks
+
+    @tasks.setter
+    def tasks(self, tasks):
+        """Sets the tasks of this MyPermissionsVM.
+
+
+        :param tasks: The tasks of this MyPermissionsVM.  # noqa: E501
+        :type tasks: TaskPermission
+        """
+
+        self._tasks = tasks
 
     def to_dict(self, serialize=False):
         """Returns the model properties as a dict"""

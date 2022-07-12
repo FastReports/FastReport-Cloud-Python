@@ -38,16 +38,18 @@ class DefaultPermissionsVM(object):
     openapi_types = {
         'file_permissions': 'FilePermissions',
         'data_source_permissions': 'DataSourcePermissions',
-        'group_permissions': 'GroupPermissions'
+        'group_permissions': 'GroupPermissions',
+        'task_permissions': 'TaskPermissions'
     }
 
     attribute_map = {
         'file_permissions': 'filePermissions',
         'data_source_permissions': 'dataSourcePermissions',
-        'group_permissions': 'groupPermissions'
+        'group_permissions': 'groupPermissions',
+        'task_permissions': 'taskPermissions'
     }
 
-    def __init__(self, file_permissions=None, data_source_permissions=None, group_permissions=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, file_permissions=None, data_source_permissions=None, group_permissions=None, task_permissions=None, local_vars_configuration=None):  # noqa: E501
         """DefaultPermissionsVM - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration.get_default_copy()
@@ -56,6 +58,7 @@ class DefaultPermissionsVM(object):
         self._file_permissions = None
         self._data_source_permissions = None
         self._group_permissions = None
+        self._task_permissions = None
         self.discriminator = None
 
         if file_permissions is not None:
@@ -64,6 +67,8 @@ class DefaultPermissionsVM(object):
             self.data_source_permissions = data_source_permissions
         if group_permissions is not None:
             self.group_permissions = group_permissions
+        if task_permissions is not None:
+            self.task_permissions = task_permissions
 
     @property
     def file_permissions(self):
@@ -127,6 +132,27 @@ class DefaultPermissionsVM(object):
         """
 
         self._group_permissions = group_permissions
+
+    @property
+    def task_permissions(self):
+        """Gets the task_permissions of this DefaultPermissionsVM.  # noqa: E501
+
+
+        :return: The task_permissions of this DefaultPermissionsVM.  # noqa: E501
+        :rtype: TaskPermissions
+        """
+        return self._task_permissions
+
+    @task_permissions.setter
+    def task_permissions(self, task_permissions):
+        """Sets the task_permissions of this DefaultPermissionsVM.
+
+
+        :param task_permissions: The task_permissions of this DefaultPermissionsVM.  # noqa: E501
+        :type task_permissions: TaskPermissions
+        """
+
+        self._task_permissions = task_permissions
 
     def to_dict(self, serialize=False):
         """Returns the model properties as a dict"""

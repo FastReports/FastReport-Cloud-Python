@@ -41,7 +41,10 @@ class TestTasksVM(unittest.TestCase):
                 take = 56, 
                 tasks = [
                     fastreport_cloud_sdk.models.task_base_vm.TaskBaseVM(
-                        id = '62ECB020842930cc01FFCCfe', )
+                        id = '62ECB020842930cc01FFCCfe', 
+                        delayed_was_run_time = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
+                        recurrent_run_time = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
+                        recurrent_was_run_time = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), )
                     ]
             )
         else :

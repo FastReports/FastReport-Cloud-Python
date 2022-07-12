@@ -37,25 +37,29 @@ class CreateEndpointVM(object):
     """
     openapi_types = {
         'bearer_token': 'str',
+        'headers': 'dict(str, str)',
         'url': 'str'
     }
 
     attribute_map = {
         'bearer_token': 'bearerToken',
+        'headers': 'headers',
         'url': 'url'
     }
 
-    def __init__(self, bearer_token=None, url=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, bearer_token=None, headers=None, url=None, local_vars_configuration=None):  # noqa: E501
         """CreateEndpointVM - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration.get_default_copy()
         self.local_vars_configuration = local_vars_configuration
 
         self._bearer_token = None
+        self._headers = None
         self._url = None
         self.discriminator = None
 
         self.bearer_token = bearer_token
+        self.headers = headers
         self.url = url
 
     @property
@@ -84,6 +88,27 @@ class CreateEndpointVM(object):
             raise ValueError("Invalid value for `bearer_token`, length must be greater than or equal to `1`")  # noqa: E501
 
         self._bearer_token = bearer_token
+
+    @property
+    def headers(self):
+        """Gets the headers of this CreateEndpointVM.  # noqa: E501
+
+
+        :return: The headers of this CreateEndpointVM.  # noqa: E501
+        :rtype: dict(str, str)
+        """
+        return self._headers
+
+    @headers.setter
+    def headers(self, headers):
+        """Sets the headers of this CreateEndpointVM.
+
+
+        :param headers: The headers of this CreateEndpointVM.  # noqa: E501
+        :type headers: dict(str, str)
+        """
+
+        self._headers = headers
 
     @property
     def url(self):

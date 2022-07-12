@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **files** | [**FilePermission**](FilePermission.md) |  | [optional] 
 **datasources** | [**DataSourcePermission**](DataSourcePermission.md) |  | [optional] 
 **groups** | [**GroupPermission**](GroupPermission.md) |  | [optional] 
+**tasks** | [**TaskPermission**](TaskPermission.md) |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -48,7 +48,8 @@ class TestFileVMFilesVMBase(unittest.TestCase):
                         size = 56, 
                         subscription_id = '', 
                         status = 'None', 
-                        status_reason = 'None', )
+                        status_reason = 'None', 
+                        error_message = '', )
                     ], 
                 count = 56, 
                 skip = 56, 

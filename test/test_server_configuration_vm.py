@@ -37,15 +37,20 @@ class TestServerConfigurationVM(unittest.TestCase):
         if include_optional :
             return ServerConfigurationVM(
                 title = '', 
+                logo_link = '', 
+                copyright = '', 
                 corporate_server_mode = True, 
                 is_disabled = True, 
-                app_mixins = fastreport_cloud_sdk.models.app_mixins.AppMixins(
-                    head = '', 
-                    body = '', ), 
+                frontend = fastreport_cloud_sdk.models.frontend_app.FrontendApp(
+                    mixins = fastreport_cloud_sdk.models.app_mixins.AppMixins(
+                        head = '', 
+                        body = '', ), ), 
+                invariant_locale = '', 
                 auth = fastreport_cloud_sdk.models.auth_config_vm.AuthConfigVM(
                     use_local = True, 
                     use_open_id = True, 
-                    authority = '', )
+                    authority = '', ), 
+                designer_for_anons = True
             )
         else :
             return ServerConfigurationVM(

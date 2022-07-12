@@ -13,6 +13,7 @@ Name | Type | Description | Notes
 **subscription_id** | **str** |  | [optional] 
 **status** | [**FileStatus**](FileStatus.md) |  | [optional] 
 **status_reason** | [**FileStatusReason**](FileStatusReason.md) |  | [optional] 
+**error_message** | **str** |  | [optional] 
 **id** | **str** |  | [optional] 
 **created_time** | **datetime** |  | [optional] 
 **creator_user_id** | **str** |  | [optional] 

@@ -37,42 +37,59 @@ class ServerConfigurationVM(object):
     """
     openapi_types = {
         'title': 'str',
+        'logo_link': 'str',
+        'copyright': 'str',
         'corporate_server_mode': 'bool',
         'is_disabled': 'bool',
-        'app_mixins': 'AppMixins',
-        'auth': 'AuthConfigVM'
+        'frontend': 'FrontendApp',
+        'invariant_locale': 'str',
+        'auth': 'AuthConfigVM',
+        'designer_for_anons': 'bool'
     }
 
     attribute_map = {
         'title': 'title',
+        'logo_link': 'logoLink',
+        'copyright': 'copyright',
         'corporate_server_mode': 'corporateServerMode',
         'is_disabled': 'isDisabled',
-        'app_mixins': 'appMixins',
-        'auth': 'auth'
+        'frontend': 'frontend',
+        'invariant_locale': 'invariantLocale',
+        'auth': 'auth',
+        'designer_for_anons': 'designerForAnons'
     }
 
-    def __init__(self, title=None, corporate_server_mode=None, is_disabled=None, app_mixins=None, auth=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, title=None, logo_link=None, copyright=None, corporate_server_mode=None, is_disabled=None, frontend=None, invariant_locale=None, auth=None, designer_for_anons=None, local_vars_configuration=None):  # noqa: E501
         """ServerConfigurationVM - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration.get_default_copy()
         self.local_vars_configuration = local_vars_configuration
 
         self._title = None
+        self._logo_link = None
+        self._copyright = None
         self._corporate_server_mode = None
         self._is_disabled = None
-        self._app_mixins = None
+        self._frontend = None
+        self._invariant_locale = None
         self._auth = None
+        self._designer_for_anons = None
         self.discriminator = None
 
         self.title = title
+        self.logo_link = logo_link
+        self.copyright = copyright
         if corporate_server_mode is not None:
             self.corporate_server_mode = corporate_server_mode
         if is_disabled is not None:
             self.is_disabled = is_disabled
-        if app_mixins is not None:
-            self.app_mixins = app_mixins
+        if frontend is not None:
+            self.frontend = frontend
+        self.invariant_locale = invariant_locale
         if auth is not None:
             self.auth = auth
+        if designer_for_anons is not None:
+            self.designer_for_anons = designer_for_anons
 
     @property
     def title(self):
@@ -94,6 +111,48 @@ class ServerConfigurationVM(object):
         """
 
         self._title = title
+
+    @property
+    def logo_link(self):
+        """Gets the logo_link of this ServerConfigurationVM.  # noqa: E501
+
+
+        :return: The logo_link of this ServerConfigurationVM.  # noqa: E501
+        :rtype: str
+        """
+        return self._logo_link
+
+    @logo_link.setter
+    def logo_link(self, logo_link):
+        """Sets the logo_link of this ServerConfigurationVM.
+
+
+        :param logo_link: The logo_link of this ServerConfigurationVM.  # noqa: E501
+        :type logo_link: str
+        """
+
+        self._logo_link = logo_link
+
+    @property
+    def copyright(self):
+        """Gets the copyright of this ServerConfigurationVM.  # noqa: E501
+
+
+        :return: The copyright of this ServerConfigurationVM.  # noqa: E501
+        :rtype: str
+        """
+        return self._copyright
+
+    @copyright.setter
+    def copyright(self, copyright):
+        """Sets the copyright of this ServerConfigurationVM.
+
+
+        :param copyright: The copyright of this ServerConfigurationVM.  # noqa: E501
+        :type copyright: str
+        """
+
+        self._copyright = copyright
 
     @property
     def corporate_server_mode(self):
@@ -138,25 +197,46 @@ class ServerConfigurationVM(object):
         self._is_disabled = is_disabled
 
     @property
-    def app_mixins(self):
-        """Gets the app_mixins of this ServerConfigurationVM.  # noqa: E501
+    def frontend(self):
+        """Gets the frontend of this ServerConfigurationVM.  # noqa: E501
 
 
-        :return: The app_mixins of this ServerConfigurationVM.  # noqa: E501
-        :rtype: AppMixins
+        :return: The frontend of this ServerConfigurationVM.  # noqa: E501
+        :rtype: FrontendApp
         """
-        return self._app_mixins
+        return self._frontend
 
-    @app_mixins.setter
-    def app_mixins(self, app_mixins):
-        """Sets the app_mixins of this ServerConfigurationVM.
+    @frontend.setter
+    def frontend(self, frontend):
+        """Sets the frontend of this ServerConfigurationVM.
 
 
-        :param app_mixins: The app_mixins of this ServerConfigurationVM.  # noqa: E501
-        :type app_mixins: AppMixins
+        :param frontend: The frontend of this ServerConfigurationVM.  # noqa: E501
+        :type frontend: FrontendApp
         """
 
-        self._app_mixins = app_mixins
+        self._frontend = frontend
+
+    @property
+    def invariant_locale(self):
+        """Gets the invariant_locale of this ServerConfigurationVM.  # noqa: E501
+
+
+        :return: The invariant_locale of this ServerConfigurationVM.  # noqa: E501
+        :rtype: str
+        """
+        return self._invariant_locale
+
+    @invariant_locale.setter
+    def invariant_locale(self, invariant_locale):
+        """Sets the invariant_locale of this ServerConfigurationVM.
+
+
+        :param invariant_locale: The invariant_locale of this ServerConfigurationVM.  # noqa: E501
+        :type invariant_locale: str
+        """
+
+        self._invariant_locale = invariant_locale
 
     @property
     def auth(self):
@@ -178,6 +258,27 @@ class ServerConfigurationVM(object):
         """
 
         self._auth = auth
+
+    @property
+    def designer_for_anons(self):
+        """Gets the designer_for_anons of this ServerConfigurationVM.  # noqa: E501
+
+
+        :return: The designer_for_anons of this ServerConfigurationVM.  # noqa: E501
+        :rtype: bool
+        """
+        return self._designer_for_anons
+
+    @designer_for_anons.setter
+    def designer_for_anons(self, designer_for_anons):
+        """Sets the designer_for_anons of this ServerConfigurationVM.
+
+
+        :param designer_for_anons: The designer_for_anons of this ServerConfigurationVM.  # noqa: E501
+        :type designer_for_anons: bool
+        """
+
+        self._designer_for_anons = designer_for_anons
 
     def to_dict(self, serialize=False):
         """Returns the model properties as a dict"""

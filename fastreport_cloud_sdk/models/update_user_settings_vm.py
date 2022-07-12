@@ -58,8 +58,7 @@ class UpdateUserSettingsVM(object):
         self._show_hidden_files_and_folders = None
         self.discriminator = None
 
-        if profile_visibility is not None:
-            self.profile_visibility = profile_visibility
+        self.profile_visibility = profile_visibility
         self.default_subscription = default_subscription
         self.show_hidden_files_and_folders = show_hidden_files_and_folders
 

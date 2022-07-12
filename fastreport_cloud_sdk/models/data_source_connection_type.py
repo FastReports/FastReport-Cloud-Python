@@ -38,8 +38,10 @@ class DataSourceConnectionType(object):
     MYSQL = "MySQL"
     POSTGRES = "Postgres"
     ORACLEDB = "OracleDB"
+    FIREBIRDDB = "FirebirdDB"
+    MONGODB = "MongoDB"
 
-    allowable_values = [JSON, MSSQL, CSV, XML, MYSQL, POSTGRES, ORACLEDB]  # noqa: E501
+    allowable_values = [JSON, MSSQL, CSV, XML, MYSQL, POSTGRES, ORACLEDB, FIREBIRDDB, MONGODB]  # noqa: E501
 
     """
     Attributes:

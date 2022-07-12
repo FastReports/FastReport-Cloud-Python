@@ -39,7 +39,8 @@ class TestMyPermissionsVM(unittest.TestCase):
                 subscription = fastreport_cloud_sdk.models.subscription_permission.SubscriptionPermission(), 
                 files = fastreport_cloud_sdk.models.file_permission.FilePermission(), 
                 datasources = fastreport_cloud_sdk.models.data_source_permission.DataSourcePermission(), 
-                groups = fastreport_cloud_sdk.models.group_permission.GroupPermission()
+                groups = fastreport_cloud_sdk.models.group_permission.GroupPermission(), 
+                tasks = fastreport_cloud_sdk.models.task_permission.TaskPermission()
             )
         else :
             return MyPermissionsVM(

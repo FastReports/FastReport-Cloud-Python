@@ -32,9 +32,10 @@ class SubscriptionExecute(object):
     allowed enum values
     """
     _0 = "0"
+    _4 = "4"
     _1 = "-1"
 
-    allowable_values = [_0, _1]  # noqa: E501
+    allowable_values = [_0, _4, _1]  # noqa: E501
 
     """
     Attributes:

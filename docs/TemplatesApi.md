@@ -37,7 +37,7 @@ Method | HTTP request | Description
 
 
 # **template_folder_and_file_get_count**
-> CountVM template_folder_and_file_get_count(id, search_pattern=search_pattern)
+> CountVM template_folder_and_file_get_count(id, search_pattern=search_pattern, use_regex=use_regex)
 
 Get count of files and folders what contains in a specified folder
 
@@ -80,10 +80,11 @@ with fastreport_cloud_sdk.ApiClient(configuration) as api_client:
     api_instance = fastreport_cloud_sdk.TemplatesApi(api_client)
     id = 'id_example' # str | folder id
 search_pattern = 'search_pattern_example' # str | string, that must be incuded in file or folder name to be counted <br />              (leave undefined to count all files and folders) (optional)
+use_regex = False # bool | set this to true if you want to use regular expression to search (optional) (default to False)
 
     try:
         # Get count of files and folders what contains in a specified folder
-        api_response = api_instance.template_folder_and_file_get_count(id, search_pattern=search_pattern)
+        api_response = api_instance.template_folder_and_file_get_count(id, search_pattern=search_pattern, use_regex=use_regex)
         pprint(api_response)
     except ApiException as e:
         print("Exception when calling TemplatesApi->template_folder_and_file_get_count: %s\n" % e)
@@ -124,10 +125,11 @@ with fastreport_cloud_sdk.ApiClient(configuration) as api_client:
     api_instance = fastreport_cloud_sdk.TemplatesApi(api_client)
     id = 'id_example' # str | folder id
 search_pattern = 'search_pattern_example' # str | string, that must be incuded in file or folder name to be counted <br />              (leave undefined to count all files and folders) (optional)
+use_regex = False # bool | set this to true if you want to use regular expression to search (optional) (default to False)
 
     try:
         # Get count of files and folders what contains in a specified folder
-        api_response = api_instance.template_folder_and_file_get_count(id, search_pattern=search_pattern)
+        api_response = api_instance.template_folder_and_file_get_count(id, search_pattern=search_pattern, use_regex=use_regex)
         pprint(api_response)
     except ApiException as e:
         print("Exception when calling TemplatesApi->template_folder_and_file_get_count: %s\n" % e)
@@ -139,6 +141,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **str**| folder id | 
  **search_pattern** | **str**| string, that must be incuded in file or folder name to be counted &lt;br /&gt;              (leave undefined to count all files and folders) | [optional] 
+ **use_regex** | **bool**| set this to true if you want to use regular expression to search | [optional] [default to False]
 
 ### Return type
 
@@ -164,7 +167,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **template_folder_and_file_get_folders_and_files**
-> FilesVM template_folder_and_file_get_folders_and_files(id, skip=skip, take=take, order_by=order_by, desc=desc, search_pattern=search_pattern)
+> FilesVM template_folder_and_file_get_folders_and_files(id, skip=skip, take=take, order_by=order_by, desc=desc, search_pattern=search_pattern, use_regex=use_regex)
 
 Get all folders and files from specified folder
 
@@ -211,10 +214,11 @@ take = 10 # int | number of folder and files, that have to be returned (optional
 order_by = fastreport_cloud_sdk.FileSorting() # FileSorting | indicates a field to sort by (optional)
 desc = False # bool | indicates if sorting is descending (optional) (default to False)
 search_pattern = '' # str |  (optional) (default to '')
+use_regex = False # bool |  (optional) (default to False)
 
     try:
         # Get all folders and files from specified folder
-        api_response = api_instance.template_folder_and_file_get_folders_and_files(id, skip=skip, take=take, order_by=order_by, desc=desc, search_pattern=search_pattern)
+        api_response = api_instance.template_folder_and_file_get_folders_and_files(id, skip=skip, take=take, order_by=order_by, desc=desc, search_pattern=search_pattern, use_regex=use_regex)
         pprint(api_response)
     except ApiException as e:
         print("Exception when calling TemplatesApi->template_folder_and_file_get_folders_and_files: %s\n" % e)
@@ -259,10 +263,11 @@ take = 10 # int | number of folder and files, that have to be returned (optional
 order_by = fastreport_cloud_sdk.FileSorting() # FileSorting | indicates a field to sort by (optional)
 desc = False # bool | indicates if sorting is descending (optional) (default to False)
 search_pattern = '' # str |  (optional) (default to '')
+use_regex = False # bool |  (optional) (default to False)
 
     try:
         # Get all folders and files from specified folder
-        api_response = api_instance.template_folder_and_file_get_folders_and_files(id, skip=skip, take=take, order_by=order_by, desc=desc, search_pattern=search_pattern)
+        api_response = api_instance.template_folder_and_file_get_folders_and_files(id, skip=skip, take=take, order_by=order_by, desc=desc, search_pattern=search_pattern, use_regex=use_regex)
         pprint(api_response)
     except ApiException as e:
         print("Exception when calling TemplatesApi->template_folder_and_file_get_folders_and_files: %s\n" % e)
@@ -278,6 +283,7 @@ Name | Type | Description  | Notes
  **order_by** | [**FileSorting**](.md)| indicates a field to sort by | [optional] 
  **desc** | **bool**| indicates if sorting is descending | [optional] [default to False]
  **search_pattern** | **str**|  | [optional] [default to &#39;&#39;]
+ **use_regex** | **bool**|  | [optional] [default to False]
 
 ### Return type
 
@@ -2699,7 +2705,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **templates_get_files_list**
-> TemplatesVM templates_get_files_list(id, skip=skip, take=take, search_pattern=search_pattern)
+> TemplatesVM templates_get_files_list(id, skip=skip, take=take, search_pattern=search_pattern, order_by=order_by, desc=desc, use_regex=use_regex)
 
 Get all files from specified folder. <br />  User with Get Entity permission can access this method. <br />  The method will returns minimal infomration about the file: <br />  id, name, size, editedTime, createdTime, tags, status, statusReason.
 
@@ -2742,10 +2748,13 @@ with fastreport_cloud_sdk.ApiClient(configuration) as api_client:
 skip = 0 # int | number of files, that have to be skipped (optional) (default to 0)
 take = 10 # int | number of files, that have to be returned (optional) (default to 10)
 search_pattern = 'search_pattern_example' # str |  (optional)
+order_by = fastreport_cloud_sdk.FileSorting() # FileSorting |  (optional)
+desc = False # bool |  (optional) (default to False)
+use_regex = False # bool |  (optional) (default to False)
 
     try:
         # Get all files from specified folder. <br />  User with Get Entity permission can access this method. <br />  The method will returns minimal infomration about the file: <br />  id, name, size, editedTime, createdTime, tags, status, statusReason.
-        api_response = api_instance.templates_get_files_list(id, skip=skip, take=take, search_pattern=search_pattern)
+        api_response = api_instance.templates_get_files_list(id, skip=skip, take=take, search_pattern=search_pattern, order_by=order_by, desc=desc, use_regex=use_regex)
         pprint(api_response)
     except ApiException as e:
         print("Exception when calling TemplatesApi->templates_get_files_list: %s\n" % e)
@@ -2788,10 +2797,13 @@ with fastreport_cloud_sdk.ApiClient(configuration) as api_client:
 skip = 0 # int | number of files, that have to be skipped (optional) (default to 0)
 take = 10 # int | number of files, that have to be returned (optional) (default to 10)
 search_pattern = 'search_pattern_example' # str |  (optional)
+order_by = fastreport_cloud_sdk.FileSorting() # FileSorting |  (optional)
+desc = False # bool |  (optional) (default to False)
+use_regex = False # bool |  (optional) (default to False)
 
     try:
         # Get all files from specified folder. <br />  User with Get Entity permission can access this method. <br />  The method will returns minimal infomration about the file: <br />  id, name, size, editedTime, createdTime, tags, status, statusReason.
-        api_response = api_instance.templates_get_files_list(id, skip=skip, take=take, search_pattern=search_pattern)
+        api_response = api_instance.templates_get_files_list(id, skip=skip, take=take, search_pattern=search_pattern, order_by=order_by, desc=desc, use_regex=use_regex)
         pprint(api_response)
     except ApiException as e:
         print("Exception when calling TemplatesApi->templates_get_files_list: %s\n" % e)
@@ -2805,6 +2817,9 @@ Name | Type | Description  | Notes
  **skip** | **int**| number of files, that have to be skipped | [optional] [default to 0]
  **take** | **int**| number of files, that have to be returned | [optional] [default to 10]
  **search_pattern** | **str**|  | [optional] 
+ **order_by** | [**FileSorting**](.md)|  | [optional] 
+ **desc** | **bool**|  | [optional] [default to False]
+ **use_regex** | **bool**|  | [optional] [default to False]
 
 ### Return type
 

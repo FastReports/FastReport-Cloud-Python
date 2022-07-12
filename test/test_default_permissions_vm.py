@@ -38,7 +38,8 @@ class TestDefaultPermissionsVM(unittest.TestCase):
             return DefaultPermissionsVM(
                 file_permissions = fastreport_cloud_sdk.models.file_permissions.FilePermissions(), 
                 data_source_permissions = fastreport_cloud_sdk.models.data_source_permissions.DataSourcePermissions(), 
-                group_permissions = fastreport_cloud_sdk.models.group_permissions.GroupPermissions()
+                group_permissions = fastreport_cloud_sdk.models.group_permissions.GroupPermissions(), 
+                task_permissions = fastreport_cloud_sdk.models.task_permissions.TaskPermissions()
             )
         else :
             return DefaultPermissionsVM(

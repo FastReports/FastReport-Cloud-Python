@@ -56,6 +56,20 @@ class TestTasksApi(unittest.TestCase):
         """
         pass
 
+    def test_tasks_get_permissions(self):
+        """Test case for tasks_get_permissions
+
+        Get all Task permissions  # noqa: E501
+        """
+        pass
+
+    def test_tasks_rename_task(self):
+        """Test case for tasks_rename_task
+
+        Rename a task  # noqa: E501
+        """
+        pass
+
     def test_tasks_run_task(self):
         """Test case for tasks_run_task
 
@@ -67,6 +81,20 @@ class TestTasksApi(unittest.TestCase):
         """Test case for tasks_run_task_by_id
 
         Run a task by id  # noqa: E501
+        """
+        pass
+
+    def test_tasks_update_permissions(self):
+        """Test case for tasks_update_permissions
+
+        Update permissions  # noqa: E501
+        """
+        pass
+
+    def test_tasks_update_task(self):
+        """Test case for tasks_update_task
+
+        Update a task  # noqa: E501
         """
         pass
 

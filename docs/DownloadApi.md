@@ -128,7 +128,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/octet-stream, application/pdf, application/json
+ - **Accept**: text/plain, application/json, application/octet-stream, application/pdf
 
 ### HTTP response details
 | Status code | Description | Response headers |
@@ -251,7 +251,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: image/png, image/jpeg, application/json
+ - **Accept**: text/plain, application/json, image/png, image/jpeg
 
 ### HTTP response details
 | Status code | Description | Response headers |
@@ -377,7 +377,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/zip, application/json
+ - **Accept**: text/plain, application/json, application/zip
 
 ### HTTP response details
 | Status code | Description | Response headers |
@@ -500,7 +500,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/octet-stream, application/json
+ - **Accept**: text/plain, application/json, application/octet-stream
 
 ### HTTP response details
 | Status code | Description | Response headers |
@@ -623,7 +623,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: image/png, image/jpeg, application/json
+ - **Accept**: text/plain, application/json, image/png, image/jpeg
 
 ### HTTP response details
 | Status code | Description | Response headers |
@@ -749,7 +749,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/zip, application/json
+ - **Accept**: text/plain, application/json, application/zip
 
 ### HTTP response details
 | Status code | Description | Response headers |
@@ -872,7 +872,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/octet-stream, application/json
+ - **Accept**: text/plain, application/json, application/octet-stream
 
 ### HTTP response details
 | Status code | Description | Response headers |
@@ -995,7 +995,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: image/png, image/jpeg, application/json
+ - **Accept**: text/plain, application/json, image/png, image/jpeg
 
 ### HTTP response details
 | Status code | Description | Response headers |
@@ -1121,7 +1121,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/zip, application/json
+ - **Accept**: text/plain, application/json, application/zip
 
 ### HTTP response details
 | Status code | Description | Response headers |

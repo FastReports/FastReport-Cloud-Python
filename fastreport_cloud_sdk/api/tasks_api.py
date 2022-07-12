@@ -552,8 +552,8 @@ class TasksApi(object):
             raise ApiValueError("Invalid value for parameter `take` when calling `tasks_get_list`, must be a value less than or equal to `120`")  # noqa: E501
         if self.api_client.client_side_validation and 'take' in local_var_params and local_var_params['take'] < 1:  # noqa: E501
             raise ApiValueError("Invalid value for parameter `take` when calling `tasks_get_list`, must be a value greater than or equal to `1`")  # noqa: E501
-        if self.api_client.client_side_validation and 'subscription_id' in local_var_params and not re.search(r'^[A-Fa-f0-9]{24}$', local_var_params['subscription_id']):  # noqa: E501
-            raise ApiValueError("Invalid value for parameter `subscription_id` when calling `tasks_get_list`, must conform to the pattern `/^[A-Fa-f0-9]{24}$/`")  # noqa: E501
+        if self.api_client.client_side_validation and 'subscription_id' in local_var_params and not re.search(r'(^$)|(^[A-Fa-f0-9]{24}$)', local_var_params['subscription_id']):  # noqa: E501
+            raise ApiValueError("Invalid value for parameter `subscription_id` when calling `tasks_get_list`, must conform to the pattern `/(^$)|(^[A-Fa-f0-9]{24}$)/`")  # noqa: E501
         collection_formats = {}
 
         path_params = {}
@@ -590,6 +590,299 @@ class TasksApi(object):
 
         return self.api_client.call_api(
             '/api/tasks', 'GET',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_types_map=response_types_map,
+            auth_settings=auth_settings,
+            async_req=local_var_params.get('async_req'),
+            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
+            _preload_content=local_var_params.get('_preload_content', True),
+            _request_timeout=local_var_params.get('_request_timeout'),
+            collection_formats=collection_formats,
+            _request_auth=local_var_params.get('_request_auth'))
+
+    def tasks_get_permissions(self, id, **kwargs):  # noqa: E501
+        """Get all Task permissions  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.tasks_get_permissions(id, async_req=True)
+        >>> result = thread.get()
+
+        :param id: task id (required)
+        :type id: str
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
+        :param _preload_content: if False, the urllib3.HTTPResponse object will
+                                 be returned without reading/decoding response
+                                 data. Default is True.
+        :type _preload_content: bool, optional
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :return: Returns the result object.
+                 If the method is called asynchronously,
+                 returns the request thread.
+        :rtype: TaskPermissionsVM
+        """
+        kwargs['_return_http_data_only'] = True
+        return self.tasks_get_permissions_with_http_info(id, **kwargs)  # noqa: E501
+
+    def tasks_get_permissions_with_http_info(self, id, **kwargs):  # noqa: E501
+        """Get all Task permissions  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.tasks_get_permissions_with_http_info(id, async_req=True)
+        >>> result = thread.get()
+
+        :param id: task id (required)
+        :type id: str
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
+        :param _return_http_data_only: response data without head status code
+                                       and headers
+        :type _return_http_data_only: bool, optional
+        :param _preload_content: if False, the urllib3.HTTPResponse object will
+                                 be returned without reading/decoding response
+                                 data. Default is True.
+        :type _preload_content: bool, optional
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the authentication
+                              in the spec for a single request.
+        :type _request_auth: dict, optional
+        :return: Returns the result object.
+                 If the method is called asynchronously,
+                 returns the request thread.
+        :rtype: tuple(TaskPermissionsVM, status_code(int), headers(HTTPHeaderDict))
+        """
+
+        local_var_params = locals()
+
+        all_params = [
+            'id'
+        ]
+        all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout',
+                '_request_auth'
+            ]
+        )
+
+        for key, val in six.iteritems(local_var_params['kwargs']):
+            if key not in all_params:
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method tasks_get_permissions" % key
+                )
+            local_var_params[key] = val
+        del local_var_params['kwargs']
+        # verify the required parameter 'id' is set
+        if self.api_client.client_side_validation and ('id' not in local_var_params or  # noqa: E501
+                                                        local_var_params['id'] is None):  # noqa: E501
+            raise ApiValueError("Missing the required parameter `id` when calling `tasks_get_permissions`")  # noqa: E501
+
+        if self.api_client.client_side_validation and 'id' in local_var_params and not re.search(r'^[A-Fa-f0-9]{24}$', local_var_params['id']):  # noqa: E501
+            raise ApiValueError("Invalid value for parameter `id` when calling `tasks_get_permissions`, must conform to the pattern `/^[A-Fa-f0-9]{24}$/`")  # noqa: E501
+        collection_formats = {}
+
+        path_params = {}
+        if 'id' in local_var_params:
+            path_params['id'] = local_var_params['id']  # noqa: E501
+
+        query_params = []
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = ['ApiKey', 'JWT']  # noqa: E501
+        
+        response_types_map = {
+            200: "TaskPermissionsVM",
+            400: "ProblemDetails",
+            402: "ProblemDetails",
+            403: "ProblemDetails",
+            404: "ProblemDetails",
+            500: None,
+        }
+
+        return self.api_client.call_api(
+            '/api/tasks/{id}/permissions', 'GET',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_types_map=response_types_map,
+            auth_settings=auth_settings,
+            async_req=local_var_params.get('async_req'),
+            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
+            _preload_content=local_var_params.get('_preload_content', True),
+            _request_timeout=local_var_params.get('_request_timeout'),
+            collection_formats=collection_formats,
+            _request_auth=local_var_params.get('_request_auth'))
+
+    def tasks_rename_task(self, task_id, **kwargs):  # noqa: E501
+        """Rename a task  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.tasks_rename_task(task_id, async_req=True)
+        >>> result = thread.get()
+
+        :param task_id: renaming task id (required)
+        :type task_id: str
+        :param new_name: task's new Name
+        :type new_name: str
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
+        :param _preload_content: if False, the urllib3.HTTPResponse object will
+                                 be returned without reading/decoding response
+                                 data. Default is True.
+        :type _preload_content: bool, optional
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :return: Returns the result object.
+                 If the method is called asynchronously,
+                 returns the request thread.
+        :rtype: TaskBaseVM
+        """
+        kwargs['_return_http_data_only'] = True
+        return self.tasks_rename_task_with_http_info(task_id, **kwargs)  # noqa: E501
+
+    def tasks_rename_task_with_http_info(self, task_id, **kwargs):  # noqa: E501
+        """Rename a task  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.tasks_rename_task_with_http_info(task_id, async_req=True)
+        >>> result = thread.get()
+
+        :param task_id: renaming task id (required)
+        :type task_id: str
+        :param new_name: task's new Name
+        :type new_name: str
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
+        :param _return_http_data_only: response data without head status code
+                                       and headers
+        :type _return_http_data_only: bool, optional
+        :param _preload_content: if False, the urllib3.HTTPResponse object will
+                                 be returned without reading/decoding response
+                                 data. Default is True.
+        :type _preload_content: bool, optional
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the authentication
+                              in the spec for a single request.
+        :type _request_auth: dict, optional
+        :return: Returns the result object.
+                 If the method is called asynchronously,
+                 returns the request thread.
+        :rtype: tuple(TaskBaseVM, status_code(int), headers(HTTPHeaderDict))
+        """
+
+        local_var_params = locals()
+
+        all_params = [
+            'task_id',
+            'new_name'
+        ]
+        all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout',
+                '_request_auth'
+            ]
+        )
+
+        for key, val in six.iteritems(local_var_params['kwargs']):
+            if key not in all_params:
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method tasks_rename_task" % key
+                )
+            local_var_params[key] = val
+        del local_var_params['kwargs']
+        # verify the required parameter 'task_id' is set
+        if self.api_client.client_side_validation and ('task_id' not in local_var_params or  # noqa: E501
+                                                        local_var_params['task_id'] is None):  # noqa: E501
+            raise ApiValueError("Missing the required parameter `task_id` when calling `tasks_rename_task`")  # noqa: E501
+
+        if self.api_client.client_side_validation and 'task_id' in local_var_params and not re.search(r'^[A-Fa-f0-9]{24}$', local_var_params['task_id']):  # noqa: E501
+            raise ApiValueError("Invalid value for parameter `task_id` when calling `tasks_rename_task`, must conform to the pattern `/^[A-Fa-f0-9]{24}$/`")  # noqa: E501
+        if self.api_client.client_side_validation and ('new_name' in local_var_params and  # noqa: E501
+                                                        len(local_var_params['new_name']) > 50):  # noqa: E501
+            raise ApiValueError("Invalid value for parameter `new_name` when calling `tasks_rename_task`, length must be less than or equal to `50`")  # noqa: E501
+        if self.api_client.client_side_validation and ('new_name' in local_var_params and  # noqa: E501
+                                                        len(local_var_params['new_name']) < 1):  # noqa: E501
+            raise ApiValueError("Invalid value for parameter `new_name` when calling `tasks_rename_task`, length must be greater than or equal to `1`")  # noqa: E501
+        collection_formats = {}
+
+        path_params = {}
+        if 'task_id' in local_var_params:
+            path_params['taskId'] = local_var_params['task_id']  # noqa: E501
+
+        query_params = []
+        if 'new_name' in local_var_params and local_var_params['new_name'] is not None:  # noqa: E501
+            query_params.append(('newName', local_var_params['new_name']))  # noqa: E501
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = ['ApiKey', 'JWT']  # noqa: E501
+        
+        response_types_map = {
+            200: "TaskBaseVM",
+            403: "ProblemDetails",
+            404: "ProblemDetails",
+            402: "ProblemDetails",
+            400: "ProblemDetails",
+            500: None,
+        }
+
+        return self.api_client.call_api(
+            '/api/tasks/{taskId}/rename', 'PUT',
             path_params,
             query_params,
             header_params,
@@ -854,6 +1147,301 @@ class TasksApi(object):
 
         return self.api_client.call_api(
             '/api/tasks/{taskId}/run', 'POST',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_types_map=response_types_map,
+            auth_settings=auth_settings,
+            async_req=local_var_params.get('async_req'),
+            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
+            _preload_content=local_var_params.get('_preload_content', True),
+            _request_timeout=local_var_params.get('_request_timeout'),
+            collection_formats=collection_formats,
+            _request_auth=local_var_params.get('_request_auth'))
+
+    def tasks_update_permissions(self, id, **kwargs):  # noqa: E501
+        """Update permissions  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.tasks_update_permissions(id, async_req=True)
+        >>> result = thread.get()
+
+        :param id: task id (required)
+        :type id: str
+        :param update_task_permissions_vm: new permissions
+        :type update_task_permissions_vm: UpdateTaskPermissionsVM
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
+        :param _preload_content: if False, the urllib3.HTTPResponse object will
+                                 be returned without reading/decoding response
+                                 data. Default is True.
+        :type _preload_content: bool, optional
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :return: Returns the result object.
+                 If the method is called asynchronously,
+                 returns the request thread.
+        :rtype: None
+        """
+        kwargs['_return_http_data_only'] = True
+        return self.tasks_update_permissions_with_http_info(id, **kwargs)  # noqa: E501
+
+    def tasks_update_permissions_with_http_info(self, id, **kwargs):  # noqa: E501
+        """Update permissions  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.tasks_update_permissions_with_http_info(id, async_req=True)
+        >>> result = thread.get()
+
+        :param id: task id (required)
+        :type id: str
+        :param update_task_permissions_vm: new permissions
+        :type update_task_permissions_vm: UpdateTaskPermissionsVM
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
+        :param _return_http_data_only: response data without head status code
+                                       and headers
+        :type _return_http_data_only: bool, optional
+        :param _preload_content: if False, the urllib3.HTTPResponse object will
+                                 be returned without reading/decoding response
+                                 data. Default is True.
+        :type _preload_content: bool, optional
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the authentication
+                              in the spec for a single request.
+        :type _request_auth: dict, optional
+        :return: Returns the result object.
+                 If the method is called asynchronously,
+                 returns the request thread.
+        :rtype: None
+        """
+
+        local_var_params = locals()
+
+        all_params = [
+            'id',
+            'update_task_permissions_vm'
+        ]
+        all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout',
+                '_request_auth'
+            ]
+        )
+
+        for key, val in six.iteritems(local_var_params['kwargs']):
+            if key not in all_params:
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method tasks_update_permissions" % key
+                )
+            local_var_params[key] = val
+        del local_var_params['kwargs']
+        # verify the required parameter 'id' is set
+        if self.api_client.client_side_validation and ('id' not in local_var_params or  # noqa: E501
+                                                        local_var_params['id'] is None):  # noqa: E501
+            raise ApiValueError("Missing the required parameter `id` when calling `tasks_update_permissions`")  # noqa: E501
+
+        if self.api_client.client_side_validation and 'id' in local_var_params and not re.search(r'^[A-Fa-f0-9]{24}$', local_var_params['id']):  # noqa: E501
+            raise ApiValueError("Invalid value for parameter `id` when calling `tasks_update_permissions`, must conform to the pattern `/^[A-Fa-f0-9]{24}$/`")  # noqa: E501
+        collection_formats = {}
+
+        path_params = {}
+        if 'id' in local_var_params:
+            path_params['id'] = local_var_params['id']  # noqa: E501
+
+        query_params = []
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        if 'update_task_permissions_vm' in local_var_params:
+            body_params = local_var_params['update_task_permissions_vm']
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['application/json', 'text/json', 'application/*+json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = ['ApiKey', 'JWT']  # noqa: E501
+        
+        response_types_map = {}
+
+        return self.api_client.call_api(
+            '/api/tasks/{id}/permissions', 'POST',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_types_map=response_types_map,
+            auth_settings=auth_settings,
+            async_req=local_var_params.get('async_req'),
+            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
+            _preload_content=local_var_params.get('_preload_content', True),
+            _request_timeout=local_var_params.get('_request_timeout'),
+            collection_formats=collection_formats,
+            _request_auth=local_var_params.get('_request_auth'))
+
+    def tasks_update_task(self, task_id, **kwargs):  # noqa: E501
+        """Update a task  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.tasks_update_task(task_id, async_req=True)
+        >>> result = thread.get()
+
+        :param task_id: updating task id (required)
+        :type task_id: str
+        :param update_task_base_vm: task's view model. You have to specify task type (type: \"ExportTemplate\")
+        :type update_task_base_vm: UpdateTaskBaseVM
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
+        :param _preload_content: if False, the urllib3.HTTPResponse object will
+                                 be returned without reading/decoding response
+                                 data. Default is True.
+        :type _preload_content: bool, optional
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :return: Returns the result object.
+                 If the method is called asynchronously,
+                 returns the request thread.
+        :rtype: TaskBaseVM
+        """
+        kwargs['_return_http_data_only'] = True
+        return self.tasks_update_task_with_http_info(task_id, **kwargs)  # noqa: E501
+
+    def tasks_update_task_with_http_info(self, task_id, **kwargs):  # noqa: E501
+        """Update a task  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.tasks_update_task_with_http_info(task_id, async_req=True)
+        >>> result = thread.get()
+
+        :param task_id: updating task id (required)
+        :type task_id: str
+        :param update_task_base_vm: task's view model. You have to specify task type (type: \"ExportTemplate\")
+        :type update_task_base_vm: UpdateTaskBaseVM
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
+        :param _return_http_data_only: response data without head status code
+                                       and headers
+        :type _return_http_data_only: bool, optional
+        :param _preload_content: if False, the urllib3.HTTPResponse object will
+                                 be returned without reading/decoding response
+                                 data. Default is True.
+        :type _preload_content: bool, optional
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the authentication
+                              in the spec for a single request.
+        :type _request_auth: dict, optional
+        :return: Returns the result object.
+                 If the method is called asynchronously,
+                 returns the request thread.
+        :rtype: tuple(TaskBaseVM, status_code(int), headers(HTTPHeaderDict))
+        """
+
+        local_var_params = locals()
+
+        all_params = [
+            'task_id',
+            'update_task_base_vm'
+        ]
+        all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout',
+                '_request_auth'
+            ]
+        )
+
+        for key, val in six.iteritems(local_var_params['kwargs']):
+            if key not in all_params:
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method tasks_update_task" % key
+                )
+            local_var_params[key] = val
+        del local_var_params['kwargs']
+        # verify the required parameter 'task_id' is set
+        if self.api_client.client_side_validation and ('task_id' not in local_var_params or  # noqa: E501
+                                                        local_var_params['task_id'] is None):  # noqa: E501
+            raise ApiValueError("Missing the required parameter `task_id` when calling `tasks_update_task`")  # noqa: E501
+
+        if self.api_client.client_side_validation and 'task_id' in local_var_params and not re.search(r'^[A-Fa-f0-9]{24}$', local_var_params['task_id']):  # noqa: E501
+            raise ApiValueError("Invalid value for parameter `task_id` when calling `tasks_update_task`, must conform to the pattern `/^[A-Fa-f0-9]{24}$/`")  # noqa: E501
+        collection_formats = {}
+
+        path_params = {}
+        if 'task_id' in local_var_params:
+            path_params['taskId'] = local_var_params['task_id']  # noqa: E501
+
+        query_params = []
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        if 'update_task_base_vm' in local_var_params:
+            body_params = local_var_params['update_task_base_vm']
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['application/json', 'text/json', 'application/*+json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = ['ApiKey', 'JWT']  # noqa: E501
+        
+        response_types_map = {
+            200: "TaskBaseVM",
+            403: "ProblemDetails",
+            404: "ProblemDetails",
+            402: "ProblemDetails",
+            400: "ProblemDetails",
+            500: None,
+        }
+
+        return self.api_client.call_api(
+            '/api/tasks/{taskId}', 'PUT',
             path_params,
             query_params,
             header_params,

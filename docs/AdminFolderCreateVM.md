@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **parent_id** | **str** |  | 
 **owner_id** | **str** |  | 
+**force** | **bool** |  | [optional] 
 **name** | **str** |  | [optional] 
 **tags** | **list[str]** |  | [optional] 
 **icon** | **str** |  | [optional] 

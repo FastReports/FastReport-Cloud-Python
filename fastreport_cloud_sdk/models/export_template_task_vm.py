@@ -39,17 +39,21 @@ class ExportTemplateTaskVM(object):
         'report_parameters': 'dict(str, str)',
         'name': 'str',
         'subscription_id': 'str',
-        'type': 'TaskType'
+        'type': 'TaskType',
+        'delayed_run_time': 'datetime',
+        'cron_expression': 'str'
     }
 
     attribute_map = {
         'report_parameters': 'reportParameters',
         'name': 'name',
         'subscription_id': 'subscriptionId',
-        'type': 'type'
+        'type': 'type',
+        'delayed_run_time': 'delayedRunTime',
+        'cron_expression': 'cronExpression'
     }
 
-    def __init__(self, report_parameters=None, name=None, subscription_id=None, type=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, report_parameters=None, name=None, subscription_id=None, type=None, delayed_run_time=None, cron_expression=None, local_vars_configuration=None):  # noqa: E501
         """ExportTemplateTaskVM - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration.get_default_copy()
@@ -59,6 +63,8 @@ class ExportTemplateTaskVM(object):
         self._name = None
         self._subscription_id = None
         self._type = None
+        self._delayed_run_time = None
+        self._cron_expression = None
         self.discriminator = None
 
         self.report_parameters = report_parameters
@@ -66,6 +72,8 @@ class ExportTemplateTaskVM(object):
         self.subscription_id = subscription_id
         if type is not None:
             self.type = type
+        self.delayed_run_time = delayed_run_time
+        self.cron_expression = cron_expression
 
     @property
     def report_parameters(self):
@@ -159,6 +167,48 @@ class ExportTemplateTaskVM(object):
         """
 
         self._type = type
+
+    @property
+    def delayed_run_time(self):
+        """Gets the delayed_run_time of this ExportTemplateTaskVM.  # noqa: E501
+
+
+        :return: The delayed_run_time of this ExportTemplateTaskVM.  # noqa: E501
+        :rtype: datetime
+        """
+        return self._delayed_run_time
+
+    @delayed_run_time.setter
+    def delayed_run_time(self, delayed_run_time):
+        """Sets the delayed_run_time of this ExportTemplateTaskVM.
+
+
+        :param delayed_run_time: The delayed_run_time of this ExportTemplateTaskVM.  # noqa: E501
+        :type delayed_run_time: datetime
+        """
+
+        self._delayed_run_time = delayed_run_time
+
+    @property
+    def cron_expression(self):
+        """Gets the cron_expression of this ExportTemplateTaskVM.  # noqa: E501
+
+
+        :return: The cron_expression of this ExportTemplateTaskVM.  # noqa: E501
+        :rtype: str
+        """
+        return self._cron_expression
+
+    @cron_expression.setter
+    def cron_expression(self, cron_expression):
+        """Sets the cron_expression of this ExportTemplateTaskVM.
+
+
+        :param cron_expression: The cron_expression of this ExportTemplateTaskVM.  # noqa: E501
+        :type cron_expression: str
+        """
+
+        self._cron_expression = cron_expression
 
     def to_dict(self, serialize=False):
         """Returns the model properties as a dict"""

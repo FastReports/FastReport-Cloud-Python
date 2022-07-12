@@ -17,7 +17,6 @@ Name | Type | Description | Notes
 **file_upload_size_limit** | **int** |  | [optional] 
 **data_source_limit** | **int** |  | [optional] 
 **max_users_count** | **int** |  | [optional] 
-**has_space_overdraft** | **bool** |  | [optional] 
 **group_limit** | **int** |  | [optional] 
 **online_designer** | **bool** |  | [optional] 
 **is_demo** | **bool** |  | [optional] 

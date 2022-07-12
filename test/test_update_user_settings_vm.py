@@ -36,7 +36,7 @@ class TestUpdateUserSettingsVM(unittest.TestCase):
         # model = fastreport_cloud_sdk.models.update_user_settings_vm.UpdateUserSettingsVM()  # noqa: E501
         if include_optional :
             return UpdateUserSettingsVM(
-                profile_visibility = 0, 
+                profile_visibility = None, 
                 default_subscription = '', 
                 show_hidden_files_and_folders = True
             )

@@ -4,7 +4,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**default_permissions** | [**DefaultPermissions**](DefaultPermissions.md) |  | [optional] 
+**default_permissions** | [**DefaultPermissionsVM**](DefaultPermissionsVM.md) |  | [optional] 
 **id** | **str** |  | [optional] 
 **name** | **str** |  | [optional] 
 **locale** | **str** |  | [optional] 

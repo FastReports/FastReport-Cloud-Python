@@ -16,7 +16,7 @@ Method | HTTP request | Description
 
 
 # **subscriptions_get_default_permissions**
-> DefaultPermissions subscriptions_get_default_permissions(subscription_id)
+> DefaultPermissionsVM subscriptions_get_default_permissions(subscription_id)
 
 Get subscription's default permissions for new entities
 
@@ -116,7 +116,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**DefaultPermissions**](DefaultPermissions.md)
+[**DefaultPermissionsVM**](DefaultPermissionsVM.md)
 
 ### Authorization
 

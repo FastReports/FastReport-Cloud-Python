@@ -45,6 +45,7 @@ class FileVM(object):
         'subscription_id': 'str',
         'status': 'FileStatus',
         'status_reason': 'FileStatusReason',
+        'error_message': 'str',
         'id': 'str',
         'created_time': 'datetime',
         'creator_user_id': 'str',
@@ -62,6 +63,7 @@ class FileVM(object):
         'subscription_id': 'subscriptionId',
         'status': 'status',
         'status_reason': 'statusReason',
+        'error_message': 'errorMessage',
         'id': 'id',
         'created_time': 'createdTime',
         'creator_user_id': 'creatorUserId',
@@ -69,7 +71,7 @@ class FileVM(object):
         'editor_user_id': 'editorUserId'
     }
 
-    def __init__(self, name=None, parent_id=None, tags=None, icon=None, type=None, size=None, subscription_id=None, status=None, status_reason=None, id=None, created_time=None, creator_user_id=None, edited_time=None, editor_user_id=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, name=None, parent_id=None, tags=None, icon=None, type=None, size=None, subscription_id=None, status=None, status_reason=None, error_message=None, id=None, created_time=None, creator_user_id=None, edited_time=None, editor_user_id=None, local_vars_configuration=None):  # noqa: E501
         """FileVM - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration.get_default_copy()
@@ -84,6 +86,7 @@ class FileVM(object):
         self._subscription_id = None
         self._status = None
         self._status_reason = None
+        self._error_message = None
         self._id = None
         self._created_time = None
         self._creator_user_id = None
@@ -104,6 +107,7 @@ class FileVM(object):
             self.status = status
         if status_reason is not None:
             self.status_reason = status_reason
+        self.error_message = error_message
         self.id = id
         if created_time is not None:
             self.created_time = created_time
@@ -300,6 +304,27 @@ class FileVM(object):
         """
 
         self._status_reason = status_reason
+
+    @property
+    def error_message(self):
+        """Gets the error_message of this FileVM.  # noqa: E501
+
+
+        :return: The error_message of this FileVM.  # noqa: E501
+        :rtype: str
+        """
+        return self._error_message
+
+    @error_message.setter
+    def error_message(self, error_message):
+        """Sets the error_message of this FileVM.
+
+
+        :param error_message: The error_message of this FileVM.  # noqa: E501
+        :type error_message: str
+        """
+
+        self._error_message = error_message
 
     @property
     def id(self):

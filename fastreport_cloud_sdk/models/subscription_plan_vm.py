@@ -49,7 +49,6 @@ class SubscriptionPlanVM(object):
         'file_upload_size_limit': 'int',
         'data_source_limit': 'int',
         'max_users_count': 'int',
-        'has_space_overdraft': 'bool',
         'group_limit': 'int',
         'online_designer': 'bool',
         'is_demo': 'bool',
@@ -73,7 +72,6 @@ class SubscriptionPlanVM(object):
         'file_upload_size_limit': 'fileUploadSizeLimit',
         'data_source_limit': 'dataSourceLimit',
         'max_users_count': 'maxUsersCount',
-        'has_space_overdraft': 'hasSpaceOverdraft',
         'group_limit': 'groupLimit',
         'online_designer': 'onlineDesigner',
         'is_demo': 'isDemo',
@@ -83,7 +81,7 @@ class SubscriptionPlanVM(object):
         'tasks': 'tasks'
     }
 
-    def __init__(self, id=None, is_active=None, display_name=None, time_period_type=None, time_period=None, readonly_time_limit_type=None, readonly_time_limit=None, templates_space_limit=None, reports_space_limit=None, exports_space_limit=None, file_upload_size_limit=None, data_source_limit=None, max_users_count=None, has_space_overdraft=None, group_limit=None, online_designer=None, is_demo=None, url_to_buy=None, unlimited_page=None, page_limit=None, tasks=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, id=None, is_active=None, display_name=None, time_period_type=None, time_period=None, readonly_time_limit_type=None, readonly_time_limit=None, templates_space_limit=None, reports_space_limit=None, exports_space_limit=None, file_upload_size_limit=None, data_source_limit=None, max_users_count=None, group_limit=None, online_designer=None, is_demo=None, url_to_buy=None, unlimited_page=None, page_limit=None, tasks=None, local_vars_configuration=None):  # noqa: E501
         """SubscriptionPlanVM - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration.get_default_copy()
@@ -102,7 +100,6 @@ class SubscriptionPlanVM(object):
         self._file_upload_size_limit = None
         self._data_source_limit = None
         self._max_users_count = None
-        self._has_space_overdraft = None
         self._group_limit = None
         self._online_designer = None
         self._is_demo = None
@@ -115,8 +112,7 @@ class SubscriptionPlanVM(object):
         self.id = id
         self.is_active = is_active
         self.display_name = display_name
-        if time_period_type is not None:
-            self.time_period_type = time_period_type
+        self.time_period_type = time_period_type
         self.time_period = time_period
         if readonly_time_limit_type is not None:
             self.readonly_time_limit_type = readonly_time_limit_type
@@ -128,7 +124,6 @@ class SubscriptionPlanVM(object):
         self.file_upload_size_limit = file_upload_size_limit
         self.data_source_limit = data_source_limit
         self.max_users_count = max_users_count
-        self.has_space_overdraft = has_space_overdraft
         self.group_limit = group_limit
         self.online_designer = online_designer
         self.is_demo = is_demo
@@ -412,27 +407,6 @@ class SubscriptionPlanVM(object):
         """
 
         self._max_users_count = max_users_count
-
-    @property
-    def has_space_overdraft(self):
-        """Gets the has_space_overdraft of this SubscriptionPlanVM.  # noqa: E501
-
-
-        :return: The has_space_overdraft of this SubscriptionPlanVM.  # noqa: E501
-        :rtype: bool
-        """
-        return self._has_space_overdraft
-
-    @has_space_overdraft.setter
-    def has_space_overdraft(self, has_space_overdraft):
-        """Sets the has_space_overdraft of this SubscriptionPlanVM.
-
-
-        :param has_space_overdraft: The has_space_overdraft of this SubscriptionPlanVM.  # noqa: E501
-        :type has_space_overdraft: bool
-        """
-
-        self._has_space_overdraft = has_space_overdraft
 
     @property
     def group_limit(self):

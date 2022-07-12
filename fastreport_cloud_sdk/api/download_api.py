@@ -152,7 +152,7 @@ class DownloadApi(object):
         body_params = None
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/octet-stream', 'application/pdf', 'application/json'])  # noqa: E501
+            ['text/plain', 'application/json', 'application/octet-stream', 'application/pdf'])  # noqa: E501
 
         # Authentication setting
         auth_settings = ['ApiKey', 'JWT']  # noqa: E501
@@ -291,7 +291,7 @@ class DownloadApi(object):
         body_params = None
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
-            ['image/png', 'image/jpeg', 'application/json'])  # noqa: E501
+            ['text/plain', 'application/json', 'image/png', 'image/jpeg'])  # noqa: E501
 
         # Authentication setting
         auth_settings = ['ApiKey', 'JWT']  # noqa: E501
@@ -435,7 +435,7 @@ class DownloadApi(object):
         body_params = None
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/zip', 'application/json'])  # noqa: E501
+            ['text/plain', 'application/json', 'application/zip'])  # noqa: E501
 
         # Authentication setting
         auth_settings = ['ApiKey', 'JWT']  # noqa: E501
@@ -574,7 +574,7 @@ class DownloadApi(object):
         body_params = None
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/octet-stream', 'application/json'])  # noqa: E501
+            ['text/plain', 'application/json', 'application/octet-stream'])  # noqa: E501
 
         # Authentication setting
         auth_settings = ['ApiKey', 'JWT']  # noqa: E501
@@ -713,7 +713,7 @@ class DownloadApi(object):
         body_params = None
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
-            ['image/png', 'image/jpeg', 'application/json'])  # noqa: E501
+            ['text/plain', 'application/json', 'image/png', 'image/jpeg'])  # noqa: E501
 
         # Authentication setting
         auth_settings = ['ApiKey', 'JWT']  # noqa: E501
@@ -857,7 +857,7 @@ class DownloadApi(object):
         body_params = None
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/zip', 'application/json'])  # noqa: E501
+            ['text/plain', 'application/json', 'application/zip'])  # noqa: E501
 
         # Authentication setting
         auth_settings = ['ApiKey', 'JWT']  # noqa: E501
@@ -996,7 +996,7 @@ class DownloadApi(object):
         body_params = None
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/octet-stream', 'application/json'])  # noqa: E501
+            ['text/plain', 'application/json', 'application/octet-stream'])  # noqa: E501
 
         # Authentication setting
         auth_settings = ['ApiKey', 'JWT']  # noqa: E501
@@ -1135,7 +1135,7 @@ class DownloadApi(object):
         body_params = None
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
-            ['image/png', 'image/jpeg', 'application/json'])  # noqa: E501
+            ['text/plain', 'application/json', 'image/png', 'image/jpeg'])  # noqa: E501
 
         # Authentication setting
         auth_settings = ['ApiKey', 'JWT']  # noqa: E501
@@ -1279,7 +1279,7 @@ class DownloadApi(object):
         body_params = None
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/zip', 'application/json'])  # noqa: E501
+            ['text/plain', 'application/json', 'application/zip'])  # noqa: E501
 
         # Authentication setting
         auth_settings = ['ApiKey', 'JWT']  # noqa: E501

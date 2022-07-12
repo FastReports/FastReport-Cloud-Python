@@ -38,7 +38,9 @@ class TestCreateTaskBaseVM(unittest.TestCase):
             return CreateTaskBaseVM(
                 name = '0', 
                 subscription_id = '2ECB020842930cc01FFCCfeE', 
-                type = 'ExportTemplate'
+                type = 'ExportTemplate', 
+                delayed_run_time = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
+                cron_expression = ''
             )
         else :
             return CreateTaskBaseVM(

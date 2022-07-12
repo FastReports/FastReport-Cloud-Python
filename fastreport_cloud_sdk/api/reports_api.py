@@ -50,6 +50,8 @@ class ReportsApi(object):
         :type id: str
         :param search_pattern: string, that must be incuded in file or folder name to be counted <br />              (leave undefined to count all files and folders)
         :type search_pattern: str
+        :param use_regex: set this to true if you want to use regular expression to search
+        :type use_regex: bool
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
@@ -82,6 +84,8 @@ class ReportsApi(object):
         :type id: str
         :param search_pattern: string, that must be incuded in file or folder name to be counted <br />              (leave undefined to count all files and folders)
         :type search_pattern: str
+        :param use_regex: set this to true if you want to use regular expression to search
+        :type use_regex: bool
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
         :param _return_http_data_only: response data without head status code
@@ -109,7 +113,8 @@ class ReportsApi(object):
 
         all_params = [
             'id',
-            'search_pattern'
+            'search_pattern',
+            'use_regex'
         ]
         all_params.extend(
             [
@@ -151,6 +156,8 @@ class ReportsApi(object):
         query_params = []
         if 'search_pattern' in local_var_params and local_var_params['search_pattern'] is not None:  # noqa: E501
             query_params.append(('searchPattern', local_var_params['search_pattern']))  # noqa: E501
+        if 'use_regex' in local_var_params and local_var_params['use_regex'] is not None:  # noqa: E501
+            query_params.append(('useRegex', local_var_params['use_regex']))  # noqa: E501
 
         header_params = {}
 
@@ -211,6 +218,8 @@ class ReportsApi(object):
         :type desc: bool
         :param search_pattern:
         :type search_pattern: str
+        :param use_regex:
+        :type use_regex: bool
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
@@ -251,6 +260,8 @@ class ReportsApi(object):
         :type desc: bool
         :param search_pattern:
         :type search_pattern: str
+        :param use_regex:
+        :type use_regex: bool
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
         :param _return_http_data_only: response data without head status code
@@ -282,7 +293,8 @@ class ReportsApi(object):
             'take',
             'order_by',
             'desc',
-            'search_pattern'
+            'search_pattern',
+            'use_regex'
         ]
         all_params.extend(
             [
@@ -340,6 +352,8 @@ class ReportsApi(object):
             query_params.append(('desc', local_var_params['desc']))  # noqa: E501
         if 'search_pattern' in local_var_params and local_var_params['search_pattern'] is not None:  # noqa: E501
             query_params.append(('searchPattern', local_var_params['search_pattern']))  # noqa: E501
+        if 'use_regex' in local_var_params and local_var_params['use_regex'] is not None:  # noqa: E501
+            query_params.append(('useRegex', local_var_params['use_regex']))  # noqa: E501
 
         header_params = {}
 
@@ -3173,6 +3187,12 @@ class ReportsApi(object):
         :type take: int
         :param search_pattern:
         :type search_pattern: str
+        :param order_by:
+        :type order_by: FileSorting
+        :param desc:
+        :type desc: bool
+        :param use_regex:
+        :type use_regex: bool
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
@@ -3208,6 +3228,12 @@ class ReportsApi(object):
         :type take: int
         :param search_pattern:
         :type search_pattern: str
+        :param order_by:
+        :type order_by: FileSorting
+        :param desc:
+        :type desc: bool
+        :param use_regex:
+        :type use_regex: bool
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
         :param _return_http_data_only: response data without head status code
@@ -3237,7 +3263,10 @@ class ReportsApi(object):
             'id',
             'skip',
             'take',
-            'search_pattern'
+            'search_pattern',
+            'order_by',
+            'desc',
+            'use_regex'
         ]
         all_params.extend(
             [
@@ -3291,6 +3320,12 @@ class ReportsApi(object):
             query_params.append(('take', local_var_params['take']))  # noqa: E501
         if 'search_pattern' in local_var_params and local_var_params['search_pattern'] is not None:  # noqa: E501
             query_params.append(('searchPattern', local_var_params['search_pattern']))  # noqa: E501
+        if 'order_by' in local_var_params and local_var_params['order_by'] is not None:  # noqa: E501
+            query_params.append(('orderBy', local_var_params['order_by']))  # noqa: E501
+        if 'desc' in local_var_params and local_var_params['desc'] is not None:  # noqa: E501
+            query_params.append(('desc', local_var_params['desc']))  # noqa: E501
+        if 'use_regex' in local_var_params and local_var_params['use_regex'] is not None:  # noqa: E501
+            query_params.append(('useRegex', local_var_params['use_regex']))  # noqa: E501
 
         header_params = {}
 

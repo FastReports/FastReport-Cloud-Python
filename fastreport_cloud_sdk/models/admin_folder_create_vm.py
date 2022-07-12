@@ -38,6 +38,7 @@ class AdminFolderCreateVM(object):
     openapi_types = {
         'parent_id': 'str',
         'owner_id': 'str',
+        'force': 'bool',
         'name': 'str',
         'tags': 'list[str]',
         'icon': 'str'
@@ -46,12 +47,13 @@ class AdminFolderCreateVM(object):
     attribute_map = {
         'parent_id': 'parentId',
         'owner_id': 'ownerId',
+        'force': 'force',
         'name': 'name',
         'tags': 'tags',
         'icon': 'icon'
     }
 
-    def __init__(self, parent_id=None, owner_id=None, name=None, tags=None, icon=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, parent_id=None, owner_id=None, force=None, name=None, tags=None, icon=None, local_vars_configuration=None):  # noqa: E501
         """AdminFolderCreateVM - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration.get_default_copy()
@@ -59,6 +61,7 @@ class AdminFolderCreateVM(object):
 
         self._parent_id = None
         self._owner_id = None
+        self._force = None
         self._name = None
         self._tags = None
         self._icon = None
@@ -66,6 +69,8 @@ class AdminFolderCreateVM(object):
 
         self.parent_id = parent_id
         self.owner_id = owner_id
+        if force is not None:
+            self.force = force
         self.name = name
         self.tags = tags
         self.icon = icon
@@ -121,6 +126,27 @@ class AdminFolderCreateVM(object):
             raise ValueError(r"Invalid value for `owner_id`, must be a follow pattern or equal to `/(^[0-9a-f]{24}$|^([0-9a-f]{8}([-][0-9a-f]{4}){3}[-][0-9a-f]{12})$)/`")  # noqa: E501
 
         self._owner_id = owner_id
+
+    @property
+    def force(self):
+        """Gets the force of this AdminFolderCreateVM.  # noqa: E501
+
+
+        :return: The force of this AdminFolderCreateVM.  # noqa: E501
+        :rtype: bool
+        """
+        return self._force
+
+    @force.setter
+    def force(self, force):
+        """Sets the force of this AdminFolderCreateVM.
+
+
+        :param force: The force of this AdminFolderCreateVM.  # noqa: E501
+        :type force: bool
+        """
+
+        self._force = force
 
     @property
     def name(self):

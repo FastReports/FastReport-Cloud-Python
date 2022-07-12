@@ -36,7 +36,7 @@ class AdminSubscriptionVM(object):
                             and the value is json key in definition.
     """
     openapi_types = {
-        'default_permissions': 'DefaultPermissions',
+        'default_permissions': 'DefaultPermissionsVM',
         'id': 'str',
         'name': 'str',
         'locale': 'str',
@@ -97,7 +97,7 @@ class AdminSubscriptionVM(object):
 
 
         :return: The default_permissions of this AdminSubscriptionVM.  # noqa: E501
-        :rtype: DefaultPermissions
+        :rtype: DefaultPermissionsVM
         """
         return self._default_permissions
 
@@ -107,7 +107,7 @@ class AdminSubscriptionVM(object):
 
 
         :param default_permissions: The default_permissions of this AdminSubscriptionVM.  # noqa: E501
-        :type default_permissions: DefaultPermissions
+        :type default_permissions: DefaultPermissionsVM
         """
 
         self._default_permissions = default_permissions

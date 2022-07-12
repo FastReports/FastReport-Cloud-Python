@@ -60,7 +60,7 @@ class SubscriptionsApi(object):
         :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
-        :rtype: DefaultPermissions
+        :rtype: DefaultPermissionsVM
         """
         kwargs['_return_http_data_only'] = True
         return self.subscriptions_get_default_permissions_with_http_info(subscription_id, **kwargs)  # noqa: E501
@@ -96,7 +96,7 @@ class SubscriptionsApi(object):
         :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
-        :rtype: tuple(DefaultPermissions, status_code(int), headers(HTTPHeaderDict))
+        :rtype: tuple(DefaultPermissionsVM, status_code(int), headers(HTTPHeaderDict))
         """
 
         local_var_params = locals()
@@ -151,7 +151,7 @@ class SubscriptionsApi(object):
         auth_settings = ['ApiKey', 'JWT']  # noqa: E501
         
         response_types_map = {
-            200: "DefaultPermissions",
+            200: "DefaultPermissionsVM",
             400: "ProblemDetails",
             402: "ProblemDetails",
             403: "ProblemDetails",
