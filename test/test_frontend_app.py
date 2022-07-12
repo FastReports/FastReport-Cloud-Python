@@ -38,7 +38,8 @@ class TestFrontendApp(unittest.TestCase):
             return FrontendApp(
                 mixins = fastreport_cloud_sdk.models.app_mixins.AppMixins(
                     head = '', 
-                    body = '', )
+                    body = '', ), 
+                invariant_locale = ''
             )
         else :
             return FrontendApp(

@@ -44,8 +44,8 @@ class TestServerConfigurationVM(unittest.TestCase):
                 frontend = fastreport_cloud_sdk.models.frontend_app.FrontendApp(
                     mixins = fastreport_cloud_sdk.models.app_mixins.AppMixins(
                         head = '', 
-                        body = '', ), ), 
-                invariant_locale = '', 
+                        body = '', ), 
+                    invariant_locale = '', ), 
                 auth = fastreport_cloud_sdk.models.auth_config_vm.AuthConfigVM(
                     use_local = True, 
                     use_open_id = True, 

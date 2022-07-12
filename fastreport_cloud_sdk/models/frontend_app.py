@@ -36,24 +36,28 @@ class FrontendApp(object):
                             and the value is json key in definition.
     """
     openapi_types = {
-        'mixins': 'AppMixins'
+        'mixins': 'AppMixins',
+        'invariant_locale': 'str'
     }
 
     attribute_map = {
-        'mixins': 'mixins'
+        'mixins': 'mixins',
+        'invariant_locale': 'invariantLocale'
     }
 
-    def __init__(self, mixins=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, mixins=None, invariant_locale=None, local_vars_configuration=None):  # noqa: E501
         """FrontendApp - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration.get_default_copy()
         self.local_vars_configuration = local_vars_configuration
 
         self._mixins = None
+        self._invariant_locale = None
         self.discriminator = None
 
         if mixins is not None:
             self.mixins = mixins
+        self.invariant_locale = invariant_locale
 
     @property
     def mixins(self):
@@ -75,6 +79,27 @@ class FrontendApp(object):
         """
 
         self._mixins = mixins
+
+    @property
+    def invariant_locale(self):
+        """Gets the invariant_locale of this FrontendApp.  # noqa: E501
+
+
+        :return: The invariant_locale of this FrontendApp.  # noqa: E501
+        :rtype: str
+        """
+        return self._invariant_locale
+
+    @invariant_locale.setter
+    def invariant_locale(self, invariant_locale):
+        """Sets the invariant_locale of this FrontendApp.
+
+
+        :param invariant_locale: The invariant_locale of this FrontendApp.  # noqa: E501
+        :type invariant_locale: str
+        """
+
+        self._invariant_locale = invariant_locale
 
     def to_dict(self, serialize=False):
         """Returns the model properties as a dict"""
