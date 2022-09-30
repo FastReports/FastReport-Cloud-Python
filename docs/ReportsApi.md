@@ -4,8 +4,11 @@ All URIs are relative to *http://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**report_folder_and_file_clear_recycle_bin**](ReportsApi.md#report_folder_and_file_clear_recycle_bin) | **DELETE** /api/rp/v1/Reports/{subscriptionId}/ClearRecycleBin | Delete all folders and files from recycle bin
 [**report_folder_and_file_get_count**](ReportsApi.md#report_folder_and_file_get_count) | **GET** /api/rp/v1/Reports/Folder/{id}/CountFolderAndFiles | Get count of files and folders what contains in a specified folder
 [**report_folder_and_file_get_folders_and_files**](ReportsApi.md#report_folder_and_file_get_folders_and_files) | **GET** /api/rp/v1/Reports/Folder/{id}/ListFolderAndFiles | Get all folders and files from specified folder
+[**report_folder_and_file_get_recycle_bin_folders_and_files**](ReportsApi.md#report_folder_and_file_get_recycle_bin_folders_and_files) | **GET** /api/rp/v1/Reports/{subscriptionId}/ListRecycleBinFolderAndFiles | Get all folders and files from recycle bin
+[**report_folder_and_file_recover_all_from_recycle_bin**](ReportsApi.md#report_folder_and_file_recover_all_from_recycle_bin) | **POST** /api/rp/v1/Reports/{subscriptionId}/RecoverRecycleBin | Recover all folders and files from recycle bin
 [**report_folders_copy_folder**](ReportsApi.md#report_folders_copy_folder) | **POST** /api/rp/v1/Reports/Folder/{id}/Copy/{folderId} | Move folder to a specified folder
 [**report_folders_delete_folder**](ReportsApi.md#report_folders_delete_folder) | **DELETE** /api/rp/v1/Reports/Folder/{id} | Delete specified folder
 [**report_folders_get_breadcrumbs**](ReportsApi.md#report_folders_get_breadcrumbs) | **GET** /api/rp/v1/Reports/Folder/{id}/Breadcrumbs | Get specified folder breadcrumbs
@@ -15,7 +18,9 @@ Method | HTTP request | Description
 [**report_folders_get_permissions**](ReportsApi.md#report_folders_get_permissions) | **GET** /api/rp/v1/Reports/Folder/{id}/permissions | Get all folder permissions
 [**report_folders_get_root_folder**](ReportsApi.md#report_folders_get_root_folder) | **GET** /api/rp/v1/Reports/Root | Get user&#39;s root folder (without parents)
 [**report_folders_move_folder**](ReportsApi.md#report_folders_move_folder) | **POST** /api/rp/v1/Reports/Folder/{id}/Move/{folderId} | Move folder to a specified folder
+[**report_folders_move_folder_to_bin**](ReportsApi.md#report_folders_move_folder_to_bin) | **DELETE** /api/rp/v1/Reports/Folder/{id}/ToBin | Move specified folder to recycle bin
 [**report_folders_post_folder**](ReportsApi.md#report_folders_post_folder) | **POST** /api/rp/v1/Reports/Folder/{id}/Folder | Create folder
+[**report_folders_recover_folder**](ReportsApi.md#report_folders_recover_folder) | **POST** /api/rp/v1/Reports/Folder/{id}/Recover | Recover specified folder
 [**report_folders_rename_folder**](ReportsApi.md#report_folders_rename_folder) | **PUT** /api/rp/v1/Reports/Folder/{id}/Rename | Rename a folder
 [**report_folders_update_icon**](ReportsApi.md#report_folders_update_icon) | **PUT** /api/rp/v1/Reports/Folder/{id}/Icon | Update a folder&#39;s icon
 [**report_folders_update_permissions**](ReportsApi.md#report_folders_update_permissions) | **POST** /api/rp/v1/Reports/{id}/permissions | Update permissions
@@ -24,16 +29,141 @@ Method | HTTP request | Description
 [**reports_delete_file**](ReportsApi.md#reports_delete_file) | **DELETE** /api/rp/v1/Reports/File/{id} | Delete specified file
 [**reports_export**](ReportsApi.md#reports_export) | **POST** /api/rp/v1/Reports/File/{id}/Export | Export specified report to a specified format
 [**reports_get_file**](ReportsApi.md#reports_get_file) | **GET** /api/rp/v1/Reports/File/{id} | Get specified file
+[**reports_get_file_history**](ReportsApi.md#reports_get_file_history) | **GET** /api/rp/v1/Reports/File/{id}/History | Returns list of actions, performed on this file
 [**reports_get_files_count**](ReportsApi.md#reports_get_files_count) | **GET** /api/rp/v1/Reports/Folder/{id}/CountFiles | Get count of files what contains in a specified folder
 [**reports_get_files_list**](ReportsApi.md#reports_get_files_list) | **GET** /api/rp/v1/Reports/Folder/{id}/ListFiles | Get all files from specified folder. &lt;br /&gt;  User with Get Entity permission can access this method. &lt;br /&gt;  The method will returns minimal infomration about the file: &lt;br /&gt;  id, name, size, editedTime, createdTime, tags, status, statusReason.
 [**reports_get_permissions**](ReportsApi.md#reports_get_permissions) | **GET** /api/rp/v1/Reports/File/{id}/permissions | Get all file permissions
 [**reports_move_file**](ReportsApi.md#reports_move_file) | **POST** /api/rp/v1/Reports/File/{id}/Move/{folderId} | Move file to a specified folder
+[**reports_move_file_to_bin**](ReportsApi.md#reports_move_file_to_bin) | **DELETE** /api/rp/v1/Reports/File/{id}/ToBin | Move specified file to recycle bin
+[**reports_recover_file**](ReportsApi.md#reports_recover_file) | **POST** /api/rp/v1/Reports/File/{id}/Recover | Recover specified file from bin
 [**reports_rename_file**](ReportsApi.md#reports_rename_file) | **PUT** /api/rp/v1/Reports/File/{id}/Rename | Rename a file
 [**reports_update_icon**](ReportsApi.md#reports_update_icon) | **PUT** /api/rp/v1/Reports/File/{id}/Icon | Update a files&#39;s icon
 [**reports_update_permissions**](ReportsApi.md#reports_update_permissions) | **POST** /api/rp/v1/Reports/File/{id}/permissions | Update permissions
 [**reports_update_tags**](ReportsApi.md#reports_update_tags) | **PUT** /api/rp/v1/Reports/File/{id}/UpdateTags | Update tags
 [**reports_upload_file**](ReportsApi.md#reports_upload_file) | **POST** /api/rp/v1/Reports/Folder/{id}/File | Upload a file to the specified folder  !
 
+
+# **report_folder_and_file_clear_recycle_bin**
+> report_folder_and_file_clear_recycle_bin(subscription_id)
+
+Delete all folders and files from recycle bin
+
+User with a Delete RecycleBin permission can access this method.
+
+### Example
+
+* Basic Authentication (ApiKey):
+```python
+from __future__ import print_function
+import time
+import fastreport_cloud_sdk
+from fastreport_cloud_sdk.rest import ApiException
+from pprint import pprint
+# Defining the host is optional and defaults to http://localhost
+# See configuration.py for a list of all supported configuration parameters.
+configuration = fastreport_cloud_sdk.Configuration(
+    host = "http://localhost"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure HTTP basic authorization: ApiKey
+configuration = fastreport_cloud_sdk.Configuration(
+    username = 'YOUR_USERNAME',
+    password = 'YOUR_PASSWORD'
+)
+
+# Configure Bearer authorization (JWT): JWT
+configuration = fastreport_cloud_sdk.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
+)
+
+# Enter a context with an instance of the API client
+with fastreport_cloud_sdk.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = fastreport_cloud_sdk.ReportsApi(api_client)
+    subscription_id = 'subscription_id_example' # str | subscription id
+
+    try:
+        # Delete all folders and files from recycle bin
+        api_instance.report_folder_and_file_clear_recycle_bin(subscription_id)
+    except ApiException as e:
+        print("Exception when calling ReportsApi->report_folder_and_file_clear_recycle_bin: %s\n" % e)
+```
+
+* Bearer (JWT) Authentication (JWT):
+```python
+from __future__ import print_function
+import time
+import fastreport_cloud_sdk
+from fastreport_cloud_sdk.rest import ApiException
+from pprint import pprint
+# Defining the host is optional and defaults to http://localhost
+# See configuration.py for a list of all supported configuration parameters.
+configuration = fastreport_cloud_sdk.Configuration(
+    host = "http://localhost"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure HTTP basic authorization: ApiKey
+configuration = fastreport_cloud_sdk.Configuration(
+    username = 'YOUR_USERNAME',
+    password = 'YOUR_PASSWORD'
+)
+
+# Configure Bearer authorization (JWT): JWT
+configuration = fastreport_cloud_sdk.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
+)
+
+# Enter a context with an instance of the API client
+with fastreport_cloud_sdk.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = fastreport_cloud_sdk.ReportsApi(api_client)
+    subscription_id = 'subscription_id_example' # str | subscription id
+
+    try:
+        # Delete all folders and files from recycle bin
+        api_instance.report_folder_and_file_clear_recycle_bin(subscription_id)
+    except ApiException as e:
+        print("Exception when calling ReportsApi->report_folder_and_file_clear_recycle_bin: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **subscription_id** | **str**| subscription id | 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [JWT](../README.md#JWT)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**204** | All folders and files in bin have been deleted |  -  |
+**400** | FolderId is null |  -  |
+**403** | You don&#39;t have rights for the operation |  -  |
+**404** | File or folder not found |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **report_folder_and_file_get_count**
 > CountVM report_folder_and_file_get_count(id, search_pattern=search_pattern, use_regex=use_regex)
@@ -307,6 +437,270 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **report_folder_and_file_get_recycle_bin_folders_and_files**
+> FilesVM report_folder_and_file_get_recycle_bin_folders_and_files(subscription_id, skip=skip, take=take, order_by=order_by, desc=desc, search_pattern=search_pattern, use_regex=use_regex)
+
+Get all folders and files from recycle bin
+
+User with a Get DeletedFiles permission can access this method.
+
+### Example
+
+* Basic Authentication (ApiKey):
+```python
+from __future__ import print_function
+import time
+import fastreport_cloud_sdk
+from fastreport_cloud_sdk.rest import ApiException
+from pprint import pprint
+# Defining the host is optional and defaults to http://localhost
+# See configuration.py for a list of all supported configuration parameters.
+configuration = fastreport_cloud_sdk.Configuration(
+    host = "http://localhost"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure HTTP basic authorization: ApiKey
+configuration = fastreport_cloud_sdk.Configuration(
+    username = 'YOUR_USERNAME',
+    password = 'YOUR_PASSWORD'
+)
+
+# Configure Bearer authorization (JWT): JWT
+configuration = fastreport_cloud_sdk.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
+)
+
+# Enter a context with an instance of the API client
+with fastreport_cloud_sdk.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = fastreport_cloud_sdk.ReportsApi(api_client)
+    subscription_id = 'subscription_id_example' # str | subscription id
+skip = 0 # int | number of folder and files, that have to be skipped (optional) (default to 0)
+take = 10 # int | number of folder and files, that have to be returned (optional) (default to 10)
+order_by = fastreport_cloud_sdk.FileSorting() # FileSorting | indicates a field to sort by (optional)
+desc = False # bool | indicates if sorting is descending (optional) (default to False)
+search_pattern = '' # str |  (optional) (default to '')
+use_regex = False # bool |  (optional) (default to False)
+
+    try:
+        # Get all folders and files from recycle bin
+        api_response = api_instance.report_folder_and_file_get_recycle_bin_folders_and_files(subscription_id, skip=skip, take=take, order_by=order_by, desc=desc, search_pattern=search_pattern, use_regex=use_regex)
+        pprint(api_response)
+    except ApiException as e:
+        print("Exception when calling ReportsApi->report_folder_and_file_get_recycle_bin_folders_and_files: %s\n" % e)
+```
+
+* Bearer (JWT) Authentication (JWT):
+```python
+from __future__ import print_function
+import time
+import fastreport_cloud_sdk
+from fastreport_cloud_sdk.rest import ApiException
+from pprint import pprint
+# Defining the host is optional and defaults to http://localhost
+# See configuration.py for a list of all supported configuration parameters.
+configuration = fastreport_cloud_sdk.Configuration(
+    host = "http://localhost"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure HTTP basic authorization: ApiKey
+configuration = fastreport_cloud_sdk.Configuration(
+    username = 'YOUR_USERNAME',
+    password = 'YOUR_PASSWORD'
+)
+
+# Configure Bearer authorization (JWT): JWT
+configuration = fastreport_cloud_sdk.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
+)
+
+# Enter a context with an instance of the API client
+with fastreport_cloud_sdk.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = fastreport_cloud_sdk.ReportsApi(api_client)
+    subscription_id = 'subscription_id_example' # str | subscription id
+skip = 0 # int | number of folder and files, that have to be skipped (optional) (default to 0)
+take = 10 # int | number of folder and files, that have to be returned (optional) (default to 10)
+order_by = fastreport_cloud_sdk.FileSorting() # FileSorting | indicates a field to sort by (optional)
+desc = False # bool | indicates if sorting is descending (optional) (default to False)
+search_pattern = '' # str |  (optional) (default to '')
+use_regex = False # bool |  (optional) (default to False)
+
+    try:
+        # Get all folders and files from recycle bin
+        api_response = api_instance.report_folder_and_file_get_recycle_bin_folders_and_files(subscription_id, skip=skip, take=take, order_by=order_by, desc=desc, search_pattern=search_pattern, use_regex=use_regex)
+        pprint(api_response)
+    except ApiException as e:
+        print("Exception when calling ReportsApi->report_folder_and_file_get_recycle_bin_folders_and_files: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **subscription_id** | **str**| subscription id | 
+ **skip** | **int**| number of folder and files, that have to be skipped | [optional] [default to 0]
+ **take** | **int**| number of folder and files, that have to be returned | [optional] [default to 10]
+ **order_by** | [**FileSorting**](.md)| indicates a field to sort by | [optional] 
+ **desc** | **bool**| indicates if sorting is descending | [optional] [default to False]
+ **search_pattern** | **str**|  | [optional] [default to &#39;&#39;]
+ **use_regex** | **bool**|  | [optional] [default to False]
+
+### Return type
+
+[**FilesVM**](FilesVM.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [JWT](../README.md#JWT)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Returns list of the files from a specified folder |  -  |
+**400** | FolderId is null |  -  |
+**403** | You don&#39;t have rights for the operation |  -  |
+**404** | File or folder not found |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **report_folder_and_file_recover_all_from_recycle_bin**
+> report_folder_and_file_recover_all_from_recycle_bin(subscription_id)
+
+Recover all folders and files from recycle bin
+
+User with a Create RecycleBin permission can access this method.
+
+### Example
+
+* Basic Authentication (ApiKey):
+```python
+from __future__ import print_function
+import time
+import fastreport_cloud_sdk
+from fastreport_cloud_sdk.rest import ApiException
+from pprint import pprint
+# Defining the host is optional and defaults to http://localhost
+# See configuration.py for a list of all supported configuration parameters.
+configuration = fastreport_cloud_sdk.Configuration(
+    host = "http://localhost"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure HTTP basic authorization: ApiKey
+configuration = fastreport_cloud_sdk.Configuration(
+    username = 'YOUR_USERNAME',
+    password = 'YOUR_PASSWORD'
+)
+
+# Configure Bearer authorization (JWT): JWT
+configuration = fastreport_cloud_sdk.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
+)
+
+# Enter a context with an instance of the API client
+with fastreport_cloud_sdk.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = fastreport_cloud_sdk.ReportsApi(api_client)
+    subscription_id = 'subscription_id_example' # str | subscription id
+
+    try:
+        # Recover all folders and files from recycle bin
+        api_instance.report_folder_and_file_recover_all_from_recycle_bin(subscription_id)
+    except ApiException as e:
+        print("Exception when calling ReportsApi->report_folder_and_file_recover_all_from_recycle_bin: %s\n" % e)
+```
+
+* Bearer (JWT) Authentication (JWT):
+```python
+from __future__ import print_function
+import time
+import fastreport_cloud_sdk
+from fastreport_cloud_sdk.rest import ApiException
+from pprint import pprint
+# Defining the host is optional and defaults to http://localhost
+# See configuration.py for a list of all supported configuration parameters.
+configuration = fastreport_cloud_sdk.Configuration(
+    host = "http://localhost"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure HTTP basic authorization: ApiKey
+configuration = fastreport_cloud_sdk.Configuration(
+    username = 'YOUR_USERNAME',
+    password = 'YOUR_PASSWORD'
+)
+
+# Configure Bearer authorization (JWT): JWT
+configuration = fastreport_cloud_sdk.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
+)
+
+# Enter a context with an instance of the API client
+with fastreport_cloud_sdk.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = fastreport_cloud_sdk.ReportsApi(api_client)
+    subscription_id = 'subscription_id_example' # str | subscription id
+
+    try:
+        # Recover all folders and files from recycle bin
+        api_instance.report_folder_and_file_recover_all_from_recycle_bin(subscription_id)
+    except ApiException as e:
+        print("Exception when calling ReportsApi->report_folder_and_file_recover_all_from_recycle_bin: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **subscription_id** | **str**| subscription id | 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [JWT](../README.md#JWT)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**204** | All folders and files in bin have been restored |  -  |
+**400** | FolderId is null |  -  |
+**403** | You don&#39;t have rights for the operation |  -  |
+**404** | File or folder not found |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **report_folders_copy_folder**
 > FileVM report_folders_copy_folder(id, folder_id)
 
@@ -436,7 +830,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **report_folders_delete_folder**
-> report_folders_delete_folder(id, recursive=recursive)
+> report_folders_delete_folder(id)
 
 Delete specified folder
 
@@ -478,11 +872,10 @@ with fastreport_cloud_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = fastreport_cloud_sdk.ReportsApi(api_client)
     id = 'id_example' # str | folder id
-recursive = True # bool | delete all childs (optional) (default to True)
 
     try:
         # Delete specified folder
-        api_instance.report_folders_delete_folder(id, recursive=recursive)
+        api_instance.report_folders_delete_folder(id)
     except ApiException as e:
         print("Exception when calling ReportsApi->report_folders_delete_folder: %s\n" % e)
 ```
@@ -521,11 +914,10 @@ with fastreport_cloud_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = fastreport_cloud_sdk.ReportsApi(api_client)
     id = 'id_example' # str | folder id
-recursive = True # bool | delete all childs (optional) (default to True)
 
     try:
         # Delete specified folder
-        api_instance.report_folders_delete_folder(id, recursive=recursive)
+        api_instance.report_folders_delete_folder(id)
     except ApiException as e:
         print("Exception when calling ReportsApi->report_folders_delete_folder: %s\n" % e)
 ```
@@ -535,7 +927,6 @@ recursive = True # bool | delete all childs (optional) (default to True)
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **str**| folder id | 
- **recursive** | **bool**| delete all childs | [optional] [default to True]
 
 ### Return type
 
@@ -1437,6 +1828,129 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **report_folders_move_folder_to_bin**
+> report_folders_move_folder_to_bin(id)
+
+Move specified folder to recycle bin
+
+User with a Delete Entity permission can access this method.
+
+### Example
+
+* Basic Authentication (ApiKey):
+```python
+from __future__ import print_function
+import time
+import fastreport_cloud_sdk
+from fastreport_cloud_sdk.rest import ApiException
+from pprint import pprint
+# Defining the host is optional and defaults to http://localhost
+# See configuration.py for a list of all supported configuration parameters.
+configuration = fastreport_cloud_sdk.Configuration(
+    host = "http://localhost"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure HTTP basic authorization: ApiKey
+configuration = fastreport_cloud_sdk.Configuration(
+    username = 'YOUR_USERNAME',
+    password = 'YOUR_PASSWORD'
+)
+
+# Configure Bearer authorization (JWT): JWT
+configuration = fastreport_cloud_sdk.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
+)
+
+# Enter a context with an instance of the API client
+with fastreport_cloud_sdk.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = fastreport_cloud_sdk.ReportsApi(api_client)
+    id = 'id_example' # str | folder id
+
+    try:
+        # Move specified folder to recycle bin
+        api_instance.report_folders_move_folder_to_bin(id)
+    except ApiException as e:
+        print("Exception when calling ReportsApi->report_folders_move_folder_to_bin: %s\n" % e)
+```
+
+* Bearer (JWT) Authentication (JWT):
+```python
+from __future__ import print_function
+import time
+import fastreport_cloud_sdk
+from fastreport_cloud_sdk.rest import ApiException
+from pprint import pprint
+# Defining the host is optional and defaults to http://localhost
+# See configuration.py for a list of all supported configuration parameters.
+configuration = fastreport_cloud_sdk.Configuration(
+    host = "http://localhost"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure HTTP basic authorization: ApiKey
+configuration = fastreport_cloud_sdk.Configuration(
+    username = 'YOUR_USERNAME',
+    password = 'YOUR_PASSWORD'
+)
+
+# Configure Bearer authorization (JWT): JWT
+configuration = fastreport_cloud_sdk.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
+)
+
+# Enter a context with an instance of the API client
+with fastreport_cloud_sdk.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = fastreport_cloud_sdk.ReportsApi(api_client)
+    id = 'id_example' # str | folder id
+
+    try:
+        # Move specified folder to recycle bin
+        api_instance.report_folders_move_folder_to_bin(id)
+    except ApiException as e:
+        print("Exception when calling ReportsApi->report_folders_move_folder_to_bin: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **str**| folder id | 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [JWT](../README.md#JWT)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**204** | Folder succesfully deleted |  -  |
+**400** | Id is null |  -  |
+**403** | You don&#39;t have rights for the operation |  -  |
+**402** | Subscription is outdated |  -  |
+**404** | Folder not found |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **report_folders_post_folder**
 > FileVM report_folders_post_folder(id, report_folder_create_vm=report_folder_create_vm)
 
@@ -1562,6 +2076,132 @@ Name | Type | Description  | Notes
 **403** | You don&#39;t have rights for the operation |  -  |
 **402** | subscription is outdated |  -  |
 **404** | parent folder/subscription not found |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **report_folders_recover_folder**
+> report_folders_recover_folder(id, recovery_path=recovery_path)
+
+Recover specified folder
+
+User with a Delete Entity permission can access this method.
+
+### Example
+
+* Basic Authentication (ApiKey):
+```python
+from __future__ import print_function
+import time
+import fastreport_cloud_sdk
+from fastreport_cloud_sdk.rest import ApiException
+from pprint import pprint
+# Defining the host is optional and defaults to http://localhost
+# See configuration.py for a list of all supported configuration parameters.
+configuration = fastreport_cloud_sdk.Configuration(
+    host = "http://localhost"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure HTTP basic authorization: ApiKey
+configuration = fastreport_cloud_sdk.Configuration(
+    username = 'YOUR_USERNAME',
+    password = 'YOUR_PASSWORD'
+)
+
+# Configure Bearer authorization (JWT): JWT
+configuration = fastreport_cloud_sdk.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
+)
+
+# Enter a context with an instance of the API client
+with fastreport_cloud_sdk.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = fastreport_cloud_sdk.ReportsApi(api_client)
+    id = 'id_example' # str | folder id
+recovery_path = 'recovery_path_example' # str |  (optional)
+
+    try:
+        # Recover specified folder
+        api_instance.report_folders_recover_folder(id, recovery_path=recovery_path)
+    except ApiException as e:
+        print("Exception when calling ReportsApi->report_folders_recover_folder: %s\n" % e)
+```
+
+* Bearer (JWT) Authentication (JWT):
+```python
+from __future__ import print_function
+import time
+import fastreport_cloud_sdk
+from fastreport_cloud_sdk.rest import ApiException
+from pprint import pprint
+# Defining the host is optional and defaults to http://localhost
+# See configuration.py for a list of all supported configuration parameters.
+configuration = fastreport_cloud_sdk.Configuration(
+    host = "http://localhost"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure HTTP basic authorization: ApiKey
+configuration = fastreport_cloud_sdk.Configuration(
+    username = 'YOUR_USERNAME',
+    password = 'YOUR_PASSWORD'
+)
+
+# Configure Bearer authorization (JWT): JWT
+configuration = fastreport_cloud_sdk.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
+)
+
+# Enter a context with an instance of the API client
+with fastreport_cloud_sdk.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = fastreport_cloud_sdk.ReportsApi(api_client)
+    id = 'id_example' # str | folder id
+recovery_path = 'recovery_path_example' # str |  (optional)
+
+    try:
+        # Recover specified folder
+        api_instance.report_folders_recover_folder(id, recovery_path=recovery_path)
+    except ApiException as e:
+        print("Exception when calling ReportsApi->report_folders_recover_folder: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **str**| folder id | 
+ **recovery_path** | **str**|  | [optional] 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [JWT](../README.md#JWT)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**204** | Folder succesfully restored from bin |  -  |
+**400** | Id is null |  -  |
+**403** | You don&#39;t have rights for the operation |  -  |
+**402** | Subscription is outdated |  -  |
+**404** | Folder not found |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -2578,6 +3218,134 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **reports_get_file_history**
+> AuditActionsVM reports_get_file_history(id, skip=skip, take=take)
+
+Returns list of actions, performed on this file
+
+### Example
+
+* Basic Authentication (ApiKey):
+```python
+from __future__ import print_function
+import time
+import fastreport_cloud_sdk
+from fastreport_cloud_sdk.rest import ApiException
+from pprint import pprint
+# Defining the host is optional and defaults to http://localhost
+# See configuration.py for a list of all supported configuration parameters.
+configuration = fastreport_cloud_sdk.Configuration(
+    host = "http://localhost"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure HTTP basic authorization: ApiKey
+configuration = fastreport_cloud_sdk.Configuration(
+    username = 'YOUR_USERNAME',
+    password = 'YOUR_PASSWORD'
+)
+
+# Configure Bearer authorization (JWT): JWT
+configuration = fastreport_cloud_sdk.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
+)
+
+# Enter a context with an instance of the API client
+with fastreport_cloud_sdk.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = fastreport_cloud_sdk.ReportsApi(api_client)
+    id = 'id_example' # str | 
+skip = 0 # int |  (optional) (default to 0)
+take = 10 # int |  (optional) (default to 10)
+
+    try:
+        # Returns list of actions, performed on this file
+        api_response = api_instance.reports_get_file_history(id, skip=skip, take=take)
+        pprint(api_response)
+    except ApiException as e:
+        print("Exception when calling ReportsApi->reports_get_file_history: %s\n" % e)
+```
+
+* Bearer (JWT) Authentication (JWT):
+```python
+from __future__ import print_function
+import time
+import fastreport_cloud_sdk
+from fastreport_cloud_sdk.rest import ApiException
+from pprint import pprint
+# Defining the host is optional and defaults to http://localhost
+# See configuration.py for a list of all supported configuration parameters.
+configuration = fastreport_cloud_sdk.Configuration(
+    host = "http://localhost"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure HTTP basic authorization: ApiKey
+configuration = fastreport_cloud_sdk.Configuration(
+    username = 'YOUR_USERNAME',
+    password = 'YOUR_PASSWORD'
+)
+
+# Configure Bearer authorization (JWT): JWT
+configuration = fastreport_cloud_sdk.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
+)
+
+# Enter a context with an instance of the API client
+with fastreport_cloud_sdk.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = fastreport_cloud_sdk.ReportsApi(api_client)
+    id = 'id_example' # str | 
+skip = 0 # int |  (optional) (default to 0)
+take = 10 # int |  (optional) (default to 10)
+
+    try:
+        # Returns list of actions, performed on this file
+        api_response = api_instance.reports_get_file_history(id, skip=skip, take=take)
+        pprint(api_response)
+    except ApiException as e:
+        print("Exception when calling ReportsApi->reports_get_file_history: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **str**|  | 
+ **skip** | **int**|  | [optional] [default to 0]
+ **take** | **int**|  | [optional] [default to 10]
+
+### Return type
+
+[**AuditActionsVM**](AuditActionsVM.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [JWT](../README.md#JWT)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Success |  -  |
+**400** | Bad Request |  -  |
+**403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **reports_get_files_count**
 > CountVM reports_get_files_count(id)
 
@@ -3091,6 +3859,257 @@ Name | Type | Description  | Notes
 **403** | You don&#39;t have rights for the operation |  -  |
 **402** | Subscription is outdated |  -  |
 **404** | File or folder not found |  -  |
+**500** | Exception thrown |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **reports_move_file_to_bin**
+> reports_move_file_to_bin(id)
+
+Move specified file to recycle bin
+
+User with Delete permission can access the method.
+
+### Example
+
+* Basic Authentication (ApiKey):
+```python
+from __future__ import print_function
+import time
+import fastreport_cloud_sdk
+from fastreport_cloud_sdk.rest import ApiException
+from pprint import pprint
+# Defining the host is optional and defaults to http://localhost
+# See configuration.py for a list of all supported configuration parameters.
+configuration = fastreport_cloud_sdk.Configuration(
+    host = "http://localhost"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure HTTP basic authorization: ApiKey
+configuration = fastreport_cloud_sdk.Configuration(
+    username = 'YOUR_USERNAME',
+    password = 'YOUR_PASSWORD'
+)
+
+# Configure Bearer authorization (JWT): JWT
+configuration = fastreport_cloud_sdk.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
+)
+
+# Enter a context with an instance of the API client
+with fastreport_cloud_sdk.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = fastreport_cloud_sdk.ReportsApi(api_client)
+    id = 'id_example' # str | file id
+
+    try:
+        # Move specified file to recycle bin
+        api_instance.reports_move_file_to_bin(id)
+    except ApiException as e:
+        print("Exception when calling ReportsApi->reports_move_file_to_bin: %s\n" % e)
+```
+
+* Bearer (JWT) Authentication (JWT):
+```python
+from __future__ import print_function
+import time
+import fastreport_cloud_sdk
+from fastreport_cloud_sdk.rest import ApiException
+from pprint import pprint
+# Defining the host is optional and defaults to http://localhost
+# See configuration.py for a list of all supported configuration parameters.
+configuration = fastreport_cloud_sdk.Configuration(
+    host = "http://localhost"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure HTTP basic authorization: ApiKey
+configuration = fastreport_cloud_sdk.Configuration(
+    username = 'YOUR_USERNAME',
+    password = 'YOUR_PASSWORD'
+)
+
+# Configure Bearer authorization (JWT): JWT
+configuration = fastreport_cloud_sdk.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
+)
+
+# Enter a context with an instance of the API client
+with fastreport_cloud_sdk.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = fastreport_cloud_sdk.ReportsApi(api_client)
+    id = 'id_example' # str | file id
+
+    try:
+        # Move specified file to recycle bin
+        api_instance.reports_move_file_to_bin(id)
+    except ApiException as e:
+        print("Exception when calling ReportsApi->reports_move_file_to_bin: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **str**| file id | 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [JWT](../README.md#JWT)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**204** | File succesfully deleted |  -  |
+**400** | Id is null |  -  |
+**403** | You don&#39;t have rights for the operation |  -  |
+**402** | Subscription is outdated |  -  |
+**404** | File not found |  -  |
+**500** | Exception thrown |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **reports_recover_file**
+> reports_recover_file(id, recovery_path=recovery_path)
+
+Recover specified file from bin
+
+User with Delete permission can access the method.
+
+### Example
+
+* Basic Authentication (ApiKey):
+```python
+from __future__ import print_function
+import time
+import fastreport_cloud_sdk
+from fastreport_cloud_sdk.rest import ApiException
+from pprint import pprint
+# Defining the host is optional and defaults to http://localhost
+# See configuration.py for a list of all supported configuration parameters.
+configuration = fastreport_cloud_sdk.Configuration(
+    host = "http://localhost"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure HTTP basic authorization: ApiKey
+configuration = fastreport_cloud_sdk.Configuration(
+    username = 'YOUR_USERNAME',
+    password = 'YOUR_PASSWORD'
+)
+
+# Configure Bearer authorization (JWT): JWT
+configuration = fastreport_cloud_sdk.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
+)
+
+# Enter a context with an instance of the API client
+with fastreport_cloud_sdk.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = fastreport_cloud_sdk.ReportsApi(api_client)
+    id = 'id_example' # str | file id
+recovery_path = 'recovery_path_example' # str |  (optional)
+
+    try:
+        # Recover specified file from bin
+        api_instance.reports_recover_file(id, recovery_path=recovery_path)
+    except ApiException as e:
+        print("Exception when calling ReportsApi->reports_recover_file: %s\n" % e)
+```
+
+* Bearer (JWT) Authentication (JWT):
+```python
+from __future__ import print_function
+import time
+import fastreport_cloud_sdk
+from fastreport_cloud_sdk.rest import ApiException
+from pprint import pprint
+# Defining the host is optional and defaults to http://localhost
+# See configuration.py for a list of all supported configuration parameters.
+configuration = fastreport_cloud_sdk.Configuration(
+    host = "http://localhost"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure HTTP basic authorization: ApiKey
+configuration = fastreport_cloud_sdk.Configuration(
+    username = 'YOUR_USERNAME',
+    password = 'YOUR_PASSWORD'
+)
+
+# Configure Bearer authorization (JWT): JWT
+configuration = fastreport_cloud_sdk.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
+)
+
+# Enter a context with an instance of the API client
+with fastreport_cloud_sdk.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = fastreport_cloud_sdk.ReportsApi(api_client)
+    id = 'id_example' # str | file id
+recovery_path = 'recovery_path_example' # str |  (optional)
+
+    try:
+        # Recover specified file from bin
+        api_instance.reports_recover_file(id, recovery_path=recovery_path)
+    except ApiException as e:
+        print("Exception when calling ReportsApi->reports_recover_file: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **str**| file id | 
+ **recovery_path** | **str**|  | [optional] 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [JWT](../README.md#JWT)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**204** | File succesfully recovered |  -  |
+**400** | Id is null |  -  |
+**403** | You don&#39;t have rights for the operation |  -  |
+**402** | Subscription is outdated |  -  |
+**404** | File not found |  -  |
 **500** | Exception thrown |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

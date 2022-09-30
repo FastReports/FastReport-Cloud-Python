@@ -253,7 +253,7 @@ void (empty response body)
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Success |  -  |
+**204** | Success |  -  |
 **403** | Forbidden |  -  |
 **404** | Not Found |  -  |
 **402** | Client Error |  -  |

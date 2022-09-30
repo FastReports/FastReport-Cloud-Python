@@ -34,9 +34,10 @@ class SubscriptionDelete(object):
     _0 = "0"
     _1 = "1"
     _2 = "2"
+    _4 = "4"
     _1 = "-1"
 
-    allowable_values = [_0, _1, _2, _1]  # noqa: E501
+    allowable_values = [_0, _1, _2, _4, _1]  # noqa: E501
 
     """
     Attributes:

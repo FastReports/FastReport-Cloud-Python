@@ -78,8 +78,8 @@ class Configuration(object):
     :param server_operation_variables: Mapping from operation ID to a mapping with
       string values to replace variables in templated server configuration.
       The validation of enums is performed for variables with defined enum values before.
-    :param ssl_ca_cert: str - the path to a file of concatenated CA certificates 
-      in PEM format 
+    :param ssl_ca_cert: str - the path to a file of concatenated CA certificates
+      in PEM format
 
     :Example:
 
@@ -129,6 +129,7 @@ conf = fastreport_cloud_sdk.Configuration(
         """Temp file folder for downloading files
         """
         # Authentication Settings
+        self.access_token = access_token
         self.api_key = {}
         if api_key:
             self.api_key = api_key
@@ -414,7 +415,7 @@ conf = fastreport_cloud_sdk.Configuration(
                "OS: {env}\n"\
                "Python Version: {pyversion}\n"\
                "Version of the API: v1\n"\
-               "SDK Package Version: 2022.2.20".\
+               "SDK Package Version: 2022.2.29".\
                format(env=sys.platform, pyversion=sys.version)
 
     def get_host_settings(self):

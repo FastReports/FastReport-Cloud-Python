@@ -28,6 +28,13 @@ class TestExportsApi(unittest.TestCase):
     def tearDown(self):
         pass
 
+    def test_export_folder_and_file_clear_recycle_bin(self):
+        """Test case for export_folder_and_file_clear_recycle_bin
+
+        Delete all folders and files from recycle bin  # noqa: E501
+        """
+        pass
+
     def test_export_folder_and_file_get_count(self):
         """Test case for export_folder_and_file_get_count
 
@@ -39,6 +46,20 @@ class TestExportsApi(unittest.TestCase):
         """Test case for export_folder_and_file_get_folders_and_files
 
         Get all folders and files from specified folder  # noqa: E501
+        """
+        pass
+
+    def test_export_folder_and_file_get_recycle_bin_folders_and_files(self):
+        """Test case for export_folder_and_file_get_recycle_bin_folders_and_files
+
+        Get all folders and files from recycle bin  # noqa: E501
+        """
+        pass
+
+    def test_export_folder_and_file_recover_all_from_recycle_bin(self):
+        """Test case for export_folder_and_file_recover_all_from_recycle_bin
+
+        Recover all folders and files from recycle bin  # noqa: E501
         """
         pass
 
@@ -105,10 +126,24 @@ class TestExportsApi(unittest.TestCase):
         """
         pass
 
+    def test_export_folders_move_folder_to_bin(self):
+        """Test case for export_folders_move_folder_to_bin
+
+        Move specified folder to recycle bin  # noqa: E501
+        """
+        pass
+
     def test_export_folders_post_folder(self):
         """Test case for export_folders_post_folder
 
         Create folder  # noqa: E501
+        """
+        pass
+
+    def test_export_folders_recover_folder(self):
+        """Test case for export_folders_recover_folder
+
+        Recover specified folder  # noqa: E501
         """
         pass
 
@@ -161,6 +196,13 @@ class TestExportsApi(unittest.TestCase):
         """
         pass
 
+    def test_exports_get_file_history(self):
+        """Test case for exports_get_file_history
+
+        Returns list of actions, performed on this file  # noqa: E501
+        """
+        pass
+
     def test_exports_get_files_count(self):
         """Test case for exports_get_files_count
 
@@ -186,6 +228,20 @@ class TestExportsApi(unittest.TestCase):
         """Test case for exports_move_file
 
         Move file to a specified folder  # noqa: E501
+        """
+        pass
+
+    def test_exports_move_file_to_bin(self):
+        """Test case for exports_move_file_to_bin
+
+        Move specified file to recycle bin  # noqa: E501
+        """
+        pass
+
+    def test_exports_recover_file(self):
+        """Test case for exports_recover_file
+
+        Recover specified file from bin  # noqa: E501
         """
         pass
 

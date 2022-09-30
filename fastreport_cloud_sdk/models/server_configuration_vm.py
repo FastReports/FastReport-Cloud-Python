@@ -42,6 +42,7 @@ class ServerConfigurationVM(object):
         'corporate_server_mode': 'bool',
         'is_disabled': 'bool',
         'frontend': 'FrontendApp',
+        'invariant_locale': 'str',
         'auth': 'AuthConfigVM',
         'designer_for_anons': 'bool'
     }
@@ -53,11 +54,12 @@ class ServerConfigurationVM(object):
         'corporate_server_mode': 'corporateServerMode',
         'is_disabled': 'isDisabled',
         'frontend': 'frontend',
+        'invariant_locale': 'invariantLocale',
         'auth': 'auth',
         'designer_for_anons': 'designerForAnons'
     }
 
-    def __init__(self, title=None, logo_link=None, copyright=None, corporate_server_mode=None, is_disabled=None, frontend=None, auth=None, designer_for_anons=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, title=None, logo_link=None, copyright=None, corporate_server_mode=None, is_disabled=None, frontend=None, invariant_locale=None, auth=None, designer_for_anons=None, local_vars_configuration=None):  # noqa: E501
         """ServerConfigurationVM - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration.get_default_copy()
@@ -69,6 +71,7 @@ class ServerConfigurationVM(object):
         self._corporate_server_mode = None
         self._is_disabled = None
         self._frontend = None
+        self._invariant_locale = None
         self._auth = None
         self._designer_for_anons = None
         self.discriminator = None
@@ -82,6 +85,7 @@ class ServerConfigurationVM(object):
             self.is_disabled = is_disabled
         if frontend is not None:
             self.frontend = frontend
+        self.invariant_locale = invariant_locale
         if auth is not None:
             self.auth = auth
         if designer_for_anons is not None:
@@ -212,6 +216,27 @@ class ServerConfigurationVM(object):
         """
 
         self._frontend = frontend
+
+    @property
+    def invariant_locale(self):
+        """Gets the invariant_locale of this ServerConfigurationVM.  # noqa: E501
+
+
+        :return: The invariant_locale of this ServerConfigurationVM.  # noqa: E501
+        :rtype: str
+        """
+        return self._invariant_locale
+
+    @invariant_locale.setter
+    def invariant_locale(self, invariant_locale):
+        """Sets the invariant_locale of this ServerConfigurationVM.
+
+
+        :param invariant_locale: The invariant_locale of this ServerConfigurationVM.  # noqa: E501
+        :type invariant_locale: str
+        """
+
+        self._invariant_locale = invariant_locale
 
     @property
     def auth(self):

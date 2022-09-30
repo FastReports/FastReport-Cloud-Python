@@ -14,6 +14,11 @@ docs/ApiKeyVM.md
 docs/ApiKeysApi.md
 docs/ApiKeysVM.md
 docs/AppMixins.md
+docs/AuditActionVM.md
+docs/AuditActionsVM.md
+docs/AuditFilePropertyChangedVM.md
+docs/AuditSubscriptionActionVM.md
+docs/AuditType.md
 docs/AuthConfigVM.md
 docs/BreadcrumbsModel.md
 docs/BreadcrumbsVM.md
@@ -216,6 +221,7 @@ docs/UpdateEndpointVM.md
 docs/UpdateExportReportTaskVM.md
 docs/UpdateExportTemplateTaskVM.md
 docs/UpdateFetchTaskVM.md
+docs/UpdateFileContentVM.md
 docs/UpdateFilePermissionsVM.md
 docs/UpdateGroupPermissionsVM.md
 docs/UpdatePrepareTemplateTaskVM.md
@@ -268,6 +274,11 @@ fastreport_cloud_sdk/models/admin_template_folder_create_vm.py
 fastreport_cloud_sdk/models/api_key_vm.py
 fastreport_cloud_sdk/models/api_keys_vm.py
 fastreport_cloud_sdk/models/app_mixins.py
+fastreport_cloud_sdk/models/audit_action_vm.py
+fastreport_cloud_sdk/models/audit_actions_vm.py
+fastreport_cloud_sdk/models/audit_file_property_changed_vm.py
+fastreport_cloud_sdk/models/audit_subscription_action_vm.py
+fastreport_cloud_sdk/models/audit_type.py
 fastreport_cloud_sdk/models/auth_config_vm.py
 fastreport_cloud_sdk/models/breadcrumbs_model.py
 fastreport_cloud_sdk/models/breadcrumbs_vm.py
@@ -455,6 +466,7 @@ fastreport_cloud_sdk/models/update_endpoint_vm.py
 fastreport_cloud_sdk/models/update_export_report_task_vm.py
 fastreport_cloud_sdk/models/update_export_template_task_vm.py
 fastreport_cloud_sdk/models/update_fetch_task_vm.py
+fastreport_cloud_sdk/models/update_file_content_vm.py
 fastreport_cloud_sdk/models/update_file_permissions_vm.py
 fastreport_cloud_sdk/models/update_group_permissions_vm.py
 fastreport_cloud_sdk/models/update_prepare_template_task_vm.py
@@ -489,6 +501,11 @@ test/test_api_key_vm.py
 test/test_api_keys_api.py
 test/test_api_keys_vm.py
 test/test_app_mixins.py
+test/test_audit_action_vm.py
+test/test_audit_actions_vm.py
+test/test_audit_file_property_changed_vm.py
+test/test_audit_subscription_action_vm.py
+test/test_audit_type.py
 test/test_auth_config_vm.py
 test/test_breadcrumbs_model.py
 test/test_breadcrumbs_vm.py
@@ -691,6 +708,7 @@ test/test_update_endpoint_vm.py
 test/test_update_export_report_task_vm.py
 test/test_update_export_template_task_vm.py
 test/test_update_fetch_task_vm.py
+test/test_update_file_content_vm.py
 test/test_update_file_permissions_vm.py
 test/test_update_group_permissions_vm.py
 test/test_update_prepare_template_task_vm.py

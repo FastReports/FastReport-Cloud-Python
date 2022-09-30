@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 **corporate_server_mode** | **bool** |  | [optional] 
 **is_disabled** | **bool** |  | [optional] 
 **frontend** | [**FrontendApp**](FrontendApp.md) |  | [optional] 
+**invariant_locale** | **str** |  | [optional] 
 **auth** | [**AuthConfigVM**](AuthConfigVM.md) |  | [optional] 
 **designer_for_anons** | **bool** |  | [optional] 
 

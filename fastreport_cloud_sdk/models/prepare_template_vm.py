@@ -38,7 +38,7 @@ class PrepareTemplateVM(object):
     openapi_types = {
         'name': 'str',
         'locale': 'str',
-        'parent_folder_id': 'str',
+        'folder_id': 'str',
         'pages_count': 'int',
         'report_parameters': 'dict(str, str)'
     }
@@ -46,12 +46,12 @@ class PrepareTemplateVM(object):
     attribute_map = {
         'name': 'name',
         'locale': 'locale',
-        'parent_folder_id': 'parentFolderId',
+        'folder_id': 'folderId',
         'pages_count': 'pagesCount',
         'report_parameters': 'reportParameters'
     }
 
-    def __init__(self, name=None, locale=None, parent_folder_id=None, pages_count=None, report_parameters=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, name=None, locale=None, folder_id=None, pages_count=None, report_parameters=None, local_vars_configuration=None):  # noqa: E501
         """PrepareTemplateVM - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration.get_default_copy()
@@ -59,14 +59,14 @@ class PrepareTemplateVM(object):
 
         self._name = None
         self._locale = None
-        self._parent_folder_id = None
+        self._folder_id = None
         self._pages_count = None
         self._report_parameters = None
         self.discriminator = None
 
         self.name = name
         self.locale = locale
-        self.parent_folder_id = parent_folder_id
+        self.folder_id = folder_id
         self.pages_count = pages_count
         self.report_parameters = report_parameters
 
@@ -122,28 +122,28 @@ class PrepareTemplateVM(object):
         self._locale = locale
 
     @property
-    def parent_folder_id(self):
-        """Gets the parent_folder_id of this PrepareTemplateVM.  # noqa: E501
+    def folder_id(self):
+        """Gets the folder_id of this PrepareTemplateVM.  # noqa: E501
 
 
-        :return: The parent_folder_id of this PrepareTemplateVM.  # noqa: E501
+        :return: The folder_id of this PrepareTemplateVM.  # noqa: E501
         :rtype: str
         """
-        return self._parent_folder_id
+        return self._folder_id
 
-    @parent_folder_id.setter
-    def parent_folder_id(self, parent_folder_id):
-        """Sets the parent_folder_id of this PrepareTemplateVM.
+    @folder_id.setter
+    def folder_id(self, folder_id):
+        """Sets the folder_id of this PrepareTemplateVM.
 
 
-        :param parent_folder_id: The parent_folder_id of this PrepareTemplateVM.  # noqa: E501
-        :type parent_folder_id: str
+        :param folder_id: The folder_id of this PrepareTemplateVM.  # noqa: E501
+        :type folder_id: str
         """
         if (self.local_vars_configuration.client_side_validation and
-                parent_folder_id is not None and not re.search(r'(^$)|(^[A-Fa-f0-9]{24}$)', parent_folder_id)):  # noqa: E501
-            raise ValueError(r"Invalid value for `parent_folder_id`, must be a follow pattern or equal to `/(^$)|(^[A-Fa-f0-9]{24}$)/`")  # noqa: E501
+                folder_id is not None and not re.search(r'(^$)|(^[A-Fa-f0-9]{24}$)', folder_id)):  # noqa: E501
+            raise ValueError(r"Invalid value for `folder_id`, must be a follow pattern or equal to `/(^$)|(^[A-Fa-f0-9]{24}$)/`")  # noqa: E501
 
-        self._parent_folder_id = parent_folder_id
+        self._folder_id = folder_id
 
     @property
     def pages_count(self):

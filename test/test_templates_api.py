@@ -28,6 +28,13 @@ class TestTemplatesApi(unittest.TestCase):
     def tearDown(self):
         pass
 
+    def test_template_folder_and_file_clear_recycle_bin(self):
+        """Test case for template_folder_and_file_clear_recycle_bin
+
+        Delete all folders and files from recycle bin  # noqa: E501
+        """
+        pass
+
     def test_template_folder_and_file_get_count(self):
         """Test case for template_folder_and_file_get_count
 
@@ -39,6 +46,20 @@ class TestTemplatesApi(unittest.TestCase):
         """Test case for template_folder_and_file_get_folders_and_files
 
         Get all folders and files from specified folder  # noqa: E501
+        """
+        pass
+
+    def test_template_folder_and_file_get_recycle_bin_folders_and_files(self):
+        """Test case for template_folder_and_file_get_recycle_bin_folders_and_files
+
+        Get all folders and files from recycle bin  # noqa: E501
+        """
+        pass
+
+    def test_template_folder_and_file_recover_all_from_recycle_bin(self):
+        """Test case for template_folder_and_file_recover_all_from_recycle_bin
+
+        Recover all folders and files from recycle bin  # noqa: E501
         """
         pass
 
@@ -105,10 +126,24 @@ class TestTemplatesApi(unittest.TestCase):
         """
         pass
 
+    def test_template_folders_move_folder_to_bin(self):
+        """Test case for template_folders_move_folder_to_bin
+
+        Move specified folder to recycle bin  # noqa: E501
+        """
+        pass
+
     def test_template_folders_post_folder(self):
         """Test case for template_folders_post_folder
 
         Create folder  # noqa: E501
+        """
+        pass
+
+    def test_template_folders_recover_folder(self):
+        """Test case for template_folders_recover_folder
+
+        Recover specified folder  # noqa: E501
         """
         pass
 
@@ -168,6 +203,13 @@ class TestTemplatesApi(unittest.TestCase):
         """
         pass
 
+    def test_templates_get_file_history(self):
+        """Test case for templates_get_file_history
+
+        Returns list of actions, performed on this file  # noqa: E501
+        """
+        pass
+
     def test_templates_get_files_count(self):
         """Test case for templates_get_files_count
 
@@ -196,6 +238,13 @@ class TestTemplatesApi(unittest.TestCase):
         """
         pass
 
+    def test_templates_move_file_to_bin(self):
+        """Test case for templates_move_file_to_bin
+
+        Move specified file to recycle bin  # noqa: E501
+        """
+        pass
+
     def test_templates_prepare(self):
         """Test case for templates_prepare
 
@@ -203,10 +252,24 @@ class TestTemplatesApi(unittest.TestCase):
         """
         pass
 
+    def test_templates_recover_file(self):
+        """Test case for templates_recover_file
+
+        Recover specified file from bin  # noqa: E501
+        """
+        pass
+
     def test_templates_rename_file(self):
         """Test case for templates_rename_file
 
         Rename a file  # noqa: E501
+        """
+        pass
+
+    def test_templates_update_content(self):
+        """Test case for templates_update_content
+
+        Updates contnet of the template  # noqa: E501
         """
         pass
 

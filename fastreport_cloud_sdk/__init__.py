@@ -14,7 +14,7 @@
 
 from __future__ import absolute_import
 
-__version__ = "2022.2.20"
+__version__ = "2022.2.29"
 
 # import apis into sdk package
 from fastreport_cloud_sdk.api.api_keys_api import ApiKeysApi
@@ -54,6 +54,11 @@ from fastreport_cloud_sdk.models.admin_template_folder_create_vm import AdminTem
 from fastreport_cloud_sdk.models.api_key_vm import ApiKeyVM
 from fastreport_cloud_sdk.models.api_keys_vm import ApiKeysVM
 from fastreport_cloud_sdk.models.app_mixins import AppMixins
+from fastreport_cloud_sdk.models.audit_action_vm import AuditActionVM
+from fastreport_cloud_sdk.models.audit_actions_vm import AuditActionsVM
+from fastreport_cloud_sdk.models.audit_file_property_changed_vm import AuditFilePropertyChangedVM
+from fastreport_cloud_sdk.models.audit_subscription_action_vm import AuditSubscriptionActionVM
+from fastreport_cloud_sdk.models.audit_type import AuditType
 from fastreport_cloud_sdk.models.auth_config_vm import AuthConfigVM
 from fastreport_cloud_sdk.models.breadcrumbs_model import BreadcrumbsModel
 from fastreport_cloud_sdk.models.breadcrumbs_vm import BreadcrumbsVM
@@ -241,6 +246,7 @@ from fastreport_cloud_sdk.models.update_endpoint_vm import UpdateEndpointVM
 from fastreport_cloud_sdk.models.update_export_report_task_vm import UpdateExportReportTaskVM
 from fastreport_cloud_sdk.models.update_export_template_task_vm import UpdateExportTemplateTaskVM
 from fastreport_cloud_sdk.models.update_fetch_task_vm import UpdateFetchTaskVM
+from fastreport_cloud_sdk.models.update_file_content_vm import UpdateFileContentVM
 from fastreport_cloud_sdk.models.update_file_permissions_vm import UpdateFilePermissionsVM
 from fastreport_cloud_sdk.models.update_group_permissions_vm import UpdateGroupPermissionsVM
 from fastreport_cloud_sdk.models.update_prepare_template_task_vm import UpdatePrepareTemplateTaskVM

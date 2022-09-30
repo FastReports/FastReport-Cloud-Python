@@ -16,11 +16,11 @@ import unittest
 import datetime
 
 import fastreport_cloud_sdk
-from fastreport_cloud_sdk.models.prepare_template_vm import PrepareTemplateVM  # noqa: E501
+from fastreport_cloud_sdk.models.audit_type import AuditType  # noqa: E501
 from fastreport_cloud_sdk.rest import ApiException
 
-class TestPrepareTemplateVM(unittest.TestCase):
-    """PrepareTemplateVM unit test stubs"""
+class TestAuditType(unittest.TestCase):
+    """AuditType unit test stubs"""
 
     def setUp(self):
         pass
@@ -29,27 +29,20 @@ class TestPrepareTemplateVM(unittest.TestCase):
         pass
 
     def make_instance(self, include_optional):
-        """Test PrepareTemplateVM
+        """Test AuditType
             include_option is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
-        # model = fastreport_cloud_sdk.models.prepare_template_vm.PrepareTemplateVM()  # noqa: E501
+        # model = fastreport_cloud_sdk.models.audit_type.AuditType()  # noqa: E501
         if include_optional :
-            return PrepareTemplateVM(
-                name = '0', 
-                locale = 'EiOT-wW', 
-                folder_id = '2ECB020842930cc01FFCCfeE', 
-                pages_count = 0, 
-                report_parameters = {
-                    'key' : ''
-                    }
+            return AuditType(
             )
         else :
-            return PrepareTemplateVM(
+            return AuditType(
         )
 
-    def testPrepareTemplateVM(self):
-        """Test PrepareTemplateVM"""
+    def testAuditType(self):
+        """Test AuditType"""
         inst_req_only = self.make_instance(include_optional=False)
         inst_req_and_optional = self.make_instance(include_optional=True)
 

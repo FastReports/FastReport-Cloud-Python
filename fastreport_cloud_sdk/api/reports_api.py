@@ -36,6 +36,141 @@ class ReportsApi(object):
             api_client = ApiClient()
         self.api_client = api_client
 
+    def report_folder_and_file_clear_recycle_bin(self, subscription_id, **kwargs):  # noqa: E501
+        """Delete all folders and files from recycle bin  # noqa: E501
+
+        User with a Delete RecycleBin permission can access this method.  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.report_folder_and_file_clear_recycle_bin(subscription_id, async_req=True)
+        >>> result = thread.get()
+
+        :param subscription_id: subscription id (required)
+        :type subscription_id: str
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
+        :param _preload_content: if False, the urllib3.HTTPResponse object will
+                                 be returned without reading/decoding response
+                                 data. Default is True.
+        :type _preload_content: bool, optional
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :return: Returns the result object.
+                 If the method is called asynchronously,
+                 returns the request thread.
+        :rtype: None
+        """
+        kwargs['_return_http_data_only'] = True
+        return self.report_folder_and_file_clear_recycle_bin_with_http_info(subscription_id, **kwargs)  # noqa: E501
+
+    def report_folder_and_file_clear_recycle_bin_with_http_info(self, subscription_id, **kwargs):  # noqa: E501
+        """Delete all folders and files from recycle bin  # noqa: E501
+
+        User with a Delete RecycleBin permission can access this method.  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.report_folder_and_file_clear_recycle_bin_with_http_info(subscription_id, async_req=True)
+        >>> result = thread.get()
+
+        :param subscription_id: subscription id (required)
+        :type subscription_id: str
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
+        :param _return_http_data_only: response data without head status code
+                                       and headers
+        :type _return_http_data_only: bool, optional
+        :param _preload_content: if False, the urllib3.HTTPResponse object will
+                                 be returned without reading/decoding response
+                                 data. Default is True.
+        :type _preload_content: bool, optional
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the authentication
+                              in the spec for a single request.
+        :type _request_auth: dict, optional
+        :return: Returns the result object.
+                 If the method is called asynchronously,
+                 returns the request thread.
+        :rtype: None
+        """
+
+        local_var_params = locals()
+
+        all_params = [
+            'subscription_id'
+        ]
+        all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout',
+                '_request_auth'
+            ]
+        )
+
+        for key, val in six.iteritems(local_var_params['kwargs']):
+            if key not in all_params:
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method report_folder_and_file_clear_recycle_bin" % key
+                )
+            local_var_params[key] = val
+        del local_var_params['kwargs']
+        # verify the required parameter 'subscription_id' is set
+        if self.api_client.client_side_validation and ('subscription_id' not in local_var_params or  # noqa: E501
+                                                        local_var_params['subscription_id'] is None):  # noqa: E501
+            raise ApiValueError("Missing the required parameter `subscription_id` when calling `report_folder_and_file_clear_recycle_bin`")  # noqa: E501
+
+        if self.api_client.client_side_validation and 'subscription_id' in local_var_params and not re.search(r'^[A-Fa-f0-9]{24}$', local_var_params['subscription_id']):  # noqa: E501
+            raise ApiValueError("Invalid value for parameter `subscription_id` when calling `report_folder_and_file_clear_recycle_bin`, must conform to the pattern `/^[A-Fa-f0-9]{24}$/`")  # noqa: E501
+        collection_formats = {}
+
+        path_params = {}
+        if 'subscription_id' in local_var_params:
+            path_params['subscriptionId'] = local_var_params['subscription_id']  # noqa: E501
+
+        query_params = []
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = ['ApiKey', 'JWT']  # noqa: E501
+        
+        response_types_map = {}
+
+        return self.api_client.call_api(
+            '/api/rp/v1/Reports/{subscriptionId}/ClearRecycleBin', 'DELETE',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_types_map=response_types_map,
+            auth_settings=auth_settings,
+            async_req=local_var_params.get('async_req'),
+            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
+            _preload_content=local_var_params.get('_preload_content', True),
+            _request_timeout=local_var_params.get('_request_timeout'),
+            collection_formats=collection_formats,
+            _request_auth=local_var_params.get('_request_auth'))
+
     def report_folder_and_file_get_count(self, id, **kwargs):  # noqa: E501
         """Get count of files and folders what contains in a specified folder  # noqa: E501
 
@@ -392,6 +527,337 @@ class ReportsApi(object):
             collection_formats=collection_formats,
             _request_auth=local_var_params.get('_request_auth'))
 
+    def report_folder_and_file_get_recycle_bin_folders_and_files(self, subscription_id, **kwargs):  # noqa: E501
+        """Get all folders and files from recycle bin  # noqa: E501
+
+        User with a Get DeletedFiles permission can access this method.  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.report_folder_and_file_get_recycle_bin_folders_and_files(subscription_id, async_req=True)
+        >>> result = thread.get()
+
+        :param subscription_id: subscription id (required)
+        :type subscription_id: str
+        :param skip: number of folder and files, that have to be skipped
+        :type skip: int
+        :param take: number of folder and files, that have to be returned
+        :type take: int
+        :param order_by: indicates a field to sort by
+        :type order_by: FileSorting
+        :param desc: indicates if sorting is descending
+        :type desc: bool
+        :param search_pattern:
+        :type search_pattern: str
+        :param use_regex:
+        :type use_regex: bool
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
+        :param _preload_content: if False, the urllib3.HTTPResponse object will
+                                 be returned without reading/decoding response
+                                 data. Default is True.
+        :type _preload_content: bool, optional
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :return: Returns the result object.
+                 If the method is called asynchronously,
+                 returns the request thread.
+        :rtype: FilesVM
+        """
+        kwargs['_return_http_data_only'] = True
+        return self.report_folder_and_file_get_recycle_bin_folders_and_files_with_http_info(subscription_id, **kwargs)  # noqa: E501
+
+    def report_folder_and_file_get_recycle_bin_folders_and_files_with_http_info(self, subscription_id, **kwargs):  # noqa: E501
+        """Get all folders and files from recycle bin  # noqa: E501
+
+        User with a Get DeletedFiles permission can access this method.  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.report_folder_and_file_get_recycle_bin_folders_and_files_with_http_info(subscription_id, async_req=True)
+        >>> result = thread.get()
+
+        :param subscription_id: subscription id (required)
+        :type subscription_id: str
+        :param skip: number of folder and files, that have to be skipped
+        :type skip: int
+        :param take: number of folder and files, that have to be returned
+        :type take: int
+        :param order_by: indicates a field to sort by
+        :type order_by: FileSorting
+        :param desc: indicates if sorting is descending
+        :type desc: bool
+        :param search_pattern:
+        :type search_pattern: str
+        :param use_regex:
+        :type use_regex: bool
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
+        :param _return_http_data_only: response data without head status code
+                                       and headers
+        :type _return_http_data_only: bool, optional
+        :param _preload_content: if False, the urllib3.HTTPResponse object will
+                                 be returned without reading/decoding response
+                                 data. Default is True.
+        :type _preload_content: bool, optional
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the authentication
+                              in the spec for a single request.
+        :type _request_auth: dict, optional
+        :return: Returns the result object.
+                 If the method is called asynchronously,
+                 returns the request thread.
+        :rtype: tuple(FilesVM, status_code(int), headers(HTTPHeaderDict))
+        """
+
+        local_var_params = locals()
+
+        all_params = [
+            'subscription_id',
+            'skip',
+            'take',
+            'order_by',
+            'desc',
+            'search_pattern',
+            'use_regex'
+        ]
+        all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout',
+                '_request_auth'
+            ]
+        )
+
+        for key, val in six.iteritems(local_var_params['kwargs']):
+            if key not in all_params:
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method report_folder_and_file_get_recycle_bin_folders_and_files" % key
+                )
+            local_var_params[key] = val
+        del local_var_params['kwargs']
+        # verify the required parameter 'subscription_id' is set
+        if self.api_client.client_side_validation and ('subscription_id' not in local_var_params or  # noqa: E501
+                                                        local_var_params['subscription_id'] is None):  # noqa: E501
+            raise ApiValueError("Missing the required parameter `subscription_id` when calling `report_folder_and_file_get_recycle_bin_folders_and_files`")  # noqa: E501
+
+        if self.api_client.client_side_validation and 'subscription_id' in local_var_params and not re.search(r'^[A-Fa-f0-9]{24}$', local_var_params['subscription_id']):  # noqa: E501
+            raise ApiValueError("Invalid value for parameter `subscription_id` when calling `report_folder_and_file_get_recycle_bin_folders_and_files`, must conform to the pattern `/^[A-Fa-f0-9]{24}$/`")  # noqa: E501
+        if self.api_client.client_side_validation and 'skip' in local_var_params and local_var_params['skip'] > 2147483647:  # noqa: E501
+            raise ApiValueError("Invalid value for parameter `skip` when calling `report_folder_and_file_get_recycle_bin_folders_and_files`, must be a value less than or equal to `2147483647`")  # noqa: E501
+        if self.api_client.client_side_validation and 'skip' in local_var_params and local_var_params['skip'] < 0:  # noqa: E501
+            raise ApiValueError("Invalid value for parameter `skip` when calling `report_folder_and_file_get_recycle_bin_folders_and_files`, must be a value greater than or equal to `0`")  # noqa: E501
+        if self.api_client.client_side_validation and 'take' in local_var_params and local_var_params['take'] > 120:  # noqa: E501
+            raise ApiValueError("Invalid value for parameter `take` when calling `report_folder_and_file_get_recycle_bin_folders_and_files`, must be a value less than or equal to `120`")  # noqa: E501
+        if self.api_client.client_side_validation and 'take' in local_var_params and local_var_params['take'] < 1:  # noqa: E501
+            raise ApiValueError("Invalid value for parameter `take` when calling `report_folder_and_file_get_recycle_bin_folders_and_files`, must be a value greater than or equal to `1`")  # noqa: E501
+        if self.api_client.client_side_validation and ('search_pattern' in local_var_params and  # noqa: E501
+                                                        len(local_var_params['search_pattern']) > 100):  # noqa: E501
+            raise ApiValueError("Invalid value for parameter `search_pattern` when calling `report_folder_and_file_get_recycle_bin_folders_and_files`, length must be less than or equal to `100`")  # noqa: E501
+        if self.api_client.client_side_validation and ('search_pattern' in local_var_params and  # noqa: E501
+                                                        len(local_var_params['search_pattern']) < 0):  # noqa: E501
+            raise ApiValueError("Invalid value for parameter `search_pattern` when calling `report_folder_and_file_get_recycle_bin_folders_and_files`, length must be greater than or equal to `0`")  # noqa: E501
+        collection_formats = {}
+
+        path_params = {}
+        if 'subscription_id' in local_var_params:
+            path_params['subscriptionId'] = local_var_params['subscription_id']  # noqa: E501
+
+        query_params = []
+        if 'skip' in local_var_params and local_var_params['skip'] is not None:  # noqa: E501
+            query_params.append(('skip', local_var_params['skip']))  # noqa: E501
+        if 'take' in local_var_params and local_var_params['take'] is not None:  # noqa: E501
+            query_params.append(('take', local_var_params['take']))  # noqa: E501
+        if 'order_by' in local_var_params and local_var_params['order_by'] is not None:  # noqa: E501
+            query_params.append(('orderBy', local_var_params['order_by']))  # noqa: E501
+        if 'desc' in local_var_params and local_var_params['desc'] is not None:  # noqa: E501
+            query_params.append(('desc', local_var_params['desc']))  # noqa: E501
+        if 'search_pattern' in local_var_params and local_var_params['search_pattern'] is not None:  # noqa: E501
+            query_params.append(('searchPattern', local_var_params['search_pattern']))  # noqa: E501
+        if 'use_regex' in local_var_params and local_var_params['use_regex'] is not None:  # noqa: E501
+            query_params.append(('useRegex', local_var_params['use_regex']))  # noqa: E501
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = ['ApiKey', 'JWT']  # noqa: E501
+        
+        response_types_map = {
+            200: "FilesVM",
+            400: "ProblemDetails",
+            403: "ProblemDetails",
+            404: "ProblemDetails",
+        }
+
+        return self.api_client.call_api(
+            '/api/rp/v1/Reports/{subscriptionId}/ListRecycleBinFolderAndFiles', 'GET',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_types_map=response_types_map,
+            auth_settings=auth_settings,
+            async_req=local_var_params.get('async_req'),
+            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
+            _preload_content=local_var_params.get('_preload_content', True),
+            _request_timeout=local_var_params.get('_request_timeout'),
+            collection_formats=collection_formats,
+            _request_auth=local_var_params.get('_request_auth'))
+
+    def report_folder_and_file_recover_all_from_recycle_bin(self, subscription_id, **kwargs):  # noqa: E501
+        """Recover all folders and files from recycle bin  # noqa: E501
+
+        User with a Create RecycleBin permission can access this method.  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.report_folder_and_file_recover_all_from_recycle_bin(subscription_id, async_req=True)
+        >>> result = thread.get()
+
+        :param subscription_id: subscription id (required)
+        :type subscription_id: str
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
+        :param _preload_content: if False, the urllib3.HTTPResponse object will
+                                 be returned without reading/decoding response
+                                 data. Default is True.
+        :type _preload_content: bool, optional
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :return: Returns the result object.
+                 If the method is called asynchronously,
+                 returns the request thread.
+        :rtype: None
+        """
+        kwargs['_return_http_data_only'] = True
+        return self.report_folder_and_file_recover_all_from_recycle_bin_with_http_info(subscription_id, **kwargs)  # noqa: E501
+
+    def report_folder_and_file_recover_all_from_recycle_bin_with_http_info(self, subscription_id, **kwargs):  # noqa: E501
+        """Recover all folders and files from recycle bin  # noqa: E501
+
+        User with a Create RecycleBin permission can access this method.  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.report_folder_and_file_recover_all_from_recycle_bin_with_http_info(subscription_id, async_req=True)
+        >>> result = thread.get()
+
+        :param subscription_id: subscription id (required)
+        :type subscription_id: str
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
+        :param _return_http_data_only: response data without head status code
+                                       and headers
+        :type _return_http_data_only: bool, optional
+        :param _preload_content: if False, the urllib3.HTTPResponse object will
+                                 be returned without reading/decoding response
+                                 data. Default is True.
+        :type _preload_content: bool, optional
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the authentication
+                              in the spec for a single request.
+        :type _request_auth: dict, optional
+        :return: Returns the result object.
+                 If the method is called asynchronously,
+                 returns the request thread.
+        :rtype: None
+        """
+
+        local_var_params = locals()
+
+        all_params = [
+            'subscription_id'
+        ]
+        all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout',
+                '_request_auth'
+            ]
+        )
+
+        for key, val in six.iteritems(local_var_params['kwargs']):
+            if key not in all_params:
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method report_folder_and_file_recover_all_from_recycle_bin" % key
+                )
+            local_var_params[key] = val
+        del local_var_params['kwargs']
+        # verify the required parameter 'subscription_id' is set
+        if self.api_client.client_side_validation and ('subscription_id' not in local_var_params or  # noqa: E501
+                                                        local_var_params['subscription_id'] is None):  # noqa: E501
+            raise ApiValueError("Missing the required parameter `subscription_id` when calling `report_folder_and_file_recover_all_from_recycle_bin`")  # noqa: E501
+
+        if self.api_client.client_side_validation and 'subscription_id' in local_var_params and not re.search(r'^[A-Fa-f0-9]{24}$', local_var_params['subscription_id']):  # noqa: E501
+            raise ApiValueError("Invalid value for parameter `subscription_id` when calling `report_folder_and_file_recover_all_from_recycle_bin`, must conform to the pattern `/^[A-Fa-f0-9]{24}$/`")  # noqa: E501
+        collection_formats = {}
+
+        path_params = {}
+        if 'subscription_id' in local_var_params:
+            path_params['subscriptionId'] = local_var_params['subscription_id']  # noqa: E501
+
+        query_params = []
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = ['ApiKey', 'JWT']  # noqa: E501
+        
+        response_types_map = {}
+
+        return self.api_client.call_api(
+            '/api/rp/v1/Reports/{subscriptionId}/RecoverRecycleBin', 'POST',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_types_map=response_types_map,
+            auth_settings=auth_settings,
+            async_req=local_var_params.get('async_req'),
+            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
+            _preload_content=local_var_params.get('_preload_content', True),
+            _request_timeout=local_var_params.get('_request_timeout'),
+            collection_formats=collection_formats,
+            _request_auth=local_var_params.get('_request_auth'))
+
     def report_folders_copy_folder(self, id, folder_id, **kwargs):  # noqa: E501
         """Move folder to a specified folder  # noqa: E501
 
@@ -558,8 +1024,6 @@ class ReportsApi(object):
 
         :param id: folder id (required)
         :type id: str
-        :param recursive: delete all childs
-        :type recursive: bool
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
@@ -590,8 +1054,6 @@ class ReportsApi(object):
 
         :param id: folder id (required)
         :type id: str
-        :param recursive: delete all childs
-        :type recursive: bool
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
         :param _return_http_data_only: response data without head status code
@@ -618,8 +1080,7 @@ class ReportsApi(object):
         local_var_params = locals()
 
         all_params = [
-            'id',
-            'recursive'
+            'id'
         ]
         all_params.extend(
             [
@@ -653,8 +1114,6 @@ class ReportsApi(object):
             path_params['id'] = local_var_params['id']  # noqa: E501
 
         query_params = []
-        if 'recursive' in local_var_params and local_var_params['recursive'] is not None:  # noqa: E501
-            query_params.append(('recursive', local_var_params['recursive']))  # noqa: E501
 
         header_params = {}
 
@@ -1696,6 +2155,141 @@ class ReportsApi(object):
             collection_formats=collection_formats,
             _request_auth=local_var_params.get('_request_auth'))
 
+    def report_folders_move_folder_to_bin(self, id, **kwargs):  # noqa: E501
+        """Move specified folder to recycle bin  # noqa: E501
+
+        User with a Delete Entity permission can access this method.  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.report_folders_move_folder_to_bin(id, async_req=True)
+        >>> result = thread.get()
+
+        :param id: folder id (required)
+        :type id: str
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
+        :param _preload_content: if False, the urllib3.HTTPResponse object will
+                                 be returned without reading/decoding response
+                                 data. Default is True.
+        :type _preload_content: bool, optional
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :return: Returns the result object.
+                 If the method is called asynchronously,
+                 returns the request thread.
+        :rtype: None
+        """
+        kwargs['_return_http_data_only'] = True
+        return self.report_folders_move_folder_to_bin_with_http_info(id, **kwargs)  # noqa: E501
+
+    def report_folders_move_folder_to_bin_with_http_info(self, id, **kwargs):  # noqa: E501
+        """Move specified folder to recycle bin  # noqa: E501
+
+        User with a Delete Entity permission can access this method.  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.report_folders_move_folder_to_bin_with_http_info(id, async_req=True)
+        >>> result = thread.get()
+
+        :param id: folder id (required)
+        :type id: str
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
+        :param _return_http_data_only: response data without head status code
+                                       and headers
+        :type _return_http_data_only: bool, optional
+        :param _preload_content: if False, the urllib3.HTTPResponse object will
+                                 be returned without reading/decoding response
+                                 data. Default is True.
+        :type _preload_content: bool, optional
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the authentication
+                              in the spec for a single request.
+        :type _request_auth: dict, optional
+        :return: Returns the result object.
+                 If the method is called asynchronously,
+                 returns the request thread.
+        :rtype: None
+        """
+
+        local_var_params = locals()
+
+        all_params = [
+            'id'
+        ]
+        all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout',
+                '_request_auth'
+            ]
+        )
+
+        for key, val in six.iteritems(local_var_params['kwargs']):
+            if key not in all_params:
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method report_folders_move_folder_to_bin" % key
+                )
+            local_var_params[key] = val
+        del local_var_params['kwargs']
+        # verify the required parameter 'id' is set
+        if self.api_client.client_side_validation and ('id' not in local_var_params or  # noqa: E501
+                                                        local_var_params['id'] is None):  # noqa: E501
+            raise ApiValueError("Missing the required parameter `id` when calling `report_folders_move_folder_to_bin`")  # noqa: E501
+
+        if self.api_client.client_side_validation and 'id' in local_var_params and not re.search(r'^[A-Fa-f0-9]{24}$', local_var_params['id']):  # noqa: E501
+            raise ApiValueError("Invalid value for parameter `id` when calling `report_folders_move_folder_to_bin`, must conform to the pattern `/^[A-Fa-f0-9]{24}$/`")  # noqa: E501
+        collection_formats = {}
+
+        path_params = {}
+        if 'id' in local_var_params:
+            path_params['id'] = local_var_params['id']  # noqa: E501
+
+        query_params = []
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = ['ApiKey', 'JWT']  # noqa: E501
+        
+        response_types_map = {}
+
+        return self.api_client.call_api(
+            '/api/rp/v1/Reports/Folder/{id}/ToBin', 'DELETE',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_types_map=response_types_map,
+            auth_settings=auth_settings,
+            async_req=local_var_params.get('async_req'),
+            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
+            _preload_content=local_var_params.get('_preload_content', True),
+            _request_timeout=local_var_params.get('_request_timeout'),
+            collection_formats=collection_formats,
+            _request_auth=local_var_params.get('_request_auth'))
+
     def report_folders_post_folder(self, id, **kwargs):  # noqa: E501
         """Create folder  # noqa: E501
 
@@ -1833,6 +2427,148 @@ class ReportsApi(object):
 
         return self.api_client.call_api(
             '/api/rp/v1/Reports/Folder/{id}/Folder', 'POST',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_types_map=response_types_map,
+            auth_settings=auth_settings,
+            async_req=local_var_params.get('async_req'),
+            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
+            _preload_content=local_var_params.get('_preload_content', True),
+            _request_timeout=local_var_params.get('_request_timeout'),
+            collection_formats=collection_formats,
+            _request_auth=local_var_params.get('_request_auth'))
+
+    def report_folders_recover_folder(self, id, **kwargs):  # noqa: E501
+        """Recover specified folder  # noqa: E501
+
+        User with a Delete Entity permission can access this method.  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.report_folders_recover_folder(id, async_req=True)
+        >>> result = thread.get()
+
+        :param id: folder id (required)
+        :type id: str
+        :param recovery_path:
+        :type recovery_path: str
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
+        :param _preload_content: if False, the urllib3.HTTPResponse object will
+                                 be returned without reading/decoding response
+                                 data. Default is True.
+        :type _preload_content: bool, optional
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :return: Returns the result object.
+                 If the method is called asynchronously,
+                 returns the request thread.
+        :rtype: None
+        """
+        kwargs['_return_http_data_only'] = True
+        return self.report_folders_recover_folder_with_http_info(id, **kwargs)  # noqa: E501
+
+    def report_folders_recover_folder_with_http_info(self, id, **kwargs):  # noqa: E501
+        """Recover specified folder  # noqa: E501
+
+        User with a Delete Entity permission can access this method.  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.report_folders_recover_folder_with_http_info(id, async_req=True)
+        >>> result = thread.get()
+
+        :param id: folder id (required)
+        :type id: str
+        :param recovery_path:
+        :type recovery_path: str
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
+        :param _return_http_data_only: response data without head status code
+                                       and headers
+        :type _return_http_data_only: bool, optional
+        :param _preload_content: if False, the urllib3.HTTPResponse object will
+                                 be returned without reading/decoding response
+                                 data. Default is True.
+        :type _preload_content: bool, optional
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the authentication
+                              in the spec for a single request.
+        :type _request_auth: dict, optional
+        :return: Returns the result object.
+                 If the method is called asynchronously,
+                 returns the request thread.
+        :rtype: None
+        """
+
+        local_var_params = locals()
+
+        all_params = [
+            'id',
+            'recovery_path'
+        ]
+        all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout',
+                '_request_auth'
+            ]
+        )
+
+        for key, val in six.iteritems(local_var_params['kwargs']):
+            if key not in all_params:
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method report_folders_recover_folder" % key
+                )
+            local_var_params[key] = val
+        del local_var_params['kwargs']
+        # verify the required parameter 'id' is set
+        if self.api_client.client_side_validation and ('id' not in local_var_params or  # noqa: E501
+                                                        local_var_params['id'] is None):  # noqa: E501
+            raise ApiValueError("Missing the required parameter `id` when calling `report_folders_recover_folder`")  # noqa: E501
+
+        if self.api_client.client_side_validation and 'id' in local_var_params and not re.search(r'^[A-Fa-f0-9]{24}$', local_var_params['id']):  # noqa: E501
+            raise ApiValueError("Invalid value for parameter `id` when calling `report_folders_recover_folder`, must conform to the pattern `/^[A-Fa-f0-9]{24}$/`")  # noqa: E501
+        collection_formats = {}
+
+        path_params = {}
+        if 'id' in local_var_params:
+            path_params['id'] = local_var_params['id']  # noqa: E501
+
+        query_params = []
+        if 'recovery_path' in local_var_params and local_var_params['recovery_path'] is not None:  # noqa: E501
+            query_params.append(('recoveryPath', local_var_params['recovery_path']))  # noqa: E501
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = ['ApiKey', 'JWT']  # noqa: E501
+        
+        response_types_map = {}
+
+        return self.api_client.call_api(
+            '/api/rp/v1/Reports/Folder/{id}/Recover', 'POST',
             path_params,
             query_params,
             header_params,
@@ -3029,6 +3765,158 @@ class ReportsApi(object):
             collection_formats=collection_formats,
             _request_auth=local_var_params.get('_request_auth'))
 
+    def reports_get_file_history(self, id, **kwargs):  # noqa: E501
+        """Returns list of actions, performed on this file  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.reports_get_file_history(id, async_req=True)
+        >>> result = thread.get()
+
+        :param id: (required)
+        :type id: str
+        :param skip:
+        :type skip: int
+        :param take:
+        :type take: int
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
+        :param _preload_content: if False, the urllib3.HTTPResponse object will
+                                 be returned without reading/decoding response
+                                 data. Default is True.
+        :type _preload_content: bool, optional
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :return: Returns the result object.
+                 If the method is called asynchronously,
+                 returns the request thread.
+        :rtype: AuditActionsVM
+        """
+        kwargs['_return_http_data_only'] = True
+        return self.reports_get_file_history_with_http_info(id, **kwargs)  # noqa: E501
+
+    def reports_get_file_history_with_http_info(self, id, **kwargs):  # noqa: E501
+        """Returns list of actions, performed on this file  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.reports_get_file_history_with_http_info(id, async_req=True)
+        >>> result = thread.get()
+
+        :param id: (required)
+        :type id: str
+        :param skip:
+        :type skip: int
+        :param take:
+        :type take: int
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
+        :param _return_http_data_only: response data without head status code
+                                       and headers
+        :type _return_http_data_only: bool, optional
+        :param _preload_content: if False, the urllib3.HTTPResponse object will
+                                 be returned without reading/decoding response
+                                 data. Default is True.
+        :type _preload_content: bool, optional
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the authentication
+                              in the spec for a single request.
+        :type _request_auth: dict, optional
+        :return: Returns the result object.
+                 If the method is called asynchronously,
+                 returns the request thread.
+        :rtype: tuple(AuditActionsVM, status_code(int), headers(HTTPHeaderDict))
+        """
+
+        local_var_params = locals()
+
+        all_params = [
+            'id',
+            'skip',
+            'take'
+        ]
+        all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout',
+                '_request_auth'
+            ]
+        )
+
+        for key, val in six.iteritems(local_var_params['kwargs']):
+            if key not in all_params:
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method reports_get_file_history" % key
+                )
+            local_var_params[key] = val
+        del local_var_params['kwargs']
+        # verify the required parameter 'id' is set
+        if self.api_client.client_side_validation and ('id' not in local_var_params or  # noqa: E501
+                                                        local_var_params['id'] is None):  # noqa: E501
+            raise ApiValueError("Missing the required parameter `id` when calling `reports_get_file_history`")  # noqa: E501
+
+        if self.api_client.client_side_validation and 'id' in local_var_params and not re.search(r'^[A-Fa-f0-9]{24}$', local_var_params['id']):  # noqa: E501
+            raise ApiValueError("Invalid value for parameter `id` when calling `reports_get_file_history`, must conform to the pattern `/^[A-Fa-f0-9]{24}$/`")  # noqa: E501
+        collection_formats = {}
+
+        path_params = {}
+        if 'id' in local_var_params:
+            path_params['id'] = local_var_params['id']  # noqa: E501
+
+        query_params = []
+        if 'skip' in local_var_params and local_var_params['skip'] is not None:  # noqa: E501
+            query_params.append(('skip', local_var_params['skip']))  # noqa: E501
+        if 'take' in local_var_params and local_var_params['take'] is not None:  # noqa: E501
+            query_params.append(('take', local_var_params['take']))  # noqa: E501
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = ['ApiKey', 'JWT']  # noqa: E501
+        
+        response_types_map = {
+            200: "AuditActionsVM",
+            400: "ProblemDetails",
+            403: "ProblemDetails",
+            404: "ProblemDetails",
+        }
+
+        return self.api_client.call_api(
+            '/api/rp/v1/Reports/File/{id}/History', 'GET',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_types_map=response_types_map,
+            auth_settings=auth_settings,
+            async_req=local_var_params.get('async_req'),
+            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
+            _preload_content=local_var_params.get('_preload_content', True),
+            _request_timeout=local_var_params.get('_request_timeout'),
+            collection_formats=collection_formats,
+            _request_auth=local_var_params.get('_request_auth'))
+
     def reports_get_files_count(self, id, **kwargs):  # noqa: E501
         """Get count of files what contains in a specified folder  # noqa: E501
 
@@ -3643,6 +4531,283 @@ class ReportsApi(object):
 
         return self.api_client.call_api(
             '/api/rp/v1/Reports/File/{id}/Move/{folderId}', 'POST',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_types_map=response_types_map,
+            auth_settings=auth_settings,
+            async_req=local_var_params.get('async_req'),
+            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
+            _preload_content=local_var_params.get('_preload_content', True),
+            _request_timeout=local_var_params.get('_request_timeout'),
+            collection_formats=collection_formats,
+            _request_auth=local_var_params.get('_request_auth'))
+
+    def reports_move_file_to_bin(self, id, **kwargs):  # noqa: E501
+        """Move specified file to recycle bin  # noqa: E501
+
+        User with Delete permission can access the method.  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.reports_move_file_to_bin(id, async_req=True)
+        >>> result = thread.get()
+
+        :param id: file id (required)
+        :type id: str
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
+        :param _preload_content: if False, the urllib3.HTTPResponse object will
+                                 be returned without reading/decoding response
+                                 data. Default is True.
+        :type _preload_content: bool, optional
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :return: Returns the result object.
+                 If the method is called asynchronously,
+                 returns the request thread.
+        :rtype: None
+        """
+        kwargs['_return_http_data_only'] = True
+        return self.reports_move_file_to_bin_with_http_info(id, **kwargs)  # noqa: E501
+
+    def reports_move_file_to_bin_with_http_info(self, id, **kwargs):  # noqa: E501
+        """Move specified file to recycle bin  # noqa: E501
+
+        User with Delete permission can access the method.  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.reports_move_file_to_bin_with_http_info(id, async_req=True)
+        >>> result = thread.get()
+
+        :param id: file id (required)
+        :type id: str
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
+        :param _return_http_data_only: response data without head status code
+                                       and headers
+        :type _return_http_data_only: bool, optional
+        :param _preload_content: if False, the urllib3.HTTPResponse object will
+                                 be returned without reading/decoding response
+                                 data. Default is True.
+        :type _preload_content: bool, optional
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the authentication
+                              in the spec for a single request.
+        :type _request_auth: dict, optional
+        :return: Returns the result object.
+                 If the method is called asynchronously,
+                 returns the request thread.
+        :rtype: None
+        """
+
+        local_var_params = locals()
+
+        all_params = [
+            'id'
+        ]
+        all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout',
+                '_request_auth'
+            ]
+        )
+
+        for key, val in six.iteritems(local_var_params['kwargs']):
+            if key not in all_params:
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method reports_move_file_to_bin" % key
+                )
+            local_var_params[key] = val
+        del local_var_params['kwargs']
+        # verify the required parameter 'id' is set
+        if self.api_client.client_side_validation and ('id' not in local_var_params or  # noqa: E501
+                                                        local_var_params['id'] is None):  # noqa: E501
+            raise ApiValueError("Missing the required parameter `id` when calling `reports_move_file_to_bin`")  # noqa: E501
+
+        if self.api_client.client_side_validation and 'id' in local_var_params and not re.search(r'^[A-Fa-f0-9]{24}$', local_var_params['id']):  # noqa: E501
+            raise ApiValueError("Invalid value for parameter `id` when calling `reports_move_file_to_bin`, must conform to the pattern `/^[A-Fa-f0-9]{24}$/`")  # noqa: E501
+        collection_formats = {}
+
+        path_params = {}
+        if 'id' in local_var_params:
+            path_params['id'] = local_var_params['id']  # noqa: E501
+
+        query_params = []
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = ['ApiKey', 'JWT']  # noqa: E501
+        
+        response_types_map = {}
+
+        return self.api_client.call_api(
+            '/api/rp/v1/Reports/File/{id}/ToBin', 'DELETE',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_types_map=response_types_map,
+            auth_settings=auth_settings,
+            async_req=local_var_params.get('async_req'),
+            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
+            _preload_content=local_var_params.get('_preload_content', True),
+            _request_timeout=local_var_params.get('_request_timeout'),
+            collection_formats=collection_formats,
+            _request_auth=local_var_params.get('_request_auth'))
+
+    def reports_recover_file(self, id, **kwargs):  # noqa: E501
+        """Recover specified file from bin  # noqa: E501
+
+        User with Delete permission can access the method.  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.reports_recover_file(id, async_req=True)
+        >>> result = thread.get()
+
+        :param id: file id (required)
+        :type id: str
+        :param recovery_path:
+        :type recovery_path: str
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
+        :param _preload_content: if False, the urllib3.HTTPResponse object will
+                                 be returned without reading/decoding response
+                                 data. Default is True.
+        :type _preload_content: bool, optional
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :return: Returns the result object.
+                 If the method is called asynchronously,
+                 returns the request thread.
+        :rtype: None
+        """
+        kwargs['_return_http_data_only'] = True
+        return self.reports_recover_file_with_http_info(id, **kwargs)  # noqa: E501
+
+    def reports_recover_file_with_http_info(self, id, **kwargs):  # noqa: E501
+        """Recover specified file from bin  # noqa: E501
+
+        User with Delete permission can access the method.  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.reports_recover_file_with_http_info(id, async_req=True)
+        >>> result = thread.get()
+
+        :param id: file id (required)
+        :type id: str
+        :param recovery_path:
+        :type recovery_path: str
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
+        :param _return_http_data_only: response data without head status code
+                                       and headers
+        :type _return_http_data_only: bool, optional
+        :param _preload_content: if False, the urllib3.HTTPResponse object will
+                                 be returned without reading/decoding response
+                                 data. Default is True.
+        :type _preload_content: bool, optional
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the authentication
+                              in the spec for a single request.
+        :type _request_auth: dict, optional
+        :return: Returns the result object.
+                 If the method is called asynchronously,
+                 returns the request thread.
+        :rtype: None
+        """
+
+        local_var_params = locals()
+
+        all_params = [
+            'id',
+            'recovery_path'
+        ]
+        all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout',
+                '_request_auth'
+            ]
+        )
+
+        for key, val in six.iteritems(local_var_params['kwargs']):
+            if key not in all_params:
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method reports_recover_file" % key
+                )
+            local_var_params[key] = val
+        del local_var_params['kwargs']
+        # verify the required parameter 'id' is set
+        if self.api_client.client_side_validation and ('id' not in local_var_params or  # noqa: E501
+                                                        local_var_params['id'] is None):  # noqa: E501
+            raise ApiValueError("Missing the required parameter `id` when calling `reports_recover_file`")  # noqa: E501
+
+        if self.api_client.client_side_validation and 'id' in local_var_params and not re.search(r'^[A-Fa-f0-9]{24}$', local_var_params['id']):  # noqa: E501
+            raise ApiValueError("Invalid value for parameter `id` when calling `reports_recover_file`, must conform to the pattern `/^[A-Fa-f0-9]{24}$/`")  # noqa: E501
+        collection_formats = {}
+
+        path_params = {}
+        if 'id' in local_var_params:
+            path_params['id'] = local_var_params['id']  # noqa: E501
+
+        query_params = []
+        if 'recovery_path' in local_var_params and local_var_params['recovery_path'] is not None:  # noqa: E501
+            query_params.append(('recoveryPath', local_var_params['recovery_path']))  # noqa: E501
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = ['ApiKey', 'JWT']  # noqa: E501
+        
+        response_types_map = {}
+
+        return self.api_client.call_api(
+            '/api/rp/v1/Reports/File/{id}/Recover', 'POST',
             path_params,
             query_params,
             header_params,

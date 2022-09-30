@@ -41,9 +41,10 @@ class SubscriptionGet(object):
     _64 = "64"
     _128 = "128"
     _256 = "256"
+    _512 = "512"
     _1 = "-1"
 
-    allowable_values = [_0, _1, _2, _4, _8, _16, _32, _64, _128, _256, _1]  # noqa: E501
+    allowable_values = [_0, _1, _2, _4, _8, _16, _32, _64, _128, _256, _512, _1]  # noqa: E501
 
     """
     Attributes:
