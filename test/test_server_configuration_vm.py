@@ -40,6 +40,7 @@ class TestServerConfigurationVM(unittest.TestCase):
                 logo_link = '', 
                 copyright = '', 
                 corporate_server_mode = True, 
+                last_sla_version = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
                 is_disabled = True, 
                 frontend = fastreport_cloud_sdk.models.frontend_app.FrontendApp(
                     mixins = fastreport_cloud_sdk.models.app_mixins.AppMixins(
@@ -50,7 +51,13 @@ class TestServerConfigurationVM(unittest.TestCase):
                     use_local = True, 
                     use_open_id = True, 
                     authority = '', ), 
-                designer_for_anons = True
+                designer_for_anons = True, 
+                sla_link = '', 
+                first_steps_video_link = '', 
+                about_link = '', 
+                home_page_link = '', 
+                auth_server_name = '', 
+                update_workspace_link = ''
             )
         else :
             return ServerConfigurationVM(

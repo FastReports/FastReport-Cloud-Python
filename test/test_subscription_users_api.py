@@ -35,6 +35,13 @@ class TestSubscriptionUsersApi(unittest.TestCase):
         """
         pass
 
+    def test_subscription_users_count_users_async(self):
+        """Test case for subscription_users_count_users_async
+
+        Returns a number of users in subscription  # noqa: E501
+        """
+        pass
+
     def test_subscription_users_get_users(self):
         """Test case for subscription_users_get_users
 

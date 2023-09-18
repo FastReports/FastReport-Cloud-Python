@@ -93,6 +93,7 @@ class ApiKeysApi(object):
                               request; this effectively ignores the authentication
                               in the spec for a single request.
         :type _request_auth: dict, optional
+        :type _content_type: string, optional: force content-type for the request
         :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
@@ -110,7 +111,9 @@ class ApiKeysApi(object):
                 '_return_http_data_only',
                 '_preload_content',
                 '_request_timeout',
-                '_request_auth'
+                '_request_auth',
+                '_content_type',
+                '_headers'
             ]
         )
 
@@ -123,8 +126,7 @@ class ApiKeysApi(object):
             local_var_params[key] = val
         del local_var_params['kwargs']
         # verify the required parameter 'create_api_key_vm' is set
-        if self.api_client.client_side_validation and ('create_api_key_vm' not in local_var_params or  # noqa: E501
-                                                        local_var_params['create_api_key_vm'] is None):  # noqa: E501
+        if self.api_client.client_side_validation and local_var_params.get('create_api_key_vm') is None:  # noqa: E501
             raise ApiValueError("Missing the required parameter `create_api_key_vm` when calling `api_keys_create_api_key`")  # noqa: E501
 
         collection_formats = {}
@@ -133,7 +135,7 @@ class ApiKeysApi(object):
 
         query_params = []
 
-        header_params = {}
+        header_params = dict(local_var_params.get('_headers', {}))
 
         form_params = []
         local_var_files = {}
@@ -146,12 +148,16 @@ class ApiKeysApi(object):
             ['application/json'])  # noqa: E501
 
         # HTTP header `Content-Type`
-        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
-            ['application/json', 'text/json', 'application/*+json'])  # noqa: E501
+        content_types_list = local_var_params.get('_content_type',
+            self.api_client.select_header_content_type(
+                ['application/json', 'text/json', 'application/*+json'],
+                'POST', body_params))  # noqa: E501
+        if content_types_list:
+                header_params['Content-Type'] = content_types_list
 
         # Authentication setting
         auth_settings = ['ApiKey', 'JWT']  # noqa: E501
-        
+
         response_types_map = {
             200: "ApiKeyVM",
             400: "ProblemDetails",
@@ -232,6 +238,7 @@ class ApiKeysApi(object):
                               request; this effectively ignores the authentication
                               in the spec for a single request.
         :type _request_auth: dict, optional
+        :type _content_type: string, optional: force content-type for the request
         :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
@@ -249,7 +256,9 @@ class ApiKeysApi(object):
                 '_return_http_data_only',
                 '_preload_content',
                 '_request_timeout',
-                '_request_auth'
+                '_request_auth',
+                '_content_type',
+                '_headers'
             ]
         )
 
@@ -262,8 +271,7 @@ class ApiKeysApi(object):
             local_var_params[key] = val
         del local_var_params['kwargs']
         # verify the required parameter 'delete_api_key_vm' is set
-        if self.api_client.client_side_validation and ('delete_api_key_vm' not in local_var_params or  # noqa: E501
-                                                        local_var_params['delete_api_key_vm'] is None):  # noqa: E501
+        if self.api_client.client_side_validation and local_var_params.get('delete_api_key_vm') is None:  # noqa: E501
             raise ApiValueError("Missing the required parameter `delete_api_key_vm` when calling `api_keys_delete_api_key`")  # noqa: E501
 
         collection_formats = {}
@@ -272,7 +280,7 @@ class ApiKeysApi(object):
 
         query_params = []
 
-        header_params = {}
+        header_params = dict(local_var_params.get('_headers', {}))
 
         form_params = []
         local_var_files = {}
@@ -285,12 +293,16 @@ class ApiKeysApi(object):
             ['application/json'])  # noqa: E501
 
         # HTTP header `Content-Type`
-        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
-            ['application/json', 'text/json', 'application/*+json'])  # noqa: E501
+        content_types_list = local_var_params.get('_content_type',
+            self.api_client.select_header_content_type(
+                ['application/json', 'text/json', 'application/*+json'],
+                'DELETE', body_params))  # noqa: E501
+        if content_types_list:
+                header_params['Content-Type'] = content_types_list
 
         # Authentication setting
         auth_settings = ['ApiKey', 'JWT']  # noqa: E501
-        
+
         response_types_map = {}
 
         return self.api_client.call_api(
@@ -365,6 +377,7 @@ class ApiKeysApi(object):
                               request; this effectively ignores the authentication
                               in the spec for a single request.
         :type _request_auth: dict, optional
+        :type _content_type: string, optional: force content-type for the request
         :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
@@ -381,7 +394,9 @@ class ApiKeysApi(object):
                 '_return_http_data_only',
                 '_preload_content',
                 '_request_timeout',
-                '_request_auth'
+                '_request_auth',
+                '_content_type',
+                '_headers'
             ]
         )
 
@@ -400,7 +415,7 @@ class ApiKeysApi(object):
 
         query_params = []
 
-        header_params = {}
+        header_params = dict(local_var_params.get('_headers', {}))
 
         form_params = []
         local_var_files = {}
@@ -412,7 +427,7 @@ class ApiKeysApi(object):
 
         # Authentication setting
         auth_settings = ['ApiKey', 'JWT']  # noqa: E501
-        
+
         response_types_map = {
             200: "ApiKeysVM",
             401: "ProblemDetails",

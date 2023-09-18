@@ -38,13 +38,13 @@ class TestCreateDataSourceVM(unittest.TestCase):
             return CreateDataSourceVM(
                 name = '', 
                 connection_string = '', 
-                subscription_id = '62ECB020842930cc01FFCCfe', 
+                subscription_id = '62ECB020842930cc01FFCCfe0', 
                 connection_type = 'JSON'
             )
         else :
             return CreateDataSourceVM(
                 connection_string = '',
-                subscription_id = '62ECB020842930cc01FFCCfe',
+                subscription_id = '62ECB020842930cc01FFCCfe0',
         )
 
     def testCreateDataSourceVM(self):

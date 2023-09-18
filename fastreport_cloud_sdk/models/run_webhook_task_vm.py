@@ -36,101 +36,75 @@ class RunWebhookTaskVM(object):
                             and the value is json key in definition.
     """
     openapi_types = {
-        'endpoints': 'list[RunEndpointVM]',
-        'subscription_id': 'str',
-        'type': 'TaskType'
+        'headers': 'dict[str, str]',
+        'url': 'str'
     }
 
     attribute_map = {
-        'endpoints': 'endpoints',
-        'subscription_id': 'subscriptionId',
-        'type': 'type'
+        'headers': 'headers',
+        'url': 'url'
     }
 
-    def __init__(self, endpoints=None, subscription_id=None, type=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, headers=None, url=None, local_vars_configuration=None):  # noqa: E501
         """RunWebhookTaskVM - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration.get_default_copy()
         self.local_vars_configuration = local_vars_configuration
 
-        self._endpoints = None
-        self._subscription_id = None
-        self._type = None
+        self._headers = None
+        self._url = None
         self.discriminator = None
 
-        self.endpoints = endpoints
-        self.subscription_id = subscription_id
-        if type is not None:
-            self.type = type
+        self.headers = headers
+        self.url = url
 
     @property
-    def endpoints(self):
-        """Gets the endpoints of this RunWebhookTaskVM.  # noqa: E501
+    def headers(self):
+        """Gets the headers of this RunWebhookTaskVM.  # noqa: E501
 
 
-        :return: The endpoints of this RunWebhookTaskVM.  # noqa: E501
-        :rtype: list[RunEndpointVM]
+        :return: The headers of this RunWebhookTaskVM.  # noqa: E501
+        :rtype: dict[str, str]
         """
-        return self._endpoints
+        return self._headers
 
-    @endpoints.setter
-    def endpoints(self, endpoints):
-        """Sets the endpoints of this RunWebhookTaskVM.
+    @headers.setter
+    def headers(self, headers):
+        """Sets the headers of this RunWebhookTaskVM.
 
 
-        :param endpoints: The endpoints of this RunWebhookTaskVM.  # noqa: E501
-        :type endpoints: list[RunEndpointVM]
+        :param headers: The headers of this RunWebhookTaskVM.  # noqa: E501
+        :type headers: dict[str, str]
         """
-        if (self.local_vars_configuration.client_side_validation and
-                endpoints is not None and len(endpoints) > 5):
-            raise ValueError("Invalid value for `endpoints`, number of items must be less than or equal to `5`")  # noqa: E501
 
-        self._endpoints = endpoints
+        self._headers = headers
 
     @property
-    def subscription_id(self):
-        """Gets the subscription_id of this RunWebhookTaskVM.  # noqa: E501
+    def url(self):
+        """Gets the url of this RunWebhookTaskVM.  # noqa: E501
 
 
-        :return: The subscription_id of this RunWebhookTaskVM.  # noqa: E501
+        :return: The url of this RunWebhookTaskVM.  # noqa: E501
         :rtype: str
         """
-        return self._subscription_id
+        return self._url
 
-    @subscription_id.setter
-    def subscription_id(self, subscription_id):
-        """Sets the subscription_id of this RunWebhookTaskVM.
+    @url.setter
+    def url(self, url):
+        """Sets the url of this RunWebhookTaskVM.
 
 
-        :param subscription_id: The subscription_id of this RunWebhookTaskVM.  # noqa: E501
-        :type subscription_id: str
+        :param url: The url of this RunWebhookTaskVM.  # noqa: E501
+        :type url: str
         """
         if (self.local_vars_configuration.client_side_validation and
-                subscription_id is not None and not re.search(r'(^$)|(^[A-Fa-f0-9]{24}$)', subscription_id)):  # noqa: E501
-            raise ValueError(r"Invalid value for `subscription_id`, must be a follow pattern or equal to `/(^$)|(^[A-Fa-f0-9]{24}$)/`")  # noqa: E501
+                url is not None and len(url) > 5000):
+            raise ValueError("Invalid value for `url`, length must be less than or equal to `5000`")  # noqa: E501
+        if (self.local_vars_configuration.client_side_validation and
+                url is not None and len(url) < 1):
+            raise ValueError("Invalid value for `url`, length must be greater than or equal to `1`")  # noqa: E501
 
-        self._subscription_id = subscription_id
-
-    @property
-    def type(self):
-        """Gets the type of this RunWebhookTaskVM.  # noqa: E501
-
-
-        :return: The type of this RunWebhookTaskVM.  # noqa: E501
-        :rtype: TaskType
-        """
-        return self._type
-
-    @type.setter
-    def type(self, type):
-        """Sets the type of this RunWebhookTaskVM.
-
-
-        :param type: The type of this RunWebhookTaskVM.  # noqa: E501
-        :type type: TaskType
-        """
-
-        self._type = type
+        self._url = url
 
     def to_dict(self, serialize=False):
         """Returns the model properties as a dict"""

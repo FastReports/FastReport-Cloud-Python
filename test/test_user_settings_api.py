@@ -28,6 +28,13 @@ class TestUserSettingsApi(unittest.TestCase):
     def tearDown(self):
         pass
 
+    def test_user_settings_accept_agreements(self):
+        """Test case for user_settings_accept_agreements
+
+        Use this endpoint to accept current version of service license agreement  # noqa: E501
+        """
+        pass
+
     def test_user_settings_get_current_user_settings(self):
         """Test case for user_settings_get_current_user_settings
 

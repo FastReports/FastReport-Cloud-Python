@@ -36,40 +36,89 @@ class CreateTaskBaseVM(object):
                             and the value is json key in definition.
     """
     openapi_types = {
+        'cron_expression': 'str',
+        'delayed_run_time': 'datetime',
         'name': 'str',
         'subscription_id': 'str',
-        'type': 'TaskType',
-        'delayed_run_time': 'datetime',
-        'cron_expression': 'str'
+        't': 'str'
     }
 
     attribute_map = {
+        'cron_expression': 'cronExpression',
+        'delayed_run_time': 'delayedRunTime',
         'name': 'name',
         'subscription_id': 'subscriptionId',
-        'type': 'type',
-        'delayed_run_time': 'delayedRunTime',
-        'cron_expression': 'cronExpression'
+        't': '$t'
     }
 
-    def __init__(self, name=None, subscription_id=None, type=None, delayed_run_time=None, cron_expression=None, local_vars_configuration=None):  # noqa: E501
+    discriminator_value_class_map = {
+        'CreateFetchTaskVM': 'CreateFetchTaskVM',
+        'CreateThumbnailReportTaskVM': 'CreateThumbnailReportTaskVM',
+        'CreateThumbnailTemplateTaskVM': 'CreateThumbnailTemplateTaskVM',
+        'CreateTransformTaskBaseVM': 'CreateTransformTaskBaseVM',
+        'CreateTransportTaskBaseVM': 'CreateTransportTaskBaseVM'
+    }
+
+    def __init__(self, cron_expression=None, delayed_run_time=None, name=None, subscription_id=None, t=None, local_vars_configuration=None):  # noqa: E501
         """CreateTaskBaseVM - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration.get_default_copy()
         self.local_vars_configuration = local_vars_configuration
 
+        self._cron_expression = None
+        self._delayed_run_time = None
         self._name = None
         self._subscription_id = None
-        self._type = None
-        self._delayed_run_time = None
-        self._cron_expression = None
-        self.discriminator = None
+        self._t = None
+        self.discriminator = 't'
 
+        self.cron_expression = cron_expression
+        self.delayed_run_time = delayed_run_time
         self.name = name
         self.subscription_id = subscription_id
-        if type is not None:
-            self.type = type
-        self.delayed_run_time = delayed_run_time
-        self.cron_expression = cron_expression
+        self.t = t
+
+    @property
+    def cron_expression(self):
+        """Gets the cron_expression of this CreateTaskBaseVM.  # noqa: E501
+
+
+        :return: The cron_expression of this CreateTaskBaseVM.  # noqa: E501
+        :rtype: str
+        """
+        return self._cron_expression
+
+    @cron_expression.setter
+    def cron_expression(self, cron_expression):
+        """Sets the cron_expression of this CreateTaskBaseVM.
+
+
+        :param cron_expression: The cron_expression of this CreateTaskBaseVM.  # noqa: E501
+        :type cron_expression: str
+        """
+
+        self._cron_expression = cron_expression
+
+    @property
+    def delayed_run_time(self):
+        """Gets the delayed_run_time of this CreateTaskBaseVM.  # noqa: E501
+
+
+        :return: The delayed_run_time of this CreateTaskBaseVM.  # noqa: E501
+        :rtype: datetime
+        """
+        return self._delayed_run_time
+
+    @delayed_run_time.setter
+    def delayed_run_time(self, delayed_run_time):
+        """Sets the delayed_run_time of this CreateTaskBaseVM.
+
+
+        :param delayed_run_time: The delayed_run_time of this CreateTaskBaseVM.  # noqa: E501
+        :type delayed_run_time: datetime
+        """
+
+        self._delayed_run_time = delayed_run_time
 
     @property
     def name(self):
@@ -123,67 +172,33 @@ class CreateTaskBaseVM(object):
         self._subscription_id = subscription_id
 
     @property
-    def type(self):
-        """Gets the type of this CreateTaskBaseVM.  # noqa: E501
+    def t(self):
+        """Gets the t of this CreateTaskBaseVM.  # noqa: E501
 
 
-        :return: The type of this CreateTaskBaseVM.  # noqa: E501
-        :rtype: TaskType
-        """
-        return self._type
-
-    @type.setter
-    def type(self, type):
-        """Sets the type of this CreateTaskBaseVM.
-
-
-        :param type: The type of this CreateTaskBaseVM.  # noqa: E501
-        :type type: TaskType
-        """
-
-        self._type = type
-
-    @property
-    def delayed_run_time(self):
-        """Gets the delayed_run_time of this CreateTaskBaseVM.  # noqa: E501
-
-
-        :return: The delayed_run_time of this CreateTaskBaseVM.  # noqa: E501
-        :rtype: datetime
-        """
-        return self._delayed_run_time
-
-    @delayed_run_time.setter
-    def delayed_run_time(self, delayed_run_time):
-        """Sets the delayed_run_time of this CreateTaskBaseVM.
-
-
-        :param delayed_run_time: The delayed_run_time of this CreateTaskBaseVM.  # noqa: E501
-        :type delayed_run_time: datetime
-        """
-
-        self._delayed_run_time = delayed_run_time
-
-    @property
-    def cron_expression(self):
-        """Gets the cron_expression of this CreateTaskBaseVM.  # noqa: E501
-
-
-        :return: The cron_expression of this CreateTaskBaseVM.  # noqa: E501
+        :return: The t of this CreateTaskBaseVM.  # noqa: E501
         :rtype: str
         """
-        return self._cron_expression
+        return self._t
 
-    @cron_expression.setter
-    def cron_expression(self, cron_expression):
-        """Sets the cron_expression of this CreateTaskBaseVM.
+    @t.setter
+    def t(self, t):
+        """Sets the t of this CreateTaskBaseVM.
 
 
-        :param cron_expression: The cron_expression of this CreateTaskBaseVM.  # noqa: E501
-        :type cron_expression: str
+        :param t: The t of this CreateTaskBaseVM.  # noqa: E501
+        :type t: str
         """
+        if self.local_vars_configuration.client_side_validation and t is None:  # noqa: E501
+            raise ValueError("Invalid value for `t`, must not be `None`")  # noqa: E501
 
-        self._cron_expression = cron_expression
+        self._t = t
+
+    def get_real_child_model(self, data):
+        """Returns the real base class specified by the discriminator"""
+        discriminator_key = self.attribute_map[self.discriminator]
+        discriminator_value = data[discriminator_key]
+        return self.discriminator_value_class_map.get(discriminator_value)
 
     def to_dict(self, serialize=False):
         """Returns the model properties as a dict"""

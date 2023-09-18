@@ -389,13 +389,6 @@ conf = fastreport_cloud_sdk.Configuration(
         :return: The Auth Settings information dict.
         """
         auth = {}
-        if self.username is not None and self.password is not None:
-            auth['ApiKey'] = {
-                'type': 'basic',
-                'in': 'header',
-                'key': 'Authorization',
-                'value': self.get_basic_auth_token()
-            }
         if self.access_token is not None:
             auth['JWT'] = {
                 'type': 'bearer',
@@ -403,6 +396,13 @@ conf = fastreport_cloud_sdk.Configuration(
                 'format': 'JWT',
                 'key': 'Authorization',
                 'value': 'Bearer ' + self.access_token
+            }
+        if self.username is not None and self.password is not None:
+            auth['ApiKey'] = {
+                'type': 'basic',
+                'in': 'header',
+                'key': 'Authorization',
+                'value': self.get_basic_auth_token()
             }
         return auth
 
@@ -415,7 +415,7 @@ conf = fastreport_cloud_sdk.Configuration(
                "OS: {env}\n"\
                "Python Version: {pyversion}\n"\
                "Version of the API: v1\n"\
-               "SDK Package Version: 2022.2.29".\
+               "SDK Package Version: 2023.1.60".\
                format(env=sys.platform, pyversion=sys.version)
 
     def get_host_settings(self):

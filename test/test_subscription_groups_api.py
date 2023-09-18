@@ -28,6 +28,13 @@ class TestSubscriptionGroupsApi(unittest.TestCase):
     def tearDown(self):
         pass
 
+    def test_subscription_groups_count_groups_async(self):
+        """Test case for subscription_groups_count_groups_async
+
+        Returns a number of groups in subscription  # noqa: E501
+        """
+        pass
+
     def test_subscription_groups_get_groups_list(self):
         """Test case for subscription_groups_get_groups_list
 

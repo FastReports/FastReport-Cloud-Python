@@ -36,40 +36,23 @@ class CreateDataSourceAdminVM(object):
                             and the value is json key in definition.
     """
     openapi_types = {
-        'owner_id': 'str',
-        'name': 'str',
-        'connection_string': 'str',
-        'subscription_id': 'str',
-        'connection_type': 'DataSourceConnectionType'
+        'owner_id': 'str'
     }
 
     attribute_map = {
-        'owner_id': 'ownerId',
-        'name': 'name',
-        'connection_string': 'connectionString',
-        'subscription_id': 'subscriptionId',
-        'connection_type': 'connectionType'
+        'owner_id': 'ownerId'
     }
 
-    def __init__(self, owner_id=None, name=None, connection_string=None, subscription_id=None, connection_type=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, owner_id=None, local_vars_configuration=None):  # noqa: E501
         """CreateDataSourceAdminVM - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration.get_default_copy()
         self.local_vars_configuration = local_vars_configuration
 
         self._owner_id = None
-        self._name = None
-        self._connection_string = None
-        self._subscription_id = None
-        self._connection_type = None
         self.discriminator = None
 
         self.owner_id = owner_id
-        self.name = name
-        self.connection_string = connection_string
-        self.subscription_id = subscription_id
-        if connection_type is not None:
-            self.connection_type = connection_type
 
     @property
     def owner_id(self):
@@ -92,113 +75,13 @@ class CreateDataSourceAdminVM(object):
         if self.local_vars_configuration.client_side_validation and owner_id is None:  # noqa: E501
             raise ValueError("Invalid value for `owner_id`, must not be `None`")  # noqa: E501
         if (self.local_vars_configuration.client_side_validation and
+                owner_id is not None and len(owner_id) < 1):
+            raise ValueError("Invalid value for `owner_id`, length must be greater than or equal to `1`")  # noqa: E501
+        if (self.local_vars_configuration.client_side_validation and
                 owner_id is not None and not re.search(r'(^[0-9a-f]{24}$|^([0-9a-f]{8}([-][0-9a-f]{4}){3}[-][0-9a-f]{12})$)', owner_id)):  # noqa: E501
             raise ValueError(r"Invalid value for `owner_id`, must be a follow pattern or equal to `/(^[0-9a-f]{24}$|^([0-9a-f]{8}([-][0-9a-f]{4}){3}[-][0-9a-f]{12})$)/`")  # noqa: E501
 
         self._owner_id = owner_id
-
-    @property
-    def name(self):
-        """Gets the name of this CreateDataSourceAdminVM.  # noqa: E501
-
-
-        :return: The name of this CreateDataSourceAdminVM.  # noqa: E501
-        :rtype: str
-        """
-        return self._name
-
-    @name.setter
-    def name(self, name):
-        """Sets the name of this CreateDataSourceAdminVM.
-
-
-        :param name: The name of this CreateDataSourceAdminVM.  # noqa: E501
-        :type name: str
-        """
-        if (self.local_vars_configuration.client_side_validation and
-                name is not None and len(name) > 50):
-            raise ValueError("Invalid value for `name`, length must be less than or equal to `50`")  # noqa: E501
-        if (self.local_vars_configuration.client_side_validation and
-                name is not None and len(name) < 0):
-            raise ValueError("Invalid value for `name`, length must be greater than or equal to `0`")  # noqa: E501
-
-        self._name = name
-
-    @property
-    def connection_string(self):
-        """Gets the connection_string of this CreateDataSourceAdminVM.  # noqa: E501
-
-
-        :return: The connection_string of this CreateDataSourceAdminVM.  # noqa: E501
-        :rtype: str
-        """
-        return self._connection_string
-
-    @connection_string.setter
-    def connection_string(self, connection_string):
-        """Sets the connection_string of this CreateDataSourceAdminVM.
-
-
-        :param connection_string: The connection_string of this CreateDataSourceAdminVM.  # noqa: E501
-        :type connection_string: str
-        """
-        if self.local_vars_configuration.client_side_validation and connection_string is None:  # noqa: E501
-            raise ValueError("Invalid value for `connection_string`, must not be `None`")  # noqa: E501
-        if (self.local_vars_configuration.client_side_validation and
-                connection_string is not None and len(connection_string) > 5000):
-            raise ValueError("Invalid value for `connection_string`, length must be less than or equal to `5000`")  # noqa: E501
-        if (self.local_vars_configuration.client_side_validation and
-                connection_string is not None and len(connection_string) < 0):
-            raise ValueError("Invalid value for `connection_string`, length must be greater than or equal to `0`")  # noqa: E501
-
-        self._connection_string = connection_string
-
-    @property
-    def subscription_id(self):
-        """Gets the subscription_id of this CreateDataSourceAdminVM.  # noqa: E501
-
-
-        :return: The subscription_id of this CreateDataSourceAdminVM.  # noqa: E501
-        :rtype: str
-        """
-        return self._subscription_id
-
-    @subscription_id.setter
-    def subscription_id(self, subscription_id):
-        """Sets the subscription_id of this CreateDataSourceAdminVM.
-
-
-        :param subscription_id: The subscription_id of this CreateDataSourceAdminVM.  # noqa: E501
-        :type subscription_id: str
-        """
-        if self.local_vars_configuration.client_side_validation and subscription_id is None:  # noqa: E501
-            raise ValueError("Invalid value for `subscription_id`, must not be `None`")  # noqa: E501
-        if (self.local_vars_configuration.client_side_validation and
-                subscription_id is not None and not re.search(r'^[A-Fa-f0-9]{24}$', subscription_id)):  # noqa: E501
-            raise ValueError(r"Invalid value for `subscription_id`, must be a follow pattern or equal to `/^[A-Fa-f0-9]{24}$/`")  # noqa: E501
-
-        self._subscription_id = subscription_id
-
-    @property
-    def connection_type(self):
-        """Gets the connection_type of this CreateDataSourceAdminVM.  # noqa: E501
-
-
-        :return: The connection_type of this CreateDataSourceAdminVM.  # noqa: E501
-        :rtype: DataSourceConnectionType
-        """
-        return self._connection_type
-
-    @connection_type.setter
-    def connection_type(self, connection_type):
-        """Sets the connection_type of this CreateDataSourceAdminVM.
-
-
-        :param connection_type: The connection_type of this CreateDataSourceAdminVM.  # noqa: E501
-        :type connection_type: DataSourceConnectionType
-        """
-
-        self._connection_type = connection_type
 
     def to_dict(self, serialize=False):
         """Returns the model properties as a dict"""

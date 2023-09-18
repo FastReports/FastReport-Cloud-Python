@@ -95,6 +95,7 @@ class ExportsApi(object):
                               request; this effectively ignores the authentication
                               in the spec for a single request.
         :type _request_auth: dict, optional
+        :type _content_type: string, optional: force content-type for the request
         :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
@@ -112,7 +113,9 @@ class ExportsApi(object):
                 '_return_http_data_only',
                 '_preload_content',
                 '_request_timeout',
-                '_request_auth'
+                '_request_auth',
+                '_content_type',
+                '_headers'
             ]
         )
 
@@ -125,8 +128,7 @@ class ExportsApi(object):
             local_var_params[key] = val
         del local_var_params['kwargs']
         # verify the required parameter 'subscription_id' is set
-        if self.api_client.client_side_validation and ('subscription_id' not in local_var_params or  # noqa: E501
-                                                        local_var_params['subscription_id'] is None):  # noqa: E501
+        if self.api_client.client_side_validation and local_var_params.get('subscription_id') is None:  # noqa: E501
             raise ApiValueError("Missing the required parameter `subscription_id` when calling `export_folder_and_file_clear_recycle_bin`")  # noqa: E501
 
         if self.api_client.client_side_validation and 'subscription_id' in local_var_params and not re.search(r'^[A-Fa-f0-9]{24}$', local_var_params['subscription_id']):  # noqa: E501
@@ -139,7 +141,7 @@ class ExportsApi(object):
 
         query_params = []
 
-        header_params = {}
+        header_params = dict(local_var_params.get('_headers', {}))
 
         form_params = []
         local_var_files = {}
@@ -151,11 +153,163 @@ class ExportsApi(object):
 
         # Authentication setting
         auth_settings = ['ApiKey', 'JWT']  # noqa: E501
-        
+
         response_types_map = {}
 
         return self.api_client.call_api(
             '/api/rp/v1/Exports/{subscriptionId}/ClearRecycleBin', 'DELETE',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_types_map=response_types_map,
+            auth_settings=auth_settings,
+            async_req=local_var_params.get('async_req'),
+            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
+            _preload_content=local_var_params.get('_preload_content', True),
+            _request_timeout=local_var_params.get('_request_timeout'),
+            collection_formats=collection_formats,
+            _request_auth=local_var_params.get('_request_auth'))
+
+    def export_folder_and_file_delete_files(self, subscription_id, **kwargs):  # noqa: E501
+        """Delete folders and files  # noqa: E501
+
+        User with a Delete permission can access this method.  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.export_folder_and_file_delete_files(subscription_id, async_req=True)
+        >>> result = thread.get()
+
+        :param subscription_id: id of current subscription (required)
+        :type subscription_id: str
+        :param selected_files_for_deleting_vm: VM with files' ids and params of their destination
+        :type selected_files_for_deleting_vm: SelectedFilesForDeletingVM
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
+        :param _preload_content: if False, the urllib3.HTTPResponse object will
+                                 be returned without reading/decoding response
+                                 data. Default is True.
+        :type _preload_content: bool, optional
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :return: Returns the result object.
+                 If the method is called asynchronously,
+                 returns the request thread.
+        :rtype: None
+        """
+        kwargs['_return_http_data_only'] = True
+        return self.export_folder_and_file_delete_files_with_http_info(subscription_id, **kwargs)  # noqa: E501
+
+    def export_folder_and_file_delete_files_with_http_info(self, subscription_id, **kwargs):  # noqa: E501
+        """Delete folders and files  # noqa: E501
+
+        User with a Delete permission can access this method.  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.export_folder_and_file_delete_files_with_http_info(subscription_id, async_req=True)
+        >>> result = thread.get()
+
+        :param subscription_id: id of current subscription (required)
+        :type subscription_id: str
+        :param selected_files_for_deleting_vm: VM with files' ids and params of their destination
+        :type selected_files_for_deleting_vm: SelectedFilesForDeletingVM
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
+        :param _return_http_data_only: response data without head status code
+                                       and headers
+        :type _return_http_data_only: bool, optional
+        :param _preload_content: if False, the urllib3.HTTPResponse object will
+                                 be returned without reading/decoding response
+                                 data. Default is True.
+        :type _preload_content: bool, optional
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the authentication
+                              in the spec for a single request.
+        :type _request_auth: dict, optional
+        :type _content_type: string, optional: force content-type for the request
+        :return: Returns the result object.
+                 If the method is called asynchronously,
+                 returns the request thread.
+        :rtype: None
+        """
+
+        local_var_params = locals()
+
+        all_params = [
+            'subscription_id',
+            'selected_files_for_deleting_vm'
+        ]
+        all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout',
+                '_request_auth',
+                '_content_type',
+                '_headers'
+            ]
+        )
+
+        for key, val in six.iteritems(local_var_params['kwargs']):
+            if key not in all_params:
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method export_folder_and_file_delete_files" % key
+                )
+            local_var_params[key] = val
+        del local_var_params['kwargs']
+        # verify the required parameter 'subscription_id' is set
+        if self.api_client.client_side_validation and local_var_params.get('subscription_id') is None:  # noqa: E501
+            raise ApiValueError("Missing the required parameter `subscription_id` when calling `export_folder_and_file_delete_files`")  # noqa: E501
+
+        if self.api_client.client_side_validation and 'subscription_id' in local_var_params and not re.search(r'^[A-Fa-f0-9]{24}$', local_var_params['subscription_id']):  # noqa: E501
+            raise ApiValueError("Invalid value for parameter `subscription_id` when calling `export_folder_and_file_delete_files`, must conform to the pattern `/^[A-Fa-f0-9]{24}$/`")  # noqa: E501
+        collection_formats = {}
+
+        path_params = {}
+        if 'subscription_id' in local_var_params:
+            path_params['subscriptionId'] = local_var_params['subscription_id']  # noqa: E501
+
+        query_params = []
+
+        header_params = dict(local_var_params.get('_headers', {}))
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        if 'selected_files_for_deleting_vm' in local_var_params:
+            body_params = local_var_params['selected_files_for_deleting_vm']
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # HTTP header `Content-Type`
+        content_types_list = local_var_params.get('_content_type',
+            self.api_client.select_header_content_type(
+                ['application/json', 'text/json', 'application/*+json'],
+                'POST', body_params))  # noqa: E501
+        if content_types_list:
+                header_params['Content-Type'] = content_types_list
+
+        # Authentication setting
+        auth_settings = ['ApiKey', 'JWT']  # noqa: E501
+
+        response_types_map = {}
+
+        return self.api_client.call_api(
+            '/api/rp/v1/Exports/{subscriptionId}/DeleteFiles', 'POST',
             path_params,
             query_params,
             header_params,
@@ -238,6 +392,7 @@ class ExportsApi(object):
                               request; this effectively ignores the authentication
                               in the spec for a single request.
         :type _request_auth: dict, optional
+        :type _content_type: string, optional: force content-type for the request
         :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
@@ -257,7 +412,9 @@ class ExportsApi(object):
                 '_return_http_data_only',
                 '_preload_content',
                 '_request_timeout',
-                '_request_auth'
+                '_request_auth',
+                '_content_type',
+                '_headers'
             ]
         )
 
@@ -270,8 +427,7 @@ class ExportsApi(object):
             local_var_params[key] = val
         del local_var_params['kwargs']
         # verify the required parameter 'id' is set
-        if self.api_client.client_side_validation and ('id' not in local_var_params or  # noqa: E501
-                                                        local_var_params['id'] is None):  # noqa: E501
+        if self.api_client.client_side_validation and local_var_params.get('id') is None:  # noqa: E501
             raise ApiValueError("Missing the required parameter `id` when calling `export_folder_and_file_get_count`")  # noqa: E501
 
         if self.api_client.client_side_validation and 'id' in local_var_params and not re.search(r'^[A-Fa-f0-9]{24}$', local_var_params['id']):  # noqa: E501
@@ -289,12 +445,12 @@ class ExportsApi(object):
             path_params['id'] = local_var_params['id']  # noqa: E501
 
         query_params = []
-        if 'search_pattern' in local_var_params and local_var_params['search_pattern'] is not None:  # noqa: E501
+        if local_var_params.get('search_pattern') is not None:  # noqa: E501
             query_params.append(('searchPattern', local_var_params['search_pattern']))  # noqa: E501
-        if 'use_regex' in local_var_params and local_var_params['use_regex'] is not None:  # noqa: E501
+        if local_var_params.get('use_regex') is not None:  # noqa: E501
             query_params.append(('useRegex', local_var_params['use_regex']))  # noqa: E501
 
-        header_params = {}
+        header_params = dict(local_var_params.get('_headers', {}))
 
         form_params = []
         local_var_files = {}
@@ -306,7 +462,7 @@ class ExportsApi(object):
 
         # Authentication setting
         auth_settings = ['ApiKey', 'JWT']  # noqa: E501
-        
+
         response_types_map = {
             200: "CountVM",
             400: "ProblemDetails",
@@ -351,9 +507,9 @@ class ExportsApi(object):
         :type order_by: FileSorting
         :param desc: indicates if sorting is descending
         :type desc: bool
-        :param search_pattern:
+        :param search_pattern: 
         :type search_pattern: str
-        :param use_regex:
+        :param use_regex: 
         :type use_regex: bool
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
@@ -393,9 +549,9 @@ class ExportsApi(object):
         :type order_by: FileSorting
         :param desc: indicates if sorting is descending
         :type desc: bool
-        :param search_pattern:
+        :param search_pattern: 
         :type search_pattern: str
-        :param use_regex:
+        :param use_regex: 
         :type use_regex: bool
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
@@ -414,6 +570,7 @@ class ExportsApi(object):
                               request; this effectively ignores the authentication
                               in the spec for a single request.
         :type _request_auth: dict, optional
+        :type _content_type: string, optional: force content-type for the request
         :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
@@ -437,7 +594,9 @@ class ExportsApi(object):
                 '_return_http_data_only',
                 '_preload_content',
                 '_request_timeout',
-                '_request_auth'
+                '_request_auth',
+                '_content_type',
+                '_headers'
             ]
         )
 
@@ -450,8 +609,7 @@ class ExportsApi(object):
             local_var_params[key] = val
         del local_var_params['kwargs']
         # verify the required parameter 'id' is set
-        if self.api_client.client_side_validation and ('id' not in local_var_params or  # noqa: E501
-                                                        local_var_params['id'] is None):  # noqa: E501
+        if self.api_client.client_side_validation and local_var_params.get('id') is None:  # noqa: E501
             raise ApiValueError("Missing the required parameter `id` when calling `export_folder_and_file_get_folders_and_files`")  # noqa: E501
 
         if self.api_client.client_side_validation and 'id' in local_var_params and not re.search(r'^[A-Fa-f0-9]{24}$', local_var_params['id']):  # noqa: E501
@@ -477,20 +635,20 @@ class ExportsApi(object):
             path_params['id'] = local_var_params['id']  # noqa: E501
 
         query_params = []
-        if 'skip' in local_var_params and local_var_params['skip'] is not None:  # noqa: E501
+        if local_var_params.get('skip') is not None:  # noqa: E501
             query_params.append(('skip', local_var_params['skip']))  # noqa: E501
-        if 'take' in local_var_params and local_var_params['take'] is not None:  # noqa: E501
+        if local_var_params.get('take') is not None:  # noqa: E501
             query_params.append(('take', local_var_params['take']))  # noqa: E501
-        if 'order_by' in local_var_params and local_var_params['order_by'] is not None:  # noqa: E501
+        if local_var_params.get('order_by') is not None:  # noqa: E501
             query_params.append(('orderBy', local_var_params['order_by']))  # noqa: E501
-        if 'desc' in local_var_params and local_var_params['desc'] is not None:  # noqa: E501
+        if local_var_params.get('desc') is not None:  # noqa: E501
             query_params.append(('desc', local_var_params['desc']))  # noqa: E501
-        if 'search_pattern' in local_var_params and local_var_params['search_pattern'] is not None:  # noqa: E501
+        if local_var_params.get('search_pattern') is not None:  # noqa: E501
             query_params.append(('searchPattern', local_var_params['search_pattern']))  # noqa: E501
-        if 'use_regex' in local_var_params and local_var_params['use_regex'] is not None:  # noqa: E501
+        if local_var_params.get('use_regex') is not None:  # noqa: E501
             query_params.append(('useRegex', local_var_params['use_regex']))  # noqa: E501
 
-        header_params = {}
+        header_params = dict(local_var_params.get('_headers', {}))
 
         form_params = []
         local_var_files = {}
@@ -502,7 +660,7 @@ class ExportsApi(object):
 
         # Authentication setting
         auth_settings = ['ApiKey', 'JWT']  # noqa: E501
-        
+
         response_types_map = {
             200: "FilesVM",
             400: "ProblemDetails",
@@ -547,9 +705,9 @@ class ExportsApi(object):
         :type order_by: FileSorting
         :param desc: indicates if sorting is descending
         :type desc: bool
-        :param search_pattern:
+        :param search_pattern: 
         :type search_pattern: str
-        :param use_regex:
+        :param use_regex: 
         :type use_regex: bool
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
@@ -589,9 +747,9 @@ class ExportsApi(object):
         :type order_by: FileSorting
         :param desc: indicates if sorting is descending
         :type desc: bool
-        :param search_pattern:
+        :param search_pattern: 
         :type search_pattern: str
-        :param use_regex:
+        :param use_regex: 
         :type use_regex: bool
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
@@ -610,6 +768,7 @@ class ExportsApi(object):
                               request; this effectively ignores the authentication
                               in the spec for a single request.
         :type _request_auth: dict, optional
+        :type _content_type: string, optional: force content-type for the request
         :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
@@ -633,7 +792,9 @@ class ExportsApi(object):
                 '_return_http_data_only',
                 '_preload_content',
                 '_request_timeout',
-                '_request_auth'
+                '_request_auth',
+                '_content_type',
+                '_headers'
             ]
         )
 
@@ -646,8 +807,7 @@ class ExportsApi(object):
             local_var_params[key] = val
         del local_var_params['kwargs']
         # verify the required parameter 'subscription_id' is set
-        if self.api_client.client_side_validation and ('subscription_id' not in local_var_params or  # noqa: E501
-                                                        local_var_params['subscription_id'] is None):  # noqa: E501
+        if self.api_client.client_side_validation and local_var_params.get('subscription_id') is None:  # noqa: E501
             raise ApiValueError("Missing the required parameter `subscription_id` when calling `export_folder_and_file_get_recycle_bin_folders_and_files`")  # noqa: E501
 
         if self.api_client.client_side_validation and 'subscription_id' in local_var_params and not re.search(r'^[A-Fa-f0-9]{24}$', local_var_params['subscription_id']):  # noqa: E501
@@ -673,20 +833,20 @@ class ExportsApi(object):
             path_params['subscriptionId'] = local_var_params['subscription_id']  # noqa: E501
 
         query_params = []
-        if 'skip' in local_var_params and local_var_params['skip'] is not None:  # noqa: E501
+        if local_var_params.get('skip') is not None:  # noqa: E501
             query_params.append(('skip', local_var_params['skip']))  # noqa: E501
-        if 'take' in local_var_params and local_var_params['take'] is not None:  # noqa: E501
+        if local_var_params.get('take') is not None:  # noqa: E501
             query_params.append(('take', local_var_params['take']))  # noqa: E501
-        if 'order_by' in local_var_params and local_var_params['order_by'] is not None:  # noqa: E501
+        if local_var_params.get('order_by') is not None:  # noqa: E501
             query_params.append(('orderBy', local_var_params['order_by']))  # noqa: E501
-        if 'desc' in local_var_params and local_var_params['desc'] is not None:  # noqa: E501
+        if local_var_params.get('desc') is not None:  # noqa: E501
             query_params.append(('desc', local_var_params['desc']))  # noqa: E501
-        if 'search_pattern' in local_var_params and local_var_params['search_pattern'] is not None:  # noqa: E501
+        if local_var_params.get('search_pattern') is not None:  # noqa: E501
             query_params.append(('searchPattern', local_var_params['search_pattern']))  # noqa: E501
-        if 'use_regex' in local_var_params and local_var_params['use_regex'] is not None:  # noqa: E501
+        if local_var_params.get('use_regex') is not None:  # noqa: E501
             query_params.append(('useRegex', local_var_params['use_regex']))  # noqa: E501
 
-        header_params = {}
+        header_params = dict(local_var_params.get('_headers', {}))
 
         form_params = []
         local_var_files = {}
@@ -698,7 +858,7 @@ class ExportsApi(object):
 
         # Authentication setting
         auth_settings = ['ApiKey', 'JWT']  # noqa: E501
-        
+
         response_types_map = {
             200: "FilesVM",
             400: "ProblemDetails",
@@ -782,6 +942,7 @@ class ExportsApi(object):
                               request; this effectively ignores the authentication
                               in the spec for a single request.
         :type _request_auth: dict, optional
+        :type _content_type: string, optional: force content-type for the request
         :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
@@ -799,7 +960,9 @@ class ExportsApi(object):
                 '_return_http_data_only',
                 '_preload_content',
                 '_request_timeout',
-                '_request_auth'
+                '_request_auth',
+                '_content_type',
+                '_headers'
             ]
         )
 
@@ -812,8 +975,7 @@ class ExportsApi(object):
             local_var_params[key] = val
         del local_var_params['kwargs']
         # verify the required parameter 'subscription_id' is set
-        if self.api_client.client_side_validation and ('subscription_id' not in local_var_params or  # noqa: E501
-                                                        local_var_params['subscription_id'] is None):  # noqa: E501
+        if self.api_client.client_side_validation and local_var_params.get('subscription_id') is None:  # noqa: E501
             raise ApiValueError("Missing the required parameter `subscription_id` when calling `export_folder_and_file_recover_all_from_recycle_bin`")  # noqa: E501
 
         if self.api_client.client_side_validation and 'subscription_id' in local_var_params and not re.search(r'^[A-Fa-f0-9]{24}$', local_var_params['subscription_id']):  # noqa: E501
@@ -826,7 +988,7 @@ class ExportsApi(object):
 
         query_params = []
 
-        header_params = {}
+        header_params = dict(local_var_params.get('_headers', {}))
 
         form_params = []
         local_var_files = {}
@@ -838,11 +1000,153 @@ class ExportsApi(object):
 
         # Authentication setting
         auth_settings = ['ApiKey', 'JWT']  # noqa: E501
-        
+
         response_types_map = {}
 
         return self.api_client.call_api(
             '/api/rp/v1/Exports/{subscriptionId}/RecoverRecycleBin', 'POST',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_types_map=response_types_map,
+            auth_settings=auth_settings,
+            async_req=local_var_params.get('async_req'),
+            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
+            _preload_content=local_var_params.get('_preload_content', True),
+            _request_timeout=local_var_params.get('_request_timeout'),
+            collection_formats=collection_formats,
+            _request_auth=local_var_params.get('_request_auth'))
+
+    def export_folders_calculate_folder_size(self, id, **kwargs):  # noqa: E501
+        """Get specified folder, calculate it's size  # noqa: E501
+
+        User with a Get Entity permission can access this method.  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.export_folders_calculate_folder_size(id, async_req=True)
+        >>> result = thread.get()
+
+        :param id: folder id (required)
+        :type id: str
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
+        :param _preload_content: if False, the urllib3.HTTPResponse object will
+                                 be returned without reading/decoding response
+                                 data. Default is True.
+        :type _preload_content: bool, optional
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :return: Returns the result object.
+                 If the method is called asynchronously,
+                 returns the request thread.
+        :rtype: FolderSizeVM
+        """
+        kwargs['_return_http_data_only'] = True
+        return self.export_folders_calculate_folder_size_with_http_info(id, **kwargs)  # noqa: E501
+
+    def export_folders_calculate_folder_size_with_http_info(self, id, **kwargs):  # noqa: E501
+        """Get specified folder, calculate it's size  # noqa: E501
+
+        User with a Get Entity permission can access this method.  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.export_folders_calculate_folder_size_with_http_info(id, async_req=True)
+        >>> result = thread.get()
+
+        :param id: folder id (required)
+        :type id: str
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
+        :param _return_http_data_only: response data without head status code
+                                       and headers
+        :type _return_http_data_only: bool, optional
+        :param _preload_content: if False, the urllib3.HTTPResponse object will
+                                 be returned without reading/decoding response
+                                 data. Default is True.
+        :type _preload_content: bool, optional
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the authentication
+                              in the spec for a single request.
+        :type _request_auth: dict, optional
+        :type _content_type: string, optional: force content-type for the request
+        :return: Returns the result object.
+                 If the method is called asynchronously,
+                 returns the request thread.
+        :rtype: tuple(FolderSizeVM, status_code(int), headers(HTTPHeaderDict))
+        """
+
+        local_var_params = locals()
+
+        all_params = [
+            'id'
+        ]
+        all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout',
+                '_request_auth',
+                '_content_type',
+                '_headers'
+            ]
+        )
+
+        for key, val in six.iteritems(local_var_params['kwargs']):
+            if key not in all_params:
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method export_folders_calculate_folder_size" % key
+                )
+            local_var_params[key] = val
+        del local_var_params['kwargs']
+        # verify the required parameter 'id' is set
+        if self.api_client.client_side_validation and local_var_params.get('id') is None:  # noqa: E501
+            raise ApiValueError("Missing the required parameter `id` when calling `export_folders_calculate_folder_size`")  # noqa: E501
+
+        if self.api_client.client_side_validation and 'id' in local_var_params and not re.search(r'^[A-Fa-f0-9]{24}$', local_var_params['id']):  # noqa: E501
+            raise ApiValueError("Invalid value for parameter `id` when calling `export_folders_calculate_folder_size`, must conform to the pattern `/^[A-Fa-f0-9]{24}$/`")  # noqa: E501
+        collection_formats = {}
+
+        path_params = {}
+        if 'id' in local_var_params:
+            path_params['id'] = local_var_params['id']  # noqa: E501
+
+        query_params = []
+
+        header_params = dict(local_var_params.get('_headers', {}))
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = ['ApiKey', 'JWT']  # noqa: E501
+
+        response_types_map = {
+            200: "FolderSizeVM",
+            400: "ProblemDetails",
+            403: "ProblemDetails",
+            404: "ProblemDetails",
+        }
+
+        return self.api_client.call_api(
+            '/api/rp/v1/Exports/Folder/{id}/size', 'GET',
             path_params,
             query_params,
             header_params,
@@ -921,6 +1225,7 @@ class ExportsApi(object):
                               request; this effectively ignores the authentication
                               in the spec for a single request.
         :type _request_auth: dict, optional
+        :type _content_type: string, optional: force content-type for the request
         :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
@@ -939,7 +1244,9 @@ class ExportsApi(object):
                 '_return_http_data_only',
                 '_preload_content',
                 '_request_timeout',
-                '_request_auth'
+                '_request_auth',
+                '_content_type',
+                '_headers'
             ]
         )
 
@@ -952,12 +1259,10 @@ class ExportsApi(object):
             local_var_params[key] = val
         del local_var_params['kwargs']
         # verify the required parameter 'id' is set
-        if self.api_client.client_side_validation and ('id' not in local_var_params or  # noqa: E501
-                                                        local_var_params['id'] is None):  # noqa: E501
+        if self.api_client.client_side_validation and local_var_params.get('id') is None:  # noqa: E501
             raise ApiValueError("Missing the required parameter `id` when calling `export_folders_copy_folder`")  # noqa: E501
         # verify the required parameter 'folder_id' is set
-        if self.api_client.client_side_validation and ('folder_id' not in local_var_params or  # noqa: E501
-                                                        local_var_params['folder_id'] is None):  # noqa: E501
+        if self.api_client.client_side_validation and local_var_params.get('folder_id') is None:  # noqa: E501
             raise ApiValueError("Missing the required parameter `folder_id` when calling `export_folders_copy_folder`")  # noqa: E501
 
         if self.api_client.client_side_validation and 'id' in local_var_params and not re.search(r'^[A-Fa-f0-9]{24}$', local_var_params['id']):  # noqa: E501
@@ -974,7 +1279,7 @@ class ExportsApi(object):
 
         query_params = []
 
-        header_params = {}
+        header_params = dict(local_var_params.get('_headers', {}))
 
         form_params = []
         local_var_files = {}
@@ -986,7 +1291,7 @@ class ExportsApi(object):
 
         # Authentication setting
         auth_settings = ['ApiKey', 'JWT']  # noqa: E501
-        
+
         response_types_map = {
             200: "FileVM",
             400: "ProblemDetails",
@@ -1071,6 +1376,7 @@ class ExportsApi(object):
                               request; this effectively ignores the authentication
                               in the spec for a single request.
         :type _request_auth: dict, optional
+        :type _content_type: string, optional: force content-type for the request
         :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
@@ -1088,7 +1394,9 @@ class ExportsApi(object):
                 '_return_http_data_only',
                 '_preload_content',
                 '_request_timeout',
-                '_request_auth'
+                '_request_auth',
+                '_content_type',
+                '_headers'
             ]
         )
 
@@ -1101,8 +1409,7 @@ class ExportsApi(object):
             local_var_params[key] = val
         del local_var_params['kwargs']
         # verify the required parameter 'id' is set
-        if self.api_client.client_side_validation and ('id' not in local_var_params or  # noqa: E501
-                                                        local_var_params['id'] is None):  # noqa: E501
+        if self.api_client.client_side_validation and local_var_params.get('id') is None:  # noqa: E501
             raise ApiValueError("Missing the required parameter `id` when calling `export_folders_delete_folder`")  # noqa: E501
 
         if self.api_client.client_side_validation and 'id' in local_var_params and not re.search(r'^[A-Fa-f0-9]{24}$', local_var_params['id']):  # noqa: E501
@@ -1115,7 +1422,7 @@ class ExportsApi(object):
 
         query_params = []
 
-        header_params = {}
+        header_params = dict(local_var_params.get('_headers', {}))
 
         form_params = []
         local_var_files = {}
@@ -1127,7 +1434,7 @@ class ExportsApi(object):
 
         # Authentication setting
         auth_settings = ['ApiKey', 'JWT']  # noqa: E501
-        
+
         response_types_map = {}
 
         return self.api_client.call_api(
@@ -1206,6 +1513,7 @@ class ExportsApi(object):
                               request; this effectively ignores the authentication
                               in the spec for a single request.
         :type _request_auth: dict, optional
+        :type _content_type: string, optional: force content-type for the request
         :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
@@ -1223,7 +1531,9 @@ class ExportsApi(object):
                 '_return_http_data_only',
                 '_preload_content',
                 '_request_timeout',
-                '_request_auth'
+                '_request_auth',
+                '_content_type',
+                '_headers'
             ]
         )
 
@@ -1236,8 +1546,7 @@ class ExportsApi(object):
             local_var_params[key] = val
         del local_var_params['kwargs']
         # verify the required parameter 'id' is set
-        if self.api_client.client_side_validation and ('id' not in local_var_params or  # noqa: E501
-                                                        local_var_params['id'] is None):  # noqa: E501
+        if self.api_client.client_side_validation and local_var_params.get('id') is None:  # noqa: E501
             raise ApiValueError("Missing the required parameter `id` when calling `export_folders_get_breadcrumbs`")  # noqa: E501
 
         if self.api_client.client_side_validation and 'id' in local_var_params and not re.search(r'^[A-Fa-f0-9]{24}$', local_var_params['id']):  # noqa: E501
@@ -1250,7 +1559,7 @@ class ExportsApi(object):
 
         query_params = []
 
-        header_params = {}
+        header_params = dict(local_var_params.get('_headers', {}))
 
         form_params = []
         local_var_files = {}
@@ -1262,7 +1571,7 @@ class ExportsApi(object):
 
         # Authentication setting
         auth_settings = ['ApiKey', 'JWT']  # noqa: E501
-        
+
         response_types_map = {
             200: "BreadcrumbsVM",
             400: "ProblemDetails",
@@ -1346,6 +1655,7 @@ class ExportsApi(object):
                               request; this effectively ignores the authentication
                               in the spec for a single request.
         :type _request_auth: dict, optional
+        :type _content_type: string, optional: force content-type for the request
         :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
@@ -1363,7 +1673,9 @@ class ExportsApi(object):
                 '_return_http_data_only',
                 '_preload_content',
                 '_request_timeout',
-                '_request_auth'
+                '_request_auth',
+                '_content_type',
+                '_headers'
             ]
         )
 
@@ -1376,8 +1688,7 @@ class ExportsApi(object):
             local_var_params[key] = val
         del local_var_params['kwargs']
         # verify the required parameter 'id' is set
-        if self.api_client.client_side_validation and ('id' not in local_var_params or  # noqa: E501
-                                                        local_var_params['id'] is None):  # noqa: E501
+        if self.api_client.client_side_validation and local_var_params.get('id') is None:  # noqa: E501
             raise ApiValueError("Missing the required parameter `id` when calling `export_folders_get_folder`")  # noqa: E501
 
         if self.api_client.client_side_validation and 'id' in local_var_params and not re.search(r'^[A-Fa-f0-9]{24}$', local_var_params['id']):  # noqa: E501
@@ -1390,7 +1701,7 @@ class ExportsApi(object):
 
         query_params = []
 
-        header_params = {}
+        header_params = dict(local_var_params.get('_headers', {}))
 
         form_params = []
         local_var_files = {}
@@ -1402,7 +1713,7 @@ class ExportsApi(object):
 
         # Authentication setting
         auth_settings = ['ApiKey', 'JWT']  # noqa: E501
-        
+
         response_types_map = {
             200: "FileVM",
             400: "ProblemDetails",
@@ -1443,6 +1754,14 @@ class ExportsApi(object):
         :type skip: int
         :param take: number of files, that have to be returned
         :type take: int
+        :param order_by: 
+        :type order_by: FileSorting
+        :param desc: 
+        :type desc: bool
+        :param search_pattern: 
+        :type search_pattern: str
+        :param use_regex: 
+        :type use_regex: bool
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
@@ -1477,6 +1796,14 @@ class ExportsApi(object):
         :type skip: int
         :param take: number of files, that have to be returned
         :type take: int
+        :param order_by: 
+        :type order_by: FileSorting
+        :param desc: 
+        :type desc: bool
+        :param search_pattern: 
+        :type search_pattern: str
+        :param use_regex: 
+        :type use_regex: bool
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
         :param _return_http_data_only: response data without head status code
@@ -1494,6 +1821,7 @@ class ExportsApi(object):
                               request; this effectively ignores the authentication
                               in the spec for a single request.
         :type _request_auth: dict, optional
+        :type _content_type: string, optional: force content-type for the request
         :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
@@ -1505,7 +1833,11 @@ class ExportsApi(object):
         all_params = [
             'id',
             'skip',
-            'take'
+            'take',
+            'order_by',
+            'desc',
+            'search_pattern',
+            'use_regex'
         ]
         all_params.extend(
             [
@@ -1513,7 +1845,9 @@ class ExportsApi(object):
                 '_return_http_data_only',
                 '_preload_content',
                 '_request_timeout',
-                '_request_auth'
+                '_request_auth',
+                '_content_type',
+                '_headers'
             ]
         )
 
@@ -1526,8 +1860,7 @@ class ExportsApi(object):
             local_var_params[key] = val
         del local_var_params['kwargs']
         # verify the required parameter 'id' is set
-        if self.api_client.client_side_validation and ('id' not in local_var_params or  # noqa: E501
-                                                        local_var_params['id'] is None):  # noqa: E501
+        if self.api_client.client_side_validation and local_var_params.get('id') is None:  # noqa: E501
             raise ApiValueError("Missing the required parameter `id` when calling `export_folders_get_folders`")  # noqa: E501
 
         if self.api_client.client_side_validation and 'id' in local_var_params and not re.search(r'^[A-Fa-f0-9]{24}$', local_var_params['id']):  # noqa: E501
@@ -1540,6 +1873,12 @@ class ExportsApi(object):
             raise ApiValueError("Invalid value for parameter `take` when calling `export_folders_get_folders`, must be a value less than or equal to `120`")  # noqa: E501
         if self.api_client.client_side_validation and 'take' in local_var_params and local_var_params['take'] < 1:  # noqa: E501
             raise ApiValueError("Invalid value for parameter `take` when calling `export_folders_get_folders`, must be a value greater than or equal to `1`")  # noqa: E501
+        if self.api_client.client_side_validation and ('search_pattern' in local_var_params and  # noqa: E501
+                                                        len(local_var_params['search_pattern']) > 100):  # noqa: E501
+            raise ApiValueError("Invalid value for parameter `search_pattern` when calling `export_folders_get_folders`, length must be less than or equal to `100`")  # noqa: E501
+        if self.api_client.client_side_validation and ('search_pattern' in local_var_params and  # noqa: E501
+                                                        len(local_var_params['search_pattern']) < 0):  # noqa: E501
+            raise ApiValueError("Invalid value for parameter `search_pattern` when calling `export_folders_get_folders`, length must be greater than or equal to `0`")  # noqa: E501
         collection_formats = {}
 
         path_params = {}
@@ -1547,12 +1886,20 @@ class ExportsApi(object):
             path_params['id'] = local_var_params['id']  # noqa: E501
 
         query_params = []
-        if 'skip' in local_var_params and local_var_params['skip'] is not None:  # noqa: E501
+        if local_var_params.get('skip') is not None:  # noqa: E501
             query_params.append(('skip', local_var_params['skip']))  # noqa: E501
-        if 'take' in local_var_params and local_var_params['take'] is not None:  # noqa: E501
+        if local_var_params.get('take') is not None:  # noqa: E501
             query_params.append(('take', local_var_params['take']))  # noqa: E501
+        if local_var_params.get('order_by') is not None:  # noqa: E501
+            query_params.append(('orderBy', local_var_params['order_by']))  # noqa: E501
+        if local_var_params.get('desc') is not None:  # noqa: E501
+            query_params.append(('desc', local_var_params['desc']))  # noqa: E501
+        if local_var_params.get('search_pattern') is not None:  # noqa: E501
+            query_params.append(('searchPattern', local_var_params['search_pattern']))  # noqa: E501
+        if local_var_params.get('use_regex') is not None:  # noqa: E501
+            query_params.append(('useRegex', local_var_params['use_regex']))  # noqa: E501
 
-        header_params = {}
+        header_params = dict(local_var_params.get('_headers', {}))
 
         form_params = []
         local_var_files = {}
@@ -1564,7 +1911,7 @@ class ExportsApi(object):
 
         # Authentication setting
         auth_settings = ['ApiKey', 'JWT']  # noqa: E501
-        
+
         response_types_map = {
             200: "FilesVM",
             400: "ProblemDetails",
@@ -1648,6 +1995,7 @@ class ExportsApi(object):
                               request; this effectively ignores the authentication
                               in the spec for a single request.
         :type _request_auth: dict, optional
+        :type _content_type: string, optional: force content-type for the request
         :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
@@ -1665,7 +2013,9 @@ class ExportsApi(object):
                 '_return_http_data_only',
                 '_preload_content',
                 '_request_timeout',
-                '_request_auth'
+                '_request_auth',
+                '_content_type',
+                '_headers'
             ]
         )
 
@@ -1678,8 +2028,7 @@ class ExportsApi(object):
             local_var_params[key] = val
         del local_var_params['kwargs']
         # verify the required parameter 'id' is set
-        if self.api_client.client_side_validation and ('id' not in local_var_params or  # noqa: E501
-                                                        local_var_params['id'] is None):  # noqa: E501
+        if self.api_client.client_side_validation and local_var_params.get('id') is None:  # noqa: E501
             raise ApiValueError("Missing the required parameter `id` when calling `export_folders_get_folders_count`")  # noqa: E501
 
         if self.api_client.client_side_validation and 'id' in local_var_params and not re.search(r'^[A-Fa-f0-9]{24}$', local_var_params['id']):  # noqa: E501
@@ -1692,7 +2041,7 @@ class ExportsApi(object):
 
         query_params = []
 
-        header_params = {}
+        header_params = dict(local_var_params.get('_headers', {}))
 
         form_params = []
         local_var_files = {}
@@ -1704,7 +2053,7 @@ class ExportsApi(object):
 
         # Authentication setting
         auth_settings = ['ApiKey', 'JWT']  # noqa: E501
-        
+
         response_types_map = {
             200: "CountVM",
             400: "ProblemDetails",
@@ -1729,6 +2078,167 @@ class ExportsApi(object):
             collection_formats=collection_formats,
             _request_auth=local_var_params.get('_request_auth'))
 
+    def export_folders_get_or_create(self, **kwargs):  # noqa: E501
+        """Get specified folder  # noqa: E501
+
+        User with a Get Entity permission can access this method.  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.export_folders_get_or_create(async_req=True)
+        >>> result = thread.get()
+
+        :param name: folder name
+        :type name: str
+        :param subscription_id: subscriptionId
+        :type subscription_id: str
+        :param parent_id: parent folder id
+        :type parent_id: str
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
+        :param _preload_content: if False, the urllib3.HTTPResponse object will
+                                 be returned without reading/decoding response
+                                 data. Default is True.
+        :type _preload_content: bool, optional
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :return: Returns the result object.
+                 If the method is called asynchronously,
+                 returns the request thread.
+        :rtype: FileVM
+        """
+        kwargs['_return_http_data_only'] = True
+        return self.export_folders_get_or_create_with_http_info(**kwargs)  # noqa: E501
+
+    def export_folders_get_or_create_with_http_info(self, **kwargs):  # noqa: E501
+        """Get specified folder  # noqa: E501
+
+        User with a Get Entity permission can access this method.  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.export_folders_get_or_create_with_http_info(async_req=True)
+        >>> result = thread.get()
+
+        :param name: folder name
+        :type name: str
+        :param subscription_id: subscriptionId
+        :type subscription_id: str
+        :param parent_id: parent folder id
+        :type parent_id: str
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
+        :param _return_http_data_only: response data without head status code
+                                       and headers
+        :type _return_http_data_only: bool, optional
+        :param _preload_content: if False, the urllib3.HTTPResponse object will
+                                 be returned without reading/decoding response
+                                 data. Default is True.
+        :type _preload_content: bool, optional
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the authentication
+                              in the spec for a single request.
+        :type _request_auth: dict, optional
+        :type _content_type: string, optional: force content-type for the request
+        :return: Returns the result object.
+                 If the method is called asynchronously,
+                 returns the request thread.
+        :rtype: tuple(FileVM, status_code(int), headers(HTTPHeaderDict))
+        """
+
+        local_var_params = locals()
+
+        all_params = [
+            'name',
+            'subscription_id',
+            'parent_id'
+        ]
+        all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout',
+                '_request_auth',
+                '_content_type',
+                '_headers'
+            ]
+        )
+
+        for key, val in six.iteritems(local_var_params['kwargs']):
+            if key not in all_params:
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method export_folders_get_or_create" % key
+                )
+            local_var_params[key] = val
+        del local_var_params['kwargs']
+
+        if self.api_client.client_side_validation and ('name' in local_var_params and  # noqa: E501
+                                                        len(local_var_params['name']) > 50):  # noqa: E501
+            raise ApiValueError("Invalid value for parameter `name` when calling `export_folders_get_or_create`, length must be less than or equal to `50`")  # noqa: E501
+        if self.api_client.client_side_validation and ('name' in local_var_params and  # noqa: E501
+                                                        len(local_var_params['name']) < 0):  # noqa: E501
+            raise ApiValueError("Invalid value for parameter `name` when calling `export_folders_get_or_create`, length must be greater than or equal to `0`")  # noqa: E501
+        if self.api_client.client_side_validation and 'subscription_id' in local_var_params and not re.search(r'(^$)|(^[A-Fa-f0-9]{24}$)', local_var_params['subscription_id']):  # noqa: E501
+            raise ApiValueError("Invalid value for parameter `subscription_id` when calling `export_folders_get_or_create`, must conform to the pattern `/(^$)|(^[A-Fa-f0-9]{24}$)/`")  # noqa: E501
+        if self.api_client.client_side_validation and 'parent_id' in local_var_params and not re.search(r'(^$)|(^[A-Fa-f0-9]{24}$)', local_var_params['parent_id']):  # noqa: E501
+            raise ApiValueError("Invalid value for parameter `parent_id` when calling `export_folders_get_or_create`, must conform to the pattern `/(^$)|(^[A-Fa-f0-9]{24}$)/`")  # noqa: E501
+        collection_formats = {}
+
+        path_params = {}
+
+        query_params = []
+        if local_var_params.get('name') is not None:  # noqa: E501
+            query_params.append(('name', local_var_params['name']))  # noqa: E501
+        if local_var_params.get('subscription_id') is not None:  # noqa: E501
+            query_params.append(('subscriptionId', local_var_params['subscription_id']))  # noqa: E501
+        if local_var_params.get('parent_id') is not None:  # noqa: E501
+            query_params.append(('parentId', local_var_params['parent_id']))  # noqa: E501
+
+        header_params = dict(local_var_params.get('_headers', {}))
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = ['ApiKey', 'JWT']  # noqa: E501
+
+        response_types_map = {
+            200: "FileVM",
+            400: "ProblemDetails",
+            403: "ProblemDetails",
+            404: "ProblemDetails",
+        }
+
+        return self.api_client.call_api(
+            '/api/rp/v1/Exports/Folder/getOrCreate', 'GET',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_types_map=response_types_map,
+            auth_settings=auth_settings,
+            async_req=local_var_params.get('async_req'),
+            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
+            _preload_content=local_var_params.get('_preload_content', True),
+            _request_timeout=local_var_params.get('_request_timeout'),
+            collection_formats=collection_formats,
+            _request_auth=local_var_params.get('_request_auth'))
+
     def export_folders_get_permissions(self, id, **kwargs):  # noqa: E501
         """Get all folder permissions  # noqa: E501
 
@@ -1738,7 +2248,7 @@ class ExportsApi(object):
         >>> thread = api.export_folders_get_permissions(id, async_req=True)
         >>> result = thread.get()
 
-        :param id: (required)
+        :param id:  (required)
         :type id: str
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
@@ -1767,7 +2277,7 @@ class ExportsApi(object):
         >>> thread = api.export_folders_get_permissions_with_http_info(id, async_req=True)
         >>> result = thread.get()
 
-        :param id: (required)
+        :param id:  (required)
         :type id: str
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
@@ -1786,6 +2296,7 @@ class ExportsApi(object):
                               request; this effectively ignores the authentication
                               in the spec for a single request.
         :type _request_auth: dict, optional
+        :type _content_type: string, optional: force content-type for the request
         :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
@@ -1803,7 +2314,9 @@ class ExportsApi(object):
                 '_return_http_data_only',
                 '_preload_content',
                 '_request_timeout',
-                '_request_auth'
+                '_request_auth',
+                '_content_type',
+                '_headers'
             ]
         )
 
@@ -1816,8 +2329,7 @@ class ExportsApi(object):
             local_var_params[key] = val
         del local_var_params['kwargs']
         # verify the required parameter 'id' is set
-        if self.api_client.client_side_validation and ('id' not in local_var_params or  # noqa: E501
-                                                        local_var_params['id'] is None):  # noqa: E501
+        if self.api_client.client_side_validation and local_var_params.get('id') is None:  # noqa: E501
             raise ApiValueError("Missing the required parameter `id` when calling `export_folders_get_permissions`")  # noqa: E501
 
         if self.api_client.client_side_validation and 'id' in local_var_params and not re.search(r'^[A-Fa-f0-9]{24}$', local_var_params['id']):  # noqa: E501
@@ -1830,7 +2342,7 @@ class ExportsApi(object):
 
         query_params = []
 
-        header_params = {}
+        header_params = dict(local_var_params.get('_headers', {}))
 
         form_params = []
         local_var_files = {}
@@ -1842,7 +2354,7 @@ class ExportsApi(object):
 
         # Authentication setting
         auth_settings = ['ApiKey', 'JWT']  # noqa: E501
-        
+
         response_types_map = {
             200: "FilePermissionsVM",
             400: "ProblemDetails",
@@ -1926,6 +2438,7 @@ class ExportsApi(object):
                               request; this effectively ignores the authentication
                               in the spec for a single request.
         :type _request_auth: dict, optional
+        :type _content_type: string, optional: force content-type for the request
         :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
@@ -1943,7 +2456,9 @@ class ExportsApi(object):
                 '_return_http_data_only',
                 '_preload_content',
                 '_request_timeout',
-                '_request_auth'
+                '_request_auth',
+                '_content_type',
+                '_headers'
             ]
         )
 
@@ -1961,10 +2476,10 @@ class ExportsApi(object):
         path_params = {}
 
         query_params = []
-        if 'subscription_id' in local_var_params and local_var_params['subscription_id'] is not None:  # noqa: E501
+        if local_var_params.get('subscription_id') is not None:  # noqa: E501
             query_params.append(('subscriptionId', local_var_params['subscription_id']))  # noqa: E501
 
-        header_params = {}
+        header_params = dict(local_var_params.get('_headers', {}))
 
         form_params = []
         local_var_files = {}
@@ -1976,7 +2491,7 @@ class ExportsApi(object):
 
         # Authentication setting
         auth_settings = ['ApiKey', 'JWT']  # noqa: E501
-        
+
         response_types_map = {
             200: "FileVM",
             400: None,
@@ -2064,6 +2579,7 @@ class ExportsApi(object):
                               request; this effectively ignores the authentication
                               in the spec for a single request.
         :type _request_auth: dict, optional
+        :type _content_type: string, optional: force content-type for the request
         :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
@@ -2082,7 +2598,9 @@ class ExportsApi(object):
                 '_return_http_data_only',
                 '_preload_content',
                 '_request_timeout',
-                '_request_auth'
+                '_request_auth',
+                '_content_type',
+                '_headers'
             ]
         )
 
@@ -2095,12 +2613,10 @@ class ExportsApi(object):
             local_var_params[key] = val
         del local_var_params['kwargs']
         # verify the required parameter 'id' is set
-        if self.api_client.client_side_validation and ('id' not in local_var_params or  # noqa: E501
-                                                        local_var_params['id'] is None):  # noqa: E501
+        if self.api_client.client_side_validation and local_var_params.get('id') is None:  # noqa: E501
             raise ApiValueError("Missing the required parameter `id` when calling `export_folders_move_folder`")  # noqa: E501
         # verify the required parameter 'folder_id' is set
-        if self.api_client.client_side_validation and ('folder_id' not in local_var_params or  # noqa: E501
-                                                        local_var_params['folder_id'] is None):  # noqa: E501
+        if self.api_client.client_side_validation and local_var_params.get('folder_id') is None:  # noqa: E501
             raise ApiValueError("Missing the required parameter `folder_id` when calling `export_folders_move_folder`")  # noqa: E501
 
         if self.api_client.client_side_validation and 'id' in local_var_params and not re.search(r'^[A-Fa-f0-9]{24}$', local_var_params['id']):  # noqa: E501
@@ -2117,7 +2633,7 @@ class ExportsApi(object):
 
         query_params = []
 
-        header_params = {}
+        header_params = dict(local_var_params.get('_headers', {}))
 
         form_params = []
         local_var_files = {}
@@ -2129,7 +2645,7 @@ class ExportsApi(object):
 
         # Authentication setting
         auth_settings = ['ApiKey', 'JWT']  # noqa: E501
-        
+
         response_types_map = {
             200: "FileVM",
             400: "ProblemDetails",
@@ -2214,6 +2730,7 @@ class ExportsApi(object):
                               request; this effectively ignores the authentication
                               in the spec for a single request.
         :type _request_auth: dict, optional
+        :type _content_type: string, optional: force content-type for the request
         :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
@@ -2231,7 +2748,9 @@ class ExportsApi(object):
                 '_return_http_data_only',
                 '_preload_content',
                 '_request_timeout',
-                '_request_auth'
+                '_request_auth',
+                '_content_type',
+                '_headers'
             ]
         )
 
@@ -2244,8 +2763,7 @@ class ExportsApi(object):
             local_var_params[key] = val
         del local_var_params['kwargs']
         # verify the required parameter 'id' is set
-        if self.api_client.client_side_validation and ('id' not in local_var_params or  # noqa: E501
-                                                        local_var_params['id'] is None):  # noqa: E501
+        if self.api_client.client_side_validation and local_var_params.get('id') is None:  # noqa: E501
             raise ApiValueError("Missing the required parameter `id` when calling `export_folders_move_folder_to_bin`")  # noqa: E501
 
         if self.api_client.client_side_validation and 'id' in local_var_params and not re.search(r'^[A-Fa-f0-9]{24}$', local_var_params['id']):  # noqa: E501
@@ -2258,7 +2776,7 @@ class ExportsApi(object):
 
         query_params = []
 
-        header_params = {}
+        header_params = dict(local_var_params.get('_headers', {}))
 
         form_params = []
         local_var_files = {}
@@ -2270,7 +2788,7 @@ class ExportsApi(object):
 
         # Authentication setting
         auth_settings = ['ApiKey', 'JWT']  # noqa: E501
-        
+
         response_types_map = {}
 
         return self.api_client.call_api(
@@ -2353,6 +2871,7 @@ class ExportsApi(object):
                               request; this effectively ignores the authentication
                               in the spec for a single request.
         :type _request_auth: dict, optional
+        :type _content_type: string, optional: force content-type for the request
         :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
@@ -2371,7 +2890,9 @@ class ExportsApi(object):
                 '_return_http_data_only',
                 '_preload_content',
                 '_request_timeout',
-                '_request_auth'
+                '_request_auth',
+                '_content_type',
+                '_headers'
             ]
         )
 
@@ -2384,8 +2905,7 @@ class ExportsApi(object):
             local_var_params[key] = val
         del local_var_params['kwargs']
         # verify the required parameter 'id' is set
-        if self.api_client.client_side_validation and ('id' not in local_var_params or  # noqa: E501
-                                                        local_var_params['id'] is None):  # noqa: E501
+        if self.api_client.client_side_validation and local_var_params.get('id') is None:  # noqa: E501
             raise ApiValueError("Missing the required parameter `id` when calling `export_folders_post_folder`")  # noqa: E501
 
         if self.api_client.client_side_validation and 'id' in local_var_params and not re.search(r'^[A-Fa-f0-9]{24}$', local_var_params['id']):  # noqa: E501
@@ -2398,7 +2918,7 @@ class ExportsApi(object):
 
         query_params = []
 
-        header_params = {}
+        header_params = dict(local_var_params.get('_headers', {}))
 
         form_params = []
         local_var_files = {}
@@ -2411,12 +2931,16 @@ class ExportsApi(object):
             ['application/json'])  # noqa: E501
 
         # HTTP header `Content-Type`
-        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
-            ['application/json', 'text/json', 'application/*+json'])  # noqa: E501
+        content_types_list = local_var_params.get('_content_type',
+            self.api_client.select_header_content_type(
+                ['application/json', 'text/json', 'application/*+json'],
+                'POST', body_params))  # noqa: E501
+        if content_types_list:
+                header_params['Content-Type'] = content_types_list
 
         # Authentication setting
         auth_settings = ['ApiKey', 'JWT']  # noqa: E501
-        
+
         response_types_map = {
             200: "FileVM",
             400: "ProblemDetails",
@@ -2454,7 +2978,7 @@ class ExportsApi(object):
 
         :param id: folder id (required)
         :type id: str
-        :param recovery_path:
+        :param recovery_path: 
         :type recovery_path: str
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
@@ -2486,7 +3010,7 @@ class ExportsApi(object):
 
         :param id: folder id (required)
         :type id: str
-        :param recovery_path:
+        :param recovery_path: 
         :type recovery_path: str
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
@@ -2505,6 +3029,7 @@ class ExportsApi(object):
                               request; this effectively ignores the authentication
                               in the spec for a single request.
         :type _request_auth: dict, optional
+        :type _content_type: string, optional: force content-type for the request
         :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
@@ -2523,7 +3048,9 @@ class ExportsApi(object):
                 '_return_http_data_only',
                 '_preload_content',
                 '_request_timeout',
-                '_request_auth'
+                '_request_auth',
+                '_content_type',
+                '_headers'
             ]
         )
 
@@ -2536,8 +3063,7 @@ class ExportsApi(object):
             local_var_params[key] = val
         del local_var_params['kwargs']
         # verify the required parameter 'id' is set
-        if self.api_client.client_side_validation and ('id' not in local_var_params or  # noqa: E501
-                                                        local_var_params['id'] is None):  # noqa: E501
+        if self.api_client.client_side_validation and local_var_params.get('id') is None:  # noqa: E501
             raise ApiValueError("Missing the required parameter `id` when calling `export_folders_recover_folder`")  # noqa: E501
 
         if self.api_client.client_side_validation and 'id' in local_var_params and not re.search(r'^[A-Fa-f0-9]{24}$', local_var_params['id']):  # noqa: E501
@@ -2549,10 +3075,10 @@ class ExportsApi(object):
             path_params['id'] = local_var_params['id']  # noqa: E501
 
         query_params = []
-        if 'recovery_path' in local_var_params and local_var_params['recovery_path'] is not None:  # noqa: E501
+        if local_var_params.get('recovery_path') is not None:  # noqa: E501
             query_params.append(('recoveryPath', local_var_params['recovery_path']))  # noqa: E501
 
-        header_params = {}
+        header_params = dict(local_var_params.get('_headers', {}))
 
         form_params = []
         local_var_files = {}
@@ -2564,7 +3090,7 @@ class ExportsApi(object):
 
         # Authentication setting
         auth_settings = ['ApiKey', 'JWT']  # noqa: E501
-        
+
         response_types_map = {}
 
         return self.api_client.call_api(
@@ -2647,6 +3173,7 @@ class ExportsApi(object):
                               request; this effectively ignores the authentication
                               in the spec for a single request.
         :type _request_auth: dict, optional
+        :type _content_type: string, optional: force content-type for the request
         :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
@@ -2665,7 +3192,9 @@ class ExportsApi(object):
                 '_return_http_data_only',
                 '_preload_content',
                 '_request_timeout',
-                '_request_auth'
+                '_request_auth',
+                '_content_type',
+                '_headers'
             ]
         )
 
@@ -2678,8 +3207,7 @@ class ExportsApi(object):
             local_var_params[key] = val
         del local_var_params['kwargs']
         # verify the required parameter 'id' is set
-        if self.api_client.client_side_validation and ('id' not in local_var_params or  # noqa: E501
-                                                        local_var_params['id'] is None):  # noqa: E501
+        if self.api_client.client_side_validation and local_var_params.get('id') is None:  # noqa: E501
             raise ApiValueError("Missing the required parameter `id` when calling `export_folders_rename_folder`")  # noqa: E501
 
         if self.api_client.client_side_validation and 'id' in local_var_params and not re.search(r'^[A-Fa-f0-9]{24}$', local_var_params['id']):  # noqa: E501
@@ -2692,7 +3220,7 @@ class ExportsApi(object):
 
         query_params = []
 
-        header_params = {}
+        header_params = dict(local_var_params.get('_headers', {}))
 
         form_params = []
         local_var_files = {}
@@ -2705,12 +3233,16 @@ class ExportsApi(object):
             ['application/json'])  # noqa: E501
 
         # HTTP header `Content-Type`
-        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
-            ['application/json', 'text/json', 'application/*+json'])  # noqa: E501
+        content_types_list = local_var_params.get('_content_type',
+            self.api_client.select_header_content_type(
+                ['application/json', 'text/json', 'application/*+json'],
+                'PUT', body_params))  # noqa: E501
+        if content_types_list:
+                header_params['Content-Type'] = content_types_list
 
         # Authentication setting
         auth_settings = ['ApiKey', 'JWT']  # noqa: E501
-        
+
         response_types_map = {
             200: "FileVM",
             400: "ProblemDetails",
@@ -2799,6 +3331,7 @@ class ExportsApi(object):
                               request; this effectively ignores the authentication
                               in the spec for a single request.
         :type _request_auth: dict, optional
+        :type _content_type: string, optional: force content-type for the request
         :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
@@ -2817,7 +3350,9 @@ class ExportsApi(object):
                 '_return_http_data_only',
                 '_preload_content',
                 '_request_timeout',
-                '_request_auth'
+                '_request_auth',
+                '_content_type',
+                '_headers'
             ]
         )
 
@@ -2830,8 +3365,7 @@ class ExportsApi(object):
             local_var_params[key] = val
         del local_var_params['kwargs']
         # verify the required parameter 'id' is set
-        if self.api_client.client_side_validation and ('id' not in local_var_params or  # noqa: E501
-                                                        local_var_params['id'] is None):  # noqa: E501
+        if self.api_client.client_side_validation and local_var_params.get('id') is None:  # noqa: E501
             raise ApiValueError("Missing the required parameter `id` when calling `export_folders_update_icon`")  # noqa: E501
 
         if self.api_client.client_side_validation and 'id' in local_var_params and not re.search(r'^[A-Fa-f0-9]{24}$', local_var_params['id']):  # noqa: E501
@@ -2844,7 +3378,7 @@ class ExportsApi(object):
 
         query_params = []
 
-        header_params = {}
+        header_params = dict(local_var_params.get('_headers', {}))
 
         form_params = []
         local_var_files = {}
@@ -2857,12 +3391,16 @@ class ExportsApi(object):
             ['application/json'])  # noqa: E501
 
         # HTTP header `Content-Type`
-        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
-            ['application/json', 'text/json', 'application/*+json'])  # noqa: E501
+        content_types_list = local_var_params.get('_content_type',
+            self.api_client.select_header_content_type(
+                ['application/json', 'text/json', 'application/*+json'],
+                'PUT', body_params))  # noqa: E501
+        if content_types_list:
+                header_params['Content-Type'] = content_types_list
 
         # Authentication setting
         auth_settings = ['ApiKey', 'JWT']  # noqa: E501
-        
+
         response_types_map = {
             200: "FileVM",
             400: "ProblemDetails",
@@ -2897,9 +3435,9 @@ class ExportsApi(object):
         >>> thread = api.export_folders_update_permissions(id, async_req=True)
         >>> result = thread.get()
 
-        :param id: (required)
+        :param id:  (required)
         :type id: str
-        :param update_file_permissions_vm:
+        :param update_file_permissions_vm: 
         :type update_file_permissions_vm: UpdateFilePermissionsVM
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
@@ -2928,9 +3466,9 @@ class ExportsApi(object):
         >>> thread = api.export_folders_update_permissions_with_http_info(id, async_req=True)
         >>> result = thread.get()
 
-        :param id: (required)
+        :param id:  (required)
         :type id: str
-        :param update_file_permissions_vm:
+        :param update_file_permissions_vm: 
         :type update_file_permissions_vm: UpdateFilePermissionsVM
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
@@ -2949,6 +3487,7 @@ class ExportsApi(object):
                               request; this effectively ignores the authentication
                               in the spec for a single request.
         :type _request_auth: dict, optional
+        :type _content_type: string, optional: force content-type for the request
         :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
@@ -2967,7 +3506,9 @@ class ExportsApi(object):
                 '_return_http_data_only',
                 '_preload_content',
                 '_request_timeout',
-                '_request_auth'
+                '_request_auth',
+                '_content_type',
+                '_headers'
             ]
         )
 
@@ -2980,8 +3521,7 @@ class ExportsApi(object):
             local_var_params[key] = val
         del local_var_params['kwargs']
         # verify the required parameter 'id' is set
-        if self.api_client.client_side_validation and ('id' not in local_var_params or  # noqa: E501
-                                                        local_var_params['id'] is None):  # noqa: E501
+        if self.api_client.client_side_validation and local_var_params.get('id') is None:  # noqa: E501
             raise ApiValueError("Missing the required parameter `id` when calling `export_folders_update_permissions`")  # noqa: E501
 
         if self.api_client.client_side_validation and 'id' in local_var_params and not re.search(r'^[A-Fa-f0-9]{24}$', local_var_params['id']):  # noqa: E501
@@ -2994,7 +3534,7 @@ class ExportsApi(object):
 
         query_params = []
 
-        header_params = {}
+        header_params = dict(local_var_params.get('_headers', {}))
 
         form_params = []
         local_var_files = {}
@@ -3007,12 +3547,16 @@ class ExportsApi(object):
             ['application/json'])  # noqa: E501
 
         # HTTP header `Content-Type`
-        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
-            ['application/json', 'text/json', 'application/*+json'])  # noqa: E501
+        content_types_list = local_var_params.get('_content_type',
+            self.api_client.select_header_content_type(
+                ['application/json', 'text/json', 'application/*+json'],
+                'POST', body_params))  # noqa: E501
+        if content_types_list:
+                header_params['Content-Type'] = content_types_list
 
         # Authentication setting
         auth_settings = ['ApiKey', 'JWT']  # noqa: E501
-        
+
         response_types_map = {}
 
         return self.api_client.call_api(
@@ -3095,6 +3639,7 @@ class ExportsApi(object):
                               request; this effectively ignores the authentication
                               in the spec for a single request.
         :type _request_auth: dict, optional
+        :type _content_type: string, optional: force content-type for the request
         :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
@@ -3113,7 +3658,9 @@ class ExportsApi(object):
                 '_return_http_data_only',
                 '_preload_content',
                 '_request_timeout',
-                '_request_auth'
+                '_request_auth',
+                '_content_type',
+                '_headers'
             ]
         )
 
@@ -3126,8 +3673,7 @@ class ExportsApi(object):
             local_var_params[key] = val
         del local_var_params['kwargs']
         # verify the required parameter 'id' is set
-        if self.api_client.client_side_validation and ('id' not in local_var_params or  # noqa: E501
-                                                        local_var_params['id'] is None):  # noqa: E501
+        if self.api_client.client_side_validation and local_var_params.get('id') is None:  # noqa: E501
             raise ApiValueError("Missing the required parameter `id` when calling `export_folders_update_tags`")  # noqa: E501
 
         if self.api_client.client_side_validation and 'id' in local_var_params and not re.search(r'^[A-Fa-f0-9]{24}$', local_var_params['id']):  # noqa: E501
@@ -3140,7 +3686,7 @@ class ExportsApi(object):
 
         query_params = []
 
-        header_params = {}
+        header_params = dict(local_var_params.get('_headers', {}))
 
         form_params = []
         local_var_files = {}
@@ -3153,12 +3699,16 @@ class ExportsApi(object):
             ['application/json'])  # noqa: E501
 
         # HTTP header `Content-Type`
-        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
-            ['application/json', 'text/json', 'application/*+json'])  # noqa: E501
+        content_types_list = local_var_params.get('_content_type',
+            self.api_client.select_header_content_type(
+                ['application/json', 'text/json', 'application/*+json'],
+                'PUT', body_params))  # noqa: E501
+        if content_types_list:
+                header_params['Content-Type'] = content_types_list
 
         # Authentication setting
         auth_settings = ['ApiKey', 'JWT']  # noqa: E501
-        
+
         response_types_map = {
             200: "FileVM",
             400: "ProblemDetails",
@@ -3245,6 +3795,7 @@ class ExportsApi(object):
                               request; this effectively ignores the authentication
                               in the spec for a single request.
         :type _request_auth: dict, optional
+        :type _content_type: string, optional: force content-type for the request
         :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
@@ -3263,7 +3814,9 @@ class ExportsApi(object):
                 '_return_http_data_only',
                 '_preload_content',
                 '_request_timeout',
-                '_request_auth'
+                '_request_auth',
+                '_content_type',
+                '_headers'
             ]
         )
 
@@ -3276,12 +3829,10 @@ class ExportsApi(object):
             local_var_params[key] = val
         del local_var_params['kwargs']
         # verify the required parameter 'id' is set
-        if self.api_client.client_side_validation and ('id' not in local_var_params or  # noqa: E501
-                                                        local_var_params['id'] is None):  # noqa: E501
+        if self.api_client.client_side_validation and local_var_params.get('id') is None:  # noqa: E501
             raise ApiValueError("Missing the required parameter `id` when calling `exports_copy_file`")  # noqa: E501
         # verify the required parameter 'folder_id' is set
-        if self.api_client.client_side_validation and ('folder_id' not in local_var_params or  # noqa: E501
-                                                        local_var_params['folder_id'] is None):  # noqa: E501
+        if self.api_client.client_side_validation and local_var_params.get('folder_id') is None:  # noqa: E501
             raise ApiValueError("Missing the required parameter `folder_id` when calling `exports_copy_file`")  # noqa: E501
 
         if self.api_client.client_side_validation and 'id' in local_var_params and not re.search(r'^[A-Fa-f0-9]{24}$', local_var_params['id']):  # noqa: E501
@@ -3298,7 +3849,7 @@ class ExportsApi(object):
 
         query_params = []
 
-        header_params = {}
+        header_params = dict(local_var_params.get('_headers', {}))
 
         form_params = []
         local_var_files = {}
@@ -3310,7 +3861,7 @@ class ExportsApi(object):
 
         # Authentication setting
         auth_settings = ['ApiKey', 'JWT']  # noqa: E501
-        
+
         response_types_map = {
             200: "ExportVM",
             400: "ProblemDetails",
@@ -3396,6 +3947,7 @@ class ExportsApi(object):
                               request; this effectively ignores the authentication
                               in the spec for a single request.
         :type _request_auth: dict, optional
+        :type _content_type: string, optional: force content-type for the request
         :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
@@ -3413,7 +3965,9 @@ class ExportsApi(object):
                 '_return_http_data_only',
                 '_preload_content',
                 '_request_timeout',
-                '_request_auth'
+                '_request_auth',
+                '_content_type',
+                '_headers'
             ]
         )
 
@@ -3426,8 +3980,7 @@ class ExportsApi(object):
             local_var_params[key] = val
         del local_var_params['kwargs']
         # verify the required parameter 'id' is set
-        if self.api_client.client_side_validation and ('id' not in local_var_params or  # noqa: E501
-                                                        local_var_params['id'] is None):  # noqa: E501
+        if self.api_client.client_side_validation and local_var_params.get('id') is None:  # noqa: E501
             raise ApiValueError("Missing the required parameter `id` when calling `exports_delete_file`")  # noqa: E501
 
         if self.api_client.client_side_validation and 'id' in local_var_params and not re.search(r'^[A-Fa-f0-9]{24}$', local_var_params['id']):  # noqa: E501
@@ -3440,7 +3993,7 @@ class ExportsApi(object):
 
         query_params = []
 
-        header_params = {}
+        header_params = dict(local_var_params.get('_headers', {}))
 
         form_params = []
         local_var_files = {}
@@ -3452,7 +4005,7 @@ class ExportsApi(object):
 
         # Authentication setting
         auth_settings = ['ApiKey', 'JWT']  # noqa: E501
-        
+
         response_types_map = {}
 
         return self.api_client.call_api(
@@ -3531,6 +4084,7 @@ class ExportsApi(object):
                               request; this effectively ignores the authentication
                               in the spec for a single request.
         :type _request_auth: dict, optional
+        :type _content_type: string, optional: force content-type for the request
         :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
@@ -3548,7 +4102,9 @@ class ExportsApi(object):
                 '_return_http_data_only',
                 '_preload_content',
                 '_request_timeout',
-                '_request_auth'
+                '_request_auth',
+                '_content_type',
+                '_headers'
             ]
         )
 
@@ -3561,8 +4117,7 @@ class ExportsApi(object):
             local_var_params[key] = val
         del local_var_params['kwargs']
         # verify the required parameter 'id' is set
-        if self.api_client.client_side_validation and ('id' not in local_var_params or  # noqa: E501
-                                                        local_var_params['id'] is None):  # noqa: E501
+        if self.api_client.client_side_validation and local_var_params.get('id') is None:  # noqa: E501
             raise ApiValueError("Missing the required parameter `id` when calling `exports_get_file`")  # noqa: E501
 
         if self.api_client.client_side_validation and 'id' in local_var_params and not re.search(r'^[A-Fa-f0-9]{24}$', local_var_params['id']):  # noqa: E501
@@ -3575,7 +4130,7 @@ class ExportsApi(object):
 
         query_params = []
 
-        header_params = {}
+        header_params = dict(local_var_params.get('_headers', {}))
 
         form_params = []
         local_var_files = {}
@@ -3587,7 +4142,7 @@ class ExportsApi(object):
 
         # Authentication setting
         auth_settings = ['ApiKey', 'JWT']  # noqa: E501
-        
+
         response_types_map = {
             200: "ExportVM",
             400: "ProblemDetails",
@@ -3622,11 +4177,11 @@ class ExportsApi(object):
         >>> thread = api.exports_get_file_history(id, async_req=True)
         >>> result = thread.get()
 
-        :param id: (required)
+        :param id:  (required)
         :type id: str
-        :param skip:
+        :param skip: 
         :type skip: int
-        :param take:
+        :param take: 
         :type take: int
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
@@ -3655,11 +4210,11 @@ class ExportsApi(object):
         >>> thread = api.exports_get_file_history_with_http_info(id, async_req=True)
         >>> result = thread.get()
 
-        :param id: (required)
+        :param id:  (required)
         :type id: str
-        :param skip:
+        :param skip: 
         :type skip: int
-        :param take:
+        :param take: 
         :type take: int
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
@@ -3678,6 +4233,7 @@ class ExportsApi(object):
                               request; this effectively ignores the authentication
                               in the spec for a single request.
         :type _request_auth: dict, optional
+        :type _content_type: string, optional: force content-type for the request
         :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
@@ -3697,7 +4253,9 @@ class ExportsApi(object):
                 '_return_http_data_only',
                 '_preload_content',
                 '_request_timeout',
-                '_request_auth'
+                '_request_auth',
+                '_content_type',
+                '_headers'
             ]
         )
 
@@ -3710,8 +4268,7 @@ class ExportsApi(object):
             local_var_params[key] = val
         del local_var_params['kwargs']
         # verify the required parameter 'id' is set
-        if self.api_client.client_side_validation and ('id' not in local_var_params or  # noqa: E501
-                                                        local_var_params['id'] is None):  # noqa: E501
+        if self.api_client.client_side_validation and local_var_params.get('id') is None:  # noqa: E501
             raise ApiValueError("Missing the required parameter `id` when calling `exports_get_file_history`")  # noqa: E501
 
         if self.api_client.client_side_validation and 'id' in local_var_params and not re.search(r'^[A-Fa-f0-9]{24}$', local_var_params['id']):  # noqa: E501
@@ -3723,12 +4280,12 @@ class ExportsApi(object):
             path_params['id'] = local_var_params['id']  # noqa: E501
 
         query_params = []
-        if 'skip' in local_var_params and local_var_params['skip'] is not None:  # noqa: E501
+        if local_var_params.get('skip') is not None:  # noqa: E501
             query_params.append(('skip', local_var_params['skip']))  # noqa: E501
-        if 'take' in local_var_params and local_var_params['take'] is not None:  # noqa: E501
+        if local_var_params.get('take') is not None:  # noqa: E501
             query_params.append(('take', local_var_params['take']))  # noqa: E501
 
-        header_params = {}
+        header_params = dict(local_var_params.get('_headers', {}))
 
         form_params = []
         local_var_files = {}
@@ -3740,7 +4297,7 @@ class ExportsApi(object):
 
         # Authentication setting
         auth_settings = ['ApiKey', 'JWT']  # noqa: E501
-        
+
         response_types_map = {
             200: "AuditActionsVM",
             400: "ProblemDetails",
@@ -3824,6 +4381,7 @@ class ExportsApi(object):
                               request; this effectively ignores the authentication
                               in the spec for a single request.
         :type _request_auth: dict, optional
+        :type _content_type: string, optional: force content-type for the request
         :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
@@ -3841,7 +4399,9 @@ class ExportsApi(object):
                 '_return_http_data_only',
                 '_preload_content',
                 '_request_timeout',
-                '_request_auth'
+                '_request_auth',
+                '_content_type',
+                '_headers'
             ]
         )
 
@@ -3854,8 +4414,7 @@ class ExportsApi(object):
             local_var_params[key] = val
         del local_var_params['kwargs']
         # verify the required parameter 'id' is set
-        if self.api_client.client_side_validation and ('id' not in local_var_params or  # noqa: E501
-                                                        local_var_params['id'] is None):  # noqa: E501
+        if self.api_client.client_side_validation and local_var_params.get('id') is None:  # noqa: E501
             raise ApiValueError("Missing the required parameter `id` when calling `exports_get_files_count`")  # noqa: E501
 
         if self.api_client.client_side_validation and 'id' in local_var_params and not re.search(r'^[A-Fa-f0-9]{24}$', local_var_params['id']):  # noqa: E501
@@ -3868,7 +4427,7 @@ class ExportsApi(object):
 
         query_params = []
 
-        header_params = {}
+        header_params = dict(local_var_params.get('_headers', {}))
 
         form_params = []
         local_var_files = {}
@@ -3880,7 +4439,7 @@ class ExportsApi(object):
 
         # Authentication setting
         auth_settings = ['ApiKey', 'JWT']  # noqa: E501
-        
+
         response_types_map = {
             200: "CountVM",
             400: "ProblemDetails",
@@ -3921,13 +4480,13 @@ class ExportsApi(object):
         :type skip: int
         :param take: number of files, that have to be returned
         :type take: int
-        :param search_pattern:
+        :param search_pattern: 
         :type search_pattern: str
-        :param order_by:
+        :param order_by: 
         :type order_by: FileSorting
-        :param desc:
+        :param desc: 
         :type desc: bool
-        :param use_regex:
+        :param use_regex: 
         :type use_regex: bool
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
@@ -3962,13 +4521,13 @@ class ExportsApi(object):
         :type skip: int
         :param take: number of files, that have to be returned
         :type take: int
-        :param search_pattern:
+        :param search_pattern: 
         :type search_pattern: str
-        :param order_by:
+        :param order_by: 
         :type order_by: FileSorting
-        :param desc:
+        :param desc: 
         :type desc: bool
-        :param use_regex:
+        :param use_regex: 
         :type use_regex: bool
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
@@ -3987,6 +4546,7 @@ class ExportsApi(object):
                               request; this effectively ignores the authentication
                               in the spec for a single request.
         :type _request_auth: dict, optional
+        :type _content_type: string, optional: force content-type for the request
         :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
@@ -4010,7 +4570,9 @@ class ExportsApi(object):
                 '_return_http_data_only',
                 '_preload_content',
                 '_request_timeout',
-                '_request_auth'
+                '_request_auth',
+                '_content_type',
+                '_headers'
             ]
         )
 
@@ -4023,8 +4585,7 @@ class ExportsApi(object):
             local_var_params[key] = val
         del local_var_params['kwargs']
         # verify the required parameter 'id' is set
-        if self.api_client.client_side_validation and ('id' not in local_var_params or  # noqa: E501
-                                                        local_var_params['id'] is None):  # noqa: E501
+        if self.api_client.client_side_validation and local_var_params.get('id') is None:  # noqa: E501
             raise ApiValueError("Missing the required parameter `id` when calling `exports_get_files_list`")  # noqa: E501
 
         if self.api_client.client_side_validation and 'id' in local_var_params and not re.search(r'^[A-Fa-f0-9]{24}$', local_var_params['id']):  # noqa: E501
@@ -4050,20 +4611,20 @@ class ExportsApi(object):
             path_params['id'] = local_var_params['id']  # noqa: E501
 
         query_params = []
-        if 'skip' in local_var_params and local_var_params['skip'] is not None:  # noqa: E501
+        if local_var_params.get('skip') is not None:  # noqa: E501
             query_params.append(('skip', local_var_params['skip']))  # noqa: E501
-        if 'take' in local_var_params and local_var_params['take'] is not None:  # noqa: E501
+        if local_var_params.get('take') is not None:  # noqa: E501
             query_params.append(('take', local_var_params['take']))  # noqa: E501
-        if 'search_pattern' in local_var_params and local_var_params['search_pattern'] is not None:  # noqa: E501
+        if local_var_params.get('search_pattern') is not None:  # noqa: E501
             query_params.append(('searchPattern', local_var_params['search_pattern']))  # noqa: E501
-        if 'order_by' in local_var_params and local_var_params['order_by'] is not None:  # noqa: E501
+        if local_var_params.get('order_by') is not None:  # noqa: E501
             query_params.append(('orderBy', local_var_params['order_by']))  # noqa: E501
-        if 'desc' in local_var_params and local_var_params['desc'] is not None:  # noqa: E501
+        if local_var_params.get('desc') is not None:  # noqa: E501
             query_params.append(('desc', local_var_params['desc']))  # noqa: E501
-        if 'use_regex' in local_var_params and local_var_params['use_regex'] is not None:  # noqa: E501
+        if local_var_params.get('use_regex') is not None:  # noqa: E501
             query_params.append(('useRegex', local_var_params['use_regex']))  # noqa: E501
 
-        header_params = {}
+        header_params = dict(local_var_params.get('_headers', {}))
 
         form_params = []
         local_var_files = {}
@@ -4075,7 +4636,7 @@ class ExportsApi(object):
 
         # Authentication setting
         auth_settings = ['ApiKey', 'JWT']  # noqa: E501
-        
+
         response_types_map = {
             200: "ExportsVM",
             400: "ProblemDetails",
@@ -4110,7 +4671,7 @@ class ExportsApi(object):
         >>> thread = api.exports_get_permissions(id, async_req=True)
         >>> result = thread.get()
 
-        :param id: (required)
+        :param id:  (required)
         :type id: str
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
@@ -4139,7 +4700,7 @@ class ExportsApi(object):
         >>> thread = api.exports_get_permissions_with_http_info(id, async_req=True)
         >>> result = thread.get()
 
-        :param id: (required)
+        :param id:  (required)
         :type id: str
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
@@ -4158,6 +4719,7 @@ class ExportsApi(object):
                               request; this effectively ignores the authentication
                               in the spec for a single request.
         :type _request_auth: dict, optional
+        :type _content_type: string, optional: force content-type for the request
         :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
@@ -4175,7 +4737,9 @@ class ExportsApi(object):
                 '_return_http_data_only',
                 '_preload_content',
                 '_request_timeout',
-                '_request_auth'
+                '_request_auth',
+                '_content_type',
+                '_headers'
             ]
         )
 
@@ -4188,8 +4752,7 @@ class ExportsApi(object):
             local_var_params[key] = val
         del local_var_params['kwargs']
         # verify the required parameter 'id' is set
-        if self.api_client.client_side_validation and ('id' not in local_var_params or  # noqa: E501
-                                                        local_var_params['id'] is None):  # noqa: E501
+        if self.api_client.client_side_validation and local_var_params.get('id') is None:  # noqa: E501
             raise ApiValueError("Missing the required parameter `id` when calling `exports_get_permissions`")  # noqa: E501
 
         if self.api_client.client_side_validation and 'id' in local_var_params and not re.search(r'^[A-Fa-f0-9]{24}$', local_var_params['id']):  # noqa: E501
@@ -4202,7 +4765,7 @@ class ExportsApi(object):
 
         query_params = []
 
-        header_params = {}
+        header_params = dict(local_var_params.get('_headers', {}))
 
         form_params = []
         local_var_files = {}
@@ -4214,7 +4777,7 @@ class ExportsApi(object):
 
         # Authentication setting
         auth_settings = ['ApiKey', 'JWT']  # noqa: E501
-        
+
         response_types_map = {
             200: "FilePermissionsVM",
             400: "ProblemDetails",
@@ -4302,6 +4865,7 @@ class ExportsApi(object):
                               request; this effectively ignores the authentication
                               in the spec for a single request.
         :type _request_auth: dict, optional
+        :type _content_type: string, optional: force content-type for the request
         :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
@@ -4320,7 +4884,9 @@ class ExportsApi(object):
                 '_return_http_data_only',
                 '_preload_content',
                 '_request_timeout',
-                '_request_auth'
+                '_request_auth',
+                '_content_type',
+                '_headers'
             ]
         )
 
@@ -4333,12 +4899,10 @@ class ExportsApi(object):
             local_var_params[key] = val
         del local_var_params['kwargs']
         # verify the required parameter 'id' is set
-        if self.api_client.client_side_validation and ('id' not in local_var_params or  # noqa: E501
-                                                        local_var_params['id'] is None):  # noqa: E501
+        if self.api_client.client_side_validation and local_var_params.get('id') is None:  # noqa: E501
             raise ApiValueError("Missing the required parameter `id` when calling `exports_move_file`")  # noqa: E501
         # verify the required parameter 'folder_id' is set
-        if self.api_client.client_side_validation and ('folder_id' not in local_var_params or  # noqa: E501
-                                                        local_var_params['folder_id'] is None):  # noqa: E501
+        if self.api_client.client_side_validation and local_var_params.get('folder_id') is None:  # noqa: E501
             raise ApiValueError("Missing the required parameter `folder_id` when calling `exports_move_file`")  # noqa: E501
 
         if self.api_client.client_side_validation and 'id' in local_var_params and not re.search(r'^[A-Fa-f0-9]{24}$', local_var_params['id']):  # noqa: E501
@@ -4355,7 +4919,7 @@ class ExportsApi(object):
 
         query_params = []
 
-        header_params = {}
+        header_params = dict(local_var_params.get('_headers', {}))
 
         form_params = []
         local_var_files = {}
@@ -4367,7 +4931,7 @@ class ExportsApi(object):
 
         # Authentication setting
         auth_settings = ['ApiKey', 'JWT']  # noqa: E501
-        
+
         response_types_map = {
             200: "ExportVM",
             400: "ProblemDetails",
@@ -4453,6 +5017,7 @@ class ExportsApi(object):
                               request; this effectively ignores the authentication
                               in the spec for a single request.
         :type _request_auth: dict, optional
+        :type _content_type: string, optional: force content-type for the request
         :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
@@ -4470,7 +5035,9 @@ class ExportsApi(object):
                 '_return_http_data_only',
                 '_preload_content',
                 '_request_timeout',
-                '_request_auth'
+                '_request_auth',
+                '_content_type',
+                '_headers'
             ]
         )
 
@@ -4483,8 +5050,7 @@ class ExportsApi(object):
             local_var_params[key] = val
         del local_var_params['kwargs']
         # verify the required parameter 'id' is set
-        if self.api_client.client_side_validation and ('id' not in local_var_params or  # noqa: E501
-                                                        local_var_params['id'] is None):  # noqa: E501
+        if self.api_client.client_side_validation and local_var_params.get('id') is None:  # noqa: E501
             raise ApiValueError("Missing the required parameter `id` when calling `exports_move_file_to_bin`")  # noqa: E501
 
         if self.api_client.client_side_validation and 'id' in local_var_params and not re.search(r'^[A-Fa-f0-9]{24}$', local_var_params['id']):  # noqa: E501
@@ -4497,7 +5063,7 @@ class ExportsApi(object):
 
         query_params = []
 
-        header_params = {}
+        header_params = dict(local_var_params.get('_headers', {}))
 
         form_params = []
         local_var_files = {}
@@ -4509,7 +5075,7 @@ class ExportsApi(object):
 
         # Authentication setting
         auth_settings = ['ApiKey', 'JWT']  # noqa: E501
-        
+
         response_types_map = {}
 
         return self.api_client.call_api(
@@ -4541,7 +5107,7 @@ class ExportsApi(object):
 
         :param id: file id (required)
         :type id: str
-        :param recovery_path:
+        :param recovery_path: 
         :type recovery_path: str
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
@@ -4573,7 +5139,7 @@ class ExportsApi(object):
 
         :param id: file id (required)
         :type id: str
-        :param recovery_path:
+        :param recovery_path: 
         :type recovery_path: str
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
@@ -4592,6 +5158,7 @@ class ExportsApi(object):
                               request; this effectively ignores the authentication
                               in the spec for a single request.
         :type _request_auth: dict, optional
+        :type _content_type: string, optional: force content-type for the request
         :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
@@ -4610,7 +5177,9 @@ class ExportsApi(object):
                 '_return_http_data_only',
                 '_preload_content',
                 '_request_timeout',
-                '_request_auth'
+                '_request_auth',
+                '_content_type',
+                '_headers'
             ]
         )
 
@@ -4623,8 +5192,7 @@ class ExportsApi(object):
             local_var_params[key] = val
         del local_var_params['kwargs']
         # verify the required parameter 'id' is set
-        if self.api_client.client_side_validation and ('id' not in local_var_params or  # noqa: E501
-                                                        local_var_params['id'] is None):  # noqa: E501
+        if self.api_client.client_side_validation and local_var_params.get('id') is None:  # noqa: E501
             raise ApiValueError("Missing the required parameter `id` when calling `exports_recover_file`")  # noqa: E501
 
         if self.api_client.client_side_validation and 'id' in local_var_params and not re.search(r'^[A-Fa-f0-9]{24}$', local_var_params['id']):  # noqa: E501
@@ -4636,10 +5204,10 @@ class ExportsApi(object):
             path_params['id'] = local_var_params['id']  # noqa: E501
 
         query_params = []
-        if 'recovery_path' in local_var_params and local_var_params['recovery_path'] is not None:  # noqa: E501
+        if local_var_params.get('recovery_path') is not None:  # noqa: E501
             query_params.append(('recoveryPath', local_var_params['recovery_path']))  # noqa: E501
 
-        header_params = {}
+        header_params = dict(local_var_params.get('_headers', {}))
 
         form_params = []
         local_var_files = {}
@@ -4651,7 +5219,7 @@ class ExportsApi(object):
 
         # Authentication setting
         auth_settings = ['ApiKey', 'JWT']  # noqa: E501
-        
+
         response_types_map = {}
 
         return self.api_client.call_api(
@@ -4734,6 +5302,7 @@ class ExportsApi(object):
                               request; this effectively ignores the authentication
                               in the spec for a single request.
         :type _request_auth: dict, optional
+        :type _content_type: string, optional: force content-type for the request
         :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
@@ -4752,7 +5321,9 @@ class ExportsApi(object):
                 '_return_http_data_only',
                 '_preload_content',
                 '_request_timeout',
-                '_request_auth'
+                '_request_auth',
+                '_content_type',
+                '_headers'
             ]
         )
 
@@ -4765,8 +5336,7 @@ class ExportsApi(object):
             local_var_params[key] = val
         del local_var_params['kwargs']
         # verify the required parameter 'id' is set
-        if self.api_client.client_side_validation and ('id' not in local_var_params or  # noqa: E501
-                                                        local_var_params['id'] is None):  # noqa: E501
+        if self.api_client.client_side_validation and local_var_params.get('id') is None:  # noqa: E501
             raise ApiValueError("Missing the required parameter `id` when calling `exports_rename_file`")  # noqa: E501
 
         if self.api_client.client_side_validation and 'id' in local_var_params and not re.search(r'^[A-Fa-f0-9]{24}$', local_var_params['id']):  # noqa: E501
@@ -4779,7 +5349,7 @@ class ExportsApi(object):
 
         query_params = []
 
-        header_params = {}
+        header_params = dict(local_var_params.get('_headers', {}))
 
         form_params = []
         local_var_files = {}
@@ -4792,12 +5362,16 @@ class ExportsApi(object):
             ['application/json'])  # noqa: E501
 
         # HTTP header `Content-Type`
-        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
-            ['application/json', 'text/json', 'application/*+json'])  # noqa: E501
+        content_types_list = local_var_params.get('_content_type',
+            self.api_client.select_header_content_type(
+                ['application/json', 'text/json', 'application/*+json'],
+                'PUT', body_params))  # noqa: E501
+        if content_types_list:
+                header_params['Content-Type'] = content_types_list
 
         # Authentication setting
         auth_settings = ['ApiKey', 'JWT']  # noqa: E501
-        
+
         response_types_map = {
             200: "ExportVM",
             400: "ProblemDetails",
@@ -4887,6 +5461,7 @@ class ExportsApi(object):
                               request; this effectively ignores the authentication
                               in the spec for a single request.
         :type _request_auth: dict, optional
+        :type _content_type: string, optional: force content-type for the request
         :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
@@ -4905,7 +5480,9 @@ class ExportsApi(object):
                 '_return_http_data_only',
                 '_preload_content',
                 '_request_timeout',
-                '_request_auth'
+                '_request_auth',
+                '_content_type',
+                '_headers'
             ]
         )
 
@@ -4918,8 +5495,7 @@ class ExportsApi(object):
             local_var_params[key] = val
         del local_var_params['kwargs']
         # verify the required parameter 'id' is set
-        if self.api_client.client_side_validation and ('id' not in local_var_params or  # noqa: E501
-                                                        local_var_params['id'] is None):  # noqa: E501
+        if self.api_client.client_side_validation and local_var_params.get('id') is None:  # noqa: E501
             raise ApiValueError("Missing the required parameter `id` when calling `exports_update_icon`")  # noqa: E501
 
         if self.api_client.client_side_validation and 'id' in local_var_params and not re.search(r'^[A-Fa-f0-9]{24}$', local_var_params['id']):  # noqa: E501
@@ -4932,7 +5508,7 @@ class ExportsApi(object):
 
         query_params = []
 
-        header_params = {}
+        header_params = dict(local_var_params.get('_headers', {}))
 
         form_params = []
         local_var_files = {}
@@ -4945,12 +5521,16 @@ class ExportsApi(object):
             ['application/json'])  # noqa: E501
 
         # HTTP header `Content-Type`
-        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
-            ['application/json', 'text/json', 'application/*+json'])  # noqa: E501
+        content_types_list = local_var_params.get('_content_type',
+            self.api_client.select_header_content_type(
+                ['application/json', 'text/json', 'application/*+json'],
+                'PUT', body_params))  # noqa: E501
+        if content_types_list:
+                header_params['Content-Type'] = content_types_list
 
         # Authentication setting
         auth_settings = ['ApiKey', 'JWT']  # noqa: E501
-        
+
         response_types_map = {
             200: "ExportVM",
             400: "ProblemDetails",
@@ -4986,9 +5566,9 @@ class ExportsApi(object):
         >>> thread = api.exports_update_permissions(id, async_req=True)
         >>> result = thread.get()
 
-        :param id: (required)
+        :param id:  (required)
         :type id: str
-        :param update_file_permissions_vm:
+        :param update_file_permissions_vm: 
         :type update_file_permissions_vm: UpdateFilePermissionsVM
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
@@ -5017,9 +5597,9 @@ class ExportsApi(object):
         >>> thread = api.exports_update_permissions_with_http_info(id, async_req=True)
         >>> result = thread.get()
 
-        :param id: (required)
+        :param id:  (required)
         :type id: str
-        :param update_file_permissions_vm:
+        :param update_file_permissions_vm: 
         :type update_file_permissions_vm: UpdateFilePermissionsVM
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
@@ -5038,6 +5618,7 @@ class ExportsApi(object):
                               request; this effectively ignores the authentication
                               in the spec for a single request.
         :type _request_auth: dict, optional
+        :type _content_type: string, optional: force content-type for the request
         :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
@@ -5056,7 +5637,9 @@ class ExportsApi(object):
                 '_return_http_data_only',
                 '_preload_content',
                 '_request_timeout',
-                '_request_auth'
+                '_request_auth',
+                '_content_type',
+                '_headers'
             ]
         )
 
@@ -5069,8 +5652,7 @@ class ExportsApi(object):
             local_var_params[key] = val
         del local_var_params['kwargs']
         # verify the required parameter 'id' is set
-        if self.api_client.client_side_validation and ('id' not in local_var_params or  # noqa: E501
-                                                        local_var_params['id'] is None):  # noqa: E501
+        if self.api_client.client_side_validation and local_var_params.get('id') is None:  # noqa: E501
             raise ApiValueError("Missing the required parameter `id` when calling `exports_update_permissions`")  # noqa: E501
 
         if self.api_client.client_side_validation and 'id' in local_var_params and not re.search(r'^[A-Fa-f0-9]{24}$', local_var_params['id']):  # noqa: E501
@@ -5083,7 +5665,7 @@ class ExportsApi(object):
 
         query_params = []
 
-        header_params = {}
+        header_params = dict(local_var_params.get('_headers', {}))
 
         form_params = []
         local_var_files = {}
@@ -5096,12 +5678,16 @@ class ExportsApi(object):
             ['application/json'])  # noqa: E501
 
         # HTTP header `Content-Type`
-        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
-            ['application/json', 'text/json', 'application/*+json'])  # noqa: E501
+        content_types_list = local_var_params.get('_content_type',
+            self.api_client.select_header_content_type(
+                ['application/json', 'text/json', 'application/*+json'],
+                'POST', body_params))  # noqa: E501
+        if content_types_list:
+                header_params['Content-Type'] = content_types_list
 
         # Authentication setting
         auth_settings = ['ApiKey', 'JWT']  # noqa: E501
-        
+
         response_types_map = {}
 
         return self.api_client.call_api(
@@ -5184,6 +5770,7 @@ class ExportsApi(object):
                               request; this effectively ignores the authentication
                               in the spec for a single request.
         :type _request_auth: dict, optional
+        :type _content_type: string, optional: force content-type for the request
         :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
@@ -5202,7 +5789,9 @@ class ExportsApi(object):
                 '_return_http_data_only',
                 '_preload_content',
                 '_request_timeout',
-                '_request_auth'
+                '_request_auth',
+                '_content_type',
+                '_headers'
             ]
         )
 
@@ -5215,8 +5804,7 @@ class ExportsApi(object):
             local_var_params[key] = val
         del local_var_params['kwargs']
         # verify the required parameter 'id' is set
-        if self.api_client.client_side_validation and ('id' not in local_var_params or  # noqa: E501
-                                                        local_var_params['id'] is None):  # noqa: E501
+        if self.api_client.client_side_validation and local_var_params.get('id') is None:  # noqa: E501
             raise ApiValueError("Missing the required parameter `id` when calling `exports_update_tags`")  # noqa: E501
 
         if self.api_client.client_side_validation and 'id' in local_var_params and not re.search(r'^[A-Fa-f0-9]{24}$', local_var_params['id']):  # noqa: E501
@@ -5229,7 +5817,7 @@ class ExportsApi(object):
 
         query_params = []
 
-        header_params = {}
+        header_params = dict(local_var_params.get('_headers', {}))
 
         form_params = []
         local_var_files = {}
@@ -5242,12 +5830,16 @@ class ExportsApi(object):
             ['application/json'])  # noqa: E501
 
         # HTTP header `Content-Type`
-        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
-            ['application/json', 'text/json', 'application/*+json'])  # noqa: E501
+        content_types_list = local_var_params.get('_content_type',
+            self.api_client.select_header_content_type(
+                ['application/json', 'text/json', 'application/*+json'],
+                'PUT', body_params))  # noqa: E501
+        if content_types_list:
+                header_params['Content-Type'] = content_types_list
 
         # Authentication setting
         auth_settings = ['ApiKey', 'JWT']  # noqa: E501
-        
+
         response_types_map = {
             200: "ExportVM",
             400: "ProblemDetails",

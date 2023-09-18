@@ -28,10 +28,33 @@ class TestTaskBaseVM(unittest.TestCase):
     def tearDown(self):
         pass
 
+    def make_instance(self, include_optional):
+        """Test TaskBaseVM
+            include_option is a boolean, when False only required
+            params are included, when True both required and
+            optional params are included """
+        # model = fastreport_cloud_sdk.models.task_base_vm.TaskBaseVM()  # noqa: E501
+        if include_optional :
+            return TaskBaseVM(
+                cron_expression = '', 
+                delayed_run_time = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
+                delayed_was_run_time = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
+                id = '62ECB020842930cc01FFCCfe', 
+                name = '0', 
+                recurrent_run_time = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
+                recurrent_was_run_time = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
+                subscription_id = '2ECB020842930cc01FFCCfeE', 
+                t = ''
+            )
+        else :
+            return TaskBaseVM(
+                t = '',
+        )
+
     def testTaskBaseVM(self):
         """Test TaskBaseVM"""
-        # inst_req_only = self.make_instance(include_optional=False)
-        # inst_req_and_optional = self.make_instance(include_optional=True)
+        inst_req_only = self.make_instance(include_optional=False)
+        inst_req_and_optional = self.make_instance(include_optional=True)
 
 if __name__ == '__main__':
     unittest.main()

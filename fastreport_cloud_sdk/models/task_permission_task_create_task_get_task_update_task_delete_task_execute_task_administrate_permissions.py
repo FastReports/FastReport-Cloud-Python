@@ -38,7 +38,7 @@ class TaskPermissionTaskCreateTaskGetTaskUpdateTaskDeleteTaskExecuteTaskAdminist
     openapi_types = {
         'owner_id': 'str',
         'owner': 'TaskPermission',
-        'groups': 'dict(str, TaskPermission)',
+        'groups': 'dict[str, TaskPermission]',
         'other': 'TaskPermission',
         'anon': 'TaskPermission'
     }
@@ -124,7 +124,7 @@ class TaskPermissionTaskCreateTaskGetTaskUpdateTaskDeleteTaskExecuteTaskAdminist
 
 
         :return: The groups of this TaskPermissionTaskCreateTaskGetTaskUpdateTaskDeleteTaskExecuteTaskAdministratePermissions.  # noqa: E501
-        :rtype: dict(str, TaskPermission)
+        :rtype: dict[str, TaskPermission]
         """
         return self._groups
 
@@ -134,7 +134,7 @@ class TaskPermissionTaskCreateTaskGetTaskUpdateTaskDeleteTaskExecuteTaskAdminist
 
 
         :param groups: The groups of this TaskPermissionTaskCreateTaskGetTaskUpdateTaskDeleteTaskExecuteTaskAdministratePermissions.  # noqa: E501
-        :type groups: dict(str, TaskPermission)
+        :type groups: dict[str, TaskPermission]
         """
 
         self._groups = groups

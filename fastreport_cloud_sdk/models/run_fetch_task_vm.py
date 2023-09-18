@@ -36,73 +36,47 @@ class RunFetchTaskVM(object):
                             and the value is json key in definition.
     """
     openapi_types = {
-        'subscription_id': 'str',
-        'type': 'TaskType'
+        'data_source_id': 'str'
     }
 
     attribute_map = {
-        'subscription_id': 'subscriptionId',
-        'type': 'type'
+        'data_source_id': 'dataSourceId'
     }
 
-    def __init__(self, subscription_id=None, type=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, data_source_id=None, local_vars_configuration=None):  # noqa: E501
         """RunFetchTaskVM - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration.get_default_copy()
         self.local_vars_configuration = local_vars_configuration
 
-        self._subscription_id = None
-        self._type = None
+        self._data_source_id = None
         self.discriminator = None
 
-        self.subscription_id = subscription_id
-        if type is not None:
-            self.type = type
+        self.data_source_id = data_source_id
 
     @property
-    def subscription_id(self):
-        """Gets the subscription_id of this RunFetchTaskVM.  # noqa: E501
+    def data_source_id(self):
+        """Gets the data_source_id of this RunFetchTaskVM.  # noqa: E501
 
 
-        :return: The subscription_id of this RunFetchTaskVM.  # noqa: E501
+        :return: The data_source_id of this RunFetchTaskVM.  # noqa: E501
         :rtype: str
         """
-        return self._subscription_id
+        return self._data_source_id
 
-    @subscription_id.setter
-    def subscription_id(self, subscription_id):
-        """Sets the subscription_id of this RunFetchTaskVM.
+    @data_source_id.setter
+    def data_source_id(self, data_source_id):
+        """Sets the data_source_id of this RunFetchTaskVM.
 
 
-        :param subscription_id: The subscription_id of this RunFetchTaskVM.  # noqa: E501
-        :type subscription_id: str
+        :param data_source_id: The data_source_id of this RunFetchTaskVM.  # noqa: E501
+        :type data_source_id: str
         """
         if (self.local_vars_configuration.client_side_validation and
-                subscription_id is not None and not re.search(r'(^$)|(^[A-Fa-f0-9]{24}$)', subscription_id)):  # noqa: E501
-            raise ValueError(r"Invalid value for `subscription_id`, must be a follow pattern or equal to `/(^$)|(^[A-Fa-f0-9]{24}$)/`")  # noqa: E501
+                data_source_id is not None and not re.search(r'(^$)|(^[A-Fa-f0-9]{24}$)', data_source_id)):  # noqa: E501
+            raise ValueError(r"Invalid value for `data_source_id`, must be a follow pattern or equal to `/(^$)|(^[A-Fa-f0-9]{24}$)/`")  # noqa: E501
 
-        self._subscription_id = subscription_id
-
-    @property
-    def type(self):
-        """Gets the type of this RunFetchTaskVM.  # noqa: E501
-
-
-        :return: The type of this RunFetchTaskVM.  # noqa: E501
-        :rtype: TaskType
-        """
-        return self._type
-
-    @type.setter
-    def type(self, type):
-        """Sets the type of this RunFetchTaskVM.
-
-
-        :param type: The type of this RunFetchTaskVM.  # noqa: E501
-        :type type: TaskType
-        """
-
-        self._type = type
+        self._data_source_id = data_source_id
 
     def to_dict(self, serialize=False):
         """Returns the model properties as a dict"""

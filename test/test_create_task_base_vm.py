@@ -36,14 +36,15 @@ class TestCreateTaskBaseVM(unittest.TestCase):
         # model = fastreport_cloud_sdk.models.create_task_base_vm.CreateTaskBaseVM()  # noqa: E501
         if include_optional :
             return CreateTaskBaseVM(
+                cron_expression = '', 
+                delayed_run_time = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
                 name = '0', 
                 subscription_id = '2ECB020842930cc01FFCCfeE', 
-                type = 'ExportTemplate', 
-                delayed_run_time = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
-                cron_expression = ''
+                t = ''
             )
         else :
             return CreateTaskBaseVM(
+                t = '',
         )
 
     def testCreateTaskBaseVM(self):

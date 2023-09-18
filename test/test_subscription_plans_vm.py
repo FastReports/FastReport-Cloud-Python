@@ -62,6 +62,7 @@ class TestSubscriptionPlansVM(unittest.TestCase):
                             export_template = True, 
                             export_report = True, 
                             send_via_email = True, 
+                            upload_to_ftp = True, 
                             send_via_webhook = True, 
                             fetch_data = True, 
                             thumbnail_report = True, 

@@ -40,8 +40,9 @@ class DataSourceConnectionType(object):
     ORACLEDB = "OracleDB"
     FIREBIRDDB = "FirebirdDB"
     MONGODB = "MongoDB"
+    CLICKHOUSE = "ClickHouse"
 
-    allowable_values = [JSON, MSSQL, CSV, XML, MYSQL, POSTGRES, ORACLEDB, FIREBIRDDB, MONGODB]  # noqa: E501
+    allowable_values = [JSON, MSSQL, CSV, XML, MYSQL, POSTGRES, ORACLEDB, FIREBIRDDB, MONGODB, CLICKHOUSE]  # noqa: E501
 
     """
     Attributes:

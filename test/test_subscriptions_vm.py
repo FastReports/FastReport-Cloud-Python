@@ -69,6 +69,7 @@ class TestSubscriptionsVM(unittest.TestCase):
                                     export_template = True, 
                                     export_report = True, 
                                     send_via_email = True, 
+                                    upload_to_ftp = True, 
                                     send_via_webhook = True, 
                                     fetch_data = True, 
                                     thumbnail_report = True, 
@@ -84,9 +85,7 @@ class TestSubscriptionsVM(unittest.TestCase):
                         reports_folder = fastreport_cloud_sdk.models.subscription_folder.SubscriptionFolder(
                             folder_id = '', 
                             bytes_used = 56, ), 
-                        exports_folder = fastreport_cloud_sdk.models.subscription_folder.SubscriptionFolder(
-                            folder_id = '', 
-                            bytes_used = 56, ), )
+                        exports_folder = , )
                     ], 
                 count = 56, 
                 skip = 56, 

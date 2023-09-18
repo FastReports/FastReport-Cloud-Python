@@ -41,8 +41,8 @@ class ExportTemplateVM(object):
         'locale': 'str',
         'pages_count': 'int',
         'format': 'ExportFormat',
-        'export_parameters': 'dict(str, str)',
-        'report_parameters': 'dict(str, str)'
+        'export_parameters': 'dict[str, str]',
+        'report_parameters': 'dict[str, str]'
     }
 
     attribute_map = {
@@ -208,7 +208,7 @@ class ExportTemplateVM(object):
 
 
         :return: The export_parameters of this ExportTemplateVM.  # noqa: E501
-        :rtype: dict(str, str)
+        :rtype: dict[str, str]
         """
         return self._export_parameters
 
@@ -218,7 +218,7 @@ class ExportTemplateVM(object):
 
 
         :param export_parameters: The export_parameters of this ExportTemplateVM.  # noqa: E501
-        :type export_parameters: dict(str, str)
+        :type export_parameters: dict[str, str]
         """
 
         self._export_parameters = export_parameters
@@ -229,7 +229,7 @@ class ExportTemplateVM(object):
 
 
         :return: The report_parameters of this ExportTemplateVM.  # noqa: E501
-        :rtype: dict(str, str)
+        :rtype: dict[str, str]
         """
         return self._report_parameters
 
@@ -239,7 +239,7 @@ class ExportTemplateVM(object):
 
 
         :param report_parameters: The report_parameters of this ExportTemplateVM.  # noqa: E501
-        :type report_parameters: dict(str, str)
+        :type report_parameters: dict[str, str]
         """
 
         self._report_parameters = report_parameters

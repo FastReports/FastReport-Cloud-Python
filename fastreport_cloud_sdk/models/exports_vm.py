@@ -36,122 +36,17 @@ class ExportsVM(object):
                             and the value is json key in definition.
     """
     openapi_types = {
-        'files': 'list[ExportVM]',
-        'count': 'int',
-        'skip': 'int',
-        'take': 'int'
     }
 
     attribute_map = {
-        'files': 'files',
-        'count': 'count',
-        'skip': 'skip',
-        'take': 'take'
     }
 
-    def __init__(self, files=None, count=None, skip=None, take=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, local_vars_configuration=None):  # noqa: E501
         """ExportsVM - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration.get_default_copy()
         self.local_vars_configuration = local_vars_configuration
-
-        self._files = None
-        self._count = None
-        self._skip = None
-        self._take = None
         self.discriminator = None
-
-        self.files = files
-        if count is not None:
-            self.count = count
-        if skip is not None:
-            self.skip = skip
-        if take is not None:
-            self.take = take
-
-    @property
-    def files(self):
-        """Gets the files of this ExportsVM.  # noqa: E501
-
-
-        :return: The files of this ExportsVM.  # noqa: E501
-        :rtype: list[ExportVM]
-        """
-        return self._files
-
-    @files.setter
-    def files(self, files):
-        """Sets the files of this ExportsVM.
-
-
-        :param files: The files of this ExportsVM.  # noqa: E501
-        :type files: list[ExportVM]
-        """
-
-        self._files = files
-
-    @property
-    def count(self):
-        """Gets the count of this ExportsVM.  # noqa: E501
-
-
-        :return: The count of this ExportsVM.  # noqa: E501
-        :rtype: int
-        """
-        return self._count
-
-    @count.setter
-    def count(self, count):
-        """Sets the count of this ExportsVM.
-
-
-        :param count: The count of this ExportsVM.  # noqa: E501
-        :type count: int
-        """
-
-        self._count = count
-
-    @property
-    def skip(self):
-        """Gets the skip of this ExportsVM.  # noqa: E501
-
-
-        :return: The skip of this ExportsVM.  # noqa: E501
-        :rtype: int
-        """
-        return self._skip
-
-    @skip.setter
-    def skip(self, skip):
-        """Sets the skip of this ExportsVM.
-
-
-        :param skip: The skip of this ExportsVM.  # noqa: E501
-        :type skip: int
-        """
-
-        self._skip = skip
-
-    @property
-    def take(self):
-        """Gets the take of this ExportsVM.  # noqa: E501
-
-
-        :return: The take of this ExportsVM.  # noqa: E501
-        :rtype: int
-        """
-        return self._take
-
-    @take.setter
-    def take(self, take):
-        """Sets the take of this ExportsVM.
-
-
-        :param take: The take of this ExportsVM.  # noqa: E501
-        :type take: int
-        """
-
-        self._take = take
 
     def to_dict(self, serialize=False):
         """Returns the model properties as a dict"""

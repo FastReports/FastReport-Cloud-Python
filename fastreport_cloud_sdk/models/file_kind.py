@@ -34,9 +34,8 @@ class FileKind(object):
     TEMPLATE = "Template"
     REPORT = "Report"
     EXPORT = "Export"
-    DATASOURCE = "DataSource"
 
-    allowable_values = [TEMPLATE, REPORT, EXPORT, DATASOURCE]  # noqa: E501
+    allowable_values = [TEMPLATE, REPORT, EXPORT]  # noqa: E501
 
     """
     Attributes:

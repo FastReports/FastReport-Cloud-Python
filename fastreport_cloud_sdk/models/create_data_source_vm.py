@@ -144,6 +144,9 @@ class CreateDataSourceVM(object):
         if self.local_vars_configuration.client_side_validation and subscription_id is None:  # noqa: E501
             raise ValueError("Invalid value for `subscription_id`, must not be `None`")  # noqa: E501
         if (self.local_vars_configuration.client_side_validation and
+                subscription_id is not None and len(subscription_id) < 1):
+            raise ValueError("Invalid value for `subscription_id`, length must be greater than or equal to `1`")  # noqa: E501
+        if (self.local_vars_configuration.client_side_validation and
                 subscription_id is not None and not re.search(r'^[A-Fa-f0-9]{24}$', subscription_id)):  # noqa: E501
             raise ValueError(r"Invalid value for `subscription_id`, must be a follow pattern or equal to `/^[A-Fa-f0-9]{24}$/`")  # noqa: E501
 

@@ -38,7 +38,7 @@ class SubscriptionPermissionSubscriptionCreateSubscriptionGetSubscriptionUpdateS
     openapi_types = {
         'owner_id': 'str',
         'owner': 'SubscriptionPermission',
-        'groups': 'dict(str, SubscriptionPermission)',
+        'groups': 'dict[str, SubscriptionPermission]',
         'other': 'SubscriptionPermission',
         'anon': 'SubscriptionPermission'
     }
@@ -124,7 +124,7 @@ class SubscriptionPermissionSubscriptionCreateSubscriptionGetSubscriptionUpdateS
 
 
         :return: The groups of this SubscriptionPermissionSubscriptionCreateSubscriptionGetSubscriptionUpdateSubscriptionDeleteSubscriptionExecuteSubscriptionAdministratePermissions.  # noqa: E501
-        :rtype: dict(str, SubscriptionPermission)
+        :rtype: dict[str, SubscriptionPermission]
         """
         return self._groups
 
@@ -134,7 +134,7 @@ class SubscriptionPermissionSubscriptionCreateSubscriptionGetSubscriptionUpdateS
 
 
         :param groups: The groups of this SubscriptionPermissionSubscriptionCreateSubscriptionGetSubscriptionUpdateSubscriptionDeleteSubscriptionExecuteSubscriptionAdministratePermissions.  # noqa: E501
-        :type groups: dict(str, SubscriptionPermission)
+        :type groups: dict[str, SubscriptionPermission]
         """
 
         self._groups = groups

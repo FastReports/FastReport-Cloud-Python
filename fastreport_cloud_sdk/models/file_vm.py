@@ -46,11 +46,7 @@ class FileVM(object):
         'status': 'FileStatus',
         'status_reason': 'FileStatusReason',
         'error_message': 'str',
-        'id': 'str',
-        'created_time': 'datetime',
-        'creator_user_id': 'str',
-        'edited_time': 'datetime',
-        'editor_user_id': 'str'
+        'is_deleted': 'bool'
     }
 
     attribute_map = {
@@ -64,14 +60,10 @@ class FileVM(object):
         'status': 'status',
         'status_reason': 'statusReason',
         'error_message': 'errorMessage',
-        'id': 'id',
-        'created_time': 'createdTime',
-        'creator_user_id': 'creatorUserId',
-        'edited_time': 'editedTime',
-        'editor_user_id': 'editorUserId'
+        'is_deleted': 'isDeleted'
     }
 
-    def __init__(self, name=None, parent_id=None, tags=None, icon=None, type=None, size=None, subscription_id=None, status=None, status_reason=None, error_message=None, id=None, created_time=None, creator_user_id=None, edited_time=None, editor_user_id=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, name=None, parent_id=None, tags=None, icon=None, type=None, size=None, subscription_id=None, status=None, status_reason=None, error_message=None, is_deleted=None, local_vars_configuration=None):  # noqa: E501
         """FileVM - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration.get_default_copy()
@@ -87,11 +79,7 @@ class FileVM(object):
         self._status = None
         self._status_reason = None
         self._error_message = None
-        self._id = None
-        self._created_time = None
-        self._creator_user_id = None
-        self._edited_time = None
-        self._editor_user_id = None
+        self._is_deleted = None
         self.discriminator = None
 
         self.name = name
@@ -108,13 +96,8 @@ class FileVM(object):
         if status_reason is not None:
             self.status_reason = status_reason
         self.error_message = error_message
-        self.id = id
-        if created_time is not None:
-            self.created_time = created_time
-        self.creator_user_id = creator_user_id
-        if edited_time is not None:
-            self.edited_time = edited_time
-        self.editor_user_id = editor_user_id
+        if is_deleted is not None:
+            self.is_deleted = is_deleted
 
     @property
     def name(self):
@@ -327,109 +310,25 @@ class FileVM(object):
         self._error_message = error_message
 
     @property
-    def id(self):
-        """Gets the id of this FileVM.  # noqa: E501
+    def is_deleted(self):
+        """Gets the is_deleted of this FileVM.  # noqa: E501
 
 
-        :return: The id of this FileVM.  # noqa: E501
-        :rtype: str
+        :return: The is_deleted of this FileVM.  # noqa: E501
+        :rtype: bool
         """
-        return self._id
+        return self._is_deleted
 
-    @id.setter
-    def id(self, id):
-        """Sets the id of this FileVM.
-
-
-        :param id: The id of this FileVM.  # noqa: E501
-        :type id: str
-        """
-
-        self._id = id
-
-    @property
-    def created_time(self):
-        """Gets the created_time of this FileVM.  # noqa: E501
+    @is_deleted.setter
+    def is_deleted(self, is_deleted):
+        """Sets the is_deleted of this FileVM.
 
 
-        :return: The created_time of this FileVM.  # noqa: E501
-        :rtype: datetime
-        """
-        return self._created_time
-
-    @created_time.setter
-    def created_time(self, created_time):
-        """Sets the created_time of this FileVM.
-
-
-        :param created_time: The created_time of this FileVM.  # noqa: E501
-        :type created_time: datetime
+        :param is_deleted: The is_deleted of this FileVM.  # noqa: E501
+        :type is_deleted: bool
         """
 
-        self._created_time = created_time
-
-    @property
-    def creator_user_id(self):
-        """Gets the creator_user_id of this FileVM.  # noqa: E501
-
-
-        :return: The creator_user_id of this FileVM.  # noqa: E501
-        :rtype: str
-        """
-        return self._creator_user_id
-
-    @creator_user_id.setter
-    def creator_user_id(self, creator_user_id):
-        """Sets the creator_user_id of this FileVM.
-
-
-        :param creator_user_id: The creator_user_id of this FileVM.  # noqa: E501
-        :type creator_user_id: str
-        """
-
-        self._creator_user_id = creator_user_id
-
-    @property
-    def edited_time(self):
-        """Gets the edited_time of this FileVM.  # noqa: E501
-
-
-        :return: The edited_time of this FileVM.  # noqa: E501
-        :rtype: datetime
-        """
-        return self._edited_time
-
-    @edited_time.setter
-    def edited_time(self, edited_time):
-        """Sets the edited_time of this FileVM.
-
-
-        :param edited_time: The edited_time of this FileVM.  # noqa: E501
-        :type edited_time: datetime
-        """
-
-        self._edited_time = edited_time
-
-    @property
-    def editor_user_id(self):
-        """Gets the editor_user_id of this FileVM.  # noqa: E501
-
-
-        :return: The editor_user_id of this FileVM.  # noqa: E501
-        :rtype: str
-        """
-        return self._editor_user_id
-
-    @editor_user_id.setter
-    def editor_user_id(self, editor_user_id):
-        """Sets the editor_user_id of this FileVM.
-
-
-        :param editor_user_id: The editor_user_id of this FileVM.  # noqa: E501
-        :type editor_user_id: str
-        """
-
-        self._editor_user_id = editor_user_id
+        self._is_deleted = is_deleted
 
     def to_dict(self, serialize=False):
         """Returns the model properties as a dict"""

@@ -35,6 +35,13 @@ class TestReportsApi(unittest.TestCase):
         """
         pass
 
+    def test_report_folder_and_file_delete_files(self):
+        """Test case for report_folder_and_file_delete_files
+
+        Delete folders and files  # noqa: E501
+        """
+        pass
+
     def test_report_folder_and_file_get_count(self):
         """Test case for report_folder_and_file_get_count
 
@@ -63,6 +70,13 @@ class TestReportsApi(unittest.TestCase):
         """
         pass
 
+    def test_report_folders_calculate_folder_size(self):
+        """Test case for report_folders_calculate_folder_size
+
+        Get specified folder, calculate it's size  # noqa: E501
+        """
+        pass
+
     def test_report_folders_copy_folder(self):
         """Test case for report_folders_copy_folder
 
@@ -74,6 +88,13 @@ class TestReportsApi(unittest.TestCase):
         """Test case for report_folders_delete_folder
 
         Delete specified folder  # noqa: E501
+        """
+        pass
+
+    def test_report_folders_export(self):
+        """Test case for report_folders_export
+
+        Export specified report folder to a specified format  # noqa: E501
         """
         pass
 
@@ -102,6 +123,13 @@ class TestReportsApi(unittest.TestCase):
         """Test case for report_folders_get_folders_count
 
         Get count of folders what contains in a specified folder  # noqa: E501
+        """
+        pass
+
+    def test_report_folders_get_or_create(self):
+        """Test case for report_folders_get_or_create
+
+        Get specified folder  # noqa: E501
         """
         pass
 
@@ -256,6 +284,13 @@ class TestReportsApi(unittest.TestCase):
         """Test case for reports_rename_file
 
         Rename a file  # noqa: E501
+        """
+        pass
+
+    def test_reports_static_preview(self):
+        """Test case for reports_static_preview
+
+        Make preview for the report.  Generate a new or return exist prepared svg files.  If template was changed will be returned a new.  Pass the `` parameter to check prepared timestamp  # noqa: E501
         """
         pass
 

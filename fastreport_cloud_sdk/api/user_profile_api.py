@@ -89,6 +89,7 @@ class UserProfileApi(object):
                               request; this effectively ignores the authentication
                               in the spec for a single request.
         :type _request_auth: dict, optional
+        :type _content_type: string, optional: force content-type for the request
         :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
@@ -105,7 +106,9 @@ class UserProfileApi(object):
                 '_return_http_data_only',
                 '_preload_content',
                 '_request_timeout',
-                '_request_auth'
+                '_request_auth',
+                '_content_type',
+                '_headers'
             ]
         )
 
@@ -124,7 +127,7 @@ class UserProfileApi(object):
 
         query_params = []
 
-        header_params = {}
+        header_params = dict(local_var_params.get('_headers', {}))
 
         form_params = []
         local_var_files = {}
@@ -136,7 +139,7 @@ class UserProfileApi(object):
 
         # Authentication setting
         auth_settings = ['ApiKey', 'JWT']  # noqa: E501
-        
+
         response_types_map = {
             200: "UserProfileVM",
             400: "ProblemDetails",
@@ -216,6 +219,7 @@ class UserProfileApi(object):
                               request; this effectively ignores the authentication
                               in the spec for a single request.
         :type _request_auth: dict, optional
+        :type _content_type: string, optional: force content-type for the request
         :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
@@ -233,7 +237,9 @@ class UserProfileApi(object):
                 '_return_http_data_only',
                 '_preload_content',
                 '_request_timeout',
-                '_request_auth'
+                '_request_auth',
+                '_content_type',
+                '_headers'
             ]
         )
 
@@ -246,8 +252,7 @@ class UserProfileApi(object):
             local_var_params[key] = val
         del local_var_params['kwargs']
         # verify the required parameter 'user_id' is set
-        if self.api_client.client_side_validation and ('user_id' not in local_var_params or  # noqa: E501
-                                                        local_var_params['user_id'] is None):  # noqa: E501
+        if self.api_client.client_side_validation and local_var_params.get('user_id') is None:  # noqa: E501
             raise ApiValueError("Missing the required parameter `user_id` when calling `user_profile_get_user_profile`")  # noqa: E501
 
         if self.api_client.client_side_validation and 'user_id' in local_var_params and not re.search(r'(^000000000000000000000000$|^[0-9a-f]{24}$|^([0-9a-f]{8}([-][0-9a-f]{4}){3}[-][0-9a-f]{12})$)', local_var_params['user_id']):  # noqa: E501
@@ -260,7 +265,7 @@ class UserProfileApi(object):
 
         query_params = []
 
-        header_params = {}
+        header_params = dict(local_var_params.get('_headers', {}))
 
         form_params = []
         local_var_files = {}
@@ -272,7 +277,7 @@ class UserProfileApi(object):
 
         # Authentication setting
         auth_settings = ['ApiKey', 'JWT']  # noqa: E501
-        
+
         response_types_map = {
             200: "UserProfileVM",
             404: "ProblemDetails",
@@ -305,7 +310,7 @@ class UserProfileApi(object):
         >>> thread = api.user_profile_update_my_profile(async_req=True)
         >>> result = thread.get()
 
-        :param update_user_profile_vm:
+        :param update_user_profile_vm: 
         :type update_user_profile_vm: UpdateUserProfileVM
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
@@ -335,7 +340,7 @@ class UserProfileApi(object):
         >>> thread = api.user_profile_update_my_profile_with_http_info(async_req=True)
         >>> result = thread.get()
 
-        :param update_user_profile_vm:
+        :param update_user_profile_vm: 
         :type update_user_profile_vm: UpdateUserProfileVM
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
@@ -354,6 +359,7 @@ class UserProfileApi(object):
                               request; this effectively ignores the authentication
                               in the spec for a single request.
         :type _request_auth: dict, optional
+        :type _content_type: string, optional: force content-type for the request
         :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
@@ -371,7 +377,9 @@ class UserProfileApi(object):
                 '_return_http_data_only',
                 '_preload_content',
                 '_request_timeout',
-                '_request_auth'
+                '_request_auth',
+                '_content_type',
+                '_headers'
             ]
         )
 
@@ -390,7 +398,7 @@ class UserProfileApi(object):
 
         query_params = []
 
-        header_params = {}
+        header_params = dict(local_var_params.get('_headers', {}))
 
         form_params = []
         local_var_files = {}
@@ -403,12 +411,16 @@ class UserProfileApi(object):
             ['application/json'])  # noqa: E501
 
         # HTTP header `Content-Type`
-        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
-            ['application/json', 'text/json', 'application/*+json'])  # noqa: E501
+        content_types_list = local_var_params.get('_content_type',
+            self.api_client.select_header_content_type(
+                ['application/json', 'text/json', 'application/*+json'],
+                'PUT', body_params))  # noqa: E501
+        if content_types_list:
+                header_params['Content-Type'] = content_types_list
 
         # Authentication setting
         auth_settings = ['ApiKey', 'JWT']  # noqa: E501
-        
+
         response_types_map = {}
 
         return self.api_client.call_api(

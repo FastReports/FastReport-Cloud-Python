@@ -36,175 +36,17 @@ class FilePermission(object):
                             and the value is json key in definition.
     """
     openapi_types = {
-        'create': 'FileCreate',
-        'delete': 'FileDelete',
-        'execute': 'FileExecute',
-        'get': 'FileGet',
-        'update': 'FileUpdate',
-        'administrate': 'FileAdministrate'
     }
 
     attribute_map = {
-        'create': 'create',
-        'delete': 'delete',
-        'execute': 'execute',
-        'get': 'get',
-        'update': 'update',
-        'administrate': 'administrate'
     }
 
-    def __init__(self, create=None, delete=None, execute=None, get=None, update=None, administrate=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, local_vars_configuration=None):  # noqa: E501
         """FilePermission - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration.get_default_copy()
         self.local_vars_configuration = local_vars_configuration
-
-        self._create = None
-        self._delete = None
-        self._execute = None
-        self._get = None
-        self._update = None
-        self._administrate = None
         self.discriminator = None
-
-        if create is not None:
-            self.create = create
-        if delete is not None:
-            self.delete = delete
-        if execute is not None:
-            self.execute = execute
-        if get is not None:
-            self.get = get
-        if update is not None:
-            self.update = update
-        if administrate is not None:
-            self.administrate = administrate
-
-    @property
-    def create(self):
-        """Gets the create of this FilePermission.  # noqa: E501
-
-
-        :return: The create of this FilePermission.  # noqa: E501
-        :rtype: FileCreate
-        """
-        return self._create
-
-    @create.setter
-    def create(self, create):
-        """Sets the create of this FilePermission.
-
-
-        :param create: The create of this FilePermission.  # noqa: E501
-        :type create: FileCreate
-        """
-
-        self._create = create
-
-    @property
-    def delete(self):
-        """Gets the delete of this FilePermission.  # noqa: E501
-
-
-        :return: The delete of this FilePermission.  # noqa: E501
-        :rtype: FileDelete
-        """
-        return self._delete
-
-    @delete.setter
-    def delete(self, delete):
-        """Sets the delete of this FilePermission.
-
-
-        :param delete: The delete of this FilePermission.  # noqa: E501
-        :type delete: FileDelete
-        """
-
-        self._delete = delete
-
-    @property
-    def execute(self):
-        """Gets the execute of this FilePermission.  # noqa: E501
-
-
-        :return: The execute of this FilePermission.  # noqa: E501
-        :rtype: FileExecute
-        """
-        return self._execute
-
-    @execute.setter
-    def execute(self, execute):
-        """Sets the execute of this FilePermission.
-
-
-        :param execute: The execute of this FilePermission.  # noqa: E501
-        :type execute: FileExecute
-        """
-
-        self._execute = execute
-
-    @property
-    def get(self):
-        """Gets the get of this FilePermission.  # noqa: E501
-
-
-        :return: The get of this FilePermission.  # noqa: E501
-        :rtype: FileGet
-        """
-        return self._get
-
-    @get.setter
-    def get(self, get):
-        """Sets the get of this FilePermission.
-
-
-        :param get: The get of this FilePermission.  # noqa: E501
-        :type get: FileGet
-        """
-
-        self._get = get
-
-    @property
-    def update(self):
-        """Gets the update of this FilePermission.  # noqa: E501
-
-
-        :return: The update of this FilePermission.  # noqa: E501
-        :rtype: FileUpdate
-        """
-        return self._update
-
-    @update.setter
-    def update(self, update):
-        """Sets the update of this FilePermission.
-
-
-        :param update: The update of this FilePermission.  # noqa: E501
-        :type update: FileUpdate
-        """
-
-        self._update = update
-
-    @property
-    def administrate(self):
-        """Gets the administrate of this FilePermission.  # noqa: E501
-
-
-        :return: The administrate of this FilePermission.  # noqa: E501
-        :rtype: FileAdministrate
-        """
-        return self._administrate
-
-    @administrate.setter
-    def administrate(self, administrate):
-        """Sets the administrate of this FilePermission.
-
-
-        :param administrate: The administrate of this FilePermission.  # noqa: E501
-        :type administrate: FileAdministrate
-        """
-
-        self._administrate = administrate
 
     def to_dict(self, serialize=False):
         """Returns the model properties as a dict"""

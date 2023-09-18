@@ -37,35 +37,26 @@ class RunInputFileVM(object):
     """
     openapi_types = {
         'content': 'str',
-        'entity_id': 'str',
-        'file_name': 'str',
-        'type': 'FileKind'
+        'file_name': 'str'
     }
 
     attribute_map = {
         'content': 'content',
-        'entity_id': 'entityId',
-        'file_name': 'fileName',
-        'type': 'type'
+        'file_name': 'fileName'
     }
 
-    def __init__(self, content=None, entity_id=None, file_name=None, type=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, content=None, file_name=None, local_vars_configuration=None):  # noqa: E501
         """RunInputFileVM - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration.get_default_copy()
         self.local_vars_configuration = local_vars_configuration
 
         self._content = None
-        self._entity_id = None
         self._file_name = None
-        self._type = None
         self.discriminator = None
 
         self.content = content
-        self.entity_id = entity_id
         self.file_name = file_name
-        if type is not None:
-            self.type = type
 
     @property
     def content(self):
@@ -90,30 +81,6 @@ class RunInputFileVM(object):
             raise ValueError("Invalid value for `content`, length must be less than or equal to `1073741824`")  # noqa: E501
 
         self._content = content
-
-    @property
-    def entity_id(self):
-        """Gets the entity_id of this RunInputFileVM.  # noqa: E501
-
-
-        :return: The entity_id of this RunInputFileVM.  # noqa: E501
-        :rtype: str
-        """
-        return self._entity_id
-
-    @entity_id.setter
-    def entity_id(self, entity_id):
-        """Sets the entity_id of this RunInputFileVM.
-
-
-        :param entity_id: The entity_id of this RunInputFileVM.  # noqa: E501
-        :type entity_id: str
-        """
-        if (self.local_vars_configuration.client_side_validation and
-                entity_id is not None and not re.search(r'^[A-Fa-f0-9]{24}$', entity_id)):  # noqa: E501
-            raise ValueError(r"Invalid value for `entity_id`, must be a follow pattern or equal to `/^[A-Fa-f0-9]{24}$/`")  # noqa: E501
-
-        self._entity_id = entity_id
 
     @property
     def file_name(self):
@@ -141,27 +108,6 @@ class RunInputFileVM(object):
             raise ValueError("Invalid value for `file_name`, length must be greater than or equal to `1`")  # noqa: E501
 
         self._file_name = file_name
-
-    @property
-    def type(self):
-        """Gets the type of this RunInputFileVM.  # noqa: E501
-
-
-        :return: The type of this RunInputFileVM.  # noqa: E501
-        :rtype: FileKind
-        """
-        return self._type
-
-    @type.setter
-    def type(self, type):
-        """Sets the type of this RunInputFileVM.
-
-
-        :param type: The type of this RunInputFileVM.  # noqa: E501
-        :type type: FileKind
-        """
-
-        self._type = type
 
     def to_dict(self, serialize=False):
         """Returns the model properties as a dict"""

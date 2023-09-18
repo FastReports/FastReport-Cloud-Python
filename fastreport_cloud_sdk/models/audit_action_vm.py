@@ -43,7 +43,9 @@ class AuditActionVM(object):
         'id': 'str',
         'created_time': 'datetime',
         'creator_user_id': 'str',
-        'name': 'str'
+        'name': 'str',
+        'admin_action': 'bool',
+        't': 'str'
     }
 
     attribute_map = {
@@ -54,10 +56,18 @@ class AuditActionVM(object):
         'id': 'id',
         'created_time': 'createdTime',
         'creator_user_id': 'creatorUserId',
-        'name': 'name'
+        'name': 'name',
+        'admin_action': 'adminAction',
+        't': '$t'
     }
 
-    def __init__(self, user_id=None, entity_id=None, subscription_id=None, type=None, id=None, created_time=None, creator_user_id=None, name=None, local_vars_configuration=None):  # noqa: E501
+    discriminator_value_class_map = {
+        'AuditFilePropertyChangedVM': 'AuditFilePropertyChangedVM',
+        'AuditSubscriptionActionVM': 'AuditSubscriptionActionVM',
+        'AuditTaskActionVM': 'AuditTaskActionVM'
+    }
+
+    def __init__(self, user_id=None, entity_id=None, subscription_id=None, type=None, id=None, created_time=None, creator_user_id=None, name=None, admin_action=None, t=None, local_vars_configuration=None):  # noqa: E501
         """AuditActionVM - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration.get_default_copy()
@@ -71,7 +81,9 @@ class AuditActionVM(object):
         self._created_time = None
         self._creator_user_id = None
         self._name = None
-        self.discriminator = None
+        self._admin_action = None
+        self._t = None
+        self.discriminator = 't'
 
         self.user_id = user_id
         self.entity_id = entity_id
@@ -83,6 +95,9 @@ class AuditActionVM(object):
             self.created_time = created_time
         self.creator_user_id = creator_user_id
         self.name = name
+        if admin_action is not None:
+            self.admin_action = admin_action
+        self.t = t
 
     @property
     def user_id(self):
@@ -251,6 +266,56 @@ class AuditActionVM(object):
         """
 
         self._name = name
+
+    @property
+    def admin_action(self):
+        """Gets the admin_action of this AuditActionVM.  # noqa: E501
+
+
+        :return: The admin_action of this AuditActionVM.  # noqa: E501
+        :rtype: bool
+        """
+        return self._admin_action
+
+    @admin_action.setter
+    def admin_action(self, admin_action):
+        """Sets the admin_action of this AuditActionVM.
+
+
+        :param admin_action: The admin_action of this AuditActionVM.  # noqa: E501
+        :type admin_action: bool
+        """
+
+        self._admin_action = admin_action
+
+    @property
+    def t(self):
+        """Gets the t of this AuditActionVM.  # noqa: E501
+
+
+        :return: The t of this AuditActionVM.  # noqa: E501
+        :rtype: str
+        """
+        return self._t
+
+    @t.setter
+    def t(self, t):
+        """Sets the t of this AuditActionVM.
+
+
+        :param t: The t of this AuditActionVM.  # noqa: E501
+        :type t: str
+        """
+        if self.local_vars_configuration.client_side_validation and t is None:  # noqa: E501
+            raise ValueError("Invalid value for `t`, must not be `None`")  # noqa: E501
+
+        self._t = t
+
+    def get_real_child_model(self, data):
+        """Returns the real base class specified by the discriminator"""
+        discriminator_key = self.attribute_map[self.discriminator]
+        discriminator_value = data[discriminator_key]
+        return self.discriminator_value_class_map.get(discriminator_value)
 
     def to_dict(self, serialize=False):
         """Returns the model properties as a dict"""

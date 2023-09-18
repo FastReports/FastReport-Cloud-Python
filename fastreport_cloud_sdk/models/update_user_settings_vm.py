@@ -38,16 +38,18 @@ class UpdateUserSettingsVM(object):
     openapi_types = {
         'profile_visibility': 'ProfileVisibility',
         'default_subscription': 'str',
-        'show_hidden_files_and_folders': 'bool'
+        'show_hidden_files_and_folders': 'bool',
+        'subscribed_notifications': 'list[AuditType]'
     }
 
     attribute_map = {
         'profile_visibility': 'profileVisibility',
         'default_subscription': 'defaultSubscription',
-        'show_hidden_files_and_folders': 'showHiddenFilesAndFolders'
+        'show_hidden_files_and_folders': 'showHiddenFilesAndFolders',
+        'subscribed_notifications': 'subscribedNotifications'
     }
 
-    def __init__(self, profile_visibility=None, default_subscription=None, show_hidden_files_and_folders=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, profile_visibility=None, default_subscription=None, show_hidden_files_and_folders=None, subscribed_notifications=None, local_vars_configuration=None):  # noqa: E501
         """UpdateUserSettingsVM - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration.get_default_copy()
@@ -56,11 +58,13 @@ class UpdateUserSettingsVM(object):
         self._profile_visibility = None
         self._default_subscription = None
         self._show_hidden_files_and_folders = None
+        self._subscribed_notifications = None
         self.discriminator = None
 
         self.profile_visibility = profile_visibility
         self.default_subscription = default_subscription
         self.show_hidden_files_and_folders = show_hidden_files_and_folders
+        self.subscribed_notifications = subscribed_notifications
 
     @property
     def profile_visibility(self):
@@ -124,6 +128,27 @@ class UpdateUserSettingsVM(object):
         """
 
         self._show_hidden_files_and_folders = show_hidden_files_and_folders
+
+    @property
+    def subscribed_notifications(self):
+        """Gets the subscribed_notifications of this UpdateUserSettingsVM.  # noqa: E501
+
+
+        :return: The subscribed_notifications of this UpdateUserSettingsVM.  # noqa: E501
+        :rtype: list[AuditType]
+        """
+        return self._subscribed_notifications
+
+    @subscribed_notifications.setter
+    def subscribed_notifications(self, subscribed_notifications):
+        """Sets the subscribed_notifications of this UpdateUserSettingsVM.
+
+
+        :param subscribed_notifications: The subscribed_notifications of this UpdateUserSettingsVM.  # noqa: E501
+        :type subscribed_notifications: list[AuditType]
+        """
+
+        self._subscribed_notifications = subscribed_notifications
 
     def to_dict(self, serialize=False):
         """Returns the model properties as a dict"""

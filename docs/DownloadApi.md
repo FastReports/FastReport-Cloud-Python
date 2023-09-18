@@ -7,7 +7,7 @@ Method | HTTP request | Description
 [**download_get_export**](DownloadApi.md#download_get_export) | **GET** /download/e/{id} | Returns a export file with specified id
 [**download_get_export_thumbnail**](DownloadApi.md#download_get_export_thumbnail) | **GET** /download/e/{id}/thumbnail | Returns export&#39;s thumbnail
 [**download_get_exports**](DownloadApi.md#download_get_exports) | **GET** /download/es/{archiveName} | Returns a zip archive with selected ids
-[**download_get_last_svg_export**](DownloadApi.md#download_get_last_svg_export) | **GET** /download/lastPreview/{reportId} | returns export, that was created from report with specified id
+[**download_get_last_svg_export**](DownloadApi.md#download_get_last_svg_export) | **GET** /download/lastPreview/{reportId} | returns export, that was created from report with specified id.  INTERNAL USAGE ONLY!
 [**download_get_report**](DownloadApi.md#download_get_report) | **GET** /download/r/{id} | Returns a prepared file with specified id
 [**download_get_report_thumbnail**](DownloadApi.md#download_get_report_thumbnail) | **GET** /download/r/{id}/thumbnail | Returns report&#39;s thumbnail
 [**download_get_reports**](DownloadApi.md#download_get_reports) | **GET** /download/rs/{archiveName} | Returns a zip archive with selected files
@@ -266,7 +266,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **download_get_exports**
-> file download_get_exports(archive_name, ids=ids)
+> file download_get_exports(archive_name, file_ids=file_ids, folder_ids=folder_ids)
 
 Returns a zip archive with selected ids
 
@@ -306,11 +306,12 @@ with fastreport_cloud_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = fastreport_cloud_sdk.DownloadApi(api_client)
     archive_name = 'archive_name_example' # str | name of the created archive
-ids = 'ids_example' # str | ids separated with a ',' sign (optional)
+file_ids = 'file_ids_example' # str | ids separated with a ',' sign (optional)
+folder_ids = 'folder_ids_example' # str | ids separated with a ',' sign (optional)
 
     try:
         # Returns a zip archive with selected ids
-        api_response = api_instance.download_get_exports(archive_name, ids=ids)
+        api_response = api_instance.download_get_exports(archive_name, file_ids=file_ids, folder_ids=folder_ids)
         pprint(api_response)
     except ApiException as e:
         print("Exception when calling DownloadApi->download_get_exports: %s\n" % e)
@@ -350,11 +351,12 @@ with fastreport_cloud_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = fastreport_cloud_sdk.DownloadApi(api_client)
     archive_name = 'archive_name_example' # str | name of the created archive
-ids = 'ids_example' # str | ids separated with a ',' sign (optional)
+file_ids = 'file_ids_example' # str | ids separated with a ',' sign (optional)
+folder_ids = 'folder_ids_example' # str | ids separated with a ',' sign (optional)
 
     try:
         # Returns a zip archive with selected ids
-        api_response = api_instance.download_get_exports(archive_name, ids=ids)
+        api_response = api_instance.download_get_exports(archive_name, file_ids=file_ids, folder_ids=folder_ids)
         pprint(api_response)
     except ApiException as e:
         print("Exception when calling DownloadApi->download_get_exports: %s\n" % e)
@@ -365,7 +367,8 @@ ids = 'ids_example' # str | ids separated with a ',' sign (optional)
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **archive_name** | **str**| name of the created archive | 
- **ids** | **str**| ids separated with a &#39;,&#39; sign | [optional] 
+ **file_ids** | **str**| ids separated with a &#39;,&#39; sign | [optional] 
+ **folder_ids** | **str**| ids separated with a &#39;,&#39; sign | [optional] 
 
 ### Return type
 
@@ -394,7 +397,7 @@ Name | Type | Description  | Notes
 # **download_get_last_svg_export**
 > file download_get_last_svg_export(report_id)
 
-returns export, that was created from report with specified id
+returns export, that was created from report with specified id.  INTERNAL USAGE ONLY!
 
 ### Example
 
@@ -434,7 +437,7 @@ with fastreport_cloud_sdk.ApiClient(configuration) as api_client:
     report_id = 'report_id_example' # str | 
 
     try:
-        # returns export, that was created from report with specified id
+        # returns export, that was created from report with specified id.  INTERNAL USAGE ONLY!
         api_response = api_instance.download_get_last_svg_export(report_id)
         pprint(api_response)
     except ApiException as e:
@@ -477,7 +480,7 @@ with fastreport_cloud_sdk.ApiClient(configuration) as api_client:
     report_id = 'report_id_example' # str | 
 
     try:
-        # returns export, that was created from report with specified id
+        # returns export, that was created from report with specified id.  INTERNAL USAGE ONLY!
         api_response = api_instance.download_get_last_svg_export(report_id)
         pprint(api_response)
     except ApiException as e:
@@ -761,7 +764,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **download_get_reports**
-> file download_get_reports(archive_name, ids=ids)
+> file download_get_reports(archive_name, file_ids=file_ids, folder_ids=folder_ids)
 
 Returns a zip archive with selected files
 
@@ -801,11 +804,12 @@ with fastreport_cloud_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = fastreport_cloud_sdk.DownloadApi(api_client)
     archive_name = 'archive_name_example' # str | name of the created archive
-ids = 'ids_example' # str | ids separated with a ',' sign (optional)
+file_ids = 'file_ids_example' # str | ids separated with a ',' sign (optional)
+folder_ids = 'folder_ids_example' # str | ids separated with a ',' sign (optional)
 
     try:
         # Returns a zip archive with selected files
-        api_response = api_instance.download_get_reports(archive_name, ids=ids)
+        api_response = api_instance.download_get_reports(archive_name, file_ids=file_ids, folder_ids=folder_ids)
         pprint(api_response)
     except ApiException as e:
         print("Exception when calling DownloadApi->download_get_reports: %s\n" % e)
@@ -845,11 +849,12 @@ with fastreport_cloud_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = fastreport_cloud_sdk.DownloadApi(api_client)
     archive_name = 'archive_name_example' # str | name of the created archive
-ids = 'ids_example' # str | ids separated with a ',' sign (optional)
+file_ids = 'file_ids_example' # str | ids separated with a ',' sign (optional)
+folder_ids = 'folder_ids_example' # str | ids separated with a ',' sign (optional)
 
     try:
         # Returns a zip archive with selected files
-        api_response = api_instance.download_get_reports(archive_name, ids=ids)
+        api_response = api_instance.download_get_reports(archive_name, file_ids=file_ids, folder_ids=folder_ids)
         pprint(api_response)
     except ApiException as e:
         print("Exception when calling DownloadApi->download_get_reports: %s\n" % e)
@@ -860,7 +865,8 @@ ids = 'ids_example' # str | ids separated with a ',' sign (optional)
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **archive_name** | **str**| name of the created archive | 
- **ids** | **str**| ids separated with a &#39;,&#39; sign | [optional] 
+ **file_ids** | **str**| ids separated with a &#39;,&#39; sign | [optional] 
+ **folder_ids** | **str**| ids separated with a &#39;,&#39; sign | [optional] 
 
 ### Return type
 
@@ -1133,7 +1139,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **download_get_templates**
-> file download_get_templates(archive_name, ids=ids)
+> file download_get_templates(archive_name, file_ids=file_ids, folder_ids=folder_ids)
 
 Returns a zip archive with selected files
 
@@ -1173,11 +1179,12 @@ with fastreport_cloud_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = fastreport_cloud_sdk.DownloadApi(api_client)
     archive_name = 'archive_name_example' # str | name of the created archive
-ids = 'ids_example' # str | ids separated with a ',' sign (optional)
+file_ids = 'file_ids_example' # str | ids separated with a ',' sign (optional)
+folder_ids = 'folder_ids_example' # str | ids separated with a ',' sign (optional)
 
     try:
         # Returns a zip archive with selected files
-        api_response = api_instance.download_get_templates(archive_name, ids=ids)
+        api_response = api_instance.download_get_templates(archive_name, file_ids=file_ids, folder_ids=folder_ids)
         pprint(api_response)
     except ApiException as e:
         print("Exception when calling DownloadApi->download_get_templates: %s\n" % e)
@@ -1217,11 +1224,12 @@ with fastreport_cloud_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = fastreport_cloud_sdk.DownloadApi(api_client)
     archive_name = 'archive_name_example' # str | name of the created archive
-ids = 'ids_example' # str | ids separated with a ',' sign (optional)
+file_ids = 'file_ids_example' # str | ids separated with a ',' sign (optional)
+folder_ids = 'folder_ids_example' # str | ids separated with a ',' sign (optional)
 
     try:
         # Returns a zip archive with selected files
-        api_response = api_instance.download_get_templates(archive_name, ids=ids)
+        api_response = api_instance.download_get_templates(archive_name, file_ids=file_ids, folder_ids=folder_ids)
         pprint(api_response)
     except ApiException as e:
         print("Exception when calling DownloadApi->download_get_templates: %s\n" % e)
@@ -1232,7 +1240,8 @@ ids = 'ids_example' # str | ids separated with a ',' sign (optional)
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **archive_name** | **str**| name of the created archive | 
- **ids** | **str**| ids separated with a &#39;,&#39; sign | [optional] 
+ **file_ids** | **str**| ids separated with a &#39;,&#39; sign | [optional] 
+ **folder_ids** | **str**| ids separated with a &#39;,&#39; sign | [optional] 
 
 ### Return type
 

@@ -38,7 +38,10 @@ class TestUpdateUserSettingsVM(unittest.TestCase):
             return UpdateUserSettingsVM(
                 profile_visibility = None, 
                 default_subscription = '', 
-                show_hidden_files_and_folders = True
+                show_hidden_files_and_folders = True, 
+                subscribed_notifications = [
+                    'Task_Created_ExportTemplate'
+                    ]
             )
         else :
             return UpdateUserSettingsVM(

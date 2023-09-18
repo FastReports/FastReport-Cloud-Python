@@ -35,6 +35,13 @@ class TestTemplatesApi(unittest.TestCase):
         """
         pass
 
+    def test_template_folder_and_file_delete_files(self):
+        """Test case for template_folder_and_file_delete_files
+
+        Delete folders and files  # noqa: E501
+        """
+        pass
+
     def test_template_folder_and_file_get_count(self):
         """Test case for template_folder_and_file_get_count
 
@@ -63,6 +70,13 @@ class TestTemplatesApi(unittest.TestCase):
         """
         pass
 
+    def test_template_folders_calculate_folder_size(self):
+        """Test case for template_folders_calculate_folder_size
+
+        Get specified folder, calculate it's size  # noqa: E501
+        """
+        pass
+
     def test_template_folders_copy_folder(self):
         """Test case for template_folders_copy_folder
 
@@ -74,6 +88,13 @@ class TestTemplatesApi(unittest.TestCase):
         """Test case for template_folders_delete_folder
 
         Delete specified folder  # noqa: E501
+        """
+        pass
+
+    def test_template_folders_export(self):
+        """Test case for template_folders_export
+
+        Export specified template folder to a specified format  # noqa: E501
         """
         pass
 
@@ -102,6 +123,13 @@ class TestTemplatesApi(unittest.TestCase):
         """Test case for template_folders_get_folders_count
 
         Get count of folders what contains in a specified folder  # noqa: E501
+        """
+        pass
+
+    def test_template_folders_get_or_create(self):
+        """Test case for template_folders_get_or_create
+
+        Get specified folder  # noqa: E501
         """
         pass
 
@@ -137,6 +165,13 @@ class TestTemplatesApi(unittest.TestCase):
         """Test case for template_folders_post_folder
 
         Create folder  # noqa: E501
+        """
+        pass
+
+    def test_template_folders_prepare(self):
+        """Test case for template_folders_prepare
+
+        Prepare specified template folder to report folder  # noqa: E501
         """
         pass
 
@@ -263,6 +298,13 @@ class TestTemplatesApi(unittest.TestCase):
         """Test case for templates_rename_file
 
         Rename a file  # noqa: E501
+        """
+        pass
+
+    def test_templates_static_preview(self):
+        """Test case for templates_static_preview
+
+        Make preview for the report.  Generate a new or return exist prepared svg files.  If template was changed will be returned a new.  Pass the `` parameter to check prepared timestamp  # noqa: E501
         """
         pass
 

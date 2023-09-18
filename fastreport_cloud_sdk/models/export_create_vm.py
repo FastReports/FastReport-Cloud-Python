@@ -37,38 +37,26 @@ class ExportCreateVM(object):
     """
     openapi_types = {
         'template_id': 'str',
-        'name': 'str',
-        'tags': 'list[str]',
-        'icon': 'str',
-        'content': 'str'
+        'report_id': 'str'
     }
 
     attribute_map = {
         'template_id': 'templateId',
-        'name': 'name',
-        'tags': 'tags',
-        'icon': 'icon',
-        'content': 'content'
+        'report_id': 'reportId'
     }
 
-    def __init__(self, template_id=None, name=None, tags=None, icon=None, content=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, template_id=None, report_id=None, local_vars_configuration=None):  # noqa: E501
         """ExportCreateVM - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration.get_default_copy()
         self.local_vars_configuration = local_vars_configuration
 
         self._template_id = None
-        self._name = None
-        self._tags = None
-        self._icon = None
-        self._content = None
+        self._report_id = None
         self.discriminator = None
 
         self.template_id = template_id
-        self.name = name
-        self.tags = tags
-        self.icon = icon
-        self.content = content
+        self.report_id = report_id
 
     @property
     def template_id(self):
@@ -95,103 +83,28 @@ class ExportCreateVM(object):
         self._template_id = template_id
 
     @property
-    def name(self):
-        """Gets the name of this ExportCreateVM.  # noqa: E501
+    def report_id(self):
+        """Gets the report_id of this ExportCreateVM.  # noqa: E501
 
 
-        :return: The name of this ExportCreateVM.  # noqa: E501
+        :return: The report_id of this ExportCreateVM.  # noqa: E501
         :rtype: str
         """
-        return self._name
+        return self._report_id
 
-    @name.setter
-    def name(self, name):
-        """Sets the name of this ExportCreateVM.
+    @report_id.setter
+    def report_id(self, report_id):
+        """Sets the report_id of this ExportCreateVM.
 
 
-        :param name: The name of this ExportCreateVM.  # noqa: E501
-        :type name: str
+        :param report_id: The report_id of this ExportCreateVM.  # noqa: E501
+        :type report_id: str
         """
         if (self.local_vars_configuration.client_side_validation and
-                name is not None and len(name) > 250):
-            raise ValueError("Invalid value for `name`, length must be less than or equal to `250`")  # noqa: E501
-        if (self.local_vars_configuration.client_side_validation and
-                name is not None and len(name) < 0):
-            raise ValueError("Invalid value for `name`, length must be greater than or equal to `0`")  # noqa: E501
+                report_id is not None and not re.search(r'(^$)|(^[A-Fa-f0-9]{24}$)', report_id)):  # noqa: E501
+            raise ValueError(r"Invalid value for `report_id`, must be a follow pattern or equal to `/(^$)|(^[A-Fa-f0-9]{24}$)/`")  # noqa: E501
 
-        self._name = name
-
-    @property
-    def tags(self):
-        """Gets the tags of this ExportCreateVM.  # noqa: E501
-
-
-        :return: The tags of this ExportCreateVM.  # noqa: E501
-        :rtype: list[str]
-        """
-        return self._tags
-
-    @tags.setter
-    def tags(self, tags):
-        """Sets the tags of this ExportCreateVM.
-
-
-        :param tags: The tags of this ExportCreateVM.  # noqa: E501
-        :type tags: list[str]
-        """
-        if (self.local_vars_configuration.client_side_validation and
-                tags is not None and len(tags) > 3):
-            raise ValueError("Invalid value for `tags`, number of items must be less than or equal to `3`")  # noqa: E501
-
-        self._tags = tags
-
-    @property
-    def icon(self):
-        """Gets the icon of this ExportCreateVM.  # noqa: E501
-
-
-        :return: The icon of this ExportCreateVM.  # noqa: E501
-        :rtype: str
-        """
-        return self._icon
-
-    @icon.setter
-    def icon(self, icon):
-        """Sets the icon of this ExportCreateVM.
-
-
-        :param icon: The icon of this ExportCreateVM.  # noqa: E501
-        :type icon: str
-        """
-        if (self.local_vars_configuration.client_side_validation and
-                icon is not None and len(icon) > 65536):
-            raise ValueError("Invalid value for `icon`, length must be less than or equal to `65536`")  # noqa: E501
-
-        self._icon = icon
-
-    @property
-    def content(self):
-        """Gets the content of this ExportCreateVM.  # noqa: E501
-
-
-        :return: The content of this ExportCreateVM.  # noqa: E501
-        :rtype: str
-        """
-        return self._content
-
-    @content.setter
-    def content(self, content):
-        """Sets the content of this ExportCreateVM.
-
-
-        :param content: The content of this ExportCreateVM.  # noqa: E501
-        :type content: str
-        """
-        if (self.local_vars_configuration.client_side_validation and
-                content is not None and len(content) > 1073741824):
-            raise ValueError("Invalid value for `content`, length must be less than or equal to `1073741824`")  # noqa: E501
-
-        self._content = content
+        self._report_id = report_id
 
     def to_dict(self, serialize=False):
         """Returns the model properties as a dict"""

@@ -38,16 +38,20 @@ class UserSettingsVM(object):
     openapi_types = {
         'profile_visibility': 'ProfileVisibility',
         'default_subscription': 'str',
-        'show_hidden_files_and_folders': 'bool'
+        'show_hidden_files_and_folders': 'bool',
+        'sla_accepted_date_time': 'datetime',
+        'subscribed_notifications': 'list[AuditType]'
     }
 
     attribute_map = {
         'profile_visibility': 'profileVisibility',
         'default_subscription': 'defaultSubscription',
-        'show_hidden_files_and_folders': 'showHiddenFilesAndFolders'
+        'show_hidden_files_and_folders': 'showHiddenFilesAndFolders',
+        'sla_accepted_date_time': 'slaAcceptedDateTime',
+        'subscribed_notifications': 'subscribedNotifications'
     }
 
-    def __init__(self, profile_visibility=None, default_subscription=None, show_hidden_files_and_folders=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, profile_visibility=None, default_subscription=None, show_hidden_files_and_folders=None, sla_accepted_date_time=None, subscribed_notifications=None, local_vars_configuration=None):  # noqa: E501
         """UserSettingsVM - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration.get_default_copy()
@@ -56,6 +60,8 @@ class UserSettingsVM(object):
         self._profile_visibility = None
         self._default_subscription = None
         self._show_hidden_files_and_folders = None
+        self._sla_accepted_date_time = None
+        self._subscribed_notifications = None
         self.discriminator = None
 
         if profile_visibility is not None:
@@ -63,6 +69,8 @@ class UserSettingsVM(object):
         self.default_subscription = default_subscription
         if show_hidden_files_and_folders is not None:
             self.show_hidden_files_and_folders = show_hidden_files_and_folders
+        self.sla_accepted_date_time = sla_accepted_date_time
+        self.subscribed_notifications = subscribed_notifications
 
     @property
     def profile_visibility(self):
@@ -129,6 +137,48 @@ class UserSettingsVM(object):
         """
 
         self._show_hidden_files_and_folders = show_hidden_files_and_folders
+
+    @property
+    def sla_accepted_date_time(self):
+        """Gets the sla_accepted_date_time of this UserSettingsVM.  # noqa: E501
+
+
+        :return: The sla_accepted_date_time of this UserSettingsVM.  # noqa: E501
+        :rtype: datetime
+        """
+        return self._sla_accepted_date_time
+
+    @sla_accepted_date_time.setter
+    def sla_accepted_date_time(self, sla_accepted_date_time):
+        """Sets the sla_accepted_date_time of this UserSettingsVM.
+
+
+        :param sla_accepted_date_time: The sla_accepted_date_time of this UserSettingsVM.  # noqa: E501
+        :type sla_accepted_date_time: datetime
+        """
+
+        self._sla_accepted_date_time = sla_accepted_date_time
+
+    @property
+    def subscribed_notifications(self):
+        """Gets the subscribed_notifications of this UserSettingsVM.  # noqa: E501
+
+
+        :return: The subscribed_notifications of this UserSettingsVM.  # noqa: E501
+        :rtype: list[AuditType]
+        """
+        return self._subscribed_notifications
+
+    @subscribed_notifications.setter
+    def subscribed_notifications(self, subscribed_notifications):
+        """Sets the subscribed_notifications of this UserSettingsVM.
+
+
+        :param subscribed_notifications: The subscribed_notifications of this UserSettingsVM.  # noqa: E501
+        :type subscribed_notifications: list[AuditType]
+        """
+
+        self._subscribed_notifications = subscribed_notifications
 
     def to_dict(self, serialize=False):
         """Returns the model properties as a dict"""

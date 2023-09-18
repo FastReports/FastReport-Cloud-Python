@@ -39,7 +39,8 @@ class TestExportVMFilesVMBase(unittest.TestCase):
                 files = [
                     fastreport_cloud_sdk.models.export_vm.ExportVM(
                         format = 'Pdf', 
-                        report_id = '', )
+                        report_id = '', 
+                        template_id = '', )
                     ], 
                 count = 56, 
                 skip = 56, 

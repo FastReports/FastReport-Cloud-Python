@@ -38,9 +38,10 @@ class SubscriptionCreate(object):
     _8 = "8"
     _16 = "16"
     _32 = "32"
+    _64 = "64"
     _1 = "-1"
 
-    allowable_values = [_0, _1, _2, _4, _8, _16, _32, _1]  # noqa: E501
+    allowable_values = [_0, _1, _2, _4, _8, _16, _32, _64, _1]  # noqa: E501
 
     """
     Attributes:

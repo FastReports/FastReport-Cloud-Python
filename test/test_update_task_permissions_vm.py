@@ -36,13 +36,13 @@ class TestUpdateTaskPermissionsVM(unittest.TestCase):
         # model = fastreport_cloud_sdk.models.update_task_permissions_vm.UpdateTaskPermissionsVM()  # noqa: E501
         if include_optional :
             return UpdateTaskPermissionsVM(
-                new_permissions = fastreport_cloud_sdk.models.task_permissions.TaskPermissions(), 
-                administrate = 0
+                administrate = 0, 
+                new_permissions = fastreport_cloud_sdk.models.task_permissions.TaskPermissions()
             )
         else :
             return UpdateTaskPermissionsVM(
-                new_permissions = fastreport_cloud_sdk.models.task_permissions.TaskPermissions(),
                 administrate = 0,
+                new_permissions = fastreport_cloud_sdk.models.task_permissions.TaskPermissions(),
         )
 
     def testUpdateTaskPermissionsVM(self):

@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **owner_id** | **str** |  | [optional] 
 **owner** | [**SubscriptionPermission**](SubscriptionPermission.md) |  | [optional] 
-**groups** | [**dict(str, SubscriptionPermission)**](SubscriptionPermission.md) |  | [optional] 
+**groups** | [**dict[str, SubscriptionPermission]**](SubscriptionPermission.md) |  | [optional] 
 **other** | [**SubscriptionPermission**](SubscriptionPermission.md) |  | [optional] 
 **anon** | [**SubscriptionPermission**](SubscriptionPermission.md) |  | [optional] 
 

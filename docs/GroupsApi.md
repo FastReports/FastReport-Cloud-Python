@@ -871,7 +871,7 @@ void (empty response body)
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Success |  -  |
+**204** | No Content |  -  |
 **400** | Bad Request |  -  |
 **402** | Client Error |  -  |
 **403** | Forbidden |  -  |

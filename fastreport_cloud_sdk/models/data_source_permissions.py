@@ -36,150 +36,17 @@ class DataSourcePermissions(object):
                             and the value is json key in definition.
     """
     openapi_types = {
-        'owner_id': 'str',
-        'owner': 'DataSourcePermission',
-        'groups': 'dict(str, DataSourcePermission)',
-        'other': 'DataSourcePermission',
-        'anon': 'DataSourcePermission'
     }
 
     attribute_map = {
-        'owner_id': 'ownerId',
-        'owner': 'owner',
-        'groups': 'groups',
-        'other': 'other',
-        'anon': 'anon'
     }
 
-    def __init__(self, owner_id=None, owner=None, groups=None, other=None, anon=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, local_vars_configuration=None):  # noqa: E501
         """DataSourcePermissions - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration.get_default_copy()
         self.local_vars_configuration = local_vars_configuration
-
-        self._owner_id = None
-        self._owner = None
-        self._groups = None
-        self._other = None
-        self._anon = None
         self.discriminator = None
-
-        self.owner_id = owner_id
-        if owner is not None:
-            self.owner = owner
-        self.groups = groups
-        if other is not None:
-            self.other = other
-        if anon is not None:
-            self.anon = anon
-
-    @property
-    def owner_id(self):
-        """Gets the owner_id of this DataSourcePermissions.  # noqa: E501
-
-
-        :return: The owner_id of this DataSourcePermissions.  # noqa: E501
-        :rtype: str
-        """
-        return self._owner_id
-
-    @owner_id.setter
-    def owner_id(self, owner_id):
-        """Sets the owner_id of this DataSourcePermissions.
-
-
-        :param owner_id: The owner_id of this DataSourcePermissions.  # noqa: E501
-        :type owner_id: str
-        """
-        if (self.local_vars_configuration.client_side_validation and
-                owner_id is not None and not re.search(r'(^[0-9a-f]{24}$|^([0-9a-f]{8}([-][0-9a-f]{4}){3}[-][0-9a-f]{12})$)', owner_id)):  # noqa: E501
-            raise ValueError(r"Invalid value for `owner_id`, must be a follow pattern or equal to `/(^[0-9a-f]{24}$|^([0-9a-f]{8}([-][0-9a-f]{4}){3}[-][0-9a-f]{12})$)/`")  # noqa: E501
-
-        self._owner_id = owner_id
-
-    @property
-    def owner(self):
-        """Gets the owner of this DataSourcePermissions.  # noqa: E501
-
-
-        :return: The owner of this DataSourcePermissions.  # noqa: E501
-        :rtype: DataSourcePermission
-        """
-        return self._owner
-
-    @owner.setter
-    def owner(self, owner):
-        """Sets the owner of this DataSourcePermissions.
-
-
-        :param owner: The owner of this DataSourcePermissions.  # noqa: E501
-        :type owner: DataSourcePermission
-        """
-
-        self._owner = owner
-
-    @property
-    def groups(self):
-        """Gets the groups of this DataSourcePermissions.  # noqa: E501
-
-
-        :return: The groups of this DataSourcePermissions.  # noqa: E501
-        :rtype: dict(str, DataSourcePermission)
-        """
-        return self._groups
-
-    @groups.setter
-    def groups(self, groups):
-        """Sets the groups of this DataSourcePermissions.
-
-
-        :param groups: The groups of this DataSourcePermissions.  # noqa: E501
-        :type groups: dict(str, DataSourcePermission)
-        """
-
-        self._groups = groups
-
-    @property
-    def other(self):
-        """Gets the other of this DataSourcePermissions.  # noqa: E501
-
-
-        :return: The other of this DataSourcePermissions.  # noqa: E501
-        :rtype: DataSourcePermission
-        """
-        return self._other
-
-    @other.setter
-    def other(self, other):
-        """Sets the other of this DataSourcePermissions.
-
-
-        :param other: The other of this DataSourcePermissions.  # noqa: E501
-        :type other: DataSourcePermission
-        """
-
-        self._other = other
-
-    @property
-    def anon(self):
-        """Gets the anon of this DataSourcePermissions.  # noqa: E501
-
-
-        :return: The anon of this DataSourcePermissions.  # noqa: E501
-        :rtype: DataSourcePermission
-        """
-        return self._anon
-
-    @anon.setter
-    def anon(self, anon):
-        """Sets the anon of this DataSourcePermissions.
-
-
-        :param anon: The anon of this DataSourcePermissions.  # noqa: E501
-        :type anon: DataSourcePermission
-        """
-
-        self._anon = anon
 
     def to_dict(self, serialize=False):
         """Returns the model properties as a dict"""

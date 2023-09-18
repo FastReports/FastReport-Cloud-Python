@@ -93,6 +93,7 @@ class SubscriptionsApi(object):
                               request; this effectively ignores the authentication
                               in the spec for a single request.
         :type _request_auth: dict, optional
+        :type _content_type: string, optional: force content-type for the request
         :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
@@ -110,7 +111,9 @@ class SubscriptionsApi(object):
                 '_return_http_data_only',
                 '_preload_content',
                 '_request_timeout',
-                '_request_auth'
+                '_request_auth',
+                '_content_type',
+                '_headers'
             ]
         )
 
@@ -123,8 +126,7 @@ class SubscriptionsApi(object):
             local_var_params[key] = val
         del local_var_params['kwargs']
         # verify the required parameter 'subscription_id' is set
-        if self.api_client.client_side_validation and ('subscription_id' not in local_var_params or  # noqa: E501
-                                                        local_var_params['subscription_id'] is None):  # noqa: E501
+        if self.api_client.client_side_validation and local_var_params.get('subscription_id') is None:  # noqa: E501
             raise ApiValueError("Missing the required parameter `subscription_id` when calling `subscriptions_get_default_permissions`")  # noqa: E501
 
         if self.api_client.client_side_validation and 'subscription_id' in local_var_params and not re.search(r'^[A-Fa-f0-9]{24}$', local_var_params['subscription_id']):  # noqa: E501
@@ -137,7 +139,7 @@ class SubscriptionsApi(object):
 
         query_params = []
 
-        header_params = {}
+        header_params = dict(local_var_params.get('_headers', {}))
 
         form_params = []
         local_var_files = {}
@@ -149,7 +151,7 @@ class SubscriptionsApi(object):
 
         # Authentication setting
         auth_settings = ['ApiKey', 'JWT']  # noqa: E501
-        
+
         response_types_map = {
             200: "DefaultPermissionsVM",
             400: "ProblemDetails",
@@ -232,6 +234,7 @@ class SubscriptionsApi(object):
                               request; this effectively ignores the authentication
                               in the spec for a single request.
         :type _request_auth: dict, optional
+        :type _content_type: string, optional: force content-type for the request
         :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
@@ -249,7 +252,9 @@ class SubscriptionsApi(object):
                 '_return_http_data_only',
                 '_preload_content',
                 '_request_timeout',
-                '_request_auth'
+                '_request_auth',
+                '_content_type',
+                '_headers'
             ]
         )
 
@@ -262,8 +267,7 @@ class SubscriptionsApi(object):
             local_var_params[key] = val
         del local_var_params['kwargs']
         # verify the required parameter 'sub_id' is set
-        if self.api_client.client_side_validation and ('sub_id' not in local_var_params or  # noqa: E501
-                                                        local_var_params['sub_id'] is None):  # noqa: E501
+        if self.api_client.client_side_validation and local_var_params.get('sub_id') is None:  # noqa: E501
             raise ApiValueError("Missing the required parameter `sub_id` when calling `subscriptions_get_my_permissions`")  # noqa: E501
 
         if self.api_client.client_side_validation and 'sub_id' in local_var_params and not re.search(r'^[A-Fa-f0-9]{24}$', local_var_params['sub_id']):  # noqa: E501
@@ -276,7 +280,7 @@ class SubscriptionsApi(object):
 
         query_params = []
 
-        header_params = {}
+        header_params = dict(local_var_params.get('_headers', {}))
 
         form_params = []
         local_var_files = {}
@@ -288,7 +292,7 @@ class SubscriptionsApi(object):
 
         # Authentication setting
         auth_settings = ['ApiKey', 'JWT']  # noqa: E501
-        
+
         response_types_map = {
             200: "MyPermissionsVM",
         }
@@ -319,7 +323,7 @@ class SubscriptionsApi(object):
         >>> thread = api.subscriptions_get_permissions(id, async_req=True)
         >>> result = thread.get()
 
-        :param id: (required)
+        :param id:  (required)
         :type id: str
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
@@ -348,7 +352,7 @@ class SubscriptionsApi(object):
         >>> thread = api.subscriptions_get_permissions_with_http_info(id, async_req=True)
         >>> result = thread.get()
 
-        :param id: (required)
+        :param id:  (required)
         :type id: str
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
@@ -367,6 +371,7 @@ class SubscriptionsApi(object):
                               request; this effectively ignores the authentication
                               in the spec for a single request.
         :type _request_auth: dict, optional
+        :type _content_type: string, optional: force content-type for the request
         :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
@@ -384,7 +389,9 @@ class SubscriptionsApi(object):
                 '_return_http_data_only',
                 '_preload_content',
                 '_request_timeout',
-                '_request_auth'
+                '_request_auth',
+                '_content_type',
+                '_headers'
             ]
         )
 
@@ -397,8 +404,7 @@ class SubscriptionsApi(object):
             local_var_params[key] = val
         del local_var_params['kwargs']
         # verify the required parameter 'id' is set
-        if self.api_client.client_side_validation and ('id' not in local_var_params or  # noqa: E501
-                                                        local_var_params['id'] is None):  # noqa: E501
+        if self.api_client.client_side_validation and local_var_params.get('id') is None:  # noqa: E501
             raise ApiValueError("Missing the required parameter `id` when calling `subscriptions_get_permissions`")  # noqa: E501
 
         if self.api_client.client_side_validation and 'id' in local_var_params and not re.search(r'^[A-Fa-f0-9]{24}$', local_var_params['id']):  # noqa: E501
@@ -411,7 +417,7 @@ class SubscriptionsApi(object):
 
         query_params = []
 
-        header_params = {}
+        header_params = dict(local_var_params.get('_headers', {}))
 
         form_params = []
         local_var_files = {}
@@ -423,7 +429,7 @@ class SubscriptionsApi(object):
 
         # Authentication setting
         auth_settings = ['ApiKey', 'JWT']  # noqa: E501
-        
+
         response_types_map = {
             200: "SubscriptionPermissionsVM",
             403: "ProblemDetails",
@@ -503,6 +509,7 @@ class SubscriptionsApi(object):
                               request; this effectively ignores the authentication
                               in the spec for a single request.
         :type _request_auth: dict, optional
+        :type _content_type: string, optional: force content-type for the request
         :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
@@ -520,7 +527,9 @@ class SubscriptionsApi(object):
                 '_return_http_data_only',
                 '_preload_content',
                 '_request_timeout',
-                '_request_auth'
+                '_request_auth',
+                '_content_type',
+                '_headers'
             ]
         )
 
@@ -533,8 +542,7 @@ class SubscriptionsApi(object):
             local_var_params[key] = val
         del local_var_params['kwargs']
         # verify the required parameter 'id' is set
-        if self.api_client.client_side_validation and ('id' not in local_var_params or  # noqa: E501
-                                                        local_var_params['id'] is None):  # noqa: E501
+        if self.api_client.client_side_validation and local_var_params.get('id') is None:  # noqa: E501
             raise ApiValueError("Missing the required parameter `id` when calling `subscriptions_get_subscription`")  # noqa: E501
 
         if self.api_client.client_side_validation and 'id' in local_var_params and not re.search(r'^[A-Fa-f0-9]{24}$', local_var_params['id']):  # noqa: E501
@@ -547,7 +555,7 @@ class SubscriptionsApi(object):
 
         query_params = []
 
-        header_params = {}
+        header_params = dict(local_var_params.get('_headers', {}))
 
         form_params = []
         local_var_files = {}
@@ -559,7 +567,7 @@ class SubscriptionsApi(object):
 
         # Authentication setting
         auth_settings = ['ApiKey', 'JWT']  # noqa: E501
-        
+
         response_types_map = {
             200: "SubscriptionVM",
             400: "ProblemDetails",
@@ -645,6 +653,7 @@ class SubscriptionsApi(object):
                               request; this effectively ignores the authentication
                               in the spec for a single request.
         :type _request_auth: dict, optional
+        :type _content_type: string, optional: force content-type for the request
         :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
@@ -663,7 +672,9 @@ class SubscriptionsApi(object):
                 '_return_http_data_only',
                 '_preload_content',
                 '_request_timeout',
-                '_request_auth'
+                '_request_auth',
+                '_content_type',
+                '_headers'
             ]
         )
 
@@ -689,12 +700,12 @@ class SubscriptionsApi(object):
         path_params = {}
 
         query_params = []
-        if 'skip' in local_var_params and local_var_params['skip'] is not None:  # noqa: E501
+        if local_var_params.get('skip') is not None:  # noqa: E501
             query_params.append(('skip', local_var_params['skip']))  # noqa: E501
-        if 'take' in local_var_params and local_var_params['take'] is not None:  # noqa: E501
+        if local_var_params.get('take') is not None:  # noqa: E501
             query_params.append(('take', local_var_params['take']))  # noqa: E501
 
-        header_params = {}
+        header_params = dict(local_var_params.get('_headers', {}))
 
         form_params = []
         local_var_files = {}
@@ -706,7 +717,7 @@ class SubscriptionsApi(object):
 
         # Authentication setting
         auth_settings = ['ApiKey', 'JWT']  # noqa: E501
-        
+
         response_types_map = {
             200: "SubscriptionsVM",
             400: "ProblemDetails",
@@ -790,6 +801,7 @@ class SubscriptionsApi(object):
                               request; this effectively ignores the authentication
                               in the spec for a single request.
         :type _request_auth: dict, optional
+        :type _content_type: string, optional: force content-type for the request
         :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
@@ -808,7 +820,9 @@ class SubscriptionsApi(object):
                 '_return_http_data_only',
                 '_preload_content',
                 '_request_timeout',
-                '_request_auth'
+                '_request_auth',
+                '_content_type',
+                '_headers'
             ]
         )
 
@@ -821,12 +835,10 @@ class SubscriptionsApi(object):
             local_var_params[key] = val
         del local_var_params['kwargs']
         # verify the required parameter 'subscription_id' is set
-        if self.api_client.client_side_validation and ('subscription_id' not in local_var_params or  # noqa: E501
-                                                        local_var_params['subscription_id'] is None):  # noqa: E501
+        if self.api_client.client_side_validation and local_var_params.get('subscription_id') is None:  # noqa: E501
             raise ApiValueError("Missing the required parameter `subscription_id` when calling `subscriptions_rename_subscription`")  # noqa: E501
         # verify the required parameter 'rename_subscription_vm' is set
-        if self.api_client.client_side_validation and ('rename_subscription_vm' not in local_var_params or  # noqa: E501
-                                                        local_var_params['rename_subscription_vm'] is None):  # noqa: E501
+        if self.api_client.client_side_validation and local_var_params.get('rename_subscription_vm') is None:  # noqa: E501
             raise ApiValueError("Missing the required parameter `rename_subscription_vm` when calling `subscriptions_rename_subscription`")  # noqa: E501
 
         if self.api_client.client_side_validation and 'subscription_id' in local_var_params and not re.search(r'^[A-Fa-f0-9]{24}$', local_var_params['subscription_id']):  # noqa: E501
@@ -839,7 +851,7 @@ class SubscriptionsApi(object):
 
         query_params = []
 
-        header_params = {}
+        header_params = dict(local_var_params.get('_headers', {}))
 
         form_params = []
         local_var_files = {}
@@ -852,12 +864,16 @@ class SubscriptionsApi(object):
             ['application/json'])  # noqa: E501
 
         # HTTP header `Content-Type`
-        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
-            ['application/json', 'text/json', 'application/*+json'])  # noqa: E501
+        content_types_list = local_var_params.get('_content_type',
+            self.api_client.select_header_content_type(
+                ['application/json', 'text/json', 'application/*+json'],
+                'PUT', body_params))  # noqa: E501
+        if content_types_list:
+                header_params['Content-Type'] = content_types_list
 
         # Authentication setting
         auth_settings = ['ApiKey', 'JWT']  # noqa: E501
-        
+
         response_types_map = {
             200: "SubscriptionVM",
             400: "ProblemDetails",
@@ -944,6 +960,7 @@ class SubscriptionsApi(object):
                               request; this effectively ignores the authentication
                               in the spec for a single request.
         :type _request_auth: dict, optional
+        :type _content_type: string, optional: force content-type for the request
         :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
@@ -962,7 +979,9 @@ class SubscriptionsApi(object):
                 '_return_http_data_only',
                 '_preload_content',
                 '_request_timeout',
-                '_request_auth'
+                '_request_auth',
+                '_content_type',
+                '_headers'
             ]
         )
 
@@ -975,12 +994,10 @@ class SubscriptionsApi(object):
             local_var_params[key] = val
         del local_var_params['kwargs']
         # verify the required parameter 'subscription_id' is set
-        if self.api_client.client_side_validation and ('subscription_id' not in local_var_params or  # noqa: E501
-                                                        local_var_params['subscription_id'] is None):  # noqa: E501
+        if self.api_client.client_side_validation and local_var_params.get('subscription_id') is None:  # noqa: E501
             raise ApiValueError("Missing the required parameter `subscription_id` when calling `subscriptions_update_default_permissions`")  # noqa: E501
         # verify the required parameter 'update_default_permissions_vm' is set
-        if self.api_client.client_side_validation and ('update_default_permissions_vm' not in local_var_params or  # noqa: E501
-                                                        local_var_params['update_default_permissions_vm'] is None):  # noqa: E501
+        if self.api_client.client_side_validation and local_var_params.get('update_default_permissions_vm') is None:  # noqa: E501
             raise ApiValueError("Missing the required parameter `update_default_permissions_vm` when calling `subscriptions_update_default_permissions`")  # noqa: E501
 
         if self.api_client.client_side_validation and 'subscription_id' in local_var_params and not re.search(r'^[A-Fa-f0-9]{24}$', local_var_params['subscription_id']):  # noqa: E501
@@ -993,7 +1010,7 @@ class SubscriptionsApi(object):
 
         query_params = []
 
-        header_params = {}
+        header_params = dict(local_var_params.get('_headers', {}))
 
         form_params = []
         local_var_files = {}
@@ -1006,12 +1023,16 @@ class SubscriptionsApi(object):
             ['application/json'])  # noqa: E501
 
         # HTTP header `Content-Type`
-        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
-            ['application/json', 'text/json', 'application/*+json'])  # noqa: E501
+        content_types_list = local_var_params.get('_content_type',
+            self.api_client.select_header_content_type(
+                ['application/json', 'text/json', 'application/*+json'],
+                'PUT', body_params))  # noqa: E501
+        if content_types_list:
+                header_params['Content-Type'] = content_types_list
 
         # Authentication setting
         auth_settings = ['ApiKey', 'JWT']  # noqa: E501
-        
+
         response_types_map = {
             200: "DefaultPermissionsVM",
             400: "ProblemDetails",
@@ -1098,6 +1119,7 @@ class SubscriptionsApi(object):
                               request; this effectively ignores the authentication
                               in the spec for a single request.
         :type _request_auth: dict, optional
+        :type _content_type: string, optional: force content-type for the request
         :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
@@ -1116,7 +1138,9 @@ class SubscriptionsApi(object):
                 '_return_http_data_only',
                 '_preload_content',
                 '_request_timeout',
-                '_request_auth'
+                '_request_auth',
+                '_content_type',
+                '_headers'
             ]
         )
 
@@ -1129,12 +1153,10 @@ class SubscriptionsApi(object):
             local_var_params[key] = val
         del local_var_params['kwargs']
         # verify the required parameter 'subscription_id' is set
-        if self.api_client.client_side_validation and ('subscription_id' not in local_var_params or  # noqa: E501
-                                                        local_var_params['subscription_id'] is None):  # noqa: E501
+        if self.api_client.client_side_validation and local_var_params.get('subscription_id') is None:  # noqa: E501
             raise ApiValueError("Missing the required parameter `subscription_id` when calling `subscriptions_update_locale`")  # noqa: E501
         # verify the required parameter 'update_subscription_locale_vm' is set
-        if self.api_client.client_side_validation and ('update_subscription_locale_vm' not in local_var_params or  # noqa: E501
-                                                        local_var_params['update_subscription_locale_vm'] is None):  # noqa: E501
+        if self.api_client.client_side_validation and local_var_params.get('update_subscription_locale_vm') is None:  # noqa: E501
             raise ApiValueError("Missing the required parameter `update_subscription_locale_vm` when calling `subscriptions_update_locale`")  # noqa: E501
 
         if self.api_client.client_side_validation and 'subscription_id' in local_var_params and not re.search(r'^[A-Fa-f0-9]{24}$', local_var_params['subscription_id']):  # noqa: E501
@@ -1147,7 +1169,7 @@ class SubscriptionsApi(object):
 
         query_params = []
 
-        header_params = {}
+        header_params = dict(local_var_params.get('_headers', {}))
 
         form_params = []
         local_var_files = {}
@@ -1160,12 +1182,16 @@ class SubscriptionsApi(object):
             ['application/json'])  # noqa: E501
 
         # HTTP header `Content-Type`
-        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
-            ['application/json', 'text/json', 'application/*+json'])  # noqa: E501
+        content_types_list = local_var_params.get('_content_type',
+            self.api_client.select_header_content_type(
+                ['application/json', 'text/json', 'application/*+json'],
+                'PUT', body_params))  # noqa: E501
+        if content_types_list:
+                header_params['Content-Type'] = content_types_list
 
         # Authentication setting
         auth_settings = ['ApiKey', 'JWT']  # noqa: E501
-        
+
         response_types_map = {
             200: "SubscriptionVM",
             400: "ProblemDetails",
@@ -1200,9 +1226,9 @@ class SubscriptionsApi(object):
         >>> thread = api.subscriptions_update_permissions(id, async_req=True)
         >>> result = thread.get()
 
-        :param id: (required)
+        :param id:  (required)
         :type id: str
-        :param update_subscription_permissions_vm:
+        :param update_subscription_permissions_vm: 
         :type update_subscription_permissions_vm: UpdateSubscriptionPermissionsVM
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
@@ -1231,9 +1257,9 @@ class SubscriptionsApi(object):
         >>> thread = api.subscriptions_update_permissions_with_http_info(id, async_req=True)
         >>> result = thread.get()
 
-        :param id: (required)
+        :param id:  (required)
         :type id: str
-        :param update_subscription_permissions_vm:
+        :param update_subscription_permissions_vm: 
         :type update_subscription_permissions_vm: UpdateSubscriptionPermissionsVM
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
@@ -1252,6 +1278,7 @@ class SubscriptionsApi(object):
                               request; this effectively ignores the authentication
                               in the spec for a single request.
         :type _request_auth: dict, optional
+        :type _content_type: string, optional: force content-type for the request
         :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
@@ -1270,7 +1297,9 @@ class SubscriptionsApi(object):
                 '_return_http_data_only',
                 '_preload_content',
                 '_request_timeout',
-                '_request_auth'
+                '_request_auth',
+                '_content_type',
+                '_headers'
             ]
         )
 
@@ -1283,8 +1312,7 @@ class SubscriptionsApi(object):
             local_var_params[key] = val
         del local_var_params['kwargs']
         # verify the required parameter 'id' is set
-        if self.api_client.client_side_validation and ('id' not in local_var_params or  # noqa: E501
-                                                        local_var_params['id'] is None):  # noqa: E501
+        if self.api_client.client_side_validation and local_var_params.get('id') is None:  # noqa: E501
             raise ApiValueError("Missing the required parameter `id` when calling `subscriptions_update_permissions`")  # noqa: E501
 
         if self.api_client.client_side_validation and 'id' in local_var_params and not re.search(r'^[A-Fa-f0-9]{24}$', local_var_params['id']):  # noqa: E501
@@ -1297,7 +1325,7 @@ class SubscriptionsApi(object):
 
         query_params = []
 
-        header_params = {}
+        header_params = dict(local_var_params.get('_headers', {}))
 
         form_params = []
         local_var_files = {}
@@ -1310,12 +1338,16 @@ class SubscriptionsApi(object):
             ['application/json'])  # noqa: E501
 
         # HTTP header `Content-Type`
-        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
-            ['application/json', 'text/json', 'application/*+json'])  # noqa: E501
+        content_types_list = local_var_params.get('_content_type',
+            self.api_client.select_header_content_type(
+                ['application/json', 'text/json', 'application/*+json'],
+                'POST', body_params))  # noqa: E501
+        if content_types_list:
+                header_params['Content-Type'] = content_types_list
 
         # Authentication setting
         auth_settings = ['ApiKey', 'JWT']  # noqa: E501
-        
+
         response_types_map = {}
 
         return self.api_client.call_api(

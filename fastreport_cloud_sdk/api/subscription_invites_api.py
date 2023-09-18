@@ -97,6 +97,7 @@ class SubscriptionInvitesApi(object):
                               request; this effectively ignores the authentication
                               in the spec for a single request.
         :type _request_auth: dict, optional
+        :type _content_type: string, optional: force content-type for the request
         :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
@@ -115,7 +116,9 @@ class SubscriptionInvitesApi(object):
                 '_return_http_data_only',
                 '_preload_content',
                 '_request_timeout',
-                '_request_auth'
+                '_request_auth',
+                '_content_type',
+                '_headers'
             ]
         )
 
@@ -128,12 +131,10 @@ class SubscriptionInvitesApi(object):
             local_var_params[key] = val
         del local_var_params['kwargs']
         # verify the required parameter 'subscription_id' is set
-        if self.api_client.client_side_validation and ('subscription_id' not in local_var_params or  # noqa: E501
-                                                        local_var_params['subscription_id'] is None):  # noqa: E501
+        if self.api_client.client_side_validation and local_var_params.get('subscription_id') is None:  # noqa: E501
             raise ApiValueError("Missing the required parameter `subscription_id` when calling `subscription_invites_accept_invite`")  # noqa: E501
         # verify the required parameter 'access_token' is set
-        if self.api_client.client_side_validation and ('access_token' not in local_var_params or  # noqa: E501
-                                                        local_var_params['access_token'] is None):  # noqa: E501
+        if self.api_client.client_side_validation and local_var_params.get('access_token') is None:  # noqa: E501
             raise ApiValueError("Missing the required parameter `access_token` when calling `subscription_invites_accept_invite`")  # noqa: E501
 
         if self.api_client.client_side_validation and 'subscription_id' in local_var_params and not re.search(r'^[A-Fa-f0-9]{24}$', local_var_params['subscription_id']):  # noqa: E501
@@ -148,7 +149,7 @@ class SubscriptionInvitesApi(object):
 
         query_params = []
 
-        header_params = {}
+        header_params = dict(local_var_params.get('_headers', {}))
 
         form_params = []
         local_var_files = {}
@@ -160,7 +161,7 @@ class SubscriptionInvitesApi(object):
 
         # Authentication setting
         auth_settings = ['ApiKey', 'JWT']  # noqa: E501
-        
+
         response_types_map = {}
 
         return self.api_client.call_api(
@@ -241,6 +242,7 @@ class SubscriptionInvitesApi(object):
                               request; this effectively ignores the authentication
                               in the spec for a single request.
         :type _request_auth: dict, optional
+        :type _content_type: string, optional: force content-type for the request
         :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
@@ -259,7 +261,9 @@ class SubscriptionInvitesApi(object):
                 '_return_http_data_only',
                 '_preload_content',
                 '_request_timeout',
-                '_request_auth'
+                '_request_auth',
+                '_content_type',
+                '_headers'
             ]
         )
 
@@ -272,8 +276,7 @@ class SubscriptionInvitesApi(object):
             local_var_params[key] = val
         del local_var_params['kwargs']
         # verify the required parameter 'subscription_id' is set
-        if self.api_client.client_side_validation and ('subscription_id' not in local_var_params or  # noqa: E501
-                                                        local_var_params['subscription_id'] is None):  # noqa: E501
+        if self.api_client.client_side_validation and local_var_params.get('subscription_id') is None:  # noqa: E501
             raise ApiValueError("Missing the required parameter `subscription_id` when calling `subscription_invites_create_invite`")  # noqa: E501
 
         if self.api_client.client_side_validation and 'subscription_id' in local_var_params and not re.search(r'^[A-Fa-f0-9]{24}$', local_var_params['subscription_id']):  # noqa: E501
@@ -286,7 +289,7 @@ class SubscriptionInvitesApi(object):
 
         query_params = []
 
-        header_params = {}
+        header_params = dict(local_var_params.get('_headers', {}))
 
         form_params = []
         local_var_files = {}
@@ -299,12 +302,16 @@ class SubscriptionInvitesApi(object):
             ['application/json'])  # noqa: E501
 
         # HTTP header `Content-Type`
-        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
-            ['application/json', 'text/json', 'application/*+json'])  # noqa: E501
+        content_types_list = local_var_params.get('_content_type',
+            self.api_client.select_header_content_type(
+                ['application/json', 'text/json', 'application/*+json'],
+                'POST', body_params))  # noqa: E501
+        if content_types_list:
+                header_params['Content-Type'] = content_types_list
 
         # Authentication setting
         auth_settings = ['ApiKey', 'JWT']  # noqa: E501
-        
+
         response_types_map = {
             200: "SubscriptionInviteVM",
             400: "ProblemDetails",
@@ -392,6 +399,7 @@ class SubscriptionInvitesApi(object):
                               request; this effectively ignores the authentication
                               in the spec for a single request.
         :type _request_auth: dict, optional
+        :type _content_type: string, optional: force content-type for the request
         :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
@@ -410,7 +418,9 @@ class SubscriptionInvitesApi(object):
                 '_return_http_data_only',
                 '_preload_content',
                 '_request_timeout',
-                '_request_auth'
+                '_request_auth',
+                '_content_type',
+                '_headers'
             ]
         )
 
@@ -423,12 +433,10 @@ class SubscriptionInvitesApi(object):
             local_var_params[key] = val
         del local_var_params['kwargs']
         # verify the required parameter 'subscription_id' is set
-        if self.api_client.client_side_validation and ('subscription_id' not in local_var_params or  # noqa: E501
-                                                        local_var_params['subscription_id'] is None):  # noqa: E501
+        if self.api_client.client_side_validation and local_var_params.get('subscription_id') is None:  # noqa: E501
             raise ApiValueError("Missing the required parameter `subscription_id` when calling `subscription_invites_delete_invite`")  # noqa: E501
         # verify the required parameter 'accesstoken' is set
-        if self.api_client.client_side_validation and ('accesstoken' not in local_var_params or  # noqa: E501
-                                                        local_var_params['accesstoken'] is None):  # noqa: E501
+        if self.api_client.client_side_validation and local_var_params.get('accesstoken') is None:  # noqa: E501
             raise ApiValueError("Missing the required parameter `accesstoken` when calling `subscription_invites_delete_invite`")  # noqa: E501
 
         if self.api_client.client_side_validation and 'subscription_id' in local_var_params and not re.search(r'^[A-Fa-f0-9]{24}$', local_var_params['subscription_id']):  # noqa: E501
@@ -443,7 +451,7 @@ class SubscriptionInvitesApi(object):
 
         query_params = []
 
-        header_params = {}
+        header_params = dict(local_var_params.get('_headers', {}))
 
         form_params = []
         local_var_files = {}
@@ -455,7 +463,7 @@ class SubscriptionInvitesApi(object):
 
         # Authentication setting
         auth_settings = ['ApiKey', 'JWT']  # noqa: E501
-        
+
         response_types_map = {}
 
         return self.api_client.call_api(
@@ -532,6 +540,7 @@ class SubscriptionInvitesApi(object):
                               request; this effectively ignores the authentication
                               in the spec for a single request.
         :type _request_auth: dict, optional
+        :type _content_type: string, optional: force content-type for the request
         :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
@@ -549,7 +558,9 @@ class SubscriptionInvitesApi(object):
                 '_return_http_data_only',
                 '_preload_content',
                 '_request_timeout',
-                '_request_auth'
+                '_request_auth',
+                '_content_type',
+                '_headers'
             ]
         )
 
@@ -562,8 +573,7 @@ class SubscriptionInvitesApi(object):
             local_var_params[key] = val
         del local_var_params['kwargs']
         # verify the required parameter 'subscription_id' is set
-        if self.api_client.client_side_validation and ('subscription_id' not in local_var_params or  # noqa: E501
-                                                        local_var_params['subscription_id'] is None):  # noqa: E501
+        if self.api_client.client_side_validation and local_var_params.get('subscription_id') is None:  # noqa: E501
             raise ApiValueError("Missing the required parameter `subscription_id` when calling `subscription_invites_get_invites`")  # noqa: E501
 
         if self.api_client.client_side_validation and 'subscription_id' in local_var_params and not re.search(r'^[A-Fa-f0-9]{24}$', local_var_params['subscription_id']):  # noqa: E501
@@ -576,7 +586,7 @@ class SubscriptionInvitesApi(object):
 
         query_params = []
 
-        header_params = {}
+        header_params = dict(local_var_params.get('_headers', {}))
 
         form_params = []
         local_var_files = {}
@@ -588,7 +598,7 @@ class SubscriptionInvitesApi(object):
 
         # Authentication setting
         auth_settings = ['ApiKey', 'JWT']  # noqa: E501
-        
+
         response_types_map = {
             200: "SubscriptionInvitesVM",
             400: "ProblemDetails",

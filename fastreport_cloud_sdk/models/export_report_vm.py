@@ -41,7 +41,7 @@ class ExportReportVM(object):
         'locale': 'str',
         'pages_count': 'int',
         'format': 'ExportFormat',
-        'export_parameters': 'dict(str, str)'
+        'export_parameters': 'dict[str, str]'
     }
 
     attribute_map = {
@@ -204,7 +204,7 @@ class ExportReportVM(object):
 
 
         :return: The export_parameters of this ExportReportVM.  # noqa: E501
-        :rtype: dict(str, str)
+        :rtype: dict[str, str]
         """
         return self._export_parameters
 
@@ -214,7 +214,7 @@ class ExportReportVM(object):
 
 
         :param export_parameters: The export_parameters of this ExportReportVM.  # noqa: E501
-        :type export_parameters: dict(str, str)
+        :type export_parameters: dict[str, str]
         """
 
         self._export_parameters = export_parameters

@@ -15,6 +15,7 @@ Name | Type | Description | Notes
 **created_time** | **datetime** |  | [optional] 
 **creator_user_id** | **str** |  | [optional] 
 **status** | [**DataSourceStatus**](DataSourceStatus.md) |  | [optional] 
+**error_message** | **str** |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

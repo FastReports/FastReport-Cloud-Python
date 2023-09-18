@@ -36,28 +36,24 @@ class UpdateExportReportTaskVM(object):
                             and the value is json key in definition.
     """
     openapi_types = {
-        'export_parameters': 'dict(str, str)',
+        'export_parameters': 'dict[str, str]',
         'format': 'ExportFormat',
         'pages_count': 'int',
-        'name': 'str',
-        'subscription_id': 'str',
-        'type': 'TaskType',
-        'delayed_run_time': 'datetime',
-        'cron_expression': 'str'
+        't': 'str'
     }
 
     attribute_map = {
         'export_parameters': 'exportParameters',
         'format': 'format',
         'pages_count': 'pagesCount',
-        'name': 'name',
-        'subscription_id': 'subscriptionId',
-        'type': 'type',
-        'delayed_run_time': 'delayedRunTime',
-        'cron_expression': 'cronExpression'
+        't': '$t'
     }
 
-    def __init__(self, export_parameters=None, format=None, pages_count=None, name=None, subscription_id=None, type=None, delayed_run_time=None, cron_expression=None, local_vars_configuration=None):  # noqa: E501
+    discriminator_value_class_map = {
+        'UpdateExportTemplateTaskVM': 'UpdateExportTemplateTaskVM'
+    }
+
+    def __init__(self, export_parameters=None, format=None, pages_count=None, t=None, local_vars_configuration=None):  # noqa: E501
         """UpdateExportReportTaskVM - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration.get_default_copy()
@@ -66,23 +62,13 @@ class UpdateExportReportTaskVM(object):
         self._export_parameters = None
         self._format = None
         self._pages_count = None
-        self._name = None
-        self._subscription_id = None
-        self._type = None
-        self._delayed_run_time = None
-        self._cron_expression = None
-        self.discriminator = None
+        self._t = None
+        self.discriminator = 't'
 
         self.export_parameters = export_parameters
-        if format is not None:
-            self.format = format
+        self.format = format
         self.pages_count = pages_count
-        self.name = name
-        self.subscription_id = subscription_id
-        if type is not None:
-            self.type = type
-        self.delayed_run_time = delayed_run_time
-        self.cron_expression = cron_expression
+        self.t = t
 
     @property
     def export_parameters(self):
@@ -90,7 +76,7 @@ class UpdateExportReportTaskVM(object):
 
 
         :return: The export_parameters of this UpdateExportReportTaskVM.  # noqa: E501
-        :rtype: dict(str, str)
+        :rtype: dict[str, str]
         """
         return self._export_parameters
 
@@ -100,7 +86,7 @@ class UpdateExportReportTaskVM(object):
 
 
         :param export_parameters: The export_parameters of this UpdateExportReportTaskVM.  # noqa: E501
-        :type export_parameters: dict(str, str)
+        :type export_parameters: dict[str, str]
         """
 
         self._export_parameters = export_parameters
@@ -154,118 +140,33 @@ class UpdateExportReportTaskVM(object):
         self._pages_count = pages_count
 
     @property
-    def name(self):
-        """Gets the name of this UpdateExportReportTaskVM.  # noqa: E501
+    def t(self):
+        """Gets the t of this UpdateExportReportTaskVM.  # noqa: E501
 
 
-        :return: The name of this UpdateExportReportTaskVM.  # noqa: E501
+        :return: The t of this UpdateExportReportTaskVM.  # noqa: E501
         :rtype: str
         """
-        return self._name
+        return self._t
 
-    @name.setter
-    def name(self, name):
-        """Sets the name of this UpdateExportReportTaskVM.
+    @t.setter
+    def t(self, t):
+        """Sets the t of this UpdateExportReportTaskVM.
 
 
-        :param name: The name of this UpdateExportReportTaskVM.  # noqa: E501
-        :type name: str
+        :param t: The t of this UpdateExportReportTaskVM.  # noqa: E501
+        :type t: str
         """
-        if (self.local_vars_configuration.client_side_validation and
-                name is not None and len(name) > 50):
-            raise ValueError("Invalid value for `name`, length must be less than or equal to `50`")  # noqa: E501
-        if (self.local_vars_configuration.client_side_validation and
-                name is not None and len(name) < 1):
-            raise ValueError("Invalid value for `name`, length must be greater than or equal to `1`")  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and t is None:  # noqa: E501
+            raise ValueError("Invalid value for `t`, must not be `None`")  # noqa: E501
 
-        self._name = name
+        self._t = t
 
-    @property
-    def subscription_id(self):
-        """Gets the subscription_id of this UpdateExportReportTaskVM.  # noqa: E501
-
-
-        :return: The subscription_id of this UpdateExportReportTaskVM.  # noqa: E501
-        :rtype: str
-        """
-        return self._subscription_id
-
-    @subscription_id.setter
-    def subscription_id(self, subscription_id):
-        """Sets the subscription_id of this UpdateExportReportTaskVM.
-
-
-        :param subscription_id: The subscription_id of this UpdateExportReportTaskVM.  # noqa: E501
-        :type subscription_id: str
-        """
-        if (self.local_vars_configuration.client_side_validation and
-                subscription_id is not None and not re.search(r'(^$)|(^[A-Fa-f0-9]{24}$)', subscription_id)):  # noqa: E501
-            raise ValueError(r"Invalid value for `subscription_id`, must be a follow pattern or equal to `/(^$)|(^[A-Fa-f0-9]{24}$)/`")  # noqa: E501
-
-        self._subscription_id = subscription_id
-
-    @property
-    def type(self):
-        """Gets the type of this UpdateExportReportTaskVM.  # noqa: E501
-
-
-        :return: The type of this UpdateExportReportTaskVM.  # noqa: E501
-        :rtype: TaskType
-        """
-        return self._type
-
-    @type.setter
-    def type(self, type):
-        """Sets the type of this UpdateExportReportTaskVM.
-
-
-        :param type: The type of this UpdateExportReportTaskVM.  # noqa: E501
-        :type type: TaskType
-        """
-
-        self._type = type
-
-    @property
-    def delayed_run_time(self):
-        """Gets the delayed_run_time of this UpdateExportReportTaskVM.  # noqa: E501
-
-
-        :return: The delayed_run_time of this UpdateExportReportTaskVM.  # noqa: E501
-        :rtype: datetime
-        """
-        return self._delayed_run_time
-
-    @delayed_run_time.setter
-    def delayed_run_time(self, delayed_run_time):
-        """Sets the delayed_run_time of this UpdateExportReportTaskVM.
-
-
-        :param delayed_run_time: The delayed_run_time of this UpdateExportReportTaskVM.  # noqa: E501
-        :type delayed_run_time: datetime
-        """
-
-        self._delayed_run_time = delayed_run_time
-
-    @property
-    def cron_expression(self):
-        """Gets the cron_expression of this UpdateExportReportTaskVM.  # noqa: E501
-
-
-        :return: The cron_expression of this UpdateExportReportTaskVM.  # noqa: E501
-        :rtype: str
-        """
-        return self._cron_expression
-
-    @cron_expression.setter
-    def cron_expression(self, cron_expression):
-        """Sets the cron_expression of this UpdateExportReportTaskVM.
-
-
-        :param cron_expression: The cron_expression of this UpdateExportReportTaskVM.  # noqa: E501
-        :type cron_expression: str
-        """
-
-        self._cron_expression = cron_expression
+    def get_real_child_model(self, data):
+        """Returns the real base class specified by the discriminator"""
+        discriminator_key = self.attribute_map[self.discriminator]
+        discriminator_value = data[discriminator_key]
+        return self.discriminator_value_class_map.get(discriminator_value)
 
     def to_dict(self, serialize=False):
         """Returns the model properties as a dict"""

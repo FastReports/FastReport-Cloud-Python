@@ -37,29 +37,25 @@ class InputFileVM(object):
     """
     openapi_types = {
         'entity_id': 'str',
-        'file_name': 'str',
         'type': 'FileKind'
     }
 
     attribute_map = {
         'entity_id': 'entityId',
-        'file_name': 'fileName',
         'type': 'type'
     }
 
-    def __init__(self, entity_id=None, file_name=None, type=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, entity_id=None, type=None, local_vars_configuration=None):  # noqa: E501
         """InputFileVM - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration.get_default_copy()
         self.local_vars_configuration = local_vars_configuration
 
         self._entity_id = None
-        self._file_name = None
         self._type = None
         self.discriminator = None
 
         self.entity_id = entity_id
-        self.file_name = file_name
         if type is not None:
             self.type = type
 
@@ -86,33 +82,6 @@ class InputFileVM(object):
             raise ValueError(r"Invalid value for `entity_id`, must be a follow pattern or equal to `/^[A-Fa-f0-9]{24}$/`")  # noqa: E501
 
         self._entity_id = entity_id
-
-    @property
-    def file_name(self):
-        """Gets the file_name of this InputFileVM.  # noqa: E501
-
-
-        :return: The file_name of this InputFileVM.  # noqa: E501
-        :rtype: str
-        """
-        return self._file_name
-
-    @file_name.setter
-    def file_name(self, file_name):
-        """Sets the file_name of this InputFileVM.
-
-
-        :param file_name: The file_name of this InputFileVM.  # noqa: E501
-        :type file_name: str
-        """
-        if (self.local_vars_configuration.client_side_validation and
-                file_name is not None and len(file_name) > 250):
-            raise ValueError("Invalid value for `file_name`, length must be less than or equal to `250`")  # noqa: E501
-        if (self.local_vars_configuration.client_side_validation and
-                file_name is not None and len(file_name) < 1):
-            raise ValueError("Invalid value for `file_name`, length must be greater than or equal to `1`")  # noqa: E501
-
-        self._file_name = file_name
 
     @property
     def type(self):

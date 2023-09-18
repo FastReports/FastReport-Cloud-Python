@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **owner_id** | **str** |  | [optional] 
 **owner** | [**TaskPermission**](TaskPermission.md) |  | [optional] 
-**groups** | [**dict(str, TaskPermission)**](TaskPermission.md) |  | [optional] 
+**groups** | [**dict[str, TaskPermission]**](TaskPermission.md) |  | [optional] 
 **other** | [**TaskPermission**](TaskPermission.md) |  | [optional] 
 **anon** | [**TaskPermission**](TaskPermission.md) |  | [optional] 
 

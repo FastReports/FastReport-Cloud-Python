@@ -4,16 +4,16 @@ All URIs are relative to *http://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**tasks_create_task**](TasksApi.md#tasks_create_task) | **POST** /api/tasks | Create a new task
-[**tasks_delete_task**](TasksApi.md#tasks_delete_task) | **DELETE** /api/tasks/{taskId} | Delete a task from a storage
-[**tasks_get**](TasksApi.md#tasks_get) | **GET** /api/tasks/{taskId} | Get a task by a specified id
-[**tasks_get_list**](TasksApi.md#tasks_get_list) | **GET** /api/tasks | Get tasks list
-[**tasks_get_permissions**](TasksApi.md#tasks_get_permissions) | **GET** /api/tasks/{id}/permissions | Get all Task permissions
-[**tasks_rename_task**](TasksApi.md#tasks_rename_task) | **PUT** /api/tasks/{taskId}/rename | Rename a task
-[**tasks_run_task**](TasksApi.md#tasks_run_task) | **POST** /api/tasks/run | Run a task from request body
-[**tasks_run_task_by_id**](TasksApi.md#tasks_run_task_by_id) | **POST** /api/tasks/{taskId}/run | Run a task by id
-[**tasks_update_permissions**](TasksApi.md#tasks_update_permissions) | **POST** /api/tasks/{id}/permissions | Update permissions
-[**tasks_update_task**](TasksApi.md#tasks_update_task) | **PUT** /api/tasks/{taskId} | Update a task
+[**tasks_create_task**](TasksApi.md#tasks_create_task) | **POST** /api/tasks/v1/Tasks | Create a new task
+[**tasks_delete_task**](TasksApi.md#tasks_delete_task) | **DELETE** /api/tasks/v1/Tasks/{taskId} | Delete a task from a storage
+[**tasks_get**](TasksApi.md#tasks_get) | **GET** /api/tasks/v1/Tasks/{taskId} | Get a task by a specified id
+[**tasks_get_list**](TasksApi.md#tasks_get_list) | **GET** /api/tasks/v1/Tasks | Get tasks list
+[**tasks_get_permissions**](TasksApi.md#tasks_get_permissions) | **GET** /api/tasks/v1/Tasks/{id}/permissions | Get all Task permissions
+[**tasks_rename_task**](TasksApi.md#tasks_rename_task) | **PUT** /api/tasks/v1/Tasks/{taskId}/rename | Rename a task
+[**tasks_run_task**](TasksApi.md#tasks_run_task) | **POST** /api/tasks/v1/Tasks/run | Run a task from request body
+[**tasks_run_task_by_id**](TasksApi.md#tasks_run_task_by_id) | **POST** /api/tasks/v1/Tasks/{taskId}/run | Run a task by id
+[**tasks_update_permissions**](TasksApi.md#tasks_update_permissions) | **POST** /api/tasks/v1/Tasks/{id}/permissions | Update permissions
+[**tasks_update_task**](TasksApi.md#tasks_update_task) | **PUT** /api/tasks/v1/Tasks/{taskId} | Update a task
 
 
 # **tasks_create_task**
@@ -253,7 +253,7 @@ void (empty response body)
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**204** | Success |  -  |
+**204** | No Content |  -  |
 **403** | Forbidden |  -  |
 **404** | Not Found |  -  |
 **402** | Client Error |  -  |
@@ -387,7 +387,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **tasks_get_list**
-> TasksVM tasks_get_list(skip=skip, take=take, subscription_id=subscription_id)
+> TasksVM tasks_get_list(skip=skip, take=take, subscription_id=subscription_id, search_pattern=search_pattern)
 
 Get tasks list
 
@@ -429,10 +429,11 @@ with fastreport_cloud_sdk.ApiClient(configuration) as api_client:
     skip = 0 # int | number of tasks, that have to be skipped (optional) (default to 0)
 take = 10 # int | number of tasks, that have to be returned (optional) (default to 10)
 subscription_id = 'subscription_id_example' # str | subscription id (optional)
+search_pattern = '' # str |  (optional) (default to '')
 
     try:
         # Get tasks list
-        api_response = api_instance.tasks_get_list(skip=skip, take=take, subscription_id=subscription_id)
+        api_response = api_instance.tasks_get_list(skip=skip, take=take, subscription_id=subscription_id, search_pattern=search_pattern)
         pprint(api_response)
     except ApiException as e:
         print("Exception when calling TasksApi->tasks_get_list: %s\n" % e)
@@ -474,10 +475,11 @@ with fastreport_cloud_sdk.ApiClient(configuration) as api_client:
     skip = 0 # int | number of tasks, that have to be skipped (optional) (default to 0)
 take = 10 # int | number of tasks, that have to be returned (optional) (default to 10)
 subscription_id = 'subscription_id_example' # str | subscription id (optional)
+search_pattern = '' # str |  (optional) (default to '')
 
     try:
         # Get tasks list
-        api_response = api_instance.tasks_get_list(skip=skip, take=take, subscription_id=subscription_id)
+        api_response = api_instance.tasks_get_list(skip=skip, take=take, subscription_id=subscription_id, search_pattern=search_pattern)
         pprint(api_response)
     except ApiException as e:
         print("Exception when calling TasksApi->tasks_get_list: %s\n" % e)
@@ -490,6 +492,7 @@ Name | Type | Description  | Notes
  **skip** | **int**| number of tasks, that have to be skipped | [optional] [default to 0]
  **take** | **int**| number of tasks, that have to be returned | [optional] [default to 10]
  **subscription_id** | **str**| subscription id | [optional] 
+ **search_pattern** | **str**|  | [optional] [default to &#39;&#39;]
 
 ### Return type
 
@@ -881,7 +884,6 @@ void (empty response body)
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Success |  -  |
-**204** | Success |  -  |
 **403** | Forbidden |  -  |
 **404** | Not Found |  -  |
 **402** | Client Error |  -  |
@@ -1128,7 +1130,7 @@ void (empty response body)
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Success |  -  |
+**204** | No Content |  -  |
 **400** | Bad Request |  -  |
 **402** | Client Error |  -  |
 **403** | Forbidden |  -  |

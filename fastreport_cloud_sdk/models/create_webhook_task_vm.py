@@ -36,182 +36,75 @@ class CreateWebhookTaskVM(object):
                             and the value is json key in definition.
     """
     openapi_types = {
-        'endpoints': 'list[CreateEndpointVM]',
-        'name': 'str',
-        'subscription_id': 'str',
-        'type': 'TaskType',
-        'delayed_run_time': 'datetime',
-        'cron_expression': 'str'
+        'headers': 'dict[str, str]',
+        'url': 'str'
     }
 
     attribute_map = {
-        'endpoints': 'endpoints',
-        'name': 'name',
-        'subscription_id': 'subscriptionId',
-        'type': 'type',
-        'delayed_run_time': 'delayedRunTime',
-        'cron_expression': 'cronExpression'
+        'headers': 'headers',
+        'url': 'url'
     }
 
-    def __init__(self, endpoints=None, name=None, subscription_id=None, type=None, delayed_run_time=None, cron_expression=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, headers=None, url=None, local_vars_configuration=None):  # noqa: E501
         """CreateWebhookTaskVM - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration.get_default_copy()
         self.local_vars_configuration = local_vars_configuration
 
-        self._endpoints = None
-        self._name = None
-        self._subscription_id = None
-        self._type = None
-        self._delayed_run_time = None
-        self._cron_expression = None
+        self._headers = None
+        self._url = None
         self.discriminator = None
 
-        self.endpoints = endpoints
-        self.name = name
-        self.subscription_id = subscription_id
-        if type is not None:
-            self.type = type
-        self.delayed_run_time = delayed_run_time
-        self.cron_expression = cron_expression
+        self.headers = headers
+        self.url = url
 
     @property
-    def endpoints(self):
-        """Gets the endpoints of this CreateWebhookTaskVM.  # noqa: E501
+    def headers(self):
+        """Gets the headers of this CreateWebhookTaskVM.  # noqa: E501
 
 
-        :return: The endpoints of this CreateWebhookTaskVM.  # noqa: E501
-        :rtype: list[CreateEndpointVM]
+        :return: The headers of this CreateWebhookTaskVM.  # noqa: E501
+        :rtype: dict[str, str]
         """
-        return self._endpoints
+        return self._headers
 
-    @endpoints.setter
-    def endpoints(self, endpoints):
-        """Sets the endpoints of this CreateWebhookTaskVM.
+    @headers.setter
+    def headers(self, headers):
+        """Sets the headers of this CreateWebhookTaskVM.
 
 
-        :param endpoints: The endpoints of this CreateWebhookTaskVM.  # noqa: E501
-        :type endpoints: list[CreateEndpointVM]
+        :param headers: The headers of this CreateWebhookTaskVM.  # noqa: E501
+        :type headers: dict[str, str]
         """
-        if (self.local_vars_configuration.client_side_validation and
-                endpoints is not None and len(endpoints) > 5):
-            raise ValueError("Invalid value for `endpoints`, number of items must be less than or equal to `5`")  # noqa: E501
 
-        self._endpoints = endpoints
+        self._headers = headers
 
     @property
-    def name(self):
-        """Gets the name of this CreateWebhookTaskVM.  # noqa: E501
+    def url(self):
+        """Gets the url of this CreateWebhookTaskVM.  # noqa: E501
 
 
-        :return: The name of this CreateWebhookTaskVM.  # noqa: E501
+        :return: The url of this CreateWebhookTaskVM.  # noqa: E501
         :rtype: str
         """
-        return self._name
+        return self._url
 
-    @name.setter
-    def name(self, name):
-        """Sets the name of this CreateWebhookTaskVM.
+    @url.setter
+    def url(self, url):
+        """Sets the url of this CreateWebhookTaskVM.
 
 
-        :param name: The name of this CreateWebhookTaskVM.  # noqa: E501
-        :type name: str
+        :param url: The url of this CreateWebhookTaskVM.  # noqa: E501
+        :type url: str
         """
         if (self.local_vars_configuration.client_side_validation and
-                name is not None and len(name) > 50):
-            raise ValueError("Invalid value for `name`, length must be less than or equal to `50`")  # noqa: E501
+                url is not None and len(url) > 5000):
+            raise ValueError("Invalid value for `url`, length must be less than or equal to `5000`")  # noqa: E501
         if (self.local_vars_configuration.client_side_validation and
-                name is not None and len(name) < 1):
-            raise ValueError("Invalid value for `name`, length must be greater than or equal to `1`")  # noqa: E501
+                url is not None and len(url) < 1):
+            raise ValueError("Invalid value for `url`, length must be greater than or equal to `1`")  # noqa: E501
 
-        self._name = name
-
-    @property
-    def subscription_id(self):
-        """Gets the subscription_id of this CreateWebhookTaskVM.  # noqa: E501
-
-
-        :return: The subscription_id of this CreateWebhookTaskVM.  # noqa: E501
-        :rtype: str
-        """
-        return self._subscription_id
-
-    @subscription_id.setter
-    def subscription_id(self, subscription_id):
-        """Sets the subscription_id of this CreateWebhookTaskVM.
-
-
-        :param subscription_id: The subscription_id of this CreateWebhookTaskVM.  # noqa: E501
-        :type subscription_id: str
-        """
-        if (self.local_vars_configuration.client_side_validation and
-                subscription_id is not None and not re.search(r'(^$)|(^[A-Fa-f0-9]{24}$)', subscription_id)):  # noqa: E501
-            raise ValueError(r"Invalid value for `subscription_id`, must be a follow pattern or equal to `/(^$)|(^[A-Fa-f0-9]{24}$)/`")  # noqa: E501
-
-        self._subscription_id = subscription_id
-
-    @property
-    def type(self):
-        """Gets the type of this CreateWebhookTaskVM.  # noqa: E501
-
-
-        :return: The type of this CreateWebhookTaskVM.  # noqa: E501
-        :rtype: TaskType
-        """
-        return self._type
-
-    @type.setter
-    def type(self, type):
-        """Sets the type of this CreateWebhookTaskVM.
-
-
-        :param type: The type of this CreateWebhookTaskVM.  # noqa: E501
-        :type type: TaskType
-        """
-
-        self._type = type
-
-    @property
-    def delayed_run_time(self):
-        """Gets the delayed_run_time of this CreateWebhookTaskVM.  # noqa: E501
-
-
-        :return: The delayed_run_time of this CreateWebhookTaskVM.  # noqa: E501
-        :rtype: datetime
-        """
-        return self._delayed_run_time
-
-    @delayed_run_time.setter
-    def delayed_run_time(self, delayed_run_time):
-        """Sets the delayed_run_time of this CreateWebhookTaskVM.
-
-
-        :param delayed_run_time: The delayed_run_time of this CreateWebhookTaskVM.  # noqa: E501
-        :type delayed_run_time: datetime
-        """
-
-        self._delayed_run_time = delayed_run_time
-
-    @property
-    def cron_expression(self):
-        """Gets the cron_expression of this CreateWebhookTaskVM.  # noqa: E501
-
-
-        :return: The cron_expression of this CreateWebhookTaskVM.  # noqa: E501
-        :rtype: str
-        """
-        return self._cron_expression
-
-    @cron_expression.setter
-    def cron_expression(self, cron_expression):
-        """Sets the cron_expression of this CreateWebhookTaskVM.
-
-
-        :param cron_expression: The cron_expression of this CreateWebhookTaskVM.  # noqa: E501
-        :type cron_expression: str
-        """
-
-        self._cron_expression = cron_expression
+        self._url = url
 
     def to_dict(self, serialize=False):
         """Returns the model properties as a dict"""

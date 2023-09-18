@@ -36,50 +36,27 @@ class UpdateTaskPermissionsVM(object):
                             and the value is json key in definition.
     """
     openapi_types = {
-        'new_permissions': 'TaskPermissions',
-        'administrate': 'TaskAdministrate'
+        'administrate': 'TaskAdministrate',
+        'new_permissions': 'TaskPermissions'
     }
 
     attribute_map = {
-        'new_permissions': 'newPermissions',
-        'administrate': 'administrate'
+        'administrate': 'administrate',
+        'new_permissions': 'newPermissions'
     }
 
-    def __init__(self, new_permissions=None, administrate=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, administrate=None, new_permissions=None, local_vars_configuration=None):  # noqa: E501
         """UpdateTaskPermissionsVM - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration.get_default_copy()
         self.local_vars_configuration = local_vars_configuration
 
-        self._new_permissions = None
         self._administrate = None
+        self._new_permissions = None
         self.discriminator = None
 
-        self.new_permissions = new_permissions
         self.administrate = administrate
-
-    @property
-    def new_permissions(self):
-        """Gets the new_permissions of this UpdateTaskPermissionsVM.  # noqa: E501
-
-
-        :return: The new_permissions of this UpdateTaskPermissionsVM.  # noqa: E501
-        :rtype: TaskPermissions
-        """
-        return self._new_permissions
-
-    @new_permissions.setter
-    def new_permissions(self, new_permissions):
-        """Sets the new_permissions of this UpdateTaskPermissionsVM.
-
-
-        :param new_permissions: The new_permissions of this UpdateTaskPermissionsVM.  # noqa: E501
-        :type new_permissions: TaskPermissions
-        """
-        if self.local_vars_configuration.client_side_validation and new_permissions is None:  # noqa: E501
-            raise ValueError("Invalid value for `new_permissions`, must not be `None`")  # noqa: E501
-
-        self._new_permissions = new_permissions
+        self.new_permissions = new_permissions
 
     @property
     def administrate(self):
@@ -103,6 +80,29 @@ class UpdateTaskPermissionsVM(object):
             raise ValueError("Invalid value for `administrate`, must not be `None`")  # noqa: E501
 
         self._administrate = administrate
+
+    @property
+    def new_permissions(self):
+        """Gets the new_permissions of this UpdateTaskPermissionsVM.  # noqa: E501
+
+
+        :return: The new_permissions of this UpdateTaskPermissionsVM.  # noqa: E501
+        :rtype: TaskPermissions
+        """
+        return self._new_permissions
+
+    @new_permissions.setter
+    def new_permissions(self, new_permissions):
+        """Sets the new_permissions of this UpdateTaskPermissionsVM.
+
+
+        :param new_permissions: The new_permissions of this UpdateTaskPermissionsVM.  # noqa: E501
+        :type new_permissions: TaskPermissions
+        """
+        if self.local_vars_configuration.client_side_validation and new_permissions is None:  # noqa: E501
+            raise ValueError("Invalid value for `new_permissions`, must not be `None`")  # noqa: E501
+
+        self._new_permissions = new_permissions
 
     def to_dict(self, serialize=False):
         """Returns the model properties as a dict"""

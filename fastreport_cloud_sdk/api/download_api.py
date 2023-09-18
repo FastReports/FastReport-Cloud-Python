@@ -45,9 +45,9 @@ class DownloadApi(object):
         >>> thread = api.download_get_export(id, async_req=True)
         >>> result = thread.get()
 
-        :param id: (required)
+        :param id:  (required)
         :type id: str
-        :param preview:
+        :param preview: 
         :type preview: bool
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
@@ -76,9 +76,9 @@ class DownloadApi(object):
         >>> thread = api.download_get_export_with_http_info(id, async_req=True)
         >>> result = thread.get()
 
-        :param id: (required)
+        :param id:  (required)
         :type id: str
-        :param preview:
+        :param preview: 
         :type preview: bool
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
@@ -97,6 +97,7 @@ class DownloadApi(object):
                               request; this effectively ignores the authentication
                               in the spec for a single request.
         :type _request_auth: dict, optional
+        :type _content_type: string, optional: force content-type for the request
         :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
@@ -115,7 +116,9 @@ class DownloadApi(object):
                 '_return_http_data_only',
                 '_preload_content',
                 '_request_timeout',
-                '_request_auth'
+                '_request_auth',
+                '_content_type',
+                '_headers'
             ]
         )
 
@@ -128,8 +131,7 @@ class DownloadApi(object):
             local_var_params[key] = val
         del local_var_params['kwargs']
         # verify the required parameter 'id' is set
-        if self.api_client.client_side_validation and ('id' not in local_var_params or  # noqa: E501
-                                                        local_var_params['id'] is None):  # noqa: E501
+        if self.api_client.client_side_validation and local_var_params.get('id') is None:  # noqa: E501
             raise ApiValueError("Missing the required parameter `id` when calling `download_get_export`")  # noqa: E501
 
         if self.api_client.client_side_validation and 'id' in local_var_params and not re.search(r'^[A-Fa-f0-9]{24}$', local_var_params['id']):  # noqa: E501
@@ -141,10 +143,10 @@ class DownloadApi(object):
             path_params['id'] = local_var_params['id']  # noqa: E501
 
         query_params = []
-        if 'preview' in local_var_params and local_var_params['preview'] is not None:  # noqa: E501
+        if local_var_params.get('preview') is not None:  # noqa: E501
             query_params.append(('preview', local_var_params['preview']))  # noqa: E501
 
-        header_params = {}
+        header_params = dict(local_var_params.get('_headers', {}))
 
         form_params = []
         local_var_files = {}
@@ -156,7 +158,7 @@ class DownloadApi(object):
 
         # Authentication setting
         auth_settings = ['ApiKey', 'JWT']  # noqa: E501
-        
+
         response_types_map = {
             200: "file",
             404: "ProblemDetails",
@@ -191,7 +193,7 @@ class DownloadApi(object):
         >>> thread = api.download_get_export_thumbnail(id, async_req=True)
         >>> result = thread.get()
 
-        :param id: (required)
+        :param id:  (required)
         :type id: str
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
@@ -220,7 +222,7 @@ class DownloadApi(object):
         >>> thread = api.download_get_export_thumbnail_with_http_info(id, async_req=True)
         >>> result = thread.get()
 
-        :param id: (required)
+        :param id:  (required)
         :type id: str
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
@@ -239,6 +241,7 @@ class DownloadApi(object):
                               request; this effectively ignores the authentication
                               in the spec for a single request.
         :type _request_auth: dict, optional
+        :type _content_type: string, optional: force content-type for the request
         :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
@@ -256,7 +259,9 @@ class DownloadApi(object):
                 '_return_http_data_only',
                 '_preload_content',
                 '_request_timeout',
-                '_request_auth'
+                '_request_auth',
+                '_content_type',
+                '_headers'
             ]
         )
 
@@ -269,8 +274,7 @@ class DownloadApi(object):
             local_var_params[key] = val
         del local_var_params['kwargs']
         # verify the required parameter 'id' is set
-        if self.api_client.client_side_validation and ('id' not in local_var_params or  # noqa: E501
-                                                        local_var_params['id'] is None):  # noqa: E501
+        if self.api_client.client_side_validation and local_var_params.get('id') is None:  # noqa: E501
             raise ApiValueError("Missing the required parameter `id` when calling `download_get_export_thumbnail`")  # noqa: E501
 
         if self.api_client.client_side_validation and 'id' in local_var_params and not re.search(r'^[A-Fa-f0-9]{24}$', local_var_params['id']):  # noqa: E501
@@ -283,7 +287,7 @@ class DownloadApi(object):
 
         query_params = []
 
-        header_params = {}
+        header_params = dict(local_var_params.get('_headers', {}))
 
         form_params = []
         local_var_files = {}
@@ -295,7 +299,7 @@ class DownloadApi(object):
 
         # Authentication setting
         auth_settings = ['ApiKey', 'JWT']  # noqa: E501
-        
+
         response_types_map = {
             200: "file",
             404: "ProblemDetails",
@@ -332,8 +336,10 @@ class DownloadApi(object):
 
         :param archive_name: name of the created archive (required)
         :type archive_name: str
-        :param ids: ids separated with a ',' sign
-        :type ids: str
+        :param file_ids: ids separated with a ',' sign
+        :type file_ids: str
+        :param folder_ids: ids separated with a ',' sign
+        :type folder_ids: str
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
@@ -363,8 +369,10 @@ class DownloadApi(object):
 
         :param archive_name: name of the created archive (required)
         :type archive_name: str
-        :param ids: ids separated with a ',' sign
-        :type ids: str
+        :param file_ids: ids separated with a ',' sign
+        :type file_ids: str
+        :param folder_ids: ids separated with a ',' sign
+        :type folder_ids: str
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
         :param _return_http_data_only: response data without head status code
@@ -382,6 +390,7 @@ class DownloadApi(object):
                               request; this effectively ignores the authentication
                               in the spec for a single request.
         :type _request_auth: dict, optional
+        :type _content_type: string, optional: force content-type for the request
         :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
@@ -392,7 +401,8 @@ class DownloadApi(object):
 
         all_params = [
             'archive_name',
-            'ids'
+            'file_ids',
+            'folder_ids'
         ]
         all_params.extend(
             [
@@ -400,7 +410,9 @@ class DownloadApi(object):
                 '_return_http_data_only',
                 '_preload_content',
                 '_request_timeout',
-                '_request_auth'
+                '_request_auth',
+                '_content_type',
+                '_headers'
             ]
         )
 
@@ -413,8 +425,7 @@ class DownloadApi(object):
             local_var_params[key] = val
         del local_var_params['kwargs']
         # verify the required parameter 'archive_name' is set
-        if self.api_client.client_side_validation and ('archive_name' not in local_var_params or  # noqa: E501
-                                                        local_var_params['archive_name'] is None):  # noqa: E501
+        if self.api_client.client_side_validation and local_var_params.get('archive_name') is None:  # noqa: E501
             raise ApiValueError("Missing the required parameter `archive_name` when calling `download_get_exports`")  # noqa: E501
 
         collection_formats = {}
@@ -424,10 +435,12 @@ class DownloadApi(object):
             path_params['archiveName'] = local_var_params['archive_name']  # noqa: E501
 
         query_params = []
-        if 'ids' in local_var_params and local_var_params['ids'] is not None:  # noqa: E501
-            query_params.append(('ids', local_var_params['ids']))  # noqa: E501
+        if local_var_params.get('file_ids') is not None:  # noqa: E501
+            query_params.append(('fileIds', local_var_params['file_ids']))  # noqa: E501
+        if local_var_params.get('folder_ids') is not None:  # noqa: E501
+            query_params.append(('folderIds', local_var_params['folder_ids']))  # noqa: E501
 
-        header_params = {}
+        header_params = dict(local_var_params.get('_headers', {}))
 
         form_params = []
         local_var_files = {}
@@ -439,7 +452,7 @@ class DownloadApi(object):
 
         # Authentication setting
         auth_settings = ['ApiKey', 'JWT']  # noqa: E501
-        
+
         response_types_map = {
             200: "file",
             400: "ProblemDetails",
@@ -466,7 +479,7 @@ class DownloadApi(object):
             _request_auth=local_var_params.get('_request_auth'))
 
     def download_get_last_svg_export(self, report_id, **kwargs):  # noqa: E501
-        """returns export, that was created from report with specified id  # noqa: E501
+        """returns export, that was created from report with specified id.  INTERNAL USAGE ONLY!  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
@@ -474,7 +487,7 @@ class DownloadApi(object):
         >>> thread = api.download_get_last_svg_export(report_id, async_req=True)
         >>> result = thread.get()
 
-        :param report_id: (required)
+        :param report_id:  (required)
         :type report_id: str
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
@@ -495,7 +508,7 @@ class DownloadApi(object):
         return self.download_get_last_svg_export_with_http_info(report_id, **kwargs)  # noqa: E501
 
     def download_get_last_svg_export_with_http_info(self, report_id, **kwargs):  # noqa: E501
-        """returns export, that was created from report with specified id  # noqa: E501
+        """returns export, that was created from report with specified id.  INTERNAL USAGE ONLY!  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
@@ -503,7 +516,7 @@ class DownloadApi(object):
         >>> thread = api.download_get_last_svg_export_with_http_info(report_id, async_req=True)
         >>> result = thread.get()
 
-        :param report_id: (required)
+        :param report_id:  (required)
         :type report_id: str
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
@@ -522,6 +535,7 @@ class DownloadApi(object):
                               request; this effectively ignores the authentication
                               in the spec for a single request.
         :type _request_auth: dict, optional
+        :type _content_type: string, optional: force content-type for the request
         :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
@@ -539,7 +553,9 @@ class DownloadApi(object):
                 '_return_http_data_only',
                 '_preload_content',
                 '_request_timeout',
-                '_request_auth'
+                '_request_auth',
+                '_content_type',
+                '_headers'
             ]
         )
 
@@ -552,8 +568,7 @@ class DownloadApi(object):
             local_var_params[key] = val
         del local_var_params['kwargs']
         # verify the required parameter 'report_id' is set
-        if self.api_client.client_side_validation and ('report_id' not in local_var_params or  # noqa: E501
-                                                        local_var_params['report_id'] is None):  # noqa: E501
+        if self.api_client.client_side_validation and local_var_params.get('report_id') is None:  # noqa: E501
             raise ApiValueError("Missing the required parameter `report_id` when calling `download_get_last_svg_export`")  # noqa: E501
 
         collection_formats = {}
@@ -564,7 +579,7 @@ class DownloadApi(object):
 
         query_params = []
 
-        header_params = {}
+        header_params = dict(local_var_params.get('_headers', {}))
 
         form_params = []
         local_var_files = {}
@@ -576,7 +591,7 @@ class DownloadApi(object):
 
         # Authentication setting
         auth_settings = ['ApiKey', 'JWT']  # noqa: E501
-        
+
         response_types_map = {
             200: "file",
             404: "ProblemDetails",
@@ -611,7 +626,7 @@ class DownloadApi(object):
         >>> thread = api.download_get_report(id, async_req=True)
         >>> result = thread.get()
 
-        :param id: (required)
+        :param id:  (required)
         :type id: str
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
@@ -640,7 +655,7 @@ class DownloadApi(object):
         >>> thread = api.download_get_report_with_http_info(id, async_req=True)
         >>> result = thread.get()
 
-        :param id: (required)
+        :param id:  (required)
         :type id: str
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
@@ -659,6 +674,7 @@ class DownloadApi(object):
                               request; this effectively ignores the authentication
                               in the spec for a single request.
         :type _request_auth: dict, optional
+        :type _content_type: string, optional: force content-type for the request
         :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
@@ -676,7 +692,9 @@ class DownloadApi(object):
                 '_return_http_data_only',
                 '_preload_content',
                 '_request_timeout',
-                '_request_auth'
+                '_request_auth',
+                '_content_type',
+                '_headers'
             ]
         )
 
@@ -689,8 +707,7 @@ class DownloadApi(object):
             local_var_params[key] = val
         del local_var_params['kwargs']
         # verify the required parameter 'id' is set
-        if self.api_client.client_side_validation and ('id' not in local_var_params or  # noqa: E501
-                                                        local_var_params['id'] is None):  # noqa: E501
+        if self.api_client.client_side_validation and local_var_params.get('id') is None:  # noqa: E501
             raise ApiValueError("Missing the required parameter `id` when calling `download_get_report`")  # noqa: E501
 
         if self.api_client.client_side_validation and 'id' in local_var_params and not re.search(r'^[A-Fa-f0-9]{24}$', local_var_params['id']):  # noqa: E501
@@ -703,7 +720,7 @@ class DownloadApi(object):
 
         query_params = []
 
-        header_params = {}
+        header_params = dict(local_var_params.get('_headers', {}))
 
         form_params = []
         local_var_files = {}
@@ -715,7 +732,7 @@ class DownloadApi(object):
 
         # Authentication setting
         auth_settings = ['ApiKey', 'JWT']  # noqa: E501
-        
+
         response_types_map = {
             200: "file",
             404: "ProblemDetails",
@@ -750,7 +767,7 @@ class DownloadApi(object):
         >>> thread = api.download_get_report_thumbnail(id, async_req=True)
         >>> result = thread.get()
 
-        :param id: (required)
+        :param id:  (required)
         :type id: str
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
@@ -779,7 +796,7 @@ class DownloadApi(object):
         >>> thread = api.download_get_report_thumbnail_with_http_info(id, async_req=True)
         >>> result = thread.get()
 
-        :param id: (required)
+        :param id:  (required)
         :type id: str
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
@@ -798,6 +815,7 @@ class DownloadApi(object):
                               request; this effectively ignores the authentication
                               in the spec for a single request.
         :type _request_auth: dict, optional
+        :type _content_type: string, optional: force content-type for the request
         :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
@@ -815,7 +833,9 @@ class DownloadApi(object):
                 '_return_http_data_only',
                 '_preload_content',
                 '_request_timeout',
-                '_request_auth'
+                '_request_auth',
+                '_content_type',
+                '_headers'
             ]
         )
 
@@ -828,8 +848,7 @@ class DownloadApi(object):
             local_var_params[key] = val
         del local_var_params['kwargs']
         # verify the required parameter 'id' is set
-        if self.api_client.client_side_validation and ('id' not in local_var_params or  # noqa: E501
-                                                        local_var_params['id'] is None):  # noqa: E501
+        if self.api_client.client_side_validation and local_var_params.get('id') is None:  # noqa: E501
             raise ApiValueError("Missing the required parameter `id` when calling `download_get_report_thumbnail`")  # noqa: E501
 
         if self.api_client.client_side_validation and 'id' in local_var_params and not re.search(r'^[A-Fa-f0-9]{24}$', local_var_params['id']):  # noqa: E501
@@ -842,7 +861,7 @@ class DownloadApi(object):
 
         query_params = []
 
-        header_params = {}
+        header_params = dict(local_var_params.get('_headers', {}))
 
         form_params = []
         local_var_files = {}
@@ -854,7 +873,7 @@ class DownloadApi(object):
 
         # Authentication setting
         auth_settings = ['ApiKey', 'JWT']  # noqa: E501
-        
+
         response_types_map = {
             200: "file",
             404: "ProblemDetails",
@@ -891,8 +910,10 @@ class DownloadApi(object):
 
         :param archive_name: name of the created archive (required)
         :type archive_name: str
-        :param ids: ids separated with a ',' sign
-        :type ids: str
+        :param file_ids: ids separated with a ',' sign
+        :type file_ids: str
+        :param folder_ids: ids separated with a ',' sign
+        :type folder_ids: str
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
@@ -922,8 +943,10 @@ class DownloadApi(object):
 
         :param archive_name: name of the created archive (required)
         :type archive_name: str
-        :param ids: ids separated with a ',' sign
-        :type ids: str
+        :param file_ids: ids separated with a ',' sign
+        :type file_ids: str
+        :param folder_ids: ids separated with a ',' sign
+        :type folder_ids: str
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
         :param _return_http_data_only: response data without head status code
@@ -941,6 +964,7 @@ class DownloadApi(object):
                               request; this effectively ignores the authentication
                               in the spec for a single request.
         :type _request_auth: dict, optional
+        :type _content_type: string, optional: force content-type for the request
         :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
@@ -951,7 +975,8 @@ class DownloadApi(object):
 
         all_params = [
             'archive_name',
-            'ids'
+            'file_ids',
+            'folder_ids'
         ]
         all_params.extend(
             [
@@ -959,7 +984,9 @@ class DownloadApi(object):
                 '_return_http_data_only',
                 '_preload_content',
                 '_request_timeout',
-                '_request_auth'
+                '_request_auth',
+                '_content_type',
+                '_headers'
             ]
         )
 
@@ -972,8 +999,7 @@ class DownloadApi(object):
             local_var_params[key] = val
         del local_var_params['kwargs']
         # verify the required parameter 'archive_name' is set
-        if self.api_client.client_side_validation and ('archive_name' not in local_var_params or  # noqa: E501
-                                                        local_var_params['archive_name'] is None):  # noqa: E501
+        if self.api_client.client_side_validation and local_var_params.get('archive_name') is None:  # noqa: E501
             raise ApiValueError("Missing the required parameter `archive_name` when calling `download_get_reports`")  # noqa: E501
 
         collection_formats = {}
@@ -983,10 +1009,12 @@ class DownloadApi(object):
             path_params['archiveName'] = local_var_params['archive_name']  # noqa: E501
 
         query_params = []
-        if 'ids' in local_var_params and local_var_params['ids'] is not None:  # noqa: E501
-            query_params.append(('ids', local_var_params['ids']))  # noqa: E501
+        if local_var_params.get('file_ids') is not None:  # noqa: E501
+            query_params.append(('fileIds', local_var_params['file_ids']))  # noqa: E501
+        if local_var_params.get('folder_ids') is not None:  # noqa: E501
+            query_params.append(('folderIds', local_var_params['folder_ids']))  # noqa: E501
 
-        header_params = {}
+        header_params = dict(local_var_params.get('_headers', {}))
 
         form_params = []
         local_var_files = {}
@@ -998,7 +1026,7 @@ class DownloadApi(object):
 
         # Authentication setting
         auth_settings = ['ApiKey', 'JWT']  # noqa: E501
-        
+
         response_types_map = {
             200: "file",
             404: "ProblemDetails",
@@ -1081,6 +1109,7 @@ class DownloadApi(object):
                               request; this effectively ignores the authentication
                               in the spec for a single request.
         :type _request_auth: dict, optional
+        :type _content_type: string, optional: force content-type for the request
         :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
@@ -1098,7 +1127,9 @@ class DownloadApi(object):
                 '_return_http_data_only',
                 '_preload_content',
                 '_request_timeout',
-                '_request_auth'
+                '_request_auth',
+                '_content_type',
+                '_headers'
             ]
         )
 
@@ -1111,8 +1142,7 @@ class DownloadApi(object):
             local_var_params[key] = val
         del local_var_params['kwargs']
         # verify the required parameter 'id' is set
-        if self.api_client.client_side_validation and ('id' not in local_var_params or  # noqa: E501
-                                                        local_var_params['id'] is None):  # noqa: E501
+        if self.api_client.client_side_validation and local_var_params.get('id') is None:  # noqa: E501
             raise ApiValueError("Missing the required parameter `id` when calling `download_get_template`")  # noqa: E501
 
         if self.api_client.client_side_validation and 'id' in local_var_params and not re.search(r'^[A-Fa-f0-9]{24}$', local_var_params['id']):  # noqa: E501
@@ -1125,7 +1155,7 @@ class DownloadApi(object):
 
         query_params = []
 
-        header_params = {}
+        header_params = dict(local_var_params.get('_headers', {}))
 
         form_params = []
         local_var_files = {}
@@ -1137,7 +1167,7 @@ class DownloadApi(object):
 
         # Authentication setting
         auth_settings = ['ApiKey', 'JWT']  # noqa: E501
-        
+
         response_types_map = {
             200: "file",
             404: "ProblemDetails",
@@ -1172,7 +1202,7 @@ class DownloadApi(object):
         >>> thread = api.download_get_template_thumbnail(id, async_req=True)
         >>> result = thread.get()
 
-        :param id: (required)
+        :param id:  (required)
         :type id: str
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
@@ -1201,7 +1231,7 @@ class DownloadApi(object):
         >>> thread = api.download_get_template_thumbnail_with_http_info(id, async_req=True)
         >>> result = thread.get()
 
-        :param id: (required)
+        :param id:  (required)
         :type id: str
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
@@ -1220,6 +1250,7 @@ class DownloadApi(object):
                               request; this effectively ignores the authentication
                               in the spec for a single request.
         :type _request_auth: dict, optional
+        :type _content_type: string, optional: force content-type for the request
         :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
@@ -1237,7 +1268,9 @@ class DownloadApi(object):
                 '_return_http_data_only',
                 '_preload_content',
                 '_request_timeout',
-                '_request_auth'
+                '_request_auth',
+                '_content_type',
+                '_headers'
             ]
         )
 
@@ -1250,8 +1283,7 @@ class DownloadApi(object):
             local_var_params[key] = val
         del local_var_params['kwargs']
         # verify the required parameter 'id' is set
-        if self.api_client.client_side_validation and ('id' not in local_var_params or  # noqa: E501
-                                                        local_var_params['id'] is None):  # noqa: E501
+        if self.api_client.client_side_validation and local_var_params.get('id') is None:  # noqa: E501
             raise ApiValueError("Missing the required parameter `id` when calling `download_get_template_thumbnail`")  # noqa: E501
 
         if self.api_client.client_side_validation and 'id' in local_var_params and not re.search(r'^[A-Fa-f0-9]{24}$', local_var_params['id']):  # noqa: E501
@@ -1264,7 +1296,7 @@ class DownloadApi(object):
 
         query_params = []
 
-        header_params = {}
+        header_params = dict(local_var_params.get('_headers', {}))
 
         form_params = []
         local_var_files = {}
@@ -1276,7 +1308,7 @@ class DownloadApi(object):
 
         # Authentication setting
         auth_settings = ['ApiKey', 'JWT']  # noqa: E501
-        
+
         response_types_map = {
             200: "file",
             404: "ProblemDetails",
@@ -1313,8 +1345,10 @@ class DownloadApi(object):
 
         :param archive_name: name of the created archive (required)
         :type archive_name: str
-        :param ids: ids separated with a ',' sign
-        :type ids: str
+        :param file_ids: ids separated with a ',' sign
+        :type file_ids: str
+        :param folder_ids: ids separated with a ',' sign
+        :type folder_ids: str
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
@@ -1344,8 +1378,10 @@ class DownloadApi(object):
 
         :param archive_name: name of the created archive (required)
         :type archive_name: str
-        :param ids: ids separated with a ',' sign
-        :type ids: str
+        :param file_ids: ids separated with a ',' sign
+        :type file_ids: str
+        :param folder_ids: ids separated with a ',' sign
+        :type folder_ids: str
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
         :param _return_http_data_only: response data without head status code
@@ -1363,6 +1399,7 @@ class DownloadApi(object):
                               request; this effectively ignores the authentication
                               in the spec for a single request.
         :type _request_auth: dict, optional
+        :type _content_type: string, optional: force content-type for the request
         :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
@@ -1373,7 +1410,8 @@ class DownloadApi(object):
 
         all_params = [
             'archive_name',
-            'ids'
+            'file_ids',
+            'folder_ids'
         ]
         all_params.extend(
             [
@@ -1381,7 +1419,9 @@ class DownloadApi(object):
                 '_return_http_data_only',
                 '_preload_content',
                 '_request_timeout',
-                '_request_auth'
+                '_request_auth',
+                '_content_type',
+                '_headers'
             ]
         )
 
@@ -1394,8 +1434,7 @@ class DownloadApi(object):
             local_var_params[key] = val
         del local_var_params['kwargs']
         # verify the required parameter 'archive_name' is set
-        if self.api_client.client_side_validation and ('archive_name' not in local_var_params or  # noqa: E501
-                                                        local_var_params['archive_name'] is None):  # noqa: E501
+        if self.api_client.client_side_validation and local_var_params.get('archive_name') is None:  # noqa: E501
             raise ApiValueError("Missing the required parameter `archive_name` when calling `download_get_templates`")  # noqa: E501
 
         collection_formats = {}
@@ -1405,10 +1444,12 @@ class DownloadApi(object):
             path_params['archiveName'] = local_var_params['archive_name']  # noqa: E501
 
         query_params = []
-        if 'ids' in local_var_params and local_var_params['ids'] is not None:  # noqa: E501
-            query_params.append(('ids', local_var_params['ids']))  # noqa: E501
+        if local_var_params.get('file_ids') is not None:  # noqa: E501
+            query_params.append(('fileIds', local_var_params['file_ids']))  # noqa: E501
+        if local_var_params.get('folder_ids') is not None:  # noqa: E501
+            query_params.append(('folderIds', local_var_params['folder_ids']))  # noqa: E501
 
-        header_params = {}
+        header_params = dict(local_var_params.get('_headers', {}))
 
         form_params = []
         local_var_files = {}
@@ -1420,7 +1461,7 @@ class DownloadApi(object):
 
         # Authentication setting
         auth_settings = ['ApiKey', 'JWT']  # noqa: E501
-        
+
         response_types_map = {
             200: "file",
             400: "ProblemDetails",

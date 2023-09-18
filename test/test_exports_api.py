@@ -35,6 +35,13 @@ class TestExportsApi(unittest.TestCase):
         """
         pass
 
+    def test_export_folder_and_file_delete_files(self):
+        """Test case for export_folder_and_file_delete_files
+
+        Delete folders and files  # noqa: E501
+        """
+        pass
+
     def test_export_folder_and_file_get_count(self):
         """Test case for export_folder_and_file_get_count
 
@@ -60,6 +67,13 @@ class TestExportsApi(unittest.TestCase):
         """Test case for export_folder_and_file_recover_all_from_recycle_bin
 
         Recover all folders and files from recycle bin  # noqa: E501
+        """
+        pass
+
+    def test_export_folders_calculate_folder_size(self):
+        """Test case for export_folders_calculate_folder_size
+
+        Get specified folder, calculate it's size  # noqa: E501
         """
         pass
 
@@ -102,6 +116,13 @@ class TestExportsApi(unittest.TestCase):
         """Test case for export_folders_get_folders_count
 
         Get count of folders what contains in a specified folder  # noqa: E501
+        """
+        pass
+
+    def test_export_folders_get_or_create(self):
+        """Test case for export_folders_get_or_create
+
+        Get specified folder  # noqa: E501
         """
         pass
 

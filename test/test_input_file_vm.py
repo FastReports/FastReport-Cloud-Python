@@ -37,7 +37,6 @@ class TestInputFileVM(unittest.TestCase):
         if include_optional :
             return InputFileVM(
                 entity_id = '62ECB020842930cc01FFCCfe', 
-                file_name = '0', 
                 type = 'Template'
             )
         else :

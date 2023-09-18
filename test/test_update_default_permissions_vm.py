@@ -46,8 +46,8 @@ class TestUpdateDefaultPermissionsVM(unittest.TestCase):
                     new_permissions = fastreport_cloud_sdk.models.data_source_permissions.DataSourcePermissions(), 
                     administrate = 0, ), 
                 task_permissions = fastreport_cloud_sdk.models.update_task_permissions_vm.UpdateTaskPermissionsVM(
-                    new_permissions = fastreport_cloud_sdk.models.task_permissions.TaskPermissions(), 
-                    administrate = 0, )
+                    administrate = 0, 
+                    new_permissions = fastreport_cloud_sdk.models.task_permissions.TaskPermissions(), )
             )
         else :
             return UpdateDefaultPermissionsVM(

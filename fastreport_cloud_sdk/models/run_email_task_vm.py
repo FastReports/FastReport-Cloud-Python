@@ -36,98 +36,62 @@ class RunEmailTaskVM(object):
                             and the value is json key in definition.
     """
     openapi_types = {
-        'password': 'str',
         'body': 'str',
+        'enable_ssl': 'bool',
+        '_from': 'str',
         'is_body_html': 'bool',
+        'password': 'str',
+        'port': 'int',
+        'server': 'str',
         'subject': 'str',
         'to': 'list[str]',
-        '_from': 'str',
-        'username': 'str',
-        'server': 'str',
-        'port': 'int',
-        'enable_ssl': 'bool',
-        'subscription_id': 'str',
-        'type': 'TaskType'
+        'username': 'str'
     }
 
     attribute_map = {
-        'password': 'password',
         'body': 'body',
+        'enable_ssl': 'enableSsl',
+        '_from': 'from',
         'is_body_html': 'isBodyHtml',
+        'password': 'password',
+        'port': 'port',
+        'server': 'server',
         'subject': 'subject',
         'to': 'to',
-        '_from': 'from',
-        'username': 'username',
-        'server': 'server',
-        'port': 'port',
-        'enable_ssl': 'enableSsl',
-        'subscription_id': 'subscriptionId',
-        'type': 'type'
+        'username': 'username'
     }
 
-    def __init__(self, password=None, body=None, is_body_html=None, subject=None, to=None, _from=None, username=None, server=None, port=None, enable_ssl=None, subscription_id=None, type=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, body=None, enable_ssl=None, _from=None, is_body_html=None, password=None, port=None, server=None, subject=None, to=None, username=None, local_vars_configuration=None):  # noqa: E501
         """RunEmailTaskVM - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration.get_default_copy()
         self.local_vars_configuration = local_vars_configuration
 
-        self._password = None
         self._body = None
+        self._enable_ssl = None
+        self.__from = None
         self._is_body_html = None
+        self._password = None
+        self._port = None
+        self._server = None
         self._subject = None
         self._to = None
-        self.__from = None
         self._username = None
-        self._server = None
-        self._port = None
-        self._enable_ssl = None
-        self._subscription_id = None
-        self._type = None
         self.discriminator = None
 
-        self.password = password
         self.body = body
-        if is_body_html is not None:
-            self.is_body_html = is_body_html
-        self.subject = subject
-        self.to = to
-        self._from = _from
-        self.username = username
-        self.server = server
-        if port is not None:
-            self.port = port
         if enable_ssl is not None:
             self.enable_ssl = enable_ssl
-        self.subscription_id = subscription_id
-        if type is not None:
-            self.type = type
-
-    @property
-    def password(self):
-        """Gets the password of this RunEmailTaskVM.  # noqa: E501
-
-
-        :return: The password of this RunEmailTaskVM.  # noqa: E501
-        :rtype: str
-        """
-        return self._password
-
-    @password.setter
-    def password(self, password):
-        """Sets the password of this RunEmailTaskVM.
-
-
-        :param password: The password of this RunEmailTaskVM.  # noqa: E501
-        :type password: str
-        """
-        if (self.local_vars_configuration.client_side_validation and
-                password is not None and len(password) > 300):
-            raise ValueError("Invalid value for `password`, length must be less than or equal to `300`")  # noqa: E501
-        if (self.local_vars_configuration.client_side_validation and
-                password is not None and len(password) < 5):
-            raise ValueError("Invalid value for `password`, length must be greater than or equal to `5`")  # noqa: E501
-
-        self._password = password
+        self._from = _from
+        if is_body_html is not None:
+            self.is_body_html = is_body_html
+        self.password = password
+        if port is not None:
+            self.port = port
+        self.server = server
+        self.subject = subject
+        self.to = to
+        self.username = username
 
     @property
     def body(self):
@@ -157,6 +121,48 @@ class RunEmailTaskVM(object):
         self._body = body
 
     @property
+    def enable_ssl(self):
+        """Gets the enable_ssl of this RunEmailTaskVM.  # noqa: E501
+
+
+        :return: The enable_ssl of this RunEmailTaskVM.  # noqa: E501
+        :rtype: bool
+        """
+        return self._enable_ssl
+
+    @enable_ssl.setter
+    def enable_ssl(self, enable_ssl):
+        """Sets the enable_ssl of this RunEmailTaskVM.
+
+
+        :param enable_ssl: The enable_ssl of this RunEmailTaskVM.  # noqa: E501
+        :type enable_ssl: bool
+        """
+
+        self._enable_ssl = enable_ssl
+
+    @property
+    def _from(self):
+        """Gets the _from of this RunEmailTaskVM.  # noqa: E501
+
+
+        :return: The _from of this RunEmailTaskVM.  # noqa: E501
+        :rtype: str
+        """
+        return self.__from
+
+    @_from.setter
+    def _from(self, _from):
+        """Sets the _from of this RunEmailTaskVM.
+
+
+        :param _from: The _from of this RunEmailTaskVM.  # noqa: E501
+        :type _from: str
+        """
+
+        self.__from = _from
+
+    @property
     def is_body_html(self):
         """Gets the is_body_html of this RunEmailTaskVM.  # noqa: E501
 
@@ -176,6 +182,87 @@ class RunEmailTaskVM(object):
         """
 
         self._is_body_html = is_body_html
+
+    @property
+    def password(self):
+        """Gets the password of this RunEmailTaskVM.  # noqa: E501
+
+
+        :return: The password of this RunEmailTaskVM.  # noqa: E501
+        :rtype: str
+        """
+        return self._password
+
+    @password.setter
+    def password(self, password):
+        """Sets the password of this RunEmailTaskVM.
+
+
+        :param password: The password of this RunEmailTaskVM.  # noqa: E501
+        :type password: str
+        """
+        if (self.local_vars_configuration.client_side_validation and
+                password is not None and len(password) > 300):
+            raise ValueError("Invalid value for `password`, length must be less than or equal to `300`")  # noqa: E501
+        if (self.local_vars_configuration.client_side_validation and
+                password is not None and len(password) < 5):
+            raise ValueError("Invalid value for `password`, length must be greater than or equal to `5`")  # noqa: E501
+
+        self._password = password
+
+    @property
+    def port(self):
+        """Gets the port of this RunEmailTaskVM.  # noqa: E501
+
+
+        :return: The port of this RunEmailTaskVM.  # noqa: E501
+        :rtype: int
+        """
+        return self._port
+
+    @port.setter
+    def port(self, port):
+        """Sets the port of this RunEmailTaskVM.
+
+
+        :param port: The port of this RunEmailTaskVM.  # noqa: E501
+        :type port: int
+        """
+        if (self.local_vars_configuration.client_side_validation and
+                port is not None and port > 2147483647):  # noqa: E501
+            raise ValueError("Invalid value for `port`, must be a value less than or equal to `2147483647`")  # noqa: E501
+        if (self.local_vars_configuration.client_side_validation and
+                port is not None and port < 0):  # noqa: E501
+            raise ValueError("Invalid value for `port`, must be a value greater than or equal to `0`")  # noqa: E501
+
+        self._port = port
+
+    @property
+    def server(self):
+        """Gets the server of this RunEmailTaskVM.  # noqa: E501
+
+
+        :return: The server of this RunEmailTaskVM.  # noqa: E501
+        :rtype: str
+        """
+        return self._server
+
+    @server.setter
+    def server(self, server):
+        """Sets the server of this RunEmailTaskVM.
+
+
+        :param server: The server of this RunEmailTaskVM.  # noqa: E501
+        :type server: str
+        """
+        if (self.local_vars_configuration.client_side_validation and
+                server is not None and len(server) > 5000):
+            raise ValueError("Invalid value for `server`, length must be less than or equal to `5000`")  # noqa: E501
+        if (self.local_vars_configuration.client_side_validation and
+                server is not None and len(server) < 1):
+            raise ValueError("Invalid value for `server`, length must be greater than or equal to `1`")  # noqa: E501
+
+        self._server = server
 
     @property
     def subject(self):
@@ -222,32 +309,16 @@ class RunEmailTaskVM(object):
         :param to: The to of this RunEmailTaskVM.  # noqa: E501
         :type to: list[str]
         """
+        if self.local_vars_configuration.client_side_validation and to is None:  # noqa: E501
+            raise ValueError("Invalid value for `to`, must not be `None`")  # noqa: E501
         if (self.local_vars_configuration.client_side_validation and
                 to is not None and len(to) > 200):
             raise ValueError("Invalid value for `to`, number of items must be less than or equal to `200`")  # noqa: E501
+        if (self.local_vars_configuration.client_side_validation and
+                to is not None and len(to) < 1):
+            raise ValueError("Invalid value for `to`, number of items must be greater than or equal to `1`")  # noqa: E501
 
         self._to = to
-
-    @property
-    def _from(self):
-        """Gets the _from of this RunEmailTaskVM.  # noqa: E501
-
-
-        :return: The _from of this RunEmailTaskVM.  # noqa: E501
-        :rtype: str
-        """
-        return self.__from
-
-    @_from.setter
-    def _from(self, _from):
-        """Sets the _from of this RunEmailTaskVM.
-
-
-        :param _from: The _from of this RunEmailTaskVM.  # noqa: E501
-        :type _from: str
-        """
-
-        self.__from = _from
 
     @property
     def username(self):
@@ -275,126 +346,6 @@ class RunEmailTaskVM(object):
             raise ValueError("Invalid value for `username`, length must be greater than or equal to `1`")  # noqa: E501
 
         self._username = username
-
-    @property
-    def server(self):
-        """Gets the server of this RunEmailTaskVM.  # noqa: E501
-
-
-        :return: The server of this RunEmailTaskVM.  # noqa: E501
-        :rtype: str
-        """
-        return self._server
-
-    @server.setter
-    def server(self, server):
-        """Sets the server of this RunEmailTaskVM.
-
-
-        :param server: The server of this RunEmailTaskVM.  # noqa: E501
-        :type server: str
-        """
-        if (self.local_vars_configuration.client_side_validation and
-                server is not None and len(server) > 5000):
-            raise ValueError("Invalid value for `server`, length must be less than or equal to `5000`")  # noqa: E501
-        if (self.local_vars_configuration.client_side_validation and
-                server is not None and len(server) < 1):
-            raise ValueError("Invalid value for `server`, length must be greater than or equal to `1`")  # noqa: E501
-
-        self._server = server
-
-    @property
-    def port(self):
-        """Gets the port of this RunEmailTaskVM.  # noqa: E501
-
-
-        :return: The port of this RunEmailTaskVM.  # noqa: E501
-        :rtype: int
-        """
-        return self._port
-
-    @port.setter
-    def port(self, port):
-        """Sets the port of this RunEmailTaskVM.
-
-
-        :param port: The port of this RunEmailTaskVM.  # noqa: E501
-        :type port: int
-        """
-        if (self.local_vars_configuration.client_side_validation and
-                port is not None and port > 2147483647):  # noqa: E501
-            raise ValueError("Invalid value for `port`, must be a value less than or equal to `2147483647`")  # noqa: E501
-        if (self.local_vars_configuration.client_side_validation and
-                port is not None and port < 0):  # noqa: E501
-            raise ValueError("Invalid value for `port`, must be a value greater than or equal to `0`")  # noqa: E501
-
-        self._port = port
-
-    @property
-    def enable_ssl(self):
-        """Gets the enable_ssl of this RunEmailTaskVM.  # noqa: E501
-
-
-        :return: The enable_ssl of this RunEmailTaskVM.  # noqa: E501
-        :rtype: bool
-        """
-        return self._enable_ssl
-
-    @enable_ssl.setter
-    def enable_ssl(self, enable_ssl):
-        """Sets the enable_ssl of this RunEmailTaskVM.
-
-
-        :param enable_ssl: The enable_ssl of this RunEmailTaskVM.  # noqa: E501
-        :type enable_ssl: bool
-        """
-
-        self._enable_ssl = enable_ssl
-
-    @property
-    def subscription_id(self):
-        """Gets the subscription_id of this RunEmailTaskVM.  # noqa: E501
-
-
-        :return: The subscription_id of this RunEmailTaskVM.  # noqa: E501
-        :rtype: str
-        """
-        return self._subscription_id
-
-    @subscription_id.setter
-    def subscription_id(self, subscription_id):
-        """Sets the subscription_id of this RunEmailTaskVM.
-
-
-        :param subscription_id: The subscription_id of this RunEmailTaskVM.  # noqa: E501
-        :type subscription_id: str
-        """
-        if (self.local_vars_configuration.client_side_validation and
-                subscription_id is not None and not re.search(r'(^$)|(^[A-Fa-f0-9]{24}$)', subscription_id)):  # noqa: E501
-            raise ValueError(r"Invalid value for `subscription_id`, must be a follow pattern or equal to `/(^$)|(^[A-Fa-f0-9]{24}$)/`")  # noqa: E501
-
-        self._subscription_id = subscription_id
-
-    @property
-    def type(self):
-        """Gets the type of this RunEmailTaskVM.  # noqa: E501
-
-
-        :return: The type of this RunEmailTaskVM.  # noqa: E501
-        :rtype: TaskType
-        """
-        return self._type
-
-    @type.setter
-    def type(self, type):
-        """Sets the type of this RunEmailTaskVM.
-
-
-        :param type: The type of this RunEmailTaskVM.  # noqa: E501
-        :type type: TaskType
-        """
-
-        self._type = type
 
     def to_dict(self, serialize=False):
         """Returns the model properties as a dict"""

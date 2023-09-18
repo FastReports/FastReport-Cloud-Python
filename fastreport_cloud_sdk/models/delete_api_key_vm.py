@@ -74,6 +74,9 @@ class DeleteApiKeyVM(object):
         """
         if self.local_vars_configuration.client_side_validation and api_key is None:  # noqa: E501
             raise ValueError("Invalid value for `api_key`, must not be `None`")  # noqa: E501
+        if (self.local_vars_configuration.client_side_validation and
+                api_key is not None and len(api_key) < 1):
+            raise ValueError("Invalid value for `api_key`, length must be greater than or equal to `1`")  # noqa: E501
 
         self._api_key = api_key
 

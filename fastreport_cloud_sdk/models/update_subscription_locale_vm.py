@@ -75,6 +75,9 @@ class UpdateSubscriptionLocaleVM(object):
         if self.local_vars_configuration.client_side_validation and locale is None:  # noqa: E501
             raise ValueError("Invalid value for `locale`, must not be `None`")  # noqa: E501
         if (self.local_vars_configuration.client_side_validation and
+                locale is not None and len(locale) < 1):
+            raise ValueError("Invalid value for `locale`, length must be greater than or equal to `1`")  # noqa: E501
+        if (self.local_vars_configuration.client_side_validation and
                 locale is not None and not re.search(r'^[a-zA-Z]{2,4}(-[a-zA-Z]{2,4}){0,2}$', locale)):  # noqa: E501
             raise ValueError(r"Invalid value for `locale`, must be a follow pattern or equal to `/^[a-zA-Z]{2,4}(-[a-zA-Z]{2,4}){0,2}$/`")  # noqa: E501
 

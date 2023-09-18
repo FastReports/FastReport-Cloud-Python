@@ -36,73 +36,47 @@ class RunThumbnailReportTaskVM(object):
                             and the value is json key in definition.
     """
     openapi_types = {
-        'subscription_id': 'str',
-        'type': 'TaskType'
+        'report_id': 'str'
     }
 
     attribute_map = {
-        'subscription_id': 'subscriptionId',
-        'type': 'type'
+        'report_id': 'reportId'
     }
 
-    def __init__(self, subscription_id=None, type=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, report_id=None, local_vars_configuration=None):  # noqa: E501
         """RunThumbnailReportTaskVM - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration.get_default_copy()
         self.local_vars_configuration = local_vars_configuration
 
-        self._subscription_id = None
-        self._type = None
+        self._report_id = None
         self.discriminator = None
 
-        self.subscription_id = subscription_id
-        if type is not None:
-            self.type = type
+        self.report_id = report_id
 
     @property
-    def subscription_id(self):
-        """Gets the subscription_id of this RunThumbnailReportTaskVM.  # noqa: E501
+    def report_id(self):
+        """Gets the report_id of this RunThumbnailReportTaskVM.  # noqa: E501
 
 
-        :return: The subscription_id of this RunThumbnailReportTaskVM.  # noqa: E501
+        :return: The report_id of this RunThumbnailReportTaskVM.  # noqa: E501
         :rtype: str
         """
-        return self._subscription_id
+        return self._report_id
 
-    @subscription_id.setter
-    def subscription_id(self, subscription_id):
-        """Sets the subscription_id of this RunThumbnailReportTaskVM.
+    @report_id.setter
+    def report_id(self, report_id):
+        """Sets the report_id of this RunThumbnailReportTaskVM.
 
 
-        :param subscription_id: The subscription_id of this RunThumbnailReportTaskVM.  # noqa: E501
-        :type subscription_id: str
+        :param report_id: The report_id of this RunThumbnailReportTaskVM.  # noqa: E501
+        :type report_id: str
         """
         if (self.local_vars_configuration.client_side_validation and
-                subscription_id is not None and not re.search(r'(^$)|(^[A-Fa-f0-9]{24}$)', subscription_id)):  # noqa: E501
-            raise ValueError(r"Invalid value for `subscription_id`, must be a follow pattern or equal to `/(^$)|(^[A-Fa-f0-9]{24}$)/`")  # noqa: E501
+                report_id is not None and not re.search(r'(^$)|(^[A-Fa-f0-9]{24}$)', report_id)):  # noqa: E501
+            raise ValueError(r"Invalid value for `report_id`, must be a follow pattern or equal to `/(^$)|(^[A-Fa-f0-9]{24}$)/`")  # noqa: E501
 
-        self._subscription_id = subscription_id
-
-    @property
-    def type(self):
-        """Gets the type of this RunThumbnailReportTaskVM.  # noqa: E501
-
-
-        :return: The type of this RunThumbnailReportTaskVM.  # noqa: E501
-        :rtype: TaskType
-        """
-        return self._type
-
-    @type.setter
-    def type(self, type):
-        """Sets the type of this RunThumbnailReportTaskVM.
-
-
-        :param type: The type of this RunThumbnailReportTaskVM.  # noqa: E501
-        :type type: TaskType
-        """
-
-        self._type = type
+        self._report_id = report_id
 
     def to_dict(self, serialize=False):
         """Returns the model properties as a dict"""

@@ -38,16 +38,18 @@ class OutputFileVM(object):
     openapi_types = {
         'file_name': 'str',
         'folder_id': 'str',
-        'type': 'FileKind'
+        'type': 'FileKind',
+        'is_temporary': 'bool'
     }
 
     attribute_map = {
         'file_name': 'fileName',
         'folder_id': 'folderId',
-        'type': 'type'
+        'type': 'type',
+        'is_temporary': 'isTemporary'
     }
 
-    def __init__(self, file_name=None, folder_id=None, type=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, file_name=None, folder_id=None, type=None, is_temporary=None, local_vars_configuration=None):  # noqa: E501
         """OutputFileVM - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration.get_default_copy()
@@ -56,12 +58,15 @@ class OutputFileVM(object):
         self._file_name = None
         self._folder_id = None
         self._type = None
+        self._is_temporary = None
         self.discriminator = None
 
         self.file_name = file_name
         self.folder_id = folder_id
         if type is not None:
             self.type = type
+        if is_temporary is not None:
+            self.is_temporary = is_temporary
 
     @property
     def file_name(self):
@@ -134,6 +139,27 @@ class OutputFileVM(object):
         """
 
         self._type = type
+
+    @property
+    def is_temporary(self):
+        """Gets the is_temporary of this OutputFileVM.  # noqa: E501
+
+
+        :return: The is_temporary of this OutputFileVM.  # noqa: E501
+        :rtype: bool
+        """
+        return self._is_temporary
+
+    @is_temporary.setter
+    def is_temporary(self, is_temporary):
+        """Sets the is_temporary of this OutputFileVM.
+
+
+        :param is_temporary: The is_temporary of this OutputFileVM.  # noqa: E501
+        :type is_temporary: bool
+        """
+
+        self._is_temporary = is_temporary
 
     def to_dict(self, serialize=False):
         """Returns the model properties as a dict"""

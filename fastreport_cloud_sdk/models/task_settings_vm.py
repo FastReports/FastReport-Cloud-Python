@@ -40,6 +40,7 @@ class TaskSettingsVM(object):
         'export_template': 'bool',
         'export_report': 'bool',
         'send_via_email': 'bool',
+        'upload_to_ftp': 'bool',
         'send_via_webhook': 'bool',
         'fetch_data': 'bool',
         'thumbnail_report': 'bool',
@@ -51,13 +52,14 @@ class TaskSettingsVM(object):
         'export_template': 'exportTemplate',
         'export_report': 'exportReport',
         'send_via_email': 'sendViaEmail',
+        'upload_to_ftp': 'uploadToFTP',
         'send_via_webhook': 'sendViaWebhook',
         'fetch_data': 'fetchData',
         'thumbnail_report': 'thumbnailReport',
         'thumbnail_template': 'thumbnailTemplate'
     }
 
-    def __init__(self, prepare=None, export_template=None, export_report=None, send_via_email=None, send_via_webhook=None, fetch_data=None, thumbnail_report=None, thumbnail_template=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, prepare=None, export_template=None, export_report=None, send_via_email=None, upload_to_ftp=None, send_via_webhook=None, fetch_data=None, thumbnail_report=None, thumbnail_template=None, local_vars_configuration=None):  # noqa: E501
         """TaskSettingsVM - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration.get_default_copy()
@@ -67,6 +69,7 @@ class TaskSettingsVM(object):
         self._export_template = None
         self._export_report = None
         self._send_via_email = None
+        self._upload_to_ftp = None
         self._send_via_webhook = None
         self._fetch_data = None
         self._thumbnail_report = None
@@ -77,6 +80,7 @@ class TaskSettingsVM(object):
         self.export_template = export_template
         self.export_report = export_report
         self.send_via_email = send_via_email
+        self.upload_to_ftp = upload_to_ftp
         self.send_via_webhook = send_via_webhook
         self.fetch_data = fetch_data
         self.thumbnail_report = thumbnail_report
@@ -165,6 +169,27 @@ class TaskSettingsVM(object):
         """
 
         self._send_via_email = send_via_email
+
+    @property
+    def upload_to_ftp(self):
+        """Gets the upload_to_ftp of this TaskSettingsVM.  # noqa: E501
+
+
+        :return: The upload_to_ftp of this TaskSettingsVM.  # noqa: E501
+        :rtype: bool
+        """
+        return self._upload_to_ftp
+
+    @upload_to_ftp.setter
+    def upload_to_ftp(self, upload_to_ftp):
+        """Sets the upload_to_ftp of this TaskSettingsVM.
+
+
+        :param upload_to_ftp: The upload_to_ftp of this TaskSettingsVM.  # noqa: E501
+        :type upload_to_ftp: bool
+        """
+
+        self._upload_to_ftp = upload_to_ftp
 
     @property
     def send_via_webhook(self):

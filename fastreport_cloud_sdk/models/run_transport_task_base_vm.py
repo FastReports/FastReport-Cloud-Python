@@ -36,101 +36,84 @@ class RunTransportTaskBaseVM(object):
                             and the value is json key in definition.
     """
     openapi_types = {
-        'files': 'list[RunInputFileVM]',
-        'subscription_id': 'str',
-        'type': 'TaskType'
+        'input_file': 'RunInputFileVM',
+        't': 'str'
     }
 
     attribute_map = {
-        'files': 'files',
-        'subscription_id': 'subscriptionId',
-        'type': 'type'
+        'input_file': 'inputFile',
+        't': '$t'
     }
 
-    def __init__(self, files=None, subscription_id=None, type=None, local_vars_configuration=None):  # noqa: E501
+    discriminator_value_class_map = {
+        'RunEmailTaskVM': 'RunEmailTaskVM',
+        'RunFTPUploadTaskVM': 'RunFTPUploadTaskVM',
+        'RunWebhookTaskVM': 'RunWebhookTaskVM'
+    }
+
+    def __init__(self, input_file=None, t=None, local_vars_configuration=None):  # noqa: E501
         """RunTransportTaskBaseVM - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration.get_default_copy()
         self.local_vars_configuration = local_vars_configuration
 
-        self._files = None
-        self._subscription_id = None
-        self._type = None
-        self.discriminator = None
+        self._input_file = None
+        self._t = None
+        self.discriminator = 't'
 
-        self.files = files
-        self.subscription_id = subscription_id
-        if type is not None:
-            self.type = type
+        if input_file is not None:
+            self.input_file = input_file
+        self.t = t
 
     @property
-    def files(self):
-        """Gets the files of this RunTransportTaskBaseVM.  # noqa: E501
+    def input_file(self):
+        """Gets the input_file of this RunTransportTaskBaseVM.  # noqa: E501
 
 
-        :return: The files of this RunTransportTaskBaseVM.  # noqa: E501
-        :rtype: list[RunInputFileVM]
+        :return: The input_file of this RunTransportTaskBaseVM.  # noqa: E501
+        :rtype: RunInputFileVM
         """
-        return self._files
+        return self._input_file
 
-    @files.setter
-    def files(self, files):
-        """Sets the files of this RunTransportTaskBaseVM.
+    @input_file.setter
+    def input_file(self, input_file):
+        """Sets the input_file of this RunTransportTaskBaseVM.
 
 
-        :param files: The files of this RunTransportTaskBaseVM.  # noqa: E501
-        :type files: list[RunInputFileVM]
+        :param input_file: The input_file of this RunTransportTaskBaseVM.  # noqa: E501
+        :type input_file: RunInputFileVM
         """
-        if (self.local_vars_configuration.client_side_validation and
-                files is not None and len(files) > 10):
-            raise ValueError("Invalid value for `files`, number of items must be less than or equal to `10`")  # noqa: E501
 
-        self._files = files
+        self._input_file = input_file
 
     @property
-    def subscription_id(self):
-        """Gets the subscription_id of this RunTransportTaskBaseVM.  # noqa: E501
+    def t(self):
+        """Gets the t of this RunTransportTaskBaseVM.  # noqa: E501
 
 
-        :return: The subscription_id of this RunTransportTaskBaseVM.  # noqa: E501
+        :return: The t of this RunTransportTaskBaseVM.  # noqa: E501
         :rtype: str
         """
-        return self._subscription_id
+        return self._t
 
-    @subscription_id.setter
-    def subscription_id(self, subscription_id):
-        """Sets the subscription_id of this RunTransportTaskBaseVM.
+    @t.setter
+    def t(self, t):
+        """Sets the t of this RunTransportTaskBaseVM.
 
 
-        :param subscription_id: The subscription_id of this RunTransportTaskBaseVM.  # noqa: E501
-        :type subscription_id: str
+        :param t: The t of this RunTransportTaskBaseVM.  # noqa: E501
+        :type t: str
         """
-        if (self.local_vars_configuration.client_side_validation and
-                subscription_id is not None and not re.search(r'(^$)|(^[A-Fa-f0-9]{24}$)', subscription_id)):  # noqa: E501
-            raise ValueError(r"Invalid value for `subscription_id`, must be a follow pattern or equal to `/(^$)|(^[A-Fa-f0-9]{24}$)/`")  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and t is None:  # noqa: E501
+            raise ValueError("Invalid value for `t`, must not be `None`")  # noqa: E501
 
-        self._subscription_id = subscription_id
+        self._t = t
 
-    @property
-    def type(self):
-        """Gets the type of this RunTransportTaskBaseVM.  # noqa: E501
-
-
-        :return: The type of this RunTransportTaskBaseVM.  # noqa: E501
-        :rtype: TaskType
-        """
-        return self._type
-
-    @type.setter
-    def type(self, type):
-        """Sets the type of this RunTransportTaskBaseVM.
-
-
-        :param type: The type of this RunTransportTaskBaseVM.  # noqa: E501
-        :type type: TaskType
-        """
-
-        self._type = type
+    def get_real_child_model(self, data):
+        """Returns the real base class specified by the discriminator"""
+        discriminator_key = self.attribute_map[self.discriminator]
+        discriminator_value = data[discriminator_key]
+        return self.discriminator_value_class_map.get(discriminator_value)
 
     def to_dict(self, serialize=False):
         """Returns the model properties as a dict"""

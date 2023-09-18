@@ -36,11 +36,11 @@ class TestUpdateSubscriptionLocaleVM(unittest.TestCase):
         # model = fastreport_cloud_sdk.models.update_subscription_locale_vm.UpdateSubscriptionLocaleVM()  # noqa: E501
         if include_optional :
             return UpdateSubscriptionLocaleVM(
-                locale = 'EiOT-wW'
+                locale = 'EiOT-wW0'
             )
         else :
             return UpdateSubscriptionLocaleVM(
-                locale = 'EiOT-wW',
+                locale = 'EiOT-wW0',
         )
 
     def testUpdateSubscriptionLocaleVM(self):

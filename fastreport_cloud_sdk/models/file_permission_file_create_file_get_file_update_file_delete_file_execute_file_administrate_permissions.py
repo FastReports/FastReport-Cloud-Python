@@ -38,7 +38,7 @@ class FilePermissionFileCreateFileGetFileUpdateFileDeleteFileExecuteFileAdminist
     openapi_types = {
         'owner_id': 'str',
         'owner': 'FilePermission',
-        'groups': 'dict(str, FilePermission)',
+        'groups': 'dict[str, FilePermission]',
         'other': 'FilePermission',
         'anon': 'FilePermission'
     }
@@ -124,7 +124,7 @@ class FilePermissionFileCreateFileGetFileUpdateFileDeleteFileExecuteFileAdminist
 
 
         :return: The groups of this FilePermissionFileCreateFileGetFileUpdateFileDeleteFileExecuteFileAdministratePermissions.  # noqa: E501
-        :rtype: dict(str, FilePermission)
+        :rtype: dict[str, FilePermission]
         """
         return self._groups
 
@@ -134,7 +134,7 @@ class FilePermissionFileCreateFileGetFileUpdateFileDeleteFileExecuteFileAdminist
 
 
         :param groups: The groups of this FilePermissionFileCreateFileGetFileUpdateFileDeleteFileExecuteFileAdministratePermissions.  # noqa: E501
-        :type groups: dict(str, FilePermission)
+        :type groups: dict[str, FilePermission]
         """
 
         self._groups = groups

@@ -52,7 +52,7 @@ class TestDownloadApi(unittest.TestCase):
     def test_download_get_last_svg_export(self):
         """Test case for download_get_last_svg_export
 
-        returns export, that was created from report with specified id  # noqa: E501
+        returns export, that was created from report with specified id.  INTERNAL USAGE ONLY!  # noqa: E501
         """
         pass
 

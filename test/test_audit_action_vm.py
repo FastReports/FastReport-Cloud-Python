@@ -43,10 +43,13 @@ class TestAuditActionVM(unittest.TestCase):
                 id = '', 
                 created_time = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
                 creator_user_id = '', 
-                name = ''
+                name = '', 
+                admin_action = True, 
+                t = ''
             )
         else :
             return AuditActionVM(
+                t = '',
         )
 
     def testAuditActionVM(self):

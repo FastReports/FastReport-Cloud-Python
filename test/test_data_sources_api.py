@@ -28,6 +28,13 @@ class TestDataSourcesApi(unittest.TestCase):
     def tearDown(self):
         pass
 
+    def test_data_sources_count_data_sources_async(self):
+        """Test case for data_sources_count_data_sources_async
+
+        Returns a number of data sources in subscription  # noqa: E501
+        """
+        pass
+
     def test_data_sources_create_data_source(self):
         """Test case for data_sources_create_data_source
 

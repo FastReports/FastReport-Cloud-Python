@@ -38,7 +38,7 @@ class DataSourcePermissionDataSourceCreateDataSourceGetDataSourceUpdateDataSourc
     openapi_types = {
         'owner_id': 'str',
         'owner': 'DataSourcePermission',
-        'groups': 'dict(str, DataSourcePermission)',
+        'groups': 'dict[str, DataSourcePermission]',
         'other': 'DataSourcePermission',
         'anon': 'DataSourcePermission'
     }
@@ -124,7 +124,7 @@ class DataSourcePermissionDataSourceCreateDataSourceGetDataSourceUpdateDataSourc
 
 
         :return: The groups of this DataSourcePermissionDataSourceCreateDataSourceGetDataSourceUpdateDataSourceDeleteDataSourceExecuteDataSourceAdministratePermissions.  # noqa: E501
-        :rtype: dict(str, DataSourcePermission)
+        :rtype: dict[str, DataSourcePermission]
         """
         return self._groups
 
@@ -134,7 +134,7 @@ class DataSourcePermissionDataSourceCreateDataSourceGetDataSourceUpdateDataSourc
 
 
         :param groups: The groups of this DataSourcePermissionDataSourceCreateDataSourceGetDataSourceUpdateDataSourceDeleteDataSourceExecuteDataSourceAdministratePermissions.  # noqa: E501
-        :type groups: dict(str, DataSourcePermission)
+        :type groups: dict[str, DataSourcePermission]
         """
 
         self._groups = groups

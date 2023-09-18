@@ -49,7 +49,8 @@ class TestFileVMFilesVMBase(unittest.TestCase):
                         subscription_id = '', 
                         status = 'None', 
                         status_reason = 'None', 
-                        error_message = '', )
+                        error_message = '', 
+                        is_deleted = True, )
                     ], 
                 count = 56, 
                 skip = 56, 

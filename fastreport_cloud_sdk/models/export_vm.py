@@ -38,24 +38,16 @@ class ExportVM(object):
     openapi_types = {
         'format': 'ExportFormat',
         'report_id': 'str',
-        'id': 'str',
-        'created_time': 'datetime',
-        'creator_user_id': 'str',
-        'edited_time': 'datetime',
-        'editor_user_id': 'str'
+        'template_id': 'str'
     }
 
     attribute_map = {
         'format': 'format',
         'report_id': 'reportId',
-        'id': 'id',
-        'created_time': 'createdTime',
-        'creator_user_id': 'creatorUserId',
-        'edited_time': 'editedTime',
-        'editor_user_id': 'editorUserId'
+        'template_id': 'templateId'
     }
 
-    def __init__(self, format=None, report_id=None, id=None, created_time=None, creator_user_id=None, edited_time=None, editor_user_id=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, format=None, report_id=None, template_id=None, local_vars_configuration=None):  # noqa: E501
         """ExportVM - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration.get_default_copy()
@@ -63,23 +55,13 @@ class ExportVM(object):
 
         self._format = None
         self._report_id = None
-        self._id = None
-        self._created_time = None
-        self._creator_user_id = None
-        self._edited_time = None
-        self._editor_user_id = None
+        self._template_id = None
         self.discriminator = None
 
         if format is not None:
             self.format = format
         self.report_id = report_id
-        self.id = id
-        if created_time is not None:
-            self.created_time = created_time
-        self.creator_user_id = creator_user_id
-        if edited_time is not None:
-            self.edited_time = edited_time
-        self.editor_user_id = editor_user_id
+        self.template_id = template_id
 
     @property
     def format(self):
@@ -124,109 +106,25 @@ class ExportVM(object):
         self._report_id = report_id
 
     @property
-    def id(self):
-        """Gets the id of this ExportVM.  # noqa: E501
+    def template_id(self):
+        """Gets the template_id of this ExportVM.  # noqa: E501
 
 
-        :return: The id of this ExportVM.  # noqa: E501
+        :return: The template_id of this ExportVM.  # noqa: E501
         :rtype: str
         """
-        return self._id
+        return self._template_id
 
-    @id.setter
-    def id(self, id):
-        """Sets the id of this ExportVM.
+    @template_id.setter
+    def template_id(self, template_id):
+        """Sets the template_id of this ExportVM.
 
 
-        :param id: The id of this ExportVM.  # noqa: E501
-        :type id: str
+        :param template_id: The template_id of this ExportVM.  # noqa: E501
+        :type template_id: str
         """
 
-        self._id = id
-
-    @property
-    def created_time(self):
-        """Gets the created_time of this ExportVM.  # noqa: E501
-
-
-        :return: The created_time of this ExportVM.  # noqa: E501
-        :rtype: datetime
-        """
-        return self._created_time
-
-    @created_time.setter
-    def created_time(self, created_time):
-        """Sets the created_time of this ExportVM.
-
-
-        :param created_time: The created_time of this ExportVM.  # noqa: E501
-        :type created_time: datetime
-        """
-
-        self._created_time = created_time
-
-    @property
-    def creator_user_id(self):
-        """Gets the creator_user_id of this ExportVM.  # noqa: E501
-
-
-        :return: The creator_user_id of this ExportVM.  # noqa: E501
-        :rtype: str
-        """
-        return self._creator_user_id
-
-    @creator_user_id.setter
-    def creator_user_id(self, creator_user_id):
-        """Sets the creator_user_id of this ExportVM.
-
-
-        :param creator_user_id: The creator_user_id of this ExportVM.  # noqa: E501
-        :type creator_user_id: str
-        """
-
-        self._creator_user_id = creator_user_id
-
-    @property
-    def edited_time(self):
-        """Gets the edited_time of this ExportVM.  # noqa: E501
-
-
-        :return: The edited_time of this ExportVM.  # noqa: E501
-        :rtype: datetime
-        """
-        return self._edited_time
-
-    @edited_time.setter
-    def edited_time(self, edited_time):
-        """Sets the edited_time of this ExportVM.
-
-
-        :param edited_time: The edited_time of this ExportVM.  # noqa: E501
-        :type edited_time: datetime
-        """
-
-        self._edited_time = edited_time
-
-    @property
-    def editor_user_id(self):
-        """Gets the editor_user_id of this ExportVM.  # noqa: E501
-
-
-        :return: The editor_user_id of this ExportVM.  # noqa: E501
-        :rtype: str
-        """
-        return self._editor_user_id
-
-    @editor_user_id.setter
-    def editor_user_id(self, editor_user_id):
-        """Sets the editor_user_id of this ExportVM.
-
-
-        :param editor_user_id: The editor_user_id of this ExportVM.  # noqa: E501
-        :type editor_user_id: str
-        """
-
-        self._editor_user_id = editor_user_id
+        self._template_id = template_id
 
     def to_dict(self, serialize=False):
         """Returns the model properties as a dict"""

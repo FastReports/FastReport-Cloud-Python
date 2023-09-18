@@ -36,73 +36,47 @@ class RunThumbnailTemplateTaskVM(object):
                             and the value is json key in definition.
     """
     openapi_types = {
-        'subscription_id': 'str',
-        'type': 'TaskType'
+        'template_id': 'str'
     }
 
     attribute_map = {
-        'subscription_id': 'subscriptionId',
-        'type': 'type'
+        'template_id': 'templateId'
     }
 
-    def __init__(self, subscription_id=None, type=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, template_id=None, local_vars_configuration=None):  # noqa: E501
         """RunThumbnailTemplateTaskVM - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration.get_default_copy()
         self.local_vars_configuration = local_vars_configuration
 
-        self._subscription_id = None
-        self._type = None
+        self._template_id = None
         self.discriminator = None
 
-        self.subscription_id = subscription_id
-        if type is not None:
-            self.type = type
+        self.template_id = template_id
 
     @property
-    def subscription_id(self):
-        """Gets the subscription_id of this RunThumbnailTemplateTaskVM.  # noqa: E501
+    def template_id(self):
+        """Gets the template_id of this RunThumbnailTemplateTaskVM.  # noqa: E501
 
 
-        :return: The subscription_id of this RunThumbnailTemplateTaskVM.  # noqa: E501
+        :return: The template_id of this RunThumbnailTemplateTaskVM.  # noqa: E501
         :rtype: str
         """
-        return self._subscription_id
+        return self._template_id
 
-    @subscription_id.setter
-    def subscription_id(self, subscription_id):
-        """Sets the subscription_id of this RunThumbnailTemplateTaskVM.
+    @template_id.setter
+    def template_id(self, template_id):
+        """Sets the template_id of this RunThumbnailTemplateTaskVM.
 
 
-        :param subscription_id: The subscription_id of this RunThumbnailTemplateTaskVM.  # noqa: E501
-        :type subscription_id: str
+        :param template_id: The template_id of this RunThumbnailTemplateTaskVM.  # noqa: E501
+        :type template_id: str
         """
         if (self.local_vars_configuration.client_side_validation and
-                subscription_id is not None and not re.search(r'(^$)|(^[A-Fa-f0-9]{24}$)', subscription_id)):  # noqa: E501
-            raise ValueError(r"Invalid value for `subscription_id`, must be a follow pattern or equal to `/(^$)|(^[A-Fa-f0-9]{24}$)/`")  # noqa: E501
+                template_id is not None and not re.search(r'(^$)|(^[A-Fa-f0-9]{24}$)', template_id)):  # noqa: E501
+            raise ValueError(r"Invalid value for `template_id`, must be a follow pattern or equal to `/(^$)|(^[A-Fa-f0-9]{24}$)/`")  # noqa: E501
 
-        self._subscription_id = subscription_id
-
-    @property
-    def type(self):
-        """Gets the type of this RunThumbnailTemplateTaskVM.  # noqa: E501
-
-
-        :return: The type of this RunThumbnailTemplateTaskVM.  # noqa: E501
-        :rtype: TaskType
-        """
-        return self._type
-
-    @type.setter
-    def type(self, type):
-        """Sets the type of this RunThumbnailTemplateTaskVM.
-
-
-        :param type: The type of this RunThumbnailTemplateTaskVM.  # noqa: E501
-        :type type: TaskType
-        """
-
-        self._type = type
+        self._template_id = template_id
 
     def to_dict(self, serialize=False):
         """Returns the model properties as a dict"""

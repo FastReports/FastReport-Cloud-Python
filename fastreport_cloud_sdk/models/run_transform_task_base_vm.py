@@ -36,46 +36,67 @@ class RunTransformTaskBaseVM(object):
                             and the value is json key in definition.
     """
     openapi_types = {
-        'locale': 'str',
         'input_file': 'RunInputFileVM',
+        'locale': 'str',
         'output_file': 'OutputFileVM',
         'transports': 'list[RunTransportTaskBaseVM]',
-        'subscription_id': 'str',
-        'type': 'TaskType'
+        't': 'str'
     }
 
     attribute_map = {
-        'locale': 'locale',
         'input_file': 'inputFile',
+        'locale': 'locale',
         'output_file': 'outputFile',
         'transports': 'transports',
-        'subscription_id': 'subscriptionId',
-        'type': 'type'
+        't': '$t'
     }
 
-    def __init__(self, locale=None, input_file=None, output_file=None, transports=None, subscription_id=None, type=None, local_vars_configuration=None):  # noqa: E501
+    discriminator_value_class_map = {
+        'RunExportReportTaskVM': 'RunExportReportTaskVM',
+        'RunPrepareTemplateTaskVM': 'RunPrepareTemplateTaskVM'
+    }
+
+    def __init__(self, input_file=None, locale=None, output_file=None, transports=None, t=None, local_vars_configuration=None):  # noqa: E501
         """RunTransformTaskBaseVM - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration.get_default_copy()
         self.local_vars_configuration = local_vars_configuration
 
-        self._locale = None
         self._input_file = None
+        self._locale = None
         self._output_file = None
         self._transports = None
-        self._subscription_id = None
-        self._type = None
-        self.discriminator = None
+        self._t = None
+        self.discriminator = 't'
 
-        self.locale = locale
         if input_file is not None:
             self.input_file = input_file
+        self.locale = locale
         if output_file is not None:
             self.output_file = output_file
         self.transports = transports
-        self.subscription_id = subscription_id
-        if type is not None:
-            self.type = type
+        self.t = t
+
+    @property
+    def input_file(self):
+        """Gets the input_file of this RunTransformTaskBaseVM.  # noqa: E501
+
+
+        :return: The input_file of this RunTransformTaskBaseVM.  # noqa: E501
+        :rtype: RunInputFileVM
+        """
+        return self._input_file
+
+    @input_file.setter
+    def input_file(self, input_file):
+        """Sets the input_file of this RunTransformTaskBaseVM.
+
+
+        :param input_file: The input_file of this RunTransformTaskBaseVM.  # noqa: E501
+        :type input_file: RunInputFileVM
+        """
+
+        self._input_file = input_file
 
     @property
     def locale(self):
@@ -100,27 +121,6 @@ class RunTransformTaskBaseVM(object):
             raise ValueError(r"Invalid value for `locale`, must be a follow pattern or equal to `/^[a-zA-Z]{2,4}(-[a-zA-Z]{2,4}){0,2}$/`")  # noqa: E501
 
         self._locale = locale
-
-    @property
-    def input_file(self):
-        """Gets the input_file of this RunTransformTaskBaseVM.  # noqa: E501
-
-
-        :return: The input_file of this RunTransformTaskBaseVM.  # noqa: E501
-        :rtype: RunInputFileVM
-        """
-        return self._input_file
-
-    @input_file.setter
-    def input_file(self, input_file):
-        """Sets the input_file of this RunTransformTaskBaseVM.
-
-
-        :param input_file: The input_file of this RunTransformTaskBaseVM.  # noqa: E501
-        :type input_file: RunInputFileVM
-        """
-
-        self._input_file = input_file
 
     @property
     def output_file(self):
@@ -168,49 +168,33 @@ class RunTransformTaskBaseVM(object):
         self._transports = transports
 
     @property
-    def subscription_id(self):
-        """Gets the subscription_id of this RunTransformTaskBaseVM.  # noqa: E501
+    def t(self):
+        """Gets the t of this RunTransformTaskBaseVM.  # noqa: E501
 
 
-        :return: The subscription_id of this RunTransformTaskBaseVM.  # noqa: E501
+        :return: The t of this RunTransformTaskBaseVM.  # noqa: E501
         :rtype: str
         """
-        return self._subscription_id
+        return self._t
 
-    @subscription_id.setter
-    def subscription_id(self, subscription_id):
-        """Sets the subscription_id of this RunTransformTaskBaseVM.
+    @t.setter
+    def t(self, t):
+        """Sets the t of this RunTransformTaskBaseVM.
 
 
-        :param subscription_id: The subscription_id of this RunTransformTaskBaseVM.  # noqa: E501
-        :type subscription_id: str
+        :param t: The t of this RunTransformTaskBaseVM.  # noqa: E501
+        :type t: str
         """
-        if (self.local_vars_configuration.client_side_validation and
-                subscription_id is not None and not re.search(r'(^$)|(^[A-Fa-f0-9]{24}$)', subscription_id)):  # noqa: E501
-            raise ValueError(r"Invalid value for `subscription_id`, must be a follow pattern or equal to `/(^$)|(^[A-Fa-f0-9]{24}$)/`")  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and t is None:  # noqa: E501
+            raise ValueError("Invalid value for `t`, must not be `None`")  # noqa: E501
 
-        self._subscription_id = subscription_id
+        self._t = t
 
-    @property
-    def type(self):
-        """Gets the type of this RunTransformTaskBaseVM.  # noqa: E501
-
-
-        :return: The type of this RunTransformTaskBaseVM.  # noqa: E501
-        :rtype: TaskType
-        """
-        return self._type
-
-    @type.setter
-    def type(self, type):
-        """Sets the type of this RunTransformTaskBaseVM.
-
-
-        :param type: The type of this RunTransformTaskBaseVM.  # noqa: E501
-        :type type: TaskType
-        """
-
-        self._type = type
+    def get_real_child_model(self, data):
+        """Returns the real base class specified by the discriminator"""
+        discriminator_key = self.attribute_map[self.discriminator]
+        discriminator_value = data[discriminator_key]
+        return self.discriminator_value_class_map.get(discriminator_value)
 
     def to_dict(self, serialize=False):
         """Returns the model properties as a dict"""

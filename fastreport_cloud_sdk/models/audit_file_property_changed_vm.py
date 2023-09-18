@@ -39,33 +39,17 @@ class AuditFilePropertyChangedVM(object):
         'property_name': 'str',
         'old_value': 'object',
         'new_value': 'object',
-        'admin_action': 'bool',
-        'user_id': 'str',
-        'entity_id': 'str',
-        'subscription_id': 'str',
-        'type': 'AuditType',
-        'id': 'str',
-        'created_time': 'datetime',
-        'creator_user_id': 'str',
-        'name': 'str'
+        'entity_type': 'EntityType'
     }
 
     attribute_map = {
         'property_name': 'propertyName',
         'old_value': 'oldValue',
         'new_value': 'newValue',
-        'admin_action': 'adminAction',
-        'user_id': 'userId',
-        'entity_id': 'entityId',
-        'subscription_id': 'subscriptionId',
-        'type': 'type',
-        'id': 'id',
-        'created_time': 'createdTime',
-        'creator_user_id': 'creatorUserId',
-        'name': 'name'
+        'entity_type': 'entityType'
     }
 
-    def __init__(self, property_name=None, old_value=None, new_value=None, admin_action=None, user_id=None, entity_id=None, subscription_id=None, type=None, id=None, created_time=None, creator_user_id=None, name=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, property_name=None, old_value=None, new_value=None, entity_type=None, local_vars_configuration=None):  # noqa: E501
         """AuditFilePropertyChangedVM - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration.get_default_copy()
@@ -74,32 +58,14 @@ class AuditFilePropertyChangedVM(object):
         self._property_name = None
         self._old_value = None
         self._new_value = None
-        self._admin_action = None
-        self._user_id = None
-        self._entity_id = None
-        self._subscription_id = None
-        self._type = None
-        self._id = None
-        self._created_time = None
-        self._creator_user_id = None
-        self._name = None
+        self._entity_type = None
         self.discriminator = None
 
         self.property_name = property_name
         self.old_value = old_value
         self.new_value = new_value
-        if admin_action is not None:
-            self.admin_action = admin_action
-        self.user_id = user_id
-        self.entity_id = entity_id
-        self.subscription_id = subscription_id
-        if type is not None:
-            self.type = type
-        self.id = id
-        if created_time is not None:
-            self.created_time = created_time
-        self.creator_user_id = creator_user_id
-        self.name = name
+        if entity_type is not None:
+            self.entity_type = entity_type
 
     @property
     def property_name(self):
@@ -165,193 +131,25 @@ class AuditFilePropertyChangedVM(object):
         self._new_value = new_value
 
     @property
-    def admin_action(self):
-        """Gets the admin_action of this AuditFilePropertyChangedVM.  # noqa: E501
+    def entity_type(self):
+        """Gets the entity_type of this AuditFilePropertyChangedVM.  # noqa: E501
 
 
-        :return: The admin_action of this AuditFilePropertyChangedVM.  # noqa: E501
-        :rtype: bool
+        :return: The entity_type of this AuditFilePropertyChangedVM.  # noqa: E501
+        :rtype: EntityType
         """
-        return self._admin_action
+        return self._entity_type
 
-    @admin_action.setter
-    def admin_action(self, admin_action):
-        """Sets the admin_action of this AuditFilePropertyChangedVM.
-
-
-        :param admin_action: The admin_action of this AuditFilePropertyChangedVM.  # noqa: E501
-        :type admin_action: bool
-        """
-
-        self._admin_action = admin_action
-
-    @property
-    def user_id(self):
-        """Gets the user_id of this AuditFilePropertyChangedVM.  # noqa: E501
+    @entity_type.setter
+    def entity_type(self, entity_type):
+        """Sets the entity_type of this AuditFilePropertyChangedVM.
 
 
-        :return: The user_id of this AuditFilePropertyChangedVM.  # noqa: E501
-        :rtype: str
-        """
-        return self._user_id
-
-    @user_id.setter
-    def user_id(self, user_id):
-        """Sets the user_id of this AuditFilePropertyChangedVM.
-
-
-        :param user_id: The user_id of this AuditFilePropertyChangedVM.  # noqa: E501
-        :type user_id: str
+        :param entity_type: The entity_type of this AuditFilePropertyChangedVM.  # noqa: E501
+        :type entity_type: EntityType
         """
 
-        self._user_id = user_id
-
-    @property
-    def entity_id(self):
-        """Gets the entity_id of this AuditFilePropertyChangedVM.  # noqa: E501
-
-
-        :return: The entity_id of this AuditFilePropertyChangedVM.  # noqa: E501
-        :rtype: str
-        """
-        return self._entity_id
-
-    @entity_id.setter
-    def entity_id(self, entity_id):
-        """Sets the entity_id of this AuditFilePropertyChangedVM.
-
-
-        :param entity_id: The entity_id of this AuditFilePropertyChangedVM.  # noqa: E501
-        :type entity_id: str
-        """
-
-        self._entity_id = entity_id
-
-    @property
-    def subscription_id(self):
-        """Gets the subscription_id of this AuditFilePropertyChangedVM.  # noqa: E501
-
-
-        :return: The subscription_id of this AuditFilePropertyChangedVM.  # noqa: E501
-        :rtype: str
-        """
-        return self._subscription_id
-
-    @subscription_id.setter
-    def subscription_id(self, subscription_id):
-        """Sets the subscription_id of this AuditFilePropertyChangedVM.
-
-
-        :param subscription_id: The subscription_id of this AuditFilePropertyChangedVM.  # noqa: E501
-        :type subscription_id: str
-        """
-
-        self._subscription_id = subscription_id
-
-    @property
-    def type(self):
-        """Gets the type of this AuditFilePropertyChangedVM.  # noqa: E501
-
-
-        :return: The type of this AuditFilePropertyChangedVM.  # noqa: E501
-        :rtype: AuditType
-        """
-        return self._type
-
-    @type.setter
-    def type(self, type):
-        """Sets the type of this AuditFilePropertyChangedVM.
-
-
-        :param type: The type of this AuditFilePropertyChangedVM.  # noqa: E501
-        :type type: AuditType
-        """
-
-        self._type = type
-
-    @property
-    def id(self):
-        """Gets the id of this AuditFilePropertyChangedVM.  # noqa: E501
-
-
-        :return: The id of this AuditFilePropertyChangedVM.  # noqa: E501
-        :rtype: str
-        """
-        return self._id
-
-    @id.setter
-    def id(self, id):
-        """Sets the id of this AuditFilePropertyChangedVM.
-
-
-        :param id: The id of this AuditFilePropertyChangedVM.  # noqa: E501
-        :type id: str
-        """
-
-        self._id = id
-
-    @property
-    def created_time(self):
-        """Gets the created_time of this AuditFilePropertyChangedVM.  # noqa: E501
-
-
-        :return: The created_time of this AuditFilePropertyChangedVM.  # noqa: E501
-        :rtype: datetime
-        """
-        return self._created_time
-
-    @created_time.setter
-    def created_time(self, created_time):
-        """Sets the created_time of this AuditFilePropertyChangedVM.
-
-
-        :param created_time: The created_time of this AuditFilePropertyChangedVM.  # noqa: E501
-        :type created_time: datetime
-        """
-
-        self._created_time = created_time
-
-    @property
-    def creator_user_id(self):
-        """Gets the creator_user_id of this AuditFilePropertyChangedVM.  # noqa: E501
-
-
-        :return: The creator_user_id of this AuditFilePropertyChangedVM.  # noqa: E501
-        :rtype: str
-        """
-        return self._creator_user_id
-
-    @creator_user_id.setter
-    def creator_user_id(self, creator_user_id):
-        """Sets the creator_user_id of this AuditFilePropertyChangedVM.
-
-
-        :param creator_user_id: The creator_user_id of this AuditFilePropertyChangedVM.  # noqa: E501
-        :type creator_user_id: str
-        """
-
-        self._creator_user_id = creator_user_id
-
-    @property
-    def name(self):
-        """Gets the name of this AuditFilePropertyChangedVM.  # noqa: E501
-
-
-        :return: The name of this AuditFilePropertyChangedVM.  # noqa: E501
-        :rtype: str
-        """
-        return self._name
-
-    @name.setter
-    def name(self, name):
-        """Sets the name of this AuditFilePropertyChangedVM.
-
-
-        :param name: The name of this AuditFilePropertyChangedVM.  # noqa: E501
-        :type name: str
-        """
-
-        self._name = name
+        self._entity_type = entity_type
 
     def to_dict(self, serialize=False):
         """Returns the model properties as a dict"""

@@ -36,11 +36,11 @@ class TestDeleteApiKeyVM(unittest.TestCase):
         # model = fastreport_cloud_sdk.models.delete_api_key_vm.DeleteApiKeyVM()  # noqa: E501
         if include_optional :
             return DeleteApiKeyVM(
-                api_key = ''
+                api_key = '0'
             )
         else :
             return DeleteApiKeyVM(
-                api_key = '',
+                api_key = '0',
         )
 
     def testDeleteApiKeyVM(self):

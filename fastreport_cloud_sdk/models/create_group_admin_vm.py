@@ -36,31 +36,23 @@ class CreateGroupAdminVM(object):
                             and the value is json key in definition.
     """
     openapi_types = {
-        'owner_id': 'str',
-        'name': 'str',
-        'subscription_id': 'str'
+        'owner_id': 'str'
     }
 
     attribute_map = {
-        'owner_id': 'ownerId',
-        'name': 'name',
-        'subscription_id': 'subscriptionId'
+        'owner_id': 'ownerId'
     }
 
-    def __init__(self, owner_id=None, name=None, subscription_id=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, owner_id=None, local_vars_configuration=None):  # noqa: E501
         """CreateGroupAdminVM - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration.get_default_copy()
         self.local_vars_configuration = local_vars_configuration
 
         self._owner_id = None
-        self._name = None
-        self._subscription_id = None
         self.discriminator = None
 
         self.owner_id = owner_id
-        self.name = name
-        self.subscription_id = subscription_id
 
     @property
     def owner_id(self):
@@ -82,59 +74,6 @@ class CreateGroupAdminVM(object):
         """
 
         self._owner_id = owner_id
-
-    @property
-    def name(self):
-        """Gets the name of this CreateGroupAdminVM.  # noqa: E501
-
-
-        :return: The name of this CreateGroupAdminVM.  # noqa: E501
-        :rtype: str
-        """
-        return self._name
-
-    @name.setter
-    def name(self, name):
-        """Sets the name of this CreateGroupAdminVM.
-
-
-        :param name: The name of this CreateGroupAdminVM.  # noqa: E501
-        :type name: str
-        """
-        if self.local_vars_configuration.client_side_validation and name is None:  # noqa: E501
-            raise ValueError("Invalid value for `name`, must not be `None`")  # noqa: E501
-        if (self.local_vars_configuration.client_side_validation and
-                name is not None and len(name) > 50):
-            raise ValueError("Invalid value for `name`, length must be less than or equal to `50`")  # noqa: E501
-        if (self.local_vars_configuration.client_side_validation and
-                name is not None and len(name) < 1):
-            raise ValueError("Invalid value for `name`, length must be greater than or equal to `1`")  # noqa: E501
-
-        self._name = name
-
-    @property
-    def subscription_id(self):
-        """Gets the subscription_id of this CreateGroupAdminVM.  # noqa: E501
-
-
-        :return: The subscription_id of this CreateGroupAdminVM.  # noqa: E501
-        :rtype: str
-        """
-        return self._subscription_id
-
-    @subscription_id.setter
-    def subscription_id(self, subscription_id):
-        """Sets the subscription_id of this CreateGroupAdminVM.
-
-
-        :param subscription_id: The subscription_id of this CreateGroupAdminVM.  # noqa: E501
-        :type subscription_id: str
-        """
-        if (self.local_vars_configuration.client_side_validation and
-                subscription_id is not None and not re.search(r'^[A-Fa-f0-9]{24}$', subscription_id)):  # noqa: E501
-            raise ValueError(r"Invalid value for `subscription_id`, must be a follow pattern or equal to `/^[A-Fa-f0-9]{24}$/`")  # noqa: E501
-
-        self._subscription_id = subscription_id
 
     def to_dict(self, serialize=False):
         """Returns the model properties as a dict"""

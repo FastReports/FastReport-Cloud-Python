@@ -46,7 +46,8 @@ class DataSourceVM(object):
         'editor_user_id': 'str',
         'created_time': 'datetime',
         'creator_user_id': 'str',
-        'status': 'DataSourceStatus'
+        'status': 'DataSourceStatus',
+        'error_message': 'str'
     }
 
     attribute_map = {
@@ -60,10 +61,11 @@ class DataSourceVM(object):
         'editor_user_id': 'editorUserId',
         'created_time': 'createdTime',
         'creator_user_id': 'creatorUserId',
-        'status': 'status'
+        'status': 'status',
+        'error_message': 'errorMessage'
     }
 
-    def __init__(self, id=None, name=None, connection_type=None, connection_string=None, data_structure=None, subscription_id=None, edited_time=None, editor_user_id=None, created_time=None, creator_user_id=None, status=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, id=None, name=None, connection_type=None, connection_string=None, data_structure=None, subscription_id=None, edited_time=None, editor_user_id=None, created_time=None, creator_user_id=None, status=None, error_message=None, local_vars_configuration=None):  # noqa: E501
         """DataSourceVM - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration.get_default_copy()
@@ -80,6 +82,7 @@ class DataSourceVM(object):
         self._created_time = None
         self._creator_user_id = None
         self._status = None
+        self._error_message = None
         self.discriminator = None
 
         self.id = id
@@ -97,6 +100,7 @@ class DataSourceVM(object):
         self.creator_user_id = creator_user_id
         if status is not None:
             self.status = status
+        self.error_message = error_message
 
     @property
     def id(self):
@@ -328,6 +332,27 @@ class DataSourceVM(object):
         """
 
         self._status = status
+
+    @property
+    def error_message(self):
+        """Gets the error_message of this DataSourceVM.  # noqa: E501
+
+
+        :return: The error_message of this DataSourceVM.  # noqa: E501
+        :rtype: str
+        """
+        return self._error_message
+
+    @error_message.setter
+    def error_message(self, error_message):
+        """Sets the error_message of this DataSourceVM.
+
+
+        :param error_message: The error_message of this DataSourceVM.  # noqa: E501
+        :type error_message: str
+        """
+
+        self._error_message = error_message
 
     def to_dict(self, serialize=False):
         """Returns the model properties as a dict"""

@@ -36,6 +36,140 @@ class UserSettingsApi(object):
             api_client = ApiClient()
         self.api_client = api_client
 
+    def user_settings_accept_agreements(self, **kwargs):  # noqa: E501
+        """Use this endpoint to accept current version of service license agreement  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.user_settings_accept_agreements(async_req=True)
+        >>> result = thread.get()
+
+        :param accept_agreements_vm: 
+        :type accept_agreements_vm: AcceptAgreementsVM
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
+        :param _preload_content: if False, the urllib3.HTTPResponse object will
+                                 be returned without reading/decoding response
+                                 data. Default is True.
+        :type _preload_content: bool, optional
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :return: Returns the result object.
+                 If the method is called asynchronously,
+                 returns the request thread.
+        :rtype: None
+        """
+        kwargs['_return_http_data_only'] = True
+        return self.user_settings_accept_agreements_with_http_info(**kwargs)  # noqa: E501
+
+    def user_settings_accept_agreements_with_http_info(self, **kwargs):  # noqa: E501
+        """Use this endpoint to accept current version of service license agreement  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.user_settings_accept_agreements_with_http_info(async_req=True)
+        >>> result = thread.get()
+
+        :param accept_agreements_vm: 
+        :type accept_agreements_vm: AcceptAgreementsVM
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
+        :param _return_http_data_only: response data without head status code
+                                       and headers
+        :type _return_http_data_only: bool, optional
+        :param _preload_content: if False, the urllib3.HTTPResponse object will
+                                 be returned without reading/decoding response
+                                 data. Default is True.
+        :type _preload_content: bool, optional
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the authentication
+                              in the spec for a single request.
+        :type _request_auth: dict, optional
+        :type _content_type: string, optional: force content-type for the request
+        :return: Returns the result object.
+                 If the method is called asynchronously,
+                 returns the request thread.
+        :rtype: None
+        """
+
+        local_var_params = locals()
+
+        all_params = [
+            'accept_agreements_vm'
+        ]
+        all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout',
+                '_request_auth',
+                '_content_type',
+                '_headers'
+            ]
+        )
+
+        for key, val in six.iteritems(local_var_params['kwargs']):
+            if key not in all_params:
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method user_settings_accept_agreements" % key
+                )
+            local_var_params[key] = val
+        del local_var_params['kwargs']
+
+        collection_formats = {}
+
+        path_params = {}
+
+        query_params = []
+
+        header_params = dict(local_var_params.get('_headers', {}))
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        if 'accept_agreements_vm' in local_var_params:
+            body_params = local_var_params['accept_agreements_vm']
+        # HTTP header `Content-Type`
+        content_types_list = local_var_params.get('_content_type',
+            self.api_client.select_header_content_type(
+                ['application/json', 'text/json', 'application/*+json'],
+                'POST', body_params))  # noqa: E501
+        if content_types_list:
+                header_params['Content-Type'] = content_types_list
+
+        # Authentication setting
+        auth_settings = ['ApiKey', 'JWT']  # noqa: E501
+
+        response_types_map = {}
+
+        return self.api_client.call_api(
+            '/api/manage/v1/UserSettings/accept', 'POST',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_types_map=response_types_map,
+            auth_settings=auth_settings,
+            async_req=local_var_params.get('async_req'),
+            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
+            _preload_content=local_var_params.get('_preload_content', True),
+            _request_timeout=local_var_params.get('_request_timeout'),
+            collection_formats=collection_formats,
+            _request_auth=local_var_params.get('_request_auth'))
+
     def user_settings_get_current_user_settings(self, **kwargs):  # noqa: E501
         """Return current user settings.  # noqa: E501
 
@@ -89,6 +223,7 @@ class UserSettingsApi(object):
                               request; this effectively ignores the authentication
                               in the spec for a single request.
         :type _request_auth: dict, optional
+        :type _content_type: string, optional: force content-type for the request
         :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
@@ -105,7 +240,9 @@ class UserSettingsApi(object):
                 '_return_http_data_only',
                 '_preload_content',
                 '_request_timeout',
-                '_request_auth'
+                '_request_auth',
+                '_content_type',
+                '_headers'
             ]
         )
 
@@ -124,7 +261,7 @@ class UserSettingsApi(object):
 
         query_params = []
 
-        header_params = {}
+        header_params = dict(local_var_params.get('_headers', {}))
 
         form_params = []
         local_var_files = {}
@@ -136,7 +273,7 @@ class UserSettingsApi(object):
 
         # Authentication setting
         auth_settings = ['ApiKey', 'JWT']  # noqa: E501
-        
+
         response_types_map = {
             200: "UserSettingsVM",
             404: "ProblemDetails",
@@ -168,7 +305,7 @@ class UserSettingsApi(object):
         >>> thread = api.user_settings_update_my_settings(async_req=True)
         >>> result = thread.get()
 
-        :param update_user_settings_vm:
+        :param update_user_settings_vm: 
         :type update_user_settings_vm: UpdateUserSettingsVM
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
@@ -197,7 +334,7 @@ class UserSettingsApi(object):
         >>> thread = api.user_settings_update_my_settings_with_http_info(async_req=True)
         >>> result = thread.get()
 
-        :param update_user_settings_vm:
+        :param update_user_settings_vm: 
         :type update_user_settings_vm: UpdateUserSettingsVM
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
@@ -216,6 +353,7 @@ class UserSettingsApi(object):
                               request; this effectively ignores the authentication
                               in the spec for a single request.
         :type _request_auth: dict, optional
+        :type _content_type: string, optional: force content-type for the request
         :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
@@ -233,7 +371,9 @@ class UserSettingsApi(object):
                 '_return_http_data_only',
                 '_preload_content',
                 '_request_timeout',
-                '_request_auth'
+                '_request_auth',
+                '_content_type',
+                '_headers'
             ]
         )
 
@@ -252,7 +392,7 @@ class UserSettingsApi(object):
 
         query_params = []
 
-        header_params = {}
+        header_params = dict(local_var_params.get('_headers', {}))
 
         form_params = []
         local_var_files = {}
@@ -265,12 +405,16 @@ class UserSettingsApi(object):
             ['application/json'])  # noqa: E501
 
         # HTTP header `Content-Type`
-        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
-            ['application/json', 'text/json', 'application/*+json'])  # noqa: E501
+        content_types_list = local_var_params.get('_content_type',
+            self.api_client.select_header_content_type(
+                ['application/json', 'text/json', 'application/*+json'],
+                'PUT', body_params))  # noqa: E501
+        if content_types_list:
+                header_params['Content-Type'] = content_types_list
 
         # Authentication setting
         auth_settings = ['ApiKey', 'JWT']  # noqa: E501
-        
+
         response_types_map = {
             200: "UserSettingsVM",
             400: "ProblemDetails",

@@ -40,11 +40,18 @@ class ServerConfigurationVM(object):
         'logo_link': 'str',
         'copyright': 'str',
         'corporate_server_mode': 'bool',
+        'last_sla_version': 'datetime',
         'is_disabled': 'bool',
         'frontend': 'FrontendApp',
         'invariant_locale': 'str',
         'auth': 'AuthConfigVM',
-        'designer_for_anons': 'bool'
+        'designer_for_anons': 'bool',
+        'sla_link': 'str',
+        'first_steps_video_link': 'str',
+        'about_link': 'str',
+        'home_page_link': 'str',
+        'auth_server_name': 'str',
+        'update_workspace_link': 'str'
     }
 
     attribute_map = {
@@ -52,14 +59,21 @@ class ServerConfigurationVM(object):
         'logo_link': 'logoLink',
         'copyright': 'copyright',
         'corporate_server_mode': 'corporateServerMode',
+        'last_sla_version': 'lastSLAVersion',
         'is_disabled': 'isDisabled',
         'frontend': 'frontend',
         'invariant_locale': 'invariantLocale',
         'auth': 'auth',
-        'designer_for_anons': 'designerForAnons'
+        'designer_for_anons': 'designerForAnons',
+        'sla_link': 'slaLink',
+        'first_steps_video_link': 'firstStepsVideoLink',
+        'about_link': 'aboutLink',
+        'home_page_link': 'homePageLink',
+        'auth_server_name': 'authServerName',
+        'update_workspace_link': 'updateWorkspaceLink'
     }
 
-    def __init__(self, title=None, logo_link=None, copyright=None, corporate_server_mode=None, is_disabled=None, frontend=None, invariant_locale=None, auth=None, designer_for_anons=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, title=None, logo_link=None, copyright=None, corporate_server_mode=None, last_sla_version=None, is_disabled=None, frontend=None, invariant_locale=None, auth=None, designer_for_anons=None, sla_link=None, first_steps_video_link=None, about_link=None, home_page_link=None, auth_server_name=None, update_workspace_link=None, local_vars_configuration=None):  # noqa: E501
         """ServerConfigurationVM - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration.get_default_copy()
@@ -69,11 +83,18 @@ class ServerConfigurationVM(object):
         self._logo_link = None
         self._copyright = None
         self._corporate_server_mode = None
+        self._last_sla_version = None
         self._is_disabled = None
         self._frontend = None
         self._invariant_locale = None
         self._auth = None
         self._designer_for_anons = None
+        self._sla_link = None
+        self._first_steps_video_link = None
+        self._about_link = None
+        self._home_page_link = None
+        self._auth_server_name = None
+        self._update_workspace_link = None
         self.discriminator = None
 
         self.title = title
@@ -81,6 +102,7 @@ class ServerConfigurationVM(object):
         self.copyright = copyright
         if corporate_server_mode is not None:
             self.corporate_server_mode = corporate_server_mode
+        self.last_sla_version = last_sla_version
         if is_disabled is not None:
             self.is_disabled = is_disabled
         if frontend is not None:
@@ -90,6 +112,12 @@ class ServerConfigurationVM(object):
             self.auth = auth
         if designer_for_anons is not None:
             self.designer_for_anons = designer_for_anons
+        self.sla_link = sla_link
+        self.first_steps_video_link = first_steps_video_link
+        self.about_link = about_link
+        self.home_page_link = home_page_link
+        self.auth_server_name = auth_server_name
+        self.update_workspace_link = update_workspace_link
 
     @property
     def title(self):
@@ -174,6 +202,27 @@ class ServerConfigurationVM(object):
         """
 
         self._corporate_server_mode = corporate_server_mode
+
+    @property
+    def last_sla_version(self):
+        """Gets the last_sla_version of this ServerConfigurationVM.  # noqa: E501
+
+
+        :return: The last_sla_version of this ServerConfigurationVM.  # noqa: E501
+        :rtype: datetime
+        """
+        return self._last_sla_version
+
+    @last_sla_version.setter
+    def last_sla_version(self, last_sla_version):
+        """Sets the last_sla_version of this ServerConfigurationVM.
+
+
+        :param last_sla_version: The last_sla_version of this ServerConfigurationVM.  # noqa: E501
+        :type last_sla_version: datetime
+        """
+
+        self._last_sla_version = last_sla_version
 
     @property
     def is_disabled(self):
@@ -279,6 +328,132 @@ class ServerConfigurationVM(object):
         """
 
         self._designer_for_anons = designer_for_anons
+
+    @property
+    def sla_link(self):
+        """Gets the sla_link of this ServerConfigurationVM.  # noqa: E501
+
+
+        :return: The sla_link of this ServerConfigurationVM.  # noqa: E501
+        :rtype: str
+        """
+        return self._sla_link
+
+    @sla_link.setter
+    def sla_link(self, sla_link):
+        """Sets the sla_link of this ServerConfigurationVM.
+
+
+        :param sla_link: The sla_link of this ServerConfigurationVM.  # noqa: E501
+        :type sla_link: str
+        """
+
+        self._sla_link = sla_link
+
+    @property
+    def first_steps_video_link(self):
+        """Gets the first_steps_video_link of this ServerConfigurationVM.  # noqa: E501
+
+
+        :return: The first_steps_video_link of this ServerConfigurationVM.  # noqa: E501
+        :rtype: str
+        """
+        return self._first_steps_video_link
+
+    @first_steps_video_link.setter
+    def first_steps_video_link(self, first_steps_video_link):
+        """Sets the first_steps_video_link of this ServerConfigurationVM.
+
+
+        :param first_steps_video_link: The first_steps_video_link of this ServerConfigurationVM.  # noqa: E501
+        :type first_steps_video_link: str
+        """
+
+        self._first_steps_video_link = first_steps_video_link
+
+    @property
+    def about_link(self):
+        """Gets the about_link of this ServerConfigurationVM.  # noqa: E501
+
+
+        :return: The about_link of this ServerConfigurationVM.  # noqa: E501
+        :rtype: str
+        """
+        return self._about_link
+
+    @about_link.setter
+    def about_link(self, about_link):
+        """Sets the about_link of this ServerConfigurationVM.
+
+
+        :param about_link: The about_link of this ServerConfigurationVM.  # noqa: E501
+        :type about_link: str
+        """
+
+        self._about_link = about_link
+
+    @property
+    def home_page_link(self):
+        """Gets the home_page_link of this ServerConfigurationVM.  # noqa: E501
+
+
+        :return: The home_page_link of this ServerConfigurationVM.  # noqa: E501
+        :rtype: str
+        """
+        return self._home_page_link
+
+    @home_page_link.setter
+    def home_page_link(self, home_page_link):
+        """Sets the home_page_link of this ServerConfigurationVM.
+
+
+        :param home_page_link: The home_page_link of this ServerConfigurationVM.  # noqa: E501
+        :type home_page_link: str
+        """
+
+        self._home_page_link = home_page_link
+
+    @property
+    def auth_server_name(self):
+        """Gets the auth_server_name of this ServerConfigurationVM.  # noqa: E501
+
+
+        :return: The auth_server_name of this ServerConfigurationVM.  # noqa: E501
+        :rtype: str
+        """
+        return self._auth_server_name
+
+    @auth_server_name.setter
+    def auth_server_name(self, auth_server_name):
+        """Sets the auth_server_name of this ServerConfigurationVM.
+
+
+        :param auth_server_name: The auth_server_name of this ServerConfigurationVM.  # noqa: E501
+        :type auth_server_name: str
+        """
+
+        self._auth_server_name = auth_server_name
+
+    @property
+    def update_workspace_link(self):
+        """Gets the update_workspace_link of this ServerConfigurationVM.  # noqa: E501
+
+
+        :return: The update_workspace_link of this ServerConfigurationVM.  # noqa: E501
+        :rtype: str
+        """
+        return self._update_workspace_link
+
+    @update_workspace_link.setter
+    def update_workspace_link(self, update_workspace_link):
+        """Sets the update_workspace_link of this ServerConfigurationVM.
+
+
+        :param update_workspace_link: The update_workspace_link of this ServerConfigurationVM.  # noqa: E501
+        :type update_workspace_link: str
+        """
+
+        self._update_workspace_link = update_workspace_link
 
     def to_dict(self, serialize=False):
         """Returns the model properties as a dict"""

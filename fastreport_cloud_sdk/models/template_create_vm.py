@@ -36,134 +36,17 @@ class TemplateCreateVM(object):
                             and the value is json key in definition.
     """
     openapi_types = {
-        'name': 'str',
-        'tags': 'list[str]',
-        'icon': 'str',
-        'content': 'str'
     }
 
     attribute_map = {
-        'name': 'name',
-        'tags': 'tags',
-        'icon': 'icon',
-        'content': 'content'
     }
 
-    def __init__(self, name=None, tags=None, icon=None, content=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, local_vars_configuration=None):  # noqa: E501
         """TemplateCreateVM - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration.get_default_copy()
         self.local_vars_configuration = local_vars_configuration
-
-        self._name = None
-        self._tags = None
-        self._icon = None
-        self._content = None
         self.discriminator = None
-
-        self.name = name
-        self.tags = tags
-        self.icon = icon
-        self.content = content
-
-    @property
-    def name(self):
-        """Gets the name of this TemplateCreateVM.  # noqa: E501
-
-
-        :return: The name of this TemplateCreateVM.  # noqa: E501
-        :rtype: str
-        """
-        return self._name
-
-    @name.setter
-    def name(self, name):
-        """Sets the name of this TemplateCreateVM.
-
-
-        :param name: The name of this TemplateCreateVM.  # noqa: E501
-        :type name: str
-        """
-        if (self.local_vars_configuration.client_side_validation and
-                name is not None and len(name) > 250):
-            raise ValueError("Invalid value for `name`, length must be less than or equal to `250`")  # noqa: E501
-        if (self.local_vars_configuration.client_side_validation and
-                name is not None and len(name) < 0):
-            raise ValueError("Invalid value for `name`, length must be greater than or equal to `0`")  # noqa: E501
-
-        self._name = name
-
-    @property
-    def tags(self):
-        """Gets the tags of this TemplateCreateVM.  # noqa: E501
-
-
-        :return: The tags of this TemplateCreateVM.  # noqa: E501
-        :rtype: list[str]
-        """
-        return self._tags
-
-    @tags.setter
-    def tags(self, tags):
-        """Sets the tags of this TemplateCreateVM.
-
-
-        :param tags: The tags of this TemplateCreateVM.  # noqa: E501
-        :type tags: list[str]
-        """
-        if (self.local_vars_configuration.client_side_validation and
-                tags is not None and len(tags) > 3):
-            raise ValueError("Invalid value for `tags`, number of items must be less than or equal to `3`")  # noqa: E501
-
-        self._tags = tags
-
-    @property
-    def icon(self):
-        """Gets the icon of this TemplateCreateVM.  # noqa: E501
-
-
-        :return: The icon of this TemplateCreateVM.  # noqa: E501
-        :rtype: str
-        """
-        return self._icon
-
-    @icon.setter
-    def icon(self, icon):
-        """Sets the icon of this TemplateCreateVM.
-
-
-        :param icon: The icon of this TemplateCreateVM.  # noqa: E501
-        :type icon: str
-        """
-        if (self.local_vars_configuration.client_side_validation and
-                icon is not None and len(icon) > 65536):
-            raise ValueError("Invalid value for `icon`, length must be less than or equal to `65536`")  # noqa: E501
-
-        self._icon = icon
-
-    @property
-    def content(self):
-        """Gets the content of this TemplateCreateVM.  # noqa: E501
-
-
-        :return: The content of this TemplateCreateVM.  # noqa: E501
-        :rtype: str
-        """
-        return self._content
-
-    @content.setter
-    def content(self, content):
-        """Sets the content of this TemplateCreateVM.
-
-
-        :param content: The content of this TemplateCreateVM.  # noqa: E501
-        :type content: str
-        """
-        if (self.local_vars_configuration.client_side_validation and
-                content is not None and len(content) > 1073741824):
-            raise ValueError("Invalid value for `content`, length must be less than or equal to `1073741824`")  # noqa: E501
-
-        self._content = content
 
     def to_dict(self, serialize=False):
         """Returns the model properties as a dict"""

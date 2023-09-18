@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **owner_id** | **str** |  | [optional] 
 **owner** | [**DataSourcePermission**](DataSourcePermission.md) |  | [optional] 
-**groups** | [**dict(str, DataSourcePermission)**](DataSourcePermission.md) |  | [optional] 
+**groups** | [**dict[str, DataSourcePermission]**](DataSourcePermission.md) |  | [optional] 
 **other** | [**DataSourcePermission**](DataSourcePermission.md) |  | [optional] 
 **anon** | [**DataSourcePermission**](DataSourcePermission.md) |  | [optional] 
 

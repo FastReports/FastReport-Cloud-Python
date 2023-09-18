@@ -36,46 +36,24 @@ class TemplateVM(object):
                             and the value is json key in definition.
     """
     openapi_types = {
-        'report_info': 'ReportInfo',
-        'id': 'str',
-        'created_time': 'datetime',
-        'creator_user_id': 'str',
-        'edited_time': 'datetime',
-        'editor_user_id': 'str'
+        'report_info': 'ReportInfo'
     }
 
     attribute_map = {
-        'report_info': 'reportInfo',
-        'id': 'id',
-        'created_time': 'createdTime',
-        'creator_user_id': 'creatorUserId',
-        'edited_time': 'editedTime',
-        'editor_user_id': 'editorUserId'
+        'report_info': 'reportInfo'
     }
 
-    def __init__(self, report_info=None, id=None, created_time=None, creator_user_id=None, edited_time=None, editor_user_id=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, report_info=None, local_vars_configuration=None):  # noqa: E501
         """TemplateVM - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration.get_default_copy()
         self.local_vars_configuration = local_vars_configuration
 
         self._report_info = None
-        self._id = None
-        self._created_time = None
-        self._creator_user_id = None
-        self._edited_time = None
-        self._editor_user_id = None
         self.discriminator = None
 
         if report_info is not None:
             self.report_info = report_info
-        self.id = id
-        if created_time is not None:
-            self.created_time = created_time
-        self.creator_user_id = creator_user_id
-        if edited_time is not None:
-            self.edited_time = edited_time
-        self.editor_user_id = editor_user_id
 
     @property
     def report_info(self):
@@ -97,111 +75,6 @@ class TemplateVM(object):
         """
 
         self._report_info = report_info
-
-    @property
-    def id(self):
-        """Gets the id of this TemplateVM.  # noqa: E501
-
-
-        :return: The id of this TemplateVM.  # noqa: E501
-        :rtype: str
-        """
-        return self._id
-
-    @id.setter
-    def id(self, id):
-        """Sets the id of this TemplateVM.
-
-
-        :param id: The id of this TemplateVM.  # noqa: E501
-        :type id: str
-        """
-
-        self._id = id
-
-    @property
-    def created_time(self):
-        """Gets the created_time of this TemplateVM.  # noqa: E501
-
-
-        :return: The created_time of this TemplateVM.  # noqa: E501
-        :rtype: datetime
-        """
-        return self._created_time
-
-    @created_time.setter
-    def created_time(self, created_time):
-        """Sets the created_time of this TemplateVM.
-
-
-        :param created_time: The created_time of this TemplateVM.  # noqa: E501
-        :type created_time: datetime
-        """
-
-        self._created_time = created_time
-
-    @property
-    def creator_user_id(self):
-        """Gets the creator_user_id of this TemplateVM.  # noqa: E501
-
-
-        :return: The creator_user_id of this TemplateVM.  # noqa: E501
-        :rtype: str
-        """
-        return self._creator_user_id
-
-    @creator_user_id.setter
-    def creator_user_id(self, creator_user_id):
-        """Sets the creator_user_id of this TemplateVM.
-
-
-        :param creator_user_id: The creator_user_id of this TemplateVM.  # noqa: E501
-        :type creator_user_id: str
-        """
-
-        self._creator_user_id = creator_user_id
-
-    @property
-    def edited_time(self):
-        """Gets the edited_time of this TemplateVM.  # noqa: E501
-
-
-        :return: The edited_time of this TemplateVM.  # noqa: E501
-        :rtype: datetime
-        """
-        return self._edited_time
-
-    @edited_time.setter
-    def edited_time(self, edited_time):
-        """Sets the edited_time of this TemplateVM.
-
-
-        :param edited_time: The edited_time of this TemplateVM.  # noqa: E501
-        :type edited_time: datetime
-        """
-
-        self._edited_time = edited_time
-
-    @property
-    def editor_user_id(self):
-        """Gets the editor_user_id of this TemplateVM.  # noqa: E501
-
-
-        :return: The editor_user_id of this TemplateVM.  # noqa: E501
-        :rtype: str
-        """
-        return self._editor_user_id
-
-    @editor_user_id.setter
-    def editor_user_id(self, editor_user_id):
-        """Sets the editor_user_id of this TemplateVM.
-
-
-        :param editor_user_id: The editor_user_id of this TemplateVM.  # noqa: E501
-        :type editor_user_id: str
-        """
-
-        self._editor_user_id = editor_user_id
 
     def to_dict(self, serialize=False):
         """Returns the model properties as a dict"""

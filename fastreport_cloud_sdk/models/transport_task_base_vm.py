@@ -36,179 +36,84 @@ class TransportTaskBaseVM(object):
                             and the value is json key in definition.
     """
     openapi_types = {
-        'files': 'list[InputFileVM]',
-        'name': 'str',
-        'subscription_id': 'str',
-        'type': 'TaskType',
-        'delayed_run_time': 'datetime',
-        'cron_expression': 'str'
+        'input_file': 'InputFileVM',
+        't': 'str'
     }
 
     attribute_map = {
-        'files': 'files',
-        'name': 'name',
-        'subscription_id': 'subscriptionId',
-        'type': 'type',
-        'delayed_run_time': 'delayedRunTime',
-        'cron_expression': 'cronExpression'
+        'input_file': 'inputFile',
+        't': '$t'
     }
 
-    def __init__(self, files=None, name=None, subscription_id=None, type=None, delayed_run_time=None, cron_expression=None, local_vars_configuration=None):  # noqa: E501
+    discriminator_value_class_map = {
+        'EmailTaskVM': 'EmailTaskVM',
+        'FTPUploadTaskVM': 'FTPUploadTaskVM',
+        'WebhookTaskVM': 'WebhookTaskVM'
+    }
+
+    def __init__(self, input_file=None, t=None, local_vars_configuration=None):  # noqa: E501
         """TransportTaskBaseVM - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration.get_default_copy()
         self.local_vars_configuration = local_vars_configuration
 
-        self._files = None
-        self._name = None
-        self._subscription_id = None
-        self._type = None
-        self._delayed_run_time = None
-        self._cron_expression = None
-        self.discriminator = None
+        self._input_file = None
+        self._t = None
+        self.discriminator = 't'
 
-        self.files = files
-        self.name = name
-        self.subscription_id = subscription_id
-        if type is not None:
-            self.type = type
-        self.delayed_run_time = delayed_run_time
-        self.cron_expression = cron_expression
+        if input_file is not None:
+            self.input_file = input_file
+        self.t = t
 
     @property
-    def files(self):
-        """Gets the files of this TransportTaskBaseVM.  # noqa: E501
+    def input_file(self):
+        """Gets the input_file of this TransportTaskBaseVM.  # noqa: E501
 
 
-        :return: The files of this TransportTaskBaseVM.  # noqa: E501
-        :rtype: list[InputFileVM]
+        :return: The input_file of this TransportTaskBaseVM.  # noqa: E501
+        :rtype: InputFileVM
         """
-        return self._files
+        return self._input_file
 
-    @files.setter
-    def files(self, files):
-        """Sets the files of this TransportTaskBaseVM.
+    @input_file.setter
+    def input_file(self, input_file):
+        """Sets the input_file of this TransportTaskBaseVM.
 
 
-        :param files: The files of this TransportTaskBaseVM.  # noqa: E501
-        :type files: list[InputFileVM]
+        :param input_file: The input_file of this TransportTaskBaseVM.  # noqa: E501
+        :type input_file: InputFileVM
         """
 
-        self._files = files
+        self._input_file = input_file
 
     @property
-    def name(self):
-        """Gets the name of this TransportTaskBaseVM.  # noqa: E501
+    def t(self):
+        """Gets the t of this TransportTaskBaseVM.  # noqa: E501
 
 
-        :return: The name of this TransportTaskBaseVM.  # noqa: E501
+        :return: The t of this TransportTaskBaseVM.  # noqa: E501
         :rtype: str
         """
-        return self._name
+        return self._t
 
-    @name.setter
-    def name(self, name):
-        """Sets the name of this TransportTaskBaseVM.
+    @t.setter
+    def t(self, t):
+        """Sets the t of this TransportTaskBaseVM.
 
 
-        :param name: The name of this TransportTaskBaseVM.  # noqa: E501
-        :type name: str
+        :param t: The t of this TransportTaskBaseVM.  # noqa: E501
+        :type t: str
         """
-        if (self.local_vars_configuration.client_side_validation and
-                name is not None and len(name) > 50):
-            raise ValueError("Invalid value for `name`, length must be less than or equal to `50`")  # noqa: E501
-        if (self.local_vars_configuration.client_side_validation and
-                name is not None and len(name) < 1):
-            raise ValueError("Invalid value for `name`, length must be greater than or equal to `1`")  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and t is None:  # noqa: E501
+            raise ValueError("Invalid value for `t`, must not be `None`")  # noqa: E501
 
-        self._name = name
+        self._t = t
 
-    @property
-    def subscription_id(self):
-        """Gets the subscription_id of this TransportTaskBaseVM.  # noqa: E501
-
-
-        :return: The subscription_id of this TransportTaskBaseVM.  # noqa: E501
-        :rtype: str
-        """
-        return self._subscription_id
-
-    @subscription_id.setter
-    def subscription_id(self, subscription_id):
-        """Sets the subscription_id of this TransportTaskBaseVM.
-
-
-        :param subscription_id: The subscription_id of this TransportTaskBaseVM.  # noqa: E501
-        :type subscription_id: str
-        """
-        if (self.local_vars_configuration.client_side_validation and
-                subscription_id is not None and not re.search(r'(^$)|(^[A-Fa-f0-9]{24}$)', subscription_id)):  # noqa: E501
-            raise ValueError(r"Invalid value for `subscription_id`, must be a follow pattern or equal to `/(^$)|(^[A-Fa-f0-9]{24}$)/`")  # noqa: E501
-
-        self._subscription_id = subscription_id
-
-    @property
-    def type(self):
-        """Gets the type of this TransportTaskBaseVM.  # noqa: E501
-
-
-        :return: The type of this TransportTaskBaseVM.  # noqa: E501
-        :rtype: TaskType
-        """
-        return self._type
-
-    @type.setter
-    def type(self, type):
-        """Sets the type of this TransportTaskBaseVM.
-
-
-        :param type: The type of this TransportTaskBaseVM.  # noqa: E501
-        :type type: TaskType
-        """
-
-        self._type = type
-
-    @property
-    def delayed_run_time(self):
-        """Gets the delayed_run_time of this TransportTaskBaseVM.  # noqa: E501
-
-
-        :return: The delayed_run_time of this TransportTaskBaseVM.  # noqa: E501
-        :rtype: datetime
-        """
-        return self._delayed_run_time
-
-    @delayed_run_time.setter
-    def delayed_run_time(self, delayed_run_time):
-        """Sets the delayed_run_time of this TransportTaskBaseVM.
-
-
-        :param delayed_run_time: The delayed_run_time of this TransportTaskBaseVM.  # noqa: E501
-        :type delayed_run_time: datetime
-        """
-
-        self._delayed_run_time = delayed_run_time
-
-    @property
-    def cron_expression(self):
-        """Gets the cron_expression of this TransportTaskBaseVM.  # noqa: E501
-
-
-        :return: The cron_expression of this TransportTaskBaseVM.  # noqa: E501
-        :rtype: str
-        """
-        return self._cron_expression
-
-    @cron_expression.setter
-    def cron_expression(self, cron_expression):
-        """Sets the cron_expression of this TransportTaskBaseVM.
-
-
-        :param cron_expression: The cron_expression of this TransportTaskBaseVM.  # noqa: E501
-        :type cron_expression: str
-        """
-
-        self._cron_expression = cron_expression
+    def get_real_child_model(self, data):
+        """Returns the real base class specified by the discriminator"""
+        discriminator_key = self.attribute_map[self.discriminator]
+        discriminator_value = data[discriminator_key]
+        return self.discriminator_value_class_map.get(discriminator_value)
 
     def to_dict(self, serialize=False):
         """Returns the model properties as a dict"""

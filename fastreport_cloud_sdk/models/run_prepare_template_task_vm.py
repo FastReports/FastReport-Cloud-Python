@@ -38,20 +38,16 @@ class RunPrepareTemplateTaskVM(object):
     openapi_types = {
         'exports': 'list[RunExportReportTaskVM]',
         'pages_count': 'int',
-        'report_parameters': 'dict(str, str)',
-        'subscription_id': 'str',
-        'type': 'TaskType'
+        'report_parameters': 'dict[str, str]'
     }
 
     attribute_map = {
         'exports': 'exports',
         'pages_count': 'pagesCount',
-        'report_parameters': 'reportParameters',
-        'subscription_id': 'subscriptionId',
-        'type': 'type'
+        'report_parameters': 'reportParameters'
     }
 
-    def __init__(self, exports=None, pages_count=None, report_parameters=None, subscription_id=None, type=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, exports=None, pages_count=None, report_parameters=None, local_vars_configuration=None):  # noqa: E501
         """RunPrepareTemplateTaskVM - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration.get_default_copy()
@@ -60,16 +56,12 @@ class RunPrepareTemplateTaskVM(object):
         self._exports = None
         self._pages_count = None
         self._report_parameters = None
-        self._subscription_id = None
-        self._type = None
         self.discriminator = None
 
         self.exports = exports
-        self.pages_count = pages_count
+        if pages_count is not None:
+            self.pages_count = pages_count
         self.report_parameters = report_parameters
-        self.subscription_id = subscription_id
-        if type is not None:
-            self.type = type
 
     @property
     def exports(self):
@@ -128,7 +120,7 @@ class RunPrepareTemplateTaskVM(object):
 
 
         :return: The report_parameters of this RunPrepareTemplateTaskVM.  # noqa: E501
-        :rtype: dict(str, str)
+        :rtype: dict[str, str]
         """
         return self._report_parameters
 
@@ -138,55 +130,10 @@ class RunPrepareTemplateTaskVM(object):
 
 
         :param report_parameters: The report_parameters of this RunPrepareTemplateTaskVM.  # noqa: E501
-        :type report_parameters: dict(str, str)
+        :type report_parameters: dict[str, str]
         """
 
         self._report_parameters = report_parameters
-
-    @property
-    def subscription_id(self):
-        """Gets the subscription_id of this RunPrepareTemplateTaskVM.  # noqa: E501
-
-
-        :return: The subscription_id of this RunPrepareTemplateTaskVM.  # noqa: E501
-        :rtype: str
-        """
-        return self._subscription_id
-
-    @subscription_id.setter
-    def subscription_id(self, subscription_id):
-        """Sets the subscription_id of this RunPrepareTemplateTaskVM.
-
-
-        :param subscription_id: The subscription_id of this RunPrepareTemplateTaskVM.  # noqa: E501
-        :type subscription_id: str
-        """
-        if (self.local_vars_configuration.client_side_validation and
-                subscription_id is not None and not re.search(r'(^$)|(^[A-Fa-f0-9]{24}$)', subscription_id)):  # noqa: E501
-            raise ValueError(r"Invalid value for `subscription_id`, must be a follow pattern or equal to `/(^$)|(^[A-Fa-f0-9]{24}$)/`")  # noqa: E501
-
-        self._subscription_id = subscription_id
-
-    @property
-    def type(self):
-        """Gets the type of this RunPrepareTemplateTaskVM.  # noqa: E501
-
-
-        :return: The type of this RunPrepareTemplateTaskVM.  # noqa: E501
-        :rtype: TaskType
-        """
-        return self._type
-
-    @type.setter
-    def type(self, type):
-        """Sets the type of this RunPrepareTemplateTaskVM.
-
-
-        :param type: The type of this RunPrepareTemplateTaskVM.  # noqa: E501
-        :type type: TaskType
-        """
-
-        self._type = type
 
     def to_dict(self, serialize=False):
         """Returns the model properties as a dict"""

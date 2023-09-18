@@ -38,7 +38,8 @@ class TestOutputFileVM(unittest.TestCase):
             return OutputFileVM(
                 file_name = '0', 
                 folder_id = '2ECB020842930cc01FFCCfeE', 
-                type = 'Template'
+                type = 'Template', 
+                is_temporary = True
             )
         else :
             return OutputFileVM(

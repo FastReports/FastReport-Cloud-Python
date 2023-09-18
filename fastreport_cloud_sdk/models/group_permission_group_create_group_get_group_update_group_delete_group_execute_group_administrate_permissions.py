@@ -38,7 +38,7 @@ class GroupPermissionGroupCreateGroupGetGroupUpdateGroupDeleteGroupExecuteGroupA
     openapi_types = {
         'owner_id': 'str',
         'owner': 'GroupPermission',
-        'groups': 'dict(str, GroupPermission)',
+        'groups': 'dict[str, GroupPermission]',
         'other': 'GroupPermission',
         'anon': 'GroupPermission'
     }
@@ -124,7 +124,7 @@ class GroupPermissionGroupCreateGroupGetGroupUpdateGroupDeleteGroupExecuteGroupA
 
 
         :return: The groups of this GroupPermissionGroupCreateGroupGetGroupUpdateGroupDeleteGroupExecuteGroupAdministratePermissions.  # noqa: E501
-        :rtype: dict(str, GroupPermission)
+        :rtype: dict[str, GroupPermission]
         """
         return self._groups
 
@@ -134,7 +134,7 @@ class GroupPermissionGroupCreateGroupGetGroupUpdateGroupDeleteGroupExecuteGroupA
 
 
         :param groups: The groups of this GroupPermissionGroupCreateGroupGetGroupUpdateGroupDeleteGroupExecuteGroupAdministratePermissions.  # noqa: E501
-        :type groups: dict(str, GroupPermission)
+        :type groups: dict[str, GroupPermission]
         """
 
         self._groups = groups

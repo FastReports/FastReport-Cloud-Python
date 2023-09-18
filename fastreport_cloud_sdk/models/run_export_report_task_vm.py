@@ -36,22 +36,24 @@ class RunExportReportTaskVM(object):
                             and the value is json key in definition.
     """
     openapi_types = {
-        'export_parameters': 'dict(str, str)',
+        'export_parameters': 'dict[str, str]',
         'format': 'ExportFormat',
         'pages_count': 'int',
-        'subscription_id': 'str',
-        'type': 'TaskType'
+        't': 'str'
     }
 
     attribute_map = {
         'export_parameters': 'exportParameters',
         'format': 'format',
         'pages_count': 'pagesCount',
-        'subscription_id': 'subscriptionId',
-        'type': 'type'
+        't': '$t'
     }
 
-    def __init__(self, export_parameters=None, format=None, pages_count=None, subscription_id=None, type=None, local_vars_configuration=None):  # noqa: E501
+    discriminator_value_class_map = {
+        'RunExportTemplateTaskVM': 'RunExportTemplateTaskVM'
+    }
+
+    def __init__(self, export_parameters=None, format=None, pages_count=None, t=None, local_vars_configuration=None):  # noqa: E501
         """RunExportReportTaskVM - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration.get_default_copy()
@@ -60,17 +62,15 @@ class RunExportReportTaskVM(object):
         self._export_parameters = None
         self._format = None
         self._pages_count = None
-        self._subscription_id = None
-        self._type = None
-        self.discriminator = None
+        self._t = None
+        self.discriminator = 't'
 
         self.export_parameters = export_parameters
         if format is not None:
             self.format = format
-        self.pages_count = pages_count
-        self.subscription_id = subscription_id
-        if type is not None:
-            self.type = type
+        if pages_count is not None:
+            self.pages_count = pages_count
+        self.t = t
 
     @property
     def export_parameters(self):
@@ -78,7 +78,7 @@ class RunExportReportTaskVM(object):
 
 
         :return: The export_parameters of this RunExportReportTaskVM.  # noqa: E501
-        :rtype: dict(str, str)
+        :rtype: dict[str, str]
         """
         return self._export_parameters
 
@@ -88,7 +88,7 @@ class RunExportReportTaskVM(object):
 
 
         :param export_parameters: The export_parameters of this RunExportReportTaskVM.  # noqa: E501
-        :type export_parameters: dict(str, str)
+        :type export_parameters: dict[str, str]
         """
 
         self._export_parameters = export_parameters
@@ -142,49 +142,33 @@ class RunExportReportTaskVM(object):
         self._pages_count = pages_count
 
     @property
-    def subscription_id(self):
-        """Gets the subscription_id of this RunExportReportTaskVM.  # noqa: E501
+    def t(self):
+        """Gets the t of this RunExportReportTaskVM.  # noqa: E501
 
 
-        :return: The subscription_id of this RunExportReportTaskVM.  # noqa: E501
+        :return: The t of this RunExportReportTaskVM.  # noqa: E501
         :rtype: str
         """
-        return self._subscription_id
+        return self._t
 
-    @subscription_id.setter
-    def subscription_id(self, subscription_id):
-        """Sets the subscription_id of this RunExportReportTaskVM.
+    @t.setter
+    def t(self, t):
+        """Sets the t of this RunExportReportTaskVM.
 
 
-        :param subscription_id: The subscription_id of this RunExportReportTaskVM.  # noqa: E501
-        :type subscription_id: str
+        :param t: The t of this RunExportReportTaskVM.  # noqa: E501
+        :type t: str
         """
-        if (self.local_vars_configuration.client_side_validation and
-                subscription_id is not None and not re.search(r'(^$)|(^[A-Fa-f0-9]{24}$)', subscription_id)):  # noqa: E501
-            raise ValueError(r"Invalid value for `subscription_id`, must be a follow pattern or equal to `/(^$)|(^[A-Fa-f0-9]{24}$)/`")  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and t is None:  # noqa: E501
+            raise ValueError("Invalid value for `t`, must not be `None`")  # noqa: E501
 
-        self._subscription_id = subscription_id
+        self._t = t
 
-    @property
-    def type(self):
-        """Gets the type of this RunExportReportTaskVM.  # noqa: E501
-
-
-        :return: The type of this RunExportReportTaskVM.  # noqa: E501
-        :rtype: TaskType
-        """
-        return self._type
-
-    @type.setter
-    def type(self, type):
-        """Sets the type of this RunExportReportTaskVM.
-
-
-        :param type: The type of this RunExportReportTaskVM.  # noqa: E501
-        :type type: TaskType
-        """
-
-        self._type = type
+    def get_real_child_model(self, data):
+        """Returns the real base class specified by the discriminator"""
+        discriminator_key = self.attribute_map[self.discriminator]
+        discriminator_value = data[discriminator_key]
+        return self.discriminator_value_class_map.get(discriminator_value)
 
     def to_dict(self, serialize=False):
         """Returns the model properties as a dict"""

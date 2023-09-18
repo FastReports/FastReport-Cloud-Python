@@ -37,27 +37,34 @@ class RunTaskBaseVM(object):
     """
     openapi_types = {
         'subscription_id': 'str',
-        'type': 'TaskType'
+        't': 'str'
     }
 
     attribute_map = {
         'subscription_id': 'subscriptionId',
-        'type': 'type'
+        't': '$t'
     }
 
-    def __init__(self, subscription_id=None, type=None, local_vars_configuration=None):  # noqa: E501
+    discriminator_value_class_map = {
+        'RunFetchTaskVM': 'RunFetchTaskVM',
+        'RunThumbnailReportTaskVM': 'RunThumbnailReportTaskVM',
+        'RunThumbnailTemplateTaskVM': 'RunThumbnailTemplateTaskVM',
+        'RunTransformTaskBaseVM': 'RunTransformTaskBaseVM',
+        'RunTransportTaskBaseVM': 'RunTransportTaskBaseVM'
+    }
+
+    def __init__(self, subscription_id=None, t=None, local_vars_configuration=None):  # noqa: E501
         """RunTaskBaseVM - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration.get_default_copy()
         self.local_vars_configuration = local_vars_configuration
 
         self._subscription_id = None
-        self._type = None
-        self.discriminator = None
+        self._t = None
+        self.discriminator = 't'
 
         self.subscription_id = subscription_id
-        if type is not None:
-            self.type = type
+        self.t = t
 
     @property
     def subscription_id(self):
@@ -84,25 +91,33 @@ class RunTaskBaseVM(object):
         self._subscription_id = subscription_id
 
     @property
-    def type(self):
-        """Gets the type of this RunTaskBaseVM.  # noqa: E501
+    def t(self):
+        """Gets the t of this RunTaskBaseVM.  # noqa: E501
 
 
-        :return: The type of this RunTaskBaseVM.  # noqa: E501
-        :rtype: TaskType
+        :return: The t of this RunTaskBaseVM.  # noqa: E501
+        :rtype: str
         """
-        return self._type
+        return self._t
 
-    @type.setter
-    def type(self, type):
-        """Sets the type of this RunTaskBaseVM.
+    @t.setter
+    def t(self, t):
+        """Sets the t of this RunTaskBaseVM.
 
 
-        :param type: The type of this RunTaskBaseVM.  # noqa: E501
-        :type type: TaskType
+        :param t: The t of this RunTaskBaseVM.  # noqa: E501
+        :type t: str
         """
+        if self.local_vars_configuration.client_side_validation and t is None:  # noqa: E501
+            raise ValueError("Invalid value for `t`, must not be `None`")  # noqa: E501
 
-        self._type = type
+        self._t = t
+
+    def get_real_child_model(self, data):
+        """Returns the real base class specified by the discriminator"""
+        discriminator_key = self.attribute_map[self.discriminator]
+        discriminator_value = data[discriminator_key]
+        return self.discriminator_value_class_map.get(discriminator_value)
 
     def to_dict(self, serialize=False):
         """Returns the model properties as a dict"""

@@ -4,6 +4,7 @@ All URIs are relative to *http://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**data_sources_count_data_sources_async**](DataSourcesApi.md#data_sources_count_data_sources_async) | **GET** /api/data/v1/DataSources/{subscriptionId}/count | Returns a number of data sources in subscription
 [**data_sources_create_data_source**](DataSourcesApi.md#data_sources_create_data_source) | **POST** /api/data/v1/DataSources | Create new data source
 [**data_sources_delete_data_source**](DataSourcesApi.md#data_sources_delete_data_source) | **DELETE** /api/data/v1/DataSources/{id} | Delete data source by id
 [**data_sources_fetch_data**](DataSourcesApi.md#data_sources_fetch_data) | **GET** /api/data/v1/DataSources/{id}/fetch | This should connect to a database and set data structure
@@ -15,6 +16,128 @@ Method | HTTP request | Description
 [**data_sources_update_permissions**](DataSourcesApi.md#data_sources_update_permissions) | **POST** /api/data/v1/DataSources/{id}/permissions | Update permissions
 [**data_sources_update_subscription_data_source**](DataSourcesApi.md#data_sources_update_subscription_data_source) | **PUT** /api/data/v1/DataSources/{id}/updateSubscription | Update data source&#39;s subscription
 
+
+# **data_sources_count_data_sources_async**
+> int data_sources_count_data_sources_async(subscription_id)
+
+Returns a number of data sources in subscription
+
+### Example
+
+* Basic Authentication (ApiKey):
+```python
+from __future__ import print_function
+import time
+import fastreport_cloud_sdk
+from fastreport_cloud_sdk.rest import ApiException
+from pprint import pprint
+# Defining the host is optional and defaults to http://localhost
+# See configuration.py for a list of all supported configuration parameters.
+configuration = fastreport_cloud_sdk.Configuration(
+    host = "http://localhost"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure HTTP basic authorization: ApiKey
+configuration = fastreport_cloud_sdk.Configuration(
+    username = 'YOUR_USERNAME',
+    password = 'YOUR_PASSWORD'
+)
+
+# Configure Bearer authorization (JWT): JWT
+configuration = fastreport_cloud_sdk.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
+)
+
+# Enter a context with an instance of the API client
+with fastreport_cloud_sdk.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = fastreport_cloud_sdk.DataSourcesApi(api_client)
+    subscription_id = 'subscription_id_example' # str | subscripiton id
+
+    try:
+        # Returns a number of data sources in subscription
+        api_response = api_instance.data_sources_count_data_sources_async(subscription_id)
+        pprint(api_response)
+    except ApiException as e:
+        print("Exception when calling DataSourcesApi->data_sources_count_data_sources_async: %s\n" % e)
+```
+
+* Bearer (JWT) Authentication (JWT):
+```python
+from __future__ import print_function
+import time
+import fastreport_cloud_sdk
+from fastreport_cloud_sdk.rest import ApiException
+from pprint import pprint
+# Defining the host is optional and defaults to http://localhost
+# See configuration.py for a list of all supported configuration parameters.
+configuration = fastreport_cloud_sdk.Configuration(
+    host = "http://localhost"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure HTTP basic authorization: ApiKey
+configuration = fastreport_cloud_sdk.Configuration(
+    username = 'YOUR_USERNAME',
+    password = 'YOUR_PASSWORD'
+)
+
+# Configure Bearer authorization (JWT): JWT
+configuration = fastreport_cloud_sdk.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
+)
+
+# Enter a context with an instance of the API client
+with fastreport_cloud_sdk.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = fastreport_cloud_sdk.DataSourcesApi(api_client)
+    subscription_id = 'subscription_id_example' # str | subscripiton id
+
+    try:
+        # Returns a number of data sources in subscription
+        api_response = api_instance.data_sources_count_data_sources_async(subscription_id)
+        pprint(api_response)
+    except ApiException as e:
+        print("Exception when calling DataSourcesApi->data_sources_count_data_sources_async: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **subscription_id** | **str**| subscripiton id | 
+
+### Return type
+
+**int**
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [JWT](../README.md#JWT)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Everything is all right |  -  |
+**400** | id is not hex24 |  -  |
+**403** | You don&#39;t have permisison to get data sources from this subscription (or in your default (1st) subscription) |  -  |
+**404** | there is no subscription with provided id found, or user don&#39;t even have a subscription |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **data_sources_create_data_source**
 > DataSourceVM data_sources_create_data_source(create_data_source_vm=create_data_source_vm)
@@ -253,7 +376,7 @@ void (empty response body)
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**204** | Success |  -  |
+**204** | No Content |  -  |
 **400** | Bad Request |  -  |
 **402** | Client Error |  -  |
 **403** | Forbidden |  -  |
@@ -375,7 +498,7 @@ void (empty response body)
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Success |  -  |
+**204** | No Content |  -  |
 **400** | Bad Request |  -  |
 **402** | Client Error |  -  |
 **403** | Forbidden |  -  |
@@ -1137,7 +1260,7 @@ void (empty response body)
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Success |  -  |
+**204** | No Content |  -  |
 **400** | Bad Request |  -  |
 **402** | Client Error |  -  |
 **403** | Forbidden |  -  |

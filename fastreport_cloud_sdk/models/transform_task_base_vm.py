@@ -36,58 +36,67 @@ class TransformTaskBaseVM(object):
                             and the value is json key in definition.
     """
     openapi_types = {
-        'locale': 'str',
         'input_file': 'InputFileVM',
+        'locale': 'str',
         'output_file': 'OutputFileVM',
-        'transports': 'list[TransportTaskBaseVM]',
-        'name': 'str',
-        'subscription_id': 'str',
-        'type': 'TaskType',
-        'delayed_run_time': 'datetime',
-        'cron_expression': 'str'
+        'transport_ids': 'list[str]',
+        't': 'str'
     }
 
     attribute_map = {
-        'locale': 'locale',
         'input_file': 'inputFile',
+        'locale': 'locale',
         'output_file': 'outputFile',
-        'transports': 'transports',
-        'name': 'name',
-        'subscription_id': 'subscriptionId',
-        'type': 'type',
-        'delayed_run_time': 'delayedRunTime',
-        'cron_expression': 'cronExpression'
+        'transport_ids': 'transportIds',
+        't': '$t'
     }
 
-    def __init__(self, locale=None, input_file=None, output_file=None, transports=None, name=None, subscription_id=None, type=None, delayed_run_time=None, cron_expression=None, local_vars_configuration=None):  # noqa: E501
+    discriminator_value_class_map = {
+        'ExportReportTaskVM': 'ExportReportTaskVM',
+        'PrepareTemplateTaskVM': 'PrepareTemplateTaskVM'
+    }
+
+    def __init__(self, input_file=None, locale=None, output_file=None, transport_ids=None, t=None, local_vars_configuration=None):  # noqa: E501
         """TransformTaskBaseVM - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration.get_default_copy()
         self.local_vars_configuration = local_vars_configuration
 
-        self._locale = None
         self._input_file = None
+        self._locale = None
         self._output_file = None
-        self._transports = None
-        self._name = None
-        self._subscription_id = None
-        self._type = None
-        self._delayed_run_time = None
-        self._cron_expression = None
-        self.discriminator = None
+        self._transport_ids = None
+        self._t = None
+        self.discriminator = 't'
 
-        self.locale = locale
         if input_file is not None:
             self.input_file = input_file
+        self.locale = locale
         if output_file is not None:
             self.output_file = output_file
-        self.transports = transports
-        self.name = name
-        self.subscription_id = subscription_id
-        if type is not None:
-            self.type = type
-        self.delayed_run_time = delayed_run_time
-        self.cron_expression = cron_expression
+        self.transport_ids = transport_ids
+        self.t = t
+
+    @property
+    def input_file(self):
+        """Gets the input_file of this TransformTaskBaseVM.  # noqa: E501
+
+
+        :return: The input_file of this TransformTaskBaseVM.  # noqa: E501
+        :rtype: InputFileVM
+        """
+        return self._input_file
+
+    @input_file.setter
+    def input_file(self, input_file):
+        """Sets the input_file of this TransformTaskBaseVM.
+
+
+        :param input_file: The input_file of this TransformTaskBaseVM.  # noqa: E501
+        :type input_file: InputFileVM
+        """
+
+        self._input_file = input_file
 
     @property
     def locale(self):
@@ -114,27 +123,6 @@ class TransformTaskBaseVM(object):
         self._locale = locale
 
     @property
-    def input_file(self):
-        """Gets the input_file of this TransformTaskBaseVM.  # noqa: E501
-
-
-        :return: The input_file of this TransformTaskBaseVM.  # noqa: E501
-        :rtype: InputFileVM
-        """
-        return self._input_file
-
-    @input_file.setter
-    def input_file(self, input_file):
-        """Sets the input_file of this TransformTaskBaseVM.
-
-
-        :param input_file: The input_file of this TransformTaskBaseVM.  # noqa: E501
-        :type input_file: InputFileVM
-        """
-
-        self._input_file = input_file
-
-    @property
     def output_file(self):
         """Gets the output_file of this TransformTaskBaseVM.  # noqa: E501
 
@@ -156,139 +144,54 @@ class TransformTaskBaseVM(object):
         self._output_file = output_file
 
     @property
-    def transports(self):
-        """Gets the transports of this TransformTaskBaseVM.  # noqa: E501
+    def transport_ids(self):
+        """Gets the transport_ids of this TransformTaskBaseVM.  # noqa: E501
 
 
-        :return: The transports of this TransformTaskBaseVM.  # noqa: E501
-        :rtype: list[TransportTaskBaseVM]
+        :return: The transport_ids of this TransformTaskBaseVM.  # noqa: E501
+        :rtype: list[str]
         """
-        return self._transports
+        return self._transport_ids
 
-    @transports.setter
-    def transports(self, transports):
-        """Sets the transports of this TransformTaskBaseVM.
+    @transport_ids.setter
+    def transport_ids(self, transport_ids):
+        """Sets the transport_ids of this TransformTaskBaseVM.
 
 
-        :param transports: The transports of this TransformTaskBaseVM.  # noqa: E501
-        :type transports: list[TransportTaskBaseVM]
+        :param transport_ids: The transport_ids of this TransformTaskBaseVM.  # noqa: E501
+        :type transport_ids: list[str]
         """
 
-        self._transports = transports
+        self._transport_ids = transport_ids
 
     @property
-    def name(self):
-        """Gets the name of this TransformTaskBaseVM.  # noqa: E501
+    def t(self):
+        """Gets the t of this TransformTaskBaseVM.  # noqa: E501
 
 
-        :return: The name of this TransformTaskBaseVM.  # noqa: E501
+        :return: The t of this TransformTaskBaseVM.  # noqa: E501
         :rtype: str
         """
-        return self._name
+        return self._t
 
-    @name.setter
-    def name(self, name):
-        """Sets the name of this TransformTaskBaseVM.
+    @t.setter
+    def t(self, t):
+        """Sets the t of this TransformTaskBaseVM.
 
 
-        :param name: The name of this TransformTaskBaseVM.  # noqa: E501
-        :type name: str
+        :param t: The t of this TransformTaskBaseVM.  # noqa: E501
+        :type t: str
         """
-        if (self.local_vars_configuration.client_side_validation and
-                name is not None and len(name) > 50):
-            raise ValueError("Invalid value for `name`, length must be less than or equal to `50`")  # noqa: E501
-        if (self.local_vars_configuration.client_side_validation and
-                name is not None and len(name) < 1):
-            raise ValueError("Invalid value for `name`, length must be greater than or equal to `1`")  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and t is None:  # noqa: E501
+            raise ValueError("Invalid value for `t`, must not be `None`")  # noqa: E501
 
-        self._name = name
+        self._t = t
 
-    @property
-    def subscription_id(self):
-        """Gets the subscription_id of this TransformTaskBaseVM.  # noqa: E501
-
-
-        :return: The subscription_id of this TransformTaskBaseVM.  # noqa: E501
-        :rtype: str
-        """
-        return self._subscription_id
-
-    @subscription_id.setter
-    def subscription_id(self, subscription_id):
-        """Sets the subscription_id of this TransformTaskBaseVM.
-
-
-        :param subscription_id: The subscription_id of this TransformTaskBaseVM.  # noqa: E501
-        :type subscription_id: str
-        """
-        if (self.local_vars_configuration.client_side_validation and
-                subscription_id is not None and not re.search(r'(^$)|(^[A-Fa-f0-9]{24}$)', subscription_id)):  # noqa: E501
-            raise ValueError(r"Invalid value for `subscription_id`, must be a follow pattern or equal to `/(^$)|(^[A-Fa-f0-9]{24}$)/`")  # noqa: E501
-
-        self._subscription_id = subscription_id
-
-    @property
-    def type(self):
-        """Gets the type of this TransformTaskBaseVM.  # noqa: E501
-
-
-        :return: The type of this TransformTaskBaseVM.  # noqa: E501
-        :rtype: TaskType
-        """
-        return self._type
-
-    @type.setter
-    def type(self, type):
-        """Sets the type of this TransformTaskBaseVM.
-
-
-        :param type: The type of this TransformTaskBaseVM.  # noqa: E501
-        :type type: TaskType
-        """
-
-        self._type = type
-
-    @property
-    def delayed_run_time(self):
-        """Gets the delayed_run_time of this TransformTaskBaseVM.  # noqa: E501
-
-
-        :return: The delayed_run_time of this TransformTaskBaseVM.  # noqa: E501
-        :rtype: datetime
-        """
-        return self._delayed_run_time
-
-    @delayed_run_time.setter
-    def delayed_run_time(self, delayed_run_time):
-        """Sets the delayed_run_time of this TransformTaskBaseVM.
-
-
-        :param delayed_run_time: The delayed_run_time of this TransformTaskBaseVM.  # noqa: E501
-        :type delayed_run_time: datetime
-        """
-
-        self._delayed_run_time = delayed_run_time
-
-    @property
-    def cron_expression(self):
-        """Gets the cron_expression of this TransformTaskBaseVM.  # noqa: E501
-
-
-        :return: The cron_expression of this TransformTaskBaseVM.  # noqa: E501
-        :rtype: str
-        """
-        return self._cron_expression
-
-    @cron_expression.setter
-    def cron_expression(self, cron_expression):
-        """Sets the cron_expression of this TransformTaskBaseVM.
-
-
-        :param cron_expression: The cron_expression of this TransformTaskBaseVM.  # noqa: E501
-        :type cron_expression: str
-        """
-
-        self._cron_expression = cron_expression
+    def get_real_child_model(self, data):
+        """Returns the real base class specified by the discriminator"""
+        discriminator_key = self.attribute_map[self.discriminator]
+        discriminator_value = data[discriminator_key]
+        return self.discriminator_value_class_map.get(discriminator_value)
 
     def to_dict(self, serialize=False):
         """Returns the model properties as a dict"""

@@ -38,7 +38,11 @@ class TestUserSettingsVM(unittest.TestCase):
             return UserSettingsVM(
                 profile_visibility = 0, 
                 default_subscription = '62ECB020842930cc01FFCCfe', 
-                show_hidden_files_and_folders = True
+                show_hidden_files_and_folders = True, 
+                sla_accepted_date_time = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
+                subscribed_notifications = [
+                    'Task_Created_ExportTemplate'
+                    ]
             )
         else :
             return UserSettingsVM(

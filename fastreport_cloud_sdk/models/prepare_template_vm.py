@@ -40,7 +40,7 @@ class PrepareTemplateVM(object):
         'locale': 'str',
         'folder_id': 'str',
         'pages_count': 'int',
-        'report_parameters': 'dict(str, str)'
+        'report_parameters': 'dict[str, str]'
     }
 
     attribute_map = {
@@ -178,7 +178,7 @@ class PrepareTemplateVM(object):
 
 
         :return: The report_parameters of this PrepareTemplateVM.  # noqa: E501
-        :rtype: dict(str, str)
+        :rtype: dict[str, str]
         """
         return self._report_parameters
 
@@ -188,7 +188,7 @@ class PrepareTemplateVM(object):
 
 
         :param report_parameters: The report_parameters of this PrepareTemplateVM.  # noqa: E501
-        :type report_parameters: dict(str, str)
+        :type report_parameters: dict[str, str]
         """
 
         self._report_parameters = report_parameters

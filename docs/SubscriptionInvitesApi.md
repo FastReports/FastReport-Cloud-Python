@@ -127,6 +127,7 @@ void (empty response body)
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Succesfully added |  -  |
+**204** | Succesfully added |  -  |
 **400** | The reqeust is wrong |  -  |
 **403** | You don&#39;t have rights for the operation |  -  |
 **404** | Subscription or user is not found |  -  |

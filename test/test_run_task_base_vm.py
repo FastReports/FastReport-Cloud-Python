@@ -37,10 +37,11 @@ class TestRunTaskBaseVM(unittest.TestCase):
         if include_optional :
             return RunTaskBaseVM(
                 subscription_id = '2ECB020842930cc01FFCCfeE', 
-                type = 'ExportTemplate'
+                t = ''
             )
         else :
             return RunTaskBaseVM(
+                t = '',
         )
 
     def testRunTaskBaseVM(self):
