@@ -14,7 +14,7 @@
 
 from __future__ import absolute_import
 
-__version__ = "2023.1.60"
+__version__ = "2024.1.0"
 
 # import apis into sdk package
 from fastreport_cloud_sdk.api.api_keys_api import ApiKeysApi
@@ -206,7 +206,6 @@ from fastreport_cloud_sdk.models.run_transform_task_base_vm import RunTransformT
 from fastreport_cloud_sdk.models.run_transport_task_base_vm import RunTransportTaskBaseVM
 from fastreport_cloud_sdk.models.run_webhook_task_vm import RunWebhookTaskVM
 from fastreport_cloud_sdk.models.save_mode import SaveMode
-from fastreport_cloud_sdk.models.selected_files_for_deleting_vm import SelectedFilesForDeletingVM
 from fastreport_cloud_sdk.models.selected_files_vm import SelectedFilesVM
 from fastreport_cloud_sdk.models.server_configuration_vm import ServerConfigurationVM
 from fastreport_cloud_sdk.models.subscription_administrate import SubscriptionAdministrate

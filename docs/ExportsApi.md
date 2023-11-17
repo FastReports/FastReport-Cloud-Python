@@ -9,7 +9,9 @@ Method | HTTP request | Description
 [**export_folder_and_file_get_count**](ExportsApi.md#export_folder_and_file_get_count) | **GET** /api/rp/v1/Exports/Folder/{id}/CountFolderAndFiles | Get count of files and folders what contains in a specified folder
 [**export_folder_and_file_get_folders_and_files**](ExportsApi.md#export_folder_and_file_get_folders_and_files) | **GET** /api/rp/v1/Exports/Folder/{id}/ListFolderAndFiles | Get all folders and files from specified folder
 [**export_folder_and_file_get_recycle_bin_folders_and_files**](ExportsApi.md#export_folder_and_file_get_recycle_bin_folders_and_files) | **GET** /api/rp/v1/Exports/{subscriptionId}/ListRecycleBinFolderAndFiles | Get all folders and files from recycle bin
+[**export_folder_and_file_move_files_to_bin**](ExportsApi.md#export_folder_and_file_move_files_to_bin) | **POST** /api/rp/v1/Exports/{subscriptionId}/ToBin | Move folders and files to bin
 [**export_folder_and_file_recover_all_from_recycle_bin**](ExportsApi.md#export_folder_and_file_recover_all_from_recycle_bin) | **POST** /api/rp/v1/Exports/{subscriptionId}/RecoverRecycleBin | Recover all folders and files from recycle bin
+[**export_folder_and_file_recover_files**](ExportsApi.md#export_folder_and_file_recover_files) | **POST** /api/rp/v1/Exports/{subscriptionId}/RecoverFiles | Recover folders and files from bin
 [**export_folders_calculate_folder_size**](ExportsApi.md#export_folders_calculate_folder_size) | **GET** /api/rp/v1/Exports/Folder/{id}/size | Get specified folder, calculate it&#39;s size
 [**export_folders_copy_folder**](ExportsApi.md#export_folders_copy_folder) | **POST** /api/rp/v1/Exports/Folder/{id}/Copy/{folderId} | Move folder to a specified folder
 [**export_folders_delete_folder**](ExportsApi.md#export_folders_delete_folder) | **DELETE** /api/rp/v1/Exports/Folder/{id} | Delete specified folder
@@ -30,7 +32,7 @@ Method | HTTP request | Description
 [**export_folders_update_tags**](ExportsApi.md#export_folders_update_tags) | **PUT** /api/rp/v1/Exports/Folder/{id}/UpdateTags | Update tags
 [**exports_copy_file**](ExportsApi.md#exports_copy_file) | **POST** /api/rp/v1/Exports/File/{id}/Copy/{folderId} | Copy file to a specified folder
 [**exports_delete_file**](ExportsApi.md#exports_delete_file) | **DELETE** /api/rp/v1/Exports/File/{id} | Delete specified file
-[**exports_get_file**](ExportsApi.md#exports_get_file) | **GET** /api/rp/v1/Exports/File/{id} | Get specified file
+[**exports_get_file**](ExportsApi.md#exports_get_file) | **GET** /api/rp/v1/Exports/File/{id} | 
 [**exports_get_file_history**](ExportsApi.md#exports_get_file_history) | **GET** /api/rp/v1/Exports/File/{id}/History | Returns list of actions, performed on this file
 [**exports_get_files_count**](ExportsApi.md#exports_get_files_count) | **GET** /api/rp/v1/Exports/Folder/{id}/CountFiles | Get count of files what contains in a specified folder
 [**exports_get_files_list**](ExportsApi.md#exports_get_files_list) | **GET** /api/rp/v1/Exports/Folder/{id}/ListFiles | Get all files from specified folder. &lt;br /&gt;  User with Get Entity permission can access this method. &lt;br /&gt;  The method will returns minimal infomration about the file: &lt;br /&gt;  id, name, size, editedTime, createdTime, tags, status, statusReason.
@@ -167,7 +169,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **export_folder_and_file_delete_files**
-> export_folder_and_file_delete_files(subscription_id, selected_files_for_deleting_vm=selected_files_for_deleting_vm)
+> export_folder_and_file_delete_files(subscription_id, selected_files_vm=selected_files_vm)
 
 Delete folders and files
 
@@ -209,11 +211,11 @@ with fastreport_cloud_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = fastreport_cloud_sdk.ExportsApi(api_client)
     subscription_id = 'subscription_id_example' # str | id of current subscription
-selected_files_for_deleting_vm = fastreport_cloud_sdk.SelectedFilesForDeletingVM() # SelectedFilesForDeletingVM | VM with files' ids and params of their destination (optional)
+selected_files_vm = fastreport_cloud_sdk.SelectedFilesVM() # SelectedFilesVM | VM with files' ids and params of their destination (optional)
 
     try:
         # Delete folders and files
-        api_instance.export_folder_and_file_delete_files(subscription_id, selected_files_for_deleting_vm=selected_files_for_deleting_vm)
+        api_instance.export_folder_and_file_delete_files(subscription_id, selected_files_vm=selected_files_vm)
     except ApiException as e:
         print("Exception when calling ExportsApi->export_folder_and_file_delete_files: %s\n" % e)
 ```
@@ -252,11 +254,11 @@ with fastreport_cloud_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = fastreport_cloud_sdk.ExportsApi(api_client)
     subscription_id = 'subscription_id_example' # str | id of current subscription
-selected_files_for_deleting_vm = fastreport_cloud_sdk.SelectedFilesForDeletingVM() # SelectedFilesForDeletingVM | VM with files' ids and params of their destination (optional)
+selected_files_vm = fastreport_cloud_sdk.SelectedFilesVM() # SelectedFilesVM | VM with files' ids and params of their destination (optional)
 
     try:
         # Delete folders and files
-        api_instance.export_folder_and_file_delete_files(subscription_id, selected_files_for_deleting_vm=selected_files_for_deleting_vm)
+        api_instance.export_folder_and_file_delete_files(subscription_id, selected_files_vm=selected_files_vm)
     except ApiException as e:
         print("Exception when calling ExportsApi->export_folder_and_file_delete_files: %s\n" % e)
 ```
@@ -266,7 +268,7 @@ selected_files_for_deleting_vm = fastreport_cloud_sdk.SelectedFilesForDeletingVM
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **subscription_id** | **str**| id of current subscription | 
- **selected_files_for_deleting_vm** | [**SelectedFilesForDeletingVM**](SelectedFilesForDeletingVM.md)| VM with files&#39; ids and params of their destination | [optional] 
+ **selected_files_vm** | [**SelectedFilesVM**](SelectedFilesVM.md)| VM with files&#39; ids and params of their destination | [optional] 
 
 ### Return type
 
@@ -705,6 +707,131 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **export_folder_and_file_move_files_to_bin**
+> export_folder_and_file_move_files_to_bin(subscription_id, selected_files_vm=selected_files_vm)
+
+Move folders and files to bin
+
+User with a Delete permission can access this method.
+
+### Example
+
+* Basic Authentication (ApiKey):
+```python
+from __future__ import print_function
+import time
+import fastreport_cloud_sdk
+from fastreport_cloud_sdk.rest import ApiException
+from pprint import pprint
+# Defining the host is optional and defaults to http://localhost
+# See configuration.py for a list of all supported configuration parameters.
+configuration = fastreport_cloud_sdk.Configuration(
+    host = "http://localhost"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure HTTP basic authorization: ApiKey
+configuration = fastreport_cloud_sdk.Configuration(
+    username = 'YOUR_USERNAME',
+    password = 'YOUR_PASSWORD'
+)
+
+# Configure Bearer authorization (JWT): JWT
+configuration = fastreport_cloud_sdk.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
+)
+
+# Enter a context with an instance of the API client
+with fastreport_cloud_sdk.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = fastreport_cloud_sdk.ExportsApi(api_client)
+    subscription_id = 'subscription_id_example' # str | id of current subscription
+selected_files_vm = fastreport_cloud_sdk.SelectedFilesVM() # SelectedFilesVM | VM with files' ids and params of their destination (optional)
+
+    try:
+        # Move folders and files to bin
+        api_instance.export_folder_and_file_move_files_to_bin(subscription_id, selected_files_vm=selected_files_vm)
+    except ApiException as e:
+        print("Exception when calling ExportsApi->export_folder_and_file_move_files_to_bin: %s\n" % e)
+```
+
+* Bearer (JWT) Authentication (JWT):
+```python
+from __future__ import print_function
+import time
+import fastreport_cloud_sdk
+from fastreport_cloud_sdk.rest import ApiException
+from pprint import pprint
+# Defining the host is optional and defaults to http://localhost
+# See configuration.py for a list of all supported configuration parameters.
+configuration = fastreport_cloud_sdk.Configuration(
+    host = "http://localhost"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure HTTP basic authorization: ApiKey
+configuration = fastreport_cloud_sdk.Configuration(
+    username = 'YOUR_USERNAME',
+    password = 'YOUR_PASSWORD'
+)
+
+# Configure Bearer authorization (JWT): JWT
+configuration = fastreport_cloud_sdk.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
+)
+
+# Enter a context with an instance of the API client
+with fastreport_cloud_sdk.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = fastreport_cloud_sdk.ExportsApi(api_client)
+    subscription_id = 'subscription_id_example' # str | id of current subscription
+selected_files_vm = fastreport_cloud_sdk.SelectedFilesVM() # SelectedFilesVM | VM with files' ids and params of their destination (optional)
+
+    try:
+        # Move folders and files to bin
+        api_instance.export_folder_and_file_move_files_to_bin(subscription_id, selected_files_vm=selected_files_vm)
+    except ApiException as e:
+        print("Exception when calling ExportsApi->export_folder_and_file_move_files_to_bin: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **subscription_id** | **str**| id of current subscription | 
+ **selected_files_vm** | [**SelectedFilesVM**](SelectedFilesVM.md)| VM with files&#39; ids and params of their destination | [optional] 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [JWT](../README.md#JWT)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, text/json, application/*+json
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**204** | All folders and files have been moved to bin |  -  |
+**400** | FolderId is null |  -  |
+**403** | You don&#39;t have rights for the operation |  -  |
+**404** | File or folder not found |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **export_folder_and_file_recover_all_from_recycle_bin**
 > export_folder_and_file_recover_all_from_recycle_bin(subscription_id)
 
@@ -821,6 +948,131 @@ void (empty response body)
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **204** | All folders and files in bin have been restored |  -  |
+**400** | FolderId is null |  -  |
+**403** | You don&#39;t have rights for the operation |  -  |
+**404** | File or folder not found |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **export_folder_and_file_recover_files**
+> export_folder_and_file_recover_files(subscription_id, selected_files_vm=selected_files_vm)
+
+Recover folders and files from bin
+
+User with a SubscriptionCreate permission can access this method.
+
+### Example
+
+* Basic Authentication (ApiKey):
+```python
+from __future__ import print_function
+import time
+import fastreport_cloud_sdk
+from fastreport_cloud_sdk.rest import ApiException
+from pprint import pprint
+# Defining the host is optional and defaults to http://localhost
+# See configuration.py for a list of all supported configuration parameters.
+configuration = fastreport_cloud_sdk.Configuration(
+    host = "http://localhost"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure HTTP basic authorization: ApiKey
+configuration = fastreport_cloud_sdk.Configuration(
+    username = 'YOUR_USERNAME',
+    password = 'YOUR_PASSWORD'
+)
+
+# Configure Bearer authorization (JWT): JWT
+configuration = fastreport_cloud_sdk.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
+)
+
+# Enter a context with an instance of the API client
+with fastreport_cloud_sdk.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = fastreport_cloud_sdk.ExportsApi(api_client)
+    subscription_id = 'subscription_id_example' # str | id of current subscription
+selected_files_vm = fastreport_cloud_sdk.SelectedFilesVM() # SelectedFilesVM | VM with files' ids and params of their destination (optional)
+
+    try:
+        # Recover folders and files from bin
+        api_instance.export_folder_and_file_recover_files(subscription_id, selected_files_vm=selected_files_vm)
+    except ApiException as e:
+        print("Exception when calling ExportsApi->export_folder_and_file_recover_files: %s\n" % e)
+```
+
+* Bearer (JWT) Authentication (JWT):
+```python
+from __future__ import print_function
+import time
+import fastreport_cloud_sdk
+from fastreport_cloud_sdk.rest import ApiException
+from pprint import pprint
+# Defining the host is optional and defaults to http://localhost
+# See configuration.py for a list of all supported configuration parameters.
+configuration = fastreport_cloud_sdk.Configuration(
+    host = "http://localhost"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure HTTP basic authorization: ApiKey
+configuration = fastreport_cloud_sdk.Configuration(
+    username = 'YOUR_USERNAME',
+    password = 'YOUR_PASSWORD'
+)
+
+# Configure Bearer authorization (JWT): JWT
+configuration = fastreport_cloud_sdk.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
+)
+
+# Enter a context with an instance of the API client
+with fastreport_cloud_sdk.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = fastreport_cloud_sdk.ExportsApi(api_client)
+    subscription_id = 'subscription_id_example' # str | id of current subscription
+selected_files_vm = fastreport_cloud_sdk.SelectedFilesVM() # SelectedFilesVM | VM with files' ids and params of their destination (optional)
+
+    try:
+        # Recover folders and files from bin
+        api_instance.export_folder_and_file_recover_files(subscription_id, selected_files_vm=selected_files_vm)
+    except ApiException as e:
+        print("Exception when calling ExportsApi->export_folder_and_file_recover_files: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **subscription_id** | **str**| id of current subscription | 
+ **selected_files_vm** | [**SelectedFilesVM**](SelectedFilesVM.md)| VM with files&#39; ids and params of their destination | [optional] 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [JWT](../README.md#JWT)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, text/json, application/*+json
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**204** | All folders and files have been recovered |  -  |
 **400** | FolderId is null |  -  |
 **403** | You don&#39;t have rights for the operation |  -  |
 **404** | File or folder not found |  -  |
@@ -3360,9 +3612,7 @@ void (empty response body)
 # **exports_get_file**
 > ExportVM exports_get_file(id)
 
-Get specified file
 
-User with Get Entity permission can access this method.
 
 ### Example
 
@@ -3399,10 +3649,9 @@ configuration = fastreport_cloud_sdk.Configuration(
 with fastreport_cloud_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = fastreport_cloud_sdk.ExportsApi(api_client)
-    id = 'id_example' # str | file id
+    id = 'id_example' # str | 
 
     try:
-        # Get specified file
         api_response = api_instance.exports_get_file(id)
         pprint(api_response)
     except ApiException as e:
@@ -3442,10 +3691,9 @@ configuration = fastreport_cloud_sdk.Configuration(
 with fastreport_cloud_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = fastreport_cloud_sdk.ExportsApi(api_client)
-    id = 'id_example' # str | file id
+    id = 'id_example' # str | 
 
     try:
-        # Get specified file
         api_response = api_instance.exports_get_file(id)
         pprint(api_response)
     except ApiException as e:
@@ -3456,7 +3704,7 @@ with fastreport_cloud_sdk.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **str**| file id | 
+ **id** | **str**|  | 
 
 ### Return type
 
@@ -3474,11 +3722,11 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Returns the specified file |  -  |
-**400** | Id is null |  -  |
-**403** | You don&#39;t have rights for the operation |  -  |
-**404** | File not found |  -  |
-**500** | Exception thrown |  -  |
+**200** | Success |  -  |
+**400** | Bad Request |  -  |
+**403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+**500** | Server Error |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

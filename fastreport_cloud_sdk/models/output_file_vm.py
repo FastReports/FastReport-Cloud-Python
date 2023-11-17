@@ -90,8 +90,8 @@ class OutputFileVM(object):
                 file_name is not None and len(file_name) > 50):
             raise ValueError("Invalid value for `file_name`, length must be less than or equal to `50`")  # noqa: E501
         if (self.local_vars_configuration.client_side_validation and
-                file_name is not None and len(file_name) < 1):
-            raise ValueError("Invalid value for `file_name`, length must be greater than or equal to `1`")  # noqa: E501
+                file_name is not None and len(file_name) < 0):
+            raise ValueError("Invalid value for `file_name`, length must be greater than or equal to `0`")  # noqa: E501
 
         self._file_name = file_name
 

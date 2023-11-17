@@ -49,7 +49,7 @@ class TestAuditActionsVM(unittest.TestCase):
                         admin_action = True, 
                         __t = '', )
                     ], 
-                count = 56, 
+                has_more = True, 
                 skip = 56, 
                 take = 56
             )

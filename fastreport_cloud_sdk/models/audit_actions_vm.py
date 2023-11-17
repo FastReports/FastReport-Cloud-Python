@@ -37,33 +37,33 @@ class AuditActionsVM(object):
     """
     openapi_types = {
         'items': 'list[AuditActionVM]',
-        'count': 'int',
+        'has_more': 'bool',
         'skip': 'int',
         'take': 'int'
     }
 
     attribute_map = {
         'items': 'items',
-        'count': 'count',
+        'has_more': 'hasMore',
         'skip': 'skip',
         'take': 'take'
     }
 
-    def __init__(self, items=None, count=None, skip=None, take=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, items=None, has_more=None, skip=None, take=None, local_vars_configuration=None):  # noqa: E501
         """AuditActionsVM - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration.get_default_copy()
         self.local_vars_configuration = local_vars_configuration
 
         self._items = None
-        self._count = None
+        self._has_more = None
         self._skip = None
         self._take = None
         self.discriminator = None
 
         self.items = items
-        if count is not None:
-            self.count = count
+        if has_more is not None:
+            self.has_more = has_more
         if skip is not None:
             self.skip = skip
         if take is not None:
@@ -91,25 +91,25 @@ class AuditActionsVM(object):
         self._items = items
 
     @property
-    def count(self):
-        """Gets the count of this AuditActionsVM.  # noqa: E501
+    def has_more(self):
+        """Gets the has_more of this AuditActionsVM.  # noqa: E501
 
 
-        :return: The count of this AuditActionsVM.  # noqa: E501
-        :rtype: int
+        :return: The has_more of this AuditActionsVM.  # noqa: E501
+        :rtype: bool
         """
-        return self._count
+        return self._has_more
 
-    @count.setter
-    def count(self, count):
-        """Sets the count of this AuditActionsVM.
+    @has_more.setter
+    def has_more(self, has_more):
+        """Sets the has_more of this AuditActionsVM.
 
 
-        :param count: The count of this AuditActionsVM.  # noqa: E501
-        :type count: int
+        :param has_more: The has_more of this AuditActionsVM.  # noqa: E501
+        :type has_more: bool
         """
 
-        self._count = count
+        self._has_more = has_more
 
     @property
     def skip(self):

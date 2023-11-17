@@ -63,10 +63,24 @@ class TestExportsApi(unittest.TestCase):
         """
         pass
 
+    def test_export_folder_and_file_move_files_to_bin(self):
+        """Test case for export_folder_and_file_move_files_to_bin
+
+        Move folders and files to bin  # noqa: E501
+        """
+        pass
+
     def test_export_folder_and_file_recover_all_from_recycle_bin(self):
         """Test case for export_folder_and_file_recover_all_from_recycle_bin
 
         Recover all folders and files from recycle bin  # noqa: E501
+        """
+        pass
+
+    def test_export_folder_and_file_recover_files(self):
+        """Test case for export_folder_and_file_recover_files
+
+        Recover folders and files from bin  # noqa: E501
         """
         pass
 
@@ -213,7 +227,6 @@ class TestExportsApi(unittest.TestCase):
     def test_exports_get_file(self):
         """Test case for exports_get_file
 
-        Get specified file  # noqa: E501
         """
         pass
 

@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **items** | [**list[AuditActionVM]**](AuditActionVM.md) |  | [optional] 
-**count** | **int** |  | [optional] 
+**has_more** | **bool** |  | [optional] 
 **skip** | **int** |  | [optional] 
 **take** | **int** |  | [optional] 
 

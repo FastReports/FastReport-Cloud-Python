@@ -547,7 +547,7 @@ configuration = fastreport_cloud_sdk.Configuration(
 with fastreport_cloud_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = fastreport_cloud_sdk.DataSourcesApi(api_client)
-    subscription_id = 'subscription_id_example' # str | subscription id (optional)
+    subscription_id = 'subscription_id_example' # str | id of subscription where the datasources are located (optional)
 skip = 0 # int | how many data sources will be skipped (optional) (default to 0)
 take = 10 # int | how many data sources will be taken (optional) (default to 10)
 order_by = fastreport_cloud_sdk.DataSourceSorting() # DataSourceSorting | field to order by (optional)
@@ -594,7 +594,7 @@ configuration = fastreport_cloud_sdk.Configuration(
 with fastreport_cloud_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = fastreport_cloud_sdk.DataSourcesApi(api_client)
-    subscription_id = 'subscription_id_example' # str | subscription id (optional)
+    subscription_id = 'subscription_id_example' # str | id of subscription where the datasources are located (optional)
 skip = 0 # int | how many data sources will be skipped (optional) (default to 0)
 take = 10 # int | how many data sources will be taken (optional) (default to 10)
 order_by = fastreport_cloud_sdk.DataSourceSorting() # DataSourceSorting | field to order by (optional)
@@ -612,7 +612,7 @@ desc = False # bool | descending sort (optional) (default to False)
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **subscription_id** | **str**| subscription id | [optional] 
+ **subscription_id** | **str**| id of subscription where the datasources are located | [optional] 
  **skip** | **int**| how many data sources will be skipped | [optional] [default to 0]
  **take** | **int**| how many data sources will be taken | [optional] [default to 10]
  **order_by** | [**DataSourceSorting**](.md)| field to order by | [optional] 

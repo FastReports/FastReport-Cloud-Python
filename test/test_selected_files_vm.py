@@ -37,12 +37,17 @@ class TestSelectedFilesVM(unittest.TestCase):
         if include_optional :
             return SelectedFilesVM(
                 is_all_selected = True, 
+                folder_id = '62ECB020842930cc01FFCCfe', 
+                search_pattern = '', 
+                use_regex = True, 
                 files = [
                     ''
                     ], 
                 folders = [
                     ''
-                    ]
+                    ], 
+                path = '', 
+                is_bin = True
             )
         else :
             return SelectedFilesVM(

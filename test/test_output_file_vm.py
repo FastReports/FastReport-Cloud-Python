@@ -36,7 +36,7 @@ class TestOutputFileVM(unittest.TestCase):
         # model = fastreport_cloud_sdk.models.output_file_vm.OutputFileVM()  # noqa: E501
         if include_optional :
             return OutputFileVM(
-                file_name = '0', 
+                file_name = '', 
                 folder_id = '2ECB020842930cc01FFCCfeE', 
                 type = 'Template', 
                 is_temporary = True

@@ -173,7 +173,6 @@ docs/RunTransformTaskBaseVM.md
 docs/RunTransportTaskBaseVM.md
 docs/RunWebhookTaskVM.md
 docs/SaveMode.md
-docs/SelectedFilesForDeletingVM.md
 docs/SelectedFilesVM.md
 docs/ServerConfigurationVM.md
 docs/SubscriptionAdministrate.md
@@ -445,7 +444,6 @@ fastreport_cloud_sdk/models/run_transform_task_base_vm.py
 fastreport_cloud_sdk/models/run_transport_task_base_vm.py
 fastreport_cloud_sdk/models/run_webhook_task_vm.py
 fastreport_cloud_sdk/models/save_mode.py
-fastreport_cloud_sdk/models/selected_files_for_deleting_vm.py
 fastreport_cloud_sdk/models/selected_files_vm.py
 fastreport_cloud_sdk/models/server_configuration_vm.py
 fastreport_cloud_sdk/models/subscription_administrate.py
@@ -698,7 +696,6 @@ test/test_run_transform_task_base_vm.py
 test/test_run_transport_task_base_vm.py
 test/test_run_webhook_task_vm.py
 test/test_save_mode.py
-test/test_selected_files_for_deleting_vm.py
 test/test_selected_files_vm.py
 test/test_server_configuration_vm.py
 test/test_subscription_administrate.py

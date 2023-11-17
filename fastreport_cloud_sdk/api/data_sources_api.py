@@ -600,7 +600,7 @@ class DataSourcesApi(object):
         >>> thread = api.data_sources_get_available_data_sources(async_req=True)
         >>> result = thread.get()
 
-        :param subscription_id: subscription id
+        :param subscription_id: id of subscription where the datasources are located
         :type subscription_id: str
         :param skip: how many data sources will be skipped
         :type skip: int
@@ -637,7 +637,7 @@ class DataSourcesApi(object):
         >>> thread = api.data_sources_get_available_data_sources_with_http_info(async_req=True)
         >>> result = thread.get()
 
-        :param subscription_id: subscription id
+        :param subscription_id: id of subscription where the datasources are located
         :type subscription_id: str
         :param skip: how many data sources will be skipped
         :type skip: int
