@@ -17,54 +17,14 @@ Use this endpoint to accept current version of service license agreement
 ### Example
 
 * Basic Authentication (ApiKey):
-```python
-from __future__ import print_function
-import time
-import fastreport_cloud_sdk
-from fastreport_cloud_sdk.rest import ApiException
-from pprint import pprint
-# Defining the host is optional and defaults to http://localhost
-# See configuration.py for a list of all supported configuration parameters.
-configuration = fastreport_cloud_sdk.Configuration(
-    host = "http://localhost"
-)
-
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
-# Configure HTTP basic authorization: ApiKey
-configuration = fastreport_cloud_sdk.Configuration(
-    username = 'YOUR_USERNAME',
-    password = 'YOUR_PASSWORD'
-)
-
-# Configure Bearer authorization (JWT): JWT
-configuration = fastreport_cloud_sdk.Configuration(
-    access_token = 'YOUR_BEARER_TOKEN'
-)
-
-# Enter a context with an instance of the API client
-with fastreport_cloud_sdk.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = fastreport_cloud_sdk.UserSettingsApi(api_client)
-    accept_agreements_vm = fastreport_cloud_sdk.AcceptAgreementsVM() # AcceptAgreementsVM |  (optional)
-
-    try:
-        # Use this endpoint to accept current version of service license agreement
-        api_instance.user_settings_accept_agreements(accept_agreements_vm=accept_agreements_vm)
-    except ApiException as e:
-        print("Exception when calling UserSettingsApi->user_settings_accept_agreements: %s\n" % e)
-```
-
 * Bearer (JWT) Authentication (JWT):
+
 ```python
-from __future__ import print_function
-import time
 import fastreport_cloud_sdk
+from fastreport_cloud_sdk.models.accept_agreements_vm import AcceptAgreementsVM
 from fastreport_cloud_sdk.rest import ApiException
 from pprint import pprint
+
 # Defining the host is optional and defaults to http://localhost
 # See configuration.py for a list of all supported configuration parameters.
 configuration = fastreport_cloud_sdk.Configuration(
@@ -78,13 +38,13 @@ configuration = fastreport_cloud_sdk.Configuration(
 
 # Configure HTTP basic authorization: ApiKey
 configuration = fastreport_cloud_sdk.Configuration(
-    username = 'YOUR_USERNAME',
-    password = 'YOUR_PASSWORD'
+    username = os.environ["USERNAME"],
+    password = os.environ["PASSWORD"]
 )
 
 # Configure Bearer authorization (JWT): JWT
 configuration = fastreport_cloud_sdk.Configuration(
-    access_token = 'YOUR_BEARER_TOKEN'
+    access_token = os.environ["BEARER_TOKEN"]
 )
 
 # Enter a context with an instance of the API client
@@ -96,11 +56,14 @@ with fastreport_cloud_sdk.ApiClient(configuration) as api_client:
     try:
         # Use this endpoint to accept current version of service license agreement
         api_instance.user_settings_accept_agreements(accept_agreements_vm=accept_agreements_vm)
-    except ApiException as e:
+    except Exception as e:
         print("Exception when calling UserSettingsApi->user_settings_accept_agreements: %s\n" % e)
 ```
+
+
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -120,6 +83,7 @@ void (empty response body)
  - **Accept**: Not defined
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **204** | No Content |  -  |
@@ -134,54 +98,14 @@ Return current user settings.
 ### Example
 
 * Basic Authentication (ApiKey):
-```python
-from __future__ import print_function
-import time
-import fastreport_cloud_sdk
-from fastreport_cloud_sdk.rest import ApiException
-from pprint import pprint
-# Defining the host is optional and defaults to http://localhost
-# See configuration.py for a list of all supported configuration parameters.
-configuration = fastreport_cloud_sdk.Configuration(
-    host = "http://localhost"
-)
-
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
-# Configure HTTP basic authorization: ApiKey
-configuration = fastreport_cloud_sdk.Configuration(
-    username = 'YOUR_USERNAME',
-    password = 'YOUR_PASSWORD'
-)
-
-# Configure Bearer authorization (JWT): JWT
-configuration = fastreport_cloud_sdk.Configuration(
-    access_token = 'YOUR_BEARER_TOKEN'
-)
-
-# Enter a context with an instance of the API client
-with fastreport_cloud_sdk.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = fastreport_cloud_sdk.UserSettingsApi(api_client)
-    
-    try:
-        # Return current user settings.
-        api_response = api_instance.user_settings_get_current_user_settings()
-        pprint(api_response)
-    except ApiException as e:
-        print("Exception when calling UserSettingsApi->user_settings_get_current_user_settings: %s\n" % e)
-```
-
 * Bearer (JWT) Authentication (JWT):
+
 ```python
-from __future__ import print_function
-import time
 import fastreport_cloud_sdk
+from fastreport_cloud_sdk.models.user_settings_vm import UserSettingsVM
 from fastreport_cloud_sdk.rest import ApiException
 from pprint import pprint
+
 # Defining the host is optional and defaults to http://localhost
 # See configuration.py for a list of all supported configuration parameters.
 configuration = fastreport_cloud_sdk.Configuration(
@@ -195,29 +119,33 @@ configuration = fastreport_cloud_sdk.Configuration(
 
 # Configure HTTP basic authorization: ApiKey
 configuration = fastreport_cloud_sdk.Configuration(
-    username = 'YOUR_USERNAME',
-    password = 'YOUR_PASSWORD'
+    username = os.environ["USERNAME"],
+    password = os.environ["PASSWORD"]
 )
 
 # Configure Bearer authorization (JWT): JWT
 configuration = fastreport_cloud_sdk.Configuration(
-    access_token = 'YOUR_BEARER_TOKEN'
+    access_token = os.environ["BEARER_TOKEN"]
 )
 
 # Enter a context with an instance of the API client
 with fastreport_cloud_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = fastreport_cloud_sdk.UserSettingsApi(api_client)
-    
+
     try:
         # Return current user settings.
         api_response = api_instance.user_settings_get_current_user_settings()
+        print("The response of UserSettingsApi->user_settings_get_current_user_settings:\n")
         pprint(api_response)
-    except ApiException as e:
+    except Exception as e:
         print("Exception when calling UserSettingsApi->user_settings_get_current_user_settings: %s\n" % e)
 ```
+
+
 
 ### Parameters
+
 This endpoint does not need any parameter.
 
 ### Return type
@@ -234,9 +162,11 @@ This endpoint does not need any parameter.
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Succesfully returned |  -  |
+**400** | Current user is null |  -  |
 **404** | User not found |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -249,55 +179,15 @@ Update settings of the current user
 ### Example
 
 * Basic Authentication (ApiKey):
-```python
-from __future__ import print_function
-import time
-import fastreport_cloud_sdk
-from fastreport_cloud_sdk.rest import ApiException
-from pprint import pprint
-# Defining the host is optional and defaults to http://localhost
-# See configuration.py for a list of all supported configuration parameters.
-configuration = fastreport_cloud_sdk.Configuration(
-    host = "http://localhost"
-)
-
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
-# Configure HTTP basic authorization: ApiKey
-configuration = fastreport_cloud_sdk.Configuration(
-    username = 'YOUR_USERNAME',
-    password = 'YOUR_PASSWORD'
-)
-
-# Configure Bearer authorization (JWT): JWT
-configuration = fastreport_cloud_sdk.Configuration(
-    access_token = 'YOUR_BEARER_TOKEN'
-)
-
-# Enter a context with an instance of the API client
-with fastreport_cloud_sdk.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = fastreport_cloud_sdk.UserSettingsApi(api_client)
-    update_user_settings_vm = fastreport_cloud_sdk.UpdateUserSettingsVM() # UpdateUserSettingsVM |  (optional)
-
-    try:
-        # Update settings of the current user
-        api_response = api_instance.user_settings_update_my_settings(update_user_settings_vm=update_user_settings_vm)
-        pprint(api_response)
-    except ApiException as e:
-        print("Exception when calling UserSettingsApi->user_settings_update_my_settings: %s\n" % e)
-```
-
 * Bearer (JWT) Authentication (JWT):
+
 ```python
-from __future__ import print_function
-import time
 import fastreport_cloud_sdk
+from fastreport_cloud_sdk.models.update_user_settings_vm import UpdateUserSettingsVM
+from fastreport_cloud_sdk.models.user_settings_vm import UserSettingsVM
 from fastreport_cloud_sdk.rest import ApiException
 from pprint import pprint
+
 # Defining the host is optional and defaults to http://localhost
 # See configuration.py for a list of all supported configuration parameters.
 configuration = fastreport_cloud_sdk.Configuration(
@@ -311,13 +201,13 @@ configuration = fastreport_cloud_sdk.Configuration(
 
 # Configure HTTP basic authorization: ApiKey
 configuration = fastreport_cloud_sdk.Configuration(
-    username = 'YOUR_USERNAME',
-    password = 'YOUR_PASSWORD'
+    username = os.environ["USERNAME"],
+    password = os.environ["PASSWORD"]
 )
 
 # Configure Bearer authorization (JWT): JWT
 configuration = fastreport_cloud_sdk.Configuration(
-    access_token = 'YOUR_BEARER_TOKEN'
+    access_token = os.environ["BEARER_TOKEN"]
 )
 
 # Enter a context with an instance of the API client
@@ -329,12 +219,16 @@ with fastreport_cloud_sdk.ApiClient(configuration) as api_client:
     try:
         # Update settings of the current user
         api_response = api_instance.user_settings_update_my_settings(update_user_settings_vm=update_user_settings_vm)
+        print("The response of UserSettingsApi->user_settings_update_my_settings:\n")
         pprint(api_response)
-    except ApiException as e:
+    except Exception as e:
         print("Exception when calling UserSettingsApi->user_settings_update_my_settings: %s\n" % e)
 ```
+
+
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -354,11 +248,12 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Succesfully updated |  -  |
-**400** | The reqeust is wrong |  -  |
-**403** | Forbidden |  -  |
+**400** | The request is wrong |  -  |
+**403** | You have no permission for this action |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **str** |  | [optional] 
@@ -14,6 +15,7 @@ Name | Type | Description | Notes
 **templates_space_limit** | **int** |  | [optional] 
 **reports_space_limit** | **int** |  | [optional] 
 **exports_space_limit** | **int** |  | [optional] 
+**fonts_space_limit** | **int** |  | [optional] 
 **file_upload_size_limit** | **int** |  | [optional] 
 **data_source_limit** | **int** |  | [optional] 
 **max_users_count** | **int** |  | [optional] 
@@ -24,7 +26,25 @@ Name | Type | Description | Notes
 **unlimited_page** | **bool** |  | [optional] 
 **page_limit** | **int** |  | [optional] 
 **tasks** | [**TaskSettingsVM**](TaskSettingsVM.md) |  | [optional] 
+**t** | **str** |  | 
 
+## Example
+
+```python
+from fastreport_cloud_sdk.models.subscription_plan_vm import SubscriptionPlanVM
+
+# TODO update the JSON string below
+json = "{}"
+# create an instance of SubscriptionPlanVM from a JSON string
+subscription_plan_vm_instance = SubscriptionPlanVM.from_json(json)
+# print the JSON string representation of the object
+print SubscriptionPlanVM.to_json()
+
+# convert the object into a dict
+subscription_plan_vm_dict = subscription_plan_vm_instance.to_dict()
+# create an instance of SubscriptionPlanVM from a dict
+subscription_plan_vm_form_dict = subscription_plan_vm.from_dict(subscription_plan_vm_dict)
+```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
 

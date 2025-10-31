@@ -17,63 +17,20 @@ Method | HTTP request | Description
 
 
 # **download_get_export**
-> file download_get_export(id, preview=preview)
+> bytearray download_get_export(id, preview=preview)
 
 Returns a export file with specified id
 
 ### Example
 
 * Basic Authentication (ApiKey):
-```python
-from __future__ import print_function
-import time
-import fastreport_cloud_sdk
-from fastreport_cloud_sdk.rest import ApiException
-from pprint import pprint
-# Defining the host is optional and defaults to http://localhost
-# See configuration.py for a list of all supported configuration parameters.
-configuration = fastreport_cloud_sdk.Configuration(
-    host = "http://localhost"
-)
-
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
-# Configure HTTP basic authorization: ApiKey
-configuration = fastreport_cloud_sdk.Configuration(
-    username = 'YOUR_USERNAME',
-    password = 'YOUR_PASSWORD'
-)
-
-# Configure Bearer authorization (JWT): JWT
-configuration = fastreport_cloud_sdk.Configuration(
-    access_token = 'YOUR_BEARER_TOKEN'
-)
-
-# Enter a context with an instance of the API client
-with fastreport_cloud_sdk.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = fastreport_cloud_sdk.DownloadApi(api_client)
-    id = 'id_example' # str | 
-preview = False # bool |  (optional) (default to False)
-
-    try:
-        # Returns a export file with specified id
-        api_response = api_instance.download_get_export(id, preview=preview)
-        pprint(api_response)
-    except ApiException as e:
-        print("Exception when calling DownloadApi->download_get_export: %s\n" % e)
-```
-
 * Bearer (JWT) Authentication (JWT):
+
 ```python
-from __future__ import print_function
-import time
 import fastreport_cloud_sdk
 from fastreport_cloud_sdk.rest import ApiException
 from pprint import pprint
+
 # Defining the host is optional and defaults to http://localhost
 # See configuration.py for a list of all supported configuration parameters.
 configuration = fastreport_cloud_sdk.Configuration(
@@ -87,13 +44,13 @@ configuration = fastreport_cloud_sdk.Configuration(
 
 # Configure HTTP basic authorization: ApiKey
 configuration = fastreport_cloud_sdk.Configuration(
-    username = 'YOUR_USERNAME',
-    password = 'YOUR_PASSWORD'
+    username = os.environ["USERNAME"],
+    password = os.environ["PASSWORD"]
 )
 
 # Configure Bearer authorization (JWT): JWT
 configuration = fastreport_cloud_sdk.Configuration(
-    access_token = 'YOUR_BEARER_TOKEN'
+    access_token = os.environ["BEARER_TOKEN"]
 )
 
 # Enter a context with an instance of the API client
@@ -101,17 +58,21 @@ with fastreport_cloud_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = fastreport_cloud_sdk.DownloadApi(api_client)
     id = 'id_example' # str | 
-preview = False # bool |  (optional) (default to False)
+    preview = False # bool |  (optional) (default to False)
 
     try:
         # Returns a export file with specified id
         api_response = api_instance.download_get_export(id, preview=preview)
+        print("The response of DownloadApi->download_get_export:\n")
         pprint(api_response)
-    except ApiException as e:
+    except Exception as e:
         print("Exception when calling DownloadApi->download_get_export: %s\n" % e)
 ```
+
+
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -120,7 +81,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**file**
+**bytearray**
 
 ### Authorization
 
@@ -132,73 +93,33 @@ Name | Type | Description  | Notes
  - **Accept**: text/plain, application/json, application/octet-stream, application/pdf
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Specified file was found |  -  |
-**404** | Specified file was not found or user do not has access to the file |  -  |
 **400** | Bad id provided |  -  |
 **402** | Subscription is blocked |  -  |
 **403** | Not enough permissions for the operation |  -  |
+**404** | Specified file was not found or user do not has access to the file |  -  |
+**500** | Try again, if error still here - text our support |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **download_get_export_thumbnail**
-> file download_get_export_thumbnail(id)
+> bytearray download_get_export_thumbnail(id)
 
 Returns export's thumbnail
 
 ### Example
 
 * Basic Authentication (ApiKey):
-```python
-from __future__ import print_function
-import time
-import fastreport_cloud_sdk
-from fastreport_cloud_sdk.rest import ApiException
-from pprint import pprint
-# Defining the host is optional and defaults to http://localhost
-# See configuration.py for a list of all supported configuration parameters.
-configuration = fastreport_cloud_sdk.Configuration(
-    host = "http://localhost"
-)
-
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
-# Configure HTTP basic authorization: ApiKey
-configuration = fastreport_cloud_sdk.Configuration(
-    username = 'YOUR_USERNAME',
-    password = 'YOUR_PASSWORD'
-)
-
-# Configure Bearer authorization (JWT): JWT
-configuration = fastreport_cloud_sdk.Configuration(
-    access_token = 'YOUR_BEARER_TOKEN'
-)
-
-# Enter a context with an instance of the API client
-with fastreport_cloud_sdk.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = fastreport_cloud_sdk.DownloadApi(api_client)
-    id = 'id_example' # str | 
-
-    try:
-        # Returns export's thumbnail
-        api_response = api_instance.download_get_export_thumbnail(id)
-        pprint(api_response)
-    except ApiException as e:
-        print("Exception when calling DownloadApi->download_get_export_thumbnail: %s\n" % e)
-```
-
 * Bearer (JWT) Authentication (JWT):
+
 ```python
-from __future__ import print_function
-import time
 import fastreport_cloud_sdk
 from fastreport_cloud_sdk.rest import ApiException
 from pprint import pprint
+
 # Defining the host is optional and defaults to http://localhost
 # See configuration.py for a list of all supported configuration parameters.
 configuration = fastreport_cloud_sdk.Configuration(
@@ -212,13 +133,13 @@ configuration = fastreport_cloud_sdk.Configuration(
 
 # Configure HTTP basic authorization: ApiKey
 configuration = fastreport_cloud_sdk.Configuration(
-    username = 'YOUR_USERNAME',
-    password = 'YOUR_PASSWORD'
+    username = os.environ["USERNAME"],
+    password = os.environ["PASSWORD"]
 )
 
 # Configure Bearer authorization (JWT): JWT
 configuration = fastreport_cloud_sdk.Configuration(
-    access_token = 'YOUR_BEARER_TOKEN'
+    access_token = os.environ["BEARER_TOKEN"]
 )
 
 # Enter a context with an instance of the API client
@@ -230,12 +151,16 @@ with fastreport_cloud_sdk.ApiClient(configuration) as api_client:
     try:
         # Returns export's thumbnail
         api_response = api_instance.download_get_export_thumbnail(id)
+        print("The response of DownloadApi->download_get_export_thumbnail:\n")
         pprint(api_response)
-    except ApiException as e:
+    except Exception as e:
         print("Exception when calling DownloadApi->download_get_export_thumbnail: %s\n" % e)
 ```
+
+
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -243,7 +168,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**file**
+**bytearray**
 
 ### Authorization
 
@@ -255,75 +180,32 @@ Name | Type | Description  | Notes
  - **Accept**: text/plain, application/json, image/png, image/jpeg
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Specified thumbnail was found |  -  |
-**404** | Specified thumbnail was not found or user do not has access to it |  -  |
 **400** | Bad id provided |  -  |
 **402** | Subscription is blocked |  -  |
 **403** | Not enough permissions for the operation |  -  |
+**404** | Specified thumbnail was not found or user do not has access to it |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **download_get_exports**
-> file download_get_exports(archive_name, file_ids=file_ids, folder_ids=folder_ids)
+> bytearray download_get_exports(archive_name, file_ids=file_ids, folder_ids=folder_ids)
 
 Returns a zip archive with selected ids
 
 ### Example
 
 * Basic Authentication (ApiKey):
-```python
-from __future__ import print_function
-import time
-import fastreport_cloud_sdk
-from fastreport_cloud_sdk.rest import ApiException
-from pprint import pprint
-# Defining the host is optional and defaults to http://localhost
-# See configuration.py for a list of all supported configuration parameters.
-configuration = fastreport_cloud_sdk.Configuration(
-    host = "http://localhost"
-)
-
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
-# Configure HTTP basic authorization: ApiKey
-configuration = fastreport_cloud_sdk.Configuration(
-    username = 'YOUR_USERNAME',
-    password = 'YOUR_PASSWORD'
-)
-
-# Configure Bearer authorization (JWT): JWT
-configuration = fastreport_cloud_sdk.Configuration(
-    access_token = 'YOUR_BEARER_TOKEN'
-)
-
-# Enter a context with an instance of the API client
-with fastreport_cloud_sdk.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = fastreport_cloud_sdk.DownloadApi(api_client)
-    archive_name = 'archive_name_example' # str | name of the created archive
-file_ids = 'file_ids_example' # str | ids separated with a ',' sign (optional)
-folder_ids = 'folder_ids_example' # str | ids separated with a ',' sign (optional)
-
-    try:
-        # Returns a zip archive with selected ids
-        api_response = api_instance.download_get_exports(archive_name, file_ids=file_ids, folder_ids=folder_ids)
-        pprint(api_response)
-    except ApiException as e:
-        print("Exception when calling DownloadApi->download_get_exports: %s\n" % e)
-```
-
 * Bearer (JWT) Authentication (JWT):
+
 ```python
-from __future__ import print_function
-import time
 import fastreport_cloud_sdk
 from fastreport_cloud_sdk.rest import ApiException
 from pprint import pprint
+
 # Defining the host is optional and defaults to http://localhost
 # See configuration.py for a list of all supported configuration parameters.
 configuration = fastreport_cloud_sdk.Configuration(
@@ -337,13 +219,13 @@ configuration = fastreport_cloud_sdk.Configuration(
 
 # Configure HTTP basic authorization: ApiKey
 configuration = fastreport_cloud_sdk.Configuration(
-    username = 'YOUR_USERNAME',
-    password = 'YOUR_PASSWORD'
+    username = os.environ["USERNAME"],
+    password = os.environ["PASSWORD"]
 )
 
 # Configure Bearer authorization (JWT): JWT
 configuration = fastreport_cloud_sdk.Configuration(
-    access_token = 'YOUR_BEARER_TOKEN'
+    access_token = os.environ["BEARER_TOKEN"]
 )
 
 # Enter a context with an instance of the API client
@@ -351,18 +233,22 @@ with fastreport_cloud_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = fastreport_cloud_sdk.DownloadApi(api_client)
     archive_name = 'archive_name_example' # str | name of the created archive
-file_ids = 'file_ids_example' # str | ids separated with a ',' sign (optional)
-folder_ids = 'folder_ids_example' # str | ids separated with a ',' sign (optional)
+    file_ids = 'file_ids_example' # str | ids separated with a ',' sign (optional)
+    folder_ids = 'folder_ids_example' # str | ids separated with a ',' sign (optional)
 
     try:
         # Returns a zip archive with selected ids
         api_response = api_instance.download_get_exports(archive_name, file_ids=file_ids, folder_ids=folder_ids)
+        print("The response of DownloadApi->download_get_exports:\n")
         pprint(api_response)
-    except ApiException as e:
+    except Exception as e:
         print("Exception when calling DownloadApi->download_get_exports: %s\n" % e)
 ```
+
+
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -372,7 +258,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**file**
+**bytearray**
 
 ### Authorization
 
@@ -384,73 +270,32 @@ Name | Type | Description  | Notes
  - **Accept**: text/plain, application/json, application/zip
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Specified file was found |  -  |
+**200** | Specified files was found |  -  |
 **400** | Bad id provided |  -  |
 **402** | Subscription is blocked |  -  |
 **403** | Not enough permissions for the operation |  -  |
-**404** | Specified file was not found or user do not has access to the file |  -  |
+**404** | Specified files were not found or user do not has access to the file |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **download_get_last_svg_export**
-> file download_get_last_svg_export(report_id)
+> bytearray download_get_last_svg_export(report_id)
 
 returns export, that was created from report with specified id.  INTERNAL USAGE ONLY!
 
 ### Example
 
 * Basic Authentication (ApiKey):
-```python
-from __future__ import print_function
-import time
-import fastreport_cloud_sdk
-from fastreport_cloud_sdk.rest import ApiException
-from pprint import pprint
-# Defining the host is optional and defaults to http://localhost
-# See configuration.py for a list of all supported configuration parameters.
-configuration = fastreport_cloud_sdk.Configuration(
-    host = "http://localhost"
-)
-
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
-# Configure HTTP basic authorization: ApiKey
-configuration = fastreport_cloud_sdk.Configuration(
-    username = 'YOUR_USERNAME',
-    password = 'YOUR_PASSWORD'
-)
-
-# Configure Bearer authorization (JWT): JWT
-configuration = fastreport_cloud_sdk.Configuration(
-    access_token = 'YOUR_BEARER_TOKEN'
-)
-
-# Enter a context with an instance of the API client
-with fastreport_cloud_sdk.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = fastreport_cloud_sdk.DownloadApi(api_client)
-    report_id = 'report_id_example' # str | 
-
-    try:
-        # returns export, that was created from report with specified id.  INTERNAL USAGE ONLY!
-        api_response = api_instance.download_get_last_svg_export(report_id)
-        pprint(api_response)
-    except ApiException as e:
-        print("Exception when calling DownloadApi->download_get_last_svg_export: %s\n" % e)
-```
-
 * Bearer (JWT) Authentication (JWT):
+
 ```python
-from __future__ import print_function
-import time
 import fastreport_cloud_sdk
 from fastreport_cloud_sdk.rest import ApiException
 from pprint import pprint
+
 # Defining the host is optional and defaults to http://localhost
 # See configuration.py for a list of all supported configuration parameters.
 configuration = fastreport_cloud_sdk.Configuration(
@@ -464,13 +309,13 @@ configuration = fastreport_cloud_sdk.Configuration(
 
 # Configure HTTP basic authorization: ApiKey
 configuration = fastreport_cloud_sdk.Configuration(
-    username = 'YOUR_USERNAME',
-    password = 'YOUR_PASSWORD'
+    username = os.environ["USERNAME"],
+    password = os.environ["PASSWORD"]
 )
 
 # Configure Bearer authorization (JWT): JWT
 configuration = fastreport_cloud_sdk.Configuration(
-    access_token = 'YOUR_BEARER_TOKEN'
+    access_token = os.environ["BEARER_TOKEN"]
 )
 
 # Enter a context with an instance of the API client
@@ -482,12 +327,16 @@ with fastreport_cloud_sdk.ApiClient(configuration) as api_client:
     try:
         # returns export, that was created from report with specified id.  INTERNAL USAGE ONLY!
         api_response = api_instance.download_get_last_svg_export(report_id)
+        print("The response of DownloadApi->download_get_last_svg_export:\n")
         pprint(api_response)
-    except ApiException as e:
+    except Exception as e:
         print("Exception when calling DownloadApi->download_get_last_svg_export: %s\n" % e)
 ```
+
+
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -495,7 +344,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**file**
+**bytearray**
 
 ### Authorization
 
@@ -507,73 +356,32 @@ Name | Type | Description  | Notes
  - **Accept**: text/plain, application/json, application/octet-stream
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Success |  -  |
-**404** | Not Found |  -  |
-**400** | Bad Request |  -  |
-**402** | Client Error |  -  |
-**403** | Forbidden |  -  |
+**200** | Specified file was found |  -  |
+**400** | Bad id provided |  -  |
+**402** | Subscription is blocked |  -  |
+**403** | Not enough permissions for the operation |  -  |
+**404** | Specified file was not found or user do not has access to the file |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **download_get_report**
-> file download_get_report(id)
+> bytearray download_get_report(id)
 
 Returns a prepared file with specified id
 
 ### Example
 
 * Basic Authentication (ApiKey):
-```python
-from __future__ import print_function
-import time
-import fastreport_cloud_sdk
-from fastreport_cloud_sdk.rest import ApiException
-from pprint import pprint
-# Defining the host is optional and defaults to http://localhost
-# See configuration.py for a list of all supported configuration parameters.
-configuration = fastreport_cloud_sdk.Configuration(
-    host = "http://localhost"
-)
-
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
-# Configure HTTP basic authorization: ApiKey
-configuration = fastreport_cloud_sdk.Configuration(
-    username = 'YOUR_USERNAME',
-    password = 'YOUR_PASSWORD'
-)
-
-# Configure Bearer authorization (JWT): JWT
-configuration = fastreport_cloud_sdk.Configuration(
-    access_token = 'YOUR_BEARER_TOKEN'
-)
-
-# Enter a context with an instance of the API client
-with fastreport_cloud_sdk.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = fastreport_cloud_sdk.DownloadApi(api_client)
-    id = 'id_example' # str | 
-
-    try:
-        # Returns a prepared file with specified id
-        api_response = api_instance.download_get_report(id)
-        pprint(api_response)
-    except ApiException as e:
-        print("Exception when calling DownloadApi->download_get_report: %s\n" % e)
-```
-
 * Bearer (JWT) Authentication (JWT):
+
 ```python
-from __future__ import print_function
-import time
 import fastreport_cloud_sdk
 from fastreport_cloud_sdk.rest import ApiException
 from pprint import pprint
+
 # Defining the host is optional and defaults to http://localhost
 # See configuration.py for a list of all supported configuration parameters.
 configuration = fastreport_cloud_sdk.Configuration(
@@ -587,13 +395,13 @@ configuration = fastreport_cloud_sdk.Configuration(
 
 # Configure HTTP basic authorization: ApiKey
 configuration = fastreport_cloud_sdk.Configuration(
-    username = 'YOUR_USERNAME',
-    password = 'YOUR_PASSWORD'
+    username = os.environ["USERNAME"],
+    password = os.environ["PASSWORD"]
 )
 
 # Configure Bearer authorization (JWT): JWT
 configuration = fastreport_cloud_sdk.Configuration(
-    access_token = 'YOUR_BEARER_TOKEN'
+    access_token = os.environ["BEARER_TOKEN"]
 )
 
 # Enter a context with an instance of the API client
@@ -605,12 +413,16 @@ with fastreport_cloud_sdk.ApiClient(configuration) as api_client:
     try:
         # Returns a prepared file with specified id
         api_response = api_instance.download_get_report(id)
+        print("The response of DownloadApi->download_get_report:\n")
         pprint(api_response)
-    except ApiException as e:
+    except Exception as e:
         print("Exception when calling DownloadApi->download_get_report: %s\n" % e)
 ```
+
+
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -618,7 +430,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**file**
+**bytearray**
 
 ### Authorization
 
@@ -630,73 +442,32 @@ Name | Type | Description  | Notes
  - **Accept**: text/plain, application/json, application/octet-stream
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Specified file was found |  -  |
-**404** | Specified file was not found or user do not has access to the file |  -  |
-**400** | bad id provided |  -  |
+**400** | Bad id provided |  -  |
 **402** | Subscription is blocked |  -  |
 **403** | Not enough permissions |  -  |
+**404** | Specified file was not found or user do not has access to the file |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **download_get_report_thumbnail**
-> file download_get_report_thumbnail(id)
+> bytearray download_get_report_thumbnail(id)
 
 Returns report's thumbnail
 
 ### Example
 
 * Basic Authentication (ApiKey):
-```python
-from __future__ import print_function
-import time
-import fastreport_cloud_sdk
-from fastreport_cloud_sdk.rest import ApiException
-from pprint import pprint
-# Defining the host is optional and defaults to http://localhost
-# See configuration.py for a list of all supported configuration parameters.
-configuration = fastreport_cloud_sdk.Configuration(
-    host = "http://localhost"
-)
-
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
-# Configure HTTP basic authorization: ApiKey
-configuration = fastreport_cloud_sdk.Configuration(
-    username = 'YOUR_USERNAME',
-    password = 'YOUR_PASSWORD'
-)
-
-# Configure Bearer authorization (JWT): JWT
-configuration = fastreport_cloud_sdk.Configuration(
-    access_token = 'YOUR_BEARER_TOKEN'
-)
-
-# Enter a context with an instance of the API client
-with fastreport_cloud_sdk.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = fastreport_cloud_sdk.DownloadApi(api_client)
-    id = 'id_example' # str | 
-
-    try:
-        # Returns report's thumbnail
-        api_response = api_instance.download_get_report_thumbnail(id)
-        pprint(api_response)
-    except ApiException as e:
-        print("Exception when calling DownloadApi->download_get_report_thumbnail: %s\n" % e)
-```
-
 * Bearer (JWT) Authentication (JWT):
+
 ```python
-from __future__ import print_function
-import time
 import fastreport_cloud_sdk
 from fastreport_cloud_sdk.rest import ApiException
 from pprint import pprint
+
 # Defining the host is optional and defaults to http://localhost
 # See configuration.py for a list of all supported configuration parameters.
 configuration = fastreport_cloud_sdk.Configuration(
@@ -710,13 +481,13 @@ configuration = fastreport_cloud_sdk.Configuration(
 
 # Configure HTTP basic authorization: ApiKey
 configuration = fastreport_cloud_sdk.Configuration(
-    username = 'YOUR_USERNAME',
-    password = 'YOUR_PASSWORD'
+    username = os.environ["USERNAME"],
+    password = os.environ["PASSWORD"]
 )
 
 # Configure Bearer authorization (JWT): JWT
 configuration = fastreport_cloud_sdk.Configuration(
-    access_token = 'YOUR_BEARER_TOKEN'
+    access_token = os.environ["BEARER_TOKEN"]
 )
 
 # Enter a context with an instance of the API client
@@ -728,12 +499,16 @@ with fastreport_cloud_sdk.ApiClient(configuration) as api_client:
     try:
         # Returns report's thumbnail
         api_response = api_instance.download_get_report_thumbnail(id)
+        print("The response of DownloadApi->download_get_report_thumbnail:\n")
         pprint(api_response)
-    except ApiException as e:
+    except Exception as e:
         print("Exception when calling DownloadApi->download_get_report_thumbnail: %s\n" % e)
 ```
+
+
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -741,7 +516,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**file**
+**bytearray**
 
 ### Authorization
 
@@ -753,75 +528,32 @@ Name | Type | Description  | Notes
  - **Accept**: text/plain, application/json, image/png, image/jpeg
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Specified thumbnail was found |  -  |
-**404** | Specified thumbnail was not found or user do not has access to it |  -  |
 **400** | Bad id provided |  -  |
 **402** | Subscription is blocked |  -  |
 **403** | Not enough permissions for the operation |  -  |
+**404** | Specified thumbnail was not found or user do not has access to it |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **download_get_reports**
-> file download_get_reports(archive_name, file_ids=file_ids, folder_ids=folder_ids)
+> bytearray download_get_reports(archive_name, file_ids=file_ids, folder_ids=folder_ids)
 
 Returns a zip archive with selected files
 
 ### Example
 
 * Basic Authentication (ApiKey):
-```python
-from __future__ import print_function
-import time
-import fastreport_cloud_sdk
-from fastreport_cloud_sdk.rest import ApiException
-from pprint import pprint
-# Defining the host is optional and defaults to http://localhost
-# See configuration.py for a list of all supported configuration parameters.
-configuration = fastreport_cloud_sdk.Configuration(
-    host = "http://localhost"
-)
-
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
-# Configure HTTP basic authorization: ApiKey
-configuration = fastreport_cloud_sdk.Configuration(
-    username = 'YOUR_USERNAME',
-    password = 'YOUR_PASSWORD'
-)
-
-# Configure Bearer authorization (JWT): JWT
-configuration = fastreport_cloud_sdk.Configuration(
-    access_token = 'YOUR_BEARER_TOKEN'
-)
-
-# Enter a context with an instance of the API client
-with fastreport_cloud_sdk.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = fastreport_cloud_sdk.DownloadApi(api_client)
-    archive_name = 'archive_name_example' # str | name of the created archive
-file_ids = 'file_ids_example' # str | ids separated with a ',' sign (optional)
-folder_ids = 'folder_ids_example' # str | ids separated with a ',' sign (optional)
-
-    try:
-        # Returns a zip archive with selected files
-        api_response = api_instance.download_get_reports(archive_name, file_ids=file_ids, folder_ids=folder_ids)
-        pprint(api_response)
-    except ApiException as e:
-        print("Exception when calling DownloadApi->download_get_reports: %s\n" % e)
-```
-
 * Bearer (JWT) Authentication (JWT):
+
 ```python
-from __future__ import print_function
-import time
 import fastreport_cloud_sdk
 from fastreport_cloud_sdk.rest import ApiException
 from pprint import pprint
+
 # Defining the host is optional and defaults to http://localhost
 # See configuration.py for a list of all supported configuration parameters.
 configuration = fastreport_cloud_sdk.Configuration(
@@ -835,13 +567,13 @@ configuration = fastreport_cloud_sdk.Configuration(
 
 # Configure HTTP basic authorization: ApiKey
 configuration = fastreport_cloud_sdk.Configuration(
-    username = 'YOUR_USERNAME',
-    password = 'YOUR_PASSWORD'
+    username = os.environ["USERNAME"],
+    password = os.environ["PASSWORD"]
 )
 
 # Configure Bearer authorization (JWT): JWT
 configuration = fastreport_cloud_sdk.Configuration(
-    access_token = 'YOUR_BEARER_TOKEN'
+    access_token = os.environ["BEARER_TOKEN"]
 )
 
 # Enter a context with an instance of the API client
@@ -849,18 +581,22 @@ with fastreport_cloud_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = fastreport_cloud_sdk.DownloadApi(api_client)
     archive_name = 'archive_name_example' # str | name of the created archive
-file_ids = 'file_ids_example' # str | ids separated with a ',' sign (optional)
-folder_ids = 'folder_ids_example' # str | ids separated with a ',' sign (optional)
+    file_ids = 'file_ids_example' # str | ids separated with a ',' sign (optional)
+    folder_ids = 'folder_ids_example' # str | ids separated with a ',' sign (optional)
 
     try:
         # Returns a zip archive with selected files
         api_response = api_instance.download_get_reports(archive_name, file_ids=file_ids, folder_ids=folder_ids)
+        print("The response of DownloadApi->download_get_reports:\n")
         pprint(api_response)
-    except ApiException as e:
+    except Exception as e:
         print("Exception when calling DownloadApi->download_get_reports: %s\n" % e)
 ```
+
+
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -870,7 +606,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**file**
+**bytearray**
 
 ### Authorization
 
@@ -882,73 +618,32 @@ Name | Type | Description  | Notes
  - **Accept**: text/plain, application/json, application/zip
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | File has been downloaded |  -  |
-**404** | files is not found |  -  |
-**400** | wrong parameters provided |  -  |
+**200** | Files were downloaded |  -  |
+**400** | Wrong parameters provided |  -  |
 **402** | Subscription is blocked |  -  |
-**403** | You don&#39;t have rights for the operation |  -  |
+**403** | You don&#39;t have permissions for the operation |  -  |
+**404** | Files were not found |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **download_get_template**
-> file download_get_template(id)
+> bytearray download_get_template(id)
 
 Returns a Template file with specified id
 
 ### Example
 
 * Basic Authentication (ApiKey):
-```python
-from __future__ import print_function
-import time
-import fastreport_cloud_sdk
-from fastreport_cloud_sdk.rest import ApiException
-from pprint import pprint
-# Defining the host is optional and defaults to http://localhost
-# See configuration.py for a list of all supported configuration parameters.
-configuration = fastreport_cloud_sdk.Configuration(
-    host = "http://localhost"
-)
-
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
-# Configure HTTP basic authorization: ApiKey
-configuration = fastreport_cloud_sdk.Configuration(
-    username = 'YOUR_USERNAME',
-    password = 'YOUR_PASSWORD'
-)
-
-# Configure Bearer authorization (JWT): JWT
-configuration = fastreport_cloud_sdk.Configuration(
-    access_token = 'YOUR_BEARER_TOKEN'
-)
-
-# Enter a context with an instance of the API client
-with fastreport_cloud_sdk.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = fastreport_cloud_sdk.DownloadApi(api_client)
-    id = 'id_example' # str | template id
-
-    try:
-        # Returns a Template file with specified id
-        api_response = api_instance.download_get_template(id)
-        pprint(api_response)
-    except ApiException as e:
-        print("Exception when calling DownloadApi->download_get_template: %s\n" % e)
-```
-
 * Bearer (JWT) Authentication (JWT):
+
 ```python
-from __future__ import print_function
-import time
 import fastreport_cloud_sdk
 from fastreport_cloud_sdk.rest import ApiException
 from pprint import pprint
+
 # Defining the host is optional and defaults to http://localhost
 # See configuration.py for a list of all supported configuration parameters.
 configuration = fastreport_cloud_sdk.Configuration(
@@ -962,13 +657,13 @@ configuration = fastreport_cloud_sdk.Configuration(
 
 # Configure HTTP basic authorization: ApiKey
 configuration = fastreport_cloud_sdk.Configuration(
-    username = 'YOUR_USERNAME',
-    password = 'YOUR_PASSWORD'
+    username = os.environ["USERNAME"],
+    password = os.environ["PASSWORD"]
 )
 
 # Configure Bearer authorization (JWT): JWT
 configuration = fastreport_cloud_sdk.Configuration(
-    access_token = 'YOUR_BEARER_TOKEN'
+    access_token = os.environ["BEARER_TOKEN"]
 )
 
 # Enter a context with an instance of the API client
@@ -980,12 +675,16 @@ with fastreport_cloud_sdk.ApiClient(configuration) as api_client:
     try:
         # Returns a Template file with specified id
         api_response = api_instance.download_get_template(id)
+        print("The response of DownloadApi->download_get_template:\n")
         pprint(api_response)
-    except ApiException as e:
+    except Exception as e:
         print("Exception when calling DownloadApi->download_get_template: %s\n" % e)
 ```
+
+
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -993,7 +692,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**file**
+**bytearray**
 
 ### Authorization
 
@@ -1005,73 +704,32 @@ Name | Type | Description  | Notes
  - **Accept**: text/plain, application/json, application/octet-stream
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Specified file was found |  -  |
-**404** | Specified file was not found or user do not has access to the file |  -  |
-**400** | bad id provided |  -  |
+**400** | Bad id provided |  -  |
 **402** | Subscription is blocked |  -  |
 **403** | Not enough permissions |  -  |
+**404** | Specified file was not found or user do not has access to the file |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **download_get_template_thumbnail**
-> file download_get_template_thumbnail(id)
+> bytearray download_get_template_thumbnail(id)
 
 Returns template's thumbnail
 
 ### Example
 
 * Basic Authentication (ApiKey):
-```python
-from __future__ import print_function
-import time
-import fastreport_cloud_sdk
-from fastreport_cloud_sdk.rest import ApiException
-from pprint import pprint
-# Defining the host is optional and defaults to http://localhost
-# See configuration.py for a list of all supported configuration parameters.
-configuration = fastreport_cloud_sdk.Configuration(
-    host = "http://localhost"
-)
-
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
-# Configure HTTP basic authorization: ApiKey
-configuration = fastreport_cloud_sdk.Configuration(
-    username = 'YOUR_USERNAME',
-    password = 'YOUR_PASSWORD'
-)
-
-# Configure Bearer authorization (JWT): JWT
-configuration = fastreport_cloud_sdk.Configuration(
-    access_token = 'YOUR_BEARER_TOKEN'
-)
-
-# Enter a context with an instance of the API client
-with fastreport_cloud_sdk.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = fastreport_cloud_sdk.DownloadApi(api_client)
-    id = 'id_example' # str | 
-
-    try:
-        # Returns template's thumbnail
-        api_response = api_instance.download_get_template_thumbnail(id)
-        pprint(api_response)
-    except ApiException as e:
-        print("Exception when calling DownloadApi->download_get_template_thumbnail: %s\n" % e)
-```
-
 * Bearer (JWT) Authentication (JWT):
+
 ```python
-from __future__ import print_function
-import time
 import fastreport_cloud_sdk
 from fastreport_cloud_sdk.rest import ApiException
 from pprint import pprint
+
 # Defining the host is optional and defaults to http://localhost
 # See configuration.py for a list of all supported configuration parameters.
 configuration = fastreport_cloud_sdk.Configuration(
@@ -1085,13 +743,13 @@ configuration = fastreport_cloud_sdk.Configuration(
 
 # Configure HTTP basic authorization: ApiKey
 configuration = fastreport_cloud_sdk.Configuration(
-    username = 'YOUR_USERNAME',
-    password = 'YOUR_PASSWORD'
+    username = os.environ["USERNAME"],
+    password = os.environ["PASSWORD"]
 )
 
 # Configure Bearer authorization (JWT): JWT
 configuration = fastreport_cloud_sdk.Configuration(
-    access_token = 'YOUR_BEARER_TOKEN'
+    access_token = os.environ["BEARER_TOKEN"]
 )
 
 # Enter a context with an instance of the API client
@@ -1103,12 +761,16 @@ with fastreport_cloud_sdk.ApiClient(configuration) as api_client:
     try:
         # Returns template's thumbnail
         api_response = api_instance.download_get_template_thumbnail(id)
+        print("The response of DownloadApi->download_get_template_thumbnail:\n")
         pprint(api_response)
-    except ApiException as e:
+    except Exception as e:
         print("Exception when calling DownloadApi->download_get_template_thumbnail: %s\n" % e)
 ```
+
+
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -1116,7 +778,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**file**
+**bytearray**
 
 ### Authorization
 
@@ -1128,75 +790,32 @@ Name | Type | Description  | Notes
  - **Accept**: text/plain, application/json, image/png, image/jpeg
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Specified thumbnail was found |  -  |
-**404** | Specified thumbnail was not found or user do not has access to it |  -  |
 **400** | Bad id provided |  -  |
 **402** | Subscription is blocked |  -  |
 **403** | Not enough permissions for the operation |  -  |
+**404** | Specified thumbnail was not found or user do not has access to it |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **download_get_templates**
-> file download_get_templates(archive_name, file_ids=file_ids, folder_ids=folder_ids)
+> bytearray download_get_templates(archive_name, file_ids=file_ids, folder_ids=folder_ids)
 
 Returns a zip archive with selected files
 
 ### Example
 
 * Basic Authentication (ApiKey):
-```python
-from __future__ import print_function
-import time
-import fastreport_cloud_sdk
-from fastreport_cloud_sdk.rest import ApiException
-from pprint import pprint
-# Defining the host is optional and defaults to http://localhost
-# See configuration.py for a list of all supported configuration parameters.
-configuration = fastreport_cloud_sdk.Configuration(
-    host = "http://localhost"
-)
-
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
-# Configure HTTP basic authorization: ApiKey
-configuration = fastreport_cloud_sdk.Configuration(
-    username = 'YOUR_USERNAME',
-    password = 'YOUR_PASSWORD'
-)
-
-# Configure Bearer authorization (JWT): JWT
-configuration = fastreport_cloud_sdk.Configuration(
-    access_token = 'YOUR_BEARER_TOKEN'
-)
-
-# Enter a context with an instance of the API client
-with fastreport_cloud_sdk.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = fastreport_cloud_sdk.DownloadApi(api_client)
-    archive_name = 'archive_name_example' # str | name of the created archive
-file_ids = 'file_ids_example' # str | ids separated with a ',' sign (optional)
-folder_ids = 'folder_ids_example' # str | ids separated with a ',' sign (optional)
-
-    try:
-        # Returns a zip archive with selected files
-        api_response = api_instance.download_get_templates(archive_name, file_ids=file_ids, folder_ids=folder_ids)
-        pprint(api_response)
-    except ApiException as e:
-        print("Exception when calling DownloadApi->download_get_templates: %s\n" % e)
-```
-
 * Bearer (JWT) Authentication (JWT):
+
 ```python
-from __future__ import print_function
-import time
 import fastreport_cloud_sdk
 from fastreport_cloud_sdk.rest import ApiException
 from pprint import pprint
+
 # Defining the host is optional and defaults to http://localhost
 # See configuration.py for a list of all supported configuration parameters.
 configuration = fastreport_cloud_sdk.Configuration(
@@ -1210,13 +829,13 @@ configuration = fastreport_cloud_sdk.Configuration(
 
 # Configure HTTP basic authorization: ApiKey
 configuration = fastreport_cloud_sdk.Configuration(
-    username = 'YOUR_USERNAME',
-    password = 'YOUR_PASSWORD'
+    username = os.environ["USERNAME"],
+    password = os.environ["PASSWORD"]
 )
 
 # Configure Bearer authorization (JWT): JWT
 configuration = fastreport_cloud_sdk.Configuration(
-    access_token = 'YOUR_BEARER_TOKEN'
+    access_token = os.environ["BEARER_TOKEN"]
 )
 
 # Enter a context with an instance of the API client
@@ -1224,18 +843,22 @@ with fastreport_cloud_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = fastreport_cloud_sdk.DownloadApi(api_client)
     archive_name = 'archive_name_example' # str | name of the created archive
-file_ids = 'file_ids_example' # str | ids separated with a ',' sign (optional)
-folder_ids = 'folder_ids_example' # str | ids separated with a ',' sign (optional)
+    file_ids = 'file_ids_example' # str | ids separated with a ',' sign (optional)
+    folder_ids = 'folder_ids_example' # str | ids separated with a ',' sign (optional)
 
     try:
         # Returns a zip archive with selected files
         api_response = api_instance.download_get_templates(archive_name, file_ids=file_ids, folder_ids=folder_ids)
+        print("The response of DownloadApi->download_get_templates:\n")
         pprint(api_response)
-    except ApiException as e:
+    except Exception as e:
         print("Exception when calling DownloadApi->download_get_templates: %s\n" % e)
 ```
+
+
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -1245,7 +868,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**file**
+**bytearray**
 
 ### Authorization
 
@@ -1257,13 +880,14 @@ Name | Type | Description  | Notes
  - **Accept**: text/plain, application/json, application/zip
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | File has been downloaded |  -  |
-**400** | wrong parameters provided |  -  |
+**200** | Files were downloaded |  -  |
+**400** | Wrong parameters provided |  -  |
 **402** | Subscription is blocked |  -  |
-**403** | You don&#39;t have rights for the operation |  -  |
-**404** | files is not found |  -  |
+**403** | You don&#39;t have permissions for the operation |  -  |
+**404** | Files were not found |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

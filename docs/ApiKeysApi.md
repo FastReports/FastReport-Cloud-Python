@@ -6,7 +6,7 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**api_keys_create_api_key**](ApiKeysApi.md#api_keys_create_api_key) | **POST** /api/manage/v1/ApiKeys | Create a new apikey, 5 apikeys for user. Hardcoded for ddos.
 [**api_keys_delete_api_key**](ApiKeysApi.md#api_keys_delete_api_key) | **DELETE** /api/manage/v1/ApiKeys | Delete an apikey
-[**api_keys_get_api_keys**](ApiKeysApi.md#api_keys_get_api_keys) | **GET** /api/manage/v1/ApiKeys | Returns list with all api keys of current user
+[**api_keys_get_api_keys**](ApiKeysApi.md#api_keys_get_api_keys) | **GET** /api/manage/v1/ApiKeys | Returns list with all apikeys of current user
 
 
 # **api_keys_create_api_key**
@@ -17,55 +17,15 @@ Create a new apikey, 5 apikeys for user. Hardcoded for ddos.
 ### Example
 
 * Basic Authentication (ApiKey):
-```python
-from __future__ import print_function
-import time
-import fastreport_cloud_sdk
-from fastreport_cloud_sdk.rest import ApiException
-from pprint import pprint
-# Defining the host is optional and defaults to http://localhost
-# See configuration.py for a list of all supported configuration parameters.
-configuration = fastreport_cloud_sdk.Configuration(
-    host = "http://localhost"
-)
-
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
-# Configure HTTP basic authorization: ApiKey
-configuration = fastreport_cloud_sdk.Configuration(
-    username = 'YOUR_USERNAME',
-    password = 'YOUR_PASSWORD'
-)
-
-# Configure Bearer authorization (JWT): JWT
-configuration = fastreport_cloud_sdk.Configuration(
-    access_token = 'YOUR_BEARER_TOKEN'
-)
-
-# Enter a context with an instance of the API client
-with fastreport_cloud_sdk.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = fastreport_cloud_sdk.ApiKeysApi(api_client)
-    create_api_key_vm = fastreport_cloud_sdk.CreateApiKeyVM() # CreateApiKeyVM | 
-
-    try:
-        # Create a new apikey, 5 apikeys for user. Hardcoded for ddos.
-        api_response = api_instance.api_keys_create_api_key(create_api_key_vm)
-        pprint(api_response)
-    except ApiException as e:
-        print("Exception when calling ApiKeysApi->api_keys_create_api_key: %s\n" % e)
-```
-
 * Bearer (JWT) Authentication (JWT):
+
 ```python
-from __future__ import print_function
-import time
 import fastreport_cloud_sdk
+from fastreport_cloud_sdk.models.api_key_vm import ApiKeyVM
+from fastreport_cloud_sdk.models.create_api_key_vm import CreateApiKeyVM
 from fastreport_cloud_sdk.rest import ApiException
 from pprint import pprint
+
 # Defining the host is optional and defaults to http://localhost
 # See configuration.py for a list of all supported configuration parameters.
 configuration = fastreport_cloud_sdk.Configuration(
@@ -79,13 +39,13 @@ configuration = fastreport_cloud_sdk.Configuration(
 
 # Configure HTTP basic authorization: ApiKey
 configuration = fastreport_cloud_sdk.Configuration(
-    username = 'YOUR_USERNAME',
-    password = 'YOUR_PASSWORD'
+    username = os.environ["USERNAME"],
+    password = os.environ["PASSWORD"]
 )
 
 # Configure Bearer authorization (JWT): JWT
 configuration = fastreport_cloud_sdk.Configuration(
-    access_token = 'YOUR_BEARER_TOKEN'
+    access_token = os.environ["BEARER_TOKEN"]
 )
 
 # Enter a context with an instance of the API client
@@ -97,12 +57,16 @@ with fastreport_cloud_sdk.ApiClient(configuration) as api_client:
     try:
         # Create a new apikey, 5 apikeys for user. Hardcoded for ddos.
         api_response = api_instance.api_keys_create_api_key(create_api_key_vm)
+        print("The response of ApiKeysApi->api_keys_create_api_key:\n")
         pprint(api_response)
-    except ApiException as e:
+    except Exception as e:
         print("Exception when calling ApiKeysApi->api_keys_create_api_key: %s\n" % e)
 ```
+
+
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -122,6 +86,7 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Succesfully created |  -  |
@@ -138,54 +103,14 @@ Delete an apikey
 ### Example
 
 * Basic Authentication (ApiKey):
-```python
-from __future__ import print_function
-import time
-import fastreport_cloud_sdk
-from fastreport_cloud_sdk.rest import ApiException
-from pprint import pprint
-# Defining the host is optional and defaults to http://localhost
-# See configuration.py for a list of all supported configuration parameters.
-configuration = fastreport_cloud_sdk.Configuration(
-    host = "http://localhost"
-)
-
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
-# Configure HTTP basic authorization: ApiKey
-configuration = fastreport_cloud_sdk.Configuration(
-    username = 'YOUR_USERNAME',
-    password = 'YOUR_PASSWORD'
-)
-
-# Configure Bearer authorization (JWT): JWT
-configuration = fastreport_cloud_sdk.Configuration(
-    access_token = 'YOUR_BEARER_TOKEN'
-)
-
-# Enter a context with an instance of the API client
-with fastreport_cloud_sdk.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = fastreport_cloud_sdk.ApiKeysApi(api_client)
-    delete_api_key_vm = fastreport_cloud_sdk.DeleteApiKeyVM() # DeleteApiKeyVM | 
-
-    try:
-        # Delete an apikey
-        api_instance.api_keys_delete_api_key(delete_api_key_vm)
-    except ApiException as e:
-        print("Exception when calling ApiKeysApi->api_keys_delete_api_key: %s\n" % e)
-```
-
 * Bearer (JWT) Authentication (JWT):
+
 ```python
-from __future__ import print_function
-import time
 import fastreport_cloud_sdk
+from fastreport_cloud_sdk.models.delete_api_key_vm import DeleteApiKeyVM
 from fastreport_cloud_sdk.rest import ApiException
 from pprint import pprint
+
 # Defining the host is optional and defaults to http://localhost
 # See configuration.py for a list of all supported configuration parameters.
 configuration = fastreport_cloud_sdk.Configuration(
@@ -199,13 +124,13 @@ configuration = fastreport_cloud_sdk.Configuration(
 
 # Configure HTTP basic authorization: ApiKey
 configuration = fastreport_cloud_sdk.Configuration(
-    username = 'YOUR_USERNAME',
-    password = 'YOUR_PASSWORD'
+    username = os.environ["USERNAME"],
+    password = os.environ["PASSWORD"]
 )
 
 # Configure Bearer authorization (JWT): JWT
 configuration = fastreport_cloud_sdk.Configuration(
-    access_token = 'YOUR_BEARER_TOKEN'
+    access_token = os.environ["BEARER_TOKEN"]
 )
 
 # Enter a context with an instance of the API client
@@ -217,11 +142,14 @@ with fastreport_cloud_sdk.ApiClient(configuration) as api_client:
     try:
         # Delete an apikey
         api_instance.api_keys_delete_api_key(delete_api_key_vm)
-    except ApiException as e:
+    except Exception as e:
         print("Exception when calling ApiKeysApi->api_keys_delete_api_key: %s\n" % e)
 ```
+
+
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -241,74 +169,34 @@ void (empty response body)
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **204** | Succesfully deleted |  -  |
 **400** | The request is wrong |  -  |
 **401** | User is not authorized |  -  |
 **404** | No such apikey found |  -  |
-**500** | exception thrown |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **api_keys_get_api_keys**
 > ApiKeysVM api_keys_get_api_keys()
 
-Returns list with all api keys of current user
+Returns list with all apikeys of current user
 
 Always work, it should make only 200 response (except if user is not authorized).
 
 ### Example
 
 * Basic Authentication (ApiKey):
-```python
-from __future__ import print_function
-import time
-import fastreport_cloud_sdk
-from fastreport_cloud_sdk.rest import ApiException
-from pprint import pprint
-# Defining the host is optional and defaults to http://localhost
-# See configuration.py for a list of all supported configuration parameters.
-configuration = fastreport_cloud_sdk.Configuration(
-    host = "http://localhost"
-)
-
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
-# Configure HTTP basic authorization: ApiKey
-configuration = fastreport_cloud_sdk.Configuration(
-    username = 'YOUR_USERNAME',
-    password = 'YOUR_PASSWORD'
-)
-
-# Configure Bearer authorization (JWT): JWT
-configuration = fastreport_cloud_sdk.Configuration(
-    access_token = 'YOUR_BEARER_TOKEN'
-)
-
-# Enter a context with an instance of the API client
-with fastreport_cloud_sdk.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = fastreport_cloud_sdk.ApiKeysApi(api_client)
-    
-    try:
-        # Returns list with all api keys of current user
-        api_response = api_instance.api_keys_get_api_keys()
-        pprint(api_response)
-    except ApiException as e:
-        print("Exception when calling ApiKeysApi->api_keys_get_api_keys: %s\n" % e)
-```
-
 * Bearer (JWT) Authentication (JWT):
+
 ```python
-from __future__ import print_function
-import time
 import fastreport_cloud_sdk
+from fastreport_cloud_sdk.models.api_keys_vm import ApiKeysVM
 from fastreport_cloud_sdk.rest import ApiException
 from pprint import pprint
+
 # Defining the host is optional and defaults to http://localhost
 # See configuration.py for a list of all supported configuration parameters.
 configuration = fastreport_cloud_sdk.Configuration(
@@ -322,29 +210,33 @@ configuration = fastreport_cloud_sdk.Configuration(
 
 # Configure HTTP basic authorization: ApiKey
 configuration = fastreport_cloud_sdk.Configuration(
-    username = 'YOUR_USERNAME',
-    password = 'YOUR_PASSWORD'
+    username = os.environ["USERNAME"],
+    password = os.environ["PASSWORD"]
 )
 
 # Configure Bearer authorization (JWT): JWT
 configuration = fastreport_cloud_sdk.Configuration(
-    access_token = 'YOUR_BEARER_TOKEN'
+    access_token = os.environ["BEARER_TOKEN"]
 )
 
 # Enter a context with an instance of the API client
 with fastreport_cloud_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = fastreport_cloud_sdk.ApiKeysApi(api_client)
-    
+
     try:
-        # Returns list with all api keys of current user
+        # Returns list with all apikeys of current user
         api_response = api_instance.api_keys_get_api_keys()
+        print("The response of ApiKeysApi->api_keys_get_api_keys:\n")
         pprint(api_response)
-    except ApiException as e:
+    except Exception as e:
         print("Exception when calling ApiKeysApi->api_keys_get_api_keys: %s\n" % e)
 ```
+
+
 
 ### Parameters
+
 This endpoint does not need any parameter.
 
 ### Return type
@@ -361,11 +253,11 @@ This endpoint does not need any parameter.
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Succesfully retured |  -  |
 **401** | User is not authorized |  -  |
-**500** | Exception somehow thrown (barely possible) |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

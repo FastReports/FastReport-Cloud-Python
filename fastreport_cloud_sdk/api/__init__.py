@@ -1,5 +1,3 @@
-from __future__ import absolute_import
-
 # flake8: noqa
 
 # import apis into api package
@@ -10,6 +8,7 @@ from fastreport_cloud_sdk.api.contacts_api import ContactsApi
 from fastreport_cloud_sdk.api.data_sources_api import DataSourcesApi
 from fastreport_cloud_sdk.api.download_api import DownloadApi
 from fastreport_cloud_sdk.api.exports_api import ExportsApi
+from fastreport_cloud_sdk.api.fonts_api import FontsApi
 from fastreport_cloud_sdk.api.group_users_api import GroupUsersApi
 from fastreport_cloud_sdk.api.groups_api import GroupsApi
 from fastreport_cloud_sdk.api.health_check_api import HealthCheckApi
@@ -24,3 +23,4 @@ from fastreport_cloud_sdk.api.templates_api import TemplatesApi
 from fastreport_cloud_sdk.api.user_notifications_api import UserNotificationsApi
 from fastreport_cloud_sdk.api.user_profile_api import UserProfileApi
 from fastreport_cloud_sdk.api.user_settings_api import UserSettingsApi
+

@@ -2,13 +2,32 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **name** | **str** |  | [optional] 
-**tags** | **list[str]** |  | [optional] 
-**icon** | **str** |  | [optional] 
-**content** | **str** |  | [optional] 
+**tags** | **List[str]** |  | [optional] 
+**icon** | **bytearray** |  | [optional] 
+**content** | **bytearray** |  | [optional] 
+**t** | **str** |  | 
 
+## Example
+
+```python
+from fastreport_cloud_sdk.models.file_create_vm import FileCreateVM
+
+# TODO update the JSON string below
+json = "{}"
+# create an instance of FileCreateVM from a JSON string
+file_create_vm_instance = FileCreateVM.from_json(json)
+# print the JSON string representation of the object
+print FileCreateVM.to_json()
+
+# convert the object into a dict
+file_create_vm_dict = file_create_vm_instance.to_dict()
+# create an instance of FileCreateVM from a dict
+file_create_vm_form_dict = file_create_vm.from_dict(file_create_vm_dict)
+```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
 

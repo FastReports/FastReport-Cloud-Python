@@ -19,55 +19,15 @@ Creates contact group
 ### Example
 
 * Basic Authentication (ApiKey):
-```python
-from __future__ import print_function
-import time
-import fastreport_cloud_sdk
-from fastreport_cloud_sdk.rest import ApiException
-from pprint import pprint
-# Defining the host is optional and defaults to http://localhost
-# See configuration.py for a list of all supported configuration parameters.
-configuration = fastreport_cloud_sdk.Configuration(
-    host = "http://localhost"
-)
-
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
-# Configure HTTP basic authorization: ApiKey
-configuration = fastreport_cloud_sdk.Configuration(
-    username = 'YOUR_USERNAME',
-    password = 'YOUR_PASSWORD'
-)
-
-# Configure Bearer authorization (JWT): JWT
-configuration = fastreport_cloud_sdk.Configuration(
-    access_token = 'YOUR_BEARER_TOKEN'
-)
-
-# Enter a context with an instance of the API client
-with fastreport_cloud_sdk.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = fastreport_cloud_sdk.ContactGroupsApi(api_client)
-    create_contact_group_vm = fastreport_cloud_sdk.CreateContactGroupVM() # CreateContactGroupVM |  (optional)
-
-    try:
-        # Creates contact group
-        api_response = api_instance.contact_groups_create(create_contact_group_vm=create_contact_group_vm)
-        pprint(api_response)
-    except ApiException as e:
-        print("Exception when calling ContactGroupsApi->contact_groups_create: %s\n" % e)
-```
-
 * Bearer (JWT) Authentication (JWT):
+
 ```python
-from __future__ import print_function
-import time
 import fastreport_cloud_sdk
+from fastreport_cloud_sdk.models.contact_group_vm import ContactGroupVM
+from fastreport_cloud_sdk.models.create_contact_group_vm import CreateContactGroupVM
 from fastreport_cloud_sdk.rest import ApiException
 from pprint import pprint
+
 # Defining the host is optional and defaults to http://localhost
 # See configuration.py for a list of all supported configuration parameters.
 configuration = fastreport_cloud_sdk.Configuration(
@@ -81,13 +41,13 @@ configuration = fastreport_cloud_sdk.Configuration(
 
 # Configure HTTP basic authorization: ApiKey
 configuration = fastreport_cloud_sdk.Configuration(
-    username = 'YOUR_USERNAME',
-    password = 'YOUR_PASSWORD'
+    username = os.environ["USERNAME"],
+    password = os.environ["PASSWORD"]
 )
 
 # Configure Bearer authorization (JWT): JWT
 configuration = fastreport_cloud_sdk.Configuration(
-    access_token = 'YOUR_BEARER_TOKEN'
+    access_token = os.environ["BEARER_TOKEN"]
 )
 
 # Enter a context with an instance of the API client
@@ -99,12 +59,16 @@ with fastreport_cloud_sdk.ApiClient(configuration) as api_client:
     try:
         # Creates contact group
         api_response = api_instance.contact_groups_create(create_contact_group_vm=create_contact_group_vm)
+        print("The response of ContactGroupsApi->contact_groups_create:\n")
         pprint(api_response)
-    except ApiException as e:
+    except Exception as e:
         print("Exception when calling ContactGroupsApi->contact_groups_create: %s\n" % e)
 ```
+
+
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -124,14 +88,15 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Success |  -  |
-**403** | Forbidden |  -  |
-**404** | Not Found |  -  |
-**402** | Client Error |  -  |
-**400** | Bad Request |  -  |
-**500** | Server Error |  -  |
+**200** | Contact group was created |  -  |
+**400** | Bad VM provided |  -  |
+**402** | Subscription is outdated |  -  |
+**403** | Not enough permissions for the operation |  -  |
+**404** | Subscription was not found |  -  |
+**500** | Try again, if error still here - text our support |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -143,54 +108,13 @@ Removes contact by id
 ### Example
 
 * Basic Authentication (ApiKey):
-```python
-from __future__ import print_function
-import time
-import fastreport_cloud_sdk
-from fastreport_cloud_sdk.rest import ApiException
-from pprint import pprint
-# Defining the host is optional and defaults to http://localhost
-# See configuration.py for a list of all supported configuration parameters.
-configuration = fastreport_cloud_sdk.Configuration(
-    host = "http://localhost"
-)
-
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
-# Configure HTTP basic authorization: ApiKey
-configuration = fastreport_cloud_sdk.Configuration(
-    username = 'YOUR_USERNAME',
-    password = 'YOUR_PASSWORD'
-)
-
-# Configure Bearer authorization (JWT): JWT
-configuration = fastreport_cloud_sdk.Configuration(
-    access_token = 'YOUR_BEARER_TOKEN'
-)
-
-# Enter a context with an instance of the API client
-with fastreport_cloud_sdk.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = fastreport_cloud_sdk.ContactGroupsApi(api_client)
-    id = 'id_example' # str | 
-
-    try:
-        # Removes contact by id
-        api_instance.contact_groups_delete(id)
-    except ApiException as e:
-        print("Exception when calling ContactGroupsApi->contact_groups_delete: %s\n" % e)
-```
-
 * Bearer (JWT) Authentication (JWT):
+
 ```python
-from __future__ import print_function
-import time
 import fastreport_cloud_sdk
 from fastreport_cloud_sdk.rest import ApiException
 from pprint import pprint
+
 # Defining the host is optional and defaults to http://localhost
 # See configuration.py for a list of all supported configuration parameters.
 configuration = fastreport_cloud_sdk.Configuration(
@@ -204,13 +128,13 @@ configuration = fastreport_cloud_sdk.Configuration(
 
 # Configure HTTP basic authorization: ApiKey
 configuration = fastreport_cloud_sdk.Configuration(
-    username = 'YOUR_USERNAME',
-    password = 'YOUR_PASSWORD'
+    username = os.environ["USERNAME"],
+    password = os.environ["PASSWORD"]
 )
 
 # Configure Bearer authorization (JWT): JWT
 configuration = fastreport_cloud_sdk.Configuration(
-    access_token = 'YOUR_BEARER_TOKEN'
+    access_token = os.environ["BEARER_TOKEN"]
 )
 
 # Enter a context with an instance of the API client
@@ -222,11 +146,14 @@ with fastreport_cloud_sdk.ApiClient(configuration) as api_client:
     try:
         # Removes contact by id
         api_instance.contact_groups_delete(id)
-    except ApiException as e:
+    except Exception as e:
         print("Exception when calling ContactGroupsApi->contact_groups_delete: %s\n" % e)
 ```
+
+
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -246,14 +173,15 @@ void (empty response body)
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**204** | No Content |  -  |
-**403** | Forbidden |  -  |
-**404** | Not Found |  -  |
-**402** | Client Error |  -  |
-**400** | Bad Request |  -  |
-**500** | Server Error |  -  |
+**204** | Contact group was deleted |  -  |
+**400** | Bad id provided |  -  |
+**402** | Subscription is outdated |  -  |
+**403** | Not enough permissions for the operation |  -  |
+**404** | Subscription or group was not found |  -  |
+**500** | Try again, if error still here - text our support |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -265,55 +193,14 @@ Returns contact group by id
 ### Example
 
 * Basic Authentication (ApiKey):
-```python
-from __future__ import print_function
-import time
-import fastreport_cloud_sdk
-from fastreport_cloud_sdk.rest import ApiException
-from pprint import pprint
-# Defining the host is optional and defaults to http://localhost
-# See configuration.py for a list of all supported configuration parameters.
-configuration = fastreport_cloud_sdk.Configuration(
-    host = "http://localhost"
-)
-
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
-# Configure HTTP basic authorization: ApiKey
-configuration = fastreport_cloud_sdk.Configuration(
-    username = 'YOUR_USERNAME',
-    password = 'YOUR_PASSWORD'
-)
-
-# Configure Bearer authorization (JWT): JWT
-configuration = fastreport_cloud_sdk.Configuration(
-    access_token = 'YOUR_BEARER_TOKEN'
-)
-
-# Enter a context with an instance of the API client
-with fastreport_cloud_sdk.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = fastreport_cloud_sdk.ContactGroupsApi(api_client)
-    id = 'id_example' # str | 
-
-    try:
-        # Returns contact group by id
-        api_response = api_instance.contact_groups_get(id)
-        pprint(api_response)
-    except ApiException as e:
-        print("Exception when calling ContactGroupsApi->contact_groups_get: %s\n" % e)
-```
-
 * Bearer (JWT) Authentication (JWT):
+
 ```python
-from __future__ import print_function
-import time
 import fastreport_cloud_sdk
+from fastreport_cloud_sdk.models.contact_group_vm import ContactGroupVM
 from fastreport_cloud_sdk.rest import ApiException
 from pprint import pprint
+
 # Defining the host is optional and defaults to http://localhost
 # See configuration.py for a list of all supported configuration parameters.
 configuration = fastreport_cloud_sdk.Configuration(
@@ -327,13 +214,13 @@ configuration = fastreport_cloud_sdk.Configuration(
 
 # Configure HTTP basic authorization: ApiKey
 configuration = fastreport_cloud_sdk.Configuration(
-    username = 'YOUR_USERNAME',
-    password = 'YOUR_PASSWORD'
+    username = os.environ["USERNAME"],
+    password = os.environ["PASSWORD"]
 )
 
 # Configure Bearer authorization (JWT): JWT
 configuration = fastreport_cloud_sdk.Configuration(
-    access_token = 'YOUR_BEARER_TOKEN'
+    access_token = os.environ["BEARER_TOKEN"]
 )
 
 # Enter a context with an instance of the API client
@@ -345,12 +232,16 @@ with fastreport_cloud_sdk.ApiClient(configuration) as api_client:
     try:
         # Returns contact group by id
         api_response = api_instance.contact_groups_get(id)
+        print("The response of ContactGroupsApi->contact_groups_get:\n")
         pprint(api_response)
-    except ApiException as e:
+    except Exception as e:
         print("Exception when calling ContactGroupsApi->contact_groups_get: %s\n" % e)
 ```
+
+
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -370,14 +261,15 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Success |  -  |
-**403** | Forbidden |  -  |
-**404** | Not Found |  -  |
-**402** | Client Error |  -  |
-**400** | Bad Request |  -  |
-**500** | Server Error |  -  |
+**200** | Contact group was found |  -  |
+**400** | Bad id provided |  -  |
+**402** | Subscription is outdated |  -  |
+**403** | Not enough permissions for the operation |  -  |
+**404** | Subscription or group was not found |  -  |
+**500** | Try again, if error still here - text our support |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -389,57 +281,14 @@ Returns contact groups by subscriptionId
 ### Example
 
 * Basic Authentication (ApiKey):
-```python
-from __future__ import print_function
-import time
-import fastreport_cloud_sdk
-from fastreport_cloud_sdk.rest import ApiException
-from pprint import pprint
-# Defining the host is optional and defaults to http://localhost
-# See configuration.py for a list of all supported configuration parameters.
-configuration = fastreport_cloud_sdk.Configuration(
-    host = "http://localhost"
-)
-
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
-# Configure HTTP basic authorization: ApiKey
-configuration = fastreport_cloud_sdk.Configuration(
-    username = 'YOUR_USERNAME',
-    password = 'YOUR_PASSWORD'
-)
-
-# Configure Bearer authorization (JWT): JWT
-configuration = fastreport_cloud_sdk.Configuration(
-    access_token = 'YOUR_BEARER_TOKEN'
-)
-
-# Enter a context with an instance of the API client
-with fastreport_cloud_sdk.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = fastreport_cloud_sdk.ContactGroupsApi(api_client)
-    subscription_id = 'subscription_id_example' # str | 
-skip = 0 # int |  (optional) (default to 0)
-take = 10 # int |  (optional) (default to 10)
-
-    try:
-        # Returns contact groups by subscriptionId
-        api_response = api_instance.contact_groups_get_list(subscription_id, skip=skip, take=take)
-        pprint(api_response)
-    except ApiException as e:
-        print("Exception when calling ContactGroupsApi->contact_groups_get_list: %s\n" % e)
-```
-
 * Bearer (JWT) Authentication (JWT):
+
 ```python
-from __future__ import print_function
-import time
 import fastreport_cloud_sdk
+from fastreport_cloud_sdk.models.contact_groups_vm import ContactGroupsVM
 from fastreport_cloud_sdk.rest import ApiException
 from pprint import pprint
+
 # Defining the host is optional and defaults to http://localhost
 # See configuration.py for a list of all supported configuration parameters.
 configuration = fastreport_cloud_sdk.Configuration(
@@ -453,13 +302,13 @@ configuration = fastreport_cloud_sdk.Configuration(
 
 # Configure HTTP basic authorization: ApiKey
 configuration = fastreport_cloud_sdk.Configuration(
-    username = 'YOUR_USERNAME',
-    password = 'YOUR_PASSWORD'
+    username = os.environ["USERNAME"],
+    password = os.environ["PASSWORD"]
 )
 
 # Configure Bearer authorization (JWT): JWT
 configuration = fastreport_cloud_sdk.Configuration(
-    access_token = 'YOUR_BEARER_TOKEN'
+    access_token = os.environ["BEARER_TOKEN"]
 )
 
 # Enter a context with an instance of the API client
@@ -467,18 +316,22 @@ with fastreport_cloud_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = fastreport_cloud_sdk.ContactGroupsApi(api_client)
     subscription_id = 'subscription_id_example' # str | 
-skip = 0 # int |  (optional) (default to 0)
-take = 10 # int |  (optional) (default to 10)
+    skip = 0 # int |  (optional) (default to 0)
+    take = 10 # int |  (optional) (default to 10)
 
     try:
         # Returns contact groups by subscriptionId
         api_response = api_instance.contact_groups_get_list(subscription_id, skip=skip, take=take)
+        print("The response of ContactGroupsApi->contact_groups_get_list:\n")
         pprint(api_response)
-    except ApiException as e:
+    except Exception as e:
         print("Exception when calling ContactGroupsApi->contact_groups_get_list: %s\n" % e)
 ```
+
+
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -500,14 +353,15 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Success |  -  |
-**403** | Forbidden |  -  |
-**404** | Not Found |  -  |
-**402** | Client Error |  -  |
-**400** | Bad Request |  -  |
-**500** | Server Error |  -  |
+**200** | Contact groups were found |  -  |
+**403** | Not enough permissions for the operation |  -  |
+**404** | Subscription was not found |  -  |
+**402** | Subscription is outdated |  -  |
+**400** | Bad id provided |  -  |
+**500** | Try again, if error still here - text our support |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -519,56 +373,15 @@ Updates contact group by id
 ### Example
 
 * Basic Authentication (ApiKey):
-```python
-from __future__ import print_function
-import time
-import fastreport_cloud_sdk
-from fastreport_cloud_sdk.rest import ApiException
-from pprint import pprint
-# Defining the host is optional and defaults to http://localhost
-# See configuration.py for a list of all supported configuration parameters.
-configuration = fastreport_cloud_sdk.Configuration(
-    host = "http://localhost"
-)
-
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
-# Configure HTTP basic authorization: ApiKey
-configuration = fastreport_cloud_sdk.Configuration(
-    username = 'YOUR_USERNAME',
-    password = 'YOUR_PASSWORD'
-)
-
-# Configure Bearer authorization (JWT): JWT
-configuration = fastreport_cloud_sdk.Configuration(
-    access_token = 'YOUR_BEARER_TOKEN'
-)
-
-# Enter a context with an instance of the API client
-with fastreport_cloud_sdk.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = fastreport_cloud_sdk.ContactGroupsApi(api_client)
-    id = 'id_example' # str | 
-update_contact_group_vm = fastreport_cloud_sdk.UpdateContactGroupVM() # UpdateContactGroupVM |  (optional)
-
-    try:
-        # Updates contact group by id
-        api_response = api_instance.contact_groups_update(id, update_contact_group_vm=update_contact_group_vm)
-        pprint(api_response)
-    except ApiException as e:
-        print("Exception when calling ContactGroupsApi->contact_groups_update: %s\n" % e)
-```
-
 * Bearer (JWT) Authentication (JWT):
+
 ```python
-from __future__ import print_function
-import time
 import fastreport_cloud_sdk
+from fastreport_cloud_sdk.models.contact_group_vm import ContactGroupVM
+from fastreport_cloud_sdk.models.update_contact_group_vm import UpdateContactGroupVM
 from fastreport_cloud_sdk.rest import ApiException
 from pprint import pprint
+
 # Defining the host is optional and defaults to http://localhost
 # See configuration.py for a list of all supported configuration parameters.
 configuration = fastreport_cloud_sdk.Configuration(
@@ -582,13 +395,13 @@ configuration = fastreport_cloud_sdk.Configuration(
 
 # Configure HTTP basic authorization: ApiKey
 configuration = fastreport_cloud_sdk.Configuration(
-    username = 'YOUR_USERNAME',
-    password = 'YOUR_PASSWORD'
+    username = os.environ["USERNAME"],
+    password = os.environ["PASSWORD"]
 )
 
 # Configure Bearer authorization (JWT): JWT
 configuration = fastreport_cloud_sdk.Configuration(
-    access_token = 'YOUR_BEARER_TOKEN'
+    access_token = os.environ["BEARER_TOKEN"]
 )
 
 # Enter a context with an instance of the API client
@@ -596,17 +409,21 @@ with fastreport_cloud_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = fastreport_cloud_sdk.ContactGroupsApi(api_client)
     id = 'id_example' # str | 
-update_contact_group_vm = fastreport_cloud_sdk.UpdateContactGroupVM() # UpdateContactGroupVM |  (optional)
+    update_contact_group_vm = fastreport_cloud_sdk.UpdateContactGroupVM() # UpdateContactGroupVM |  (optional)
 
     try:
         # Updates contact group by id
         api_response = api_instance.contact_groups_update(id, update_contact_group_vm=update_contact_group_vm)
+        print("The response of ContactGroupsApi->contact_groups_update:\n")
         pprint(api_response)
-    except ApiException as e:
+    except Exception as e:
         print("Exception when calling ContactGroupsApi->contact_groups_update: %s\n" % e)
 ```
+
+
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -627,14 +444,15 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Success |  -  |
-**400** | Bad Request |  -  |
-**402** | Client Error |  -  |
-**403** | Forbidden |  -  |
-**404** | Not Found |  -  |
-**500** | Server Error |  -  |
+**200** | Contact group was updated |  -  |
+**400** | Bad VM or id provided |  -  |
+**402** | Subscription is outdated |  -  |
+**403** | Not enough permissions for the operation |  -  |
+**404** | Subscription or group was not found |  -  |
+**500** | Try again, if error still here - text our support |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
